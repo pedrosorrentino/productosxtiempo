@@ -66,6 +66,38 @@ export const result = {
   effortDisclaimer: "Cálculo de esfuerzo laboral, no de si deberías comprarlo.",
   convertedPriceNote:
     "Precio de referencia de España convertido. Cámbialo si conoces el de tu país.",
+  convertedBadge: "precio de referencia de España",
+  breakdownTitle: "Desglose",
+  hoursLabel: "Horas de trabajo",
+  workdaysLabel: "Jornadas de 8 h",
+  weeksLabel: "Semanas",
+  monthsFullPayLabel: "Meses de sueldo entero",
+  yearsFullPayLabel: "Años de sueldo entero",
+  pctRealYearLabel: "% del año laboral real",
+  invalidInput: "Revisa los datos: algo no cuadra entre sueldo, horas y precio.",
+  otherCountry: "Otro país",
+};
+
+/**
+ * Anclas de comparación (SPEC §10.8): el producto expresado en unidades del
+ * día a día del país. `count` llega ya redondeado (entero si ≥ 10, 1 decimal
+ * si < 10).
+ */
+export const anchors = {
+  title: "En unidades de tu día a día",
+  cafe: (count: string): string => `equivale a ${count} cafés`,
+  iphone: (count: string): string => `equivale a ${count} iPhones`,
+  alquiler: (count: string): string => `equivale a ${count} meses de alquiler`,
+};
+
+/** Barra del año laboral (SPEC §11): un rectángulo = 1 año laboral de referencia. */
+export const yearBar = {
+  title: "Tu año laboral",
+  detail: "1 rectángulo = 12 meses de sueldo entero",
+  detailRealHours: (hours: number): string =>
+    `1 rectángulo = 12 meses de sueldo entero (${hours} h reales al año)`,
+  overflow: (years: string): string => `desborda a ${years} años`,
+  ariaFill: (pct: string): string => `Barra del año laboral: ocupa el ${pct}%`,
 };
 
 export const noSalary = {

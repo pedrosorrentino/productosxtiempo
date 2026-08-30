@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import type { JSX } from "preact";
 import { priceForm } from "../../i18n/es.ts";
 
@@ -22,6 +22,12 @@ const parsePositive = (raw: string): number | null => {
  *   Si solo hay nombre, navega igualmente con los params presentes.
  * - Inline (ResultView): con `onPriceChange`/`onLabelChange` recalcula en vivo
  *   sin navegar.
+ *
+ * El campo se sincroniza con `initialPrice` (query param o precio del
+ * catálogo, SPEC §7) mediante un effect que reacciona a la prop, PERO solo
+ * mientras el usuario no haya tocado el campo (ref `dirty`): si lo tocó, el
+ * manda. Enter envuelve todo en un `<form>`: navega en modo navegación y en
+ * modo inline solo hace preventDefault (el recálculo ya es en vivo).
  */
 export default function PriceInput({
   slug,
@@ -36,9 +42,17 @@ export default function PriceInput({
     initialPrice != null ? String(initialPrice) : "",
   );
   const [label, setLabel] = useState(initialLabel ?? "");
+  const dirty = useRef(false);
+
+  useEffect(() => {
+    if (!dirty.current && initialPrice != null) {
+      setPriceText(String(initialPrice));
+    }
+  }, [initialPrice]);
 
   const onPriceInput = (event: JSX.TargetedEvent<HTMLInputElement>) => {
     const raw = event.currentTarget.value;
+    dirty.current = true;
     setPriceText(raw);
     onPriceChange?.(parsePositive(raw));
   };
@@ -60,8 +74,13 @@ export default function PriceInput({
       parts.length > 0 ? `/${slug}/precio?${parts.join("&")}` : `/${slug}/precio`;
   };
 
+  const onSubmit = (event: JSX.TargetedEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!inline) navigate();
+  };
+
   return (
-    <div class="grid gap-4 sm:grid-cols-2">
+    <form class="grid gap-4 sm:grid-cols-2" onSubmit={onSubmit}>
       <div>
         <label class="label" for="price-input">
           {priceForm.priceLabel}
@@ -95,11 +114,11 @@ export default function PriceInput({
       </div>
       {!inline && (
         <div class="sm:col-span-2">
-          <button type="button" class="btn btn-primary" onClick={navigate}>
+          <button type="submit" class="btn btn-primary">
             {priceForm.submit}
           </button>
         </div>
       )}
-    </div>
+    </form>
   );
 }

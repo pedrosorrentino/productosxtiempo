@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResultView from '../../components/preact/ResultView.tsx';
+import { brand } from '../../i18n/es.ts';
+import type { Country, Product, ProductPrice } from '../../lib/types.ts';
+import countriesData from '../../data/countries.json';
+import productsData from '../../data/products.json';
+
+interface Props {
+  country: Country;
+  product: Product;
+  price: ProductPrice;
+  priceConverted: boolean;
+}
+
+export function getStaticPaths() {
+  const paths: Array<{ params: { country: string; product: string }; props: Props }> = [];
+  for (const country of countriesData as Country[]) {
+    for (const product of productsData as Product[]) {
+      if (!product.visible) continue;
+      const local = product.prices[country.code] as ProductPrice | undefined;
+      // Fallback ES (SPEC §7): sin precio local se usa el de España. El
+      // etiquetado "convertido" se decide aquí comparando el país de origen
+      // (contrato: NUNCA fiarse solo del origin del JSON).
+      const price = local ?? (product.prices['ES'] as ProductPrice | undefined);
+      if (!price) continue; // sin precio base ES → sin página
+      paths.push({
+        params: { country: country.slug, product: product.id },
+        props: { country, product, price, priceConverted: local == null },
+      });
+    }
+  }
+  return paths;
+}
+
+const { country, product, price, priceConverted } = Astro.props;
+---
+
+<BaseLayout
+  title={`${product.shortName} · ${country.name} · ${brand.name}`}
+  description={brand.subtitle}
+>
+  <section class="container mx-auto px-4 py-10 max-w-3xl">
+    <ResultView
+      client:load
+      countryCode={country.code}
+      countryName={country.name}
+      countrySlug={country.slug}
+      currencySymbol={country.currencySymbol}
+      medianNetMonthly={country.medianNetMonthly}
+      legalWeeklyHours={country.legalWeeklyHours}
+      realAnnualHours={country.realAnnualHours}
+      retirementAge={country.retirementAge}
+      productId={product.id}
+      productName={product.name}
+      catalogPrice={price.value}
+      priceConverted={priceConverted}
+    />
+  </section>
+</BaseLayout>
