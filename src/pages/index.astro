@@ -1,17 +1,10 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Coste en tiempo" description="Estimación educativa del esfuerzo laboral que cuesta un precio.">
+  <section class="container mx-auto px-4 py-16 text-center">
+    <h1 class="text-4xl font-bold">Coste en tiempo</h1>
+    <p class="mt-4 text-lg opacity-80">Próximamente: calcula cuántas horas de trabajo cuesta lo que quieres comprar.</p>
+  </section>
+</BaseLayout>

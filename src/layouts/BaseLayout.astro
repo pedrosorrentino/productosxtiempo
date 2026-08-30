@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const legalLines = [
+  'Esta web ofrece una estimación educativa de esfuerzo laboral.',
+  'No es un consejo de compra, ahorro ni inversión.',
+  'Los salarios y precios son aproximados y pueden estar desactualizados.',
+  'Tú puedes y debes sustituirlos por tus cifras reales.',
+  'El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.'
+];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header>
+      <div class="navbar bg-base-200 shadow-sm">
+        <div class="flex-1">
+          <a href="/" class="btn btn-ghost text-lg">Coste en tiempo</a>
+        </div>
+        <nav class="flex-none">
+          <ul class="menu menu-horizontal px-1">
+            <li><a href="/metodo">Método</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="footer footer-center bg-base-200 text-base-content p-8 gap-2">
+      <nav>
+        <a href="/metodo" class="link link-hover">Método</a>
+      </nav>
+      <div class="text-sm opacity-80">
+        {
+          legalLines.map((line) => (
+            <p>{line}</p>
+          ))
+        }
+      </div>
+    </footer>
+  </body>
+</html>

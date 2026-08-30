@@ -9,12 +9,23 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate-types": "wrangler types"
   },
   "dependencies": {
-    "astro": "^7.2.9"
+    "@astrojs/cloudflare": "^14.2.5",
+    "@astrojs/preact": "^6.0.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.2.9",
+    "preact": "^10.29.8",
+    "tailwindcss": "^4.3.3",
+    "wrangler": "^4.127.1"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "daisyui": "^5.7.22",
+    "typescript": "^7.0.2"
   }
 }
