@@ -1,0 +1,338 @@
+[
+  {
+    "id": "cafe",
+    "name": "Café en bar",
+    "shortName": "Café",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 1.5,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "menu-del-dia",
+    "name": "Menú del día",
+    "shortName": "Menú del día",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 14,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "cesta-semanal",
+    "name": "Cesta de la compra semanal",
+    "shortName": "Cesta semanal",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 80,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "netflix-anual",
+    "name": "Netflix (año)",
+    "shortName": "Netflix (año)",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 130,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "gimnasio-anual",
+    "name": "Gimnasio (año)",
+    "shortName": "Gimnasio (año)",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 360,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "iphone",
+    "name": "iPhone (gama alta)",
+    "shortName": "iPhone",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 1000,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "portatil",
+    "name": "Portátil normal",
+    "shortName": "Portátil",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 900,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "televisor",
+    "name": "Televisor",
+    "shortName": "Televisor",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 500,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "auriculares",
+    "name": "Auriculares",
+    "shortName": "Auriculares",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 250,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "abono-transporte",
+    "name": "Abono transporte (mes)",
+    "shortName": "Abono transporte",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 55,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "bici-urbana",
+    "name": "Bici urbana",
+    "shortName": "Bici urbana",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 400,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "dacia-sandero",
+    "name": "Dacia Sandero",
+    "shortName": "Sandero",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 14000,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "coche-compacto",
+    "name": "Coche compacto",
+    "shortName": "Coche compacto",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 22000,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "tesla-model-3",
+    "name": "Tesla Model 3 (acceso)",
+    "shortName": "Tesla Model 3",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 33365,
+        "date": "2026-08",
+        "note": "Precio de referencia de acceso en oferta reciente. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "habitacion-alquiler",
+    "name": "Habitación en piso compartido (mes)",
+    "shortName": "Habitación (mes)",
+    "category": "vivienda",
+    "prices": {
+      "ES": {
+        "value": 450,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "alquiler-piso",
+    "name": "Alquiler piso 1-2 hab ciudad (mes)",
+    "shortName": "Alquiler piso (mes)",
+    "category": "vivienda",
+    "prices": {
+      "ES": {
+        "value": 900,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "entrada-piso",
+    "name": "Entrada piso (20 %) tipo",
+    "shortName": "Entrada piso",
+    "category": "vivienda",
+    "prices": {
+      "ES": {
+        "value": 40000,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "viaje-7-dias",
+    "name": "Viaje 7 días",
+    "shortName": "Viaje 7 días",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 1200,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "boda",
+    "name": "Boda sencilla",
+    "shortName": "Boda",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 8000,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "master",
+    "name": "Máster",
+    "shortName": "Máster",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 8000,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "reformar-cocina",
+    "name": "Reformar cocina",
+    "shortName": "Reforma cocina",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 12000,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "ES": { "cafe": 1.5, "iphone": 1000, "alquiler": 900 },
+  "PT": { "cafe": null, "iphone": null, "alquiler": null },
+  "FR": { "cafe": null, "iphone": null, "alquiler": null },
+  "DE": { "cafe": null, "iphone": null, "alquiler": null },
+  "IT": { "cafe": null, "iphone": null, "alquiler": null },
+  "GB": { "cafe": 3.5, "iphone": 999, "alquiler": 1400 },
+  "US": { "cafe": 5.5, "iphone": 1000, "alquiler": 1900 },
+  "MX": { "cafe": 45, "iphone": 23000, "alquiler": 13000 },
+  "AR": { "cafe": null, "iphone": null, "alquiler": null },
+  "CO": { "cafe": 7000, "iphone": 3500000, "alquiler": 1600000 },
+  "CL": { "cafe": 2800, "iphone": 950000, "alquiler": 500000 },
+  "CH": { "cafe": 5.5, "iphone": 1050, "alquiler": 2200 }
+}
