@@ -5,6 +5,8 @@
  * formatean aquí con los helpers de lib/format.
  */
 import { formatPercent, formatWorkdays, formatYears } from "../lib/format.ts";
+import type { HeroUnit } from "../lib/format.ts";
+import type { Product } from "../lib/types.ts";
 
 export const brand = {
   name: "Coste en tiempo",
@@ -69,6 +71,7 @@ export const result = {
 export const noSalary = {
   title: "Este país aún no tiene sueldo de referencia",
   body: "Pon tu sueldo y el precio, y lo calculamos igual.",
+  goToCountry: "Ir a la ficha del país",
 };
 
 export const age = {
@@ -160,3 +163,49 @@ export const legalFooter: readonly string[] = [
   "Tú puedes y debes sustituirlos por tus cifras reales.",
   "El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.",
 ];
+
+/** Labels ES de las categorías del catálogo (SPEC §7, Product.category). */
+export const categories: Record<Product["category"], string> = {
+  vivienda: "Vivienda",
+  transporte: "Transporte",
+  tecnologia: "Tecnología",
+  "dia-a-dia": "Día a día",
+  vida: "Vida",
+};
+
+/** Unidades del número hero (SPEC §8). Las claves pequeñas cubren compras minúsculas. */
+export const heroUnits: Record<HeroUnit, string> & {
+  minutos: string;
+  horas: string;
+} = {
+  jornadas: "jornadas de 8 h",
+  meses: "meses de sueldo entero",
+  años: "años de sueldo entero",
+  minutos: "minutos",
+  horas: "horas",
+};
+
+/** Campo "esta cosa cuesta" + nombre opcional (SPEC §10). */
+export const priceForm = {
+  priceLabel: "Esta cosa cuesta",
+  nameLabel: "Nombre (opcional)",
+  pricePlaceholder: "33365",
+  namePlaceholder: "p. ej. Tesla Model 3",
+  submit: "Calcular en mi tiempo",
+  enterPricePrompt: "Escribe cuánto cuesta y te decimos cuánto tiempo de trabajo es.",
+};
+
+/** Copy de la ficha de país (SPEC §9, §10). */
+export const countryPage = {
+  hourlyWageLabel: "Hora de referencia",
+  weeklyHoursLabel: "Jornada semanal",
+  dailyHoursLabel: "Jornada diaria",
+  realAnnualHoursLabel: "Horas reales al año",
+  dataFrom: (date: string): string => `Datos de ${date}`,
+  sourceLabel: "Fuente",
+  dataDisclaimer: "Sueldo de referencia de esta web, no tu nómina.",
+  toggleTitle: "Dato del país / mis datos",
+  catalogTitle: "Catálogo",
+  noLocalPriceBadge: "sin precio local",
+  noLocalPriceCta: "pon el precio en tu moneda",
+};

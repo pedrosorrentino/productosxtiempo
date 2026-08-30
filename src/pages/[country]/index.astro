@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import UserForm from '../../components/preact/UserForm.tsx';
+import PriceInput from '../../components/preact/PriceInput.tsx';
+import { calc } from '../../lib/calc.ts';
+import { formatHourlyWage } from '../../lib/format.ts';
+import { brand, categories, countryPage, cta, noSalary, priceForm } from '../../i18n/es.ts';
+import type { Country, Product } from '../../lib/types.ts';
+import countriesData from '../../data/countries.json';
+import productsData from '../../data/products.json';
+
+export function getStaticPaths() {
+  return countriesData.map((country) => ({
+    params: { country: country.slug },
+    props: { country },
+  }));
+}
+
+interface Props {
+  country: Country;
+}
+
+const { country } = Astro.props;
+
+// price = 1: hourlyWage de calc no depende del precio, así obtenemos la hora del país.
+const countryWage =
+  country.medianNetMonthly != null
+    ? calc({
+        price: 1,
+        netMonthly: country.medianNetMonthly,
+        weeklyHours: country.legalWeeklyHours,
+        realAnnualHours: country.realAnnualHours,
+        monthlySavings: null,
+        age: null,
+        retirementAge: country.retirementAge,
+      }).hourlyWage
+    : null;
+const countryWageText =
+  countryWage != null ? formatHourlyWage(countryWage, country.currencySymbol) : null;
+const hasSalary = countryWageText != null;
+
+const products: Product[] = productsData;
+const hasLocalPrice = (product: Product, code: string): boolean =>
+  product.prices[code] !== undefined;
+
+const categoryOrder: Product['category'][] = ['vivienda', 'transporte', 'tecnologia', 'dia-a-dia', 'vida'];
+const catalog = categoryOrder
+  .map((category) => ({
+    category,
+    products: products.filter((p) => p.visible && p.category === category),
+  }))
+  .filter((group) => group.products.length > 0);
+---
+
+<BaseLayout title={`${country.name} · ${brand.name}`} description={brand.subtitle}>
+  <section class="container mx-auto px-4 py-10 max-w-3xl">
+    <h1 class="text-4xl md:text-5xl font-bold">{country.name}</h1>
+
+    {
+      !hasSalary && (
+        <div role="alert" class="alert alert-warning mt-6">
+          <div>
+            <h2 class="font-bold">{noSalary.title}</h2>
+            <p class="text-sm">{noSalary.body}</p>
+          </div>
+        </div>
+      )
+    }
+
+    <div class="stats stats-vertical sm:stats-horizontal shadow bg-base-200 mt-6 w-full">
+      {
+        countryWageText && (
+          <div class="stat">
+            <div class="stat-title">{countryPage.hourlyWageLabel}</div>
+            <div class="stat-value text-3xl md:text-4xl tabular-nums">{countryWageText}</div>
+            <div class="stat-desc">{countryPage.dataDisclaimer}</div>
+          </div>
+        )
+      }
+      <div class="stat">
+        <div class="stat-title">{countryPage.weeklyHoursLabel}</div>
+        <div class="stat-value text-3xl md:text-4xl tabular-nums">{country.legalWeeklyHours} h</div>
+        <div class="stat-desc">
+          {countryPage.dailyHoursLabel}: {country.legalDailyHours} h
+        </div>
+      </div>
+      {
+        country.realAnnualHours != null && (
+          <div class="stat">
+            <div class="stat-title">{countryPage.realAnnualHoursLabel}</div>
+            <div class="stat-value text-3xl md:text-4xl tabular-nums">{country.realAnnualHours}</div>
+          </div>
+        )
+      }
+    </div>
+
+    {
+      hasSalary && (
+        <p class="mt-2 text-sm opacity-70">
+          {countryPage.dataFrom(country.salariesUpdatedAt)} · {countryPage.sourceLabel}: {country.salariesSource}
+        </p>
+      )
+    }
+
+    <div class:list={['collapse collapse-arrow bg-base-200 mt-6', { 'collapse-open': !hasSalary }]}>
+      <input type="checkbox" aria-label={countryPage.toggleTitle} />
+      <div class="collapse-title text-lg font-medium">{countryPage.toggleTitle}</div>
+      <div class="collapse-content">
+        <UserForm
+          client:load
+          countryCode={country.code}
+          countryNetMonthly={country.medianNetMonthly}
+          countryWeeklyHours={country.legalWeeklyHours}
+          currencySymbol={country.currencySymbol}
+        />
+      </div>
+    </div>
+
+    <div class="card bg-base-100 shadow-sm mt-8 p-6">
+      <PriceInput client:load slug={country.slug} currencySymbol={country.currencySymbol} />
+    </div>
+
+    <h2 class="text-2xl font-bold mt-12">{countryPage.catalogTitle}</h2>
+    {
+      catalog.map((group) => (
+        <section class="mt-6">
+          <h3 class="text-xl font-bold">{categories[group.category]}</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+            {group.products.map((product) => (
+              <div class="card bg-base-200">
+                <div class="card-body p-5">
+                  <h4 class="card-title text-lg">
+                    <a href={`/${country.slug}/${product.id}`} class="hover:underline">
+                      {product.shortName}
+                    </a>
+                  </h4>
+                  <p class="text-sm opacity-80">{product.name}</p>
+                  {!hasLocalPrice(product, country.code) && (
+                    <div class="mt-2 flex flex-wrap items-center gap-2">
+                      <span class="badge badge-ghost">{countryPage.noLocalPriceBadge}</span>
+                      <a
+                        href={`/${country.slug}/precio?nombre=${encodeURIComponent(product.name)}`}
+                        class="link link-primary text-sm"
+                      >
+                        {countryPage.noLocalPriceCta}
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    <p class="mt-12 text-center">
+      <a href="/metodo" class="link link-hover">{cta.method}</a>
+    </p>
+  </section>
+</BaseLayout>
