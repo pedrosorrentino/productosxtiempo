@@ -24,6 +24,16 @@ export const cta = {
   shareCopied: "Enlace copiado",
 };
 
+/** Copy de la home (SPEC §10): picker de país y ejemplo calculado en build time. */
+export const home = {
+  countryLabel: "Tu país",
+  countryPlaceholder: "Elige tu país",
+  exampleLead: (productName: string, countryName: string): string =>
+    `Ejemplo: un ${productName} en ${countryName} son`,
+  workdaysUnit: "jornadas de 8 h",
+  fullPayTail: (phrase: string): string => `— ${phrase} de sueldo entero.`,
+};
+
 /** Resumen en vivo del formulario: “Tu hora vale 10,38 €”. */
 export const hourValue = (formattedWage: string): string =>
   `Tu hora vale ${formattedWage}`;
