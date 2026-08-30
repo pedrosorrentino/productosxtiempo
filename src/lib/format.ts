@@ -64,6 +64,23 @@ export function formatPercent(percent: number): string {
   return formatDecimals(percent, percent >= 2 ? 0 : 1);
 }
 
+/**
+ * Atajos de copy de la tabla SPEC §8, en UNA sola fuente (decisión
+ * documentada, Task 6): la consumen `formatHumanDuration` (modo A) y el
+ * calendario del modo B en ResultView. Devuelve la frase del atajo o null
+ * si ninguno aplica.
+ */
+export function humanYearsShortcut(
+  years: number,
+  months: number,
+): string | null {
+  if (years >= 0.9 && years <= 1.15) return "un año";
+  if (months >= 11 && months <= 13) return "un año";
+  if (years >= 1.4 && years <= 1.7) return "un año y medio";
+  if (years >= 2.4 && years <= 2.7) return "dos años y medio";
+  return null;
+}
+
 export type HeroUnit = "jornadas" | "meses" | "años";
 
 /** Unidad hero automática (SPEC §8 "Unidad hero"). */
@@ -116,13 +133,11 @@ export function formatHumanDuration(
     return `${formatWeeks(monthsFullPay * WEEKS_PER_MONTH)} semanas`;
   }
   if (yearsFullPay < 1.8) {
-    if (yearsFullPay >= 0.9 && yearsFullPay <= 1.15) return "un año";
-    if (monthsFullPay >= 11 && monthsFullPay <= 13) return "un año";
-    if (yearsFullPay >= 1.4 && yearsFullPay <= 1.7) return "un año y medio";
+    const shortcut = humanYearsShortcut(yearsFullPay, monthsFullPay);
+    if (shortcut) return shortcut;
     return `${formatMonths(monthsFullPay)} meses`;
   }
-  if (yearsFullPay >= 2.4 && yearsFullPay <= 2.7) {
-    return "dos años y medio";
-  }
+  const shortcut = humanYearsShortcut(yearsFullPay, monthsFullPay);
+  if (shortcut) return shortcut;
   return `${formatYears(yearsFullPay)} años`;
 }

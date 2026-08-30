@@ -1,28 +1,98 @@
-import { useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
+import type { JSX } from "preact";
 import { cta } from "../../i18n/es.ts";
 
 export interface ShareButtonProps {
   /** URL canónica ya construida con urls.ts (SPEC §12, paso 1). */
   url: string;
+  /**
+   * Texto del reparto (builder shareText de i18n). undefined → solo URL
+   * (pantalla sin resultado calculado).
+   */
+  text?: string;
+}
+
+type Toast = { kind: "ok" | "warn"; message: string } | null;
+
+/**
+ * Copia al portapapeles con fallback jerárquico y veredicto explícito:
+ * 1. `navigator.clipboard.writeText` (contexto seguro)
+ * 2. `document.execCommand("copy")` (contextos no seguros / permisos)
+ * Nunca falla en silencio (contrato de Task 5): devuelve false para que la UI
+ * avise. Nota: `execCommand` está deprecado pero sigue vivo como último
+ * recurso; su deprecación no invalida este fallback.
+ */
+async function copyWithFallback(content: string): Promise<boolean> {
+  if (navigator.clipboard?.writeText != null) {
+    try {
+      await navigator.clipboard.writeText(content);
+      return true;
+    } catch {
+      // Permiso denegado o portapapeles ocupado → fallback legacy.
+    }
+  }
+  try {
+    const textarea = document.createElement("textarea");
+    textarea.value = content;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    const ok = document.execCommand("copy");
+    document.body.removeChild(textarea);
+    return ok;
+  } catch {
+    return false;
+  }
 }
 
 /**
- * STUB de compartir (SPEC §12): hoy copia la URL canónica al portapapeles y
- * lo confirma con un toast daisyUI. Task 6 lo completa con navigator.share
- * (paso 2 de la spec) y el texto de reparto.
+ * Botón Compartir (SPEC §12): 1) `navigator.share` si existe (Web Share API
+ * nativa); 2) si no (o si el share nativo falla sin cancelación), copia
+ * `texto + URL` al portapapeles y confirma con toast daisyUI "Enlace
+ * copiado". Si el portapapeles también falla, toast de aviso — el usuario
+ * siempre recibe feedback.
  */
-export default function ShareButton({ url }: ShareButtonProps) {
-  const [copied, setCopied] = useState(false);
+export default function ShareButton({ url, text }: ShareButtonProps) {
+  const [toast, setToast] = useState<Toast>(null);
+  const toastTimer = useRef<number | null>(null);
 
-  const share = async () => {
-    try {
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2500);
-    } catch {
-      // Portapapeles no disponible (permiso o contexto no seguro): sin
-      // feedback por ahora; Task 6 añade el fallback nativo.
+  const showToast = (kind: "ok" | "warn", message: string): void => {
+    if (toastTimer.current != null) clearTimeout(toastTimer.current);
+    setToast({ kind, message });
+    toastTimer.current = setTimeout(() => setToast(null), 2500);
+  };
+
+  useEffect(
+    () => () => {
+      if (toastTimer.current != null) clearTimeout(toastTimer.current);
+    },
+    [],
+  );
+
+  const share = async (event: JSX.TargetedEvent<HTMLButtonElement>) => {
+    event.currentTarget.blur();
+    if (typeof navigator !== "undefined" && navigator.share != null) {
+      try {
+        await navigator.share({
+          title: text?.split("\n")[0],
+          text: text ?? undefined,
+          url,
+        });
+        return; // El sheet nativo ya es el feedback.
+      } catch (error) {
+        const name = (error as { name?: string } | null)?.name;
+        if (name === "AbortError") return; // Cancelado por el usuario.
+        // Fallo real de Web Share → caer al portapapeles.
+      }
     }
+    const content = text != null ? `${text}\n${url}` : url;
+    const ok = await copyWithFallback(content);
+    showToast(
+      ok ? "ok" : "warn",
+      ok ? cta.shareCopied : cta.shareCopyFailed,
+    );
   };
 
   return (
@@ -30,10 +100,13 @@ export default function ShareButton({ url }: ShareButtonProps) {
       <button type="button" class="btn btn-outline" onClick={share}>
         {cta.share}
       </button>
-      {copied && (
+      {toast && (
         <div class="toast toast-center z-50">
-          <div role="alert" class="alert alert-success py-2">
-            <span>{cta.shareCopied}</span>
+          <div
+            role="alert"
+            class={`alert ${toast.kind === "ok" ? "alert-success" : "alert-warning"} py-2`}
+          >
+            <span>{toast.message}</span>
           </div>
         </div>
       )}

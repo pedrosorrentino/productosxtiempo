@@ -4,7 +4,13 @@
  * parametrizadas; las cifras llegan ya redondeadas según la tabla de §8 o se
  * formatean aquí con los helpers de lib/format.
  */
-import { formatPercent, formatWorkdays, formatYears } from "../lib/format.ts";
+import {
+  formatHours,
+  formatMinutes,
+  formatPercent,
+  formatWorkdays,
+  formatYears,
+} from "../lib/format.ts";
 import type { HeroUnit } from "../lib/format.ts";
 import type { Product } from "../lib/types.ts";
 
@@ -24,6 +30,7 @@ export const cta = {
   method: "Método",
   share: "Compartir",
   shareCopied: "Enlace copiado",
+  shareCopyFailed: "No se pudo copiar el enlace",
 };
 
 /** Copy de la home (SPEC §10): picker de país y ejemplo calculado en build time. */
@@ -76,18 +83,27 @@ export const result = {
   pctRealYearLabel: "% del año laboral real",
   invalidInput: "Revisa los datos: algo no cuadra entre sueldo, horas y precio.",
   otherCountry: "Otro país",
+  unnamedThing: "Esta cosa",
 };
 
 /**
  * Anclas de comparación (SPEC §10.8): el producto expresado en unidades del
  * día a día del país. `count` llega ya redondeado (entero si ≥ 10, 1 decimal
- * si < 10).
+ * si < 10). Para recuentos < 1 (decisión documentada): "menos de un {cosa}"
+ * — un decimal mostraría "0,0 cafés", que miente al decir cero.
+ * Para recuento exacto 1 (hallazgo Task 6): singular — "equivale a 1 café",
+ * no "1 cafés".
  */
+const anchorCount = (count: string, one: string, many: string): string =>
+  count === "1" ? `1 ${one}` : `${count} ${many}`;
+
 export const anchors = {
   title: "En unidades de tu día a día",
-  cafe: (count: string): string => `equivale a ${count} cafés`,
-  iphone: (count: string): string => `equivale a ${count} iPhones`,
-  alquiler: (count: string): string => `equivale a ${count} meses de alquiler`,
+  cafe: (count: string): string => `equivale a ${anchorCount(count, "café", "cafés")}`,
+  iphone: (count: string): string => `equivale a ${anchorCount(count, "iPhone", "iPhones")}`,
+  alquiler: (count: string): string =>
+    `equivale a ${anchorCount(count, "mes de alquiler", "meses de alquiler")}`,
+  lessThanOne: (thing: string): string => `menos de un ${thing}`,
 };
 
 /** Barra del año laboral (SPEC §11): un rectángulo = 1 año laboral de referencia. */
@@ -154,20 +170,32 @@ const capitalize = (text: string): string =>
  * ```
  *
  * `fullPayPhrase` es la frase de duración de `formatHumanDuration` para el
- * sueldo entero. La línea de edad solo se incluye si hay edad.
+ * sueldo entero. La línea de esfuerzo usa la unidad correcta según magnitud
+ * (decisión documentada): jornadas solo si workdays8h ≥ 1; debajo, horas;
+ * compras sub-hora, minutos — nunca "0,1 jornadas". La línea de edad solo se
+ * incluye si hay edad y la compra no es minúscula (yearsFullPay ≥ 0.05,
+ * mismo corte que la línea sutil de SPEC §6).
  */
 export const shareText = (input: {
   productName: string;
   countryName: string;
+  hours: number;
   workdays8h: number;
   fullPayPhrase: string;
   age?: number | null;
   yearsFullPay?: number | null;
   domain?: string;
 }): string => {
+  const effortLine =
+    input.hours < 1
+      ? `${formatMinutes(input.hours * 60)} minutos`
+      : input.workdays8h < 1
+        ? `${formatHours(input.hours)} horas`
+        : `${formatWorkdays(input.workdays8h)} jornadas de 8 h`;
+
   const lines: string[] = [
     `${input.productName} · ${input.countryName}`,
-    `${formatWorkdays(input.workdays8h)} jornadas de 8 h`,
+    effortLine,
   ];
 
   const phrase = input.fullPayPhrase;
@@ -177,7 +205,11 @@ export const shareText = (input: {
       : `${capitalize(phrase)} de sueldo entero`;
   lines.push(fullPayLine);
 
-  if (input.age != null && input.yearsFullPay != null) {
+  if (
+    input.age != null &&
+    input.yearsFullPay != null &&
+    input.yearsFullPay >= 0.05
+  ) {
     lines.push(
       `A los ${input.age} años: ${formatYears(input.yearsFullPay)} años de vida trabajando`,
     );

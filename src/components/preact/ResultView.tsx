@@ -12,6 +12,7 @@ import {
   formatWorkdays,
   formatYears,
   heroUnit,
+  humanYearsShortcut,
 } from "../../lib/format.ts";
 import type { HeroUnit } from "../../lib/format.ts";
 import anchorsData from "../../data/anchors.json";
@@ -20,6 +21,9 @@ import { buildShareUrl, parseUserStateFromQuery } from "../../lib/urls.ts";
 import { loadUserState, saveUserState } from "../../lib/storage.ts";
 import type { UserState } from "../../lib/types.ts";
 import {
+  ageLine,
+  ageLinePastRetirement,
+  ageLineSmall,
   anchors as anchorsI18n,
   cta,
   heroUnits,
@@ -30,6 +34,7 @@ import {
   noSalary,
   priceForm,
   result,
+  shareText,
 } from "../../i18n/es.ts";
 import CountryPicker, { type PickerCountry } from "./CountryPicker.tsx";
 import PriceInput from "./PriceInput.tsx";
@@ -44,6 +49,13 @@ type AnchorTable = Record<
 
 const ANCHORS = anchorsData as AnchorTable;
 
+/** Rango de edad del SPEC §6 (entero 16–80; fuera → ignorar). */
+const MIN_AGE = 16;
+const MAX_AGE = 80;
+
+/** Corte de compra minúscula del SPEC §6: años de sueldo entero < 0.05. */
+const MIN_YEARS_FOR_AGE_LINE = 0.05;
+
 const nfCount1 = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 1 });
 const nfCount0 = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 0 });
 
@@ -57,17 +69,15 @@ const formatAmount = (n: number): string =>
 
 /**
  * Modo B (SPEC §10.5): resultado en meses/años de CALENDARIO con formato
- * humano. Atajos de copy de la tabla SPEC §8 reutilizados para el calendario.
+ * humano. Los atajos de copy de la tabla SPEC §8 salen de `humanYearsShortcut`
+ * (format.ts, una sola fuente — pulido Task 6: no duplicar la tabla aquí).
  */
 const humanCalendar = (months: number): string => {
   if (months < 1) return `${formatWeeks(months * WEEKS_PER_MONTH)} semanas`;
+  const shortcut = humanYearsShortcut(months / 12, months);
+  if (shortcut) return shortcut;
   if (months < 12) return `${formatMonths(months)} meses`;
-  const years = months / 12;
-  if (months >= 11 && months <= 13) return "un año";
-  if (years >= 0.9 && years <= 1.15) return "un año";
-  if (years >= 1.4 && years <= 1.7) return "un año y medio";
-  if (years >= 2.4 && years <= 2.7) return "dos años y medio";
-  return `${formatYears(years)} años`;
+  return `${formatYears(months / 12)} años`;
 };
 
 type Hero = { value: string; unit: string; next: string | null };
@@ -78,7 +88,10 @@ const computeHero = (r: CalcResult): Hero => {
     return {
       value: formatMinutes(r.hours * 60),
       unit: heroUnits.minutos,
-      next: `${formatHours(r.hours)} ${heroUnits.horas}`,
+      // Pulido Task 6 (C1): para compras sub-hora (café), formatHours
+      // redondearía a "0 horas". La siguiente unidad humana es "menos de
+      // 1 hora" (SPEC §8: compras minúsculas se comunican en minutos).
+      next: "menos de 1 hora",
     };
   }
   if (r.workdays8h < 1) {
@@ -209,6 +222,15 @@ export default function ResultView({
   const weeklyHours = state.weeklyHours ?? legalWeeklyHours;
   const savings = state.monthlySavings ?? null;
   const age = state.age ?? null;
+  // SPEC §6: solo edad entera 16–80 pinta la línea; fuera de rango → ignorar
+  // (defensa extra: storage y URL ya sanead, pero la regla vive aquí también).
+  const edadValida =
+    age != null &&
+    Number.isInteger(age) &&
+    age >= MIN_AGE &&
+    age <= MAX_AGE
+      ? age
+      : null;
   const displayName = productId != null ? productName : (state.customLabel ?? null);
 
   // Recálculo en vivo; CalcError capturada → estado vacío, nunca crash.
@@ -292,6 +314,28 @@ export default function ResultView({
       ? `${location.origin}${buildShareUrl(location.pathname, state)}`
       : buildShareUrl("/", state);
 
+  // Texto de reparto (SPEC §12) con el builder de i18n; la URL canónica
+  // (paso 1) la añade ShareButton al compartir. Sin resultado calculado no
+  // hay texto: ShareButton comparte solo la URL.
+  const shareTextFor = (): string | undefined => {
+    const c = computed;
+    if (!c) return undefined;
+    return shareText({
+      productName: displayName ?? result.unnamedThing,
+      countryName,
+      hours: c.hours,
+      workdays8h: c.workdays8h,
+      fullPayPhrase: formatHumanDuration(
+        c.hours,
+        c.workdays8h,
+        c.monthsFullPay,
+        c.yearsFullPay,
+      ),
+      age: edadValida,
+      yearsFullPay: c.yearsFullPay,
+    });
+  };
+
   const actions = (
     <section class="mt-10 space-y-6">
       <div class="card bg-base-200 p-5">
@@ -327,7 +371,7 @@ export default function ResultView({
           placeholder={countryName}
           hrefFor={hrefFor}
         />
-        <ShareButton url={shareUrl} />
+        <ShareButton url={shareUrl} text={shareTextFor()} />
       </div>
     </section>
   );
@@ -366,6 +410,33 @@ export default function ResultView({
     computed.monthsFullPay,
     computed.yearsFullPay,
   );
+
+  // Línea sutil de vida laboral (SPEC §6, orden EXACTO de casos):
+  // 1. sin edad → nada; edad fuera de 16–80 → ignorada (edadValida null)
+  // 2. aniosRestantesTrabajo ≤ 0 → frase "la jubilación de referencia ya
+  //    quedó atrás" (el orden de la spec pone este caso antes del corte de
+  //    compra minúscula)
+  // 3. yearsFullPay < 0.05 → compra minúscula, no pintar
+  // 4. pct < 1 → ageLineSmall
+  // 5. default → ageLine con fraseAnios de formatHumanDuration y pct según §8
+  //    (formatPercent: entero si ≥ 2). aniosSueldoEntero ES yearsFullPay del
+  //    modo A; NO se inventa otra unidad.
+  let ageLineText: string | null = null;
+  if (edadValida != null) {
+    const aniosRestantesTrabajo = Math.max(0, retirementAge - edadValida);
+    if (aniosRestantesTrabajo <= 0) {
+      ageLineText = ageLinePastRetirement(edadValida);
+    } else if (computed.yearsFullPay < MIN_YEARS_FOR_AGE_LINE) {
+      ageLineText = null;
+    } else {
+      const pct = (computed.yearsFullPay / aniosRestantesTrabajo) * 100;
+      ageLineText =
+        pct < 1
+          ? ageLineSmall(edadValida, aniosRestantesTrabajo)
+          : ageLine(edadValida, phrase, pct, aniosRestantesTrabajo);
+    }
+  }
+
   const modeBHuman =
     computed.monthsSaving != null ? humanCalendar(computed.monthsSaving) : null;
   const subheroParts: string[] = [];
@@ -389,6 +460,7 @@ export default function ResultView({
         <p>{result.effortDisclaimer}</p>
         <p>{modeA.disclaimer}</p>
         <p>{modeA.footnote}</p>
+        {ageLineText && <p>{ageLineText}</p>}
       </div>
 
       <section class="mt-8">
@@ -468,14 +540,32 @@ export default function ResultView({
       {(() => {
         const row = ANCHORS[countryCode];
         if (!row || effectivePrice == null) return null;
-        const entries: Array<{ key: string; value: number | null; phrase: (n: string) => string }> = [
-          { key: "cafe", value: row.cafe, phrase: anchorsI18n.cafe },
-          { key: "iphone", value: row.iphone, phrase: anchorsI18n.iphone },
-          { key: "alquiler", value: row.alquiler, phrase: anchorsI18n.alquiler },
+        const entries: Array<{
+          key: string;
+          value: number | null;
+          singular: string;
+          phrase: (n: string) => string;
+        }> = [
+          { key: "cafe", value: row.cafe, singular: "café", phrase: anchorsI18n.cafe },
+          { key: "iphone", value: row.iphone, singular: "iPhone", phrase: anchorsI18n.iphone },
+          { key: "alquiler", value: row.alquiler, singular: "mes de alquiler", phrase: anchorsI18n.alquiler },
         ];
+        // Pulido Task 6 (C2): recuento < 1 → "menos de un {ancla}" (decisión
+        // documentada): con 1 decimal, un café frente a un iPhone diría
+        // "equivale a 0,0 iPhones", que dice cero donde la verdad es
+        // "menos de uno".
         const rows = entries
           .filter((e) => e.value != null && e.value > 0)
-          .map((e) => ({ key: e.key, text: e.phrase(formatAnchorCount(effectivePrice / (e.value as number))) }));
+          .map((e) => {
+            const count = effectivePrice / (e.value as number);
+            return {
+              key: e.key,
+              text:
+                count < 1
+                  ? anchorsI18n.lessThanOne(e.singular)
+                  : e.phrase(formatAnchorCount(count)),
+            };
+          });
         if (rows.length === 0) return null;
         return (
           <section class="mt-8">
