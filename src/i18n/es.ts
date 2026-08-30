@@ -122,10 +122,6 @@ export const noSalary = {
   goToCountry: "Ir a la ficha del país",
 };
 
-export const age = {
-  label: "Tu edad (opcional, para el contexto de vida laboral)",
-};
-
 /**
  * Línea de edad por defecto (SPEC §6):
  * “A tus 32 años, esto son un año y medio de vida trabajando — cerca del 4 %

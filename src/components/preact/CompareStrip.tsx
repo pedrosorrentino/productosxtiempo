@@ -30,9 +30,11 @@ export interface CompareStripProps {
    * Fila "Tú": neto ESTRICTO del usuario. Sin él no hay fila propia (los
    * datos de referencia ya están en la fila del país, y duplicarla diría lo
    * mismo dos veces). Las horas sí son las efectivas (usuario o jornada).
+   * Fix M4: nunca es null (el caller pasa `state.weeklyHours ?? legal`),
+   * por eso el tipo es `number`.
    */
   youNetMonthly: number | null;
-  youWeeklyHours: number | null;
+  youWeeklyHours: number;
   /** País de comparación elegido (código). null o inválido → sin tercera fila. */
   compareCode: string | null;
   onSelectCompare: (code: string | null) => void;
@@ -105,7 +107,7 @@ export default function CompareStrip({
   };
 
   const rows: Row[] = [];
-  if (youNetMonthly != null && youWeeklyHours != null) {
+  if (youNetMonthly != null) {
     rows.push(rowFor(compare.you, youNetMonthly, youWeeklyHours));
   }
   if (current.medianNetMonthly != null) {
@@ -147,7 +149,13 @@ export default function CompareStrip({
             <span class="font-medium">{row.label}</span>
             <span class="tabular-nums">
               {row.text ?? (
-                <span class="link link-primary">{compare.putYourSalary}</span>
+                // Fix M4: affordance real — el UserForm vive en /{slug}/precio.
+                <a
+                  href={`/${current.slug}/precio`}
+                  class="link link-primary"
+                >
+                  {compare.putYourSalary}
+                </a>
               )}
             </span>
           </li>

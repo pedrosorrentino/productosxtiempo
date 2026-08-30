@@ -34,6 +34,19 @@ export function formatHours(hours: number): string {
   return formatDecimals(hours, 0);
 }
 
+/**
+ * Entero con separador de miles SIEMPRE (fix M4): "Horas reales al año"
+ * se lee mejor "1.633" que "1633". El CLDR de es-ES no agrupa números de
+ * 4 cifras (agrupa a partir de 5), por eso `formatHours` los deja crudos
+ * y esta ficha necesita agrupado forzado.
+ */
+export function formatIntegerThousands(value: number): string {
+  return new Intl.NumberFormat("es-ES", {
+    maximumFractionDigits: 0,
+    useGrouping: "always",
+  }).format(value);
+}
+
 /** Minutos (compras minúsculas): entero. */
 export function formatMinutes(minutes: number): string {
   return formatDecimals(minutes, 0);
@@ -43,9 +56,13 @@ export function formatMinutes(minutes: number): string {
  * Frase de minutos para líneas sueltas (pulido Task 8): "un minuto" cuando el
  * valor redondeado es 1, "{n} minutos" en otro caso. Sin el article "unos":
  * ese lo añade quien redacta la frase completa.
+ * Fix M5: el edge numérico < 1 minuto redondea a "0" y "0 minutos" miente
+ * al decir cero — se dice "menos de un minuto" (mismo criterio que
+ * anchors.lessThanOne en i18n).
  */
 export function minutesPhrase(minutes: number): string {
   const m = formatMinutes(minutes);
+  if (m === "0") return "menos de un minuto";
   return m === "1" ? "un minuto" : `${m} minutos`;
 }
 
@@ -134,7 +151,9 @@ export function formatHumanDuration(
 ): string {
   if (hours < 1) {
     // Pulido Task 8: 1 minuto exacto → "un minuto", no "unos 1 minutos".
+    // Fix M5: < 1 minuto → "menos de un minuto", no "unos 0 minutos".
     const minutes = formatMinutes(hours * 60);
+    if (minutes === "0") return "menos de un minuto";
     return minutes === "1" ? "un minuto" : `unos ${minutes} minutos`;
   }
   if (workdays8h < 1) {

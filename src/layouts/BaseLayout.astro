@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { brand, legalFooter } from '../i18n/es.ts';
 
 interface Props {
   title: string;
@@ -7,14 +8,6 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-
-const legalLines = [
-  'Esta web ofrece una estimación educativa de esfuerzo laboral.',
-  'No es un consejo de compra, ahorro ni inversión.',
-  'Los salarios y precios son aproximados y pueden estar desactualizados.',
-  'Tú puedes y debes sustituirlos por tus cifras reales.',
-  'El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.'
-];
 ---
 
 <!doctype html>
@@ -35,7 +28,7 @@ const legalLines = [
     <header>
       <div class="navbar bg-base-200 shadow-sm">
         <div class="flex-1">
-          <a href="/" class="btn btn-ghost text-lg">Coste en tiempo</a>
+          <a href="/" class="btn btn-ghost text-lg">{brand.name}</a>
         </div>
         <nav class="flex-none">
           <ul class="menu menu-horizontal px-1">
@@ -55,7 +48,7 @@ const legalLines = [
       </nav>
       <div class="text-sm opacity-80">
         {
-          legalLines.map((line) => (
+          legalFooter.map((line) => (
             <p>{line}</p>
           ))
         }

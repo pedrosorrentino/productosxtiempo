@@ -88,8 +88,14 @@ type Hero = { value: string; unit: string; next: string | null };
 /** Hero automático (SPEC §8): minutos/horas → jornadas → meses → años. */
 const computeHero = (r: CalcResult): Hero => {
   if (r.hours < 1) {
+    // Fix M5: precio minúsculo (< ~0,1 €) → < 1 minuto; "0" redondo miente.
+    // Sin `next`: "menos de 1 hora" ya no aporta contexto aquí.
+    const minutes = formatMinutes(r.hours * 60);
+    if (minutes === "0") {
+      return { value: "menos de un", unit: "minuto", next: null };
+    }
     return {
-      value: formatMinutes(r.hours * 60),
+      value: minutes,
       unit: heroUnits.minutos,
       // Pulido Task 6 (C1): para compras sub-hora (café), formatHours
       // redondearía a "0 horas". La siguiente unidad humana es "menos de

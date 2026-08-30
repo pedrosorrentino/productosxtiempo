@@ -4,7 +4,7 @@ import StaleDataBadge from '../../components/astro/StaleDataBadge.astro';
 import UserForm from '../../components/preact/UserForm.tsx';
 import PriceInput from '../../components/preact/PriceInput.tsx';
 import { calc } from '../../lib/calc.ts';
-import { formatHourlyWage } from '../../lib/format.ts';
+import { formatHourlyWage, formatIntegerThousands } from '../../lib/format.ts';
 import { brand, categories, countryPage, cta, noSalary, priceForm } from '../../i18n/es.ts';
 import type { Country, Product } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
@@ -89,7 +89,7 @@ const catalog = categoryOrder
         country.realAnnualHours != null && (
           <div class="stat">
             <div class="stat-title">{countryPage.realAnnualHoursLabel}</div>
-            <div class="stat-value text-3xl md:text-4xl tabular-nums">{country.realAnnualHours}</div>
+            <div class="stat-value text-3xl md:text-4xl tabular-nums">{formatIntegerThousands(country.realAnnualHours)}</div>
           </div>
         )
       }
