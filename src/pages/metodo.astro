@@ -1,0 +1,413 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StaleDataBadge from '../components/astro/StaleDataBadge.astro';
+import { brand } from '../i18n/es.ts';
+import { calc, WEEKS_PER_MONTH, WEEKS_PER_YEAR } from '../lib/calc.ts';
+import {
+  formatHourlyWage,
+  formatHours,
+  formatMonths,
+  formatPercent,
+  formatWorkdays,
+  formatYears,
+} from '../lib/format.ts';
+
+const title = `Método · ${brand.name}`;
+const description =
+  'Cómo medimos el precio de las cosas en horas de trabajo: qué medimos, qué no medimos, de dónde salen los datos y por qué los cálculos corren en tu dispositivo.';
+
+// Todas las cifras de ejemplo de esta página se DERIVAN del motor (SPEC §9:
+// el copy se regenera con calc, nunca se hardcodea contra él). Referencia de
+// España del SPEC: neto 1.800 €, 40 h/semana, 1.633 h reales, jubilación 67.
+const NETO_ES = 1800;
+const HORAS_ES = 40;
+const HORAS_REALES_ES = 1633;
+const JUBILACION_ES = 67;
+const PRECIO_TESLA = 33365;
+const AHORRO_ES = 300;
+
+const nf0 = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 });
+const nf1 = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 1 });
+
+// Convención 52/12 frente a la abandonada 160 h/mes.
+const horasMes = HORAS_ES * WEEKS_PER_MONTH; // ≈ 173,3
+const horasMes160 = HORAS_ES * 4; // 160
+const hora52 = calc({
+  price: 1,
+  netMonthly: NETO_ES,
+  weeklyHours: HORAS_ES,
+  realAnnualHours: HORAS_REALES_ES,
+  monthlySavings: null,
+  age: null,
+  retirementAge: JUBILACION_ES,
+}).hourlyWage; // ≈ 10,38 €
+const hora160 = NETO_ES / horasMes160; // 11,25 €
+
+// Jornada 8 h vs año real.
+const HORAS_TEORICAS_ANO = HORAS_ES * WEEKS_PER_YEAR; // 2.080
+const HORAS_ANO_NATURAL = 365 * 24; // 8.760
+const pctRealVsTeoricas = (HORAS_REALES_ES / HORAS_TEORICAS_ANO) * 100; // ≈ 78,5
+const pctRealVsCalendario = (HORAS_REALES_ES / HORAS_ANO_NATURAL) * 100; // ≈ 18,6
+
+// Ejemplo completo con el motor: Tesla ES, ahorro 300 €, edad 32.
+const ejemplo = calc({
+  price: PRECIO_TESLA,
+  netMonthly: NETO_ES,
+  weeklyHours: HORAS_ES,
+  realAnnualHours: HORAS_REALES_ES,
+  monthlySavings: AHORRO_ES,
+  age: 32,
+  retirementAge: JUBILACION_ES,
+});
+const ejHoras = formatHours(ejemplo.hours); // 3.213
+const ejJornadas = formatWorkdays(ejemplo.workdays8h); // 402
+const ejMesesFull = formatMonths(ejemplo.monthsFullPay); // 18,5
+const ejMesesAhorro = nf0.format(ejemplo.monthsSaving ?? 0); // 111
+const ejAniosAhorro = formatYears((ejemplo.monthsSaving ?? 0) / 12); // 9,3
+const ejAniosVida = formatYears(ejemplo.yearsFullPay); // 1,5
+const ejPctVida = formatPercent(ejemplo.pctCareerLeft ?? 0); // 4
+const ejAniosRestantes = ejemplo.yearsLeft ?? 0; // 35
+
+const wage52 = formatHourlyWage(hora52, '€');
+const wage160 = formatHourlyWage(hora160, '€');
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="container mx-auto px-4 py-10 max-w-3xl">
+    <h1 class="text-4xl md:text-5xl font-bold">Método</h1>
+    <p class="mt-4 text-lg opacity-90">
+      Aquí está la receta completa: qué medimos, qué convenciones usamos, qué
+      no medimos y qué hacemos cuando los datos envejecen. Sin letra pequeña:
+      si algo es una convención, lo decimos.
+    </p>
+
+    <section class="mt-10">
+      <h2 id="que-medimos" class="text-2xl font-bold">Qué medimos</h2>
+      <div class="mt-3 space-y-3 leading-relaxed">
+        <p>
+          Una cosa, un precio y un sueldo. De ahí salen las <strong>horas de
+          trabajo</strong> que cuesta la cosa, y del número salen las unidades
+          de siempre: jornadas de 8 h para lo del tamaño de un día de trabajo,
+          meses o años de sueldo entero para lo grande, y meses o años de
+          calendario si apartas dinero cada mes. La unidad grande la elige el
+          motor según la magnitud, no al gusto.
+        </p>
+        <p>
+          Lo que nunca hacemos es contestar la otra pregunta: si deberías
+          comprarlo. Eso no sale en ninguna fórmula. Cálculo de esfuerzo
+          laboral, no de si deberías comprarlo.
+        </p>
+      </div>
+
+      <div class="card bg-base-200 mt-5 p-5">
+        <h3 class="font-bold">Ejemplo completo, con la referencia de España</h3>
+        <p class="mt-2 leading-relaxed">
+          Neto {nf0.format(NETO_ES)} € al mes y {HORAS_ES} h a la semana: la
+          hora vale {wage52}. Un Tesla Model 3 de acceso
+          ({nf0.format(PRECIO_TESLA)} €) son unas {ejHoras} horas de trabajo —
+          {ejJornadas} jornadas de 8 h, {ejMesesFull} meses de sueldo entero.
+          Ahorrando {AHORRO_ES} € al mes: unos {ejMesesAhorro} meses de
+          calendario ({ejAniosAhorro} años). Y a los 32 años, {ejAniosVida} de
+          vida trabajando: cerca del {ejPctVida}% de los {ejAniosRestantes}
+          años laborales restantes.
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 id="neto-mediano" class="text-2xl font-bold">
+        Neto, no bruto. Mediano, no medio.
+      </h2>
+      <div class="mt-3 space-y-3 leading-relaxed">
+        <p>
+          Medimos con el <strong>sueldo neto</strong>: lo que te ingresa la
+          nómina después de impuestos y cotizaciones. El bruto es un número de
+          contrato; el neto es el que puede convertirse en cosas.
+        </p>
+        <p>
+          Y usamos el <strong>mediano</strong>, no el medio (la media). La
+          media tiene un vicio conocido: unos pocos sueldos muy altos la
+          empujan hacia arriba. Si un multimillonario entra en tu bar favorito,
+          de media todos los del bar son millonarios; de mediano, no. El
+          mediano es la persona justo en medio — la mitad gana menos, la mitad
+          gana más — y describe mucho mejor lo que es normal. Por eso es
+          nuestra referencia.
+        </p>
+      </div>
+      <div class="overflow-x-auto mt-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Usamos</th>
+              <th>Es</th>
+              <th>Por qué</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Neto</td>
+              <td>Tras impuestos y cotizaciones</td>
+              <td>Es lo que puedes gastar</td>
+            </tr>
+            <tr>
+              <td>Mediano</td>
+              <td>El sueldo de la persona del medio</td>
+              <td>La media la infla la cola alta</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 leading-relaxed">
+        El sueldo de cada país es una referencia orientativa de esta web, con
+        fecha y editable. Tu nómina manda: ponla en «Mis datos» y todo se
+        recalcula al instante.
+      </p>
+    </section>
+
+    <section class="mt-10">
+      <h2 id="convencion" class="text-2xl font-bold">
+        La convención: horas × 52 / 12
+      </h2>
+      <div class="mt-3 space-y-3 leading-relaxed">
+        <p>
+          Para pasar de sueldo mensual a hora dividimos entre las horas del
+          mes. La pregunta tramposa es cuántas horas tiene un mes. La respuesta
+          cómoda es 160 (4 semanas × 40 h), pero es falsa: un año tiene 52
+          semanas y 12 meses, así que un mes tiene de media
+          <strong>52 / 12 ≈ 4,33 semanas</strong>. Con {HORAS_ES} h a la
+          semana: {HORAS_ES} × 52 / 12 ≈ {nf1.format(horasMes)} horas al mes.
+        </p>
+        <p>
+          ¿Tanta diferencia hace? Sí. Con 160 h, la hora de la referencia
+          española valdría {wage160}; con 52 / 12, {wage52}. La convención de
+          160 infla tu hora y hace que todo parezca un poco más barato de lo
+          que es. Preferimos el número menos favorable y más honesto: se
+          calcula igual de rápido.
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 id="jornada" class="text-2xl font-bold">
+        Jornadas de 8 h contra horas reales del año
+      </h2>
+      <div class="mt-3 space-y-3 leading-relaxed">
+        <p>
+          La jornada de 8 h es una unidad humana: todos sabemos lo que es un
+          lunes entero. Por eso las compras medianas se cuentan en jornadas y
+          no en horas sueltas.
+        </p>
+        <p>
+          Pero un año real de trabajo no son {HORAS_ES} h × 52 semanas
+          ({nf0.format(HORAS_TEORICAS_ANO)} h teóricas). Vacaciones, festivos y
+          ausencias lo dejan en unas {nf0.format(HORAS_REALES_ES)} h reales al
+          año en España: cerca del {formatPercent(pctRealVsTeoricas)}% de las
+          teóricas, y en torno al {formatPercent(pctRealVsCalendario)}% del año
+          natural ({nf0.format(HORAS_ANO_NATURAL)} horas; el resto es dormir,
+          vivir y otras cosas importantes).
+        </p>
+        <p>
+          Cuando el país tiene dato de horas reales, el resultado añade el «%
+          del año laboral real». No son dos cifras que se contradigan: es la
+          misma hora vista de cerca (jornadas) y de lejos (el año).
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 id="modos" class="text-2xl font-bold">Modo A y modo B</h2>
+      <div class="mt-3 space-y-3 leading-relaxed">
+        <p>
+          Todo resultado tiene dos lecturas, y las dos viven en la pantalla de
+          resultado:
+        </p>
+        <p>
+          <strong>Modo A — sueldo entero.</strong> El techo teórico: imagina
+          que destinas cada euro de tu nómina a la cosa hasta pagarla. Salen
+          meses o años de sueldo entero. Siempre lleva el disclaimer a la vista
+          — «Nadie destina el 100 % del sueldo a una sola cosa.» — porque es un
+          límite matemático, no un plan de vida.
+        </p>
+        <p>
+          <strong>Modo B — tu ahorro.</strong> Pones cuánto apartas al mes y
+          salen meses o años de calendario: lo que tardarías de verdad juntando
+          el dinero. Es la lectura que se parece a la vida, y por eso está
+          visible desde el primer resultado, no escondida en una pestaña
+          lejana.
+        </p>
+      </div>
+      <div class="overflow-x-auto mt-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Modo</th>
+              <th>Pregunta que contesta</th>
+              <th>Unidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A</td>
+              <td>¿Cuánto es de mi sueldo entero?</td>
+              <td>Meses / años de sueldo</td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td>¿Cuánto tardaré apartando?</td>
+              <td>Meses / años de calendario</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 leading-relaxed">
+        En el ejemplo español: el Tesla son {ejMesesFull} meses de sueldo
+        entero (A) o unos {ejMesesAhorro} meses ahorrando {AHORRO_ES} € al mes
+        (B). El A dimensiona; el B se vive.
+      </p>
+    </section>
+
+    <section class="mt-10">
+      <h2 id="edad" class="text-2xl font-bold">
+        La edad: vida laboral, no cuenta atrás
+      </h2>
+      <div class="mt-3 space-y-3 leading-relaxed">
+        <p>
+          Si escribes tu edad, aparece una línea discreta bajo el resultado: a
+          cuántos años de vida trabajando equivale la compra y qué porcentaje
+          representa de los años laborales que te quedan. Ese límite es la
+          <strong>edad de jubilación de referencia del país</strong> —
+          {JUBILACION_ES} en España; no modelamos el calendario legal fino de
+          «66 años y 10 meses», que es ruido para lo que buscamos.
+        </p>
+        <p>
+          Para que quede claro qué es y qué no es: es <strong>vida
+          laboral</strong>, del hoy a la jubilación de referencia. La cifra
+          «años de vida trabajando» es la del modo A, redactada en esos
+          términos; no se inventa ninguna unidad nueva. Y no es esperanza de
+          vida ni un reloj de la muerte: aquí nadie cuenta días que te quedan,
+          contamos años que trabajas hasta una edad de referencia. Si ya
+          pasaste esa edad, la línea se calla y volvemos a las horas, que no
+          hacen preguntas personales.
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 id="que-no-medimos" class="text-2xl font-bold">Lo que no medimos</h2>
+      <div class="mt-3 space-y-3 leading-relaxed">
+        <p>
+          Convenio de honestidad: la cuenta es deliberadamente simple, y estas
+          cosas quedan fuera a propósito.
+        </p>
+      </div>
+      <ul class="mt-3 space-y-2 leading-relaxed list-disc list-outside pl-5">
+        <li>
+          <strong>Intereses.</strong> Si financias una compra, el precio real
+          es mayor. Aquí contamos el precio de etiqueta.
+        </li>
+        <li>
+          <strong>Coste total de propiedad (TCO).</strong> Un coche cuesta
+          seguro, gasolina y ruedas; aquí solo cuesta lo que pagas el día de la
+          compra.
+        </li>
+        <li>
+          <strong>Depreciación.</strong> Cuánto vale tu compra un día después.
+          No entramos.
+        </li>
+        <li>
+          <strong>Impuestos finos por comunidad o estado.</strong> El neto ya
+          lleva su parte; no desmenuzamos tramos ni deducciones regionales.
+        </li>
+        <li>
+          <strong>La felicidad, el estatus o si «lo mereces».</strong> No hay
+          fórmula decente para eso, y la que existe suele ser moralina.
+        </li>
+      </ul>
+      <p class="mt-3 leading-relaxed">
+        Medimos el esfuerzo en horas de nómina y lo declaramos. La decisión
+        final — y su justificación — son tuyas.
+      </p>
+    </section>
+
+    <section class="mt-10">
+      <h2 id="caducidad" class="text-2xl font-bold">Los datos envejecen</h2>
+      <div class="mt-3 space-y-3 leading-relaxed">
+        <p>
+          Todos los datos llevan fecha: el sueldo de referencia, las horas del
+          país, cada precio del catálogo. Sueldos y precios se mueven, y un
+          dato viejo miente con cara de verdad.
+        </p>
+        <p>
+          Regla: si un dato tiene <strong>más de 18 meses</strong>, se marca
+          con el badge «puede estar desfasado». Así se ve:
+          <span class="mx-2 inline-block">
+            <StaleDataBadge date="2024-06" />
+          </span>
+          El corte se fija al construir el sitio (2026-02, es decir, agosto de
+          2026 menos 18 meses) para que el build sea reproducible: misma
+          entrada, misma salida, sin badges que cambien según el día de
+          compilación.
+        </p>
+        <p>
+          Y la fuente que supera a todas eres tú: el mejor dato de tu hora es
+          el tuyo. «Mis datos» existe exactamente para eso.
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 id="fuentes" class="text-2xl font-bold">De dónde salen los datos</h2>
+      <div class="mt-3 space-y-3 leading-relaxed">
+        <p>Sin fuentes mágicas ni cifras sagradas. Trabajamos con:</p>
+      </div>
+      <ul class="mt-3 space-y-2 leading-relaxed list-disc list-outside pl-5">
+        <li>
+          <strong>Oficinas nacionales de estadística</strong> (INE y
+          equivalentes) para sueldos de referencia.
+        </li>
+        <li>
+          <strong>OCDE</strong> para las horas reales trabajadas al año.
+        </li>
+        <li>
+          <strong>Legislación de jornada</strong> para las horas semanales y
+          diarias de cada país ({HORAS_ES} h en España, 35 en Francia, 44 en
+          Chile…).
+        </li>
+        <li>
+          <strong>Configuradores y listados de precio</strong> para el
+          catálogo de productos.
+        </li>
+        <li>
+          <strong>El usuario:</strong> tu nómina, tus horas, tu ahorro y tu
+          precio de la cosa.
+        </li>
+      </ul>
+      <p class="mt-3 leading-relaxed">
+        Las cifras de sueldo son referencias orientativas de esta web, con
+        fecha, no estadísticas oficiales. Sirven para empezar; se mejoran
+        cambiándolas por las tuyas.
+      </p>
+    </section>
+
+    <section class="mt-10">
+      <h2 id="privacidad" class="text-2xl font-bold">
+        Privacidad: el cálculo corre en tu dispositivo
+      </h2>
+      <div class="mt-3 space-y-3 leading-relaxed">
+        <p>
+          Tu sueldo, tus horas, tu ahorro y tu edad no salen de tu navegador:
+          no hay servidor que los reciba, ni cuenta a la que asociarlos, ni
+          formulario donde enviarlos. Todo el cálculo ocurre en tu
+          <strong>dispositivo</strong>.
+        </p>
+        <p>
+          Lo que escribes se guarda en el almacenamiento local del navegador
+          (localStorage) para no reescribirlo en cada visita, y viaja en la URL
+          solo cuando le das a Compartir — porque un enlace tiene que llevar
+          los números a quien se lo mandas. Ni cookies de seguimiento, ni
+          analíticas de tus cifras, ni nada que huela a telemetría.
+        </p>
+      </div>
+    </section>
+  </section>
+</BaseLayout>

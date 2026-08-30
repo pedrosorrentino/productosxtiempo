@@ -228,6 +228,36 @@ export const legalFooter: readonly string[] = [
   "El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.",
 ];
 
+/**
+ * Badge de caducidad (SPEC §9, §13). Un dato con fecha anterior al corte
+ * (18 meses) se marca "puede estar desfasado". Consumido por
+ * StaleDataBadge.astro (build time, ficha de país) y por ResultView
+ * (cliente, fecha del precio del catálogo).
+ *
+ * Decisión documentada: el corte es una constante FIJA, no `new Date()`:
+ * un badge dependiente de la hora de compilación haría el build no
+ * reproducible (misma entrada, distinta salida según el día). El corte
+ * 2026-02 = fecha del spec (2026-08) menos 18 meses. Para moverlo,
+ * actualizar `cutoff`.
+ *
+ * La comparación es lexicográfica y es segura para "YYYY-MM" y "YYYY":
+ * "2024" < "2026-02", "2025-12" < "2026-02", "2026-01" < "2026-02",
+ * "2026-02" < "2026-02" es false (exactamente 18 meses aún no caduca).
+ */
+export const staleness = {
+  badge: "puede estar desfasado",
+  cutoff: "2026-02",
+};
+
+/** Copy del 404 (SPEC §4: seco, claro, un poco ingenioso, cero moralina). */
+export const notFound = {
+  code: "404",
+  title: "Esta página no existe, pero tu hora sigue valiendo lo mismo.",
+  body: "Ni rastro del enlace. En vez de perseguirlo, gasta ese rato en algo medible: elige una cosa y mira cuánto tiempo cuesta.",
+  homeCta: "Volver al inicio",
+  priceCta: "Calcular un precio en España",
+};
+
 /** Labels ES de las categorías del catálogo (SPEC §7, Product.category). */
 export const categories: Record<Product["category"], string> = {
   vivienda: "Vivienda",

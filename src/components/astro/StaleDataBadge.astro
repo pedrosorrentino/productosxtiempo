@@ -1,0 +1,29 @@
+---
+/**
+ * Badge de caducidad (SPEC §9, §13): dado un dato con fecha ("YYYY-MM" o
+ * "YYYY"), pinta el badge "puede estar desfasado" si es anterior al corte de
+ * 18 meses. Uso en build time (ficha de país); en islas cliente (ResultView)
+ * la comparación se hace inline con `staleness.cutoff` de i18n, misma fuente.
+ *
+ * Decisión de corte (documentada): constante FIJA 2026-02 = fecha del spec
+ * (2026-08) menos 18 meses, para builds reproducibles. Ver staleness en
+ * src/i18n/es.ts. Comparación lexicográfica segura para "YYYY" y "YYYY-MM".
+ */
+import { staleness } from '../../i18n/es.ts';
+
+interface Props {
+  /** Fecha del dato: "YYYY-MM" (p. ej. salariesUpdatedAt) o "YYYY". */
+  date: string;
+}
+
+const { date } = Astro.props;
+const stale = date < staleness.cutoff;
+---
+
+{
+  stale && (
+    <span class="badge badge-warning badge-outline align-middle" title={`Dato de ${date}`}>
+      {staleness.badge}
+    </span>
+  )
+}

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import StaleDataBadge from '../../components/astro/StaleDataBadge.astro';
 import UserForm from '../../components/preact/UserForm.tsx';
 import PriceInput from '../../components/preact/PriceInput.tsx';
 import { calc } from '../../lib/calc.ts';
@@ -97,7 +98,8 @@ const catalog = categoryOrder
     {
       hasSalary && (
         <p class="mt-2 text-sm opacity-70">
-          {countryPage.dataFrom(country.salariesUpdatedAt)} · {countryPage.sourceLabel}: {country.salariesSource}
+          {countryPage.dataFrom(country.salariesUpdatedAt)} · {countryPage.sourceLabel}: {country.salariesSource}{' '}
+          <StaleDataBadge date={country.salariesUpdatedAt} />
         </p>
       )
     }

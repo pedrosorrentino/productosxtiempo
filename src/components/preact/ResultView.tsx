@@ -35,6 +35,7 @@ import {
   priceForm,
   result,
   shareText,
+  staleness,
 } from "../../i18n/es.ts";
 import CountryPicker, { type PickerCountry } from "./CountryPicker.tsx";
 import PriceInput from "./PriceInput.tsx";
@@ -143,6 +144,14 @@ export interface ResultViewProps {
    * otro país).
    */
   priceConverted?: boolean;
+  /**
+   * Fecha del precio del catálogo ("YYYY-MM"), SPEC §9/§13: si es anterior a
+   * `staleness.cutoff` se pinta el badge "puede estar desfasado" (evaluación
+   * en cliente, la única evaluación posible en una isla). El override del
+   * usuario no lleva fecha: con override activo no se muestra. Touch
+   * permitido y documentado por Task 7 (badge de caducidad del precio).
+   */
+  catalogPriceDate?: string | null;
 }
 
 /**
@@ -165,6 +174,7 @@ export default function ResultView({
   productName = null,
   catalogPrice = null,
   priceConverted = false,
+  catalogPriceDate = null,
 }: ResultViewProps) {
   const [state, setState] = useState<Partial<UserState>>({});
   const [mounted, setMounted] = useState(false);
@@ -284,11 +294,26 @@ export default function ResultView({
 
   const showConvertedBadge =
     effectivePrice != null && priceConverted && priceOverride == null;
+  // Badge de caducidad (SPEC §9/§13): solo con el precio del catálogo en uso
+  // (el override del usuario no tiene fecha). Comparación lexicográfica
+  // segura para "YYYY-MM"; mismo corte fijo que StaleDataBadge.astro.
+  const showStalePriceBadge =
+    effectivePrice != null &&
+    priceOverride == null &&
+    catalogPriceDate != null &&
+    catalogPriceDate < staleness.cutoff;
   const header = (
     <>
       <p class="text-sm uppercase tracking-wide opacity-70">
         {[displayName, countryName].filter(Boolean).join(" · ")}
       </p>
+      {showStalePriceBadge && (
+        <div class="mt-2">
+          <span class="badge badge-warning badge-outline">
+            {staleness.badge}
+          </span>
+        </div>
+      )}
       {showConvertedBadge && (
         <div class="mt-2">
           <span class="badge badge-warning badge-outline">
