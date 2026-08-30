@@ -24,6 +24,7 @@ import {
   ageLine,
   ageLinePastRetirement,
   ageLineSmall,
+  anchorSingular,
   anchors as anchorsI18n,
   cta,
   heroUnits,
@@ -37,6 +38,7 @@ import {
   shareText,
   staleness,
 } from "../../i18n/es.ts";
+import CompareStrip from "./CompareStrip.tsx";
 import CountryPicker, { type PickerCountry } from "./CountryPicker.tsx";
 import PriceInput from "./PriceInput.tsx";
 import ShareButton from "./ShareButton.tsx";
@@ -92,7 +94,7 @@ const computeHero = (r: CalcResult): Hero => {
       // Pulido Task 6 (C1): para compras sub-hora (café), formatHours
       // redondearía a "0 horas". La siguiente unidad humana es "menos de
       // 1 hora" (SPEC §8: compras minúsculas se comunican en minutos).
-      next: "menos de 1 hora",
+      next: heroUnits.lessThanOneHour,
     };
   }
   if (r.workdays8h < 1) {
@@ -182,14 +184,19 @@ export default function ResultView({
   const savingsDirty = useRef(false);
 
   // Montaje: storage + query params (los params PISAN el storage, SPEC §7).
-  // El override de precio guardado está ligado al producto en que se creó
-  // (productId en storage): solo sobrevive en la misma página.
+  // El override de precio guardado está ligado al producto Y al país en que
+  // se creó (productId + countryCode en storage): pulido Task 8 — sin el
+  // chequeo de país, un override en la moneda de A sobrevivía a saltar por
+  // URL directa al mismo producto en B (misma página, otra moneda). El
+  // override que viaja en la URL (?precio=) no se toca: es el share (§12).
   useEffect(() => {
     const fromQuery = parseUserStateFromQuery(
       new URLSearchParams(location.search),
     );
     const saved = loadUserState() ?? {};
-    const overrideApplies = (saved.productId ?? null) === (productId ?? null);
+    const overrideApplies =
+      (saved.productId ?? null) === (productId ?? null) &&
+      (saved.countryCode ?? null) === countryCode;
     const base: Partial<UserState> = { ...saved };
     if (!overrideApplies) {
       delete base.priceOverride;
@@ -233,7 +240,7 @@ export default function ResultView({
   const savings = state.monthlySavings ?? null;
   const age = state.age ?? null;
   // SPEC §6: solo edad entera 16–80 pinta la línea; fuera de rango → ignorar
-  // (defensa extra: storage y URL ya sanead, pero la regla vive aquí también).
+  // (defensa extra: storage y URL ya saneada, pero la regla vive aquí también).
   const edadValida =
     age != null &&
     Number.isInteger(age) &&
@@ -297,19 +304,24 @@ export default function ResultView({
   // Badge de caducidad (SPEC §9/§13): solo con el precio del catálogo en uso
   // (el override del usuario no tiene fecha). Comparación lexicográfica
   // segura para "YYYY-MM"; mismo corte fijo que StaleDataBadge.astro.
-  const showStalePriceBadge =
+  const stalePriceDate =
     effectivePrice != null &&
     priceOverride == null &&
     catalogPriceDate != null &&
-    catalogPriceDate < staleness.cutoff;
+    catalogPriceDate < staleness.cutoff
+      ? catalogPriceDate
+      : null;
   const header = (
     <>
       <p class="text-sm uppercase tracking-wide opacity-70">
         {[displayName, countryName].filter(Boolean).join(" · ")}
       </p>
-      {showStalePriceBadge && (
+      {stalePriceDate != null && (
         <div class="mt-2">
-          <span class="badge badge-warning badge-outline">
+          <span
+            class="badge badge-warning badge-outline"
+            title={staleness.badgeTitle(stalePriceDate)}
+          >
             {staleness.badge}
           </span>
         </div>
@@ -327,11 +339,16 @@ export default function ResultView({
     </>
   );
 
-  // Skeleton SSR/pre-hidratación (SPEC §10.11): contenedor neutro de altura
-  // mínima. Elección documentada: skeleton estático de daisyUI (nada de
-  // spinners); evita el flash de la pantalla vacía y el CLS al hidratar.
+  // Skeleton SSR/pre-hidratación (SPEC §10.11): contenedor neutro. Pulido
+  // Task 8: h-72 (288 px) se quedaba corto frente al resultado hidratado
+  // (hero + desglose ≈ 500–600 px) y el salto de CLS era parcial; 32 rem
+  // cubre hero + desglose en móvil, el caso dominante. Compensación
+  // documentada: en pantallas de estado vacío (/precio sin precio) el
+  // skeleton es algo más alto que el contenido, un coste menor que el CLS
+  // del resultado completo. Elección documentada: skeleton estático de
+  // daisyUI (nada de spinners); evita el flash de la pantalla vacía.
   if (!mounted) {
-    return <div class="skeleton h-72 w-full" aria-hidden="true" />;
+    return <div class="skeleton h-[32rem] w-full" aria-hidden="true" />;
   }
 
   const shareUrl =
@@ -372,6 +389,9 @@ export default function ResultView({
           initialLabel={productId == null ? (state.customLabel ?? null) : null}
           onPriceChange={setPrice}
           onLabelChange={productId == null ? setLabel : undefined}
+          // Pulido Task 8: en páginas de producto el nombre lo pone el
+          // catálogo; el campo "Nombre (opcional)" era inerte aquí.
+          showLabel={productId == null}
         />
       </div>
 
@@ -571,9 +591,11 @@ export default function ResultView({
           singular: string;
           phrase: (n: string) => string;
         }> = [
-          { key: "cafe", value: row.cafe, singular: "café", phrase: anchorsI18n.cafe },
-          { key: "iphone", value: row.iphone, singular: "iPhone", phrase: anchorsI18n.iphone },
-          { key: "alquiler", value: row.alquiler, singular: "mes de alquiler", phrase: anchorsI18n.alquiler },
+          // Pulido Task 8: el sustantivo singular vive en i18n
+          // (anchorSingular), no hardcodeado aquí.
+          { key: "cafe", value: row.cafe, singular: anchorSingular.cafe, phrase: anchorsI18n.cafe },
+          { key: "iphone", value: row.iphone, singular: anchorSingular.iphone, phrase: anchorsI18n.iphone },
+          { key: "alquiler", value: row.alquiler, singular: anchorSingular.alquiler, phrase: anchorsI18n.alquiler },
         ];
         // Pulido Task 6 (C2): recuento < 1 → "menos de un {ancla}" (decisión
         // documentada): con 1 decimal, un café frente a un iPhone diría
@@ -603,6 +625,20 @@ export default function ResultView({
           </section>
         );
       })()}
+
+      {effectivePrice != null && (
+        <CompareStrip
+          countries={countriesData}
+          currentCountryCode={countryCode}
+          currentCountryName={countryName}
+          price={effectivePrice}
+          currencySymbol={currencySymbol}
+          youNetMonthly={state.netMonthly ?? null}
+          youWeeklyHours={weeklyHours}
+          compareCode={state.compareCountryCode ?? null}
+          onSelectCompare={(code) => patch({ compareCountryCode: code })}
+        />
+      )}
 
       {actions}
     </div>

@@ -22,7 +22,10 @@ const stale = date < staleness.cutoff;
 
 {
   stale && (
-    <span class="badge badge-warning badge-outline align-middle" title={`Dato de ${date}`}>
+    <span
+      class="badge badge-warning badge-outline align-middle"
+      title={staleness.badgeTitle(date)}
+    >
       {staleness.badge}
     </span>
   )

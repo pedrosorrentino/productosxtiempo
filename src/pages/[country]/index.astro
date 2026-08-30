@@ -95,6 +95,16 @@ const catalog = categoryOrder
       }
     </div>
 
+    <!-- Pulido Task 8: excepciones de jornada (FR 35 h, CO 42 h, CL 44 h)
+         visibles; la referencia de 40 h no las tapa. -->
+    {
+      country.legalWeeklyHours !== 40 && (
+        <p class="mt-2 text-sm opacity-70">
+          {countryPage.weeklyHoursNote(country.legalWeeklyHours)}
+        </p>
+      )
+    }
+
     {
       hasSalary && (
         <p class="mt-2 text-sm opacity-70">
@@ -104,8 +114,15 @@ const catalog = categoryOrder
       )
     }
 
-    <div class:list={['collapse collapse-arrow bg-base-200 mt-6', { 'collapse-open': !hasSalary }]}>
-      <input type="checkbox" aria-label={countryPage.toggleTitle} />
+    <!-- Pulido Task 8: "collapse-open" pisaba el estado del checkbox (el
+         primer click parecía no hacer nada). Ahora el estado abierto vive
+         solo en `checked` server-side para países sin salario (AR, CO). -->
+    <div class="collapse collapse-arrow bg-base-200 mt-6">
+      <input
+        type="checkbox"
+        aria-label={countryPage.toggleTitle}
+        checked={!hasSalary ? true : undefined}
+      />
       <div class="collapse-title text-lg font-medium">{countryPage.toggleTitle}</div>
       <div class="collapse-content">
         <UserForm

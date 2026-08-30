@@ -5,11 +5,11 @@
  * formatean aquí con los helpers de lib/format.
  */
 import {
-  formatHours,
-  formatMinutes,
   formatPercent,
   formatWorkdays,
   formatYears,
+  hoursPhrase,
+  minutesPhrase,
 } from "../lib/format.ts";
 import type { HeroUnit } from "../lib/format.ts";
 import type { Product } from "../lib/types.ts";
@@ -188,9 +188,9 @@ export const shareText = (input: {
 }): string => {
   const effortLine =
     input.hours < 1
-      ? `${formatMinutes(input.hours * 60)} minutos`
+      ? minutesPhrase(input.hours * 60) // pulido Task 8: "un minuto", no "1 minutos"
       : input.workdays8h < 1
-        ? `${formatHours(input.hours)} horas`
+        ? hoursPhrase(input.hours) // pulido Task 8: "una hora", no "1 horas"
         : `${formatWorkdays(input.workdays8h)} jornadas de 8 h`;
 
   const lines: string[] = [
@@ -246,6 +246,8 @@ export const legalFooter: readonly string[] = [
  */
 export const staleness = {
   badge: "puede estar desfasado",
+  /** title del badge con la fecha del dato (pulido Task 8: cliente y build iguales). */
+  badgeTitle: (date: string): string => `Dato de ${date}`,
   cutoff: "2026-02",
 };
 
@@ -271,12 +273,39 @@ export const categories: Record<Product["category"], string> = {
 export const heroUnits: Record<HeroUnit, string> & {
   minutos: string;
   horas: string;
+  lessThanOneHour: string;
 } = {
   jornadas: "jornadas de 8 h",
   meses: "meses de sueldo entero",
   años: "años de sueldo entero",
   minutos: "minutos",
   horas: "horas",
+  lessThanOneHour: "menos de 1 hora",
+};
+
+/**
+ * Sustantivo singular de cada ancla (pulido Task 8: antes hardcodeado en
+ * ResultView). Los plurales viven dentro de las frases de `anchors`.
+ */
+export const anchorSingular = {
+  cafe: "café",
+  iphone: "iPhone",
+  alquiler: "mes de alquiler",
+} as const;
+
+/**
+ * Comparador simple (SPEC §5): el MISMO precio calculado con distintos
+ * sueldos. Compacto: una fila por sujeto ("tú", país actual y un segundo
+ * país elegible) más el select. Sin librerías, sin dashboard.
+ */
+export const compare = {
+  title: "El mismo precio, otras nóminas",
+  samePrice: (amount: string): string =>
+    `Este precio (${amount}) calculado con cada sueldo:`,
+  you: "Tú",
+  putYourSalary: "pon tu sueldo",
+  selectLabel: "Comparar con otro país",
+  selectPlaceholder: "Elige un país",
 };
 
 /** Campo "esta cosa cuesta" + nombre opcional (SPEC §10). */
@@ -302,4 +331,10 @@ export const countryPage = {
   catalogTitle: "Catálogo",
   noLocalPriceBadge: "sin precio local",
   noLocalPriceCta: "pon el precio en tu moneda",
+  /**
+   * Pulido Task 8: las jornadas que se salen de la referencia habitual de
+   * 40 h (FR 35, CO 42, CL 44) antes eran invisibles para el usuario.
+   */
+  weeklyHoursNote: (hours: number): string =>
+    `Jornada legal de ${hours} h semanales, distinta de la referencia de 40 h: los cálculos de este país usan su jornada.`,
 };

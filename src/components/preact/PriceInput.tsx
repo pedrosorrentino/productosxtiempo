@@ -9,6 +9,12 @@ export interface PriceInputProps {
   initialLabel?: string | null;
   onPriceChange?: (price: number | null) => void;
   onLabelChange?: (label: string | null) => void;
+  /**
+   * Pulido Task 8: mostrar el campo "Nombre (opcional)". false en páginas de
+   * producto (ResultView), donde el nombre lo pone el catálogo y el campo era
+   * inerte. Por defecto true (ficha de país, flujo de precio libre).
+   */
+  showLabel?: boolean;
 }
 
 const parsePositive = (raw: string): number | null => {
@@ -36,6 +42,7 @@ export default function PriceInput({
   initialLabel = null,
   onPriceChange,
   onLabelChange,
+  showLabel = true,
 }: PriceInputProps) {
   const inline = typeof onPriceChange === "function";
   const [priceText, setPriceText] = useState(
@@ -99,19 +106,21 @@ export default function PriceInput({
           />
         </label>
       </div>
-      <div>
-        <label class="label" for="price-label">
-          {priceForm.nameLabel}
-        </label>
-        <input
-          id="price-label"
-          type="text"
-          class="input w-full"
-          placeholder={priceForm.namePlaceholder}
-          value={label}
-          onInput={onLabelInput}
-        />
-      </div>
+      {showLabel && (
+        <div>
+          <label class="label" for="price-label">
+            {priceForm.nameLabel}
+          </label>
+          <input
+            id="price-label"
+            type="text"
+            class="input w-full"
+            placeholder={priceForm.namePlaceholder}
+            value={label}
+            onInput={onLabelInput}
+          />
+        </div>
+      )}
       {!inline && (
         <div class="sm:col-span-2">
           <button type="submit" class="btn btn-primary">

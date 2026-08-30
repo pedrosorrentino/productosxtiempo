@@ -1,2 +1,11 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+/* Criterio 13 (SPEC §17): controles táctiles de ≥ 44 px en móvil (WCAG 2.5.5).
+   El default de daisyUI v5 es 2,5 rem (40 px); basta con subir la altura
+   mínima de btn/input/select aquí, en un solo sitio centralizado. */
+.btn,
+.input,
+.select {
+  min-height: 2.75rem;
+}

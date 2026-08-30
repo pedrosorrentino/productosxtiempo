@@ -39,6 +39,22 @@ export function formatMinutes(minutes: number): string {
   return formatDecimals(minutes, 0);
 }
 
+/**
+ * Frase de minutos para líneas sueltas (pulido Task 8): "un minuto" cuando el
+ * valor redondeado es 1, "{n} minutos" en otro caso. Sin el article "unos":
+ * ese lo añade quien redacta la frase completa.
+ */
+export function minutesPhrase(minutes: number): string {
+  const m = formatMinutes(minutes);
+  return m === "1" ? "un minuto" : `${m} minutos`;
+}
+
+/** Frase de horas sueltas (pulido Task 8): "una hora" si el redondeo es 1. */
+export function hoursPhrase(hours: number): string {
+  const h = formatHours(hours);
+  return h === "1" ? "una hora" : `${h} horas`;
+}
+
 /** Jornadas: 1 decimal si < 10; entero si ≥ 10. */
 export function formatWorkdays(workdays: number): string {
   return formatDecimals(workdays, workdays < 10 ? 1 : 0);
@@ -117,10 +133,17 @@ export function formatHumanDuration(
   yearsFullPay: number,
 ): string {
   if (hours < 1) {
-    return `unos ${formatMinutes(hours * 60)} minutos`;
+    // Pulido Task 8: 1 minuto exacto → "un minuto", no "unos 1 minutos".
+    const minutes = formatMinutes(hours * 60);
+    return minutes === "1" ? "un minuto" : `unos ${minutes} minutos`;
   }
   if (workdays8h < 1) {
-    return `unas ${formatHours(hours)} horas`;
+    // Pulido Task 8: 1 hora redondeada → "una hora", no "unas 1 horas".
+    // (1,35 h redondea a 1 según la tabla §8 — horas: entero — y sale
+    // "una hora"; el SPEC no define "una hora y pico" para horas, ese
+    // atajo existe solo para jornadas.)
+    const h = formatHours(hours);
+    return h === "1" ? "una hora" : `unas ${h} horas`;
   }
   if (workdays8h < 1.5) {
     return workdays8h <= 1.05 ? "un día" : "un día y pico";
