@@ -7,7 +7,7 @@ import Odometer from '../../components/preact/Odometer.tsx';
 import CountryBoard from '../../components/preact/CountryBoard.tsx';
 import { calc } from '../../lib/calc.ts';
 import { formatHourlyWage, formatHours, formatIntegerThousands, formatMinutes, formatWorkdays } from '../../lib/format.ts';
-import { board, brand, countryPage, noSalary, priceForm, userForm } from '../../i18n/es.ts';
+import { board, brand, countryPage, noSalary, og, priceForm, userForm } from '../../i18n/es.ts';
 import type { Country, Product } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
 import productsData from '../../data/products.json';
@@ -126,7 +126,11 @@ const boardGroups = catalog.map((group) => ({
 }));
 ---
 
-<BaseLayout title={`${country.name} · ${brand.name}`} description={brand.subtitle}>
+<BaseLayout
+  title={hasSalary ? og.country.title(country.name, countryWageText!) : `${country.name} · ${brand.name}`}
+  description={og.country.description(country.name)}
+  ogImage={`/og/${country.slug}.png`}
+>
   <div class="max-w-5xl mx-auto px-4 pt-8 pb-20">
     <!-- ---- Placa de identidad ---- -->
     <div class="board-plate p-5">

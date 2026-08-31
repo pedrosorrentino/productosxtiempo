@@ -1,0 +1,136 @@
+- generic [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link "Coste en tiempo" [ref=f1e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f1e6]:
+        - list [ref=f1e7]:
+          - listitem [ref=f1e8]:
+            - link "Método" [ref=f1e9] [cursor=pointer]:
+              - /url: /metodo
+  - main [ref=f1e10]:
+    - generic [ref=f1e13]:
+      - paragraph [ref=f1e14]: Tesla Model 3 (acceso) · España
+      - paragraph [ref=f1e15]: 18,5
+      - paragraph [ref=f1e16]: meses de sueldo entero
+      - paragraph [ref=f1e17]: 1,5 años de sueldo entero
+      - paragraph [ref=f1e18]: — un año y medio de sueldo entero.
+      - generic [ref=f1e19]:
+        - paragraph [ref=f1e20]: Cálculo de esfuerzo laboral, no de si deberías comprarlo.
+        - paragraph [ref=f1e21]: Nadie destina el 100 % del sueldo a una sola cosa.
+        - paragraph [ref=f1e22]: Esto asume que no comes ni pagas piso.
+      - generic [ref=f1e23]:
+        - heading "Desglose" [level=2] [ref=f1e24]
+        - generic [ref=f1e25]:
+          - generic [ref=f1e26]:
+            - term [ref=f1e27]: Horas de trabajo
+            - definition [ref=f1e28]: "3213"
+          - generic [ref=f1e29]:
+            - term [ref=f1e30]: Jornadas de 8 h
+            - definition [ref=f1e31]: "402"
+          - generic [ref=f1e32]:
+            - term [ref=f1e33]: Semanas
+            - definition [ref=f1e34]: "80"
+          - generic [ref=f1e35]:
+            - term [ref=f1e36]: Meses de sueldo entero
+            - definition [ref=f1e37]: 18,5
+          - generic [ref=f1e38]:
+            - term [ref=f1e39]: Años de sueldo entero
+            - definition [ref=f1e40]: 1,5
+          - generic [ref=f1e41]:
+            - term [ref=f1e42]: "% del año laboral real"
+            - definition [ref=f1e43]: 197%
+      - generic [ref=f1e44]:
+        - heading "Tu año laboral" [level=2] [ref=f1e45]
+        - paragraph [ref=f1e46]: 1 rectángulo = 12 meses de sueldo entero (1633 h reales al año)
+        - 'img "Barra del año laboral: ocupa el 100%" [ref=f1e47]'
+        - paragraph [ref=f1e49]: desborda a 1,5 años
+      - generic [ref=f1e50]:
+        - generic [ref=f1e51]: ¿Cuánto apartas al mes?
+        - spinbutton "¿Cuánto apartas al mes?" [ref=f1e52]
+        - paragraph [ref=f1e53]: Si apartas algo al mes, esto es lo que tardas sin tocar el sueldo.
+      - generic [ref=f1e54]:
+        - heading "En unidades de tu día a día" [level=2] [ref=f1e55]
+        - list [ref=f1e56]:
+          - listitem [ref=f1e57]: equivale a 22.243 cafés
+          - listitem [ref=f1e58]: equivale a 33 iPhones
+          - listitem [ref=f1e59]: equivale a 37 meses de alquiler
+      - generic [ref=f1e60]:
+        - heading "El mismo precio, otras nóminas" [level=2] [ref=f1e61]
+        - paragraph [ref=f1e62]: "Este precio (33.365 €) calculado con cada sueldo:"
+        - list [ref=f1e63]:
+          - listitem [ref=f1e64]:
+            - generic [ref=f1e65]: España
+            - generic [ref=f1e66]: 3213 h · 18,5 meses de sueldo entero
+        - generic [ref=f1e67]:
+          - generic [ref=f1e68]: Comparar con otro país
+          - combobox "Comparar con otro país" [ref=f1e69]:
+            - option "Elige un país" [selected]
+            - option "Portugal"
+            - option "Francia"
+            - option "Alemania"
+            - option "Italia"
+            - option "Reino Unido"
+            - option "Estados Unidos"
+            - option "México"
+            - option "Argentina"
+            - option "Colombia"
+            - option "Chile"
+            - option "Suiza"
+      - generic [ref=f1e70]:
+        - generic [ref=f1e71]:
+          - paragraph [ref=f1e72]: Cambia el precio si el tuyo es otro.
+          - generic [ref=f1e74]:
+            - generic [ref=f1e75]: Esta cosa cuesta
+            - generic [ref=f1e76]:
+              - generic [ref=f1e77]: €
+              - spinbutton "Esta cosa cuesta €" [ref=f1e78]: "33365"
+        - generic [ref=f1e79]:
+          - checkbox "Mis datos" [checked] [active] [ref=f1e80] [cursor=pointer]
+          - generic [ref=f1e81] [cursor=pointer]: Mis datos
+          - generic [ref=f1e124]:
+            - generic [ref=f1e125]:
+              - generic [ref=f1e126]: Neto al mes
+              - spinbutton "Neto al mes" [ref=f1e127]
+            - generic [ref=f1e128]:
+              - generic [ref=f1e129]: Horas a la semana
+              - spinbutton "Horas a la semana" [ref=f1e130]
+            - generic [ref=f1e131]:
+              - generic [ref=f1e132]: Ahorro al mes (opcional)
+              - spinbutton "Ahorro al mes (opcional)" [ref=f1e133]
+            - generic [ref=f1e134]:
+              - generic [ref=f1e135]: Tu edad (opcional, para el contexto de vida laboral)
+              - spinbutton "Tu edad (opcional, para el contexto de vida laboral)" [ref=f1e136]
+        - generic [ref=f1e82]:
+          - generic [ref=f1e83]:
+            - generic [ref=f1e84]: Otro país
+            - combobox "Otro país" [ref=f1e85]:
+              - option "España" [disabled] [selected]
+              - option "España"
+              - option "Portugal"
+              - option "Francia"
+              - option "Alemania"
+              - option "Italia"
+              - option "Reino Unido"
+              - option "Estados Unidos"
+              - option "México"
+              - option "Argentina"
+              - option "Colombia"
+              - option "Chile"
+              - option "Suiza"
+          - button "Compartir" [ref=f1e87] [cursor=pointer]
+  - contentinfo [ref=f1e88]:
+    - navigation [ref=f1e89]:
+      - link "Método" [ref=f1e90] [cursor=pointer]:
+        - /url: /metodo
+    - generic [ref=f1e91]:
+      - paragraph [ref=f1e92]: Esta web ofrece una estimación educativa de esfuerzo laboral.
+      - paragraph [ref=f1e93]: No es un consejo de compra, ahorro ni inversión.
+      - paragraph [ref=f1e94]: Los salarios y precios son aproximados y pueden estar desactualizados.
+      - paragraph [ref=f1e95]: Tú puedes y debes sustituirlos por tus cifras reales.
+      - paragraph [ref=f1e96]: El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.
+  - generic [ref=f1e99]:
+    - button [ref=f1e100]
+    - button [ref=f1e106]
+    - button [ref=f1e110]
+    - button [ref=f1e118]

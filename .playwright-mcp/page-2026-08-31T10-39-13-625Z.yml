@@ -1,0 +1,163 @@
+- generic [active] [ref=f9e1]:
+  - banner [ref=f9e2]:
+    - link "Coste en tiempo" [ref=f9e3] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f9e4]:
+      - link "Método" [ref=f9e5] [cursor=pointer]:
+        - /url: /metodo
+  - main [ref=f9e6]:
+    - generic [ref=f9e9]:
+      - generic [ref=f9e10]:
+        - heading "Tesla Model 3 (acceso)" [level=1] [ref=f9e11]
+        - paragraph [ref=f9e13]:
+          - generic [ref=f9e14]: 33.365 €
+          - generic [ref=f9e15]: ·
+          - generic [ref=f9e16]: España
+      - region "18,5 meses de sueldo entero" [ref=f9e17]:
+        - generic [ref=f9e18]:
+          - img "18,5 meses de sueldo entero" [ref=f9e19]:
+            - generic [ref=f9e21]:
+              - generic [ref=f9e22]: "0"
+              - generic [ref=f9e23]: "1"
+              - generic [ref=f9e24]: "2"
+              - generic [ref=f9e25]: "3"
+              - generic [ref=f9e26]: "4"
+              - generic [ref=f9e27]: "5"
+              - generic [ref=f9e28]: "6"
+              - generic [ref=f9e29]: "7"
+              - generic [ref=f9e30]: "8"
+              - generic [ref=f9e31]: "9"
+            - generic [ref=f9e33]:
+              - generic [ref=f9e34]: "0"
+              - generic [ref=f9e35]: "1"
+              - generic [ref=f9e36]: "2"
+              - generic [ref=f9e37]: "3"
+              - generic [ref=f9e38]: "4"
+              - generic [ref=f9e39]: "5"
+              - generic [ref=f9e40]: "6"
+              - generic [ref=f9e41]: "7"
+              - generic [ref=f9e42]: "8"
+              - generic [ref=f9e43]: "9"
+            - generic [ref=f9e44]: ","
+            - generic [ref=f9e46]:
+              - generic [ref=f9e47]: "0"
+              - generic [ref=f9e48]: "1"
+              - generic [ref=f9e49]: "2"
+              - generic [ref=f9e50]: "3"
+              - generic [ref=f9e51]: "4"
+              - generic [ref=f9e52]: "5"
+              - generic [ref=f9e53]: "6"
+              - generic [ref=f9e54]: "7"
+              - generic [ref=f9e55]: "8"
+              - generic [ref=f9e56]: "9"
+          - generic [ref=f9e57]: meses de sueldo entero
+        - paragraph [ref=f9e58]: — un año y medio de sueldo entero.
+        - paragraph [ref=f9e59]: = 1,5 años de sueldo entero
+        - generic [ref=f9e60]:
+          - paragraph [ref=f9e61]: Cálculo de esfuerzo laboral, no de si deberías comprarlo.
+          - paragraph [ref=f9e62]: Nadie destina el 100 % del sueldo a una sola cosa.
+          - paragraph [ref=f9e63]: Esto asume que no comes ni pagas piso.
+      - region "Desglose" [ref=f9e64]:
+        - heading "Desglose" [level=2] [ref=f9e65]
+        - generic [ref=f9e66]:
+          - generic [ref=f9e67]:
+            - generic [ref=f9e68]: Jornadas de 8 h
+            - generic [ref=f9e69]: "402"
+          - generic [ref=f9e70]:
+            - generic [ref=f9e71]: Horas de trabajo
+            - generic [ref=f9e72]: "3213"
+          - generic [ref=f9e73]:
+            - generic [ref=f9e74]: Semanas
+            - generic [ref=f9e75]: "80"
+          - generic [ref=f9e76]:
+            - generic [ref=f9e77]: Meses de sueldo entero
+            - generic [ref=f9e78]: 18,5
+          - generic [ref=f9e79]:
+            - generic [ref=f9e80]: Años de sueldo entero
+            - generic [ref=f9e81]: 1,5
+          - generic [ref=f9e82]:
+            - generic [ref=f9e83]: "% del año laboral real"
+            - generic [ref=f9e84]: 197%
+        - generic [ref=f9e85]:
+          - heading "Tu año laboral" [level=2] [ref=f9e86]
+          - paragraph [ref=f9e87]: 1 rectángulo = 12 meses de sueldo entero (1633 h reales al año)
+          - 'img "Barra del año laboral: ocupa el 100%" [ref=f9e88]'
+          - paragraph [ref=f9e90]: desborda a 1,5 años
+      - region "En unidades de tu día a día" [ref=f9e91]:
+        - heading "En unidades de tu día a día" [level=2] [ref=f9e92]
+        - generic [ref=f9e93]:
+          - generic [ref=f9e94]: equivale a 22.243 cafés
+          - generic [ref=f9e104]: equivale a 33 iPhones
+          - generic [ref=f9e112]: equivale a 37 meses de alquiler
+      - generic [ref=f9e121]:
+        - region "¿Cuánto apartas al mes?" [ref=f9e122]:
+          - heading "¿Cuánto apartas al mes?" [level=2] [ref=f9e123]
+          - generic [ref=f9e124]:
+            - generic [ref=f9e125]: ¿Cuánto apartas al mes?
+            - spinbutton "¿Cuánto apartas al mes?" [ref=f9e126]
+          - paragraph [ref=f9e127]: Si apartas algo al mes, esto es lo que tardas sin tocar el sueldo.
+        - region "El mismo precio, otras nóminas" [ref=f9e128]:
+          - heading "El mismo precio, otras nóminas" [level=2] [ref=f9e129]
+          - paragraph [ref=f9e130]: "Este precio (33.365 €) calculado con cada sueldo:"
+          - list [ref=f9e131]:
+            - listitem [ref=f9e132]:
+              - generic [ref=f9e133]: España
+              - generic [ref=f9e134]: 3213 h · 18,5 meses de sueldo entero
+          - generic [ref=f9e135]:
+            - generic [ref=f9e136]: Comparar con otro país
+            - combobox "Comparar con otro país" [ref=f9e137]:
+              - option "Elige un país" [selected]
+              - option "Portugal"
+              - option "Francia"
+              - option "Alemania"
+              - option "Italia"
+              - option "Reino Unido"
+              - option "Estados Unidos"
+              - option "México"
+              - option "Argentina"
+              - option "Colombia"
+              - option "Chile"
+              - option "Suiza"
+      - region "Mis datos" [ref=f9e138]:
+        - generic [ref=f9e139]:
+          - paragraph [ref=f9e140]: Cambia el precio si el tuyo es otro.
+          - generic [ref=f9e142]:
+            - generic [ref=f9e143]: Esta cosa cuesta
+            - generic [ref=f9e144]:
+              - generic [ref=f9e145]: €
+              - spinbutton "Esta cosa cuesta €" [ref=f9e146]: "33365"
+        - group [ref=f9e147]:
+          - generic "Mis datos" [ref=f9e148] [cursor=pointer]
+        - generic [ref=f9e149]:
+          - generic [ref=f9e150]:
+            - generic [ref=f9e151]: Otro país
+            - combobox "Otro país" [ref=f9e152]:
+              - option "España" [disabled] [selected]
+              - option "España"
+              - option "Portugal"
+              - option "Francia"
+              - option "Alemania"
+              - option "Italia"
+              - option "Reino Unido"
+              - option "Estados Unidos"
+              - option "México"
+              - option "Argentina"
+              - option "Colombia"
+              - option "Chile"
+              - option "Suiza"
+          - button "Compartir" [ref=f9e154] [cursor=pointer]
+  - contentinfo [ref=f9e155]:
+    - navigation [ref=f9e156]:
+      - link "Método" [ref=f9e157] [cursor=pointer]:
+        - /url: /metodo
+    - generic [ref=f9e158]:
+      - paragraph [ref=f9e159]: Esta web ofrece una estimación educativa de esfuerzo laboral.
+      - paragraph [ref=f9e160]: No es un consejo de compra, ahorro ni inversión.
+      - paragraph [ref=f9e161]: Los salarios y precios son aproximados y pueden estar desactualizados.
+      - paragraph [ref=f9e162]: Tú puedes y debes sustituirlos por tus cifras reales.
+      - paragraph [ref=f9e163]: El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.
+  - generic [ref=f9e166]:
+    - button [ref=f9e167]
+    - button [ref=f9e173]
+    - button [ref=f9e177]
+    - button [ref=f9e185]

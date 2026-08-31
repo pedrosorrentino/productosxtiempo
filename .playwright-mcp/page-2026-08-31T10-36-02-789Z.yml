@@ -1,0 +1,23 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - link "Coste en tiempo" [ref=f2e3] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f2e4]:
+      - link "Método" [ref=f2e5] [cursor=pointer]:
+        - /url: /metodo
+  - main [ref=f2e6]
+  - contentinfo [ref=f2e10]:
+    - navigation [ref=f2e11]:
+      - link "Método" [ref=f2e12] [cursor=pointer]:
+        - /url: /metodo
+    - generic [ref=f2e13]:
+      - paragraph [ref=f2e14]: Esta web ofrece una estimación educativa de esfuerzo laboral.
+      - paragraph [ref=f2e15]: No es un consejo de compra, ahorro ni inversión.
+      - paragraph [ref=f2e16]: Los salarios y precios son aproximados y pueden estar desactualizados.
+      - paragraph [ref=f2e17]: Tú puedes y debes sustituirlos por tus cifras reales.
+      - paragraph [ref=f2e18]: El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.
+  - generic [ref=f2e21]:
+    - button [ref=f2e22]
+    - button [ref=f2e28]
+    - button [ref=f2e32]
+    - button [ref=f2e37]

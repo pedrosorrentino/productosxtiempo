@@ -1,0 +1,126 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - link "Coste en tiempo" [ref=f3e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f3e6]:
+        - list [ref=f3e7]:
+          - listitem [ref=f3e8]:
+            - link "Método" [ref=f3e9] [cursor=pointer]:
+              - /url: /metodo
+  - main [ref=f3e10]:
+    - generic [ref=f3e13]:
+      - paragraph [ref=f3e14]: Tesla Model 3 (acceso) · Portugal
+      - generic [ref=f3e15]:
+        - generic [ref=f3e16]: precio de referencia de España
+        - alert [ref=f3e17]:
+          - generic [ref=f3e18]: Precio de referencia de España convertido. Cámbialo si conoces el de tu país.
+      - paragraph [ref=f3e19]: 11,1
+      - paragraph [ref=f3e20]: meses de sueldo entero
+      - paragraph [ref=f3e21]: "0,9 años de sueldo entero · Si apartas 300 € al mes: 9,3 años"
+      - paragraph [ref=f3e22]: — un año de sueldo entero.
+      - generic [ref=f3e23]:
+        - paragraph [ref=f3e24]: Cálculo de esfuerzo laboral, no de si deberías comprarlo.
+        - paragraph [ref=f3e25]: Nadie destina el 100 % del sueldo a una sola cosa.
+        - paragraph [ref=f3e26]: Esto asume que no comes ni pagas piso.
+        - paragraph [ref=f3e27]: A tus 32 años, esto son un año de vida trabajando — cerca del 3% de los 35 años laborales que te quedan.
+      - generic [ref=f3e28]:
+        - heading "Desglose" [level=2] [ref=f3e29]
+        - generic [ref=f3e30]:
+          - generic [ref=f3e31]:
+            - term [ref=f3e32]: Horas de trabajo
+            - definition [ref=f3e33]: "1928"
+          - generic [ref=f3e34]:
+            - term [ref=f3e35]: Jornadas de 8 h
+            - definition [ref=f3e36]: "241"
+          - generic [ref=f3e37]:
+            - term [ref=f3e38]: Semanas
+            - definition [ref=f3e39]: "48"
+          - generic [ref=f3e40]:
+            - term [ref=f3e41]: Meses de sueldo entero
+            - definition [ref=f3e42]: 11,1
+          - generic [ref=f3e43]:
+            - term [ref=f3e44]: Años de sueldo entero
+            - definition [ref=f3e45]: 0,9
+          - generic [ref=f3e46]:
+            - term [ref=f3e47]: "% del año laboral real"
+            - definition [ref=f3e48]: 117%
+      - generic [ref=f3e49]:
+        - heading "Tu año laboral" [level=2] [ref=f3e50]
+        - paragraph [ref=f3e51]: 1 rectángulo = 12 meses de sueldo entero (1650 h reales al año)
+        - 'img "Barra del año laboral: ocupa el 93%" [ref=f3e52]'
+      - generic [ref=f3e54]:
+        - generic [ref=f3e55]: ¿Cuánto apartas al mes?
+        - spinbutton "¿Cuánto apartas al mes?" [ref=f3e56]
+        - generic [ref=f3e57]:
+          - paragraph [ref=f3e58]: Si apartas 300 € al mes
+          - paragraph [ref=f3e59]: 9,3 años
+      - generic [ref=f3e60]:
+        - heading "El mismo precio, otras nóminas" [level=2] [ref=f3e61]
+        - paragraph [ref=f3e62]: "Este precio (33.365 €) calculado con cada sueldo:"
+        - list [ref=f3e63]:
+          - listitem [ref=f3e64]:
+            - generic [ref=f3e65]: Tú
+            - generic [ref=f3e66]: 1928 h · 11,1 meses de sueldo entero
+          - listitem [ref=f3e67]:
+            - generic [ref=f3e68]: Portugal
+            - generic [ref=f3e69]: 5258 h · 2,5 años de sueldo entero
+        - generic [ref=f3e70]:
+          - generic [ref=f3e71]: Comparar con otro país
+          - combobox "Comparar con otro país" [ref=f3e72]:
+            - option "Elige un país" [selected]
+            - option "España"
+            - option "Francia"
+            - option "Alemania"
+            - option "Italia"
+            - option "Reino Unido"
+            - option "Estados Unidos"
+            - option "México"
+            - option "Argentina"
+            - option "Colombia"
+            - option "Chile"
+            - option "Suiza"
+      - generic [ref=f3e73]:
+        - generic [ref=f3e74]:
+          - paragraph [ref=f3e75]: Cambia el precio si el tuyo es otro.
+          - generic [ref=f3e77]:
+            - generic [ref=f3e78]: Esta cosa cuesta
+            - generic [ref=f3e79]:
+              - generic [ref=f3e80]: €
+              - spinbutton "Esta cosa cuesta €" [ref=f3e81]: "33365"
+        - generic [ref=f3e82]:
+          - checkbox "Mis datos" [ref=f3e83] [cursor=pointer]
+          - generic [ref=f3e84] [cursor=pointer]: Mis datos
+        - generic [ref=f3e85]:
+          - generic [ref=f3e86]:
+            - generic [ref=f3e87]: Otro país
+            - combobox "Otro país" [ref=f3e88]:
+              - option "Portugal" [disabled] [selected]
+              - option "España"
+              - option "Portugal"
+              - option "Francia"
+              - option "Alemania"
+              - option "Italia"
+              - option "Reino Unido"
+              - option "Estados Unidos"
+              - option "México"
+              - option "Argentina"
+              - option "Colombia"
+              - option "Chile"
+              - option "Suiza"
+          - button "Compartir" [ref=f3e90] [cursor=pointer]
+  - contentinfo [ref=f3e91]:
+    - navigation [ref=f3e92]:
+      - link "Método" [ref=f3e93] [cursor=pointer]:
+        - /url: /metodo
+    - generic [ref=f3e94]:
+      - paragraph [ref=f3e95]: Esta web ofrece una estimación educativa de esfuerzo laboral.
+      - paragraph [ref=f3e96]: No es un consejo de compra, ahorro ni inversión.
+      - paragraph [ref=f3e97]: Los salarios y precios son aproximados y pueden estar desactualizados.
+      - paragraph [ref=f3e98]: Tú puedes y debes sustituirlos por tus cifras reales.
+      - paragraph [ref=f3e99]: El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.
+  - generic [ref=f3e102]:
+    - button [ref=f3e103]
+    - button [ref=f3e109]
+    - button [ref=f3e113]
+    - button [ref=f3e118]

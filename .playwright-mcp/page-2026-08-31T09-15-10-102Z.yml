@@ -1,0 +1,480 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - link "Coste en tiempo" [ref=f1e3] [cursor=pointer]:
+      - /url: /
+    - generic [ref=f1e4]: El precio de las cosas, medido en tu tiempo.
+    - navigation [ref=f1e5]:
+      - link "Método" [ref=f1e6] [cursor=pointer]:
+        - /url: /metodo
+  - main [ref=f1e7]:
+    - generic [ref=f1e9]:
+      - generic [ref=f1e11]:
+        - generic [ref=f1e12]:
+          - text: Operando con
+          - generic [ref=f1e13]:
+            - strong [ref=f1e14]: España
+            - generic [ref=f1e583]: tu elección
+            - generic [ref=f1e584]: cotizando con tus datos
+        - generic [ref=f1e15]:
+          - generic [ref=f1e16]:
+            - generic [ref=f1e17]: Cambiar país
+            - combobox "Operando con" [ref=f1e18]:
+              - option "España" [selected]
+              - option "Portugal"
+              - option "Francia"
+              - option "Alemania"
+              - option "Italia"
+              - option "Reino Unido"
+              - option "Estados Unidos"
+              - option "México"
+              - option "Argentina"
+              - option "Colombia"
+              - option "Chile"
+              - option "Suiza"
+          - link "Ficha de España →" [ref=f1e19] [cursor=pointer]:
+            - /url: /espana
+      - generic [ref=f1e21]:
+        - paragraph [ref=f1e22]:
+          - generic [ref=f1e23]: 33.365 €
+          - generic [ref=f1e24]: ·
+          - generic [ref=f1e25]: precio de referencia 2026-08
+        - heading "1 Tesla Model 3 (acceso) en España son" [level=1] [ref=f1e26]
+        - generic [ref=f1e27]:
+          - img "241 jornadas de 8 h" [ref=f1e585]:
+            - generic [ref=f1e30]:
+              - generic [ref=f1e31]: "0"
+              - generic [ref=f1e32]: "1"
+              - generic [ref=f1e33]: "2"
+              - generic [ref=f1e34]: "3"
+              - generic [ref=f1e35]: "4"
+              - generic [ref=f1e36]: "5"
+              - generic [ref=f1e37]: "6"
+              - generic [ref=f1e38]: "7"
+              - generic [ref=f1e39]: "8"
+              - generic [ref=f1e40]: "9"
+            - generic [ref=f1e42]:
+              - generic [ref=f1e43]: "0"
+              - generic [ref=f1e44]: "1"
+              - generic [ref=f1e45]: "2"
+              - generic [ref=f1e46]: "3"
+              - generic [ref=f1e47]: "4"
+              - generic [ref=f1e48]: "5"
+              - generic [ref=f1e49]: "6"
+              - generic [ref=f1e50]: "7"
+              - generic [ref=f1e51]: "8"
+              - generic [ref=f1e52]: "9"
+            - generic [ref=f1e54]:
+              - generic [ref=f1e55]: "0"
+              - generic [ref=f1e56]: "1"
+              - generic [ref=f1e57]: "2"
+              - generic [ref=f1e58]: "3"
+              - generic [ref=f1e59]: "4"
+              - generic [ref=f1e60]: "5"
+              - generic [ref=f1e61]: "6"
+              - generic [ref=f1e62]: "7"
+              - generic [ref=f1e63]: "8"
+              - generic [ref=f1e64]: "9"
+          - generic [ref=f1e65]: jornadas de 8 h
+        - paragraph [ref=f1e66]: — un año de sueldo entero.
+        - generic [ref=f1e67]:
+          - generic [ref=f1e68]:
+            - generic [ref=f1e69]: "% del año laboral real"
+            - generic [ref=f1e70]: 118%
+          - 'img "Barra del año laboral: ocupa el 118%" [ref=f1e586]'
+      - generic "Cotizaciones del tablero" [ref=f1e73]:
+        - generic [ref=f1e74]:
+          - generic [ref=f1e75]:
+            - generic [ref=f1e76]:
+              - text: Café·
+              - strong [ref=f1e77]: "5"
+              - text: minutos
+            - generic [ref=f1e78]:
+              - text: Menú del día·
+              - strong [ref=f1e79]: "49"
+              - text: minutos
+            - generic [ref=f1e80]:
+              - text: Cesta semanal·
+              - strong [ref=f1e81]: "5"
+              - text: horas
+            - generic [ref=f1e82]:
+              - text: Netflix (año)·
+              - strong [ref=f1e83]: "8"
+              - text: horas
+            - generic [ref=f1e84]:
+              - text: Gimnasio (año)·
+              - strong [ref=f1e85]: 2,6
+              - text: jornadas
+            - generic [ref=f1e86]:
+              - text: iPhone·
+              - strong [ref=f1e87]: 7,2
+              - text: jornadas
+            - generic [ref=f1e88]:
+              - text: Portátil·
+              - strong [ref=f1e89]: 6,5
+              - text: jornadas
+            - generic [ref=f1e90]:
+              - text: Televisor·
+              - strong [ref=f1e91]: 3,6
+              - text: jornadas
+            - generic [ref=f1e92]:
+              - text: Auriculares·
+              - strong [ref=f1e93]: 1,8
+              - text: jornadas
+            - generic [ref=f1e94]:
+              - text: Abono transporte·
+              - strong [ref=f1e95]: "3"
+              - text: horas
+            - generic [ref=f1e96]:
+              - text: Bici urbana·
+              - strong [ref=f1e97]: 2,9
+              - text: jornadas
+            - generic [ref=f1e98]:
+              - text: Sandero·
+              - strong [ref=f1e99]: "101"
+              - text: jornadas
+            - generic [ref=f1e100]:
+              - text: Coche compacto·
+              - strong [ref=f1e101]: "159"
+              - text: jornadas
+            - generic [ref=f1e102]:
+              - text: Tesla Model 3·
+              - strong [ref=f1e103]: "241"
+              - text: jornadas
+            - generic [ref=f1e104]:
+              - text: Habitación (mes)·
+              - strong [ref=f1e105]: 3,2
+              - text: jornadas
+            - generic [ref=f1e106]:
+              - text: Alquiler piso (mes)·
+              - strong [ref=f1e107]: 6,5
+              - text: jornadas
+            - generic [ref=f1e108]:
+              - text: Entrada piso·
+              - strong [ref=f1e109]: "289"
+              - text: jornadas
+            - generic [ref=f1e110]:
+              - text: Viaje 7 días·
+              - strong [ref=f1e111]: 8,7
+              - text: jornadas
+            - generic [ref=f1e112]:
+              - text: Boda·
+              - strong [ref=f1e113]: "58"
+              - text: jornadas
+            - generic [ref=f1e114]:
+              - text: Máster·
+              - strong [ref=f1e115]: "58"
+              - text: jornadas
+            - generic [ref=f1e116]:
+              - text: Reforma cocina·
+              - strong [ref=f1e117]: "87"
+              - text: jornadas
+          - generic [ref=f1e118]:
+            - generic [ref=f1e119]:
+              - text: Café·
+              - strong [ref=f1e120]: "5"
+              - text: minutos
+            - generic [ref=f1e121]:
+              - text: Menú del día·
+              - strong [ref=f1e122]: "49"
+              - text: minutos
+            - generic [ref=f1e123]:
+              - text: Cesta semanal·
+              - strong [ref=f1e124]: "5"
+              - text: horas
+            - generic [ref=f1e125]:
+              - text: Netflix (año)·
+              - strong [ref=f1e126]: "8"
+              - text: horas
+            - generic [ref=f1e127]:
+              - text: Gimnasio (año)·
+              - strong [ref=f1e128]: 2,6
+              - text: jornadas
+            - generic [ref=f1e129]:
+              - text: iPhone·
+              - strong [ref=f1e130]: 7,2
+              - text: jornadas
+            - generic [ref=f1e131]:
+              - text: Portátil·
+              - strong [ref=f1e132]: 6,5
+              - text: jornadas
+            - generic [ref=f1e133]:
+              - text: Televisor·
+              - strong [ref=f1e134]: 3,6
+              - text: jornadas
+            - generic [ref=f1e135]:
+              - text: Auriculares·
+              - strong [ref=f1e136]: 1,8
+              - text: jornadas
+            - generic [ref=f1e137]:
+              - text: Abono transporte·
+              - strong [ref=f1e138]: "3"
+              - text: horas
+            - generic [ref=f1e139]:
+              - text: Bici urbana·
+              - strong [ref=f1e140]: 2,9
+              - text: jornadas
+            - generic [ref=f1e141]:
+              - text: Sandero·
+              - strong [ref=f1e142]: "101"
+              - text: jornadas
+            - generic [ref=f1e143]:
+              - text: Coche compacto·
+              - strong [ref=f1e144]: "159"
+              - text: jornadas
+            - generic [ref=f1e145]:
+              - text: Tesla Model 3·
+              - strong [ref=f1e146]: "241"
+              - text: jornadas
+            - generic [ref=f1e147]:
+              - text: Habitación (mes)·
+              - strong [ref=f1e148]: 3,2
+              - text: jornadas
+            - generic [ref=f1e149]:
+              - text: Alquiler piso (mes)·
+              - strong [ref=f1e150]: 6,5
+              - text: jornadas
+            - generic [ref=f1e151]:
+              - text: Entrada piso·
+              - strong [ref=f1e152]: "289"
+              - text: jornadas
+            - generic [ref=f1e153]:
+              - text: Viaje 7 días·
+              - strong [ref=f1e154]: 8,7
+              - text: jornadas
+            - generic [ref=f1e155]:
+              - text: Boda·
+              - strong [ref=f1e156]: "58"
+              - text: jornadas
+            - generic [ref=f1e157]:
+              - text: Máster·
+              - strong [ref=f1e158]: "58"
+              - text: jornadas
+            - generic [ref=f1e159]:
+              - text: Reforma cocina·
+              - strong [ref=f1e160]: "87"
+              - text: jornadas
+      - generic [ref=f1e161]:
+        - heading "La pizarra" [level=2] [ref=f1e162]
+        - paragraph [ref=f1e163]: Todo el catálogo, cotizado en jornadas de 8 h.
+        - generic [ref=f1e164]:
+          - generic [ref=f1e165]:
+            - heading "Transporte" [level=3] [ref=f1e166]
+            - generic [ref=f1e174]:
+              - link "Abono transporte (mes) 55 € 3 horas" [ref=f1e587] [cursor=pointer]:
+                - /url: /espana/abono-transporte
+                - generic [ref=f1e182]:
+                  - generic [ref=f1e183]: Abono transporte (mes)
+                  - generic [ref=f1e184]: 55 €
+                - generic [ref=f1e188]:
+                  - generic [ref=f1e189]: "3"
+                  - text: horas
+              - link "Bici urbana 400 € 2,9 jornadas" [ref=f1e588] [cursor=pointer]:
+                - /url: /espana/bici-urbana
+                - generic [ref=f1e200]:
+                  - generic [ref=f1e201]: Bici urbana
+                  - generic [ref=f1e202]: 400 €
+                - generic [ref=f1e206]:
+                  - generic [ref=f1e207]: 2,9
+                  - text: jornadas
+              - link "Dacia Sandero 14.000 € 101 jornadas" [ref=f1e589] [cursor=pointer]:
+                - /url: /espana/dacia-sandero
+                - generic [ref=f1e218]:
+                  - generic [ref=f1e219]: Dacia Sandero
+                  - generic [ref=f1e220]: 14.000 €
+                - generic [ref=f1e224]:
+                  - generic [ref=f1e225]: "101"
+                  - text: jornadas
+              - link "Coche compacto 22.000 € 159 jornadas" [ref=f1e590] [cursor=pointer]:
+                - /url: /espana/coche-compacto
+                - generic [ref=f1e236]:
+                  - generic [ref=f1e237]: Coche compacto
+                  - generic [ref=f1e238]: 22.000 €
+                - generic [ref=f1e242]:
+                  - generic [ref=f1e243]: "159"
+                  - text: jornadas
+              - link "Tesla Model 3 (acceso) 33.365 € 241 jornadas" [ref=f1e591] [cursor=pointer]:
+                - /url: /espana/tesla-model-3
+                - generic [ref=f1e254]:
+                  - generic [ref=f1e255]: Tesla Model 3 (acceso)
+                  - generic [ref=f1e256]: 33.365 €
+                - generic [ref=f1e260]:
+                  - generic [ref=f1e261]: "241"
+                  - text: jornadas
+          - generic [ref=f1e265]:
+            - heading "Tecnología" [level=3] [ref=f1e266]
+            - generic [ref=f1e271]:
+              - link "iPhone (gama alta) 1000 € 7,2 jornadas" [ref=f1e592] [cursor=pointer]:
+                - /url: /espana/iphone
+                - generic [ref=f1e276]:
+                  - generic [ref=f1e277]: iPhone (gama alta)
+                  - generic [ref=f1e278]: 1000 €
+                - generic [ref=f1e282]:
+                  - generic [ref=f1e283]: 7,2
+                  - text: jornadas
+              - link "Portátil normal 900 € 6,5 jornadas" [ref=f1e593] [cursor=pointer]:
+                - /url: /espana/portatil
+                - generic [ref=f1e291]:
+                  - generic [ref=f1e292]: Portátil normal
+                  - generic [ref=f1e293]: 900 €
+                - generic [ref=f1e297]:
+                  - generic [ref=f1e298]: 6,5
+                  - text: jornadas
+              - link "Televisor 500 € 3,6 jornadas" [ref=f1e594] [cursor=pointer]:
+                - /url: /espana/televisor
+                - generic [ref=f1e306]:
+                  - generic [ref=f1e307]: Televisor
+                  - generic [ref=f1e308]: 500 €
+                - generic [ref=f1e312]:
+                  - generic [ref=f1e313]: 3,6
+                  - text: jornadas
+              - link "Auriculares 250 € 1,8 jornadas" [ref=f1e595] [cursor=pointer]:
+                - /url: /espana/auriculares
+                - generic [ref=f1e321]:
+                  - generic [ref=f1e322]: Auriculares
+                  - generic [ref=f1e323]: 250 €
+                - generic [ref=f1e327]:
+                  - generic [ref=f1e328]: 1,8
+                  - text: jornadas
+          - generic [ref=f1e332]:
+            - heading "Vivienda" [level=3] [ref=f1e333]
+            - generic [ref=f1e339]:
+              - link "Habitación en piso compartido (mes) 450 € 3,2 jornadas" [ref=f1e596] [cursor=pointer]:
+                - /url: /espana/habitacion-alquiler
+                - generic [ref=f1e345]:
+                  - generic [ref=f1e346]: Habitación en piso compartido (mes)
+                  - generic [ref=f1e347]: 450 €
+                - generic [ref=f1e351]:
+                  - generic [ref=f1e352]: 3,2
+                  - text: jornadas
+              - link "Alquiler piso 1-2 hab ciudad (mes) 900 € 6,5 jornadas" [ref=f1e597] [cursor=pointer]:
+                - /url: /espana/alquiler-piso
+                - generic [ref=f1e361]:
+                  - generic [ref=f1e362]: Alquiler piso 1-2 hab ciudad (mes)
+                  - generic [ref=f1e363]: 900 €
+                - generic [ref=f1e367]:
+                  - generic [ref=f1e368]: 6,5
+                  - text: jornadas
+              - link "Entrada piso (20 %) tipo 40.000 € 289 jornadas" [ref=f1e598] [cursor=pointer]:
+                - /url: /espana/entrada-piso
+                - generic [ref=f1e377]:
+                  - generic [ref=f1e378]: Entrada piso (20 %) tipo
+                  - generic [ref=f1e379]: 40.000 €
+                - generic [ref=f1e383]:
+                  - generic [ref=f1e384]: "289"
+                  - text: jornadas
+          - generic [ref=f1e388]:
+            - heading "Vida" [level=3] [ref=f1e389]
+            - generic [ref=f1e395]:
+              - link "Viaje 7 días 1200 € 8,7 jornadas" [ref=f1e599] [cursor=pointer]:
+                - /url: /espana/viaje-7-dias
+                - generic [ref=f1e401]:
+                  - generic [ref=f1e402]: Viaje 7 días
+                  - generic [ref=f1e403]: 1200 €
+                - generic [ref=f1e407]:
+                  - generic [ref=f1e408]: 8,7
+                  - text: jornadas
+              - link "Boda sencilla 8000 € 58 jornadas" [ref=f1e600] [cursor=pointer]:
+                - /url: /espana/boda
+                - generic [ref=f1e417]:
+                  - generic [ref=f1e418]: Boda sencilla
+                  - generic [ref=f1e419]: 8000 €
+                - generic [ref=f1e423]:
+                  - generic [ref=f1e424]: "58"
+                  - text: jornadas
+              - link "Máster 8000 € 58 jornadas" [ref=f1e601] [cursor=pointer]:
+                - /url: /espana/master
+                - generic [ref=f1e433]:
+                  - generic [ref=f1e434]: Máster
+                  - generic [ref=f1e435]: 8000 €
+                - generic [ref=f1e439]:
+                  - generic [ref=f1e440]: "58"
+                  - text: jornadas
+              - link "Reformar cocina 12.000 € 87 jornadas" [ref=f1e602] [cursor=pointer]:
+                - /url: /espana/reformar-cocina
+                - generic [ref=f1e449]:
+                  - generic [ref=f1e450]: Reformar cocina
+                  - generic [ref=f1e451]: 12.000 €
+                - generic [ref=f1e455]:
+                  - generic [ref=f1e456]: "87"
+                  - text: jornadas
+          - generic [ref=f1e460]:
+            - heading "Día a día" [level=3] [ref=f1e461]
+            - generic [ref=f1e468]:
+              - link "Café en bar 1,5 € 5 minutos" [ref=f1e603] [cursor=pointer]:
+                - /url: /espana/cafe
+                - generic [ref=f1e475]:
+                  - generic [ref=f1e476]: Café en bar
+                  - generic [ref=f1e477]: 1,5 €
+                - generic [ref=f1e480]:
+                  - generic [ref=f1e481]: "5"
+                  - text: minutos
+              - link "Menú del día 14 € 49 minutos" [ref=f1e604] [cursor=pointer]:
+                - /url: /espana/menu-del-dia
+                - generic [ref=f1e491]:
+                  - generic [ref=f1e492]: Menú del día
+                  - generic [ref=f1e493]: 14 €
+                - generic [ref=f1e497]:
+                  - generic [ref=f1e498]: "49"
+                  - text: minutos
+              - link "Cesta de la compra semanal 80 € 5 horas" [ref=f1e605] [cursor=pointer]:
+                - /url: /espana/cesta-semanal
+                - generic [ref=f1e508]:
+                  - generic [ref=f1e509]: Cesta de la compra semanal
+                  - generic [ref=f1e510]: 80 €
+                - generic [ref=f1e514]:
+                  - generic [ref=f1e515]: "5"
+                  - text: horas
+              - link "Netflix (año) 130 € 8 horas" [ref=f1e606] [cursor=pointer]:
+                - /url: /espana/netflix-anual
+                - generic [ref=f1e525]:
+                  - generic [ref=f1e526]: Netflix (año)
+                  - generic [ref=f1e527]: 130 €
+                - generic [ref=f1e531]:
+                  - generic [ref=f1e532]: "8"
+                  - text: horas
+              - link "Gimnasio (año) 360 € 2,6 jornadas" [ref=f1e607] [cursor=pointer]:
+                - /url: /espana/gimnasio-anual
+                - generic [ref=f1e542]:
+                  - generic [ref=f1e543]: Gimnasio (año)
+                  - generic [ref=f1e544]: 360 €
+                - generic [ref=f1e548]:
+                  - generic [ref=f1e549]: 2,6
+                  - text: jornadas
+      - generic [ref=f1e554]:
+        - generic [ref=f1e555]:
+          - heading "Tu tipo de cambio" [level=2] [ref=f1e556]
+          - generic [ref=f1e608]: cotizando con tus datos
+        - paragraph [ref=f1e557]: Ahora mismo cotizamos con la mediana neta de España. Pon tu nómina y la pizarra se recalcula al instante.
+        - generic [ref=f1e558]:
+          - generic [ref=f1e559]:
+            - generic [ref=f1e560]: Neto al mes
+            - spinbutton "Neto al mes" [ref=f1e561]: "3000"
+          - generic [ref=f1e562]:
+            - generic [ref=f1e563]: Horas a la semana
+            - spinbutton "Horas a la semana" [ref=f1e564]: "40"
+          - generic [ref=f1e565]:
+            - generic [ref=f1e566]: Ahorro al mes (opcional)
+            - spinbutton "Ahorro al mes (opcional)" [ref=f1e567]: "300"
+          - generic [ref=f1e568]:
+            - generic [ref=f1e569]: Tu edad (opcional, para el contexto de vida laboral)
+            - spinbutton "Tu edad (opcional, para el contexto de vida laboral)" [ref=f1e570]: "32"
+          - paragraph [ref=f1e609]: Tu hora vale 17,31 €
+      - generic [ref=f1e571]:
+        - link "Ficha de España →" [ref=f1e572] [cursor=pointer]:
+          - /url: /espana
+        - paragraph [ref=f1e573]: Cálculo de esfuerzo laboral, no de si deberías comprarlo.
+  - contentinfo [ref=f1e574]:
+    - navigation [ref=f1e575]:
+      - link "Método" [ref=f1e576] [cursor=pointer]:
+        - /url: /metodo
+    - generic [ref=f1e577]:
+      - paragraph [ref=f1e578]: Esta web ofrece una estimación educativa de esfuerzo laboral.
+      - paragraph [ref=f1e579]: No es un consejo de compra, ahorro ni inversión.
+      - paragraph [ref=f1e580]: Los salarios y precios son aproximados y pueden estar desactualizados.
+      - paragraph [ref=f1e581]: Tú puedes y debes sustituirlos por tus cifras reales.
+      - paragraph [ref=f1e582]: El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.
+  - generic [ref=f1e612]:
+    - button [ref=f1e613]
+    - button [ref=f1e619]
+    - button [ref=f1e623]
+    - button [ref=f1e628]

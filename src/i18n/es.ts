@@ -116,6 +116,12 @@ export const anchors = {
     `equivale a ${anchorCount(count, "menú del día", "menús del día")}`,
   gasolina: (count: string): string =>
     `equivale a ${anchorCount(count, "tanque de gasolina", "tanques de gasolina")}`,
+  pan: (count: string): string =>
+    `equivale a ${anchorCount(count, "pan", "panes")}`,
+  cine: (count: string): string =>
+    `equivale a ${anchorCount(count, "billete de cine", "billetes de cine")}`,
+  cerveza: (count: string): string =>
+    `equivale a ${anchorCount(count, "caña", "cañas")}`,
   lessThanOne: (thing: string): string => `menos de un ${thing}`,
 };
 
@@ -311,7 +317,19 @@ export const anchorSingular = {
   alquiler: "mes de alquiler",
   menu: "menú del día",
   gasolina: "tanque de gasolina",
+  pan: "pan",
+  cine: "billete de cine",
+  cerveza: "caña",
 } as const;
+
+/**
+ * Forma completa de "menos de un…" para anclas de sustantivo femenino
+ * ("una caña", no "un caña"). Si no hay entrada, la plantilla `lessThanOne`
+ * vale tal cual.
+ */
+export const anchorLessThanOne: Partial<Record<keyof typeof anchorSingular, string>> = {
+  cerveza: "menos de una caña",
+};
 
 /**
  * Comparador simple (SPEC §5): el MISMO precio calculado con distintos
@@ -443,4 +461,45 @@ export const board = {
    * 100); la de vida, la fracción de la edad del usuario. */
   salaryBarLabel: (pct: string): string => `${pct}% de un año de sueldo`,
   lifeBarRowLabel: (age: number, pct: string): string => `${pct}% de tus ${age} años`,
+};
+
+/**
+ * Copy clickbait de las tarjetas de redes (og:title/og:description y póster
+ * OG generado en build). Consumido por las páginas (meta) y por
+ * scripts/generate-og.ts (póster). Tono: engancha sin mentir — la cifra ya
+ * es el gancho; el copy solo la encamina al clic. Sin emojis: el póster no
+ * tiene fuente emoji y la marca va seca.
+ */
+export const og = {
+  home: {
+    title: "¿Cuánto tiempo de tu vida cuesta lo que compras?",
+    description:
+      "Tu hora es la divisa: cada precio del catálogo, cotizado en jornadas de trabajo. Pon tu sueldo y mira tu cifra exacta.",
+  },
+  country: {
+    title: (countryName: string, wage: string): string =>
+      `En ${countryName} tu hora vale ${wage}. Mira lo que cuesta todo`,
+    description: (countryName: string): string =>
+      `Pon tu sueldo y descubre cuántas jornadas cuestan las cosas en ${countryName}: del café al alquiler, con cifras exactas.`,
+  },
+  product: {
+    title: (productName: string, effort: string): string =>
+      `${productName} cuesta ${effort} de tu vida`,
+    description: (
+      productName: string,
+      countryName: string,
+      price: string,
+      effort: string,
+    ): string =>
+      `${productName} en ${countryName} vale ${price}: ${effort} con el sueldo mediano. Pon tu sueldo y calcula tu cifra real.`,
+  },
+  /** Líneas del póster OG (scripts/generate-og.ts): el gancho bajo la cifra. */
+  poster: {
+    hookHome: "¿Cuántas jornadas cuesta lo que compras?",
+    hookCountry: "Del café al alquiler: todo cotizado en jornadas de 8 h.",
+    hookProduct: "Nadie te lo cuenta así. Pon tu sueldo y cotiza la tuya.",
+    homeFooter: (nProducts: number, nCountries: number): string =>
+      `${nProducts} cosas · ${nCountries} países · cotiza la tuya`,
+    noWage: "sin sueldo de referencia",
+  },
 };

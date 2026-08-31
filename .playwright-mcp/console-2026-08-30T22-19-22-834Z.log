@@ -1,0 +1,2 @@
+[    9689ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ :3011
+[  409287ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:4321/@vite/client:1736

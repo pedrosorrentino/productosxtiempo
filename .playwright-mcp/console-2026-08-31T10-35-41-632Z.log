@@ -1,0 +1,10 @@
+[    1252ms] [ERROR] [astro-island] Error hydrating /src/components/preact/ResultView.tsx SyntaxError: The requested module '/src/lib/format.ts' does not provide an export named 'heroUnits' @ http://localhost:4321/espana/tesla-model-3:6358
+[   55453ms] [WARNING] Add @babel/plugin-transform-react-jsx-source to get a more detailed component stack. Note that you should not add it to production builds of your App for bundle size reasons. @ http://localhost:4321/node_modules/.vite/deps/preact_debug.js?v=a0ceac10:24
+[   55454ms] ReferenceError: heroUnits is not defined
+    at computeHero (http://localhost:4321/src/components/preact/ResultView.tsx:75:13)
+    at C.ResultView [as constructor] (http://localhost:4321/src/components/preact/ResultView.tsx:502:16)
+    at C.Q [as render] (http://localhost:4321/node_modules/.vite/deps/preact.js?v=a0ceac10:255:14)
+    at q (http://localhost:4321/node_modules/.vite/deps/preact.js?v=a0ceac10:175:34)
+    at I (http://localhost:4321/node_modules/.vite/deps/preact.js?v=a0ceac10:70:45)
+    at H (http://localhost:4321/node_modules/.vite/deps/preact.js?v=a0ceac10:83:89)
+    at http://localhost:4321/node_modules/.pnpm/@prefresh+core@1.5.11_preact@10.29.8/node_modules/@prefresh/core/src/runtime/debounceRendering.js?v=54b099e7:13:7

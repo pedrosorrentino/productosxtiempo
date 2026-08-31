@@ -1,0 +1,8 @@
+[ 2260712ms] [WARNING] Add @babel/plugin-transform-react-jsx-source to get a more detailed component stack. Note that you should not add it to production builds of your App for bundle size reasons. @ http://localhost:4321/node_modules/.vite/deps/preact_debug.js?v=a0ceac10:24
+[ 2260712ms] ReferenceError: ShareButton is not defined
+    at C.RateBoard [as constructor] (http://localhost:4321/src/components/preact/RateBoard.tsx?t=1788170524836:894:27)
+    at C.Q [as render] (http://localhost:4321/node_modules/.vite/deps/preact.js?v=a0ceac10:255:14)
+    at q (http://localhost:4321/node_modules/.vite/deps/preact.js?v=a0ceac10:175:34)
+    at I (http://localhost:4321/node_modules/.vite/deps/preact.js?v=a0ceac10:70:45)
+    at H (http://localhost:4321/node_modules/.vite/deps/preact.js?v=a0ceac10:83:89)
+    at http://localhost:4321/node_modules/.pnpm/@prefresh+core@1.5.11_preact@10.29.8/node_modules/@prefresh/core/src/runtime/debounceRendering.js?v=54b099e7:13:7

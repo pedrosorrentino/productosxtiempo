@@ -80,6 +80,134 @@
     "visible": true
   },
   {
+    "id": "barra-de-pan",
+    "name": "Barra de pan",
+    "shortName": "Pan",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 0.6,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "cana",
+    "name": "Caña de cerveza",
+    "shortName": "Caña",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 2.5,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "entrada-cine",
+    "name": "Entrada de cine",
+    "shortName": "Cine",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 8,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "corte-pelo",
+    "name": "Corte de pelo",
+    "shortName": "Corte de pelo",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 18,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "libro-nuevo",
+    "name": "Libro nuevo",
+    "shortName": "Libro",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 20,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "zapatillas-deportivas",
+    "name": "Zapatillas deportivas",
+    "shortName": "Zapatillas",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 80,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "linea-movil",
+    "name": "Línea de móvil (mes)",
+    "shortName": "Móvil (mes)",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 20,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "deposito-gasolina",
+    "name": "Depósito de gasolina",
+    "shortName": "Depósito",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 55,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
     "id": "iphone",
     "name": "iPhone (gama alta)",
     "shortName": "iPhone",
@@ -135,6 +263,102 @@
     "prices": {
       "ES": {
         "value": 250,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "movil-gama-media",
+    "name": "Móvil gama media",
+    "shortName": "Móvil medio",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 350,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "tablet",
+    "name": "Tablet",
+    "shortName": "Tablet",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 400,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "consola",
+    "name": "Consola de videojuegos",
+    "shortName": "Consola",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 450,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "smartwatch",
+    "name": "Smartwatch",
+    "shortName": "Smartwatch",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 250,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "portatil-premium",
+    "name": "Portátil premium",
+    "shortName": "Portátil premium",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 1300,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "fibra-mes",
+    "name": "Fibra óptica (mes)",
+    "shortName": "Fibra (mes)",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 35,
         "date": "2026-08",
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
@@ -224,6 +448,70 @@
     "visible": true
   },
   {
+    "id": "patinete-electrico",
+    "name": "Patinete eléctrico",
+    "shortName": "Patinete",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 500,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "moto-125",
+    "name": "Moto 125",
+    "shortName": "Moto 125",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 4200,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "vuelo-europa",
+    "name": "Vuelo ida y vuelta a Europa",
+    "shortName": "Vuelo a Europa",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 150,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "seguro-coche-anual",
+    "name": "Seguro de coche (año)",
+    "shortName": "Seguro coche",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 450,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
     "id": "habitacion-alquiler",
     "name": "Habitación en piso compartido (mes)",
     "shortName": "Habitación (mes)",
@@ -263,6 +551,54 @@
     "prices": {
       "ES": {
         "value": 40000,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "luz-gas-mes",
+    "name": "Luz y gas (mes)",
+    "shortName": "Luz y gas",
+    "category": "vivienda",
+    "prices": {
+      "ES": {
+        "value": 140,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "mudanza",
+    "name": "Mudanza",
+    "shortName": "Mudanza",
+    "category": "vivienda",
+    "prices": {
+      "ES": {
+        "value": 900,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "casa-media",
+    "name": "Casa media",
+    "shortName": "Casa media",
+    "category": "vivienda",
+    "prices": {
+      "ES": {
+        "value": 190000,
         "date": "2026-08",
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
@@ -327,6 +663,86 @@
     "prices": {
       "ES": {
         "value": 12000,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "criar-hijo",
+    "name": "Criar un hijo hasta los 18",
+    "shortName": "Hijo (18 años)",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 150000,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "grado-universitario",
+    "name": "Grado universitario (4 años)",
+    "shortName": "Grado",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 5000,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "implante-dental",
+    "name": "Implante dental",
+    "shortName": "Implante",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 1300,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "perro-anual",
+    "name": "Perro (año)",
+    "shortName": "Perro (año)",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 1300,
+        "date": "2026-08",
+        "note": "Precio orientativo. Edítalo.",
+        "source": "Referencia de producto",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "vacaciones-coche",
+    "name": "Vacaciones 15 días en coche",
+    "shortName": "Vacaciones coche",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 1500,
         "date": "2026-08",
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",

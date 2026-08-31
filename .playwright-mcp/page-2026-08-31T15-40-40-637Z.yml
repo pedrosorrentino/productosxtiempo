@@ -1,0 +1,188 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - link "Coste en tiempo" [ref=f2e3] [cursor=pointer]:
+      - /url: /
+    - generic [ref=f2e4]: El precio de las cosas, medido en tu tiempo.
+    - navigation [ref=f2e5]:
+      - combobox "Cambiar país" [ref=f2e6] [cursor=pointer]:
+        - option "Elige tu país" [disabled] [selected]
+        - option "España"
+        - option "Portugal"
+        - option "Francia"
+        - option "Alemania"
+        - option "Italia"
+        - option "Reino Unido"
+        - option "Estados Unidos"
+        - option "México"
+        - option "Argentina"
+        - option "Colombia"
+        - option "Chile"
+        - option "Suiza"
+  - main [ref=f2e7]:
+    - generic [ref=f2e10]:
+      - generic [ref=f2e11]:
+        - heading "Barra de pan" [level=1] [ref=f2e12]
+        - paragraph [ref=f2e14]:
+          - generic [ref=f2e15]: 0,6 €
+          - generic [ref=f2e16]: ·
+          - generic [ref=f2e17]: España
+      - region "3 minutos" [ref=f2e18]:
+        - generic [ref=f2e19]:
+          - img "3 minutos" [ref=f2e20]:
+            - generic [ref=f2e22]:
+              - generic [ref=f2e23]: "0"
+              - generic [ref=f2e24]: "1"
+              - generic [ref=f2e25]: "2"
+              - generic [ref=f2e26]: "3"
+              - generic [ref=f2e27]: "4"
+              - generic [ref=f2e28]: "5"
+              - generic [ref=f2e29]: "6"
+              - generic [ref=f2e30]: "7"
+              - generic [ref=f2e31]: "8"
+              - generic [ref=f2e32]: "9"
+          - generic [ref=f2e33]: minutos
+        - paragraph [ref=f2e34]: — unos 3 minutos de sueldo entero.
+        - paragraph [ref=f2e35]: = menos de 1 hora
+        - generic [ref=f2e36]:
+          - paragraph [ref=f2e37]: Cálculo de esfuerzo laboral, no de si deberías comprarlo.
+          - paragraph [ref=f2e38]: Nadie destina el 100 % del sueldo a una sola cosa.
+          - paragraph [ref=f2e39]: Esto asume que no comes ni pagas piso.
+      - region "Desglose" [ref=f2e40]:
+        - heading "Desglose" [level=2] [ref=f2e41]
+        - generic [ref=f2e42]:
+          - generic [ref=f2e43]:
+            - generic [ref=f2e44]: Jornadas de 8 h
+            - generic [ref=f2e45]: 0,0
+          - generic [ref=f2e46]:
+            - generic [ref=f2e47]: Horas de trabajo
+            - generic [ref=f2e48]: "0"
+          - generic [ref=f2e49]:
+            - generic [ref=f2e50]: Semanas
+            - generic [ref=f2e51]: 0,0
+          - generic [ref=f2e52]:
+            - generic [ref=f2e53]: Meses de sueldo entero
+            - generic [ref=f2e54]: 0,0
+          - generic [ref=f2e55]:
+            - generic [ref=f2e56]: Años de sueldo entero
+            - generic [ref=f2e57]: 0,0
+          - generic [ref=f2e58]:
+            - generic [ref=f2e59]: "% del año laboral real"
+            - generic [ref=f2e60]: 0,0%
+        - generic [ref=f2e61]:
+          - heading "La compra frente a tu año de sueldo" [level=2] [ref=f2e62]
+          - paragraph [ref=f2e63]: 1 barra llena = 12 meses de sueldo entero (1633 h reales al año). El relleno marca cuánto de ese año de sueldo se lleva esta compra.
+          - 'img "Barra: la compra ocupa el 0,0% de un año de sueldo entero." [ref=f2e64]'
+          - paragraph [ref=f2e65]: La compra ocupa el 0,0% de un año de sueldo entero.
+      - region "En unidades de tu día a día" [ref=f2e66]:
+        - heading "En unidades de tu día a día" [level=2] [ref=f2e67]
+        - generic [ref=f2e68]:
+          - generic [ref=f2e69]: menos de un café
+          - generic [ref=f2e79]: menos de un iPhone
+          - generic [ref=f2e87]: menos de un mes de alquiler
+          - generic [ref=f2e96]: menos de un menú del día
+          - generic [ref=f2e105]: menos de un tanque de gasolina
+          - generic [ref=f2e114]: equivale a 1 pan
+          - generic [ref=f2e123]: menos de un billete de cine
+          - generic [ref=f2e133]: menos de una caña
+      - region "El mismo precio, otros países" [ref=f2e144]:
+        - generic [ref=f2e145]:
+          - generic [ref=f2e146]:
+            - heading "El mismo precio, otros países" [level=2] [ref=f2e147]
+            - paragraph [ref=f2e148]: "Este precio (0,6 €) calculado con cada sueldo:"
+          - generic [ref=f2e149]:
+            - generic [ref=f2e150]: Añadir otro país
+            - combobox "Añadir otro país" [ref=f2e151]:
+              - option "Elige un país" [selected]
+              - option "Portugal"
+              - option "Francia"
+              - option "Alemania"
+              - option "Italia"
+              - option "Estados Unidos"
+              - option "México"
+              - option "Argentina"
+              - option "Colombia"
+              - option "Chile"
+              - option "Suiza"
+        - generic [ref=f2e152]:
+          - generic [ref=f2e153]:
+            - button "Quitar la tarjeta de Reino Unido" [ref=f2e154] [cursor=pointer]
+            - heading "Reino Unido" [level=3] [ref=f2e157]
+            - paragraph [ref=f2e158]: 2300 € · sueldo neto mensual
+            - paragraph [ref=f2e159]: 3 min
+            - paragraph [ref=f2e160]: de trabajo
+          - generic "Añade más países para comparar" [ref=f2e161]:
+            - paragraph [ref=f2e164]: Añade más países para comparar
+          - generic "Añade más países para comparar" [ref=f2e165]:
+            - paragraph [ref=f2e168]: Añade más países para comparar
+      - region "Mis datos" [ref=f2e169]:
+        - generic [ref=f2e170]:
+          - generic [ref=f2e175]:
+            - generic [ref=f2e176]:
+              - heading "El precio que tú pagas" [level=3] [ref=f2e177]
+              - generic [ref=f2e178]: precio de referencia
+            - paragraph [ref=f2e179]: "Si el tuyo es otro, escríbelo aquí: toda la página se recalcula al instante."
+          - generic [ref=f2e182]:
+            - generic [ref=f2e183]: Esta cosa cuesta
+            - generic [ref=f2e184]:
+              - generic [ref=f2e185]: €
+              - spinbutton "Esta cosa cuesta €" [ref=f2e186]: "0.6"
+        - group [ref=f2e187]:
+          - generic "Mis datos" [ref=f2e188] [cursor=pointer]
+        - generic [ref=f2e191]:
+          - generic [ref=f2e192]:
+            - generic [ref=f2e193]: Otro país
+            - combobox "Otro país" [ref=f2e194]:
+              - option "España" [disabled] [selected]
+              - option "España"
+              - option "Portugal"
+              - option "Francia"
+              - option "Alemania"
+              - option "Italia"
+              - option "Reino Unido"
+              - option "Estados Unidos"
+              - option "México"
+              - option "Argentina"
+              - option "Colombia"
+              - option "Chile"
+              - option "Suiza"
+          - button "Compartir" [ref=f2e197] [cursor=pointer]
+  - contentinfo [ref=f2e198]:
+    - generic [ref=f2e199]:
+      - generic [ref=f2e200]:
+        - generic [ref=f2e201]:
+          - link "Coste en tiempo" [ref=f2e202] [cursor=pointer]:
+            - /url: /
+          - link "Método" [ref=f2e203] [cursor=pointer]:
+            - /url: /metodo
+        - paragraph [ref=f2e204]: "Estimación educativa de esfuerzo laboral, no un consejo de compra. Salarios y precios son orientativos: sustitúyelos por tus cifras. El cálculo se hace en tu dispositivo; no guardamos tus datos."
+      - navigation "Todos los países" [ref=f2e205]:
+        - generic [ref=f2e206]:
+          - link "España" [ref=f2e207] [cursor=pointer]:
+            - /url: /espana
+          - link "Portugal" [ref=f2e208] [cursor=pointer]:
+            - /url: /portugal
+          - link "Francia" [ref=f2e209] [cursor=pointer]:
+            - /url: /francia
+          - link "Alemania" [ref=f2e210] [cursor=pointer]:
+            - /url: /alemania
+          - link "Italia" [ref=f2e211] [cursor=pointer]:
+            - /url: /italia
+          - link "Reino Unido" [ref=f2e212] [cursor=pointer]:
+            - /url: /reino-unido
+          - link "Estados Unidos" [ref=f2e213] [cursor=pointer]:
+            - /url: /estados-unidos
+          - link "México" [ref=f2e214] [cursor=pointer]:
+            - /url: /mexico
+          - link "Argentina" [ref=f2e215] [cursor=pointer]:
+            - /url: /argentina
+          - link "Colombia" [ref=f2e216] [cursor=pointer]:
+            - /url: /colombia
+          - link "Chile" [ref=f2e217] [cursor=pointer]:
+            - /url: /chile
+          - link "Suiza" [ref=f2e218] [cursor=pointer]:
+            - /url: /suiza
+  - generic [ref=f2e221]:
+    - button [ref=f2e222]
+    - button [ref=f2e228]
+    - button [ref=f2e232]
+    - button [ref=f2e237]

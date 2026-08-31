@@ -1,0 +1,104 @@
+- generic [active] [ref=f15e1]:
+  - banner [ref=f15e2]:
+    - link "Coste en tiempo" [ref=f15e3] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f15e4]:
+      - combobox "Cambiar país" [ref=f15e5] [cursor=pointer]:
+        - option "Elige tu país" [disabled] [selected]
+        - option "España"
+        - option "Portugal"
+        - option "Francia"
+        - option "Alemania"
+        - option "Italia"
+        - option "Reino Unido"
+        - option "Estados Unidos"
+        - option "México"
+        - option "Argentina"
+        - option "Colombia"
+        - option "Chile"
+        - option "Suiza"
+  - main [ref=f15e6]:
+    - generic [ref=f15e9]:
+      - generic [ref=f15e10]:
+        - heading "Esta cosa" [level=1] [ref=f15e11]
+        - paragraph [ref=f15e13]:
+          - generic [ref=f15e14]: España
+      - paragraph [ref=f15e15]: Escribe cuánto cuesta y te decimos cuánto tiempo de trabajo es.
+      - paragraph [ref=f15e16]: Cálculo de esfuerzo laboral, no de si deberías comprarlo.
+      - region "Mis datos" [ref=f15e17]:
+        - generic [ref=f15e18]:
+          - generic [ref=f15e23]:
+            - generic [ref=f15e24]:
+              - heading "El precio que tú pagas" [level=3] [ref=f15e25]
+              - generic [ref=f15e26]: precio de referencia
+            - paragraph [ref=f15e27]: "Si el tuyo es otro, escríbelo aquí: toda la página se recalcula al instante."
+          - generic [ref=f15e29]:
+            - generic [ref=f15e30]:
+              - generic [ref=f15e31]: Esta cosa cuesta
+              - generic [ref=f15e32]:
+                - generic [ref=f15e33]: €
+                - spinbutton "Esta cosa cuesta €" [ref=f15e34]
+            - generic [ref=f15e35]:
+              - generic [ref=f15e36]: Nombre (opcional)
+              - textbox "Nombre (opcional)" [ref=f15e37]:
+                - /placeholder: p. ej. Tesla Model 3
+        - group [ref=f15e38]:
+          - generic "Mis datos" [ref=f15e39] [cursor=pointer]
+        - generic [ref=f15e42]:
+          - generic [ref=f15e43]:
+            - generic [ref=f15e44]: Otro país
+            - combobox "Otro país" [ref=f15e45]:
+              - option "España" [disabled] [selected]
+              - option "España"
+              - option "Portugal"
+              - option "Francia"
+              - option "Alemania"
+              - option "Italia"
+              - option "Reino Unido"
+              - option "Estados Unidos"
+              - option "México"
+              - option "Argentina"
+              - option "Colombia"
+              - option "Chile"
+              - option "Suiza"
+          - button "Compartir" [ref=f15e48] [cursor=pointer]
+  - contentinfo [ref=f15e49]:
+    - generic [ref=f15e50]:
+      - generic [ref=f15e51]:
+        - generic [ref=f15e52]:
+          - link "Coste en tiempo" [ref=f15e53] [cursor=pointer]:
+            - /url: /
+          - link "Método" [ref=f15e54] [cursor=pointer]:
+            - /url: /metodo
+        - paragraph [ref=f15e55]: "Estimación educativa de esfuerzo laboral, no un consejo de compra. Salarios y precios son orientativos: sustitúyelos por tus cifras. El cálculo se hace en tu dispositivo; no guardamos tus datos."
+      - navigation "Todos los países" [ref=f15e56]:
+        - generic [ref=f15e57]:
+          - link "España" [ref=f15e58] [cursor=pointer]:
+            - /url: /espana
+          - link "Portugal" [ref=f15e59] [cursor=pointer]:
+            - /url: /portugal
+          - link "Francia" [ref=f15e60] [cursor=pointer]:
+            - /url: /francia
+          - link "Alemania" [ref=f15e61] [cursor=pointer]:
+            - /url: /alemania
+          - link "Italia" [ref=f15e62] [cursor=pointer]:
+            - /url: /italia
+          - link "Reino Unido" [ref=f15e63] [cursor=pointer]:
+            - /url: /reino-unido
+          - link "Estados Unidos" [ref=f15e64] [cursor=pointer]:
+            - /url: /estados-unidos
+          - link "México" [ref=f15e65] [cursor=pointer]:
+            - /url: /mexico
+          - link "Argentina" [ref=f15e66] [cursor=pointer]:
+            - /url: /argentina
+          - link "Colombia" [ref=f15e67] [cursor=pointer]:
+            - /url: /colombia
+          - link "Chile" [ref=f15e68] [cursor=pointer]:
+            - /url: /chile
+          - link "Suiza" [ref=f15e69] [cursor=pointer]:
+            - /url: /suiza
+  - generic [ref=f15e72]:
+    - button [ref=f15e73]
+    - button [ref=f15e79]
+    - button [ref=f15e83]
+    - button [ref=f15e91]

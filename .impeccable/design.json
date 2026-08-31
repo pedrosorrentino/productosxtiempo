@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-31",
+  "title": "Design System: Coste en tiempo",
+  "extensions": {
+    "colorMeta": {
+      "carbon-base": { "role": "neutral", "displayName": "Carbón base", "canonical": "#151a17", "tonalRamp": ["#0b0e0c", "#141a16", "#151a17", "#1c231f", "#28332d", "#3a4a41", "#54695e", "#aebbb2"] },
+      "carbon-plate": { "role": "neutral", "displayName": "Carbón placa", "canonical": "#1c231f", "tonalRamp": ["#0d100e", "#161c18", "#1c231f", "#28332d", "#3a4a41", "#54695e", "#7f9488", "#b4c0b7"] },
+      "carbon-line": { "role": "neutral", "displayName": "Carbón línea", "canonical": "#28332d", "tonalRamp": ["#111613", "#1c231f", "#28332d", "#39473f", "#4d5f55", "#66796e", "#8c9c92", "#c2ccc5"] },
+      "cream": { "role": "neutral", "displayName": "Crema dígito", "canonical": "#f2ead8", "tonalRamp": ["#1a1710", "#3a3426", "#5c5340", "#7f735a", "#a39377", "#c3b394", "#dccfae", "#f2ead8"] },
+      "cream-on-red": { "role": "neutral", "displayName": "Crema sobre rojo", "canonical": "#fff3ec", "tonalRamp": ["#241a15", "#463529", "#68503f", "#8a6c56", "#ad886d", "#cfa484", "#edc9ac", "#fff3ec"] },
+      "quote-amber": { "role": "primary", "displayName": "Ámbar de cotización", "canonical": "#ffb020", "tonalRamp": ["#241500", "#4d2c00", "#754300", "#9d5c00", "#c47500", "#e09400", "#ffb020", "#ffd27a"] },
+      "signal-red": { "role": "secondary", "displayName": "Rojo señal", "canonical": "#e8482e", "tonalRamp": ["#1f0602", "#450d05", "#6b1408", "#921c0b", "#b82610", "#d63518", "#e8482e", "#f28a76"] },
+      "phosphor": { "role": "tertiary", "displayName": "Verde fósforo", "canonical": "#3ec97e", "tonalRamp": ["#04140a", "#072b16", "#0b4423", "#0f5d30", "#12763d", "#15904b", "#3ec97e", "#8fe7b6"] },
+      "enamel-blue": { "role": "tertiary", "displayName": "Azul esmalte", "canonical": "#4aa3ff", "tonalRamp": ["#03101f", "#06203f", "#09305f", "#0c4180", "#0e51a0", "#1062c0", "#4aa3ff", "#9ccbff"] },
+      "enamel-pink": { "role": "tertiary", "displayName": "Rosa esmalte", "canonical": "#f26db6", "tonalRamp": ["#1f0817", "#420f31", "#65164b", "#881e65", "#ab267f", "#ce2f99", "#f26db6", "#f9b3d9"] },
+      "glyph-ink": { "role": "neutral", "displayName": "Tinta glifo", "canonical": "#14191d", "tonalRamp": ["#000000", "#0a0d0f", "#14191d", "#1f262b", "#2b343b", "#3a454e", "#57656f", "#8494a0"] },
+      "red-hover": { "role": "secondary", "displayName": "Rojo hover", "canonical": "#f25c42", "tonalRamp": ["#2a0a04", "#54130a", "#7e1d10", "#a82716", "#d2311c", "#f25c42", "#f67e66", "#faa093"] },
+      "alert-red": { "role": "secondary", "displayName": "Rojo alerta", "canonical": "#f2664f", "tonalRamp": ["#2c0b05", "#58160a", "#84210f", "#b02c15", "#dc381a", "#f2664f", "#f68a78", "#faad9f"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Señalización condensada", "purpose": "Todo lo que anuncia: marca, títulos, nombre de país, categorías, CTA. Siempre uppercase; 400 en placas, 700–800 en marca/CTA/dígitos." },
+      "quote": { "displayName": "Cifra héroe", "purpose": "Exclusiva del odómetro split-flap; única escala clamp(4.5rem,16vw,11rem) del sitio." },
+      "body": { "displayName": "Grotesco de cuerpo", "purpose": "Explica: subtítulos, contexto, avisos. Nunca cifras calculadas." },
+      "label": { "displayName": "Mono tabular", "purpose": "Cuenta: micro-etiquetas uppercase con tracking, ticker, sellos, etiquetas y dígitos de las celdas de magnitud, recuentos de anclas y toda cifra calculada (tabular-nums en columnas)." }
+    },
+    "shadows": [
+      { "name": "flap-fold", "value": "inset 0 -0.07em 0 rgba(0,0,0,0.22)", "purpose": "Pliegue inferior de la celda split-flap; la única sombra del sistema, mecánica y no de elevación." }
+    ],
+    "motion": [
+      { "name": "flap-roll", "value": "transform 0.85s cubic-bezier(0.22, 0.9, 0.28, 1); transition-delay 70ms por columna", "purpose": "El momento autoral: rodada única del odómetro de 0 al valor al montar." },
+      { "name": "ticker-loop", "value": "translateX(-50%) 42s linear infinite", "purpose": "Ambiente del ticker; se pausa al hover; anulado con reduced-motion." },
+      { "name": "live-pulse", "value": "1.6s ease-in-out infinite", "purpose": "Pulso del punto En vivo (opacidad 1→0.55, escala 1→0.8)." },
+      { "name": "hover-micro", "value": "120ms ease-out", "purpose": "Micro-estados de fila, flecha y CTA (fondo, desplazamiento 3px, translateY -1px)." },
+      { "name": "enamel-tilt", "value": "transform 160ms ease-out", "purpose": "Inclinación del esmalte de categoría al hover de fila: rotate(-6deg) scale(1.06)." },
+      { "name": "caret-turn", "value": "transform 160ms ease-out", "purpose": "Rotación del caret propio del details Mis datos: 90° al abrir, apagado con reduced-motion." },
+      { "name": "reduced-motion", "value": "none", "purpose": "@media (prefers-reduced-motion: reduce) anula ticker, pulso, transición del flap y todos los micro-estados; el valor queda estático." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Marca de marquesina",
+      "kind": "nav",
+      "refersTo": "typography.display",
+      "description": "Enlace de marca del tablero: signage 800 uppercase crema, hover ámbar.",
+      "html": "<a href=\"/\" class=\"ds-board-brand\">Coste en tiempo</a>",
+      "css": ".ds-board-brand { font-family: var(--font-signage, \"Big Shoulders Variable\", \"Arial Narrow\", sans-serif); font-variation-settings: \"wght\" 800; font-size: 1.75rem; line-height: 1; letter-spacing: 0.01em; color: #f2ead8; text-decoration: none; text-transform: uppercase; transition: color 120ms ease-out; } .ds-board-brand:hover { color: #ffb020; }"
+    },
+    {
+      "name": "Navlink chip",
+      "kind": "nav",
+      "refersTo": "components.button-ghost",
+      "description": "Chip de navegación mono uppercase con hairline; hover invierte a ámbar.",
+      "html": "<a href=\"/metodo\" class=\"ds-board-navlink\">Método</a>",
+      "css": ".ds-board-navlink { display: inline-block; font-family: var(--font-board-mono, \"Chivo Mono Variable\", ui-monospace, monospace); font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: #f2ead8; text-decoration: none; padding: 0.5rem 0.75rem; border: 1px solid #28332d; background: #151a17; transition: background 120ms ease-out, color 120ms ease-out, border-color 120ms ease-out; } .ds-board-navlink:hover { color: #151a17; background: #ffb020; border-color: #ffb020; } .ds-board-navlink:focus-visible { outline: 2px solid #ffb020; outline-offset: 2px; }"
+    },
+    {
+      "name": "Celda split-flap",
+      "kind": "custom",
+      "refersTo": "colors.cream",
+      "description": "Firma del sistema: dígito crema con costura, bisagra y pliegue; tira 0–9 en signage 700.",
+      "html": "<span class=\"ds-flap-cell\" role=\"img\" aria-label=\"4\"><span class=\"ds-flap-strip\"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span>",
+      "css": ".ds-flap-cell { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 0.72em; height: 1.18em; overflow: hidden; background: #f2ead8; color: #151a17; border-radius: 0.09em; box-shadow: inset 0 -0.07em 0 rgba(0,0,0,0.22); font-size: 8rem; } .ds-flap-cell::before { content: \"\"; position: absolute; inset: 0 0 50% 0; background: rgba(255,255,255,0.14); pointer-events: none; } .ds-flap-cell::after { content: \"\"; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(0,0,0,0.3); pointer-events: none; } .ds-flap-strip { position: absolute; inset: 0; display: flex; flex-direction: column; font-family: var(--font-signage, \"Big Shoulders Variable\", \"Arial Narrow\", sans-serif); font-variation-settings: \"wght\" 700; transform: translateY(-4.72em); } .ds-flap-strip > span { flex: 0 0 auto; height: 1.18em; line-height: 1.18; display: flex; align-items: center; justify-content: center; }"
+    },
+    {
+      "name": "Placa de tablero",
+      "kind": "card",
+      "refersTo": "colors.carbon-plate",
+      "description": "Panel esmaltado que alberga placa de operación, panel de cambio y estados vacíos.",
+      "html": "<div class=\"ds-board-plate\"><strong class=\"ds-plate-name\">España</strong> <span class=\"ds-board-stamp ds-stamp-detected\">detectado</span></div>",
+      "css": ".ds-board-plate { border: 1px solid #28332d; background: #1c231f; padding: 1.25rem; display: flex; align-items: center; gap: 0.75rem; } .ds-plate-name { font-family: var(--font-signage, \"Big Shoulders Variable\", \"Arial Narrow\", sans-serif); font-size: 2.25rem; text-transform: uppercase; line-height: 1; color: #f2ead8; font-weight: 400; } .ds-board-stamp { font-family: var(--font-board-mono, \"Chivo Mono Variable\", ui-monospace, monospace); font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.2rem 0.45rem; border: 1px solid currentColor; } .ds-stamp-detected { color: #3ec97e; }"
+    },
+    {
+      "name": "Fila de pizarra",
+      "kind": "custom",
+      "refersTo": "colors.quote-amber",
+      "description": "Enlace-fila de cotización: esmalte, nombre, minibarra, cifra ámbar y flecha que responde al hover.",
+      "html": "<a class=\"ds-board-row\" href=\"#\"><span class=\"ds-cat-icon ds-cat-transporte\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12l1.4-3.8A2 2 0 0 1 8.3 7h7.4a2 2 0 0 1 1.9 1.2L19 12\"/><rect x=\"3\" y=\"12\" width=\"18\" height=\"4\" rx=\"1\"/><circle cx=\"7\" cy=\"18.5\" r=\"1.5\"/><circle cx=\"17\" cy=\"18.5\" r=\"1.5\"/></svg></span><span class=\"ds-row-main\"><span class=\"ds-row-name\">Tesla Model 3</span><span class=\"ds-row-price\">33.365 €</span><span class=\"ds-row-bar\" aria-hidden=\"true\"><span class=\"ds-row-bar-fill\"></span></span></span><span class=\"ds-row-rate\"><span class=\"ds-row-value\">402</span><span class=\"ds-row-unit\">jornadas</span></span><span class=\"ds-row-arrow\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></span></a>",
+      "css": ".ds-board-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 0.75rem; padding: 0.6rem 0.875rem; border: 1px solid #28332d; background: #151a17; color: #f2ead8; text-decoration: none; transition: background 120ms ease-out; } .ds-board-row:hover { background: #1c231f; } .ds-board-row:hover .ds-row-arrow { transform: translateX(3px); color: #ffb020; } .ds-board-row:hover .ds-cat-icon { transform: rotate(-6deg) scale(1.06); } .ds-cat-icon { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; flex: none; border-radius: 0.25rem; border: 1px solid rgba(255,255,255,0.14); color: #14191d; transition: transform 160ms ease-out; } .ds-cat-transporte { background: #e8482e; } .ds-row-main { min-width: 0; } .ds-row-name { display: block; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ds-row-price { display: block; font-family: var(--font-board-mono, \"Chivo Mono Variable\", ui-monospace, monospace); font-size: 0.75rem; opacity: 0.75; } .ds-row-bar { display: block; height: 3px; margin-top: 0.375rem; background: #28332d; overflow: hidden; } .ds-row-bar-fill { display: block; height: 100%; width: 62%; background: #e8482e; } .ds-row-rate { text-align: right; } .ds-row-value { display: block; font-family: var(--font-board-mono, \"Chivo Mono Variable\", ui-monospace, monospace); font-size: 1.875rem; font-variant-numeric: tabular-nums; line-height: 1; color: #ffb020; } .ds-row-unit { display: block; font-family: var(--font-board-mono, \"Chivo Mono Variable\", ui-monospace, monospace); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.75; } .ds-row-arrow { color: #f2ead8; opacity: 0.55; transition: transform 120ms ease-out, color 120ms ease-out; } .ds-board-row:focus-visible { outline: 2px solid #ffb020; outline-offset: 2px; }"
+    },
+    {
+      "name": "Celda de magnitud",
+      "kind": "custom",
+      "refersTo": "components.board-cell--fill",
+      "description": "Celda de la retícula del marcador: la celda que manda va rellena de ámbar con dígitos en tinta; las secundarias, crema sobre carbón.",
+      "html": "<div class=\"ds-cell-grid\"><div class=\"ds-cell ds-cell-fill\"><span class=\"ds-cell-label\">Jornadas de 8 h</span><span class=\"ds-cell-value\">402</span></div><div class=\"ds-cell\"><span class=\"ds-cell-label\">Horas de trabajo</span><span class=\"ds-cell-value\">3.216</span></div><div class=\"ds-cell ds-cell-rate\"><span class=\"ds-cell-label\">% del año laboral real</span><span class=\"ds-cell-value\">19%</span></div></div>",
+      "css": ".ds-cell-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; } .ds-cell { border: 1px solid #28332d; background: #151a17; color: #f2ead8; padding: 0.875rem 1rem; } .ds-cell-fill { background: #ffb020; border-color: #ffb020; color: #14191d; } .ds-cell-rate { color: #ffb020; } .ds-cell-label { display: block; font-family: var(--font-board-mono, \"Chivo Mono Variable\", ui-monospace, monospace); font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.8; } .ds-cell-value { display: block; margin-top: 0.25rem; font-family: var(--font-board-mono, \"Chivo Mono Variable\", ui-monospace, monospace); font-size: 1.875rem; line-height: 1.25; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Banda de señal",
+      "kind": "custom",
+      "refersTo": "components.board-anchor",
+      "description": "Ancla del día a día en el marcador: esmalte pequeño, frase en cuerpo con recuento mono ámbar tabular y flecha decorativa.",
+      "html": "<div class=\"ds-anchor\"><span class=\"ds-anchor-icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 9h12v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z\"/><path d=\"M16 10h2a2.5 2.5 0 0 1 0 5h-2\"/><path d=\"M7.5 3.5v2M11 3.5v2M14.5 3.5v2\"/></svg></span><span class=\"ds-anchor-text\">equivale a <span class=\"ds-anchor-count\">2,4</span> cafés</span><span class=\"ds-anchor-arrow\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></span></div>",
+      "css": ".ds-anchor { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.75rem; padding: 0.5rem 0.875rem; border: 1px solid #28332d; background: #151a17; color: #f2ead8; } .ds-anchor-icon { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; flex: none; border-radius: 0.25rem; border: 1px solid rgba(255,255,255,0.14); background: #ffb020; color: #14191d; } .ds-anchor-text { font-weight: 500; min-width: 0; } .ds-anchor-count { font-family: var(--font-board-mono, \"Chivo Mono Variable\", ui-monospace, monospace); color: #ffb020; font-variant-numeric: tabular-nums; } .ds-anchor-arrow { color: #f2ead8; opacity: 0.55; }"
+    },
+    {
+      "name": "CTA rojo",
+      "kind": "button",
+      "refersTo": "components.cta-red",
+      "description": "Acción principal del tablero: signage 700 uppercase sobre rojo señal, hover lighten + lift.",
+      "html": "<a href=\"#\" class=\"ds-board-cta\">Ficha de España <span aria-hidden=\"true\">→</span></a>",
+      "css": ".ds-board-cta { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--font-signage, \"Big Shoulders Variable\", \"Arial Narrow\", sans-serif); font-variation-settings: \"wght\" 700; font-size: 1.375rem; text-transform: uppercase; letter-spacing: 0.02em; padding: 0.75rem 1.5rem; background: #e8482e; color: #fff3ec; border: 1px solid #e8482e; text-decoration: none; transition: background 120ms ease-out, transform 120ms ease-out; } .ds-board-cta:hover { background: #f25c42; transform: translateY(-1px); } .ds-board-cta:focus-visible { outline: 2px solid #ffb020; outline-offset: 2px; }"
+    },
+    {
+      "name": "Chip En vivo",
+      "kind": "chip",
+      "refersTo": "colors.phosphor",
+      "description": "Sello verde fósforo con punto pulsante: la marca de que el tablero cotiza ahora.",
+      "html": "<span class=\"ds-board-live\"><span class=\"ds-live-dot\" aria-hidden=\"true\"></span>En vivo</span>",
+      "css": ".ds-board-live { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.875rem; font-family: var(--font-board-mono, \"Chivo Mono Variable\", ui-monospace, monospace); font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: #3ec97e; background: #151a17; border: 1px solid #28332d; } .ds-live-dot { width: 8px; height: 8px; border-radius: 50%; background: #3ec97e; animation: ds-live-pulse 1.6s ease-in-out infinite; } @keyframes ds-live-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.55; transform: scale(0.8); } } @media (prefers-reduced-motion: reduce) { .ds-live-dot { animation: none; } }"
+    },
+    {
+      "name": "Campo de formulario",
+      "kind": "input",
+      "refersTo": "components.input-field",
+      "description": "Input del panel Tu tipo de cambio: carbón base, hairline, 44 px de alto, foco ámbar.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Neto al mes</span><input type=\"number\" inputmode=\"decimal\" class=\"ds-input\" placeholder=\"1845\" /></label>",
+      "css": ".ds-field { display: block; } .ds-field-label { display: block; margin-bottom: 0.25rem; font-family: var(--font-board-mono, \"Chivo Mono Variable\", ui-monospace, monospace); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: #f2ead8; opacity: 0.7; } .ds-input { width: 100%; min-height: 2.75rem; padding: 0.5rem 0.75rem; background: #151a17; color: #f2ead8; border: 1px solid #28332d; border-radius: 0.25rem; font-family: var(--font-board-mono, \"Chivo Mono Variable\", ui-monospace, monospace); } .ds-input::placeholder { color: #f2ead8; opacity: 0.5; } .ds-input:focus-visible { outline: 2px solid #ffb020; outline-offset: 2px; border-color: #ffb020; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Tablero de Cotizaciones",
+    "overview": "La portada es una chapa esmaltada de tablero de cambio: tu hora es la divisa y cada precio se publica cotizado en jornadas de trabajo. Las fichas de país y de producto son la misma chapa por la otra cara: la ficha de país cotiza la hora del país y repite la pizarra a escala local; la ficha de producto publica el resultado en gramática de marcador — placa de identidad, marcador gigante a flaps, retícula de magnitudes, bandas de anclas, placas gemelas y placa de acciones. Todo el sistema habla de mecánica expuesta — dígitos crema split-flap con costura y bisagra, ticker rodante, placa de operación con sellos — nunca de software pulido ni de calculadora con input héroe: la información ya está cotizada cuando llegas. La densidad es alta y el número es el héroe; el copy seco (cero moralina) va en la misma voz que la señalética.\n\nEl material es esmalte plano sobre carbón-verdoso: cero glow, cero gradiente, cero sombra de elevación. La profundidad no se finge con luz; se construye con hairlines de 1 px y un escalón tonal entre chapa base y placa. El color trabaja por oficio: ámbar para lo cotizado, rojo señal para la acción, verde fósforo para lo vivo, esmaltes de color para las categorías. Tres voces tipográficas: señalización condensada que anuncia, mono tabular que cuenta, grotesco que explica.",
+    "keyCharacteristics": [
+      "Mundo \"tablero\" aplicado a todo el sitio vía tema daisyUI board (data-theme=\"board\"); la portada y las fichas de país y producto (/{país}, /{país}/{producto}, /{país}/precio) están comprometidas con su vocabulario de componentes. /metodo y el 404 conservan estructura daisyUI genérica, pendientes de rediseño.",
+      "Cifra héroe a dígitos rodantes split-flap con rodada única al llegar (portada, hora del país, marcador de producto); ticker ambiente de productos con chip \"En vivo\".",
+      "Números siempre en mono tabular ámbar; la celda que manda de cada retícula lleva el ámbar como relleno con dígitos en tinta glifo; acción siempre en rojo señal; vida siempre en verde fósforo.",
+      "Iconografía de línea (trazo 2, un solo peso) sobre esmaltes cuadrados de color por categoría — también en las bandas de anclas del marcador.",
+      "Sin imágenes ni rasters en el build: tipografía autoalojada, SVG de línea y CSS."
+    ],
+    "rules": [
+      { "name": "La Regla del Ámbar Cotizado", "body": "El ámbar es la cotización y el foco, nada más. Si un elemento no es una cifra, el relleno de la celda que manda ni un anillo de foco, no es ámbar.", "section": "colors" },
+      { "name": "La Regla del Rojo Señal", "body": "El rojo es acción y puntuación — el CTA y los puntos del ticker — nunca un valor de datos.", "section": "colors" },
+      { "name": "La Regla del Esmalte Plano", "body": "Cero glow, cero gradiente, cero sombra de elevación. La única sombra permitida en todo el sistema es la mecánica de la celda flap (inset inferior que simula el pliegue del dígito).", "section": "colors" },
+      { "name": "La Regla de las Tres Voces", "body": "Big Shoulders anuncia, Chivo Mono cuenta, Chivo explica. Ninguna cifra va en la voz de cuerpo; ningún párrafo va en signage.", "section": "typography" },
+      { "name": "La Regla del Contador Tabular", "body": "Toda cifra calculada viaja en Chivo Mono; donde los números forman columna, tabular-nums.", "section": "typography" },
+      { "name": "La Regla del Borde como Profundidad", "body": "Nada se eleva; todo se delimita. Para separar o destacar: 1 px de #28332d o un escalón a #1c231f. La única sombra permitida es el pliegue del flap.", "section": "elevation" },
+      { "name": "La Regla de la Placa Cuadrada", "body": "Lo que parece señal troquelada (placas, filas, CTA, ticker) va a esquina viva; el radio de 4 px se reserva para controles que se tocan.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do cotizar toda cifra en Chivo Mono (ámbar si es el valor de una fila, del héroe o de una banda) y usar tabular-nums en columnas.",
+      "Do delimitar cada pieza nueva con hairline de 1 px #28332d y, si necesita fondo distinto, usar el escalón #1c231f sobre #151a17.",
+      "Do mantener los controles táctiles a ≥ 2.75 rem (44 px) de alto y el foco visible en ámbar (outline 2px, offset 2px).",
+      "Do dar a todo movimiento un apagado en @media (prefers-reduced-motion: reduce) — el patrón ya existe para ticker, pulso, flap, caret y micro-estados.",
+      "Do usar la voz signage en uppercase para todo lo que \"anuncia\" y dejar los números nunca en signage fuera del odómetro.",
+      "Do marcar estados con sellos .board-stamp (detectado/elección/datos propios/ref. España/precio de referencia/desfasado) en vez de inventar badges nuevos.",
+      "Do montar nuevas retículas con .board-cell: una sola celda ámbar por retícula (la que manda, relleno ámbar + tinta glifo), tasas con dígito ámbar, el resto crema sobre carbón.",
+      "Do usar unidades honestas con singular en las cotizaciones (\"1 minuto\", \"1 hora\", \"jornadas\") y \"menos de un X\" cuando el recuento cae por debajo de 1."
+    ],
+    "donts": [
+      "Don't usar gradientes, glow ni sombras de elevación; la única sombra legítima es el pliegue del flap.",
+      "Don't introducir una cuarta voz tipográfica ni usar el mono para párrafos o el grotesco para cifras.",
+      "Don't pintar datos en rojo señal: el rojo es acción (CTA) y puntuación; los datos van en ámbar, y las alertas de texto pequeño en el rojo alerta #f2664f.",
+      "Don't animar en bucle nada aparte del ticker y del pulso \"En vivo\"; la rodada del flap es única por llegada, y los micro-estados no pasan de 160 ms.",
+      "Don't radiar placas, filas, celdas o CTA (esquina viva); el radio de 4 px es solo de controles.",
+      "Don't tomar /metodo o el 404 como referencia de estilo: aún conservan estructura daisyUI genérica sobre el tema y están pendientes de rediseño al vocabulario del tablero (igual que la barra del año laboral, el skeleton y el toast dentro de las fichas)."
+    ]
+  }
+}

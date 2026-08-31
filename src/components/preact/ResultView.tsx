@@ -22,6 +22,7 @@ import {
   ageLine,
   ageLinePastRetirement,
   ageLineSmall,
+  anchorLessThanOne,
   anchorSingular,
   anchors as anchorsI18n,
   board,
@@ -51,6 +52,9 @@ export type AnchorTable = Record<
     alquiler: number | null;
     menu: number | null;
     gasolina: number | null;
+    pan: number | null;
+    cine: number | null;
+    cerveza: number | null;
   } | undefined
 >;
 
@@ -563,6 +567,7 @@ export default function ResultView({
       value: number | null;
       singular: string;
       phrase: (n: string) => string;
+      less?: string;
       color: string;
       path: JSX.Element;
     }> = [
@@ -635,6 +640,49 @@ export default function ResultView({
           </>
         ),
       },
+      {
+        key: "pan",
+        value: anchorRow.pan,
+        singular: anchorSingular.pan,
+        phrase: anchorsI18n.pan,
+        color: "#c9a86a",
+        path: (
+          <>
+            <path d="M4 11a8 4.5 0 0 1 16 0v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6z" />
+            <path d="M9.5 9 8 13.5M14 9l-1.5 4.5" />
+          </>
+        ),
+      },
+      {
+        key: "cine",
+        value: anchorRow.cine,
+        singular: anchorSingular.cine,
+        phrase: anchorsI18n.cine,
+        color: "#9a6bff",
+        path: (
+          <>
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="M7.5 5v14M16.5 5v14" />
+            <path d="M3 9.5h4.5M3 14.5h4.5M16.5 9.5H21M16.5 14.5H21" />
+          </>
+        ),
+      },
+      {
+        key: "cerveza",
+        value: anchorRow.cerveza,
+        singular: anchorSingular.cerveza,
+        phrase: anchorsI18n.cerveza,
+        less: anchorLessThanOne.cerveza,
+        color: "#e8722e",
+        path: (
+          <>
+            <path d="M6 8h9v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V8z" />
+            <path d="M15 10h2.5A2.5 2.5 0 0 1 20 12.5v2a2.5 2.5 0 0 1-2.5 2.5H15" />
+            <path d="M6.5 8a2.5 2.5 0 0 1 2.2-2.4 3.2 3.2 0 0 1 4.1.6A2.6 2.6 0 0 1 15 8" />
+            <path d="M9 12v6M12 12v6" />
+          </>
+        ),
+      },
     ];
     // Pulido Task 6 (C2): recuento < 1 → "menos de un {ancla}" (decisión
     // documentada): con 1 decimal, un café frente a un iPhone diría
@@ -650,7 +698,7 @@ export default function ResultView({
         count: count < 1 ? null : formatAnchorCount(count),
         text:
           count < 1
-            ? anchorsI18n.lessThanOne(e.singular)
+            ? e.less ?? anchorsI18n.lessThanOne(e.singular)
             : e.phrase(formatAnchorCount(count)),
       });
     }

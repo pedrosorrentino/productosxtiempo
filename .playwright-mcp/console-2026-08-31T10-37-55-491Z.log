@@ -1,0 +1,14 @@
+[ 2508049ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:4321/@vite/client:1736
+[ 2659108ms] [ERROR] Failed to load resource: net::ERR_EMPTY_RESPONSE @ http://localhost:4321/node_modules/.pnpm/@fontsource-variable+chivo-mono@5.3.0/node_modules/@fontsource-variable/chivo-mono/index.css:0
+[ 2659108ms] [ERROR] Failed to load resource: net::ERR_EMPTY_RESPONSE @ http://localhost:4321/node_modules/.pnpm/@fontsource-variable+chivo@5.3.0/node_modules/@fontsource-variable/chivo/index.css:0
+[ 2659108ms] [ERROR] Failed to load resource: net::ERR_EMPTY_RESPONSE @ http://localhost:4321/src/styles/global.css:0
+[ 2659108ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/node_modules/.pnpm/@fontsource-variable+big-shoulders@5.3.0/node_modules/@fontsource-variable/big-shoulders/files/big-shoulders-latin-wght-normal.woff2:0
+[ 2659113ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/node_modules/.pnpm/@fontsource-variable+chivo@5.3.0/node_modules/@fontsource-variable/chivo/files/chivo-latin-wght-normal.woff2:0
+[ 2659114ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/src/layouts/BaseLayout.astro?astro&type=script&index=0&lang.ts:0
+[ 2659114ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:0
+[ 2659114ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@id/astro:scripts/before-hydration.js:0
+[ 2659114ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@id/__x00__astro:toolbar:internal:0
+[ 2659121ms] Failed to fetch dynamically imported module: http://localhost:4321/@id/astro:scripts/before-hydration.js
+[ 2659122ms] Failed to fetch dynamically imported module: http://localhost:4321/@id/astro:scripts/before-hydration.js
+[ 2659122ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/favicon.ico:0
+[ 2659123ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/favicon.svg:0

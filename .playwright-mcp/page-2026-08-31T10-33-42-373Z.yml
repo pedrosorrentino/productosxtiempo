@@ -1,0 +1,306 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - link "Coste en tiempo" [ref=f1e3] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f1e4]:
+      - link "Método" [ref=f1e5] [cursor=pointer]:
+        - /url: /metodo
+  - main [ref=f1e6]:
+    - generic [ref=f1e7]:
+      - generic [ref=f1e8]:
+        - paragraph [ref=f1e9]: Operando con
+        - heading "España" [level=1] [ref=f1e10]
+        - paragraph [ref=f1e11]:
+          - generic [ref=f1e12]: Datos de 2026-08
+          - generic [ref=f1e13]: ·
+          - generic [ref=f1e14]: "Fuente: Referencia de producto (mediano neto orientativo). Sustituible por el usuario."
+      - 'region "Hora de referencia: 10,38 €" [ref=f1e15]':
+        - generic [ref=f1e16]:
+          - img "Hora de referencia 10,38 €" [ref=f1e17]:
+            - generic [ref=f1e19]:
+              - generic [ref=f1e20]: "0"
+              - generic [ref=f1e21]: "1"
+              - generic [ref=f1e22]: "2"
+              - generic [ref=f1e23]: "3"
+              - generic [ref=f1e24]: "4"
+              - generic [ref=f1e25]: "5"
+              - generic [ref=f1e26]: "6"
+              - generic [ref=f1e27]: "7"
+              - generic [ref=f1e28]: "8"
+              - generic [ref=f1e29]: "9"
+            - generic [ref=f1e31]:
+              - generic [ref=f1e32]: "0"
+              - generic [ref=f1e33]: "1"
+              - generic [ref=f1e34]: "2"
+              - generic [ref=f1e35]: "3"
+              - generic [ref=f1e36]: "4"
+              - generic [ref=f1e37]: "5"
+              - generic [ref=f1e38]: "6"
+              - generic [ref=f1e39]: "7"
+              - generic [ref=f1e40]: "8"
+              - generic [ref=f1e41]: "9"
+            - generic [ref=f1e42]: ","
+            - generic [ref=f1e44]:
+              - generic [ref=f1e45]: "0"
+              - generic [ref=f1e46]: "1"
+              - generic [ref=f1e47]: "2"
+              - generic [ref=f1e48]: "3"
+              - generic [ref=f1e49]: "4"
+              - generic [ref=f1e50]: "5"
+              - generic [ref=f1e51]: "6"
+              - generic [ref=f1e52]: "7"
+              - generic [ref=f1e53]: "8"
+              - generic [ref=f1e54]: "9"
+            - generic [ref=f1e56]:
+              - generic [ref=f1e57]: "0"
+              - generic [ref=f1e58]: "1"
+              - generic [ref=f1e59]: "2"
+              - generic [ref=f1e60]: "3"
+              - generic [ref=f1e61]: "4"
+              - generic [ref=f1e62]: "5"
+              - generic [ref=f1e63]: "6"
+              - generic [ref=f1e64]: "7"
+              - generic [ref=f1e65]: "8"
+              - generic [ref=f1e66]: "9"
+          - generic [ref=f1e67]: € / hora
+        - paragraph [ref=f1e68]: Sueldo de referencia de esta web, no tu nómina.
+        - generic [ref=f1e69]:
+          - generic [ref=f1e70]:
+            - generic [ref=f1e71]: Jornada semanal
+            - generic [ref=f1e72]: 40 h
+          - generic [ref=f1e73]:
+            - generic [ref=f1e74]: Jornada diaria
+            - generic [ref=f1e75]: 8 h
+          - generic [ref=f1e76]:
+            - generic [ref=f1e77]: Horas reales al año
+            - generic [ref=f1e78]: "1.633"
+      - generic [ref=f1e79]:
+        - region "Dato del país / mis datos" [ref=f1e80]:
+          - heading "Tu tipo de cambio" [level=2] [ref=f1e81]
+          - generic [ref=f1e84]:
+            - generic [ref=f1e85]:
+              - generic [ref=f1e86]: Neto al mes
+              - spinbutton "Neto al mes" [ref=f1e87]
+            - generic [ref=f1e88]:
+              - generic [ref=f1e89]: Horas a la semana
+              - spinbutton "Horas a la semana" [ref=f1e90]
+            - generic [ref=f1e91]:
+              - generic [ref=f1e92]: Ahorro al mes (opcional)
+              - spinbutton "Ahorro al mes (opcional)" [ref=f1e93]
+            - generic [ref=f1e94]:
+              - generic [ref=f1e95]: Tu edad (opcional, para el contexto de vida laboral)
+              - spinbutton "Tu edad (opcional, para el contexto de vida laboral)" [ref=f1e96]
+        - region "Esta cosa cuesta" [ref=f1e97]:
+          - heading "Esta cosa cuesta" [level=2] [ref=f1e98]
+          - paragraph [ref=f1e99]: Escribe cuánto cuesta y te decimos cuánto tiempo de trabajo es.
+          - generic [ref=f1e102]:
+            - generic [ref=f1e103]:
+              - generic [ref=f1e104]: Esta cosa cuesta
+              - generic [ref=f1e105]:
+                - generic [ref=f1e106]: €
+                - spinbutton "Esta cosa cuesta €" [ref=f1e107]
+            - generic [ref=f1e108]:
+              - generic [ref=f1e109]: Nombre (opcional)
+              - textbox "Nombre (opcional)" [ref=f1e110]:
+                - /placeholder: p. ej. Tesla Model 3
+            - button "Calcular en mi tiempo" [ref=f1e112] [cursor=pointer]
+      - region "La pizarra de España" [ref=f1e113]:
+        - heading "La pizarra de España" [level=2] [ref=f1e114]
+        - paragraph [ref=f1e115]: Todo el catálogo, cotizado en jornadas de 8 h.
+        - generic [ref=f1e116]:
+          - generic [ref=f1e117]:
+            - heading "Transporte" [level=3] [ref=f1e118]
+            - generic [ref=f1e126]:
+              - link "Abono transporte (mes) 55 € 55 €" [ref=f1e127] [cursor=pointer]:
+                - /url: /espana/abono-transporte
+                - generic [ref=f1e134]:
+                  - generic [ref=f1e135]: Abono transporte (mes)
+                  - generic [ref=f1e136]: 55 €
+                - generic [ref=f1e138]:
+                  - generic [ref=f1e139]: "55"
+                  - text: €
+              - link "Bici urbana 400 € 400 €" [ref=f1e143] [cursor=pointer]:
+                - /url: /espana/bici-urbana
+                - generic [ref=f1e150]:
+                  - generic [ref=f1e151]: Bici urbana
+                  - generic [ref=f1e152]: 400 €
+                - generic [ref=f1e154]:
+                  - generic [ref=f1e155]: "400"
+                  - text: €
+              - link "Dacia Sandero 14.000 € 14.000 €" [ref=f1e159] [cursor=pointer]:
+                - /url: /espana/dacia-sandero
+                - generic [ref=f1e166]:
+                  - generic [ref=f1e167]: Dacia Sandero
+                  - generic [ref=f1e168]: 14.000 €
+                - generic [ref=f1e170]:
+                  - generic [ref=f1e171]: "14.000"
+                  - text: €
+              - link "Coche compacto 22.000 € 22.000 €" [ref=f1e175] [cursor=pointer]:
+                - /url: /espana/coche-compacto
+                - generic [ref=f1e182]:
+                  - generic [ref=f1e183]: Coche compacto
+                  - generic [ref=f1e184]: 22.000 €
+                - generic [ref=f1e186]:
+                  - generic [ref=f1e187]: "22.000"
+                  - text: €
+              - link "Tesla Model 3 (acceso) 33.365 € 33.365 €" [ref=f1e191] [cursor=pointer]:
+                - /url: /espana/tesla-model-3
+                - generic [ref=f1e198]:
+                  - generic [ref=f1e199]: Tesla Model 3 (acceso)
+                  - generic [ref=f1e200]: 33.365 €
+                - generic [ref=f1e202]:
+                  - generic [ref=f1e203]: "33.365"
+                  - text: €
+          - generic [ref=f1e207]:
+            - heading "Tecnología" [level=3] [ref=f1e208]
+            - generic [ref=f1e213]:
+              - link "iPhone (gama alta) 1000 € 1000 €" [ref=f1e214] [cursor=pointer]:
+                - /url: /espana/iphone
+                - generic [ref=f1e218]:
+                  - generic [ref=f1e219]: iPhone (gama alta)
+                  - generic [ref=f1e220]: 1000 €
+                - generic [ref=f1e222]:
+                  - generic [ref=f1e223]: "1000"
+                  - text: €
+              - link "Portátil normal 900 € 900 €" [ref=f1e227] [cursor=pointer]:
+                - /url: /espana/portatil
+                - generic [ref=f1e231]:
+                  - generic [ref=f1e232]: Portátil normal
+                  - generic [ref=f1e233]: 900 €
+                - generic [ref=f1e235]:
+                  - generic [ref=f1e236]: "900"
+                  - text: €
+              - link "Televisor 500 € 500 €" [ref=f1e240] [cursor=pointer]:
+                - /url: /espana/televisor
+                - generic [ref=f1e244]:
+                  - generic [ref=f1e245]: Televisor
+                  - generic [ref=f1e246]: 500 €
+                - generic [ref=f1e248]:
+                  - generic [ref=f1e249]: "500"
+                  - text: €
+              - link "Auriculares 250 € 250 €" [ref=f1e253] [cursor=pointer]:
+                - /url: /espana/auriculares
+                - generic [ref=f1e257]:
+                  - generic [ref=f1e258]: Auriculares
+                  - generic [ref=f1e259]: 250 €
+                - generic [ref=f1e261]:
+                  - generic [ref=f1e262]: "250"
+                  - text: €
+          - generic [ref=f1e266]:
+            - heading "Vivienda" [level=3] [ref=f1e267]
+            - generic [ref=f1e273]:
+              - link "Habitación en piso compartido (mes) 450 € 450 €" [ref=f1e274] [cursor=pointer]:
+                - /url: /espana/habitacion-alquiler
+                - generic [ref=f1e279]:
+                  - generic [ref=f1e280]: Habitación en piso compartido (mes)
+                  - generic [ref=f1e281]: 450 €
+                - generic [ref=f1e283]:
+                  - generic [ref=f1e284]: "450"
+                  - text: €
+              - link "Alquiler piso 1-2 hab ciudad (mes) 900 € 900 €" [ref=f1e288] [cursor=pointer]:
+                - /url: /espana/alquiler-piso
+                - generic [ref=f1e293]:
+                  - generic [ref=f1e294]: Alquiler piso 1-2 hab ciudad (mes)
+                  - generic [ref=f1e295]: 900 €
+                - generic [ref=f1e297]:
+                  - generic [ref=f1e298]: "900"
+                  - text: €
+              - link "Entrada piso (20 %) tipo 40.000 € 40.000 €" [ref=f1e302] [cursor=pointer]:
+                - /url: /espana/entrada-piso
+                - generic [ref=f1e307]:
+                  - generic [ref=f1e308]: Entrada piso (20 %) tipo
+                  - generic [ref=f1e309]: 40.000 €
+                - generic [ref=f1e311]:
+                  - generic [ref=f1e312]: "40.000"
+                  - text: €
+          - generic [ref=f1e316]:
+            - heading "Vida" [level=3] [ref=f1e317]
+            - generic [ref=f1e323]:
+              - link "Viaje 7 días 1200 € 1200 €" [ref=f1e324] [cursor=pointer]:
+                - /url: /espana/viaje-7-dias
+                - generic [ref=f1e329]:
+                  - generic [ref=f1e330]: Viaje 7 días
+                  - generic [ref=f1e331]: 1200 €
+                - generic [ref=f1e333]:
+                  - generic [ref=f1e334]: "1200"
+                  - text: €
+              - link "Boda sencilla 8000 € 8000 €" [ref=f1e338] [cursor=pointer]:
+                - /url: /espana/boda
+                - generic [ref=f1e343]:
+                  - generic [ref=f1e344]: Boda sencilla
+                  - generic [ref=f1e345]: 8000 €
+                - generic [ref=f1e347]:
+                  - generic [ref=f1e348]: "8000"
+                  - text: €
+              - link "Máster 8000 € 8000 €" [ref=f1e352] [cursor=pointer]:
+                - /url: /espana/master
+                - generic [ref=f1e357]:
+                  - generic [ref=f1e358]: Máster
+                  - generic [ref=f1e359]: 8000 €
+                - generic [ref=f1e361]:
+                  - generic [ref=f1e362]: "8000"
+                  - text: €
+              - link "Reformar cocina 12.000 € 12.000 €" [ref=f1e366] [cursor=pointer]:
+                - /url: /espana/reformar-cocina
+                - generic [ref=f1e371]:
+                  - generic [ref=f1e372]: Reformar cocina
+                  - generic [ref=f1e373]: 12.000 €
+                - generic [ref=f1e375]:
+                  - generic [ref=f1e376]: "12.000"
+                  - text: €
+          - generic [ref=f1e380]:
+            - heading "Día a día" [level=3] [ref=f1e381]
+            - generic [ref=f1e388]:
+              - link "Café en bar 1,5 € 1,5 €" [ref=f1e389] [cursor=pointer]:
+                - /url: /espana/cafe
+                - generic [ref=f1e395]:
+                  - generic [ref=f1e396]: Café en bar
+                  - generic [ref=f1e397]: 1,5 €
+                - generic [ref=f1e399]:
+                  - generic [ref=f1e400]: 1,5
+                  - text: €
+              - link "Menú del día 14 € 14 €" [ref=f1e404] [cursor=pointer]:
+                - /url: /espana/menu-del-dia
+                - generic [ref=f1e410]:
+                  - generic [ref=f1e411]: Menú del día
+                  - generic [ref=f1e412]: 14 €
+                - generic [ref=f1e414]:
+                  - generic [ref=f1e415]: "14"
+                  - text: €
+              - link "Cesta de la compra semanal 80 € 80 €" [ref=f1e419] [cursor=pointer]:
+                - /url: /espana/cesta-semanal
+                - generic [ref=f1e425]:
+                  - generic [ref=f1e426]: Cesta de la compra semanal
+                  - generic [ref=f1e427]: 80 €
+                - generic [ref=f1e429]:
+                  - generic [ref=f1e430]: "80"
+                  - text: €
+              - link "Netflix (año) 130 € 130 €" [ref=f1e434] [cursor=pointer]:
+                - /url: /espana/netflix-anual
+                - generic [ref=f1e440]:
+                  - generic [ref=f1e441]: Netflix (año)
+                  - generic [ref=f1e442]: 130 €
+                - generic [ref=f1e444]:
+                  - generic [ref=f1e445]: "130"
+                  - text: €
+              - link "Gimnasio (año) 360 € 360 €" [ref=f1e449] [cursor=pointer]:
+                - /url: /espana/gimnasio-anual
+                - generic [ref=f1e455]:
+                  - generic [ref=f1e456]: Gimnasio (año)
+                  - generic [ref=f1e457]: 360 €
+                - generic [ref=f1e459]:
+                  - generic [ref=f1e460]: "360"
+                  - text: €
+      - paragraph [ref=f1e464]:
+        - link "Método" [ref=f1e465] [cursor=pointer]:
+          - /url: /metodo
+  - contentinfo [ref=f1e466]:
+    - navigation [ref=f1e467]:
+      - link "Método" [ref=f1e468] [cursor=pointer]:
+        - /url: /metodo
+    - generic [ref=f1e469]:
+      - paragraph [ref=f1e470]: Esta web ofrece una estimación educativa de esfuerzo laboral.
+      - paragraph [ref=f1e471]: No es un consejo de compra, ahorro ni inversión.
+      - paragraph [ref=f1e472]: Los salarios y precios son aproximados y pueden estar desactualizados.
+      - paragraph [ref=f1e473]: Tú puedes y debes sustituirlos por tus cifras reales.
+      - paragraph [ref=f1e474]: El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.

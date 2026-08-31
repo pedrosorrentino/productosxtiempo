@@ -1,0 +1,258 @@
+- generic [ref=f7e1]:
+  - banner [ref=f7e2]:
+    - generic [ref=f7e3]:
+      - link "Coste en tiempo" [ref=f7e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f7e6]:
+        - list [ref=f7e7]:
+          - listitem [ref=f7e8]:
+            - link "Método" [ref=f7e9] [cursor=pointer]:
+              - /url: /metodo
+  - main [ref=f7e10]:
+    - generic [ref=f7e11]:
+      - heading "Argentina" [level=1] [ref=f7e12]
+      - alert [ref=f7e13]:
+        - generic [ref=f7e14]:
+          - heading "Este país aún no tiene sueldo de referencia" [level=2] [ref=f7e15]
+          - paragraph [ref=f7e16]: Pon tu sueldo y el precio, y lo calculamos igual.
+      - generic [ref=f7e18]:
+        - generic [ref=f7e19]: Jornada semanal
+        - generic [ref=f7e20]: 40 h
+        - generic [ref=f7e21]: "Jornada diaria: 8 h"
+      - generic [ref=f7e22]:
+        - checkbox "Dato del país / mis datos" [active] [ref=f7e23] [cursor=pointer]
+        - generic [ref=f7e24] [cursor=pointer]: Dato del país / mis datos
+      - generic [ref=f7e42]:
+        - generic [ref=f7e43]:
+          - generic [ref=f7e44]: Esta cosa cuesta
+          - generic [ref=f7e45]:
+            - generic [ref=f7e46]: $
+            - spinbutton "Esta cosa cuesta $" [ref=f7e47]
+        - generic [ref=f7e48]:
+          - generic [ref=f7e49]: Nombre (opcional)
+          - textbox "Nombre (opcional)" [ref=f7e50]:
+            - /placeholder: p. ej. Tesla Model 3
+        - button "Calcular en mi tiempo" [ref=f7e52] [cursor=pointer]
+      - heading "Catálogo" [level=2] [ref=f7e53]
+      - generic [ref=f7e54]:
+        - heading "Vivienda" [level=3] [ref=f7e55]
+        - generic [ref=f7e56]:
+          - generic [ref=f7e58]:
+            - heading [level=4] [ref=f7e59]:
+              - link "Habitación (mes)" [ref=f7e60] [cursor=pointer]:
+                - /url: /argentina/habitacion-alquiler
+            - paragraph [ref=f7e61]: Habitación en piso compartido (mes)
+            - generic [ref=f7e62]:
+              - generic [ref=f7e63]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e64] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Habitaci%C3%B3n%20en%20piso%20compartido%20(mes)
+          - generic [ref=f7e66]:
+            - heading [level=4] [ref=f7e67]:
+              - link "Alquiler piso (mes)" [ref=f7e68] [cursor=pointer]:
+                - /url: /argentina/alquiler-piso
+            - paragraph [ref=f7e69]: Alquiler piso 1-2 hab ciudad (mes)
+            - generic [ref=f7e70]:
+              - generic [ref=f7e71]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e72] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Alquiler%20piso%201-2%20hab%20ciudad%20(mes)
+          - generic [ref=f7e74]:
+            - heading [level=4] [ref=f7e75]:
+              - link "Entrada piso" [ref=f7e76] [cursor=pointer]:
+                - /url: /argentina/entrada-piso
+            - paragraph [ref=f7e77]: Entrada piso (20 %) tipo
+            - generic [ref=f7e78]:
+              - generic [ref=f7e79]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e80] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Entrada%20piso%20(20%20%25)%20tipo
+      - generic [ref=f7e81]:
+        - heading "Transporte" [level=3] [ref=f7e82]
+        - generic [ref=f7e83]:
+          - generic [ref=f7e85]:
+            - heading [level=4] [ref=f7e86]:
+              - link "Abono transporte" [ref=f7e87] [cursor=pointer]:
+                - /url: /argentina/abono-transporte
+            - paragraph [ref=f7e88]: Abono transporte (mes)
+            - generic [ref=f7e89]:
+              - generic [ref=f7e90]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e91] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Abono%20transporte%20(mes)
+          - generic [ref=f7e93]:
+            - heading [level=4] [ref=f7e94]:
+              - link "Bici urbana" [ref=f7e95] [cursor=pointer]:
+                - /url: /argentina/bici-urbana
+            - paragraph [ref=f7e96]: Bici urbana
+            - generic [ref=f7e97]:
+              - generic [ref=f7e98]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e99] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Bici%20urbana
+          - generic [ref=f7e101]:
+            - heading [level=4] [ref=f7e102]:
+              - link "Sandero" [ref=f7e103] [cursor=pointer]:
+                - /url: /argentina/dacia-sandero
+            - paragraph [ref=f7e104]: Dacia Sandero
+            - generic [ref=f7e105]:
+              - generic [ref=f7e106]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e107] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Dacia%20Sandero
+          - generic [ref=f7e109]:
+            - heading [level=4] [ref=f7e110]:
+              - link "Coche compacto" [ref=f7e111] [cursor=pointer]:
+                - /url: /argentina/coche-compacto
+            - paragraph [ref=f7e112]: Coche compacto
+            - generic [ref=f7e113]:
+              - generic [ref=f7e114]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e115] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Coche%20compacto
+          - generic [ref=f7e117]:
+            - heading [level=4] [ref=f7e118]:
+              - link "Tesla Model 3" [ref=f7e119] [cursor=pointer]:
+                - /url: /argentina/tesla-model-3
+            - paragraph [ref=f7e120]: Tesla Model 3 (acceso)
+            - generic [ref=f7e121]:
+              - generic [ref=f7e122]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e123] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Tesla%20Model%203%20(acceso)
+      - generic [ref=f7e124]:
+        - heading "Tecnología" [level=3] [ref=f7e125]
+        - generic [ref=f7e126]:
+          - generic [ref=f7e128]:
+            - heading [level=4] [ref=f7e129]:
+              - link "iPhone" [ref=f7e130] [cursor=pointer]:
+                - /url: /argentina/iphone
+            - paragraph [ref=f7e131]: iPhone (gama alta)
+            - generic [ref=f7e132]:
+              - generic [ref=f7e133]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e134] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=iPhone%20(gama%20alta)
+          - generic [ref=f7e136]:
+            - heading [level=4] [ref=f7e137]:
+              - link "Portátil" [ref=f7e138] [cursor=pointer]:
+                - /url: /argentina/portatil
+            - paragraph [ref=f7e139]: Portátil normal
+            - generic [ref=f7e140]:
+              - generic [ref=f7e141]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e142] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Port%C3%A1til%20normal
+          - generic [ref=f7e144]:
+            - heading [level=4] [ref=f7e145]:
+              - link "Televisor" [ref=f7e146] [cursor=pointer]:
+                - /url: /argentina/televisor
+            - paragraph [ref=f7e147]: Televisor
+            - generic [ref=f7e148]:
+              - generic [ref=f7e149]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e150] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Televisor
+          - generic [ref=f7e152]:
+            - heading [level=4] [ref=f7e153]:
+              - link "Auriculares" [ref=f7e154] [cursor=pointer]:
+                - /url: /argentina/auriculares
+            - paragraph [ref=f7e155]: Auriculares
+            - generic [ref=f7e156]:
+              - generic [ref=f7e157]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e158] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Auriculares
+      - generic [ref=f7e159]:
+        - heading "Día a día" [level=3] [ref=f7e160]
+        - generic [ref=f7e161]:
+          - generic [ref=f7e163]:
+            - heading [level=4] [ref=f7e164]:
+              - link "Café" [ref=f7e165] [cursor=pointer]:
+                - /url: /argentina/cafe
+            - paragraph [ref=f7e166]: Café en bar
+            - generic [ref=f7e167]:
+              - generic [ref=f7e168]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e169] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Caf%C3%A9%20en%20bar
+          - generic [ref=f7e171]:
+            - heading [level=4] [ref=f7e172]:
+              - link "Menú del día" [ref=f7e173] [cursor=pointer]:
+                - /url: /argentina/menu-del-dia
+            - paragraph [ref=f7e174]: Menú del día
+            - generic [ref=f7e175]:
+              - generic [ref=f7e176]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e177] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Men%C3%BA%20del%20d%C3%ADa
+          - generic [ref=f7e179]:
+            - heading [level=4] [ref=f7e180]:
+              - link "Cesta semanal" [ref=f7e181] [cursor=pointer]:
+                - /url: /argentina/cesta-semanal
+            - paragraph [ref=f7e182]: Cesta de la compra semanal
+            - generic [ref=f7e183]:
+              - generic [ref=f7e184]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e185] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Cesta%20de%20la%20compra%20semanal
+          - generic [ref=f7e187]:
+            - heading [level=4] [ref=f7e188]:
+              - link "Netflix (año)" [ref=f7e189] [cursor=pointer]:
+                - /url: /argentina/netflix-anual
+            - paragraph [ref=f7e190]: Netflix (año)
+            - generic [ref=f7e191]:
+              - generic [ref=f7e192]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e193] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Netflix%20(a%C3%B1o)
+          - generic [ref=f7e195]:
+            - heading [level=4] [ref=f7e196]:
+              - link "Gimnasio (año)" [ref=f7e197] [cursor=pointer]:
+                - /url: /argentina/gimnasio-anual
+            - paragraph [ref=f7e198]: Gimnasio (año)
+            - generic [ref=f7e199]:
+              - generic [ref=f7e200]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e201] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Gimnasio%20(a%C3%B1o)
+      - generic [ref=f7e202]:
+        - heading "Vida" [level=3] [ref=f7e203]
+        - generic [ref=f7e204]:
+          - generic [ref=f7e206]:
+            - heading [level=4] [ref=f7e207]:
+              - link "Viaje 7 días" [ref=f7e208] [cursor=pointer]:
+                - /url: /argentina/viaje-7-dias
+            - paragraph [ref=f7e209]: Viaje 7 días
+            - generic [ref=f7e210]:
+              - generic [ref=f7e211]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e212] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Viaje%207%20d%C3%ADas
+          - generic [ref=f7e214]:
+            - heading [level=4] [ref=f7e215]:
+              - link "Boda" [ref=f7e216] [cursor=pointer]:
+                - /url: /argentina/boda
+            - paragraph [ref=f7e217]: Boda sencilla
+            - generic [ref=f7e218]:
+              - generic [ref=f7e219]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e220] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Boda%20sencilla
+          - generic [ref=f7e222]:
+            - heading [level=4] [ref=f7e223]:
+              - link "Máster" [ref=f7e224] [cursor=pointer]:
+                - /url: /argentina/master
+            - paragraph [ref=f7e225]: Máster
+            - generic [ref=f7e226]:
+              - generic [ref=f7e227]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e228] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=M%C3%A1ster
+          - generic [ref=f7e230]:
+            - heading [level=4] [ref=f7e231]:
+              - link "Reforma cocina" [ref=f7e232] [cursor=pointer]:
+                - /url: /argentina/reformar-cocina
+            - paragraph [ref=f7e233]: Reformar cocina
+            - generic [ref=f7e234]:
+              - generic [ref=f7e235]: sin precio local
+              - link "pon el precio en tu moneda" [ref=f7e236] [cursor=pointer]:
+                - /url: /argentina/precio?nombre=Reformar%20cocina
+      - paragraph [ref=f7e237]:
+        - link "Método" [ref=f7e238] [cursor=pointer]:
+          - /url: /metodo
+  - contentinfo [ref=f7e239]:
+    - navigation [ref=f7e240]:
+      - link "Método" [ref=f7e241] [cursor=pointer]:
+        - /url: /metodo
+    - generic [ref=f7e242]:
+      - paragraph [ref=f7e243]: Esta web ofrece una estimación educativa de esfuerzo laboral.
+      - paragraph [ref=f7e244]: No es un consejo de compra, ahorro ni inversión.
+      - paragraph [ref=f7e245]: Los salarios y precios son aproximados y pueden estar desactualizados.
+      - paragraph [ref=f7e246]: Tú puedes y debes sustituirlos por tus cifras reales.
+      - paragraph [ref=f7e247]: El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.
+  - generic [ref=f7e250]:
+    - button [ref=f7e251]
+    - button [ref=f7e257]
+    - button [ref=f7e261]
+    - button [ref=f7e266]

@@ -1,0 +1,201 @@
+- generic [active] [ref=f17e1]:
+  - banner [ref=f17e2]:
+    - link "Coste en tiempo" [ref=f17e3] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f17e4]:
+      - combobox "Cambiar país" [ref=f17e5] [cursor=pointer]:
+        - option "Elige tu país" [disabled] [selected]
+        - option "España"
+        - option "Portugal"
+        - option "Francia"
+        - option "Alemania"
+        - option "Italia"
+        - option "Reino Unido"
+        - option "Estados Unidos"
+        - option "México"
+        - option "Argentina"
+        - option "Colombia"
+        - option "Chile"
+        - option "Suiza"
+  - main [ref=f17e6]:
+    - generic [ref=f17e9]:
+      - generic [ref=f17e10]:
+        - heading "Esta cosa" [level=1] [ref=f17e11]
+        - paragraph [ref=f17e13]:
+          - generic [ref=f17e14]: 500 €
+          - generic [ref=f17e15]: ·
+          - generic [ref=f17e16]: España
+      - region "4,9 jornadas de 8 h" [ref=f17e17]:
+        - generic [ref=f17e18]:
+          - img "4,9 jornadas de 8 h" [ref=f17e19]:
+            - generic [ref=f17e21]:
+              - generic [ref=f17e22]: "0"
+              - generic [ref=f17e23]: "1"
+              - generic [ref=f17e24]: "2"
+              - generic [ref=f17e25]: "3"
+              - generic [ref=f17e26]: "4"
+              - generic [ref=f17e27]: "5"
+              - generic [ref=f17e28]: "6"
+              - generic [ref=f17e29]: "7"
+              - generic [ref=f17e30]: "8"
+              - generic [ref=f17e31]: "9"
+            - generic [ref=f17e32]: ","
+            - generic [ref=f17e34]:
+              - generic [ref=f17e35]: "0"
+              - generic [ref=f17e36]: "1"
+              - generic [ref=f17e37]: "2"
+              - generic [ref=f17e38]: "3"
+              - generic [ref=f17e39]: "4"
+              - generic [ref=f17e40]: "5"
+              - generic [ref=f17e41]: "6"
+              - generic [ref=f17e42]: "7"
+              - generic [ref=f17e43]: "8"
+              - generic [ref=f17e44]: "9"
+          - generic [ref=f17e45]: jornadas de 8 h
+        - paragraph [ref=f17e46]: — 4,9 jornadas de sueldo entero.
+        - paragraph [ref=f17e47]: = 0,2 meses de sueldo entero
+        - generic [ref=f17e48]:
+          - paragraph [ref=f17e49]: Cálculo de esfuerzo laboral, no de si deberías comprarlo.
+          - paragraph [ref=f17e50]: Nadie destina el 100 % del sueldo a una sola cosa.
+          - paragraph [ref=f17e51]: Esto asume que no comes ni pagas piso.
+      - region "Desglose" [ref=f17e52]:
+        - heading "Desglose" [level=2] [ref=f17e53]
+        - generic [ref=f17e54]:
+          - generic [ref=f17e55]:
+            - generic [ref=f17e56]: Jornadas de 8 h
+            - generic [ref=f17e57]: 4,9
+          - generic [ref=f17e58]:
+            - generic [ref=f17e59]: Horas de trabajo
+            - generic [ref=f17e60]: "39"
+          - generic [ref=f17e61]:
+            - generic [ref=f17e62]: Semanas
+            - generic [ref=f17e63]: 1,0
+          - generic [ref=f17e64]:
+            - generic [ref=f17e65]: Meses de sueldo entero
+            - generic [ref=f17e66]: 0,2
+          - generic [ref=f17e67]:
+            - generic [ref=f17e68]: Años de sueldo entero
+            - generic [ref=f17e69]: 0,0
+          - generic [ref=f17e70]:
+            - generic [ref=f17e71]: "% del año laboral real"
+            - generic [ref=f17e72]: 2%
+        - generic [ref=f17e73]:
+          - heading "La compra frente a tu año de sueldo" [level=2] [ref=f17e74]
+          - paragraph [ref=f17e75]: 1 barra llena = 12 meses de sueldo entero (1633 h reales al año). El relleno marca cuánto de ese año de sueldo se lleva esta compra.
+          - 'img "Barra: la compra ocupa el 1,9% de un año de sueldo entero." [ref=f17e76]'
+          - paragraph [ref=f17e78]: La compra ocupa el 1,9% de un año de sueldo entero.
+      - region "En unidades de tu día a día" [ref=f17e79]:
+        - heading "En unidades de tu día a día" [level=2] [ref=f17e80]
+        - generic [ref=f17e81]:
+          - generic [ref=f17e82]: equivale a 333 cafés
+          - generic [ref=f17e92]: menos de un iPhone
+          - generic [ref=f17e100]: menos de un mes de alquiler
+          - generic [ref=f17e109]: equivale a 36 menús del día
+          - generic [ref=f17e118]: equivale a 303 tanques de gasolina
+      - region "El mismo precio, otros países" [ref=f17e127]:
+        - generic [ref=f17e128]:
+          - generic [ref=f17e129]:
+            - heading "El mismo precio, otros países" [level=2] [ref=f17e130]
+            - paragraph [ref=f17e131]: "Este precio (500 €) calculado con cada sueldo:"
+          - generic [ref=f17e132]:
+            - generic [ref=f17e133]: Añadir otro país
+            - combobox "Añadir otro país" [ref=f17e134]:
+              - option "Elige un país" [selected]
+              - option "Francia"
+              - option "Alemania"
+              - option "Italia"
+              - option "Reino Unido"
+              - option "Estados Unidos"
+              - option "México"
+              - option "Argentina"
+              - option "Colombia"
+              - option "Chile"
+              - option "Suiza"
+        - generic [ref=f17e135]:
+          - generic [ref=f17e136]:
+            - button "Quitar la tarjeta de Portugal" [ref=f17e137] [cursor=pointer]
+            - heading "Portugal" [level=3] [ref=f17e140]
+            - paragraph [ref=f17e141]: 1100 € · sueldo neto mensual
+            - paragraph [ref=f17e142]: 79 h
+            - paragraph [ref=f17e143]: 9,8 jornadas de 8 h
+          - generic "Añade más países para comparar" [ref=f17e144]:
+            - paragraph [ref=f17e147]: Añade más países para comparar
+          - generic "Añade más países para comparar" [ref=f17e148]:
+            - paragraph [ref=f17e151]: Añade más países para comparar
+      - region "Mis datos" [ref=f17e152]:
+        - generic [ref=f17e153]:
+          - generic [ref=f17e158]:
+            - generic [ref=f17e159]:
+              - heading "El precio que tú pagas" [level=3] [ref=f17e160]
+              - generic [ref=f17e161]: tu precio en uso
+            - paragraph [ref=f17e162]: "Si el tuyo es otro, escríbelo aquí: toda la página se recalcula al instante."
+          - generic [ref=f17e164]:
+            - generic [ref=f17e165]:
+              - generic [ref=f17e166]: Esta cosa cuesta
+              - generic [ref=f17e167]:
+                - generic [ref=f17e168]: €
+                - spinbutton "Esta cosa cuesta €" [ref=f17e169]: "500"
+            - generic [ref=f17e170]:
+              - generic [ref=f17e171]: Nombre (opcional)
+              - textbox "Nombre (opcional)" [ref=f17e172]:
+                - /placeholder: p. ej. Tesla Model 3
+        - group [ref=f17e173]:
+          - generic "Mis datos" [ref=f17e174] [cursor=pointer]
+        - generic [ref=f17e177]:
+          - generic [ref=f17e178]:
+            - generic [ref=f17e179]: Otro país
+            - combobox "Otro país" [ref=f17e180]:
+              - option "España" [disabled] [selected]
+              - option "España"
+              - option "Portugal"
+              - option "Francia"
+              - option "Alemania"
+              - option "Italia"
+              - option "Reino Unido"
+              - option "Estados Unidos"
+              - option "México"
+              - option "Argentina"
+              - option "Colombia"
+              - option "Chile"
+              - option "Suiza"
+          - button "Compartir" [ref=f17e183] [cursor=pointer]
+  - contentinfo [ref=f17e184]:
+    - generic [ref=f17e185]:
+      - generic [ref=f17e186]:
+        - generic [ref=f17e187]:
+          - link "Coste en tiempo" [ref=f17e188] [cursor=pointer]:
+            - /url: /
+          - link "Método" [ref=f17e189] [cursor=pointer]:
+            - /url: /metodo
+        - paragraph [ref=f17e190]: "Estimación educativa de esfuerzo laboral, no un consejo de compra. Salarios y precios son orientativos: sustitúyelos por tus cifras. El cálculo se hace en tu dispositivo; no guardamos tus datos."
+      - navigation "Todos los países" [ref=f17e191]:
+        - generic [ref=f17e192]:
+          - link "España" [ref=f17e193] [cursor=pointer]:
+            - /url: /espana
+          - link "Portugal" [ref=f17e194] [cursor=pointer]:
+            - /url: /portugal
+          - link "Francia" [ref=f17e195] [cursor=pointer]:
+            - /url: /francia
+          - link "Alemania" [ref=f17e196] [cursor=pointer]:
+            - /url: /alemania
+          - link "Italia" [ref=f17e197] [cursor=pointer]:
+            - /url: /italia
+          - link "Reino Unido" [ref=f17e198] [cursor=pointer]:
+            - /url: /reino-unido
+          - link "Estados Unidos" [ref=f17e199] [cursor=pointer]:
+            - /url: /estados-unidos
+          - link "México" [ref=f17e200] [cursor=pointer]:
+            - /url: /mexico
+          - link "Argentina" [ref=f17e201] [cursor=pointer]:
+            - /url: /argentina
+          - link "Colombia" [ref=f17e202] [cursor=pointer]:
+            - /url: /colombia
+          - link "Chile" [ref=f17e203] [cursor=pointer]:
+            - /url: /chile
+          - link "Suiza" [ref=f17e204] [cursor=pointer]:
+            - /url: /suiza
+  - generic [ref=f17e207]:
+    - button [ref=f17e208]
+    - button [ref=f17e214]
+    - button [ref=f17e218]
+    - button [ref=f17e226]

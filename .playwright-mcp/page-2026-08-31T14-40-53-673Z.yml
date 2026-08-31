@@ -1,0 +1,61 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - link "Coste en tiempo" [ref=f3e3] [cursor=pointer]:
+      - /url: /
+    - generic [ref=f3e4]: El precio de las cosas, medido en tu tiempo.
+    - navigation [ref=f3e5]:
+      - combobox "Cambiar país" [ref=f3e6] [cursor=pointer]:
+        - option "Elige tu país" [disabled] [selected]
+        - option "España"
+        - option "Portugal"
+        - option "Francia"
+        - option "Alemania"
+        - option "Italia"
+        - option "Reino Unido"
+        - option "Estados Unidos"
+        - option "México"
+        - option "Argentina"
+        - option "Colombia"
+        - option "Chile"
+        - option "Suiza"
+  - main [ref=f3e7]
+  - contentinfo [ref=f3e11]:
+    - generic [ref=f3e12]:
+      - generic [ref=f3e13]:
+        - generic [ref=f3e14]:
+          - link "Coste en tiempo" [ref=f3e15] [cursor=pointer]:
+            - /url: /
+          - link "Método" [ref=f3e16] [cursor=pointer]:
+            - /url: /metodo
+        - paragraph [ref=f3e17]: "Estimación educativa de esfuerzo laboral, no un consejo de compra. Salarios y precios son orientativos: sustitúyelos por tus cifras. El cálculo se hace en tu dispositivo; no guardamos tus datos."
+      - navigation "Todos los países" [ref=f3e18]:
+        - generic [ref=f3e19]:
+          - link "España" [ref=f3e20] [cursor=pointer]:
+            - /url: /espana
+          - link "Portugal" [ref=f3e21] [cursor=pointer]:
+            - /url: /portugal
+          - link "Francia" [ref=f3e22] [cursor=pointer]:
+            - /url: /francia
+          - link "Alemania" [ref=f3e23] [cursor=pointer]:
+            - /url: /alemania
+          - link "Italia" [ref=f3e24] [cursor=pointer]:
+            - /url: /italia
+          - link "Reino Unido" [ref=f3e25] [cursor=pointer]:
+            - /url: /reino-unido
+          - link "Estados Unidos" [ref=f3e26] [cursor=pointer]:
+            - /url: /estados-unidos
+          - link "México" [ref=f3e27] [cursor=pointer]:
+            - /url: /mexico
+          - link "Argentina" [ref=f3e28] [cursor=pointer]:
+            - /url: /argentina
+          - link "Colombia" [ref=f3e29] [cursor=pointer]:
+            - /url: /colombia
+          - link "Chile" [ref=f3e30] [cursor=pointer]:
+            - /url: /chile
+          - link "Suiza" [ref=f3e31] [cursor=pointer]:
+            - /url: /suiza
+  - generic [ref=f3e34]:
+    - button [ref=f3e35]
+    - button [ref=f3e41]
+    - button [ref=f3e45]
+    - button [ref=f3e50]

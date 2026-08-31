@@ -1,0 +1,509 @@
+- generic [ref=f24e1]:
+  - banner [ref=f24e2]:
+    - link "Coste en tiempo" [ref=f24e3] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f24e4]:
+      - combobox "Cambiar país" [ref=f24e5] [cursor=pointer]:
+        - option "Elige tu país" [disabled] [selected]
+        - option "España"
+        - option "Portugal"
+        - option "Francia"
+        - option "Alemania"
+        - option "Italia"
+        - option "Reino Unido"
+        - option "Estados Unidos"
+        - option "México"
+        - option "Argentina"
+        - option "Colombia"
+        - option "Chile"
+        - option "Suiza"
+  - main [ref=f24e6]:
+    - generic [ref=f24e8]:
+      - generic [ref=f24e10]:
+        - generic [ref=f24e11]:
+          - text: Viviendo en
+          - generic [ref=f24e12]:
+            - strong [ref=f24e13]: España
+            - generic "Detectado por tu zona horaria" [ref=f24e559]: detectado
+            - button "añade tus datos ↓" [active] [ref=f24e14] [cursor=pointer]
+        - generic [ref=f24e16]:
+          - generic [ref=f24e17]: Cambiar país
+          - combobox "Viviendo en" [ref=f24e18]:
+            - option "España" [selected]
+            - option "Portugal"
+            - option "Francia"
+            - option "Alemania"
+            - option "Italia"
+            - option "Reino Unido"
+            - option "Estados Unidos"
+            - option "México"
+            - option "Argentina"
+            - option "Colombia"
+            - option "Chile"
+            - option "Suiza"
+      - generic [ref=f24e20]:
+        - paragraph [ref=f24e1179]:
+          - generic [ref=f24e1180]: 1000 €
+          - generic [ref=f24e1181]: ·
+          - generic [ref=f24e1182]: precio de referencia 2026-08
+        - heading "1 iPhone (gama alta) en España son" [level=1] [ref=f24e1183]
+        - generic [ref=f24e26]:
+          - img "12 jornadas de 8 h" [ref=f24e1184]:
+            - generic [ref=f24e29]:
+              - generic [ref=f24e30]: "0"
+              - generic [ref=f24e31]: "1"
+              - generic [ref=f24e32]: "2"
+              - generic [ref=f24e33]: "3"
+              - generic [ref=f24e34]: "4"
+              - generic [ref=f24e35]: "5"
+              - generic [ref=f24e36]: "6"
+              - generic [ref=f24e37]: "7"
+              - generic [ref=f24e38]: "8"
+              - generic [ref=f24e39]: "9"
+            - generic [ref=f24e1185]:
+              - generic [ref=f24e1186]: "0"
+              - generic [ref=f24e1187]: "1"
+              - generic [ref=f24e1188]: "2"
+              - generic [ref=f24e1189]: "3"
+              - generic [ref=f24e1190]: "4"
+              - generic [ref=f24e1191]: "5"
+              - generic [ref=f24e1192]: "6"
+              - generic [ref=f24e1193]: "7"
+              - generic [ref=f24e1194]: "8"
+              - generic [ref=f24e1195]: "9"
+          - generic [ref=f24e64]: jornadas de 8 h
+        - paragraph [ref=f24e1196]: — 12 jornadas de sueldo entero.
+        - generic [ref=f24e66]:
+          - generic [ref=f24e67]:
+            - generic [ref=f24e68]: "% del año laboral real"
+            - generic [ref=f24e1197]: 6%
+          - 'img "Barra del año laboral: ocupa el 6%" [ref=f24e1198]'
+      - generic "Cotizaciones del tablero" [ref=f24e72]:
+        - generic [ref=f24e73]: En vivo
+        - generic [ref=f24e76]:
+          - generic [ref=f24e77]:
+            - generic [ref=f24e78]:
+              - text: Café·
+              - strong [ref=f24e79]: "9"
+              - text: minutos
+            - generic [ref=f24e80]:
+              - text: Menú del día·
+              - strong [ref=f24e81]: "1"
+              - text: hora
+            - generic [ref=f24e82]:
+              - text: Cesta semanal·
+              - strong [ref=f24e83]: "8"
+              - text: horas
+            - generic [ref=f24e84]:
+              - text: Netflix (año)·
+              - strong [ref=f24e85]: 1,6
+              - text: jornadas
+            - generic [ref=f24e86]:
+              - text: Gimnasio (año)·
+              - strong [ref=f24e87]: 4,3
+              - text: jornadas
+            - generic [ref=f24e88]:
+              - text: iPhone·
+              - strong [ref=f24e89]: "12"
+              - text: jornadas
+            - generic [ref=f24e90]:
+              - text: Portátil·
+              - strong [ref=f24e91]: "11"
+              - text: jornadas
+            - generic [ref=f24e92]:
+              - text: Televisor·
+              - strong [ref=f24e93]: 6,0
+              - text: jornadas
+            - generic [ref=f24e94]:
+              - text: Auriculares·
+              - strong [ref=f24e95]: 3,0
+              - text: jornadas
+            - generic [ref=f24e96]:
+              - text: Abono transporte·
+              - strong [ref=f24e97]: "5"
+              - text: horas
+            - generic [ref=f24e98]:
+              - text: Bici urbana·
+              - strong [ref=f24e99]: 4,8
+              - text: jornadas
+            - generic [ref=f24e100]:
+              - text: Sandero·
+              - strong [ref=f24e101]: "169"
+              - text: jornadas
+            - generic [ref=f24e102]:
+              - text: Coche compacto·
+              - strong [ref=f24e103]: "265"
+              - text: jornadas
+            - generic [ref=f24e104]:
+              - text: Tesla Model 3·
+              - strong [ref=f24e105]: "402"
+              - text: jornadas
+            - generic [ref=f24e106]:
+              - text: Habitación (mes)·
+              - strong [ref=f24e107]: 5,4
+              - text: jornadas
+            - generic [ref=f24e108]:
+              - text: Alquiler piso (mes)·
+              - strong [ref=f24e109]: "11"
+              - text: jornadas
+            - generic [ref=f24e110]:
+              - text: Entrada piso·
+              - strong [ref=f24e111]: "481"
+              - text: jornadas
+            - generic [ref=f24e112]:
+              - text: Viaje 7 días·
+              - strong [ref=f24e113]: "14"
+              - text: jornadas
+            - generic [ref=f24e114]:
+              - text: Boda·
+              - strong [ref=f24e115]: "96"
+              - text: jornadas
+            - generic [ref=f24e116]:
+              - text: Máster·
+              - strong [ref=f24e117]: "96"
+              - text: jornadas
+            - generic [ref=f24e118]:
+              - text: Reforma cocina·
+              - strong [ref=f24e119]: "144"
+              - text: jornadas
+          - generic [ref=f24e120]:
+            - generic [ref=f24e121]:
+              - text: Café·
+              - strong [ref=f24e122]: "9"
+              - text: minutos
+            - generic [ref=f24e123]:
+              - text: Menú del día·
+              - strong [ref=f24e124]: "1"
+              - text: hora
+            - generic [ref=f24e125]:
+              - text: Cesta semanal·
+              - strong [ref=f24e126]: "8"
+              - text: horas
+            - generic [ref=f24e127]:
+              - text: Netflix (año)·
+              - strong [ref=f24e128]: 1,6
+              - text: jornadas
+            - generic [ref=f24e129]:
+              - text: Gimnasio (año)·
+              - strong [ref=f24e130]: 4,3
+              - text: jornadas
+            - generic [ref=f24e131]:
+              - text: iPhone·
+              - strong [ref=f24e132]: "12"
+              - text: jornadas
+            - generic [ref=f24e133]:
+              - text: Portátil·
+              - strong [ref=f24e134]: "11"
+              - text: jornadas
+            - generic [ref=f24e135]:
+              - text: Televisor·
+              - strong [ref=f24e136]: 6,0
+              - text: jornadas
+            - generic [ref=f24e137]:
+              - text: Auriculares·
+              - strong [ref=f24e138]: 3,0
+              - text: jornadas
+            - generic [ref=f24e139]:
+              - text: Abono transporte·
+              - strong [ref=f24e140]: "5"
+              - text: horas
+            - generic [ref=f24e141]:
+              - text: Bici urbana·
+              - strong [ref=f24e142]: 4,8
+              - text: jornadas
+            - generic [ref=f24e143]:
+              - text: Sandero·
+              - strong [ref=f24e144]: "169"
+              - text: jornadas
+            - generic [ref=f24e145]:
+              - text: Coche compacto·
+              - strong [ref=f24e146]: "265"
+              - text: jornadas
+            - generic [ref=f24e147]:
+              - text: Tesla Model 3·
+              - strong [ref=f24e148]: "402"
+              - text: jornadas
+            - generic [ref=f24e149]:
+              - text: Habitación (mes)·
+              - strong [ref=f24e150]: 5,4
+              - text: jornadas
+            - generic [ref=f24e151]:
+              - text: Alquiler piso (mes)·
+              - strong [ref=f24e152]: "11"
+              - text: jornadas
+            - generic [ref=f24e153]:
+              - text: Entrada piso·
+              - strong [ref=f24e154]: "481"
+              - text: jornadas
+            - generic [ref=f24e155]:
+              - text: Viaje 7 días·
+              - strong [ref=f24e156]: "14"
+              - text: jornadas
+            - generic [ref=f24e157]:
+              - text: Boda·
+              - strong [ref=f24e158]: "96"
+              - text: jornadas
+            - generic [ref=f24e159]:
+              - text: Máster·
+              - strong [ref=f24e160]: "96"
+              - text: jornadas
+            - generic [ref=f24e161]:
+              - text: Reforma cocina·
+              - strong [ref=f24e162]: "144"
+              - text: jornadas
+      - generic [ref=f24e163]:
+        - heading "La pizarra" [level=2] [ref=f24e164]
+        - paragraph [ref=f24e165]: El catálogo va rotando, cotizado en jornadas de 8 h.
+        - generic [ref=f24e1199]:
+          - generic [ref=f24e1200]:
+            - heading "Transporte" [level=3] [ref=f24e1201]
+            - generic [ref=f24e1209]:
+              - link "Coche compacto 22.000 € 102% de un año de sueldo 265 jornadas" [ref=f24e1210] [cursor=pointer]:
+                - /url: /espana/coche-compacto
+                - generic [ref=f24e1217]:
+                  - generic [ref=f24e1218]:
+                    - generic [ref=f24e1219]: Coche compacto
+                    - generic [ref=f24e1220]: 22.000 €
+                  - generic [ref=f24e1221]: 102% de un año de sueldo
+                - generic [ref=f24e1223]:
+                  - generic [ref=f24e1224]: "265"
+                  - text: jornadas
+              - link "Tesla Model 3 (acceso) 33.365 € 154% de un año de sueldo 402 jornadas" [ref=f24e1228] [cursor=pointer]:
+                - /url: /espana/tesla-model-3
+                - generic [ref=f24e1235]:
+                  - generic [ref=f24e1236]:
+                    - generic [ref=f24e1237]: Tesla Model 3 (acceso)
+                    - generic [ref=f24e1238]: 33.365 €
+                  - generic [ref=f24e1239]: 154% de un año de sueldo
+                - generic [ref=f24e1241]:
+                  - generic [ref=f24e1242]: "402"
+                  - text: jornadas
+              - link "Abono transporte (mes) 55 € 0,3% de un año de sueldo 5 horas" [ref=f24e1246] [cursor=pointer]:
+                - /url: /espana/abono-transporte
+                - generic [ref=f24e1253]:
+                  - generic [ref=f24e1254]:
+                    - generic [ref=f24e1255]: Abono transporte (mes)
+                    - generic [ref=f24e1256]: 55 €
+                  - generic [ref=f24e1257]: 0,3% de un año de sueldo
+                - generic [ref=f24e1259]:
+                  - generic [ref=f24e1260]: "5"
+                  - text: horas
+          - generic [ref=f24e1264]:
+            - heading "Tecnología" [level=3] [ref=f24e1265]
+            - generic [ref=f24e1270]:
+              - link "Portátil normal 900 € 4% de un año de sueldo 11 jornadas" [ref=f24e1271] [cursor=pointer]:
+                - /url: /espana/portatil
+                - generic [ref=f24e1275]:
+                  - generic [ref=f24e1276]:
+                    - generic [ref=f24e1277]: Portátil normal
+                    - generic [ref=f24e1278]: 900 €
+                  - generic [ref=f24e1279]: 4% de un año de sueldo
+                - generic [ref=f24e1281]:
+                  - generic [ref=f24e1282]: "11"
+                  - text: jornadas
+              - link "Televisor 500 € 2% de un año de sueldo 6,0 jornadas" [ref=f24e1286] [cursor=pointer]:
+                - /url: /espana/televisor
+                - generic [ref=f24e1290]:
+                  - generic [ref=f24e1291]:
+                    - generic [ref=f24e1292]: Televisor
+                    - generic [ref=f24e1293]: 500 €
+                  - generic [ref=f24e1294]: 2% de un año de sueldo
+                - generic [ref=f24e1296]:
+                  - generic [ref=f24e1297]: 6,0
+                  - text: jornadas
+              - link "Auriculares 250 € 1,2% de un año de sueldo 3,0 jornadas" [ref=f24e1301] [cursor=pointer]:
+                - /url: /espana/auriculares
+                - generic [ref=f24e1305]:
+                  - generic [ref=f24e1306]:
+                    - generic [ref=f24e1307]: Auriculares
+                    - generic [ref=f24e1308]: 250 €
+                  - generic [ref=f24e1309]: 1,2% de un año de sueldo
+                - generic [ref=f24e1311]:
+                  - generic [ref=f24e1312]: 3,0
+                  - text: jornadas
+          - generic [ref=f24e1316]:
+            - heading "Vivienda" [level=3] [ref=f24e1317]
+            - generic [ref=f24e1323]:
+              - link "Habitación en piso compartido (mes) 450 € 2% de un año de sueldo 5,4 jornadas" [ref=f24e1324] [cursor=pointer]:
+                - /url: /espana/habitacion-alquiler
+                - generic [ref=f24e1329]:
+                  - generic [ref=f24e1330]:
+                    - generic [ref=f24e1331]: Habitación en piso compartido (mes)
+                    - generic [ref=f24e1332]: 450 €
+                  - generic [ref=f24e1333]: 2% de un año de sueldo
+                - generic [ref=f24e1335]:
+                  - generic [ref=f24e1336]: 5,4
+                  - text: jornadas
+              - link "Alquiler piso 1-2 hab ciudad (mes) 900 € 4% de un año de sueldo 11 jornadas" [ref=f24e1340] [cursor=pointer]:
+                - /url: /espana/alquiler-piso
+                - generic [ref=f24e1345]:
+                  - generic [ref=f24e1346]:
+                    - generic [ref=f24e1347]: Alquiler piso 1-2 hab ciudad (mes)
+                    - generic [ref=f24e1348]: 900 €
+                  - generic [ref=f24e1349]: 4% de un año de sueldo
+                - generic [ref=f24e1351]:
+                  - generic [ref=f24e1352]: "11"
+                  - text: jornadas
+              - link "Entrada piso (20 %) tipo 40.000 € 185% de un año de sueldo 481 jornadas" [ref=f24e1356] [cursor=pointer]:
+                - /url: /espana/entrada-piso
+                - generic [ref=f24e1361]:
+                  - generic [ref=f24e1362]:
+                    - generic [ref=f24e1363]: Entrada piso (20 %) tipo
+                    - generic [ref=f24e1364]: 40.000 €
+                  - generic [ref=f24e1365]: 185% de un año de sueldo
+                - generic [ref=f24e1367]:
+                  - generic [ref=f24e1368]: "481"
+                  - text: jornadas
+          - generic [ref=f24e1372]:
+            - heading "Vida" [level=3] [ref=f24e1373]
+            - generic [ref=f24e1379]:
+              - link "Boda sencilla 8000 € 37% de un año de sueldo 96 jornadas" [ref=f24e1380] [cursor=pointer]:
+                - /url: /espana/boda
+                - generic [ref=f24e1385]:
+                  - generic [ref=f24e1386]:
+                    - generic [ref=f24e1387]: Boda sencilla
+                    - generic [ref=f24e1388]: 8000 €
+                  - generic [ref=f24e1389]: 37% de un año de sueldo
+                - generic [ref=f24e1391]:
+                  - generic [ref=f24e1392]: "96"
+                  - text: jornadas
+              - link "Máster 8000 € 37% de un año de sueldo 96 jornadas" [ref=f24e1396] [cursor=pointer]:
+                - /url: /espana/master
+                - generic [ref=f24e1401]:
+                  - generic [ref=f24e1402]:
+                    - generic [ref=f24e1403]: Máster
+                    - generic [ref=f24e1404]: 8000 €
+                  - generic [ref=f24e1405]: 37% de un año de sueldo
+                - generic [ref=f24e1407]:
+                  - generic [ref=f24e1408]: "96"
+                  - text: jornadas
+              - link "Reformar cocina 12.000 € 56% de un año de sueldo 144 jornadas" [ref=f24e1412] [cursor=pointer]:
+                - /url: /espana/reformar-cocina
+                - generic [ref=f24e1417]:
+                  - generic [ref=f24e1418]:
+                    - generic [ref=f24e1419]: Reformar cocina
+                    - generic [ref=f24e1420]: 12.000 €
+                  - generic [ref=f24e1421]: 56% de un año de sueldo
+                - generic [ref=f24e1423]:
+                  - generic [ref=f24e1424]: "144"
+                  - text: jornadas
+          - generic [ref=f24e1428]:
+            - heading "Día a día" [level=3] [ref=f24e1429]
+            - generic [ref=f24e1436]:
+              - link "Netflix (año) 130 € 0,6% de un año de sueldo 1,6 jornadas" [ref=f24e1437] [cursor=pointer]:
+                - /url: /espana/netflix-anual
+                - generic [ref=f24e1443]:
+                  - generic [ref=f24e1444]:
+                    - generic [ref=f24e1445]: Netflix (año)
+                    - generic [ref=f24e1446]: 130 €
+                  - generic [ref=f24e1447]: 0,6% de un año de sueldo
+                - generic [ref=f24e1449]:
+                  - generic [ref=f24e1450]: 1,6
+                  - text: jornadas
+              - link "Gimnasio (año) 360 € 1,7% de un año de sueldo 4,3 jornadas" [ref=f24e1454] [cursor=pointer]:
+                - /url: /espana/gimnasio-anual
+                - generic [ref=f24e1460]:
+                  - generic [ref=f24e1461]:
+                    - generic [ref=f24e1462]: Gimnasio (año)
+                    - generic [ref=f24e1463]: 360 €
+                  - generic [ref=f24e1464]: 1,7% de un año de sueldo
+                - generic [ref=f24e1466]:
+                  - generic [ref=f24e1467]: 4,3
+                  - text: jornadas
+              - link "Café en bar 1,5 € 0,0% de un año de sueldo 9 minutos" [ref=f24e1471] [cursor=pointer]:
+                - /url: /espana/cafe
+                - generic [ref=f24e1477]:
+                  - generic [ref=f24e1478]:
+                    - generic [ref=f24e1479]: Café en bar
+                    - generic [ref=f24e1480]: 1,5 €
+                  - generic [ref=f24e1481]: 0,0% de un año de sueldo
+                - generic [ref=f24e1483]:
+                  - generic [ref=f24e1484]: "9"
+                  - text: minutos
+      - generic [ref=f24e456]:
+        - generic [ref=f24e461]:
+          - generic [ref=f24e462]:
+            - heading "Tu tipo de cambio" [level=2] [ref=f24e463]
+            - generic [ref=f24e464]: en €
+          - paragraph [ref=f24e465]: Ahora mismo cotizamos con la mediana neta de España. Pon tu nómina y la pizarra se recalcula al instante.
+        - generic [ref=f24e467]:
+          - generic [ref=f24e468]:
+            - generic [ref=f24e469]: Neto al mes
+            - generic [ref=f24e470]:
+              - generic [ref=f24e471]: €
+              - spinbutton "Neto al mes €" [ref=f24e472]
+            - paragraph [ref=f24e473]: En €, como el resto del país.
+          - generic [ref=f24e474]:
+            - generic [ref=f24e475]: Horas a la semana
+            - spinbutton "Horas a la semana" [ref=f24e476]
+          - generic [ref=f24e477]:
+            - generic [ref=f24e478]: Ahorro al mes (opcional)
+            - generic [ref=f24e479]:
+              - generic [ref=f24e480]: €
+              - spinbutton "Ahorro al mes (opcional) €" [ref=f24e481]
+          - generic [ref=f24e482]:
+            - generic [ref=f24e483]: Tu edad (opcional)
+            - spinbutton "Tu edad (opcional)" [ref=f24e484]
+      - region "Esta cosa cuesta" [ref=f24e485]:
+        - generic [ref=f24e486]:
+          - generic [ref=f24e492]:
+            - generic [ref=f24e493]:
+              - heading "¿Cuánto cuesta otra cosa?" [level=2] [ref=f24e494]
+              - generic [ref=f24e495]: lo calculamos al momento
+            - paragraph [ref=f24e496]: Escribe el precio de cualquier cosa y te decimos cuántas horas de trabajo te cuesta, con tu sueldo o el de este país.
+          - generic [ref=f24e498]:
+            - generic [ref=f24e499]:
+              - generic [ref=f24e500]: Esta cosa cuesta
+              - generic [ref=f24e501]:
+                - generic [ref=f24e502]: €
+                - spinbutton "Esta cosa cuesta €" [ref=f24e503]
+            - generic [ref=f24e504]:
+              - generic [ref=f24e505]: Nombre (opcional)
+              - textbox "Nombre (opcional)" [ref=f24e506]:
+                - /placeholder: p. ej. Tesla Model 3
+            - button "Calcular en mi tiempo" [ref=f24e508]
+      - generic [ref=f24e509]:
+        - link "Ficha de España →" [ref=f24e510] [cursor=pointer]:
+          - /url: /espana
+        - button "Compartir" [ref=f24e513] [cursor=pointer]
+        - paragraph [ref=f24e514]: Cálculo de esfuerzo laboral, no de si deberías comprarlo.
+  - contentinfo [ref=f24e515]:
+    - generic [ref=f24e516]:
+      - generic [ref=f24e517]:
+        - generic [ref=f24e518]:
+          - link "Coste en tiempo" [ref=f24e519] [cursor=pointer]:
+            - /url: /
+          - link "Método" [ref=f24e520] [cursor=pointer]:
+            - /url: /metodo
+        - paragraph [ref=f24e521]: "Estimación educativa de esfuerzo laboral, no un consejo de compra. Salarios y precios son orientativos: sustitúyelos por tus cifras. El cálculo se hace en tu dispositivo; no guardamos tus datos."
+      - navigation "Todos los países" [ref=f24e522]:
+        - generic [ref=f24e523]:
+          - link "España" [ref=f24e524] [cursor=pointer]:
+            - /url: /espana
+          - link "Portugal" [ref=f24e525] [cursor=pointer]:
+            - /url: /portugal
+          - link "Francia" [ref=f24e526] [cursor=pointer]:
+            - /url: /francia
+          - link "Alemania" [ref=f24e527] [cursor=pointer]:
+            - /url: /alemania
+          - link "Italia" [ref=f24e528] [cursor=pointer]:
+            - /url: /italia
+          - link "Reino Unido" [ref=f24e529] [cursor=pointer]:
+            - /url: /reino-unido
+          - link "Estados Unidos" [ref=f24e530] [cursor=pointer]:
+            - /url: /estados-unidos
+          - link "México" [ref=f24e531] [cursor=pointer]:
+            - /url: /mexico
+          - link "Argentina" [ref=f24e532] [cursor=pointer]:
+            - /url: /argentina
+          - link "Colombia" [ref=f24e533] [cursor=pointer]:
+            - /url: /colombia
+          - link "Chile" [ref=f24e534] [cursor=pointer]:
+            - /url: /chile
+          - link "Suiza" [ref=f24e535] [cursor=pointer]:
+            - /url: /suiza
+  - generic [ref=f24e538]:
+    - button [ref=f24e539]
+    - button [ref=f24e545]
+    - button [ref=f24e549]
+    - button [ref=f24e554]

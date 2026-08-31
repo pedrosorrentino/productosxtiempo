@@ -1,0 +1,45 @@
+[   19662ms] TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.
+    at <anonymous>:10:9
+    at <anonymous>:14:5
+    at <anonymous>:15:7
+[   23191ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ :7493
+[   23191ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ :7493
+[   23191ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ :7493
+[   23191ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ :7493
+[   84268ms] TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.
+    at <anonymous>:10:9
+    at <anonymous>:14:5
+    at <anonymous>:15:7
+[   84288ms] TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.
+    at <anonymous>:10:9
+    at <anonymous>:14:5
+    at <anonymous>:15:7
+[  141837ms] TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.
+    at <anonymous>:10:9
+    at <anonymous>:14:5
+    at <anonymous>:15:7
+[  141856ms] TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.
+    at <anonymous>:10:9
+    at <anonymous>:14:5
+    at <anonymous>:15:7
+[  162829ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ :7
+[  197017ms] TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.
+    at <anonymous>:10:9
+    at <anonymous>:14:5
+    at <anonymous>:15:7
+[  197538ms] TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.
+    at <anonymous>:10:9
+    at <anonymous>:14:5
+    at <anonymous>:15:7
+[  222852ms] TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.
+    at <anonymous>:10:9
+    at <anonymous>:14:5
+    at <anonymous>:15:7
+[  258238ms] TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.
+    at <anonymous>:10:9
+    at <anonymous>:14:5
+    at <anonymous>:15:7
+[  258760ms] TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.
+    at <anonymous>:10:9
+    at <anonymous>:14:5
+    at <anonymous>:15:7
