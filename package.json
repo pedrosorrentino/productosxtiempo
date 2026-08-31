@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/update-prices.mjs && astro build && node scripts/generate-og.ts",
+    "build": "node scripts/update-prices.mjs && astro build && node --experimental-strip-types scripts/generate-og.ts",
     "preview": "astro preview",
     "astro": "astro",
     "generate-types": "wrangler types",
