@@ -6,40 +6,14 @@ const FRANKFURTER_URL = "https://api.frankfurter.app/latest";
 
 const EUR_CODES = new Set(["ES", "PT", "FR", "DE", "IT"]);
 
-interface ProductPrice {
-  value: number;
-  date: string;
-  note: string;
-  source: string;
-  origin: "local" | "converted";
-}
-
-interface Product {
-  id: string;
-  name: string;
-  shortName: string;
-  category: string;
-  prices: Record<string, ProductPrice>;
-  visible: boolean;
-}
-
-interface Country {
-  code: string;
-  currency: string;
-}
-
-function roundDecimals(value: number, decimals: number): number {
+function roundDecimals(value, decimals) {
   const factor = 10 ** decimals;
   return Math.round(value * factor) / factor;
 }
 
-async function main(): Promise<void> {
-  const products: Product[] = JSON.parse(
-    readFileSync(PRODUCTS_PATH, "utf8"),
-  );
-  const countries: Country[] = JSON.parse(
-    readFileSync(COUNTRIES_PATH, "utf8"),
-  );
+async function main() {
+  const products = JSON.parse(readFileSync(PRODUCTS_PATH, "utf8"));
+  const countries = JSON.parse(readFileSync(COUNTRIES_PATH, "utf8"));
 
   const nonEURCountries = countries.filter((c) => !EUR_CODES.has(c.code));
 
@@ -51,7 +25,7 @@ async function main(): Promise<void> {
   const targetCurrencies = nonEURCountries.map((c) => c.currency);
   const currencySet = [...new Set(targetCurrencies)];
 
-  let rates: Record<string, number> = {};
+  let rates = {};
 
   try {
     const url = `${FRANKFURTER_URL}?from=EUR&to=${currencySet.join(",")}`;

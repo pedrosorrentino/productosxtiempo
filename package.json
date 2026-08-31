@@ -7,11 +7,11 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/update-prices.ts && astro build && node scripts/generate-og.ts",
+    "build": "node scripts/update-prices.mjs && astro build && node scripts/generate-og.ts",
     "preview": "astro preview",
     "astro": "astro",
     "generate-types": "wrangler types",
-    "update-prices": "node scripts/update-prices.ts"
+    "update-prices": "node scripts/update-prices.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
