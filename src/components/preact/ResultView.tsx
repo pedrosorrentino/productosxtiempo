@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "preact/hooks";
 import type { JSX } from "preact";
-import { calc, WEEKS_PER_MONTH } from "../../lib/calc.ts";
+import { calc } from "../../lib/calc.ts";
 import type { CalcResult } from "../../lib/calc.ts";
 import {
   formatHumanDuration,
@@ -12,9 +12,7 @@ import {
   formatWorkdays,
   formatYears,
   heroUnit,
-  humanYearsShortcut,
 } from "../../lib/format.ts";
-import type { HeroUnit } from "../../lib/format.ts";
 import anchorsData from "../../data/anchors.json";
 import countriesData from "../../data/countries.json";
 import { buildShareUrl, parseUserStateFromQuery } from "../../lib/urls.ts";
@@ -26,12 +24,11 @@ import {
   ageLineSmall,
   anchorSingular,
   anchors as anchorsI18n,
+  board,
   cta,
   heroUnits,
   home,
   modeA,
-  modeB,
-  modeBTitle,
   noSalary,
   priceForm,
   result,
@@ -40,14 +37,21 @@ import {
 } from "../../i18n/es.ts";
 import CompareStrip from "./CompareStrip.tsx";
 import CountryPicker, { type PickerCountry } from "./CountryPicker.tsx";
+import Odometer from "./Odometer.tsx";
 import PriceInput from "./PriceInput.tsx";
 import ShareButton from "./ShareButton.tsx";
 import UserForm, { type UserFormFields } from "./UserForm.tsx";
 import YearBar from "./YearBar.tsx";
 
-type AnchorTable = Record<
+export type AnchorTable = Record<
   string,
-  { cafe: number | null; iphone: number | null; alquiler: number | null } | undefined
+  {
+    cafe: number | null;
+    iphone: number | null;
+    alquiler: number | null;
+    menu: number | null;
+    gasolina: number | null;
+  } | undefined
 >;
 
 const ANCHORS = anchorsData as AnchorTable;
@@ -70,22 +74,10 @@ const formatAnchorCount = (n: number): string =>
 const formatAmount = (n: number): string =>
   new Intl.NumberFormat("es-ES", { maximumFractionDigits: 2 }).format(n);
 
-/**
- * Modo B (SPEC §10.5): resultado en meses/años de CALENDARIO con formato
- * humano. Los atajos de copy de la tabla SPEC §8 salen de `humanYearsShortcut`
- * (format.ts, una sola fuente — pulido Task 6: no duplicar la tabla aquí).
- */
-const humanCalendar = (months: number): string => {
-  if (months < 1) return `${formatWeeks(months * WEEKS_PER_MONTH)} semanas`;
-  const shortcut = humanYearsShortcut(months / 12, months);
-  if (shortcut) return shortcut;
-  if (months < 12) return `${formatMonths(months)} meses`;
-  return `${formatYears(months / 12)} años`;
-};
-
 type Hero = { value: string; unit: string; next: string | null };
 
-/** Hero automático (SPEC §8): minutos/horas → jornadas → meses → años. */
+/** Hero automático (SPEC §8): minutos/horas → jornadas → meses → años.
+ * Con singular cuando la cifra redondea a 1 ("1 hora", no "1 horas"). */
 const computeHero = (r: CalcResult): Hero => {
   if (r.hours < 1) {
     // Fix M5: precio minúsculo (< ~0,1 €) → < 1 minuto; "0" redondo miente.
@@ -96,7 +88,7 @@ const computeHero = (r: CalcResult): Hero => {
     }
     return {
       value: minutes,
-      unit: heroUnits.minutos,
+      unit: minutes === "1" ? "minuto" : heroUnits.minutos,
       // Pulido Task 6 (C1): para compras sub-hora (café), formatHours
       // redondearía a "0 horas". La siguiente unidad humana es "menos de
       // 1 hora" (SPEC §8: compras minúsculas se comunican en minutos).
@@ -104,9 +96,10 @@ const computeHero = (r: CalcResult): Hero => {
     };
   }
   if (r.workdays8h < 1) {
+    const hours = formatHours(r.hours);
     return {
-      value: formatHours(r.hours),
-      unit: heroUnits.horas,
+      value: hours,
+      unit: hours === "1" ? "hora" : heroUnits.horas,
       next: `${formatWorkdays(r.workdays8h)} ${heroUnits.jornadas}`,
     };
   }
@@ -127,6 +120,9 @@ const computeHero = (r: CalcResult): Hero => {
   }
   return { value: formatYears(r.yearsFullPay), unit: heroUnits.años, next: null };
 };
+
+/** El valor del hero es rodable (dígitos y separadores) o frase ("menos de un"). */
+const isRollable = (value: string): boolean => /^[\d.,]+$/.test(value);
 
 export interface ResultViewProps {
   countryCode: string;
@@ -163,10 +159,11 @@ export interface ResultViewProps {
 }
 
 /**
- * Isla del resultado (SPEC §10): hero automático, frase humana, disclaimers,
- * desglose, modo B con ahorro, YearBar, anclas y acciones. Recálculo EN VIVO
- * sin botón Calcular: cada cambio de estado (precio, neto, horas, ahorro)
- * recalcula al instante, persiste en `cet:v1` y sincroniza la URL con
+ * Isla del resultado (SPEC §10) en gramática de MARCADOR: placa de identidad,
+ * marcador gigante a flaps, retícula de magnitudes, anclas como bandas de
+ * señal, modo B y comparador en placas gemelas y placa de acciones. Recálculo
+ * EN VIVO sin botón Calcular: cada cambio de estado (precio, neto, horas,
+ * ahorro) recalcula al instante, persiste en `cet:v1` y sincroniza la URL con
  * history.replaceState vía urls.ts.
  */
 export default function ResultView({
@@ -186,8 +183,6 @@ export default function ResultView({
 }: ResultViewProps) {
   const [state, setState] = useState<Partial<UserState>>({});
   const [mounted, setMounted] = useState(false);
-  const [savingsText, setSavingsText] = useState("");
-  const savingsDirty = useRef(false);
 
   // Montaje: storage + query params (los params PISAN el storage, SPEC §7).
   // El override de precio guardado está ligado al producto Y al país en que
@@ -228,16 +223,6 @@ export default function ResultView({
     saveUserState(persistable);
     history.replaceState(null, "", buildShareUrl(location.pathname, persistable));
   }, [state, mounted, countryCode, productId]);
-
-  // El input de ahorro (modo B) adopta el estado externo solo mientras el
-  // usuario no lo esté editando (mismo patrón que PriceInput).
-  useEffect(() => {
-    if (!savingsDirty.current) {
-      setSavingsText(
-        state.monthlySavings != null ? String(state.monthlySavings) : "",
-      );
-    }
-  }, [state.monthlySavings]);
 
   const priceOverride = state.priceOverride ?? null;
   const effectivePrice = priceOverride ?? catalogPrice ?? null;
@@ -282,16 +267,6 @@ export default function ResultView({
   const setLabel = (value: string | null) => patch({ customLabel: value });
   const setUserFields = (fields: UserFormFields) => patch(fields);
 
-  const onSavingsInput = (event: JSX.TargetedEvent<HTMLInputElement>) => {
-    const raw = event.currentTarget.value;
-    savingsDirty.current = true;
-    setSavingsText(raw);
-    const value = Number(raw);
-    const parsed =
-      raw.trim() !== "" && Number.isFinite(value) && value > 0 ? value : null;
-    patch({ monthlySavings: parsed });
-  };
-
   const pickerCountries: PickerCountry[] = countriesData.map((c) => ({
     name: c.name,
     slug: c.slug,
@@ -317,33 +292,6 @@ export default function ResultView({
     catalogPriceDate < staleness.cutoff
       ? catalogPriceDate
       : null;
-  const header = (
-    <>
-      <p class="text-sm uppercase tracking-wide opacity-70">
-        {[displayName, countryName].filter(Boolean).join(" · ")}
-      </p>
-      {stalePriceDate != null && (
-        <div class="mt-2">
-          <span
-            class="badge badge-warning badge-outline"
-            title={staleness.badgeTitle(stalePriceDate)}
-          >
-            {staleness.badge}
-          </span>
-        </div>
-      )}
-      {showConvertedBadge && (
-        <div class="mt-2">
-          <span class="badge badge-warning badge-outline">
-            {result.convertedBadge}
-          </span>
-          <div role="alert" class="alert alert-warning mt-2 py-2 text-sm">
-            <span>{result.convertedPriceNote}</span>
-          </div>
-        </div>
-      )}
-    </>
-  );
 
   // Skeleton SSR/pre-hidratación (SPEC §10.11): contenedor neutro. Pulido
   // Task 8: h-72 (288 px) se quedaba corto frente al resultado hidratado
@@ -384,27 +332,96 @@ export default function ResultView({
     });
   };
 
+  const priceLine = (
+    <p class="font-board-mono text-sm md:text-base opacity-80 flex flex-wrap items-center gap-x-3 gap-y-1">
+      {effectivePrice != null && (
+        <>
+          <span>
+            {formatAmount(effectivePrice)} {currencySymbol}
+          </span>
+          <span aria-hidden="true" class="text-secondary">·</span>
+        </>
+      )}
+      <span>{countryName}</span>
+      {showConvertedBadge && (
+        <span class="board-stamp text-info" title={result.convertedPriceNote}>
+          {result.convertedBadge}
+        </span>
+      )}
+      {stalePriceDate != null && (
+        <span class="board-stamp board-stamp-alert" title={staleness.badgeTitle(stalePriceDate)}>
+          {staleness.badge} · {stalePriceDate}
+        </span>
+      )}
+    </p>
+  );
+
   const actions = (
-    <section class="mt-10 space-y-6">
-      <div class="card bg-base-200 p-5">
-        <p class="mb-3 text-sm opacity-80">{cta.changePrice}</p>
-        <PriceInput
-          slug={countrySlug}
-          currencySymbol={currencySymbol}
-          initialPrice={effectivePrice}
-          initialLabel={productId == null ? (state.customLabel ?? null) : null}
-          onPriceChange={setPrice}
-          onLabelChange={productId == null ? setLabel : undefined}
-          // Pulido Task 8: en páginas de producto el nombre lo pone el
-          // catálogo; el campo "Nombre (opcional)" era inerte aquí.
-          showLabel={productId == null}
-        />
+    <section class="mt-10 space-y-4" aria-label={cta.myData}>
+      <div class={`board-plate p-5 ${priceOverride != null ? "board-plate--active" : ""}`}>
+        <div class="flex flex-wrap items-start gap-3">
+          <span class="board-cat-icon" style="background: #ffb020; color: #14191d">
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width={2}
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z" />
+            </svg>
+          </span>
+          <div class="min-w-0 flex-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <h3 class="font-signage uppercase text-2xl">{cta.changePriceTitle}</h3>
+              <span
+                class={`board-stamp ${priceOverride != null ? "text-primary" : "opacity-70"}`}
+              >
+                {priceOverride != null ? cta.changePriceLive : cta.changePriceRef}
+              </span>
+            </div>
+            <p class="mt-1 text-sm opacity-80 max-w-2xl">{cta.changePriceNote}</p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <PriceInput
+            slug={countrySlug}
+            currencySymbol={currencySymbol}
+            initialPrice={effectivePrice}
+            initialLabel={productId == null ? (state.customLabel ?? null) : null}
+            onPriceChange={setPrice}
+            onLabelChange={productId == null ? setLabel : undefined}
+            // Pulido Task 8: en páginas de producto el nombre lo pone el
+            // catálogo; el campo "Nombre (opcional)" era inerte aquí.
+            showLabel={productId == null}
+          />
+        </div>
       </div>
 
-      <div class="collapse collapse-arrow bg-base-200">
-        <input type="checkbox" aria-label={cta.myData} />
-        <div class="collapse-title text-lg font-medium">{cta.myData}</div>
-        <div class="collapse-content">
+      <details class="board-plate board-details p-5">
+        <summary class="cursor-pointer font-board-mono text-xs uppercase tracking-[0.14em] opacity-80 select-none">
+          <svg
+            class="board-caret"
+            viewBox="0 0 24 24"
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width={2}
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+          {cta.myData}
+        </summary>
+        <div class="mt-4">
           <UserForm
             countryCode={countryCode}
             countryNetMonthly={medianNetMonthly}
@@ -413,7 +430,7 @@ export default function ResultView({
             onChange={setUserFields}
           />
         </div>
-      </div>
+      </details>
 
       <div class="grid items-end gap-4 sm:grid-cols-2">
         <CountryPicker
@@ -422,7 +439,9 @@ export default function ResultView({
           placeholder={countryName}
           hrefFor={hrefFor}
         />
-        <ShareButton url={shareUrl} text={shareTextFor()} />
+        <div class="board-share">
+          <ShareButton url={shareUrl} text={shareTextFor()} />
+        </div>
       </div>
     </section>
   );
@@ -430,23 +449,26 @@ export default function ResultView({
   if (!computed) {
     return (
       <div>
-        {header}
+        <div class="board-plate p-5">
+          <h1 class="font-signage uppercase text-3xl md:text-5xl leading-none">
+            {displayName ?? result.unnamedThing}
+          </h1>
+          <div class="mt-2">{priceLine}</div>
+        </div>
         {netMonthly == null ? (
-          <div role="alert" class="alert alert-warning mt-4">
-            <div>
-              <h2 class="font-bold">{noSalary.title}</h2>
-              <p class="text-sm">{noSalary.body}</p>
-              <a class="link text-sm" href={`/${countrySlug}`}>
-                {noSalary.goToCountry}
-              </a>
-            </div>
+          <div role="alert" class="board-plate p-5 mt-4">
+            <h2 class="font-signage uppercase text-2xl">{noSalary.title}</h2>
+            <p class="text-sm opacity-80 mt-1">{noSalary.body}</p>
+            <a class="board-navlink inline-block mt-3" href={`/${countrySlug}`}>
+              {noSalary.goToCountry}
+            </a>
           </div>
         ) : invalid ? (
-          <div role="alert" class="alert alert-warning mt-4">
+          <div role="alert" class="board-plate p-5 mt-4">
             <span>{result.invalidInput}</span>
           </div>
         ) : (
-          <p class="mt-2 text-lg">{priceForm.enterPricePrompt}</p>
+          <p class="mt-4 text-lg">{priceForm.enterPricePrompt}</p>
         )}
         <p class="mt-4 text-sm opacity-80">{result.effortDisclaimer}</p>
         {actions}
@@ -488,161 +510,299 @@ export default function ResultView({
     }
   }
 
-  const modeBHuman =
-    computed.monthsSaving != null ? humanCalendar(computed.monthsSaving) : null;
-  const subheroParts: string[] = [];
-  if (hero.next) subheroParts.push(hero.next);
-  if (savings != null && modeBHuman) {
-    subheroParts.push(
-      `${modeBTitle(`${formatAmount(savings)} ${currencySymbol}`)}: ${modeBHuman}`,
-    );
+  const heroAria = `${hero.value} ${hero.unit}`;
+
+  // Celdas de la retícula: jornadas manda (celda ámbar), % del año lleva
+  // dígito ámbar; el resto, crema. Mismas cifras del desglose del SPEC.
+  const cells: Array<{
+    key: string;
+    label: string;
+    text: string;
+    variant?: "fill" | "rate";
+  }> = [
+    {
+      key: "workdays",
+      label: result.workdaysLabel,
+      text: formatWorkdays(computed.workdays8h),
+      variant: "fill",
+    },
+    { key: "hours", label: result.hoursLabel, text: formatHours(computed.hours) },
+    { key: "weeks", label: result.weeksLabel, text: formatWeeks(computed.weeks) },
+    {
+      key: "months",
+      label: result.monthsFullPayLabel,
+      text: formatMonths(computed.monthsFullPay),
+    },
+    {
+      key: "years",
+      label: result.yearsFullPayLabel,
+      text: formatYears(computed.yearsFullPay),
+    },
+  ];
+  if (realAnnualHours != null && computed.pctRealYear != null) {
+    cells.push({
+      key: "pct",
+      label: result.pctRealYearLabel,
+      text: `${formatPercent(computed.pctRealYear)}%`,
+      variant: "rate",
+    });
+  }
+
+  // Anclas del día a día (SPEC §10.8), como bandas de señal.
+  const anchorRow = ANCHORS[countryCode];
+  const anchorBands: Array<{
+    key: string;
+    text: string;
+    count: string | null;
+    color: string;
+    path: JSX.Element;
+  }> = [];
+  if (anchorRow && effectivePrice != null) {
+    const entries: Array<{
+      key: string;
+      value: number | null;
+      singular: string;
+      phrase: (n: string) => string;
+      color: string;
+      path: JSX.Element;
+    }> = [
+      // Pulido Task 8: el sustantivo singular vive en i18n
+      // (anchorSingular), no hardcodeado aquí.
+      {
+        key: "cafe",
+        value: anchorRow.cafe,
+        singular: anchorSingular.cafe,
+        phrase: anchorsI18n.cafe,
+        color: "#ffb020",
+        path: (
+          <>
+            <path d="M4 9h12v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z" />
+            <path d="M16 10h2a2.5 2.5 0 0 1 0 5h-2" />
+            <path d="M7.5 3.5v2M11 3.5v2M14.5 3.5v2" />
+          </>
+        ),
+      },
+      {
+        key: "iphone",
+        value: anchorRow.iphone,
+        singular: anchorSingular.iphone,
+        phrase: anchorsI18n.iphone,
+        color: "#4aa3ff",
+        path: (
+          <>
+            <rect x="7" y="2.5" width="10" height="19" rx="2" />
+            <path d="M11 18.5h2" />
+          </>
+        ),
+      },
+      {
+        key: "alquiler",
+        value: anchorRow.alquiler,
+        singular: anchorSingular.alquiler,
+        phrase: anchorsI18n.alquiler,
+        color: "#3ec97e",
+        path: (
+          <>
+            <path d="M3.5 10.5L12 3l8.5 7.5" />
+            <path d="M5.5 9.5V21h13V9.5" />
+          </>
+        ),
+      },
+      {
+        key: "menu",
+        value: anchorRow.menu,
+        singular: anchorSingular.menu,
+        phrase: anchorsI18n.menu,
+        color: "#f26db6",
+        path: (
+          <>
+            <path d="M4 11h16v2a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-2z" />
+            <path d="M2 11h20M8 7v4M12 7v4M16 7v4" />
+          </>
+        ),
+      },
+      {
+        key: "gasolina",
+        value: anchorRow.gasolina,
+        singular: anchorSingular.gasolina,
+        phrase: anchorsI18n.gasolina,
+        color: "#e8c52e",
+        path: (
+          <>
+            <path d="M5 21V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v16" />
+            <path d="M3 21h12M13 9h2.5a1.5 1.5 0 0 1 1.5 1.5V17a1.5 1.5 0 0 0 3 0V8.5L17.5 6" />
+            <path d="M8 7.5h3" />
+          </>
+        ),
+      },
+    ];
+    // Pulido Task 6 (C2): recuento < 1 → "menos de un {ancla}" (decisión
+    // documentada): con 1 decimal, un café frente a un iPhone diría
+    // "equivale a 0,0 iPhones", que dice cero donde la verdad es
+    // "menos de uno".
+    for (const e of entries) {
+      if (e.value == null || e.value <= 0) continue;
+      const count = effectivePrice / e.value;
+      anchorBands.push({
+        key: e.key,
+        color: e.color,
+        path: e.path,
+        count: count < 1 ? null : formatAnchorCount(count),
+        text:
+          count < 1
+            ? anchorsI18n.lessThanOne(e.singular)
+            : e.phrase(formatAnchorCount(count)),
+      });
+    }
   }
 
   return (
     <div>
-      {header}
-      <p class="mt-4 text-5xl md:text-6xl font-bold tabular-nums">{hero.value}</p>
-      <p class="mt-1 text-xl font-medium">{hero.unit}</p>
-      {subheroParts.length > 0 && (
-        <p class="mt-1 text-base opacity-90">{subheroParts.join(" · ")}</p>
-      )}
-      <p class="mt-3 text-lg">{home.fullPayTail(phrase)}</p>
-      <div class="mt-3 space-y-1 text-sm opacity-80">
-        <p>{result.effortDisclaimer}</p>
-        <p>{modeA.disclaimer}</p>
-        <p>{modeA.footnote}</p>
-        {ageLineText && <p>{ageLineText}</p>}
+      {/* ---- Placa de identidad ---- */}
+      <div class="board-plate p-5">
+        <h1 class="font-signage uppercase text-3xl md:text-5xl leading-none">
+          {displayName ?? result.unnamedThing}
+        </h1>
+        <div class="mt-2">{priceLine}</div>
       </div>
 
-      <section class="mt-8">
-        <h2 class="text-lg font-bold">{result.breakdownTitle}</h2>
-        <dl class="mt-3 grid grid-cols-2 gap-4 sm:grid-cols-3">
-          <div>
-            <dt class="text-sm opacity-70">{result.hoursLabel}</dt>
-            <dd class="text-lg font-semibold tabular-nums">
-              {formatHours(computed.hours)}
-            </dd>
-          </div>
-          <div>
-            <dt class="text-sm opacity-70">{result.workdaysLabel}</dt>
-            <dd class="text-lg font-semibold tabular-nums">
-              {formatWorkdays(computed.workdays8h)}
-            </dd>
-          </div>
-          <div>
-            <dt class="text-sm opacity-70">{result.weeksLabel}</dt>
-            <dd class="text-lg font-semibold tabular-nums">
-              {formatWeeks(computed.weeks)}
-            </dd>
-          </div>
-          <div>
-            <dt class="text-sm opacity-70">{result.monthsFullPayLabel}</dt>
-            <dd class="text-lg font-semibold tabular-nums">
-              {formatMonths(computed.monthsFullPay)}
-            </dd>
-          </div>
-          <div>
-            <dt class="text-sm opacity-70">{result.yearsFullPayLabel}</dt>
-            <dd class="text-lg font-semibold tabular-nums">
-              {formatYears(computed.yearsFullPay)}
-            </dd>
-          </div>
-          {realAnnualHours != null && computed.pctRealYear != null && (
-            <div>
-              <dt class="text-sm opacity-70">{result.pctRealYearLabel}</dt>
-              <dd class="text-lg font-semibold tabular-nums">
-                {formatPercent(computed.pctRealYear)}%
-              </dd>
-            </div>
-          )}
-        </dl>
-      </section>
-
-      <YearBar
-        yearsFullPay={computed.yearsFullPay}
-        realAnnualHours={realAnnualHours}
-      />
-
-      <section class="card mt-8 bg-base-200 p-5">
-        <label class="label pl-0" for="modeb-savings">
-          {modeB.inputLabel}
-        </label>
-        <input
-          id="modeb-savings"
-          type="number"
-          inputmode="decimal"
-          min="1"
-          class="input w-full max-w-xs"
-          value={savingsText}
-          onInput={onSavingsInput}
-        />
-        {savings != null && modeBHuman ? (
-          <div class="mt-3">
-            <p class="font-medium">
-              {modeBTitle(`${formatAmount(savings)} ${currencySymbol}`)}
+      {/* ---- Marcador gigante ---- */}
+      <section class="mt-8" aria-label={heroAria}>
+        <div class="flex items-end gap-4 md:gap-6 flex-wrap">
+          {isRollable(hero.value) ? (
+            <Odometer
+              value={hero.value}
+              label={heroAria}
+              class="text-[clamp(4rem,14vw,10rem)] leading-none"
+            />
+          ) : (
+            <p
+              class="font-signage text-[clamp(3rem,10vw,7rem)] leading-none"
+              aria-label={heroAria}
+            >
+              {hero.value}{" "}
+              <span class="text-primary">{hero.unit}</span>
             </p>
-            <p class="mt-1 text-2xl font-bold tabular-nums">{modeBHuman}</p>
-          </div>
-        ) : (
-          <p class="mt-2 text-sm opacity-70">{modeB.emptyState}</p>
+          )}
+          {isRollable(hero.value) && (
+            <span class="font-signage uppercase text-primary text-[clamp(1.5rem,4vw,3rem)] leading-none pb-1 md:pb-3">
+              {hero.unit}
+            </span>
+          )}
+        </div>
+        <p class="mt-4 text-lg md:text-xl">{home.fullPayTail(phrase)}</p>
+        {hero.next && (
+          <p class="mt-1 font-board-mono text-sm opacity-80">= {hero.next}</p>
         )}
+        <div class="mt-3 space-y-0.5 font-board-mono text-xs opacity-75 max-w-2xl">
+          <p>{result.effortDisclaimer}</p>
+          <p>{modeA.disclaimer}</p>
+          <p>{modeA.footnote}</p>
+          {ageLineText && <p>{ageLineText}</p>}
+        </div>
       </section>
 
-      {(() => {
-        const row = ANCHORS[countryCode];
-        if (!row || effectivePrice == null) return null;
-        const entries: Array<{
-          key: string;
-          value: number | null;
-          singular: string;
-          phrase: (n: string) => string;
-        }> = [
-          // Pulido Task 8: el sustantivo singular vive en i18n
-          // (anchorSingular), no hardcodeado aquí.
-          { key: "cafe", value: row.cafe, singular: anchorSingular.cafe, phrase: anchorsI18n.cafe },
-          { key: "iphone", value: row.iphone, singular: anchorSingular.iphone, phrase: anchorsI18n.iphone },
-          { key: "alquiler", value: row.alquiler, singular: anchorSingular.alquiler, phrase: anchorsI18n.alquiler },
-        ];
-        // Pulido Task 6 (C2): recuento < 1 → "menos de un {ancla}" (decisión
-        // documentada): con 1 decimal, un café frente a un iPhone diría
-        // "equivale a 0,0 iPhones", que dice cero donde la verdad es
-        // "menos de uno".
-        const rows = entries
-          .filter((e) => e.value != null && e.value > 0)
-          .map((e) => {
-            const count = effectivePrice / (e.value as number);
-            return {
-              key: e.key,
-              text:
-                count < 1
-                  ? anchorsI18n.lessThanOne(e.singular)
-                  : e.phrase(formatAnchorCount(count)),
-            };
-          });
-        if (rows.length === 0) return null;
-        return (
-          <section class="mt-8">
-            <h2 class="text-lg font-bold">{anchorsI18n.title}</h2>
-            <ul class="mt-2 space-y-1">
-              {rows.map((r) => (
-                <li key={r.key}>{r.text}</li>
-              ))}
-            </ul>
-          </section>
-        );
-      })()}
+      {/* ---- Retícula de magnitudes ---- */}
+      <section class="mt-10" aria-label={result.breakdownTitle}>
+        <h2 class="font-signage uppercase text-3xl md:text-4xl">
+          {result.breakdownTitle}
+        </h2>
+        <div class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+          {cells.map((cell) => (
+            <div
+              key={cell.key}
+              class={`board-cell ${cell.variant === "fill" ? "board-cell--fill" : ""} ${cell.variant === "rate" ? "board-cell--rate" : ""}`}
+            >
+              <span class="font-board-mono text-[0.625rem] uppercase tracking-[0.14em] opacity-80 block">
+                {cell.label}
+              </span>
+              <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-tight block mt-1">
+                {cell.text}
+              </span>
+            </div>
+          ))}
+        </div>
+        <YearBar
+          yearsFullPay={computed.yearsFullPay}
+          realAnnualHours={realAnnualHours}
+          userAge={edadValida}
+        />
+      </section>
 
+      {/* ---- Bandas de señal: anclas ---- */}
+      {anchorBands.length > 0 && (
+        <section class="mt-10" aria-label={anchorsI18n.title}>
+          <h2 class="font-signage uppercase text-3xl md:text-4xl">
+            {anchorsI18n.title}
+          </h2>
+          <div class="mt-4 grid gap-1.5">
+            {anchorBands.map((band) => {
+              // La cifra viaja en voz contadora (mono tabular ámbar), el resto
+              // de la frase en cuerpo: se parte por el recuento formateado.
+              const parts = band.count ? band.text.split(band.count) : null;
+              return (
+                <div class="board-anchor" key={band.key}>
+                  <span
+                    class="board-cat-icon board-cat-icon--sm"
+                    style={`background: ${band.color}; color: #14191d`}
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="16"
+                      height="16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width={2}
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      {band.path}
+                    </svg>
+                  </span>
+                  <span class="min-w-0 font-medium">
+                    {parts && parts.length === 2 ? (
+                      <>
+                        {parts[0]}
+                        <span class="font-board-mono text-primary tabular-nums">
+                          {band.count}
+                        </span>
+                        {parts[1]}
+                      </>
+                    ) : (
+                      band.text
+                    )}
+                  </span>
+                  <span class="board-row-arrow" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width={2}
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* ---- Comparador de nóminas (a todo el ancho) ---- */}
       {effectivePrice != null && (
         <CompareStrip
           countries={countriesData}
           currentCountryCode={countryCode}
-          currentCountryName={countryName}
           price={effectivePrice}
           currencySymbol={currencySymbol}
-          youNetMonthly={state.netMonthly ?? null}
-          youWeeklyHours={weeklyHours}
-          compareCode={state.compareCountryCode ?? null}
-          onSelectCompare={(code) => patch({ compareCountryCode: code })}
+          initialCode={state.compareCountryCode ?? null}
+          userAge={edadValida}
         />
       )}
 

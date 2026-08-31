@@ -1,6 +1,44 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* Tema "board": placa esmaltada de tablero de cotizaciones. Carbón-verdoso
+   profundo de chapa, dígitos crema pintados, ámbar para la cotización, rojo
+   señal para la acción, verde fósforo para lo vivo. Sin gradientes, sin glow:
+   esmalte plano y mecánica. */
+@plugin "daisyui/theme" {
+  name: "board";
+  default: true;
+  color-scheme: dark;
+  --color-base-100: #151a17;
+  --color-base-200: #1c231f;
+  --color-base-300: #28332d;
+  --color-base-content: #f2ead8;
+  --color-primary: #ffb020;
+  --color-primary-content: #151a17;
+  --color-secondary: #e8482e;
+  --color-secondary-content: #fff3ec;
+  --color-accent: #3ec97e;
+  --color-accent-content: #0c1f14;
+  --color-neutral: #28332d;
+  --color-neutral-content: #f2ead8;
+  --color-info: #4aa3ff;
+  --color-info-content: #0a1626;
+  --color-success: #3ec97e;
+  --color-success-content: #0c1f14;
+  --color-warning: #ffb020;
+  --color-warning-content: #151a17;
+  --color-error: #e8482e;
+  --color-error-content: #fff3ec;
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.375rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
 /* Criterio 13 (SPEC §17): controles táctiles de ≥ 44 px en móvil (WCAG 2.5.5).
    El default de daisyUI v5 es 2,5 rem (40 px); basta con subir la altura
    mínima de btn/input/select aquí, en un solo sitio centralizado. */
@@ -8,4 +46,582 @@
 .input,
 .select {
   min-height: 2.75rem;
+}
+
+:root {
+  /* Voces tipográficas del tablero: señalización condensada para display,
+     mono tabular para cifras y etiquetas, grotesco de trabajo para el resto. */
+  --font-signage: "Big Shoulders Variable", "Arial Narrow", sans-serif;
+  --font-board-mono: "Chivo Mono Variable", ui-monospace, monospace;
+  --font-body: "Chivo Variable", system-ui, sans-serif;
+}
+
+html {
+  font-family: var(--font-body);
+}
+
+/* Utilidades de voz tipográfica del tablero. */
+.font-signage {
+  font-family: var(--font-signage);
+}
+
+.font-board-mono {
+  font-family: var(--font-board-mono);
+}
+
+/* ---- El tablero por debajo del navegador ---- */
+
+::selection {
+  background: #ffb020;
+  color: #151a17;
+}
+
+:focus-visible {
+  outline: 2px solid #ffb020;
+  outline-offset: 2px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #28332d #151a17;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #28332d;
+  border-radius: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: #151a17;
+}
+
+/* ---- Marquesina del tablero (header) ---- */
+
+.board-marquee {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: #1c231f;
+  border-bottom: 1px solid #28332d;
+}
+
+.board-brand {
+  font-family: var(--font-signage);
+  font-variation-settings: "wght" 800;
+  font-size: 1.75rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: #f2ead8;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.board-brand:hover {
+  color: #ffb020;
+}
+
+.board-tagline {
+  font-family: var(--font-board-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f2ead8;
+  opacity: 0.72;
+}
+
+.board-navlink {
+  font-family: var(--font-board-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f2ead8;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #28332d;
+  background: #151a17;
+}
+
+.board-navlink:hover {
+  color: #151a17;
+  background: #ffb020;
+  border-color: #ffb020;
+}
+
+/* ---- Enlace de país en el pie ---- */
+
+.board-footer-link {
+  font-family: var(--font-board-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f2ead8;
+  opacity: 0.72;
+  text-decoration: none;
+  padding: 0.5rem 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+.board-footer-link:hover {
+  color: #ffb020;
+  opacity: 1;
+}
+
+.board-country-select {
+  font-family: var(--font-board-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f2ead8;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #28332d;
+  background: #151a17;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.board-country-select:hover {
+  border-color: #ffb020;
+}
+
+.board-country-select option {
+  background: #151a17;
+  color: #f2ead8;
+}
+
+/* ---- Dígito split-flap ---- */
+
+.flap-cell {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.72em;
+  height: 1.18em;
+  overflow: hidden;
+  background: #f2ead8;
+  color: #151a17;
+  border-radius: 0.09em;
+  box-shadow: inset 0 -0.07em 0 rgba(0, 0, 0, 0.22);
+}
+
+/* Costura horizontal del flap: mitad superior ligeramente más clara. */
+.flap-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 50% 0;
+  background: rgba(255, 255, 255, 0.14);
+  pointer-events: none;
+}
+
+/* Línea de bisagra. */
+.flap-cell::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+.flap-strip {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-signage);
+  font-variation-settings: "wght" 700;
+  will-change: transform;
+}
+
+.flap-strip > span {
+  flex: 0 0 auto;
+  height: 1.18em;
+  line-height: 1.18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flap-sep {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 0.42em;
+  height: 1.18em;
+  color: #f2ead8;
+  font-family: var(--font-signage);
+  font-variation-settings: "wght" 700;
+}
+
+.flap-anim {
+  transition: transform 0.85s cubic-bezier(0.22, 0.9, 0.28, 1);
+}
+
+/* ---- Héroe vivo: rotación de artículos ---- */
+
+@keyframes board-hero-swap {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.board-hero-swap {
+  animation: board-hero-swap 0.45s ease-out both;
+}
+
+.board-pct-fill {
+  transition: width 0.7s cubic-bezier(0.22, 0.9, 0.28, 1);
+}
+
+/* ---- Pizarra viva: rotación de items con barras animadas ---- */
+
+@keyframes board-bar-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.board-bar-draw {
+  transform-origin: left;
+  animation: board-bar-draw 0.8s cubic-bezier(0.22, 0.9, 0.28, 1) both;
+  animation-delay: calc(var(--row-i, 0) * 50ms + 120ms);
+}
+
+/* ---- Ticker rodante ---- */
+
+.board-ticker {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  background: #151a17;
+  border-block: 1px solid #28332d;
+}
+
+/* Chip "en vivo": la marca de que el tablero está cotizando ahora mismo. */
+.board-live {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border-right: 1px solid #28332d;
+  font-family: var(--font-board-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #3ec97e;
+}
+
+.board-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3ec97e;
+  animation: board-live-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes board-live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.8);
+  }
+}
+
+.board-ticker-window {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.board-ticker-track {
+  display: inline-flex;
+  gap: 2.5rem;
+  padding-block: 0.5rem;
+  white-space: nowrap;
+  animation: board-ticker-scroll 42s linear infinite;
+}
+
+.board-ticker:hover .board-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes board-ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.board-ticker-item {
+  font-family: var(--font-board-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: #f2ead8;
+}
+
+.board-ticker-item strong {
+  color: #ffb020;
+  font-weight: 600;
+}
+
+.board-ticker-dot {
+  color: #e8482e;
+}
+
+/* ---- Placa de operación y filas de pizarra ---- */
+
+.board-plate {
+  border: 1px solid #28332d;
+  background: #1c231f;
+}
+
+/* Placa con dato del usuario en uso: el borde pasa a ámbar para señalar
+ * que la cifra de la pagina ya no es la de referencia. */
+.board-plate--active {
+  border-color: rgba(255, 176, 32, 0.55);
+}
+
+.board-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.875rem;
+  border: 1px solid #28332d;
+  background: #151a17;
+  text-decoration: none;
+  transition: background 120ms ease-out;
+}
+
+.board-row:hover {
+  background: #1c231f;
+}
+
+.board-row:hover .board-row-arrow {
+  transform: translateX(3px);
+  color: #ffb020;
+}
+
+.board-row-arrow {
+  color: #f2ead8;
+  opacity: 0.55;
+  transition: transform 120ms ease-out, color 120ms ease-out;
+}
+
+.board-cat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: transform 160ms ease-out;
+}
+
+.board-cat-icon--sm {
+  width: 2rem;
+  height: 2rem;
+}
+
+.board-row:hover .board-cat-icon {
+  transform: rotate(-6deg) scale(1.06);
+}
+
+/* Estilo de sello para chapas pequeñas ("detectado", "tus datos activos"). */
+.board-stamp {
+  font-family: var(--font-board-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid currentColor;
+}
+
+/* Rojo de sello aclarado: a 10 px sobre la placa necesita ≥ 4.5:1. */
+.board-stamp-alert {
+  color: #f2664f;
+}
+
+.board-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-signage);
+  font-variation-settings: "wght" 700;
+  font-size: 1.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 0.75rem 1.5rem;
+  background: #e8482e;
+  color: #fff3ec;
+  border: 1px solid #e8482e;
+  text-decoration: none;
+  transition: background 120ms ease-out, transform 120ms ease-out;
+}
+
+.board-cta:hover {
+  background: #f25c42;
+  transform: translateY(-1px);
+}
+
+/* ---- Movimiento con respeto ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .board-ticker-track {
+    animation: none;
+  }
+
+  .board-live-dot {
+    animation: none;
+  }
+
+  .flap-anim {
+    transition: none;
+  }
+
+  .board-hero-swap {
+    animation: none;
+  }
+
+  .board-pct-fill {
+    transition: none;
+  }
+
+  .board-bar-draw {
+    animation: none;
+  }
+
+  .board-row,
+  .board-row-arrow,
+  .board-cat-icon,
+  .board-caret,
+  .board-cta,
+  .board-card-remove {
+    transition: none;
+  }
+}
+
+/* ---- Retícula del marcador ---- */
+
+.board-cell {
+  border: 1px solid #28332d;
+  background: #151a17;
+  padding: 0.875rem 1rem;
+}
+
+.board-cell--fill {
+  background: #ffb020;
+  border-color: #ffb020;
+  color: #14191d;
+}
+
+/* Celdas que mandan: la jornada y el % del año llevan dígito ámbar. */
+.board-cell--rate {
+  color: #ffb020;
+}
+
+/* ---- Bandas de señal (anclas) ---- */
+
+.board-anchor {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid #28332d;
+  background: #151a17;
+}
+
+/* ---- Pliegue de placa (details) con caret propio ---- */
+
+.board-details > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.board-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.board-caret {
+  flex: none;
+  transition: transform 160ms ease-out;
+}
+
+.board-details[open] .board-caret {
+  transform: rotate(90deg);
+}
+
+/* ---- Botón quitar tarjeta (comparador) ---- */
+
+.board-card-remove {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 1px solid #28332d;
+  background: transparent;
+  color: #f2ead8;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 120ms ease-out, border-color 120ms ease-out, color 120ms ease-out;
+}
+
+.board-card-remove:hover {
+  opacity: 1;
+  border-color: #ffb020;
+  color: #ffb020;
+}
+
+/* ---- Compartir en vocabulario de tablero ---- */
+
+.board-share .btn {
+  font-family: var(--font-board-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid #28332d;
+  background: #151a17;
+  color: #f2ead8;
+  border-radius: 0.25rem;
+}
+
+.board-share .btn:hover {
+  border-color: #f2ead8;
+  background: #1c231f;
+  color: #f2ead8;
 }

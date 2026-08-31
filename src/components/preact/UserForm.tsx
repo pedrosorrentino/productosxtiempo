@@ -176,16 +176,22 @@ export default function UserForm({
         <label class="label" for="user-net-monthly">
           {userForm.netMonthly}
         </label>
-        <input
-          id="user-net-monthly"
-          type="number"
-          inputmode="decimal"
-          min="1"
-          class="input w-full"
-          placeholder={countryNetMonthly != null ? String(countryNetMonthly) : ""}
-          value={netText}
-          onInput={onNetInput}
-        />
+        <label class="input w-full items-center gap-2">
+          <span class="font-board-mono text-base opacity-80">{currencySymbol}</span>
+          <input
+            id="user-net-monthly"
+            type="number"
+            inputmode="decimal"
+            min="1"
+            class="grow"
+            placeholder={countryNetMonthly != null ? String(countryNetMonthly) : ""}
+            value={netText}
+            onInput={onNetInput}
+          />
+        </label>
+        <p class="mt-1 font-board-mono text-[0.625rem] uppercase tracking-[0.12em] opacity-70">
+          {userForm.netCurrencyNote(currencySymbol)}
+        </p>
       </div>
       <div>
         <label class="label" for="user-weekly-hours">
@@ -207,15 +213,18 @@ export default function UserForm({
         <label class="label" for="user-monthly-savings">
           {userForm.monthlySavings}
         </label>
-        <input
-          id="user-monthly-savings"
-          type="number"
-          inputmode="decimal"
-          min="1"
-          class="input w-full"
-          value={savingsText}
-          onInput={onSavingsInput}
-        />
+        <label class="input w-full items-center gap-2">
+          <span class="font-board-mono text-base opacity-80">{currencySymbol}</span>
+          <input
+            id="user-monthly-savings"
+            type="number"
+            inputmode="decimal"
+            min="1"
+            class="grow"
+            value={savingsText}
+            onInput={onSavingsInput}
+          />
+        </label>
       </div>
       <div>
         <label class="label" for="user-age">
@@ -233,7 +242,11 @@ export default function UserForm({
           onInput={onAgeInput}
         />
       </div>
-      {wage && <p class="sm:col-span-2 text-lg font-medium">{hourValue(wage)}</p>}
+      {wage && (
+        <p class="sm:col-span-2 font-board-mono text-sm uppercase tracking-[0.12em]">
+          {hourValue(wage)}
+        </p>
+      )}
     </div>
   );
 }

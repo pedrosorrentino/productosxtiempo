@@ -1,14 +1,14 @@
 {
-  "ES": { "cafe": 1.5, "iphone": 1000, "alquiler": 900 },
-  "PT": { "cafe": null, "iphone": null, "alquiler": null },
-  "FR": { "cafe": null, "iphone": null, "alquiler": null },
-  "DE": { "cafe": null, "iphone": null, "alquiler": null },
-  "IT": { "cafe": null, "iphone": null, "alquiler": null },
-  "GB": { "cafe": 3.5, "iphone": 999, "alquiler": 1400 },
-  "US": { "cafe": 5.5, "iphone": 1000, "alquiler": 1900 },
-  "MX": { "cafe": 45, "iphone": 23000, "alquiler": 13000 },
-  "AR": { "cafe": null, "iphone": null, "alquiler": null },
-  "CO": { "cafe": 7000, "iphone": 3500000, "alquiler": 1600000 },
-  "CL": { "cafe": 2800, "iphone": 950000, "alquiler": 500000 },
-  "CH": { "cafe": 5.5, "iphone": 1050, "alquiler": 2200 }
+  "ES": { "cafe": 1.5, "iphone": 1000, "alquiler": 900, "menu": 14, "gasolina": 1.65 },
+  "PT": { "cafe": 1.2, "iphone": 999, "alquiler": 900, "menu": 10, "gasolina": 1.8 },
+  "FR": { "cafe": 2.5, "iphone": 1000, "alquiler": 1100, "menu": 16, "gasolina": 1.95 },
+  "DE": { "cafe": 3, "iphone": 1000, "alquiler": 1200, "menu": 13, "gasolina": 1.85 },
+  "IT": { "cafe": 1.8, "iphone": 1000, "alquiler": 950, "menu": 15, "gasolina": 1.9 },
+  "GB": { "cafe": 3.5, "iphone": 999, "alquiler": 1400, "menu": 18, "gasolina": 1.7 },
+  "US": { "cafe": 5.5, "iphone": 1000, "alquiler": 1900, "menu": 26, "gasolina": 3.4 },
+  "MX": { "cafe": 45, "iphone": 23000, "alquiler": 13000, "menu": 110, "gasolina": 24 },
+  "AR": { "cafe": 3500, "iphone": 2500000, "alquiler": 300000, "menu": 4500, "gasolina": 1200 },
+  "CO": { "cafe": 7000, "iphone": 3500000, "alquiler": 1600000, "menu": 22000, "gasolina": 14000 },
+  "CL": { "cafe": 2800, "iphone": 950000, "alquiler": 500000, "menu": 11000, "gasolina": 1300 },
+  "CH": { "cafe": 5.5, "iphone": 1050, "alquiler": 2200, "menu": 29, "gasolina": 1.9 }
 }

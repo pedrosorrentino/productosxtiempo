@@ -20,7 +20,7 @@ const { country } = Astro.props;
 ---
 
 <BaseLayout title={`${country.name} · ${brand.name}`} description={brand.subtitle}>
-  <section class="container mx-auto px-4 py-10 max-w-3xl">
+  <section class="max-w-5xl mx-auto px-4 py-8">
     <ResultView
       client:load
       countryCode={country.code}

@@ -73,12 +73,16 @@ export default function ShareButton({ url, text }: ShareButtonProps) {
 
   const share = async (event: JSX.TargetedEvent<HTMLButtonElement>) => {
     event.currentTarget.blur();
+    // La URL puede llegar relativa (props serializadas en SSR): se resuelve
+    // contra el documento para que Web Share y el portapapeles la reciban
+    // absoluta.
+    const absoluteUrl = new URL(url, location.href).href;
     if (typeof navigator !== "undefined" && navigator.share != null) {
       try {
         await navigator.share({
           title: text?.split("\n")[0],
           text: text ?? undefined,
-          url,
+          url: absoluteUrl,
         });
         return; // El sheet nativo ya es el feedback.
       } catch (error) {
@@ -87,7 +91,7 @@ export default function ShareButton({ url, text }: ShareButtonProps) {
         // Fallo real de Web Share → caer al portapapeles.
       }
     }
-    const content = text != null ? `${text}\n${url}` : url;
+    const content = text != null ? `${text}\n${absoluteUrl}` : absoluteUrl;
     const ok = await copyWithFallback(content);
     showToast(
       ok ? "ok" : "warn",

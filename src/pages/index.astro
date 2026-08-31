@@ -1,80 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CountryPicker from '../components/preact/CountryPicker.tsx';
-import type { PickerCountry } from '../components/preact/CountryPicker.tsx';
-import { calc } from '../lib/calc.ts';
-import { formatHumanDuration, formatWorkdays } from '../lib/format.ts';
-import { getCountryBySlug, getProduct, getProductPrice } from '../lib/selectors.ts';
-import { brand, cta, home, result } from '../i18n/es.ts';
+import RateBoard from '../components/preact/RateBoard.tsx';
+import { brand } from '../i18n/es.ts';
+import type { Country, Product } from '../lib/types.ts';
 import countriesData from '../data/countries.json';
 import productsData from '../data/products.json';
 
-const spain = getCountryBySlug(countriesData, 'espana');
-const tesla = getProduct(productsData, 'tesla-model-3');
-const teslaPriceES = spain && tesla ? getProductPrice(tesla, spain.code) : undefined;
-
-if (!spain || !tesla || !teslaPriceES || spain.medianNetMonthly == null) {
-  throw new Error('Home: faltan datos seed (España o tesla-model-3) en src/data.');
-}
-
-const example = calc({
-  price: teslaPriceES.value,
-  netMonthly: spain.medianNetMonthly,
-  weeklyHours: spain.legalWeeklyHours,
-  realAnnualHours: spain.realAnnualHours,
-  monthlySavings: null,
-  age: null,
-  retirementAge: spain.retirementAge,
-});
-
-const exampleWorkdays = formatWorkdays(example.workdays8h);
-const examplePhrase = formatHumanDuration(
-  example.hours,
-  example.workdays8h,
-  example.monthsFullPay,
-  example.yearsFullPay,
-);
-
-const pickerCountries: PickerCountry[] = countriesData.map((country) => ({
-  name: country.name,
-  slug: country.slug,
-}));
+/**
+ * Portada = tablero de cotizaciones. Todo el catálogo visible viaja a la isla
+ * (países × precios) para que el cambio de país o de nómina recalcule en
+ * vivo, en el dispositivo, sin pedir nada al servidor. */
+const countries = countriesData as Country[];
+const products = (productsData as Product[]).filter((product) => product.visible);
 ---
 
 <BaseLayout title={brand.name} description={brand.promise}>
-  <section class="container mx-auto px-4 py-12 md:py-16">
-    <div class="max-w-xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold">{brand.name}</h1>
-      <p class="mt-3 text-xl md:text-2xl font-medium">{brand.promise}</p>
-      <p class="mt-3 text-base opacity-80">{brand.subtitle}</p>
-
-      <div class="mt-8 flex justify-center">
-        <CountryPicker
-          client:load
-          countries={pickerCountries}
-          label={home.countryLabel}
-          placeholder={home.countryPlaceholder}
-        />
-      </div>
-
-      <p class="mt-4">
-        <a href="/espana/precio" class="link link-hover">{cta.preferOwnSalary}</a>
-      </p>
-    </div>
-
-    <div class="card bg-base-100 shadow-sm max-w-xl mx-auto mt-12 p-6 text-center">
-      <p class="text-base">{home.exampleLead(tesla.shortName, spain.name)}</p>
-      <p class="mt-2">
-        <span class="text-5xl md:text-6xl font-bold tabular-nums">{exampleWorkdays}</span>
-        {` ${home.workdaysUnit}`}
-      </p>
-      <p class="mt-1 text-lg">{home.fullPayTail(examplePhrase)}</p>
-    </div>
-
-    <p class="mt-10 text-center text-sm opacity-80">
-      <a href="/metodo" class="link link-hover">{cta.method}</a>
-      {' · '}
-      {result.effortDisclaimer}
-    </p>
-  </section>
+  <RateBoard client:load countries={countries} products={products} heroProductId="tesla-model-3" />
 </BaseLayout>

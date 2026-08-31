@@ -27,6 +27,11 @@ export const cta = {
   countryData: "Sueldo de referencia de este país",
   myData: "Mis datos",
   changePrice: "Cambia el precio si el tuyo es otro.",
+  changePriceTitle: "El precio que tú pagas",
+  changePriceNote:
+    "Si el tuyo es otro, escríbelo aquí: toda la página se recalcula al instante.",
+  changePriceLive: "tu precio en uso",
+  changePriceRef: "precio de referencia",
   method: "Método",
   share: "Compartir",
   shareCopied: "Enlace copiado",
@@ -51,7 +56,11 @@ export const userForm = {
   netMonthly: "Neto al mes",
   weeklyHours: "Horas a la semana",
   monthlySavings: "Ahorro al mes (opcional)",
-  age: "Tu edad (opcional, para el contexto de vida laboral)",
+  age: "Tu edad (opcional)",
+  /** Aviso de moneda del neto: la cifra se escribe en la divisa del país. */
+  netCurrencyNote: (symbol: string): string => `En ${symbol}, como el resto del país.`,
+  /** Sello de la placa: la unidad en la que se piden las cifras. */
+  currencyStamp: (symbol: string): string => `en ${symbol}`,
 };
 
 export const modeA = {
@@ -103,17 +112,32 @@ export const anchors = {
   iphone: (count: string): string => `equivale a ${anchorCount(count, "iPhone", "iPhones")}`,
   alquiler: (count: string): string =>
     `equivale a ${anchorCount(count, "mes de alquiler", "meses de alquiler")}`,
+  menu: (count: string): string =>
+    `equivale a ${anchorCount(count, "menú del día", "menús del día")}`,
+  gasolina: (count: string): string =>
+    `equivale a ${anchorCount(count, "tanque de gasolina", "tanques de gasolina")}`,
   lessThanOne: (thing: string): string => `menos de un ${thing}`,
 };
 
 /** Barra del año laboral (SPEC §11): un rectángulo = 1 año laboral de referencia. */
 export const yearBar = {
-  title: "Tu año laboral",
-  detail: "1 rectángulo = 12 meses de sueldo entero",
+  title: "La compra frente a tu año de sueldo",
+  detail:
+    "1 barra llena = 12 meses de sueldo entero. El relleno marca cuánto de ese año de sueldo se lleva esta compra.",
   detailRealHours: (hours: number): string =>
-    `1 rectángulo = 12 meses de sueldo entero (${hours} h reales al año)`,
-  overflow: (years: string): string => `desborda a ${years} años`,
-  ariaFill: (pct: string): string => `Barra del año laboral: ocupa el ${pct}%`,
+    `1 barra llena = 12 meses de sueldo entero (${hours} h reales al año). El relleno marca cuánto de ese año de sueldo se lleva esta compra.`,
+  overflow: (years: string): string => `Se pasa de un año entero: esta compra son ${years} de sueldo.`,
+  fillLabel: (pct: string): string => `La compra ocupa el ${pct}% de un año de sueldo entero.`,
+  ariaFill: (pct: string): string =>
+    `Barra: la compra ocupa el ${pct}% de un año de sueldo entero.`,
+  /** Barra de vida (solo con edad): cuánto de la vida del usuario se lleva la compra. */
+  lifeTitle: "Y en tu vida",
+  lifeLabel: (age: number): string => `% de tus ${age} años`,
+  lifeYearsLabel: (years: string): string => `son ${years} años de tu vida`,
+  lifeFillLabel: (age: number, pct: string, years: string): string =>
+    `De tus ${age} años de vida, la compra ocupa el ${pct}%: ${years} años.`,
+  lifeAria: (age: number, pct: string): string =>
+    `De tus ${age} años de vida, la compra ocupa el ${pct}%`,
 };
 
 export const noSalary = {
@@ -215,13 +239,11 @@ export const shareText = (input: {
   return lines.join("\n");
 };
 
-/** Pie legal completo (SPEC §16, texto exacto). */
+/** Pie legal (SPEC §16, versión reducida: 3 líneas en vez de 5). */
 export const legalFooter: readonly string[] = [
-  "Esta web ofrece una estimación educativa de esfuerzo laboral.",
-  "No es un consejo de compra, ahorro ni inversión.",
-  "Los salarios y precios son aproximados y pueden estar desactualizados.",
-  "Tú puedes y debes sustituirlos por tus cifras reales.",
-  "El cálculo se hace en tu dispositivo. No guardamos tu sueldo ni tu edad.",
+  "Estimación educativa de esfuerzo laboral, no un consejo de compra.",
+  "Salarios y precios son orientativos: sustitúyelos por tus cifras.",
+  "El cálculo se hace en tu dispositivo; no guardamos tus datos.",
 ];
 
 /**
@@ -287,21 +309,42 @@ export const anchorSingular = {
   cafe: "café",
   iphone: "iPhone",
   alquiler: "mes de alquiler",
+  menu: "menú del día",
+  gasolina: "tanque de gasolina",
 } as const;
 
 /**
  * Comparador simple (SPEC §5): el MISMO precio calculado con distintos
- * sueldos. Compacto: una fila por sujeto ("tú", país actual y un segundo
- * país elegible) más el select. Sin librerías, sin dashboard.
+ * sueldos. Tarjetas a todo el ancho: una por sujeto ("tú", país actual y un
+ * segundo país elegible) con la cifra de esfuerzo y barra de gauge; el
+ * select de otro país cierra la serie. Sin librerías, sin dashboard.
  */
 export const compare = {
-  title: "El mismo precio, otras nóminas",
+  title: "El mismo precio, otros países",
   samePrice: (amount: string): string =>
     `Este precio (${amount}) calculado con cada sueldo:`,
   you: "Tú",
   putYourSalary: "pon tu sueldo",
-  selectLabel: "Comparar con otro país",
+  selectLabel: "Añadir otro país",
   selectPlaceholder: "Elige un país",
+  /** Select agotado: ya hay 3 tarjetas en la comparación. */
+  maxReached: "Ya hay 3 países comparando.",
+  /** Esqueleto de las columnas libres. */
+  emptySlots: "Añade más países para comparar",
+  /** Etiqueta de bloques: el sueldo con el que cotiza cada tarjeta. */
+  salaryLabel: "sueldo neto mensual",
+  /** Etiqueta del gauge: el relleno compara contra quien más tarda en pagarlo. */
+  gaugeLabel: "vs. el país más lento",
+  gaugeAria: (label: string, pct: string): string =>
+    `Con el sueldo de ${label}, la compra tarda el ${pct}% de lo que tarda el país más lento de la comparación.`,
+  /** Tarjeta vacía para invitar a añadir una fila más. */
+  addRow: (amount: string): string => `Añade un sueldo y cotiza ${amount} con él`,
+  /** Quitar la tarjeta del comparador. */
+  removeCard: (name: string): string => `Quitar la tarjeta de ${name}`,
+  /** Cuánta vida deja en el usuario esta compra (solo con edad). */
+  lifeLine: (pct: string, years: string): string =>
+    `Te quita ≈ ${pct}% de tu vida: ${years} años.`,
+  lifeAria: (pct: string): string => `La compra ocupa el ${pct}% de tu vida`,
 };
 
 /** Campo "esta cosa cuesta" + nombre opcional (SPEC §10). */
@@ -312,6 +355,11 @@ export const priceForm = {
   namePlaceholder: "p. ej. Tesla Model 3",
   submit: "Calcular en mi tiempo",
   enterPricePrompt: "Escribe cuánto cuesta y te decimos cuánto tiempo de trabajo es.",
+  /** Placa llamativa de la ficha de país. */
+  priceTitle: "¿Cuánto cuesta otra cosa?",
+  priceNote:
+    "Escribe el precio de cualquier cosa y te decimos cuántas horas de trabajo te cuesta, con tu sueldo o el de este país.",
+  priceStamp: "lo calculamos al momento",
 };
 
 /** Copy de la ficha de país (SPEC §9, §10). */
@@ -333,4 +381,66 @@ export const countryPage = {
    */
   weeklyHoursNote: (hours: number): string =>
     `Jornada legal de ${hours} h semanales, distinta de la referencia de 40 h: los cálculos de este país usan su jornada.`,
+};
+
+/** Copy del tablero de cotizaciones (portada rediseñada). Mismo tono: seco,
+ * claro, un poco ingenioso, cero moralina. */
+export const board = {
+  /** Placa de operación: país con el que cotiza el tablero. */
+  operatingLabel: "Viviendo en",
+  detectedStamp: "detectado",
+  savedStamp: "tu elección",
+  medianStamp: "mediana del país",
+  changeCountryLabel: "Cambiar país",
+  countryFile: (name: string): string => `Ficha de ${name}`,
+
+  /** Chip de la placa de operación: falta el neto del usuario y se le invita
+   * a bajarlo a "Tu tipo de cambio". */
+  addYourDataStamp: "añade tus datos",
+
+  /** Navegación del pie: lista de países. */
+  footerCountriesLabel: "Todos los países",
+  /** Cotización héroe a dígitos rodantes. */
+  heroLead: (productName: string, countryName: string): string =>
+    `1 ${productName} en ${countryName} son`,
+  priceRefLabel: "precio de referencia",
+  esRefBadge: "ref. España",
+  tickerLabel: "Cotizaciones del tablero",
+
+  /** Pizarra completa de cotizaciones. */
+  boardTitle: "La pizarra",
+  boardSubtitle: "El catálogo va rotando, cotizado en jornadas de 8 h.",
+  rateUnitShort: "jornadas",
+  salaryUnitShort: "meses de sueldo",
+  yearsUnitShort: "años de sueldo",
+
+  /** Panel de tipo de cambio personal. */
+  exchangeTitle: "Tu tipo de cambio",
+  exchangeSubtitle: (countryName: string): string =>
+    `Ahora mismo cotizamos con la mediana neta de ${countryName}. Pon tu nómina y la pizarra se recalcula al instante.`,
+  yourDataStamp: "cotizando con tus datos",
+
+  /** CTA final. */
+  effortLine: result.effortDisclaimer,
+
+  /** Ficha de país en gramática de marcador. */
+  countryBoard: (name: string): string => `La pizarra de ${name}`,
+  /** Subtítulo de la pizarra del país: ahí sí se lista el catálogo entero,
+   * sin la rotación de la portada. */
+  countryBoardSubtitle: "Todo el catálogo del país, cotizado en jornadas de 8 h.",
+  rateUnit: (symbol: string): string => `${symbol} / hora`,
+
+  /** Vida (solo con edad en "Tu tipo de cambio"): barra que muestra lo que la
+   * compra cuesta en años de la vida del usuario. El total de la barra es su
+   * edad. */
+  lifeBarLabel: (age: number): string => `% de tus ${age} años`,
+  lifeBarAria: (age: number, pct: string): string =>
+    `De tus ${age} años de vida, esta compra ocupa el ${pct}%`,
+
+  /** Etiquetas de fila en la pizarra: el valor delante ("4% de un año de
+   * sueldo", "2% de tus 42 años"). La barra de fila de sueldo muestra la
+   * fracción de UN año de sueldo entero que se come el precio (se satura en
+   * 100); la de vida, la fracción de la edad del usuario. */
+  salaryBarLabel: (pct: string): string => `${pct}% de un año de sueldo`,
+  lifeBarRowLabel: (age: number, pct: string): string => `${pct}% de tus ${age} años`,
 };

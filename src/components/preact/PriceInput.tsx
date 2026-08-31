@@ -15,6 +15,11 @@ export interface PriceInputProps {
    * inerte. Por defecto true (ficha de país, flujo de precio libre).
    */
   showLabel?: boolean;
+  /**
+   * Botón submit en la MISMA LÍNEA que los inputs (portada): flex con
+   * items-end, wrap en móvil. Por defecto el botón va debajo (a todo el ancho).
+   */
+  submitInline?: boolean;
 }
 
 const parsePositive = (raw: string): number | null => {
@@ -43,6 +48,7 @@ export default function PriceInput({
   onPriceChange,
   onLabelChange,
   showLabel = true,
+  submitInline = false,
 }: PriceInputProps) {
   const inline = typeof onPriceChange === "function";
   const [priceText, setPriceText] = useState(
@@ -86,9 +92,17 @@ export default function PriceInput({
     if (!inline) navigate();
   };
 
+  const formClass = submitInline
+    ? "flex flex-wrap items-end gap-4"
+    : "grid gap-4 sm:grid-cols-2";
+  const fieldClass = submitInline ? "flex-1 min-w-40" : "";
+  const submitClass = submitInline
+    ? "shrink-0 whitespace-nowrap h-11 py-0"
+    : "sm:col-span-2";
+
   return (
-    <form class="grid gap-4 sm:grid-cols-2" onSubmit={onSubmit}>
-      <div>
+    <form class={formClass} onSubmit={onSubmit}>
+      <div class={fieldClass}>
         <label class="label" for="price-input">
           {priceForm.priceLabel}
         </label>
@@ -107,7 +121,7 @@ export default function PriceInput({
         </label>
       </div>
       {showLabel && (
-        <div>
+        <div class={fieldClass}>
           <label class="label" for="price-label">
             {priceForm.nameLabel}
           </label>
@@ -122,8 +136,8 @@ export default function PriceInput({
         </div>
       )}
       {!inline && (
-        <div class="sm:col-span-2">
-          <button type="submit" class="btn btn-primary">
+        <div class={submitClass}>
+          <button type="submit" class={`board-cta ${submitInline ? "h-11 py-0" : ""}`}>
             {priceForm.submit}
           </button>
         </div>

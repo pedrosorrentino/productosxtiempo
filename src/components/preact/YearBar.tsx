@@ -4,6 +4,10 @@ import { yearBar } from "../../i18n/es.ts";
 export interface YearBarProps {
   yearsFullPay: number;
   realAnnualHours: number | null;
+  /** Edad del usuario (20–80 validada fuera). Con edad se añade la barra de
+   * vida: cuánto de ese tiempo cuesta la compra (misma fórmula que la pizarra:
+   * yearsFullPay / edad). */
+  userAge: number | null;
 }
 
 /**
@@ -11,15 +15,23 @@ export interface YearBarProps {
  * referencia; el relleno es min(1, yearsFullPay). Si yearsFullPay > 1 se
  * muestra una barra llena + texto "desborda a X años" (la opción "una barra
  * + texto" de la spec: evita pilas de N rectángulos para compras grandes).
- * Divs puros, sin librería de charts.
+ * Con edad: segunda barra con el % de la vida del usuario (mismo corte
+ * yearsFullPay >= 0.05 que la línea de edad de ResultView: un "0,0 %"
+ * miente igual que "0,0 cafés"). Divs puros, sin librería de charts.
  */
-export default function YearBar({ yearsFullPay, realAnnualHours }: YearBarProps) {
+export default function YearBar({
+  yearsFullPay,
+  realAnnualHours,
+  userAge,
+}: YearBarProps) {
   const fill = Math.min(1, Math.max(0, yearsFullPay));
   const pct = formatPercent(fill * 100);
   const detail =
     realAnnualHours != null
       ? yearBar.detailRealHours(realAnnualHours)
       : yearBar.detail;
+  const hasLifeBar = userAge != null && yearsFullPay >= 0.05;
+  const lifePct = hasLifeBar ? (yearsFullPay / userAge) * 100 : null;
 
   return (
     <section class="mt-8">
@@ -34,6 +46,30 @@ export default function YearBar({ yearsFullPay, realAnnualHours }: YearBarProps)
       </div>
       {yearsFullPay > 1 && (
         <p class="mt-1 text-sm font-medium">{yearBar.overflow(formatYears(yearsFullPay))}</p>
+      )}
+      <p class="mt-1 text-sm opacity-70">
+        {yearBar.fillLabel(pct)}
+      </p>
+      {hasLifeBar && lifePct != null && (
+        <div class="mt-4">
+          <div class="flex justify-between text-sm">
+            <span class="font-bold">{yearBar.lifeTitle}</span>
+            <span class="font-board-mono text-primary">{formatPercent(lifePct)}%</span>
+          </div>
+          <div
+            class="mt-1 h-3 w-full overflow-hidden rounded-box border border-base-content/20 bg-base-200"
+            role="img"
+            aria-label={yearBar.lifeAria(userAge, formatPercent(lifePct))}
+          >
+            <div
+              class="h-full bg-primary"
+              style={`width: ${Math.min(100, lifePct).toFixed(1)}%`}
+            />
+          </div>
+          <p class="mt-1 text-sm opacity-70">
+            {yearBar.lifeFillLabel(userAge, formatPercent(lifePct), formatYears(yearsFullPay))}
+          </p>
+        </div>
       )}
     </section>
   );

@@ -1,6 +1,10 @@
 ---
 import '../styles/global.css';
-import { brand, legalFooter } from '../i18n/es.ts';
+import '@fontsource-variable/big-shoulders';
+import '@fontsource-variable/chivo';
+import '@fontsource-variable/chivo-mono';
+import { brand, cta, legalFooter, home, board } from '../i18n/es.ts';
+import countriesData from '../data/countries.json';
 
 interface Props {
   title: string;
@@ -11,7 +15,7 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="board">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -24,35 +28,77 @@ const { title, description } = Astro.props;
     <meta property="og:type" content="website" />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen flex flex-col">
-    <header>
-      <div class="navbar bg-base-200 shadow-sm">
-        <div class="flex-1">
-          <a href="/" class="btn btn-ghost text-lg">{brand.name}</a>
-        </div>
-        <nav class="flex-none">
-          <ul class="menu menu-horizontal px-1">
-            <li><a href="/metodo">Método</a></li>
-          </ul>
-        </nav>
-      </div>
+  <body class="min-h-screen flex flex-col bg-base-100 text-base-content">
+    <!--
+      CONTRATO DE DIRECCIÓN · seed fc3e3919 · EL TABLERO DE COTIZACIONES
+      THESIS: la portada es un tablero de cambio: tu hora es la divisa y cada
+      precio se publica cotizado en jornadas de trabajo; se niega a la
+      calculadora pastel con input héroe porque la información ya está
+      cotizada cuando llegas.
+      OWN-WORLD: chapa esmaltada carbón-verdosa, dígitos crema split-flap con
+      costura mecánica, ámbar para la cotización, rojo señal para la acción,
+      verde fósforo para lo vivo; señalización condensada (Big Shoulders) para
+      display, mono tabular (Chivo Mono) para cifras, grotesco (Chivo) de
+      cuerpo; iconos esmalte de color por categoría; cero glow, cero gradiente.
+      STORY: llegas, ves tu país detectado y las cosas ya cambiadas a tiempo;
+      tocas tu nómina para afinar el tipo de cambio; compartes la cotización o
+      abres la ficha de tu país.
+      FIRST VIEWPORT: marquesina de marca; placa "Viviendo en: España
+      (detectado)" con selector; cotización gigante a dígitos rodantes
+      "1 Tesla Model 3 = 402 jornadas"; ticker rodante de productos; CTA a la
+      ficha del país.
+      FORM: El tablero de cotizaciones, dirección pick elegida por el usuario
+      (seed fc3e3919).
+      FINISH: unreviewed and undocumented is unfinished; this build ends with
+      the finish review, the verdict, DESIGN.md, and every shipping raster
+      carrying its provenance.
+    -->
+    <header class="board-marquee">
+      <a href="/" class="board-brand">{brand.name}</a>
+      <span class="board-tagline hidden md:inline">{brand.promise}</span>
+      <nav class="ml-auto">
+        <select id="board-country-select" class="board-country-select" aria-label={board.changeCountryLabel}>
+          <option value="" selected disabled>{home.countryPlaceholder}</option>
+          {countriesData.map((country) => (
+            <option value={country.slug}>{country.name}</option>
+          ))}
+        </select>
+      </nav>
     </header>
 
     <main class="flex-1">
       <slot />
     </main>
 
-    <footer class="footer footer-center bg-base-200 text-base-content p-8 gap-2">
-      <nav>
-        <a href="/metodo" class="link link-hover">Método</a>
-      </nav>
-      <div class="text-sm opacity-80">
-        {
-          legalFooter.map((line) => (
-            <p>{line}</p>
-          ))
-        }
+    <footer class="border-t border-base-300 bg-base-200 px-6 py-8">
+      <div class="md:flex md:items-start md:gap-10">
+        <div class="md:max-w-md">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+            <a href="/" class="board-brand">{brand.name}</a>
+            <a href="/metodo" class="board-navlink">{cta.method}</a>
+          </div>
+          <p class="mt-3 font-board-mono text-xs leading-relaxed opacity-70 max-w-3xl">
+            {legalFooter.join(" ")}
+          </p>
+        </div>
+        <nav
+          class="mt-6 md:mt-0 md:flex-1 md:min-w-0 flex flex-wrap items-center gap-x-3 gap-y-2 md:flex-nowrap md:items-start"
+          aria-label={board.footerCountriesLabel}
+        >
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-2 md:grid md:flex-1 md:min-w-0 md:grid-rows-3 md:grid-flow-col md:gap-x-8 md:gap-y-1">
+            {countriesData.map((country) => (
+              <a href={`/${country.slug}`} class="board-footer-link">{country.name}</a>
+            ))}
+          </div>
+        </nav>
       </div>
     </footer>
+
+    <script>
+      const select = document.querySelector<HTMLSelectElement>('#board-country-select');
+      select?.addEventListener('change', () => {
+        if (select.value) location.href = `/${select.value}`;
+      });
+    </script>
   </body>
 </html>

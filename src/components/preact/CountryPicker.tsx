@@ -38,12 +38,15 @@ export default function CountryPicker({
 
   return (
     <div class="text-left">
-      <label class="label" for="country-picker">
+      <label
+        class="font-board-mono text-xs uppercase tracking-[0.14em] opacity-70 block mb-1"
+        for="country-picker"
+      >
         {label}
       </label>
       <select
         id="country-picker"
-        class="select w-full max-w-xs"
+        class="select w-full max-w-xs font-board-mono"
         value=""
         onChange={navigate}
       >
