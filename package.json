@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@resvg/resvg-js": "^2.6.2",
+    "@types/node": "^26.4.0",
     "daisyui": "^5.7.22",
     "satori": "^0.33.4",
     "typescript": "^6.0.3",

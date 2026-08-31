@@ -40,6 +40,11 @@ export function priceTextOf(product: Product, country: Country): string | null {
   return price == null ? null : `${nfPrice.format(price.value)} ${country.currencySymbol}`;
 }
 
+/** True si el precio mostrado es el fallback de España (SPEC §7), no local. */
+export function isConverted(product: Product, country: Country): boolean {
+  return product.prices[country.code] == null;
+}
+
 export function ogQuote(product: Product, country: Country): OgQuote | null {
   const price = product.prices[country.code] ?? product.prices["ES"];
   if (price == null || country.medianNetMonthly == null) return null;

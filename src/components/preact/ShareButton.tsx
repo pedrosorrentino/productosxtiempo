@@ -56,7 +56,7 @@ async function copyWithFallback(content: string): Promise<boolean> {
  */
 export default function ShareButton({ url, text }: ShareButtonProps) {
   const [toast, setToast] = useState<Toast>(null);
-  const toastTimer = useRef<number | null>(null);
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const showToast = (kind: "ok" | "warn", message: string): void => {
     if (toastTimer.current != null) clearTimeout(toastTimer.current);

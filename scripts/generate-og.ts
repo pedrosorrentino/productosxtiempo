@@ -14,10 +14,10 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
-import { brand, board, og } from "../src/i18n/es.ts";
+import { brand, board, og, result } from "../src/i18n/es.ts";
 import { calc } from "../src/lib/calc.ts";
 import { formatHourlyWage } from "../src/lib/format.ts";
-import { ogQuote, priceTextOf } from "../src/lib/ogQuote.ts";
+import { isConverted, ogQuote, priceTextOf } from "../src/lib/ogQuote.ts";
 import type { Country, Product } from "../src/lib/types.ts";
 
 // ---- Datos y paleta del tema "board" (src/styles/global.css) ----
@@ -148,7 +148,7 @@ const footer = (left: string, right: string): Node =>
     paddingTop: 20,
     fontSize: 18,
     color: CREAM_FAINT,
-  }, [h("div", null, left), h("div", null, right)]);
+  }, [h("div", {}, left), h("div", {}, right)]);
 
 // ---- Pósters por tipo de página ----
 
@@ -226,22 +226,26 @@ function productPoster(product: Product, country: Country): Node {
   const priceText = quote?.priceText ?? priceTextOf(product, country);
   const children = [
     lead(board.heroLead(product.shortName, country.name)),
-    priceText
-      ? flap(priceText, quote ? quote.unit : "")
-      : h("div", {
-          fontFamily: "Chivo Mono",
-          fontWeight: 700,
-          fontSize: 56,
-          color: AMBER,
-          marginTop: 20,
-        }, og.poster.noWage),
+    quote
+      ? flap(quote.digits, quote.unit)
+      : priceText
+        ? flap(priceText, "")
+        : h("div", {
+            fontFamily: "Chivo Mono",
+            fontWeight: 700,
+            fontSize: 56,
+            color: AMBER,
+            marginTop: 20,
+          }, og.poster.noWage),
     hook(og.poster.hookProduct),
   ];
   return root([
     header(),
     h("div", { display: "flex", flexDirection: "column", flex: 1, justifyContent: "center" }, children),
     footer(
-      priceText ? `${priceText} · precio de referencia` : og.poster.noWage,
+      priceText
+        ? `${priceText} · ${isConverted(product, country) ? result.convertedBadge : "precio local"}`
+        : og.poster.noWage,
       `ref. ${country.salariesUpdatedAt}`,
     ),
   ]);
