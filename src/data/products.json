@@ -11,6 +11,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 1.29,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.5 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1.74,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.5 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 29.64,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.5 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 1.41,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.5 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -27,6 +55,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 12.05,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 16.26,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 276.63,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 13.15,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -43,6 +99,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 68.84,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (80 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 92.92,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (80 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 1580.74,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (80 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 75.12,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (80 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -59,6 +143,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 111.87,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (130 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 151,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (130 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 2568.71,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (130 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 122.07,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (130 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -75,6 +187,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 309.8,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (360 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 418.14,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (360 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 7113.35,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (360 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 338.04,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (360 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -91,6 +231,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 0.52,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (0.6 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 0.7,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (0.6 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 11.86,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (0.6 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 0.56,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (0.6 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -107,6 +275,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 2.15,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2.5 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 2.9,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2.5 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 49.4,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2.5 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 2.35,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2.5 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -123,6 +319,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 6.88,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 9.29,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 158.07,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 7.51,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -139,6 +363,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 15.49,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (18 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 20.91,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (18 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 355.67,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (18 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 16.9,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (18 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -155,6 +407,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 17.21,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (20 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 23.23,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (20 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 395.19,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (20 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 18.78,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (20 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -171,6 +451,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 68.84,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (80 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 92.92,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (80 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 1580.74,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (80 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 75.12,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (80 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -187,6 +495,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 17.21,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (20 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 23.23,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (20 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 395.19,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (20 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 18.78,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (20 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -203,6 +539,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 47.33,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 63.88,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 1086.76,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 51.65,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -219,6 +583,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 860.55,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1161.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 19759.3,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 939,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -235,6 +627,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 774.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1045.35,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 17783.37,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 845.1,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -251,6 +671,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 430.28,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 580.75,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 9879.65,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 469.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -267,6 +715,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 215.14,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (250 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 290.38,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (250 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 4939.83,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (250 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 234.75,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (250 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -283,6 +759,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 301.19,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (350 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 406.53,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (350 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 6915.76,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (350 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 328.65,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (350 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -299,6 +803,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 344.22,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (400 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 464.6,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (400 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 7903.72,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (400 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 375.6,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (400 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -315,6 +847,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 387.25,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 522.67,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 8891.69,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 422.55,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -331,6 +891,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 215.14,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (250 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 290.38,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (250 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 4939.83,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (250 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 234.75,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (250 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -347,6 +935,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 1118.72,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1509.95,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 25687.09,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 1220.7,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -363,6 +979,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 30.12,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (35 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 40.65,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (35 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 691.58,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (35 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 32.86,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (35 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -379,6 +1023,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 47.33,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 63.88,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 1086.76,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 51.65,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -395,6 +1067,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 344.22,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (400 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 464.6,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (400 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 7903.72,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (400 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 375.6,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (400 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -411,6 +1111,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 12047.7,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 16261,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 276630.2,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 13146,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -427,6 +1155,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 18932.1,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (22000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 25553,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (22000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 434704.6,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (22000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 20658,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (22000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -443,6 +1199,34 @@
         "note": "Precio de referencia de acceso en oferta reciente. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 28712.25,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (33365 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 38753.45,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (33365 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 659269.04,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (33365 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 31329.73,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (33365 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -459,6 +1243,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 430.28,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 580.75,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 9879.65,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 469.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -475,6 +1287,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 3614.31,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4200 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 4878.3,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4200 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 82989.06,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4200 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 3943.8,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4200 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -491,6 +1331,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 129.08,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (150 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 174.23,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (150 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 2963.9,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (150 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 140.85,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (150 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -507,6 +1375,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 387.25,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 522.67,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 8891.69,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 422.55,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -523,6 +1419,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 387.25,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 522.67,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 8891.69,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 422.55,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (450 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -539,6 +1463,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 774.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1045.35,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 17783.37,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 845.1,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -555,6 +1507,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 34422,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (40000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 46460,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (40000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 790372,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (40000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 37560,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (40000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -571,6 +1551,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 120.48,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (140 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 162.61,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (140 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 2766.3,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (140 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 131.46,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (140 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -587,6 +1595,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 774.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1045.35,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 17783.37,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 845.1,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (900 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -603,6 +1639,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 163504.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (190000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 220685,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (190000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 3754267,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (190000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 178410,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (190000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -619,6 +1683,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 1032.66,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1200 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1393.8,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1200 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 23711.16,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1200 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 1126.8,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1200 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -635,6 +1727,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 6884.4,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 9292,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 158074.4,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 7512,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -651,6 +1771,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 6884.4,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 9292,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 158074.4,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 7512,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (8000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -667,6 +1815,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 10326.6,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (12000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 13938,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (12000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 237111.6,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (12000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 11268,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (12000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -683,6 +1859,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 129082.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (150000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 174225,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (150000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 2963895,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (150000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 140850,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (150000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -699,6 +1903,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 4302.75,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (5000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 5807.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (5000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 98796.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (5000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 4695,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (5000 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -715,6 +1947,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 1118.72,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1509.95,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 25687.09,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 1220.7,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -731,6 +1991,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 1118.72,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1509.95,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 25687.09,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 1220.7,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1300 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true
@@ -747,6 +2035,34 @@
         "note": "Precio orientativo. Edítalo.",
         "source": "Referencia de producto",
         "origin": "local"
+      },
+      "GB": {
+        "value": 1290.83,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1742.25,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 29638.95,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 1408.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1500 €). Edítalo.",
+        "source": "Referencia de producto (convertido)",
+        "origin": "converted"
       }
     },
     "visible": true

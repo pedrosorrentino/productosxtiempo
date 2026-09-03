@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+import { Resvg } from "@resvg/resvg-js";
+import { writeFileSync } from "node:fs";
+import { createIco } from "./ico.ts";
+
+export const FAVICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <defs>
     <!-- Mask for split-flap side hinge notches -->
     <mask id="flap-notch-mask">
@@ -42,4 +46,34 @@
   <!-- Side Hinge Pins -->
   <circle cx="1.5" cy="64" r="2.5" fill="#3a483f" />
   <circle cx="126.5" cy="64" r="2.5" fill="#3a483f" />
-</svg>
+</svg>`;
+
+// Write public/favicon.svg
+writeFileSync("public/favicon.svg", FAVICON_SVG);
+console.log("Written public/favicon.svg");
+
+// Render PNGs for ICO (16x16, 32x32, 48x48)
+const sizes = [16, 32, 48];
+const icoImages: { width: number; height: number; data: Buffer }[] = [];
+
+for (const size of sizes) {
+  const resvg = new Resvg(FAVICON_SVG, {
+    fitTo: { mode: "width", value: size },
+  });
+  const pngBuffer = Buffer.from(resvg.render().asPng());
+  icoImages.push({ width: size, height: size, data: pngBuffer });
+  writeFileSync(`scripts/final-${size}.png`, pngBuffer);
+}
+
+// Also render 180x180 for Apple Touch Icon
+const resvg180 = new Resvg(FAVICON_SVG, {
+  fitTo: { mode: "width", value: 180 },
+});
+const png180 = Buffer.from(resvg180.render().asPng());
+writeFileSync("public/apple-touch-icon.png", png180);
+console.log("Written public/apple-touch-icon.png");
+
+// Build and write public/favicon.ico
+const icoBuffer = createIco(icoImages);
+writeFileSync("public/favicon.ico", icoBuffer);
+console.log("Written public/favicon.ico (multi-res 16, 32, 48)");
