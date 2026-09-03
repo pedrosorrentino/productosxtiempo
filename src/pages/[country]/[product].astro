@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ResultView from '../../components/preact/ResultView.tsx';
 import { brand, og } from '../../i18n/es.ts';
 import { ogQuote } from '../../lib/ogQuote.ts';
+import { getProductPrice } from '../../lib/selectors.ts';
 import type { Country, Product, ProductPrice } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
 import productsData from '../../data/products.json';
@@ -20,14 +21,16 @@ export function getStaticPaths() {
     for (const product of productsData as Product[]) {
       if (!product.visible) continue;
       const local = product.prices[country.code] as ProductPrice | undefined;
-      // Fallback ES (SPEC §7): sin precio local se usa el de España. El
-      // etiquetado "convertido" se decide aquí comparando el país de origen
-      // (contrato: NUNCA fiarse solo del origin del JSON).
-      const price = local ?? (product.prices['ES'] as ProductPrice | undefined);
+      const price = getProductPrice(product, country.code);
       if (!price) continue; // sin precio base ES → sin página
       paths.push({
         params: { country: country.slug, product: product.id },
-        props: { country, product, price, priceConverted: local == null },
+        props: {
+          country,
+          product,
+          price,
+          priceConverted: local == null || local.origin === 'converted',
+        },
       });
     }
   }
@@ -51,6 +54,7 @@ const ogDescription = quote
   title={ogTitle}
   description={ogDescription}
   ogImage={`/og/${country.slug}/${product.id}.png`}
+  currentCountrySlug={country.slug}
 >
   <section class="max-w-5xl mx-auto px-4 py-8">
     <ResultView
@@ -68,6 +72,7 @@ const ogDescription = quote
       catalogPrice={price.value}
       priceConverted={priceConverted}
       catalogPriceDate={price.date}
+      catalogPriceSource={price.source}
     />
   </section>
 </BaseLayout>

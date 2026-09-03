@@ -1,5 +1,3 @@
-import type { JSX } from "preact";
-
 export type PickerCountry = {
   name: string;
   slug: string;
@@ -29,8 +27,8 @@ export default function CountryPicker({
 }: CountryPickerProps) {
   const href = (slug: string): string => (hrefFor ? hrefFor(slug) : `/${slug}`);
 
-  const navigate = (event: JSX.TargetedEvent<HTMLSelectElement>) => {
-    const slug = event.currentTarget.value;
+  const navigate = (event: Event) => {
+    const slug = (event.currentTarget as HTMLSelectElement).value;
     if (slug !== "") {
       location.href = href(slug);
     }

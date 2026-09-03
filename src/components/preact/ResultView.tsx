@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import type { JSX } from "preact";
 import { calc } from "../../lib/calc.ts";
 import type { CalcResult } from "../../lib/calc.ts";
+import { sameCurrency } from "../../lib/currencies.ts";
 import {
   formatHumanDuration,
   formatHours,
@@ -25,7 +26,6 @@ import {
   anchorLessThanOne,
   anchorSingular,
   anchors as anchorsI18n,
-  board,
   cta,
   heroUnits,
   home,
@@ -43,6 +43,11 @@ import PriceInput from "./PriceInput.tsx";
 import ShareButton from "./ShareButton.tsx";
 import UserForm, { type UserFormFields } from "./UserForm.tsx";
 import YearBar from "./YearBar.tsx";
+import LifeBarControl from "./LifeBarControl.tsx";
+import LifeBattery from "./LifeBattery.tsx";
+import WorkBattery from "./WorkBattery.tsx";
+import { computeLifeImpact } from "../../lib/life.ts";
+import { computeWorkImpact } from "../../lib/work.ts";
 
 export type AnchorTable = Record<
   string,
@@ -160,6 +165,8 @@ export interface ResultViewProps {
    * permitido y documentado por Task 7 (badge de caducidad del precio).
    */
   catalogPriceDate?: string | null;
+  /** Fuente oficial del precio de catálogo. */
+  catalogPriceSource?: string | null;
 }
 
 /**
@@ -184,6 +191,7 @@ export default function ResultView({
   catalogPrice = null,
   priceConverted = false,
   catalogPriceDate = null,
+  catalogPriceSource = null,
 }: ResultViewProps) {
   const [state, setState] = useState<Partial<UserState>>({});
   const [mounted, setMounted] = useState(false);
@@ -206,6 +214,11 @@ export default function ResultView({
     if (!overrideApplies) {
       delete base.priceOverride;
       delete base.customLabel;
+    }
+    // Si el país guardado usa otra divisa, no arrastrar el sueldo o ahorro en otra moneda
+    if (saved.countryCode && !sameCurrency(saved.countryCode, countryCode)) {
+      delete base.netMonthly;
+      delete base.monthlySavings;
     }
     if (productId != null) {
       // En una página de producto el nombre lo pone el catálogo.
@@ -271,6 +284,36 @@ export default function ResultView({
   const setLabel = (value: string | null) => patch({ customLabel: value });
   const setUserFields = (fields: UserFormFields) => patch(fields);
 
+  const viewMode = state.viewMode ?? (edadValida != null ? "life" : "work");
+  const isLifeMode = viewMode === "life";
+
+  const onAgeChange = (newAge: number | null) => {
+    patch({ age: newAge, viewMode: "life" });
+  };
+  const onViewModeChange = (mode: "work" | "life") => {
+    patch({ viewMode: mode });
+  };
+
+  const lifeImpact = computed
+    ? computeLifeImpact({
+        hours: computed.hours,
+        yearsFullPay: computed.yearsFullPay,
+        weeklyHours,
+        userAge: edadValida,
+        retirementAge,
+      })
+    : null;
+
+  const workImpact = computed
+    ? computeWorkImpact({
+        hours: computed.hours,
+        workdays: computed.workdays8h,
+        netMonthly,
+        weeklyHours,
+        price: effectivePrice ?? undefined,
+      })
+    : null;
+
   const pickerCountries: PickerCountry[] = countriesData.map((c) => ({
     name: c.name,
     slug: c.slug,
@@ -297,17 +340,7 @@ export default function ResultView({
       ? catalogPriceDate
       : null;
 
-  // Skeleton SSR/pre-hidratación (SPEC §10.11): contenedor neutro. Pulido
-  // Task 8: h-72 (288 px) se quedaba corto frente al resultado hidratado
-  // (hero + desglose ≈ 500–600 px) y el salto de CLS era parcial; 32 rem
-  // cubre hero + desglose en móvil, el caso dominante. Compensación
-  // documentada: en pantallas de estado vacío (/precio sin precio) el
-  // skeleton es algo más alto que el contenido, un coste menor que el CLS
-  // del resultado completo. Elección documentada: skeleton estático de
-  // daisyUI (nada de spinners); evita el flash de la pantalla vacía.
-  if (!mounted) {
-    return <div class="skeleton h-[32rem] w-full" aria-hidden="true" />;
-  }
+  // Renderizado inmediato en SSR con datos del catálogo; reacciona al montar si hay datos locales.
 
   const shareUrl =
     typeof location !== "undefined"
@@ -337,7 +370,7 @@ export default function ResultView({
   };
 
   const priceLine = (
-    <p class="font-board-mono text-sm md:text-base opacity-80 flex flex-wrap items-center gap-x-3 gap-y-1">
+    <p class="font-board-mono text-sm md:text-base opacity-90 flex flex-wrap items-center gap-x-3 gap-y-1">
       {effectivePrice != null && (
         <>
           <span>
@@ -408,7 +441,7 @@ export default function ResultView({
       </div>
 
       <details class="board-plate board-details p-5">
-        <summary class="cursor-pointer font-board-mono text-xs uppercase tracking-[0.14em] opacity-80 select-none">
+        <summary class="cursor-pointer font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 select-none font-semibold">
           <svg
             class="board-caret"
             viewBox="0 0 24 24"
@@ -431,6 +464,7 @@ export default function ResultView({
             countryNetMonthly={medianNetMonthly}
             countryWeeklyHours={legalWeeklyHours}
             currencySymbol={currencySymbol}
+            age={edadValida}
             onChange={setUserFields}
           />
         </div>
@@ -514,7 +548,21 @@ export default function ResultView({
     }
   }
 
-  const heroAria = `${hero.value} ${hero.unit}`;
+  const effectiveHeroValue =
+    isLifeMode && lifeImpact?.pctCareerLeft != null
+      ? formatPercent(lifeImpact.pctCareerLeft)
+      : isLifeMode && lifeImpact
+      ? formatPercent(lifeImpact.lifeWeeksCost)
+      : hero.value;
+
+  const effectiveHeroUnit =
+    isLifeMode
+      ? lifeImpact?.pctCareerLeft != null
+        ? "% de tu vida laboral"
+        : "semanas de vida"
+      : hero.unit;
+
+  const heroAria = `${effectiveHeroValue} ${effectiveHeroUnit}`;
 
   // Celdas de la retícula: jornadas manda (celda ámbar), % del año lleva
   // dígito ámbar; el resto, crema. Mismas cifras del desglose del SPEC.
@@ -714,12 +762,23 @@ export default function ResultView({
         <div class="mt-2">{priceLine}</div>
       </div>
 
+      {/* ---- Control de Vida & Modo ---- */}
+      <div class="mt-4">
+        <LifeBarControl
+          age={edadValida}
+          viewMode={viewMode}
+          onAgeChange={onAgeChange}
+          onViewModeChange={onViewModeChange}
+          retirementAge={retirementAge}
+        />
+      </div>
+
       {/* ---- Marcador gigante ---- */}
       <section class="mt-8" aria-label={heroAria}>
         <div class="flex items-end gap-4 md:gap-6 flex-wrap">
-          {isRollable(hero.value) ? (
+          {isRollable(effectiveHeroValue) ? (
             <Odometer
-              value={hero.value}
+              value={effectiveHeroValue}
               label={heroAria}
               class="text-[clamp(4rem,14vw,10rem)] leading-none"
             />
@@ -728,25 +787,76 @@ export default function ResultView({
               class="font-signage text-[clamp(3rem,10vw,7rem)] leading-none"
               aria-label={heroAria}
             >
-              {hero.value}{" "}
-              <span class="text-primary">{hero.unit}</span>
+              {effectiveHeroValue}{" "}
+              <span class="text-primary">{effectiveHeroUnit}</span>
             </p>
           )}
-          {isRollable(hero.value) && (
+          {isRollable(effectiveHeroValue) && (
             <span class="font-signage uppercase text-primary text-[clamp(1.5rem,4vw,3rem)] leading-none pb-1 md:pb-3">
-              {hero.unit}
+              {effectiveHeroUnit}
             </span>
           )}
         </div>
-        <p class="mt-4 text-lg md:text-xl">{home.fullPayTail(phrase)}</p>
-        {hero.next && (
-          <p class="mt-1 font-board-mono text-sm opacity-80">= {hero.next}</p>
+        {!isLifeMode && (
+          <p class="mt-4 text-lg md:text-xl opacity-90">{home.fullPayTail(phrase)}</p>
         )}
-        <div class="mt-3 space-y-0.5 font-board-mono text-xs opacity-75 max-w-2xl">
-          <p>{result.effortDisclaimer}</p>
-          <p>{modeA.disclaimer}</p>
-          <p>{modeA.footnote}</p>
-          {ageLineText && <p>{ageLineText}</p>}
+        {!isLifeMode && hero.next && (
+          <p class="mt-1 font-board-mono text-sm opacity-85">= {hero.next}</p>
+        )}
+
+        {/* Sección de Esfuerzo Laboral (Modo Trabajo con Dopamina) */}
+        {!isLifeMode && workImpact && (
+          <div class="mt-6 w-full max-w-4xl space-y-3">
+            <WorkBattery
+              impact={workImpact}
+              productName={displayName ?? undefined}
+            />
+          </div>
+        )}
+
+        {/* Sección de Impacto Vital (Batería + Sentencia) */}
+        {isLifeMode && lifeImpact && (
+          <div class="mt-6 w-full max-w-4xl space-y-3">
+            <LifeBattery
+              age={edadValida}
+              retirementAge={retirementAge}
+              yearsFullPay={computed.yearsFullPay}
+              pctCareerLeft={lifeImpact.pctCareerLeft}
+              threat={lifeImpact.threat}
+              onAgeChange={onAgeChange}
+            />
+            <div class={`p-4 rounded-lg border ${lifeImpact.threat.badgeClass}`}>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xl" aria-hidden="true">{lifeImpact.threat.emoji}</span>
+                <span class="font-signage uppercase text-lg tracking-wider font-bold">
+                  {lifeImpact.threat.label}
+                </span>
+                <span class="font-board-mono text-sm opacity-85 ml-auto">
+                  {lifeImpact.threat.description}
+                </span>
+              </div>
+              <p class="font-board-mono text-base leading-relaxed mt-1">
+                {lifeImpact.verdict}
+              </p>
+            </div>
+          </div>
+        )}
+
+        <div class="mt-4 board-plate p-4 max-w-4xl">
+          <span class="font-board-mono text-xs uppercase tracking-[0.1em] text-primary font-semibold block mb-1.5">
+            Condiciones de cotización
+          </span>
+          <div class="space-y-1.5 font-board-mono text-sm opacity-90">
+            <p>{result.effortDisclaimer}</p>
+            <p>{modeA.disclaimer}</p>
+            <p>{modeA.footnote}</p>
+            {ageLineText && <p class="text-primary font-medium">{ageLineText}</p>}
+            {catalogPriceSource && effectivePrice === catalogPrice && (
+              <p class="text-primary pt-1 border-t border-base-300 font-medium">
+                Fuente oficial: {catalogPriceSource} {catalogPriceDate ? `· ${catalogPriceDate}` : ""}
+              </p>
+            )}
+          </div>
         </div>
       </section>
 
@@ -761,7 +871,7 @@ export default function ResultView({
               key={cell.key}
               class={`board-cell ${cell.variant === "fill" ? "board-cell--fill" : ""} ${cell.variant === "rate" ? "board-cell--rate" : ""}`}
             >
-              <span class="font-board-mono text-[0.625rem] uppercase tracking-[0.14em] opacity-80 block">
+              <span class="font-board-mono text-xs uppercase tracking-[0.08em] opacity-85 block">
                 {cell.label}
               </span>
               <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-tight block mt-1">
@@ -812,7 +922,7 @@ export default function ResultView({
                     {parts && parts.length === 2 ? (
                       <>
                         {parts[0]}
-                        <span class="font-board-mono text-primary tabular-nums">
+                        <span class="font-board-mono text-primary tabular-nums board-mono-dense">
                           {band.count}
                         </span>
                         {parts[1]}

@@ -67,6 +67,7 @@ export function buildShareUrl(
   if (state.priceOverride != null) appendParam(params, "precio", state.priceOverride);
   if (state.customLabel != null) appendParam(params, "nombre", state.customLabel);
   if (state.compareCountryCode != null) appendParam(params, "pais", state.compareCountryCode);
+  if (state.viewMode != null) appendParam(params, "modo", state.viewMode);
   const query = params.toString();
   return query === "" ? pathname : `${pathname}?${query}`;
 }
@@ -102,6 +103,11 @@ export function parseUserStateFromQuery(
 
   const compareCountryCode = toLabel(searchParams.get("pais"));
   if (compareCountryCode !== null) state.compareCountryCode = compareCountryCode;
+
+  const modo = searchParams.get("modo");
+  if (modo === "vida" || modo === "trabajo" || modo === "work" || modo === "life") {
+    state.viewMode = modo === "vida" || modo === "life" ? "life" : "work";
+  }
 
   return state;
 }

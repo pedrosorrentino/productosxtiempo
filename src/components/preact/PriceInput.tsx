@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "preact/hooks";
-import type { JSX } from "preact";
 import { priceForm } from "../../i18n/es.ts";
 
 export interface PriceInputProps {
@@ -63,15 +62,15 @@ export default function PriceInput({
     }
   }, [initialPrice]);
 
-  const onPriceInput = (event: JSX.TargetedEvent<HTMLInputElement>) => {
-    const raw = event.currentTarget.value;
+  const onPriceInput = (event: Event) => {
+    const raw = (event.currentTarget as HTMLInputElement).value;
     dirty.current = true;
     setPriceText(raw);
     onPriceChange?.(parsePositive(raw));
   };
 
-  const onLabelInput = (event: JSX.TargetedEvent<HTMLInputElement>) => {
-    const raw = event.currentTarget.value;
+  const onLabelInput = (event: Event) => {
+    const raw = (event.currentTarget as HTMLInputElement).value;
     setLabel(raw);
     const trimmed = raw.trim();
     onLabelChange?.(trimmed === "" ? null : trimmed);
@@ -87,7 +86,7 @@ export default function PriceInput({
       parts.length > 0 ? `/${slug}/precio?${parts.join("&")}` : `/${slug}/precio`;
   };
 
-  const onSubmit = (event: JSX.TargetedEvent<HTMLFormElement>) => {
+  const onSubmit = (event: Event) => {
     event.preventDefault();
     if (!inline) navigate();
   };
@@ -112,7 +111,8 @@ export default function PriceInput({
             id="price-input"
             type="number"
             inputmode="decimal"
-            min="1"
+            step="any"
+            min="0.01"
             class="grow"
             placeholder={priceForm.pricePlaceholder}
             value={priceText}

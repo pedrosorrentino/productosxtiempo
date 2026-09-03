@@ -62,7 +62,6 @@ for (const size of sizes) {
   });
   const pngBuffer = Buffer.from(resvg.render().asPng());
   icoImages.push({ width: size, height: size, data: pngBuffer });
-  writeFileSync(`scripts/final-${size}.png`, pngBuffer);
 }
 
 // Also render 180x180 for Apple Touch Icon

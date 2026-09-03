@@ -261,18 +261,18 @@ export const legalFooter: readonly string[] = [
  * Decisión documentada: el corte es una constante FIJA, no `new Date()`:
  * un badge dependiente de la hora de compilación haría el build no
  * reproducible (misma entrada, distinta salida según el día). El corte
- * 2026-02 = fecha del spec (2026-08) menos 18 meses. Para moverlo,
+ * 2025-02 = fecha del spec (2026-08) menos 18 meses. Para moverlo,
  * actualizar `cutoff`.
  *
  * La comparación es lexicográfica y es segura para "YYYY-MM" y "YYYY":
- * "2024" < "2026-02", "2025-12" < "2026-02", "2026-01" < "2026-02",
- * "2026-02" < "2026-02" es false (exactamente 18 meses aún no caduca).
+ * "2024" < "2025-02", "2024-12" < "2025-02", "2025-01" < "2025-02",
+ * "2025-02" < "2025-02" es false (exactamente 18 meses aún no caduca).
  */
 export const staleness = {
   badge: "puede estar desfasado",
   /** title del badge con la fecha del dato (pulido Task 8: cliente y build iguales). */
   badgeTitle: (date: string): string => `Dato de ${date}`,
-  cutoff: "2026-02",
+  cutoff: "2025-02",
 };
 
 /** Copy del 404 (SPEC §4: seco, claro, un poco ingenioso, cero moralina). */
@@ -281,7 +281,7 @@ export const notFound = {
   title: "Esta página no existe, pero tu hora sigue valiendo lo mismo.",
   body: "Ni rastro del enlace. En vez de perseguirlo, gasta ese rato en algo medible: elige una cosa y mira cuánto tiempo cuesta.",
   homeCta: "Volver al inicio",
-  priceCta: "Calcular un precio en España",
+  priceCta: "Calcular un precio",
 };
 
 /** Labels ES de las categorías del catálogo (SPEC §7, Product.category). */
@@ -502,4 +502,22 @@ export const og = {
       `${nProducts} cosas · ${nCountries} países · cotiza la tuya`,
     noWage: "sin sueldo de referencia",
   },
+};
+
+export const lifeModeCopy = {
+  tabWork: "Trabajo",
+  tabLife: "Tiempo de Vida",
+  agePrompt: "Tu edad",
+  ageYearsOld: "años",
+  lifeBatteryTitle: "Batería de Vida Laboral",
+  livedLabel: "Años vividos",
+  remainingLabel: "Años laborales restantes",
+  biteLabel: "Mordisco de la compra",
+  heroSubtitleWithAge: (age: number, yearsLeft: number, pct: string) =>
+    `A tus ${age} años (~${yearsLeft} años hasta jubilarte), esta compra devora el ${pct}% de toda tu vida laboral restante.`,
+  heroSubtitleWithoutAge: (weeks: string) =>
+    `Equivale a ${weeks} semanas íntegras de vida laboral activa.`,
+  threatTitle: "Nivel de amenaza vital",
+  toggleToLifeTip: "Pasa a Modo Vida para ver cuánto de tu futuro te cuesta cada cosa",
+  toggleToWorkTip: "Ver en horas y jornadas de trabajo",
 };

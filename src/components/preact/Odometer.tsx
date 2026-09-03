@@ -47,14 +47,14 @@ export default function Odometer({ value, label, class: className }: OdometerPro
       {cells.map((cell, i) =>
         cell.kind === "digit" ? (
           <span class="flap-cell" key={i}>
-            <div
+            <span
               class={`flap-strip${phase === "revealed" ? " flap-anim" : ""}`}
               style={`transform: translateY(-${(phase === "primed" ? 0 : cell.d) * CELL_EM}em); transition-delay: ${cell.col * 70}ms`}
             >
               {DIGITS.map((d) => (
                 <span key={d}>{d}</span>
               ))}
-            </div>
+            </span>
           </span>
         ) : (
           <span class="flap-sep" key={i}>

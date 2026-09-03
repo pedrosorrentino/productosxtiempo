@@ -8,6 +8,7 @@ import type {
   ProductPrice,
   UserState,
 } from "./types.ts";
+import { convertCurrency, COUNTRY_CURRENCIES } from "./currencies.ts";
 
 /** País por código ("ES"). */
 export function getCountry(
@@ -35,8 +36,8 @@ export function getProduct(
 
 /**
  * Precio de un producto para un país. Si el país no tiene precio propio y
- * existe precio de España, devuelve el precio ES tal cual; el etiquetado
- * `origin: "converted"` para la UI lo hace la isla (aviso correspondiente).
+ * existe precio de España, devuelve el precio convertido a la divisa del país
+ * con origin: "converted".
  */
 export function getProductPrice(
   product: Product,
@@ -45,9 +46,22 @@ export function getProductPrice(
   const local = product.prices[countryCode];
   if (local) return local;
   const upper = countryCode.toUpperCase();
-  if (upper !== countryCode) return product.prices[upper];
-  if (upper !== "ES") return product.prices["ES"];
-  return undefined;
+  if (upper !== countryCode && product.prices[upper]) return product.prices[upper];
+  const esPrice = product.prices["ES"];
+  if (!esPrice) return undefined;
+  if (upper !== "ES") {
+    const targetCurrency = COUNTRY_CURRENCIES[upper];
+    if (targetCurrency && targetCurrency !== "EUR") {
+      return {
+        ...esPrice,
+        value: convertCurrency(esPrice.value, "EUR", targetCurrency),
+        origin: "converted",
+        note: `Precio convertido desde España (${esPrice.value} €). Edítalo.`,
+      };
+    }
+    return esPrice;
+  }
+  return esPrice;
 }
 
 /** Sueldo neto mensual efectivo: el del usuario o la mediano del país. */

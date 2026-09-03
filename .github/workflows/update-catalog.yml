@@ -1,0 +1,54 @@
+name: Sincronización Automática de Catálogo
+
+on:
+  # Ejecución programada: todos los lunes a las 06:00 AM UTC
+  schedule:
+    - cron: '0 6 * * 1'
+  # Disparador manual para ejecutarlo con 1 clic desde GitHub Actions
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    name: Sincronizar APIs y Actualizar Precios
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Configurar Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Ejecutar pipeline de sincronización
+        run: pnpm sync-catalog
+
+      - name: Verificar tests unitarios
+        run: pnpm test
+
+      - name: Comprobar cambios y publicar commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if [ -n "$(git status --porcelain src/data/products.json)" ]; then
+            echo "Cambios detectados en el catálogo. Guardando commit..."
+            git add src/data/products.json
+            git commit -m "chore(catalog): sincronización automática de cotizaciones [skip ci]"
+            git push
+            echo "✔ Cambios publicados en master. Cloudflare Pages redesplegará automáticamente."
+          else
+            echo "Sin cambios en el catálogo en esta ejecución."
+          fi

@@ -7,6 +7,7 @@ import Odometer from '../../components/preact/Odometer.tsx';
 import CountryBoard from '../../components/preact/CountryBoard.tsx';
 import { calc } from '../../lib/calc.ts';
 import { formatHourlyWage, formatHours, formatIntegerThousands, formatMinutes, formatWorkdays } from '../../lib/format.ts';
+import { isFreshDate } from '../../lib/freshness.ts';
 import { board, brand, countryPage, noSalary, og, priceForm, userForm } from '../../i18n/es.ts';
 import type { Country, Product } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
@@ -19,11 +20,7 @@ export function getStaticPaths() {
   }));
 }
 
-interface Props {
-  country: Country;
-}
-
-const { country } = Astro.props;
+const { country } = Astro.props as { country: Country };
 
 // price = 1: hourlyWage de calc no depende del precio, así obtenemos la hora del país.
 const countryWage =
@@ -57,14 +54,16 @@ type QuotedRow = {
   price: number | null;
   workdays: string | null;
   unit: string | null;
+  hours: number | null;
   years: number | null;
+  isFresh?: boolean;
 };
 const quoteRows = (group: { products: Product[] }): QuotedRow[] =>
   group.products.map((product) => {
     const local = hasLocalPrice(product, country.code);
     const price = priceOf(product, country.code) ?? null;
     if (!price || country.medianNetMonthly == null) {
-      return { product, local, price: price?.value ?? null, workdays: null, unit: null, years: null };
+      return { product, local, price: price?.value ?? null, workdays: null, unit: null, hours: null, years: null, isFresh: false };
     }
     try {
       const r = calc({
@@ -96,10 +95,12 @@ const quoteRows = (group: { products: Product[] }): QuotedRow[] =>
         price: price.value,
         workdays: text,
         unit,
+        hours,
         years: r.yearsFullPay,
+        isFresh: isFreshDate(price.date),
       };
     } catch {
-      return { product, local, price: price?.value ?? null, workdays: null, unit: null, years: null };
+      return { product, local, price: price?.value ?? null, workdays: null, unit: null, hours: null, years: null, isFresh: false };
     }
   });
 
@@ -119,9 +120,11 @@ const boardGroups = catalog.map((group) => ({
     name: row.product.name,
     price: row.price,
     local: row.local,
+    hours: row.hours,
     years: row.years,
     rateText: row.workdays,
     rateUnit: row.unit,
+    isFresh: row.isFresh && row.local,
   })),
 }));
 ---
@@ -130,6 +133,7 @@ const boardGroups = catalog.map((group) => ({
   title={hasSalary ? og.country.title(country.name, countryWageText!) : `${country.name} · ${brand.name}`}
   description={og.country.description(country.name)}
   ogImage={`/og/${country.slug}.png`}
+  currentCountrySlug={country.slug}
 >
   <div class="max-w-5xl mx-auto px-4 pt-8 pb-20">
     <!-- ---- Placa de identidad ---- -->
@@ -174,21 +178,21 @@ const boardGroups = catalog.map((group) => ({
               {board.rateUnit(country.currencySymbol)}
             </span>
           </div>
-          <p class="mt-2 font-board-mono text-xs opacity-75">{countryPage.dataDisclaimer}</p>
+          <p class="mt-2 font-board-mono text-sm opacity-85">{countryPage.dataDisclaimer}</p>
 
           <!-- ---- Retícula del país ---- -->
           <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-1.5">
             <div class="board-cell board-cell--fill">
-              <span class="font-board-mono text-[0.625rem] uppercase tracking-[0.14em] opacity-80 block">{countryPage.weeklyHoursLabel}</span>
+              <span class="font-board-mono text-xs uppercase tracking-[0.08em] opacity-85 block">{countryPage.weeklyHoursLabel}</span>
               <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-tight block mt-1">{country.legalWeeklyHours} h</span>
             </div>
             <div class="board-cell">
-              <span class="font-board-mono text-[0.625rem] uppercase tracking-[0.14em] opacity-80 block">{countryPage.dailyHoursLabel}</span>
+              <span class="font-board-mono text-xs uppercase tracking-[0.08em] opacity-85 block">{countryPage.dailyHoursLabel}</span>
               <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-tight block mt-1">{country.legalDailyHours} h</span>
             </div>
             {country.realAnnualHours != null && (
               <div class="board-cell">
-                <span class="font-board-mono text-[0.625rem] uppercase tracking-[0.14em] opacity-80 block">{countryPage.realAnnualHoursLabel}</span>
+                <span class="font-board-mono text-xs uppercase tracking-[0.08em] opacity-85 block">{countryPage.realAnnualHoursLabel}</span>
                 <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-tight block mt-1">{formatIntegerThousands(country.realAnnualHours)}</span>
               </div>
             )}
@@ -198,7 +202,7 @@ const boardGroups = catalog.map((group) => ({
                visibles; la referencia de 40 h no las tapa. -->
           {
             country.legalWeeklyHours !== 40 && (
-              <p class="mt-2 font-board-mono text-xs opacity-75">
+              <p class="mt-2 font-board-mono text-sm opacity-85">
                 {countryPage.weeklyHoursNote(country.legalWeeklyHours)}
               </p>
             )
@@ -285,10 +289,11 @@ const boardGroups = catalog.map((group) => ({
       <h2 class="font-signage uppercase text-4xl md:text-5xl">{board.countryBoard(country.name)}</h2>
       <p class="mt-1 mb-6 text-base opacity-80">{board.countryBoardSubtitle}</p>
       <CountryBoard
-        client:visible
+        client:load
         slug={country.slug}
         currencySymbol={country.currencySymbol}
         groups={boardGroups}
+        retirementAge={country.retirementAge}
       />
     </section>
 

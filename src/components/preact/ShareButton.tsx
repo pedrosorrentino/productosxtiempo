@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "preact/hooks";
-import type { JSX } from "preact";
 import { cta } from "../../i18n/es.ts";
 
 export interface ShareButtonProps {
@@ -71,8 +70,8 @@ export default function ShareButton({ url, text }: ShareButtonProps) {
     [],
   );
 
-  const share = async (event: JSX.TargetedEvent<HTMLButtonElement>) => {
-    event.currentTarget.blur();
+  const share = async (event: Event) => {
+    (event.currentTarget as HTMLButtonElement | null)?.blur?.();
     // La URL puede llegar relativa (props serializadas en SSR): se resuelve
     // contra el documento para que Web Share y el portapapeles la reciban
     // absoluta.

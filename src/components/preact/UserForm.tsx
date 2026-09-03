@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "preact/hooks";
-import type { JSX } from "preact";
 import {
   calc,
   MIN_WEEKLY_HOURS,
@@ -8,8 +7,9 @@ import {
 import { formatHourlyWage } from "../../lib/format.ts";
 import { loadUserState, saveUserState } from "../../lib/storage.ts";
 import { buildShareUrl, parseUserStateFromQuery } from "../../lib/urls.ts";
-import type { UserState } from "../../lib/types.ts";
+import { sameCurrency } from "../../lib/currencies.ts";
 import { hourValue, userForm } from "../../i18n/es.ts";
+import type { UserState } from "../../lib/types.ts";
 
 /** Los 4 campos del formulario (SPEC §10 "Mis datos"). null = vacío/inválido. */
 export interface UserFormFields {
@@ -24,6 +24,7 @@ export interface UserFormProps {
   countryNetMonthly: number | null;
   countryWeeklyHours: number;
   currencySymbol: string;
+  age?: number | null;
   /**
    * Modo isla (ResultView): emite los 4 campos al padre para el recálculo en
    * vivo; la URL la sincroniza el padre (tiene además precio y nombre). Sin
@@ -70,6 +71,7 @@ export default function UserForm({
   countryNetMonthly,
   countryWeeklyHours,
   currencySymbol,
+  age: externalAge,
   onChange,
 }: UserFormProps) {
   const [netText, setNetText] = useState("");
@@ -89,12 +91,43 @@ export default function UserForm({
     const fromQuery = parseUserStateFromQuery(
       new URLSearchParams(location.search),
     );
-    const merged: Partial<UserState> = { ...saved, ...fromQuery };
-    if (merged.netMonthly != null) setNetText(String(merged.netMonthly));
-    if (merged.weeklyHours != null) setHoursText(String(merged.weeklyHours));
-    if (merged.monthlySavings != null) setSavingsText(String(merged.monthlySavings));
-    if (merged.age != null) setAgeText(String(merged.age));
-  }, []);
+    const currencyMatches = !saved.countryCode || sameCurrency(saved.countryCode, countryCode);
+    const net = fromQuery.netMonthly ?? (currencyMatches ? saved.netMonthly : null);
+    const savings = fromQuery.monthlySavings ?? (currencyMatches ? saved.monthlySavings : null);
+    const hours = fromQuery.weeklyHours ?? saved.weeklyHours;
+    const age = externalAge ?? fromQuery.age ?? saved.age;
+
+    if (net != null) setNetText(String(net));
+    if (hours != null) setHoursText(String(hours));
+    if (savings != null) setSavingsText(String(savings));
+    if (age != null) setAgeText(String(age));
+  }, [countryCode]);
+
+  // Sincronización reactiva con externalAge (ej: LifeBarControl)
+  useEffect(() => {
+    if (externalAge !== undefined) {
+      const currentVal = parseAge(ageText);
+      if (currentVal !== externalAge) {
+        setAgeText(externalAge != null ? String(externalAge) : "");
+      }
+    }
+  }, [externalAge]);
+
+  // Sincronización entre islas independientes via evento global cet:statechange
+  useEffect(() => {
+    const onStateChange = (e: Event) => {
+      const customEvent = e as CustomEvent<Partial<UserState>>;
+      const nextAge = customEvent.detail?.age;
+      if (nextAge !== undefined) {
+        const currentVal = parseAge(ageText);
+        if (currentVal !== nextAge) {
+          setAgeText(nextAge != null ? String(nextAge) : "");
+        }
+      }
+    };
+    window.addEventListener("cet:statechange", onStateChange);
+    return () => window.removeEventListener("cet:statechange", onStateChange);
+  }, [ageText]);
 
   // Resumen en vivo "Tu hora vale Y" SIEMPRE vía calc() (contrato: prohibido
   // duplicar la fórmula de hourlyWage).
@@ -154,8 +187,8 @@ export default function UserForm({
 
   const makeHandler =
     (field: "net" | "hours" | "savings" | "age", setText: (v: string) => void) =>
-    (event: JSX.TargetedEvent<HTMLInputElement>) => {
-      const value = event.currentTarget.value;
+    (event: Event) => {
+      const value = (event.currentTarget as HTMLInputElement).value;
       setText(value);
       emit({
         net: field === "net" ? value : netText,
@@ -189,7 +222,7 @@ export default function UserForm({
             onInput={onNetInput}
           />
         </label>
-        <p class="mt-1 font-board-mono text-[0.625rem] uppercase tracking-[0.12em] opacity-70">
+        <p class="mt-1 font-board-mono text-xs uppercase tracking-[0.08em] opacity-80">
           {userForm.netCurrencyNote(currencySymbol)}
         </p>
       </div>

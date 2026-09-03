@@ -11,7 +11,7 @@
   color-scheme: dark;
   --color-base-100: #151a17;
   --color-base-200: #1c231f;
-  --color-base-300: #28332d;
+  --color-base-300: #2d3832;
   --color-base-content: #f2ead8;
   --color-primary: #ffb020;
   --color-primary-content: #151a17;
@@ -19,7 +19,7 @@
   --color-secondary-content: #fff3ec;
   --color-accent: #3ec97e;
   --color-accent-content: #0c1f14;
-  --color-neutral: #28332d;
+  --color-neutral: #2d3832;
   --color-neutral-content: #f2ead8;
   --color-info: #4aa3ff;
   --color-info-content: #0a1626;
@@ -108,18 +108,26 @@ html {
   gap: 1rem;
   padding: 0.75rem 1.25rem;
   background: #1c231f;
-  border-bottom: 1px solid #28332d;
+  border-bottom: 1px solid #2d3832;
+}
+
+@media (max-width: 640px) {
+  .board-marquee {
+    padding: 0.625rem 0.875rem;
+    gap: 0.5rem;
+  }
 }
 
 .board-brand {
   font-family: var(--font-signage);
   font-variation-settings: "wght" 800;
-  font-size: 1.75rem;
+  font-size: clamp(1.3rem, 4.5vw, 1.75rem);
   line-height: 1;
   letter-spacing: 0.01em;
   color: #f2ead8;
   text-decoration: none;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .board-brand:hover {
@@ -128,11 +136,11 @@ html {
 
 .board-tagline {
   font-family: var(--font-board-mono);
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #f2ead8;
-  opacity: 0.72;
+  opacity: 0.85;
 }
 
 .board-navlink {
@@ -143,7 +151,7 @@ html {
   color: #f2ead8;
   text-decoration: none;
   padding: 0.5rem 0.75rem;
-  border: 1px solid #28332d;
+  border: 1px solid #2d3832;
   background: #151a17;
 }
 
@@ -161,7 +169,7 @@ html {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #f2ead8;
-  opacity: 0.72;
+  opacity: 0.85;
   text-decoration: none;
   padding: 0.5rem 0.25rem;
   display: inline-flex;
@@ -181,10 +189,20 @@ html {
   text-transform: uppercase;
   color: #f2ead8;
   padding: 0.5rem 0.75rem;
-  border: 1px solid #28332d;
+  border: 1px solid #2d3832;
   background: #151a17;
   border-radius: 0;
   cursor: pointer;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .board-country-select {
+    padding: 0.4rem 0.55rem;
+    font-size: 0.8125rem;
+    max-width: 140px;
+    text-overflow: ellipsis;
+  }
 }
 
 .board-country-select:hover {
@@ -312,7 +330,7 @@ html {
   align-items: stretch;
   overflow: hidden;
   background: #151a17;
-  border-block: 1px solid #28332d;
+  border-block: 1px solid #2d3832;
 }
 
 /* Chip "en vivo": la marca de que el tablero está cotizando ahora mismo. */
@@ -322,12 +340,20 @@ html {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.875rem;
-  border-right: 1px solid #28332d;
+  border-right: 1px solid #2d3832;
   font-family: var(--font-board-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #3ec97e;
+}
+
+@media (max-width: 640px) {
+  .board-live {
+    padding: 0.4rem 0.5rem;
+    gap: 0.35rem;
+    font-size: 0.6875rem;
+  }
 }
 
 .board-live-dot {
@@ -379,7 +405,7 @@ html {
 
 .board-ticker-item {
   font-family: var(--font-board-mono);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   letter-spacing: 0.02em;
   color: #f2ead8;
 }
@@ -396,7 +422,7 @@ html {
 /* ---- Placa de operación y filas de pizarra ---- */
 
 .board-plate {
-  border: 1px solid #28332d;
+  border: 1px solid #2d3832;
   background: #1c231f;
 }
 
@@ -412,7 +438,7 @@ html {
   align-items: center;
   gap: 0.75rem;
   padding: 0.6rem 0.875rem;
-  border: 1px solid #28332d;
+  border: 1px solid #2d3832;
   background: #151a17;
   text-decoration: none;
   transition: background 120ms ease-out;
@@ -457,10 +483,10 @@ html {
 /* Estilo de sello para chapas pequeñas ("detectado", "tus datos activos"). */
 .board-stamp {
   font-family: var(--font-board-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 0.2rem 0.45rem;
+  padding: 0.25rem 0.5rem;
   border: 1px solid currentColor;
 }
 
@@ -531,7 +557,7 @@ html {
 /* ---- Retícula del marcador ---- */
 
 .board-cell {
-  border: 1px solid #28332d;
+  border: 1px solid #2d3832;
   background: #151a17;
   padding: 0.875rem 1rem;
 }
@@ -555,7 +581,7 @@ html {
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem 0.875rem;
-  border: 1px solid #28332d;
+  border: 1px solid #2d3832;
   background: #151a17;
 }
 
@@ -593,7 +619,7 @@ html {
   width: 1.5rem;
   height: 1.5rem;
   padding: 0;
-  border: 1px solid #28332d;
+  border: 1px solid #2d3832;
   background: transparent;
   color: #f2ead8;
   opacity: 0.6;
@@ -614,7 +640,7 @@ html {
   font-size: 0.8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  border: 1px solid #28332d;
+  border: 1px solid #2d3832;
   background: #151a17;
   color: #f2ead8;
   border-radius: 0.25rem;
@@ -624,4 +650,10 @@ html {
   border-color: #f2ead8;
   background: #1c231f;
   color: #f2ead8;
+}
+
+/* Ajuste tipográfico denso para números con coma en mono */
+.board-mono-dense {
+  font-family: var(--font-board-mono);
+  letter-spacing: -0.05em;
 }

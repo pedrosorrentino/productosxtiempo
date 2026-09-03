@@ -7,11 +7,13 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/update-prices.mjs && astro build && node --experimental-strip-types scripts/generate-og.ts",
+    "build": "astro build && node --experimental-strip-types scripts/generate-og.ts",
     "preview": "astro preview",
+    "test": "vitest run",
     "astro": "astro",
     "generate-types": "wrangler types",
-    "update-prices": "node scripts/update-prices.mjs"
+    "update-prices": "node scripts/update-prices.mjs",
+    "sync-catalog": "node --experimental-strip-types scripts/sync-catalog.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
@@ -33,6 +35,7 @@
     "daisyui": "^5.7.22",
     "satori": "^0.33.4",
     "typescript": "^6.0.3",
+    "vitest": "^4.1.11",
     "wrangler": "^4.127.1"
   }
 }

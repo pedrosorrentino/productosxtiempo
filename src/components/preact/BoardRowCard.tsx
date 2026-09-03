@@ -98,9 +98,17 @@ export interface BoardRowCardProps {
   years: number | null;
   /** Edad del usuario (localStorage); null → sin barra de vida. */
   userAge: number | null;
+  retirementAge?: number;
+  hours?: number;
+  viewMode?: "work" | "life";
+  /** Si la cotización se ha actualizado recientemente. */
+  isFresh?: boolean;
   /** Índice global de fila para el dibujado escalonado de barras. */
   rowI: number;
 }
+
+import { getThreatLevel } from "../../lib/life.ts";
+import { getWorkEffortLevel } from "../../lib/work.ts";
 
 /**
  * Card de item de la pizarra, ÚNICA para portada y ficha de país: nombre y
@@ -121,11 +129,24 @@ export default function BoardRowCard({
   rateCta,
   years,
   userAge,
+  retirementAge = 67,
+  hours,
+  viewMode = "work",
+  isFresh = false,
   rowI,
 }: BoardRowCardProps) {
+  const isLifeMode = viewMode === "life";
+  const workEffort = getWorkEffortLevel(hours ?? 0);
   const salaryPct = years != null ? years * 100 : null;
-  const lifePct =
-    years != null && userAge != null && years >= 0.05 ? (years / userAge) * 100 : null;
+  const currentAge = userAge ?? 30;
+  const yearsLeft = Math.max(0, retirementAge - currentAge);
+  const pctCareerLeft =
+    years != null && yearsLeft > 0 ? (years / yearsLeft) * 100 : null;
+  const threat = getThreatLevel(
+    pctCareerLeft,
+    hours ?? (years != null ? years * 1800 : 0),
+    years ?? 0,
+  );
 
   return (
     <a class="board-row" style={`--row-i: ${rowI}`} href={href}>
@@ -149,8 +170,27 @@ export default function BoardRowCard({
       </span>
       <span class="min-w-0">
         <span class="flex items-baseline gap-2">
-          <span class="min-w-0 truncate font-medium">{name}</span>
-          <span class="font-board-mono text-xs opacity-75 whitespace-nowrap shrink-0">
+          <span class="min-w-0 truncate font-medium flex items-center gap-1.5">
+            <span class="truncate">{name}</span>
+            {isFresh && !converted && (
+              <span
+                class="inline-flex items-center text-primary shrink-0 opacity-80"
+                title="Cotización reciente"
+                aria-label="Cotización reciente"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="12"
+                  height="12"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M12 2l2.4 7.2 7.6 2.4-7.6 2.4-2.4 7.2-2.4-7.2-7.6-2.4 7.6-2.4z" />
+                </svg>
+              </span>
+            )}
+          </span>
+          <span class="font-board-mono text-sm opacity-85 whitespace-nowrap shrink-0">
             {price != null ? (
               <>
                 {nfPrice.format(price)} {priceSymbol}
@@ -165,51 +205,98 @@ export default function BoardRowCard({
             )}
           </span>
         </span>
-        {salaryPct != null && (
+        {isLifeMode ? (
+          /* Modo Vida activo: la barra de vida es la protagonista absoluta */
           <span class="flex items-center gap-2 mt-1.5">
-            <span class="font-board-mono text-[0.625rem] uppercase tracking-[0.1em] opacity-70 w-52 shrink-0 whitespace-nowrap">
-              {board.salaryBarLabel(formatPercent(salaryPct))}
+            <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-90 w-60 shrink-0 whitespace-nowrap flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full inline-block" style={`background: ${threat.color}`} />
+              <span class="font-bold text-base-content">
+                {pctCareerLeft != null
+                  ? `${formatPercent(pctCareerLeft)}% de tu futuro (${yearsLeft}a)`
+                  : `${formatPercent(salaryPct ?? 0)}% de 1 año`}
+              </span>
             </span>
             <span
-              class="flex-1 h-[3px] bg-base-300 overflow-hidden"
+              class="flex-1 h-[5px] bg-base-300 rounded overflow-hidden"
               aria-hidden="true"
             >
               <span
                 class="board-pct-fill board-bar-draw block h-full"
-                style={`width: ${Math.min(100, salaryPct).toFixed(1)}%; background: ${color}`}
+                style={`width: ${Math.min(100, pctCareerLeft ?? salaryPct ?? 0).toFixed(1)}%; background: ${threat.color}`}
               />
             </span>
           </span>
-        )}
-        {lifePct != null && userAge != null && (
-          <span class="flex items-center gap-2 mt-1">
-            <span class="font-board-mono text-[0.625rem] uppercase tracking-[0.1em] opacity-70 w-52 shrink-0 whitespace-nowrap">
-              {board.lifeBarRowLabel(userAge, formatPercent(lifePct))}
-            </span>
-            <span
-              class="flex-1 h-[3px] bg-base-300 overflow-hidden"
-              title={board.lifeBarAria(userAge, formatPercent(lifePct))}
-            >
-              <span
-                class="board-pct-fill board-bar-draw block h-full bg-primary"
-                style={`width: ${Math.min(100, lifePct).toFixed(1)}%`}
-              />
-            </span>
-          </span>
+        ) : (
+          /* Modo Trabajo clásico */
+          <>
+            {salaryPct != null && (
+              <span class="flex items-center gap-2 mt-1.5">
+                <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 w-60 shrink-0 whitespace-nowrap">
+                  {board.salaryBarLabel(formatPercent(salaryPct))}
+                </span>
+                <span
+                  class="flex-1 h-[4px] bg-base-300 overflow-hidden"
+                  aria-hidden="true"
+                >
+                  <span
+                    class="board-pct-fill board-bar-draw block h-full"
+                    style={`width: ${Math.min(100, salaryPct).toFixed(1)}%; background: ${workEffort.barColor}`}
+                  />
+                </span>
+              </span>
+            )}
+            {pctCareerLeft != null && userAge != null && (
+              <span class="flex items-center gap-2 mt-1">
+                <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 w-60 shrink-0 whitespace-nowrap">
+                  {formatPercent(pctCareerLeft)}% de tu vida restante
+                </span>
+                <span
+                  class="flex-1 h-[4px] bg-base-300 overflow-hidden"
+                  title={`${formatPercent(pctCareerLeft)}% de tus años restantes`}
+                >
+                  <span
+                    class="board-pct-fill board-bar-draw block h-full bg-primary"
+                    style={`width: ${Math.min(100, pctCareerLeft).toFixed(1)}%`}
+                  />
+                </span>
+              </span>
+            )}
+          </>
         )}
       </span>
-      <span class="text-right">
-        {rateText != null ? (
+      <span class="text-right flex flex-col items-end justify-center">
+        {isLifeMode && pctCareerLeft != null ? (
+          <>
+            <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-none block font-bold" style={`color: ${threat.color}`}>
+              -{formatPercent(pctCareerLeft)}%
+            </span>
+            <span class="font-board-mono text-xs uppercase tracking-[0.08em] opacity-85 mt-0.5">
+              de tu vida
+            </span>
+            <span
+              class={`inline-flex items-center gap-1 font-board-mono text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded border mt-1 select-none ${threat.badgeClass}`}
+            >
+              <span>{threat.emoji}</span>
+              <span>{threat.shortLabel}</span>
+            </span>
+          </>
+        ) : rateText != null ? (
           <>
             <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-none block text-primary">
               {rateText}
             </span>
-            <span class="font-board-mono text-xs uppercase tracking-[0.1em] opacity-75">
+            <span class="font-board-mono text-sm uppercase tracking-[0.08em] opacity-80">
               {rateUnit}
+            </span>
+            <span
+              class={`inline-flex items-center gap-1 font-board-mono text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded border mt-1 select-none ${workEffort.badgeClass}`}
+            >
+              <span>{workEffort.emoji}</span>
+              <span>{workEffort.shortLabel}</span>
             </span>
           </>
         ) : (
-          <span class="font-board-mono text-xs uppercase tracking-[0.1em] opacity-75 inline-block mt-1">
+          <span class="font-board-mono text-sm uppercase tracking-[0.08em] opacity-80 inline-block mt-1">
             {rateCta} →
           </span>
         )}

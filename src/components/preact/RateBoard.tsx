@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "preact/hooks";
-import type { JSX } from "preact";
 import { calc } from "../../lib/calc.ts";
 import {
   formatHours,
@@ -11,6 +10,7 @@ import {
 import { getCountry, getProductPrice } from "../../lib/selectors.ts";
 import { loadUserState, saveUserState } from "../../lib/storage.ts";
 import type { Country, Product } from "../../lib/types.ts";
+import { isFreshDate, getLatestUpdatedProduct } from "../../lib/freshness.ts";
 import { board, categories, home, noSalary, priceForm, result, shareText, userForm } from "../../i18n/es.ts";
 import UserForm, { type UserFormFields } from "./UserForm.tsx";
 import Odometer from "./Odometer.tsx";
@@ -22,6 +22,11 @@ import BoardRowCard, {
   CategoryIcon,
   nfPrice,
 } from "./BoardRowCard.tsx";
+import LifeBarControl from "./LifeBarControl.tsx";
+import LifeBattery from "./LifeBattery.tsx";
+import WorkBattery from "./WorkBattery.tsx";
+import { computeLifeImpact } from "../../lib/life.ts";
+import { computeWorkImpact } from "../../lib/work.ts";
 
 export interface RateBoardProps {
   countries: Country[];
@@ -108,6 +113,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
   const [heroOffset, setHeroOffset] = useState(0);
   /** Latido de la pizarra: cada tick re-estampa las filas en cascada. */
   const [boardPulse, setBoardPulse] = useState(0);
+  const [viewMode, setViewMode] = useState<"work" | "life">("work");
   const [userFields, setUserFields] = useState<{
     netMonthly: number | null;
     weeklyHours: number | null;
@@ -117,6 +123,12 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
 
   useEffect(() => {
     const saved = loadUserState();
+    if (saved?.viewMode) {
+      setViewMode(saved.viewMode);
+    } else if (saved?.age != null) {
+      setViewMode("life");
+    }
+
     if (saved?.countryCode && countries.some((c) => c.code === saved.countryCode)) {
       setCountryCode(saved.countryCode);
       setOrigin("saved");
@@ -211,19 +223,53 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
 
   const hero =
     rows.length > 0 ? rows[(heroBase + heroOffset) % rows.length] : undefined;
-  const heroRate = hero ? formatWorkdays(hero.workdays) : "0";
-  const heroAria = hero ? `${heroRate} ${home.workdaysUnit}` : "";
+  const userAge = userFields?.age ?? null;
+  const isLifeMode = viewMode === "life";
+
+  const heroLifeImpact = useMemo(() => {
+    if (!hero) return null;
+    return computeLifeImpact({
+      hours: hero.hours,
+      yearsFullPay: hero.years,
+      weeklyHours,
+      userAge,
+      retirementAge: country.retirementAge,
+    });
+  }, [hero, weeklyHours, userAge, country.retirementAge]);
+
+  const heroWorkImpact = useMemo(() => {
+    if (!hero) return null;
+    return computeWorkImpact({
+      hours: hero.hours,
+      workdays: hero.workdays,
+      netMonthly,
+      weeklyHours,
+      price: hero.price,
+    });
+  }, [hero, netMonthly, weeklyHours]);
+
+  const heroRate = hero
+    ? isLifeMode && heroLifeImpact?.pctCareerLeft != null
+      ? formatPercent(heroLifeImpact.pctCareerLeft)
+      : isLifeMode && heroLifeImpact
+      ? formatPercent(heroLifeImpact.lifeWeeksCost)
+      : formatWorkdays(hero.workdays)
+    : "0";
+
+  const heroUnit = isLifeMode
+    ? heroLifeImpact?.pctCareerLeft != null
+      ? "% de tu vida laboral"
+      : "semanas de vida"
+    : home.workdaysUnit;
+
+  const heroAria = hero ? `${heroRate} ${heroUnit}` : "";
   const heroPct =
     hero && country.realAnnualHours ? (hero.hours / country.realAnnualHours) * 100 : null;
 
   const heroPhrase = hero
     ? formatHumanDuration(hero.hours, hero.workdays, hero.months, hero.years)
     : null;
-  const userAge = userFields?.age ?? null;
-  // La compra también cuesta vida: yearsFullPay años de la vida del usuario.
-  // La barra se omite si la compra es minúscula (mismo corte yearsFullPay
-  // < 0.05 que la línea de edad de ResultView): un "0,0 %" miente igual que
-  // "0,0 cafés".
+
   const heroLifePct =
     hero && userAge != null && hero.years >= 0.05
       ? (hero.years / userAge) * 100
@@ -231,6 +277,11 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
 
   const userActive =
     userFields != null && (userFields.netMonthly != null || userFields.weeklyHours != null);
+
+  const latestUpdated = useMemo(
+    () => getLatestUpdatedProduct(products, country.code),
+    [products, country.code],
+  );
 
   const grouped = CATEGORY_ORDER.map((category) => ({
     category,
@@ -251,14 +302,30 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
     rotatedGrouped.flatMap((g) => g.rows).map((r, i) => [r.product.id, i] as const),
   );
 
-  const onCountryChange = (event: JSX.TargetedEvent<HTMLSelectElement>) => {
-    const code = event.currentTarget.value;
+  const onCountryChange = (event: Event) => {
+    const code = (event.currentTarget as HTMLSelectElement).value;
     if (!code || !countries.some((c) => c.code === code)) return;
     setCountryCode(code);
     setOrigin("saved");
     setHeroOffset(0);
     setBoardPulse(0);
     saveUserState({ countryCode: code });
+  };
+
+  const onUserAgeChange = (newAge: number | null) => {
+    setUserFields((prev) => ({
+      netMonthly: prev?.netMonthly ?? null,
+      weeklyHours: prev?.weeklyHours ?? null,
+      monthlySavings: prev?.monthlySavings ?? null,
+      age: newAge,
+    }));
+    saveUserState({ age: newAge, viewMode: "life" });
+    setViewMode("life");
+  };
+
+  const onViewModeChange = (mode: "work" | "life") => {
+    setViewMode(mode);
+    saveUserState({ viewMode: mode });
   };
 
   const onUserFields = (fields: UserFormFields) => {
@@ -268,86 +335,121 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
       monthlySavings: fields.monthlySavings,
       age: fields.age,
     });
-  };
-
-  /** El chip "añade tus datos" baja a la sección del formulario. */
-  const scrollToExchange = (): void => {
-    const panel = document.getElementById("exchange-panel");
-    panel?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (fields.age != null && viewMode === "work") {
+      setViewMode("life");
+      saveUserState({ viewMode: "life" });
+    }
   };
 
   return (
     <div class="pt-6">
       {/* ---- Placa de operación ---- */}
-      <div class="max-w-5xl mx-auto px-4">
-        <div class="board-plate p-4 md:p-5 flex flex-col md:flex-row md:items-center gap-4">
-          <div class="min-w-0">
-            <label
-              for="board-country"
-              class="font-board-mono text-xs uppercase tracking-[0.14em] opacity-70"
-            >
-              {board.operatingLabel}
-            </label>
-            <div class="flex items-center gap-3 flex-wrap mt-1">
-              <strong class="font-signage text-3xl md:text-4xl uppercase leading-none">
-                {country.name}
-              </strong>
-              {origin === "detected" && (
-                <span class="board-stamp text-accent" title="Detectado por tu zona horaria">
-                  {board.detectedStamp}
-                </span>
-              )}
-              {origin === "saved" && (
-                <span class="board-stamp text-primary">{board.savedStamp}</span>
-              )}
-              {userActive && (
-                <span class="board-stamp board-stamp-alert">{board.yourDataStamp}</span>
-              )}
-              {!userActive && (
-                <button
-                  type="button"
-                  class="board-stamp text-primary cursor-pointer"
-                  onClick={() => scrollToExchange()}
-                >
-                  {board.addYourDataStamp} ↓
-                </button>
-              )}
-            </div>
-          </div>
-          <div class="md:ml-auto flex items-end gap-3">
-            <div>
-              <span class="font-board-mono text-xs uppercase tracking-[0.14em] opacity-70 block mb-1">
-                {board.changeCountryLabel}
-              </span>
-              <select
-                id="board-country"
-                class="select w-56 h-11 font-board-mono"
-                value={countryCode}
-                onChange={onCountryChange}
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="board-plate p-4 md:p-5">
+          <div class="flex flex-col md:flex-row md:items-center gap-4">
+            <div class="min-w-0">
+              <label
+                for="board-country"
+                class="font-board-mono text-sm uppercase tracking-[0.08em] opacity-90"
               >
-                {countries.map((c) => (
-                  <option key={c.code} value={c.code}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
+                {board.operatingLabel}
+              </label>
+              <div class="flex items-center gap-3 flex-wrap mt-1">
+                <strong class="font-signage text-3xl md:text-4xl uppercase leading-none">
+                  {country.name}
+                </strong>
+                {origin === "detected" && (
+                  <span class="board-stamp text-accent" title="Detectado por tu zona horaria">
+                    {board.detectedStamp}
+                  </span>
+                )}
+                {origin === "saved" && (
+                  <span class="board-stamp text-primary">{board.savedStamp}</span>
+                )}
+                <span class="board-stamp text-accent" title="Catálogo con actualización periódica">
+                  Catálogo activo · {products.length} productos
+                </span>
+                {userActive && (
+                  <span class="board-stamp board-stamp-alert">{board.yourDataStamp}</span>
+                )}
+              </div>
             </div>
-            <a
-              href={`/${country.slug}`}
-              class="board-navlink whitespace-nowrap hidden sm:inline-flex items-center h-11"
-            >
-              {board.countryFile(country.name)} →
-            </a>
+            <div class="md:ml-auto flex items-end gap-3">
+              <div>
+                <span class="font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 block mb-1">
+                  {board.changeCountryLabel}
+                </span>
+                <select
+                  id="board-country"
+                  class="select w-56 h-11 font-board-mono"
+                  value={countryCode}
+                  onChange={onCountryChange}
+                >
+                  {countries.map((c) => (
+                    <option key={c.code} value={c.code}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <a
+                href={`/${country.slug}`}
+                class="board-navlink whitespace-nowrap hidden sm:inline-flex items-center h-11"
+              >
+                {board.countryFile(country.name)} →
+              </a>
+            </div>
           </div>
+
+          <details class="board-details mt-3 pt-3 border-t border-base-300">
+            <summary class="cursor-pointer font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 select-none text-primary hover:text-primary/80 font-semibold">
+              <svg
+                class="board-caret"
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width={2}
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+              {userActive ? "Editar mi nómina y jornada (recalcula en vivo)" : "Ajustar con mi nómina aquí (recalcula en vivo)"}
+            </summary>
+            <div class="mt-4">
+              <UserForm
+                countryCode={country.code}
+                countryNetMonthly={country.medianNetMonthly}
+                countryWeeklyHours={country.legalWeeklyHours}
+                currencySymbol={country.currencySymbol}
+                age={userAge}
+                onChange={onUserFields}
+              />
+            </div>
+          </details>
         </div>
       </div>
 
+      {/* ---- Control de Vida & Modo ---- */}
+      <div class="max-w-6xl mx-auto px-4 mt-6">
+        <LifeBarControl
+          age={userAge}
+          viewMode={viewMode}
+          onAgeChange={onUserAgeChange}
+          onViewModeChange={onViewModeChange}
+          retirementAge={country.retirementAge}
+        />
+      </div>
+
       {/* ---- Cotización héroe ---- */}
-      <section class="max-w-5xl mx-auto px-4 mt-10 md:mt-14">
+      <section class="max-w-6xl mx-auto px-4 mt-6 md:mt-10">
         {!hero || !netMonthly ? (
           <div class="board-plate p-8 text-center">
             <h1 class="font-signage text-4xl uppercase">{noSalary.title}</h1>
-            <p class="mt-3 text-lg opacity-80">{noSalary.body}</p>
+            <p class="mt-3 text-lg opacity-85">{noSalary.body}</p>
             <a href={`/${country.slug}`} class="board-cta mt-6">
               {board.countryFile(country.name)} →
             </a>
@@ -356,7 +458,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
           <div>
             <p
               key={hero.product.id}
-              class="board-hero-swap font-board-mono text-sm md:text-base opacity-80 flex flex-wrap items-center gap-x-3 gap-y-1"
+              class="board-hero-swap font-board-mono text-sm md:text-base opacity-90 flex flex-wrap items-center gap-x-3 gap-y-1"
             >
               <span>
                 {nfPrice.format(hero.price)} {hero.converted ? "€" : country.currencySymbol}
@@ -373,7 +475,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
             </p>
             <h1
               key={`h1-${hero.product.id}`}
-              class="board-hero-swap font-signage uppercase text-2xl md:text-4xl mt-3 leading-tight max-w-3xl"
+              class="board-hero-swap font-signage uppercase text-2xl md:text-4xl mt-3 leading-tight max-w-4xl"
             >
               {board.heroLead(hero.product.name, country.name)}
             </h1>
@@ -384,20 +486,47 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 class="text-[clamp(4.5rem,16vw,11rem)] leading-none"
               />
               <span class="font-signage uppercase text-primary text-[clamp(1.5rem,4vw,3rem)] leading-none pb-1 md:pb-3">
-                {home.workdaysUnit}
+                {heroUnit}
               </span>
             </div>
-            {heroPhrase != null && (
-              <p
-                key={`tail-${hero.product.id}`}
-                class="board-hero-swap mt-4 text-lg md:text-xl"
-              >
-                {home.fullPayTail(heroPhrase)}
-              </p>
+
+            {isLifeMode && heroLifeImpact && (
+              <div class="mt-6 w-full max-w-4xl space-y-3">
+                <LifeBattery
+                  age={userAge}
+                  retirementAge={country.retirementAge}
+                  yearsFullPay={hero.years}
+                  pctCareerLeft={heroLifeImpact.pctCareerLeft}
+                  threat={heroLifeImpact.threat}
+                  onAgeChange={onUserAgeChange}
+                />
+                <p class="font-board-mono text-base text-base-content/90 border-l-2 border-primary pl-3 max-w-3xl leading-relaxed">
+                  {heroLifeImpact.verdict}
+                </p>
+              </div>
             )}
+
+            {!isLifeMode && heroWorkImpact && (
+              <div class="mt-6 w-full max-w-4xl space-y-3">
+                <WorkBattery
+                  impact={heroWorkImpact}
+                  salaryPct={heroPct}
+                  productName={hero.product.name}
+                />
+                {heroPhrase != null && (
+                  <p
+                    key={`tail-${hero.product.id}`}
+                    class="board-hero-swap text-base md:text-lg opacity-85"
+                  >
+                    {home.fullPayTail(heroPhrase)}
+                  </p>
+                )}
+              </div>
+            )}
+
             {heroPct != null && (
-              <div class="mt-6 max-w-xl">
-                <div class="flex justify-between font-board-mono text-xs uppercase tracking-[0.12em] opacity-80 mb-1">
+              <div class="mt-4 w-full max-w-4xl">
+                <div class="flex justify-between font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 mb-1 font-medium">
                   <span>{result.pctRealYearLabel}</span>
                   <span key={`pct-${hero.product.id}`} class="board-hero-swap">
                     {formatPercent(heroPct)}%
@@ -409,15 +538,15 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   aria-label={`Barra del año laboral: ocupa el ${formatPercent(heroPct)}%`}
                 >
                   <div
-                    class="board-pct-fill h-full bg-primary"
-                    style={`width: ${Math.min(100, heroPct).toFixed(1)}%`}
+                    class="board-pct-fill h-full"
+                    style={`width: ${Math.min(100, heroPct).toFixed(1)}%; background: ${!isLifeMode && heroWorkImpact ? heroWorkImpact.effort.color : "var(--color-primary)"}`}
                   />
                 </div>
               </div>
             )}
             {userAge != null && heroLifePct != null && (
-              <div class={heroPct != null ? "mt-4 max-w-xl" : "mt-6 max-w-xl"}>
-                <div class="flex justify-between font-board-mono text-xs uppercase tracking-[0.12em] opacity-80 mb-1">
+              <div class={heroPct != null ? "mt-4 w-full max-w-4xl" : "mt-6 w-full max-w-4xl"}>
+                <div class="flex justify-between font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 mb-1 font-medium">
                   <span>{board.lifeBarLabel(userAge)}</span>
                   <span key={`life-pct-${hero.product.id}`} class="board-hero-swap">
                     {formatPercent(heroLifePct)}%
@@ -442,9 +571,9 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
       {/* ---- Ticker rodante ---- */}
       {rows.length > 0 && (
         <div class="board-ticker mt-12 md:mt-16" aria-label={board.tickerLabel}>
-          <span class="board-live">
+          <span class="board-live" title="En vivo">
             <span class="board-live-dot" aria-hidden="true" />
-            En vivo
+            <span class="hidden sm:inline">En vivo</span>
           </span>
           <div class="board-ticker-window">
             <div class="board-ticker-track">
@@ -454,6 +583,15 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   key={copy}
                   aria-hidden={copy === 1 ? "true" : undefined}
                 >
+                  {latestUpdated && (
+                    <span class="board-ticker-item text-primary font-medium" key="latest-update">
+                      <span class="text-accent mr-1.5">●</span>
+                      ACTUALIZACIÓN: {latestUpdated.product.shortName} ({latestUpdated.source})
+                      <span aria-hidden="true" class="board-ticker-dot mx-2">
+                        ·
+                      </span>
+                    </span>
+                  )}
                   {rows.map((row) => {
                     const rate = rateOf(row);
                     return (
@@ -475,7 +613,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
 
       {/* ---- Pizarra completa ---- */}
       {rows.length > 0 && (
-        <section class="max-w-5xl mx-auto px-4 mt-14 md:mt-20">
+        <section class="max-w-6xl mx-auto px-4 mt-14 md:mt-20">
           <h2 class="font-signage uppercase text-4xl md:text-5xl">{board.boardTitle}</h2>
           <p class="mt-1 mb-6 text-base opacity-80">{board.boardSubtitle}</p>
           <div class="space-y-10" key={boardPulse}>
@@ -512,6 +650,10 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                         rateCta={null}
                         years={row.years}
                         userAge={userAge}
+                        retirementAge={country.retirementAge}
+                        hours={row.hours}
+                        viewMode={viewMode}
+                        isFresh={isFreshDate(row.priceDate)}
                         rowI={rowI}
                       />
                     );
@@ -524,7 +666,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
       )}
 
       {/* ---- Tu tipo de cambio ---- */}
-      <section class="max-w-5xl mx-auto px-4 mt-16 md:mt-24" id="exchange-panel">
+      <section class="max-w-6xl mx-auto px-4 mt-16 md:mt-24" id="exchange-panel">
         <div class="board-plate p-6 md:p-8">
           <div class="flex flex-wrap items-start gap-3">
             <span class="board-cat-icon" style="background: #ffb020; color: #14191d">
@@ -566,6 +708,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               countryNetMonthly={country.medianNetMonthly}
               countryWeeklyHours={country.legalWeeklyHours}
               currencySymbol={country.currencySymbol}
+              age={userAge}
               onChange={onUserFields}
             />
           </div>
@@ -573,7 +716,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
       </section>
 
       {/* ---- ¿Cuánto cuesta otra cosa? ---- */}
-      <section class="max-w-5xl mx-auto px-4 mt-6" aria-label={priceForm.priceLabel}>
+      <section class="max-w-6xl mx-auto px-4 mt-6" aria-label={priceForm.priceLabel}>
         <div class="board-plate p-6 md:p-8">
           <div class="flex flex-wrap items-start gap-3">
             <span class="board-cat-icon" style="background: #3ec97e; color: #14191d">

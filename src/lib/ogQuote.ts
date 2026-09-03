@@ -12,6 +12,7 @@ import {
   formatMinutes,
   formatWorkdays,
 } from "./format.ts";
+import { getProductPrice } from "./selectors.ts";
 import type { Country, Product } from "./types.ts";
 
 export type OgQuote = {
@@ -33,20 +34,20 @@ const nfPrice = new Intl.NumberFormat("es-ES", {
   maximumFractionDigits: 2,
 });
 
-/** Precio de referencia formateado ("33.365 €"): local o fallback ES.
+/** Precio de referencia formateado ("33.365 €"): local o fallback ES convertido.
  * Null si el producto no tiene precio base. */
 export function priceTextOf(product: Product, country: Country): string | null {
-  const price = product.prices[country.code] ?? product.prices["ES"];
+  const price = getProductPrice(product, country.code);
   return price == null ? null : `${nfPrice.format(price.value)} ${country.currencySymbol}`;
 }
 
-/** True si el precio mostrado es el fallback de España (SPEC §7), no local. */
+/** True si el precio mostrado es el fallback de España (SPEC §7) o convertido, no local. */
 export function isConverted(product: Product, country: Country): boolean {
-  return product.prices[country.code] == null;
+  return product.prices[country.code] == null || product.prices[country.code]?.origin === "converted";
 }
 
 export function ogQuote(product: Product, country: Country): OgQuote | null {
-  const price = product.prices[country.code] ?? product.prices["ES"];
+  const price = getProductPrice(product, country.code);
   if (price == null || country.medianNetMonthly == null) return null;
   let result;
   try {

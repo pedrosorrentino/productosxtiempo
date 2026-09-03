@@ -4,7 +4,10 @@ import '@fontsource-variable/big-shoulders';
 import '@fontsource-variable/chivo';
 import '@fontsource-variable/chivo-mono';
 import { brand, cta, legalFooter, home, board } from '../i18n/es.ts';
+import type { Country } from '../lib/types.ts';
 import countriesData from '../data/countries.json';
+
+const countries = countriesData as Country[];
 
 interface Props {
   title: string;
@@ -13,6 +16,8 @@ interface Props {
   ogImage?: string;
   /** Tipo Open Graph: "website" salvo casos concretos. */
   ogType?: string;
+  /** Slug del país actual, si aplica (para marcarlo en el selector del header). */
+  currentCountrySlug?: string;
 }
 
 const {
@@ -20,6 +25,7 @@ const {
   description,
   ogImage = "/og/index.png",
   ogType = "website",
+  currentCountrySlug,
 } = Astro.props;
 
 // Tarjeta de redes: URL canónica + póster absolutos (los crawlers no
@@ -87,9 +93,9 @@ const ogImageAbsolute = new URL(ogImage.replace(/^\//, ""), site).href;
       <span class="board-tagline hidden md:inline">{brand.promise}</span>
       <nav class="ml-auto">
         <select id="board-country-select" class="board-country-select" aria-label={board.changeCountryLabel}>
-          <option value="" selected disabled>{home.countryPlaceholder}</option>
-          {countriesData.map((country) => (
-            <option value={country.slug}>{country.name}</option>
+          <option value="" disabled selected={!currentCountrySlug}>{home.countryPlaceholder}</option>
+          {countries.map((country) => (
+            <option value={country.slug} selected={country.slug === currentCountrySlug}>{country.name}</option>
           ))}
         </select>
       </nav>
@@ -115,7 +121,7 @@ const ogImageAbsolute = new URL(ogImage.replace(/^\//, ""), site).href;
           aria-label={board.footerCountriesLabel}
         >
           <div class="flex flex-wrap items-center gap-x-3 gap-y-2 md:grid md:flex-1 md:min-w-0 md:grid-rows-3 md:grid-flow-col md:gap-x-8 md:gap-y-1">
-            {countriesData.map((country) => (
+            {countries.map((country) => (
               <a href={`/${country.slug}`} class="board-footer-link">{country.name}</a>
             ))}
           </div>

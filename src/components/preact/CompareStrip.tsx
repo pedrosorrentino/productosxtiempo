@@ -1,6 +1,7 @@
 import { useState } from "preact/hooks";
 import { calc } from "../../lib/calc.ts";
 import type { CalcResult } from "../../lib/calc.ts";
+import { convertCurrency } from "../../lib/currencies.ts";
 import {
   formatHours,
   formatMinutes,
@@ -12,7 +13,6 @@ import {
 } from "../../lib/format.ts";
 import type { Country } from "../../lib/types.ts";
 import { compare } from "../../i18n/es.ts";
-import type { JSX } from "preact";
 
 export interface CompareStripProps {
   /** Lista completa de países (para el select y las filas). */
@@ -20,8 +20,8 @@ export interface CompareStripProps {
   /** País actual de la página: se excluye de la compara (ya cotiza arriba). */
   currentCountryCode: string;
   /**
-   * Precio efectivo, en la moneda del país actual. Es el MISMO número en
-   * todas las tarjetas: lo que cambia es el sueldo con el que se paga.
+   * Precio efectivo, en la moneda del país actual.
+   * Se convierte proporcionalmente a la divisa de cada país comparado.
    */
   price: number;
   currencySymbol: string;
@@ -91,7 +91,7 @@ const poolOf = (
   );
 
 /**
- * Comparador a TODO EL ANCHO: el MISMO precio cotizado con la mediana de
+ * Comparador a TODO EL ANCHO: el precio cotizado con la mediana de
  * hasta 3 países, uno por columna. Al entrar se muestra una tarjeta al azar
  * (o la que venga de ?pais=) y el resto de columnas en esqueleto que invita
  * a añadir más. Cada tarjeta cierra con su botón de quitar. Sin librerías.
@@ -143,19 +143,20 @@ export default function CompareStrip({
 
   const cardOf = (country: Country): Card => {
     const net = country.medianNetMonthly;
-    const salary = net != null ? `${nfSalary.format(net)} ${currencySymbol}` : null;
+    const salary = net != null ? `${nfSalary.format(net)} ${country.currencySymbol}` : null;
     if (net == null) {
       return { code: country.code, label: country.name, salary, figure: null, hours: null, pct: null, life: null };
     }
+    const convertedPrice = convertCurrency(price, current.currency, country.currency);
     try {
       const r = calc({
-        price,
+        price: convertedPrice,
         netMonthly: net,
         weeklyHours: country.legalWeeklyHours,
         realAnnualHours: null,
         monthlySavings: null,
         age: null,
-        retirementAge: current.retirementAge,
+        retirementAge: country.retirementAge,
       });
       return {
         code: country.code,
@@ -193,8 +194,8 @@ export default function CompareStrip({
     (c) => c.code !== currentCountryCode && !codes.includes(c.code),
   );
 
-  const onSelect = (event: JSX.TargetedEvent<HTMLSelectElement>) => {
-    const value = event.currentTarget.value;
+  const onSelect = (event: Event) => {
+    const value = (event.currentTarget as HTMLSelectElement).value;
     if (value === "") return;
     setCodes((prev) =>
       prev.length < MAX_CARDS && !prev.includes(value) ? [...prev, value] : prev,
@@ -271,7 +272,7 @@ export default function CompareStrip({
             </button>
             <h3 class="font-signage uppercase text-2xl pr-8">{card.label}</h3>
             {card.salary != null && (
-              <p class="mt-1 font-board-mono text-xs uppercase tracking-[0.14em] opacity-70">
+              <p class="mt-1 font-board-mono text-sm uppercase tracking-[0.08em] opacity-80">
                 {card.salary} · {compare.salaryLabel}
               </p>
             )}
@@ -285,7 +286,7 @@ export default function CompareStrip({
                 </p>
                 {card.pct != null && (
                   <div class="mt-5">
-                    <div class="flex justify-between font-board-mono text-xs uppercase tracking-[0.12em] opacity-80 mb-1">
+                    <div class="flex justify-between font-board-mono text-sm uppercase tracking-[0.08em] opacity-85 font-medium mb-1">
                       <span>{compare.gaugeLabel}</span>
                       <span>{formatPercent(card.pct)}%</span>
                     </div>
@@ -302,7 +303,7 @@ export default function CompareStrip({
                   </div>
                 )}
                 {card.life != null && (
-                  <p class="mt-3 font-board-mono text-xs opacity-75">
+                  <p class="mt-3 font-board-mono text-sm opacity-85">
                     {compare.lifeLine(card.life.pct, card.life.years)}
                   </p>
                 )}

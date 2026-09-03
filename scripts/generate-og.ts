@@ -11,7 +11,7 @@
  * Salida: dist/og/index.png · dist/og/{pais}.png · dist/og/{pais}/{producto}.png
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import { brand, board, og, result } from "../src/i18n/es.ts";
@@ -261,7 +261,7 @@ async function renderPng(node: Node, path: string): Promise<void> {
     .render()
     .asPng();
   const file = join(OUT_DIR, path);
-  mkdirSync(file.slice(0, file.lastIndexOf("/")), { recursive: true });
+  mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, png);
   process.stdout.write(`og/${path}\n`);
 }

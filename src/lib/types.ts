@@ -50,4 +50,5 @@ export type UserState = {
   productId: string | null;
   customLabel: string | null;
   compareCountryCode: string | null;
+  viewMode?: "work" | "life";
 };

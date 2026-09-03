@@ -19,7 +19,11 @@ interface Props {
 const { country } = Astro.props;
 ---
 
-<BaseLayout title={`${country.name} · ${brand.name}`} description={brand.subtitle}>
+<BaseLayout
+  title={`${country.name} · ${brand.name}`}
+  description={brand.subtitle}
+  currentCountrySlug={country.slug}
+>
   <section class="max-w-5xl mx-auto px-4 py-8">
     <ResultView
       client:load

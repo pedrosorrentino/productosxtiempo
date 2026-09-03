@@ -20,9 +20,6 @@ const isNullableString = (value: unknown): value is string | null =>
 const isNonEmptyString = (value: unknown): value is string =>
   typeof value === "string" && value !== "";
 
-const isNullablePositive = (value: unknown): value is number | null =>
-  value === null || isFinitePositive(value);
-
 /**
  * Filtra un objeto arbitrario dejando solo los campos conocidos de UserState
  * con tipos y rangos válidos (merge parcial tolerante).
@@ -78,6 +75,9 @@ function sanitizeUserState(raw: unknown): Partial<UserState> {
   if (isNullableString(input.compareCountryCode)) {
     state.compareCountryCode = input.compareCountryCode;
   }
+  if (input.viewMode === "work" || input.viewMode === "life") {
+    state.viewMode = input.viewMode;
+  }
 
   return state;
 }
@@ -115,6 +115,9 @@ export function saveUserState(state: Partial<UserState>): void {
   const merged: Partial<UserState> = { ...existing, ...incoming };
   try {
     storage.setItem(STORAGE_KEY, JSON.stringify(merged));
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("cet:statechange", { detail: merged }));
+    }
   } catch {
     // Cuota llena o storage no disponible: se ignora sin romper la UI.
   }

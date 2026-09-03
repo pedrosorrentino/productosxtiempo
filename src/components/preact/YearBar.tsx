@@ -35,29 +35,31 @@ export default function YearBar({
 
   return (
     <section class="mt-8">
-      <h2 class="text-lg font-bold">{yearBar.title}</h2>
-      <p class="text-sm opacity-70">{detail}</p>
+      <h2 class="font-signage uppercase text-2xl md:text-3xl">{yearBar.title}</h2>
+      <p class="mt-1 text-sm opacity-85">{detail}</p>
       <div
-        class="mt-2 h-6 w-full overflow-hidden rounded-box border border-base-content/20 bg-base-200"
+        class="mt-2 h-6 w-full overflow-hidden border border-base-300 bg-base-200"
         role="img"
         aria-label={yearBar.ariaFill(pct)}
       >
         <div class="h-full bg-primary" style={`width: ${(fill * 100).toFixed(1)}%`} />
       </div>
       {yearsFullPay > 1 && (
-        <p class="mt-1 text-sm font-medium">{yearBar.overflow(formatYears(yearsFullPay))}</p>
+        <p class="mt-1.5 font-board-mono text-sm uppercase tracking-[0.08em] font-semibold text-primary">
+          {yearBar.overflow(formatYears(yearsFullPay))}
+        </p>
       )}
-      <p class="mt-1 text-sm opacity-70">
+      <p class="mt-1 font-board-mono text-sm font-medium opacity-85">
         {yearBar.fillLabel(pct)}
       </p>
       {hasLifeBar && lifePct != null && (
-        <div class="mt-4">
-          <div class="flex justify-between text-sm">
-            <span class="font-bold">{yearBar.lifeTitle}</span>
-            <span class="font-board-mono text-primary">{formatPercent(lifePct)}%</span>
+        <div class="mt-5">
+          <div class="flex justify-between font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 font-medium mb-1">
+            <span class="font-signage uppercase text-xl leading-none">{yearBar.lifeTitle}</span>
+            <span class="font-board-mono text-primary font-bold">{formatPercent(lifePct)}%</span>
           </div>
           <div
-            class="mt-1 h-3 w-full overflow-hidden rounded-box border border-base-content/20 bg-base-200"
+            class="h-3 w-full overflow-hidden border border-base-300 bg-base-200"
             role="img"
             aria-label={yearBar.lifeAria(userAge, formatPercent(lifePct))}
           >
@@ -66,7 +68,7 @@ export default function YearBar({
               style={`width: ${Math.min(100, lifePct).toFixed(1)}%`}
             />
           </div>
-          <p class="mt-1 text-sm opacity-70">
+          <p class="mt-1.5 font-board-mono text-sm opacity-85">
             {yearBar.lifeFillLabel(userAge, formatPercent(lifePct), formatYears(yearsFullPay))}
           </p>
         </div>

@@ -73,17 +73,22 @@ const wage160 = formatHourlyWage(hora160, '€');
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="container mx-auto px-4 py-10 max-w-3xl">
-    <h1 class="text-4xl md:text-5xl font-bold">Método</h1>
-    <p class="mt-4 text-lg opacity-90">
-      Aquí está la receta completa: qué medimos, qué convenciones usamos, qué
-      no medimos y qué hacemos cuando los datos envejecen. Sin letra pequeña:
-      si algo es una convención, lo decimos.
-    </p>
+  <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-6">
+    <div class="board-plate p-6 md:p-8">
+      <p class="font-board-mono text-xs uppercase tracking-[0.14em] opacity-90 text-primary">
+        Documentación técnica · Calibración del motor
+      </p>
+      <h1 class="font-signage uppercase text-4xl md:text-6xl leading-none mt-2">Método</h1>
+      <p class="mt-4 text-base md:text-lg opacity-90 leading-relaxed max-w-2xl">
+        Aquí está la receta completa: qué medimos, qué convenciones usamos, qué
+        no medimos y qué hacemos cuando los datos envejecen. Sin letra pequeña:
+        si algo es una convención, lo decimos.
+      </p>
+    </div>
 
-    <section class="mt-10">
-      <h2 id="que-medimos" class="text-2xl font-bold">Qué medimos</h2>
-      <div class="mt-3 space-y-3 leading-relaxed">
+    <section class="board-plate p-6 md:p-8">
+      <h2 id="que-medimos" class="font-signage uppercase text-2xl md:text-3xl leading-tight">Qué medimos</h2>
+      <div class="mt-3 space-y-3 leading-relaxed opacity-90">
         <p>
           Una cosa, un precio y un sueldo. De ahí salen las <strong>horas de
           trabajo</strong> que cuesta la cosa, y del número salen las unidades
@@ -99,9 +104,9 @@ const wage160 = formatHourlyWage(hora160, '€');
         </p>
       </div>
 
-      <div class="card bg-base-200 mt-5 p-5">
-        <h3 class="font-bold">Ejemplo completo, con la referencia de España</h3>
-        <p class="mt-2 leading-relaxed">
+      <div class="board-plate bg-base-100 border-primary/40 p-5 mt-5">
+        <h3 class="font-signage uppercase text-xl text-primary">Ejemplo completo, con la referencia de España</h3>
+        <p class="mt-2 leading-relaxed opacity-90 text-sm md:text-base">
           Neto {nf0.format(NETO_ES)} € al mes y {HORAS_ES} h a la semana: la
           hora vale {wage52}. Un Tesla Model 3 de acceso
           ({nf0.format(PRECIO_TESLA)} €) son unas {ejHoras} horas de trabajo —
@@ -114,11 +119,11 @@ const wage160 = formatHourlyWage(hora160, '€');
       </div>
     </section>
 
-    <section class="mt-10">
-      <h2 id="neto-mediano" class="text-2xl font-bold">
+    <section class="board-plate p-6 md:p-8">
+      <h2 id="neto-mediano" class="font-signage uppercase text-2xl md:text-3xl leading-tight">
         Neto, no bruto. Mediano, no medio.
       </h2>
-      <div class="mt-3 space-y-3 leading-relaxed">
+      <div class="mt-3 space-y-3 leading-relaxed opacity-90">
         <p>
           Medimos con el <strong>sueldo neto</strong>: lo que te ingresa la
           nómina después de impuestos y cotizaciones. El bruto es un número de
@@ -134,41 +139,41 @@ const wage160 = formatHourlyWage(hora160, '€');
           nuestra referencia.
         </p>
       </div>
-      <div class="overflow-x-auto mt-4">
-        <table class="table">
+      <div class="overflow-x-auto mt-5 border border-base-300">
+        <table class="w-full text-left font-body text-sm">
           <thead>
-            <tr>
-              <th>Usamos</th>
-              <th>Es</th>
-              <th>Por qué</th>
+            <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+              <th class="p-3.5">Usamos</th>
+              <th class="p-3.5">Es</th>
+              <th class="p-3.5">Por qué</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Neto</td>
-              <td>Tras impuestos y cotizaciones</td>
-              <td>Es lo que puedes gastar</td>
+          <tbody class="divide-y divide-base-300">
+            <tr class="bg-base-200/50">
+              <td class="p-3.5 font-semibold text-base-content">Neto</td>
+              <td class="p-3.5 opacity-90">Tras impuestos y cotizaciones</td>
+              <td class="p-3.5 opacity-90">Es lo que puedes gastar</td>
             </tr>
-            <tr>
-              <td>Mediano</td>
-              <td>El sueldo de la persona del medio</td>
-              <td>La media la infla la cola alta</td>
+            <tr class="bg-base-200/50">
+              <td class="p-3.5 font-semibold text-base-content">Mediano</td>
+              <td class="p-3.5 opacity-90">El sueldo de la persona del medio</td>
+              <td class="p-3.5 opacity-90">La media la infla la cola alta</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="mt-3 leading-relaxed">
+      <p class="mt-4 leading-relaxed opacity-90">
         El sueldo de cada país es una referencia orientativa de esta web, con
         fecha y editable. Tu nómina manda: ponla en «Mis datos» y todo se
         recalcula al instante.
       </p>
     </section>
 
-    <section class="mt-10">
-      <h2 id="convencion" class="text-2xl font-bold">
+    <section class="board-plate p-6 md:p-8">
+      <h2 id="convencion" class="font-signage uppercase text-2xl md:text-3xl leading-tight">
         La convención: horas × 52 / 12
       </h2>
-      <div class="mt-3 space-y-3 leading-relaxed">
+      <div class="mt-3 space-y-3 leading-relaxed opacity-90">
         <p>
           Para pasar de sueldo mensual a hora dividimos entre las horas del
           mes. La pregunta tramposa es cuántas horas tiene un mes. La respuesta
@@ -187,11 +192,11 @@ const wage160 = formatHourlyWage(hora160, '€');
       </div>
     </section>
 
-    <section class="mt-10">
-      <h2 id="jornada" class="text-2xl font-bold">
+    <section class="board-plate p-6 md:p-8">
+      <h2 id="jornada" class="font-signage uppercase text-2xl md:text-3xl leading-tight">
         Jornadas de 8 h contra horas reales del año
       </h2>
-      <div class="mt-3 space-y-3 leading-relaxed">
+      <div class="mt-3 space-y-3 leading-relaxed opacity-90">
         <p>
           La jornada de 8 h es una unidad humana: todos sabemos lo que es un
           lunes entero. Por eso las compras medianas se cuentan en jornadas y
@@ -214,9 +219,9 @@ const wage160 = formatHourlyWage(hora160, '€');
       </div>
     </section>
 
-    <section class="mt-10">
-      <h2 id="modos" class="text-2xl font-bold">Modo A y modo B</h2>
-      <div class="mt-3 space-y-3 leading-relaxed">
+    <section class="board-plate p-6 md:p-8">
+      <h2 id="modos" class="font-signage uppercase text-2xl md:text-3xl leading-tight">Modo A y modo B</h2>
+      <div class="mt-3 space-y-3 leading-relaxed opacity-90">
         <p>
           Todo resultado tiene dos lecturas, y las dos viven en la pantalla de
           resultado:
@@ -236,41 +241,41 @@ const wage160 = formatHourlyWage(hora160, '€');
           lejana.
         </p>
       </div>
-      <div class="overflow-x-auto mt-4">
-        <table class="table">
+      <div class="overflow-x-auto mt-5 border border-base-300">
+        <table class="w-full text-left font-body text-sm">
           <thead>
-            <tr>
-              <th>Modo</th>
-              <th>Pregunta que contesta</th>
-              <th>Unidad</th>
+            <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+              <th class="p-3.5">Modo</th>
+              <th class="p-3.5">Pregunta que contesta</th>
+              <th class="p-3.5">Unidad</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>A</td>
-              <td>¿Cuánto es de mi sueldo entero?</td>
-              <td>Meses / años de sueldo</td>
+          <tbody class="divide-y divide-base-300">
+            <tr class="bg-base-200/50">
+              <td class="p-3.5 font-semibold text-base-content">A</td>
+              <td class="p-3.5 opacity-90">¿Cuánto es de mi sueldo entero?</td>
+              <td class="p-3.5 font-board-mono text-primary text-xs uppercase tracking-[0.08em]">Meses / años de sueldo</td>
             </tr>
-            <tr>
-              <td>B</td>
-              <td>¿Cuánto tardaré apartando?</td>
-              <td>Meses / años de calendario</td>
+            <tr class="bg-base-200/50">
+              <td class="p-3.5 font-semibold text-base-content">B</td>
+              <td class="p-3.5 opacity-90">¿Cuánto tardaré apartando?</td>
+              <td class="p-3.5 font-board-mono text-primary text-xs uppercase tracking-[0.08em]">Meses / años de calendario</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="mt-3 leading-relaxed">
+      <p class="mt-4 leading-relaxed opacity-90">
         En el ejemplo español: el Tesla son {ejMesesFull} meses de sueldo
         entero (A) o unos {ejMesesAhorro} meses ahorrando {AHORRO_ES} € al mes
         (B). El A dimensiona; el B se vive.
       </p>
     </section>
 
-    <section class="mt-10">
-      <h2 id="edad" class="text-2xl font-bold">
+    <section class="board-plate p-6 md:p-8">
+      <h2 id="edad" class="font-signage uppercase text-2xl md:text-3xl leading-tight">
         La edad: vida laboral, no cuenta atrás
       </h2>
-      <div class="mt-3 space-y-3 leading-relaxed">
+      <div class="mt-3 space-y-3 leading-relaxed opacity-90">
         <p>
           Si escribes tu edad, aparece una línea discreta bajo el resultado: a
           cuántos años de vida trabajando equivale la compra y qué porcentaje
@@ -292,15 +297,15 @@ const wage160 = formatHourlyWage(hora160, '€');
       </div>
     </section>
 
-    <section class="mt-10">
-      <h2 id="que-no-medimos" class="text-2xl font-bold">Lo que no medimos</h2>
-      <div class="mt-3 space-y-3 leading-relaxed">
+    <section class="board-plate p-6 md:p-8">
+      <h2 id="que-no-medimos" class="font-signage uppercase text-2xl md:text-3xl leading-tight">Lo que no medimos</h2>
+      <div class="mt-3 space-y-3 leading-relaxed opacity-90">
         <p>
           Convenio de honestidad: la cuenta es deliberadamente simple, y estas
           cosas quedan fuera a propósito.
         </p>
       </div>
-      <ul class="mt-3 space-y-2 leading-relaxed list-disc list-outside pl-5">
+      <ul class="mt-3 space-y-2 leading-relaxed list-disc list-outside pl-5 opacity-90">
         <li>
           <strong>Intereses.</strong> Si financias una compra, el precio real
           es mayor. Aquí contamos el precio de etiqueta.
@@ -323,15 +328,15 @@ const wage160 = formatHourlyWage(hora160, '€');
           fórmula decente para eso, y la que existe suele ser moralina.
         </li>
       </ul>
-      <p class="mt-3 leading-relaxed">
+      <p class="mt-4 leading-relaxed opacity-90">
         Medimos el esfuerzo en horas de nómina y lo declaramos. La decisión
         final — y su justificación — son tuyas.
       </p>
     </section>
 
-    <section class="mt-10">
-      <h2 id="caducidad" class="text-2xl font-bold">Los datos envejecen</h2>
-      <div class="mt-3 space-y-3 leading-relaxed">
+    <section class="board-plate p-6 md:p-8">
+      <h2 id="caducidad" class="font-signage uppercase text-2xl md:text-3xl leading-tight">Los datos envejecen</h2>
+      <div class="mt-3 space-y-3 leading-relaxed opacity-90">
         <p>
           Todos los datos llevan fecha: el sueldo de referencia, las horas del
           país, cada precio del catálogo. Sueldos y precios se mueven, y un
@@ -343,7 +348,7 @@ const wage160 = formatHourlyWage(hora160, '€');
           <span class="mx-2 inline-block">
             <StaleDataBadge date="2024-06" />
           </span>
-          El corte se fija al construir el sitio (2026-02, es decir, agosto de
+          El corte se fija al construir el sitio (2025-02, es decir, agosto de
           2026 menos 18 meses) para que el build sea reproducible: misma
           entrada, misma salida, sin badges que cambien según el día de
           compilación.
@@ -355,12 +360,12 @@ const wage160 = formatHourlyWage(hora160, '€');
       </div>
     </section>
 
-    <section class="mt-10">
-      <h2 id="fuentes" class="text-2xl font-bold">De dónde salen los datos</h2>
-      <div class="mt-3 space-y-3 leading-relaxed">
+    <section class="board-plate p-6 md:p-8">
+      <h2 id="fuentes" class="font-signage uppercase text-2xl md:text-3xl leading-tight">De dónde salen los datos</h2>
+      <div class="mt-3 space-y-3 leading-relaxed opacity-90">
         <p>Sin fuentes mágicas ni cifras sagradas. Trabajamos con:</p>
       </div>
-      <ul class="mt-3 space-y-2 leading-relaxed list-disc list-outside pl-5">
+      <ul class="mt-3 space-y-2 leading-relaxed list-disc list-outside pl-5 opacity-90">
         <li>
           <strong>Oficinas nacionales de estadística</strong> (INE y
           equivalentes) para sueldos de referencia.
@@ -382,18 +387,18 @@ const wage160 = formatHourlyWage(hora160, '€');
           precio de la cosa.
         </li>
       </ul>
-      <p class="mt-3 leading-relaxed">
+      <p class="mt-4 leading-relaxed opacity-90">
         Las cifras de sueldo son referencias orientativas de esta web, con
         fecha, no estadísticas oficiales. Sirven para empezar; se mejoran
         cambiándolas por las tuyas.
       </p>
     </section>
 
-    <section class="mt-10">
-      <h2 id="privacidad" class="text-2xl font-bold">
+    <section class="board-plate p-6 md:p-8">
+      <h2 id="privacidad" class="font-signage uppercase text-2xl md:text-3xl leading-tight">
         Privacidad: el cálculo corre en tu dispositivo
       </h2>
-      <div class="mt-3 space-y-3 leading-relaxed">
+      <div class="mt-3 space-y-3 leading-relaxed opacity-90">
         <p>
           Tu sueldo, tus horas, tu ahorro y tu edad no salen de tu navegador:
           no hay servidor que los reciba, ni cuenta a la que asociarlos, ni
@@ -409,5 +414,5 @@ const wage160 = formatHourlyWage(hora160, '€');
         </p>
       </div>
     </section>
-  </section>
+  </div>
 </BaseLayout>
