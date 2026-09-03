@@ -424,6 +424,8 @@ html {
 .board-plate {
   border: 1px solid #2d3832;
   background: #1c231f;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 /* Placa con dato del usuario en uso: el borde pasa a ámbar para señalar
@@ -442,6 +444,14 @@ html {
   background: #151a17;
   text-decoration: none;
   transition: background 120ms ease-out;
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .board-row {
+    gap: 0.5rem;
+    padding: 0.55rem 0.65rem;
+  }
 }
 
 .board-row:hover {

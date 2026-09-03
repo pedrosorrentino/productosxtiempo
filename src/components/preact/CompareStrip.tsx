@@ -281,7 +281,7 @@ export default function CompareStrip({
                 <p class="mt-4 font-board-mono text-2xl tabular-nums leading-none text-primary">
                   {card.figure.main}
                 </p>
-                <p class="mt-1 font-board-mono text-base tabular-nums text-primary">
+                <p class="mt-1 font-board-mono text-base tabular-nums text-primary break-words">
                   {card.figure.unit}
                 </p>
                 {card.pct != null && (
@@ -303,7 +303,7 @@ export default function CompareStrip({
                   </div>
                 )}
                 {card.life != null && (
-                  <p class="mt-3 font-board-mono text-sm opacity-85">
+                  <p class="mt-3 font-board-mono text-sm opacity-85 break-words">
                     {compare.lifeLine(card.life.pct, card.life.years)}
                   </p>
                 )}

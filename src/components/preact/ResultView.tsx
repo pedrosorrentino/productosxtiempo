@@ -798,10 +798,10 @@ export default function ResultView({
           )}
         </div>
         {!isLifeMode && (
-          <p class="mt-4 text-lg md:text-xl opacity-90">{home.fullPayTail(phrase)}</p>
+          <p class="mt-4 text-lg md:text-xl opacity-90 break-words">{home.fullPayTail(phrase)}</p>
         )}
         {!isLifeMode && hero.next && (
-          <p class="mt-1 font-board-mono text-sm opacity-85">= {hero.next}</p>
+          <p class="mt-1 font-board-mono text-sm opacity-85 break-words">= {hero.next}</p>
         )}
 
         {/* Sección de Esfuerzo Laboral (Modo Trabajo con Dopamina) */}
@@ -826,16 +826,16 @@ export default function ResultView({
               onAgeChange={onAgeChange}
             />
             <div class={`p-4 rounded-lg border ${lifeImpact.threat.badgeClass}`}>
-              <div class="flex items-center gap-2 mb-1">
-                <span class="text-xl" aria-hidden="true">{lifeImpact.threat.emoji}</span>
+              <div class="flex items-center gap-2 mb-1 flex-wrap">
+                <span class="text-xl shrink-0" aria-hidden="true">{lifeImpact.threat.emoji}</span>
                 <span class="font-signage uppercase text-lg tracking-wider font-bold">
                   {lifeImpact.threat.label}
                 </span>
-                <span class="font-board-mono text-sm opacity-85 ml-auto">
+                <span class="font-board-mono text-sm opacity-85 sm:ml-auto break-words">
                   {lifeImpact.threat.description}
                 </span>
               </div>
-              <p class="font-board-mono text-base leading-relaxed mt-1">
+              <p class="font-board-mono text-base leading-relaxed mt-1 break-words">
                 {lifeImpact.verdict}
               </p>
             </div>

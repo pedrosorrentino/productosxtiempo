@@ -500,7 +500,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   threat={heroLifeImpact.threat}
                   onAgeChange={onUserAgeChange}
                 />
-                <p class="font-board-mono text-base text-base-content/90 border-l-2 border-primary pl-3 max-w-3xl leading-relaxed">
+                <p class="font-board-mono text-base text-base-content/90 border-l-2 border-primary pl-3 max-w-3xl leading-relaxed break-words">
                   {heroLifeImpact.verdict}
                 </p>
               </div>
@@ -516,7 +516,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 {heroPhrase != null && (
                   <p
                     key={`tail-${hero.product.id}`}
-                    class="board-hero-swap text-base md:text-lg opacity-85"
+                    class="board-hero-swap text-base md:text-lg opacity-85 break-words"
                   >
                     {home.fullPayTail(heroPhrase)}
                   </p>

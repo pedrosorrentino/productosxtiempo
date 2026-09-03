@@ -207,17 +207,17 @@ export default function BoardRowCard({
         </span>
         {isLifeMode ? (
           /* Modo Vida activo: la barra de vida es la protagonista absoluta */
-          <span class="flex items-center gap-2 mt-1.5">
-            <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-90 w-60 shrink-0 whitespace-nowrap flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full inline-block" style={`background: ${threat.color}`} />
-              <span class="font-bold text-base-content">
+          <span class="flex items-center gap-2 mt-1.5 min-w-0">
+            <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-90 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full inline-block shrink-0" style={`background: ${threat.color}`} />
+              <span class="font-bold text-base-content truncate">
                 {pctCareerLeft != null
                   ? `${formatPercent(pctCareerLeft)}% de tu futuro (${yearsLeft}a)`
                   : `${formatPercent(salaryPct ?? 0)}% de 1 año`}
               </span>
             </span>
             <span
-              class="flex-1 h-[5px] bg-base-300 rounded overflow-hidden"
+              class="flex-1 h-[5px] bg-base-300 rounded overflow-hidden min-w-[1.5rem]"
               aria-hidden="true"
             >
               <span
@@ -230,12 +230,12 @@ export default function BoardRowCard({
           /* Modo Trabajo clásico */
           <>
             {salaryPct != null && (
-              <span class="flex items-center gap-2 mt-1.5">
-                <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 w-60 shrink-0 whitespace-nowrap">
+              <span class="flex items-center gap-2 mt-1.5 min-w-0">
+                <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate">
                   {board.salaryBarLabel(formatPercent(salaryPct))}
                 </span>
                 <span
-                  class="flex-1 h-[4px] bg-base-300 overflow-hidden"
+                  class="flex-1 h-[4px] bg-base-300 overflow-hidden min-w-[1.5rem]"
                   aria-hidden="true"
                 >
                   <span
@@ -246,12 +246,12 @@ export default function BoardRowCard({
               </span>
             )}
             {pctCareerLeft != null && userAge != null && (
-              <span class="flex items-center gap-2 mt-1">
-                <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 w-60 shrink-0 whitespace-nowrap">
+              <span class="flex items-center gap-2 mt-1 min-w-0">
+                <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate">
                   {formatPercent(pctCareerLeft)}% de tu vida restante
                 </span>
                 <span
-                  class="flex-1 h-[4px] bg-base-300 overflow-hidden"
+                  class="flex-1 h-[4px] bg-base-300 overflow-hidden min-w-[1.5rem]"
                   title={`${formatPercent(pctCareerLeft)}% de tus años restantes`}
                 >
                   <span
