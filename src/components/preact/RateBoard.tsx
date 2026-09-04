@@ -461,7 +461,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 )}
                 {origin === "saved" && (
                   <span
-                    class="board-stamp text-primary inline-flex items-center gap-1.5 py-0.5"
+                    class="board-stamp text-primary hidden sm:inline-flex items-center gap-1.5 py-0.5"
                     title="País fijado por tu elección"
                   >
                     <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
