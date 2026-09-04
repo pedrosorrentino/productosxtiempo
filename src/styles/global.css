@@ -449,8 +449,8 @@ html {
 
 @media (max-width: 640px) {
   .board-row {
-    gap: 0.5rem;
-    padding: 0.55rem 0.65rem;
+    display: block;
+    padding: 0.65rem 0.75rem;
   }
 }
 

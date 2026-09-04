@@ -1,14 +1,16 @@
 import { useEffect, useMemo, useState } from "preact/hooks";
-import { calc } from "../../lib/calc.ts";
+import { calc, WEEKS_PER_MONTH } from "../../lib/calc.ts";
 import {
   formatHours,
   formatMinutes,
   formatPercent,
   formatWorkdays,
   formatHumanDuration,
+  formatHourlyWage,
 } from "../../lib/format.ts";
 import { getCountry, getProductPrice } from "../../lib/selectors.ts";
 import { loadUserState, saveUserState } from "../../lib/storage.ts";
+import { parseUserStateFromQuery } from "../../lib/urls.ts";
 import type { Country, Product } from "../../lib/types.ts";
 import { isFreshDate, getLatestUpdatedProduct } from "../../lib/freshness.ts";
 import { board, categories, home, noSalary, priceForm, result, shareText, userForm } from "../../i18n/es.ts";
@@ -25,6 +27,7 @@ import BoardRowCard, {
 import LifeBarControl from "./LifeBarControl.tsx";
 import LifeBattery from "./LifeBattery.tsx";
 import WorkBattery from "./WorkBattery.tsx";
+import TimeStream3D from "./TimeStream3D.tsx";
 import { computeLifeImpact } from "../../lib/life.ts";
 import { computeWorkImpact } from "../../lib/work.ts";
 
@@ -79,8 +82,8 @@ type Row = {
   years: number;
 };
 
-/** Cadencia de rotación del héroe: cada cuánto cambia de artículo. */
-const HERO_ROTATE_MS = 6000;
+/** Cadencia de rotación del héroe: cada cuánto cambia de artículo (14s para contemplar el producto y su física con calma). */
+const HERO_ROTATE_MS = 14000;
 
 /** Filas visibles por categoría en la pizarra; el resto rota por turnos. */
 const BOARD_ROWS_VISIBLE = 3;
@@ -99,6 +102,18 @@ function rateOf(row: Row): { text: string; unit: string } {
   return { text: formatWorkdays(row.workdays), unit: board.rateUnitShort };
 }
 
+function getCountryFlagEmoji(countryCode: string): string {
+  try {
+    const codePoints = countryCode
+      .toUpperCase()
+      .split("")
+      .map((char) => 127397 + char.charCodeAt(0));
+    return String.fromCodePoint(...codePoints);
+  } catch {
+    return "🌐";
+  }
+}
+
 /**
  * La portada como tablero de cotizaciones: placa de país, cotización héroe a
  * dígitos rodantes, ticker de productos, pizarra completa por categorías y el
@@ -114,6 +129,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
   /** Latido de la pizarra: cada tick re-estampa las filas en cascada. */
   const [boardPulse, setBoardPulse] = useState(0);
   const [viewMode, setViewMode] = useState<"work" | "life">("work");
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [userFields, setUserFields] = useState<{
     netMonthly: number | null;
     weeklyHours: number | null;
@@ -123,14 +139,28 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
 
   useEffect(() => {
     const saved = loadUserState();
-    if (saved?.viewMode) {
-      setViewMode(saved.viewMode);
-    } else if (saved?.age != null) {
+    const fromQuery =
+      typeof window !== "undefined"
+        ? parseUserStateFromQuery(new URLSearchParams(window.location.search))
+        : null;
+    const effective = { ...saved, ...fromQuery };
+
+    if (effective?.viewMode) {
+      setViewMode(effective.viewMode);
+    } else if (effective?.age != null) {
       setViewMode("life");
     }
 
-    if (saved?.countryCode && countries.some((c) => c.code === saved.countryCode)) {
-      setCountryCode(saved.countryCode);
+    const countryParam = fromQuery?.compareCountryCode?.toUpperCase();
+    const resolvedCountry =
+      countryParam && countries.some((c) => c.code === countryParam)
+        ? countryParam
+        : effective?.countryCode && countries.some((c) => c.code === effective.countryCode)
+        ? effective.countryCode
+        : null;
+
+    if (resolvedCountry) {
+      setCountryCode(resolvedCountry);
       setOrigin("saved");
     } else {
       try {
@@ -145,12 +175,12 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
         // Sin zona horaria disponible: se queda el país por defecto.
       }
     }
-    if (saved) {
+    if (effective && (effective.netMonthly != null || effective.weeklyHours != null || effective.age != null)) {
       setUserFields({
-        netMonthly: saved.netMonthly ?? null,
-        weeklyHours: saved.weeklyHours ?? null,
-        monthlySavings: saved.monthlySavings ?? null,
-        age: saved.age ?? null,
+        netMonthly: effective.netMonthly ?? null,
+        weeklyHours: effective.weeklyHours ?? null,
+        monthlySavings: effective.monthlySavings ?? null,
+        age: effective.age ?? null,
       });
     }
   }, [countries]);
@@ -341,95 +371,285 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
     }
   };
 
+  const onResetUserFields = () => {
+    setUserFields((prev) => ({
+      netMonthly: null,
+      weeklyHours: null,
+      monthlySavings: null,
+      age: prev?.age ?? null,
+    }));
+    saveUserState({
+      netMonthly: null,
+      weeklyHours: null,
+      monthlySavings: null,
+    });
+  };
+
+  const activeNetMonthly = userFields?.netMonthly ?? country.medianNetMonthly ?? 0;
+  const activeWeeklyHours = userFields?.weeklyHours ?? country.legalWeeklyHours ?? 40;
+  const activeHourlyWage =
+    activeNetMonthly > 0 && activeWeeklyHours > 0
+      ? activeNetMonthly / (activeWeeklyHours * WEEKS_PER_MONTH)
+      : 0;
+
+  const medianHourlyWage =
+    country.medianNetMonthly && country.legalWeeklyHours
+      ? country.medianNetMonthly / (country.legalWeeklyHours * WEEKS_PER_MONTH)
+      : 0;
+
   return (
-    <div class="pt-6">
-      {/* ---- Placa de operación ---- */}
+    <div class="pt-4 md:pt-6">
+      {/* ---- Corriente Cinemática 3D de Partículas (Encima del RateBoard) ---- */}
+      {hero && (
+        <div class="max-w-6xl mx-auto px-4 mb-6 md:mb-8">
+          <TimeStream3D
+            workdays={hero.workdays}
+            hours={hero.hours}
+            yearsFullPay={hero.years}
+            salaryPct={heroPct}
+            userAge={userAge}
+            retirementAge={country.retirementAge}
+            productName={hero.product.name}
+            class="w-full"
+          />
+        </div>
+      )}
+
+      {/* ---- Placa de operación: Cabina de Cotización ---- */}
       <div class="max-w-6xl mx-auto px-4">
-        <div class="board-plate p-4 md:p-5">
-          <div class="flex flex-col md:flex-row md:items-center gap-4">
+        <div
+          class={`board-plate p-4 sm:p-5 transition-all duration-300 ${
+            userActive
+              ? "board-plate--active shadow-[0_0_30px_rgba(62,201,126,0.12)] border-accent/70"
+              : "hover:border-base-300"
+          }`}
+        >
+          {/* ---- Telemetría Superior: Cabina & Estado de Mercado ---- */}
+          <div class="flex items-center justify-between gap-3 pb-3 mb-4 border-b border-base-300/80 text-xs font-board-mono">
+            <div class="flex items-center gap-2 text-base-content/75">
+              <span class="inline-block w-2 h-2 rounded-full bg-primary/80"></span>
+              <span class="uppercase tracking-[0.14em] font-medium">Cabina de Cotización</span>
+            </div>
+
+            {/* Chip de Catálogo ordenado en su slot de telemetría */}
+            <div
+              class="flex items-center gap-2 px-2.5 py-1 rounded bg-base-100/90 border border-base-300 text-accent font-medium shadow-sm"
+              title="Catálogo con actualización periódica"
+            >
+              <span class="board-live-dot"></span>
+              <span class="tracking-wider uppercase text-[0.7rem] sm:text-xs">
+                Catálogo activo · {products.length} productos
+              </span>
+            </div>
+          </div>
+
+          {/* ---- Zona Principal: Identidad del País & Selector Rápido ---- */}
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            {/* Izquierda: Bandera + Nombre del País + Badge de Origen + Referencia base */}
             <div class="min-w-0">
-              <label
-                for="board-country"
-                class="font-board-mono text-sm uppercase tracking-[0.08em] opacity-90"
-              >
-                {board.operatingLabel}
-              </label>
-              <div class="flex items-center gap-3 flex-wrap mt-1">
-                <strong class="font-signage text-3xl md:text-4xl uppercase leading-none">
-                  {country.name}
-                </strong>
+              <div class="flex items-center gap-2 text-xs font-board-mono uppercase tracking-[0.1em] text-base-content/75 mb-1.5">
+                <span class="font-medium">{board.operatingLabel}</span>
+                <span class="text-base-300">/</span>
                 {origin === "detected" && (
-                  <span class="board-stamp text-accent" title="Detectado por tu zona horaria">
+                  <span
+                    class="board-stamp text-accent inline-flex items-center gap-1.5 py-0.5"
+                    title="Detectado por tu zona horaria"
+                  >
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
                     {board.detectedStamp}
                   </span>
                 )}
                 {origin === "saved" && (
-                  <span class="board-stamp text-primary">{board.savedStamp}</span>
+                  <span
+                    class="board-stamp text-primary inline-flex items-center gap-1.5 py-0.5"
+                    title="País fijado por tu elección"
+                  >
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    {board.savedStamp}
+                  </span>
                 )}
-                <span class="board-stamp text-accent" title="Catálogo con actualización periódica">
-                  Catálogo activo · {products.length} productos
-                </span>
-                {userActive && (
-                  <span class="board-stamp board-stamp-alert">{board.yourDataStamp}</span>
+                {origin === "default" && (
+                  <span class="board-stamp text-base-content/70 inline-flex items-center gap-1.5 py-0.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-base-content/50"></span>
+                    referencia inicial
+                  </span>
+                )}
+              </div>
+
+              <div class="flex items-baseline gap-3 flex-wrap">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-3xl sm:text-4xl select-none" aria-hidden="true">
+                    {getCountryFlagEmoji(country.code)}
+                  </span>
+                  <strong class="font-signage text-3xl sm:text-4xl md:text-5xl uppercase leading-none tracking-tight">
+                    {country.name}
+                  </strong>
+                </div>
+
+                {country.medianNetMonthly && (
+                  <span class="text-xs font-board-mono text-base-content/65 whitespace-nowrap">
+                    Mediana oficial:{" "}
+                    <strong class="text-base-content/90 font-medium">
+                      {country.medianNetMonthly} {country.currencySymbol}/mes
+                    </strong>{" "}
+                    ({country.legalWeeklyHours} h/sem)
+                  </span>
                 )}
               </div>
             </div>
-            <div class="md:ml-auto flex items-end gap-3">
-              <div>
-                <span class="font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 block mb-1">
+
+            {/* Derecha: Selector de País & Ficha */}
+            <div class="flex items-center gap-2 sm:gap-3 flex-wrap sm:flex-nowrap">
+              <div class="w-full sm:w-auto">
+                <label for="board-country" class="sr-only">
                   {board.changeCountryLabel}
-                </span>
+                </label>
                 <select
                   id="board-country"
-                  class="select w-56 h-11 font-board-mono"
+                  class="select select-bordered w-full sm:w-56 h-11 font-board-mono text-sm bg-base-100"
                   value={countryCode}
                   onChange={onCountryChange}
                 >
                   {countries.map((c) => (
                     <option key={c.code} value={c.code}>
-                      {c.name}
+                      {getCountryFlagEmoji(c.code)} {c.name}
                     </option>
                   ))}
                 </select>
               </div>
+
               <a
                 href={`/${country.slug}`}
-                class="board-navlink whitespace-nowrap hidden sm:inline-flex items-center h-11"
+                class="board-navlink whitespace-nowrap inline-flex items-center justify-center px-3.5 h-11 text-xs font-board-mono uppercase tracking-wider text-base-content/85 hover:text-primary hover:border-primary border border-base-300 bg-base-100/60 transition-colors"
               >
                 {board.countryFile(country.name)} →
               </a>
             </div>
           </div>
 
-          <details class="board-details mt-3 pt-3 border-t border-base-300">
-            <summary class="cursor-pointer font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 select-none text-primary hover:text-primary/80 font-semibold">
-              <svg
-                class="board-caret"
-                viewBox="0 0 24 24"
-                width="14"
-                height="14"
-                fill="none"
-                stroke="currentColor"
-                stroke-width={2}
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M9 6l6 6-6 6" />
-              </svg>
-              {userActive ? "Editar mi nómina y jornada (recalcula en vivo)" : "Ajustar con mi nómina aquí (recalcula en vivo)"}
-            </summary>
-            <div class="mt-4">
-              <UserForm
-                countryCode={country.code}
-                countryNetMonthly={country.medianNetMonthly}
-                countryWeeklyHours={country.legalWeeklyHours}
-                currencySymbol={country.currencySymbol}
-                age={userAge}
-                onChange={onUserFields}
-              />
-            </div>
-          </details>
+          {/* ---- HUD de Motor de Cálculo (Máxima Dopamina) ---- */}
+          <div class="mt-5 pt-4 border-t border-base-300/80">
+            {userActive ? (
+              /* ESTADO PERSONALIZADO: Verde fósforo vibrante, baliza en vivo y valor por hora */
+              <div class="p-3.5 sm:p-4 rounded bg-accent/10 border-2 border-accent/60 shadow-[0_0_20px_rgba(62,201,126,0.12)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all">
+                <div class="flex items-start sm:items-center gap-3">
+                  <span class="relative flex h-3 w-3 mt-1 sm:mt-0 flex-shrink-0">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                  </span>
+                  <div>
+                    <div class="flex items-center gap-2.5 flex-wrap">
+                      <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-accent bg-accent/20 border border-accent/40 px-2.5 py-0.5 rounded">
+                        ⚡ {board.yourDataStamp}
+                      </span>
+                      <span class="font-board-mono text-xs text-base-content/90">
+                        Tu valor hora:{" "}
+                        <strong class="text-accent text-sm sm:text-base font-bold tracking-tight">
+                          {formatHourlyWage(activeHourlyWage, country.currencySymbol)}/h
+                        </strong>
+                      </span>
+                    </div>
+                    <p class="font-board-mono text-[0.75rem] text-base-content/75 mt-0.5">
+                      Base aplicada: {userFields?.netMonthly} {country.currencySymbol}/mes · {userFields?.weeklyHours} h/sem
+                      {userFields?.monthlySavings != null && ` · Ahorro: ${userFields.monthlySavings} ${country.currencySymbol}/mes`}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 self-end sm:self-auto flex-shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => setIsFormOpen((prev) => !prev)}
+                    class="btn btn-sm btn-ghost border border-accent/50 text-accent hover:bg-accent hover:text-neutral-900 font-board-mono text-xs uppercase font-bold"
+                  >
+                    {isFormOpen ? "Cerrar ▲" : "Editar nómina ✎"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onResetUserFields}
+                    class="btn btn-sm btn-ghost border border-base-300 text-base-content/70 hover:text-warning hover:border-warning font-board-mono text-xs uppercase"
+                    title="Restablecer a la mediana nacional de referencia"
+                  >
+                    ↺ Mediana
+                  </button>
+                </div>
+              </div>
+            ) : (
+              /* ESTADO MEDIANA ESTÁNDAR: Invitación táctica al usuario */
+              <div class="p-3.5 sm:p-4 rounded bg-base-100/70 border border-base-300/90 hover:border-primary/50 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="flex items-start sm:items-center gap-3">
+                  <div class="p-2 rounded bg-base-200 border border-base-300 text-primary flex-shrink-0">
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="18"
+                      height="18"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <line x1="12" y1="1" x2="12" y2="23"></line>
+                      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 px-2 py-0.5 rounded">
+                        Modo estándar: Mediana nacional
+                      </span>
+                      {country.medianNetMonthly != null ? (
+                        <span class="font-board-mono text-xs text-base-content/80">
+                          {country.name}:{" "}
+                          <strong class="text-base-content font-medium">
+                            {formatHourlyWage(medianHourlyWage, country.currencySymbol)}/h
+                          </strong>
+                        </span>
+                      ) : (
+                        <span class="font-board-mono text-xs text-warning font-medium">
+                          {country.name}: Sin mediana oficial (introduce tu nómina)
+                        </span>
+                      )}
+                    </div>
+                    <p class="font-board-mono text-[0.75rem] text-base-content/65 mt-0.5">
+                      {country.medianNetMonthly != null
+                        ? `Cifras de referencia de ${country.name}. ¿Quieres saber cuánto te cuesta a ti según tu sueldo real?`
+                        : `Por alta informalidad o inflación en ${country.name}, introduce tu sueldo para cotizar la pizarra.`}
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setIsFormOpen((prev) => !prev)}
+                  class="btn btn-sm bg-primary/20 hover:bg-primary text-primary hover:text-primary-content border border-primary/50 font-board-mono text-xs uppercase font-bold tracking-wider self-start sm:self-auto flex-shrink-0 transition-all shadow-sm"
+                >
+                  {isFormOpen ? "Cerrar ▲" : "⚡ Ajustar con mi nómina"}
+                </button>
+              </div>
+            )}
+
+            {/* ---- Cajón Plegable del Formulario ---- */}
+            {isFormOpen && (
+              <div class="mt-4 p-4 rounded bg-base-100 border border-base-300 shadow-inner">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-base-300 text-xs font-board-mono text-base-content/80">
+                  <span class="uppercase tracking-wider font-semibold text-primary">
+                    Ajuste personalizado de nómina y jornada
+                  </span>
+                  <span class="text-accent text-[0.75rem]">Recalcula toda la pizarra al instante</span>
+                </div>
+                <UserForm
+                  countryCode={country.code}
+                  countryNetMonthly={country.medianNetMonthly}
+                  countryWeeklyHours={country.legalWeeklyHours}
+                  currencySymbol={country.currencySymbol}
+                  age={userAge}
+                  onChange={onUserFields}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -564,6 +784,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 </div>
               </div>
             )}
+
           </div>
         )}
       </section>

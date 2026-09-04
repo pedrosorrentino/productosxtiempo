@@ -150,171 +150,308 @@ export default function BoardRowCard({
 
   return (
     <a class="board-row" style={`--row-i: ${rowI}`} href={href}>
-      <span
-        class="board-cat-icon board-cat-icon--sm"
-        style={`background: ${color}; color: #14191d`}
-      >
-        <svg
-          viewBox="0 0 24 24"
-          width="16"
-          height="16"
-          fill="none"
-          stroke="currentColor"
-          stroke-width={2}
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          {icon}
-        </svg>
-      </span>
-      <span class="min-w-0">
-        <span class="flex items-baseline gap-2">
-          <span class="min-w-0 truncate font-medium flex items-center gap-1.5">
-            <span class="truncate">{name}</span>
-            {isFresh && !converted && (
-              <span
-                class="inline-flex items-center text-primary shrink-0 opacity-80"
-                title="Cotización reciente"
-                aria-label="Cotización reciente"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="12"
-                  height="12"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M12 2l2.4 7.2 7.6 2.4-7.6 2.4-2.4 7.2-2.4-7.2-7.6-2.4 7.6-2.4z" />
-                </svg>
-              </span>
-            )}
-          </span>
-          <span class="font-board-mono text-sm opacity-85 whitespace-nowrap shrink-0">
-            {price != null ? (
-              <>
-                {nfPrice.format(price)} {priceSymbol}
-              </>
-            ) : (
-              <span class="board-stamp text-info">{priceFallback}</span>
-            )}
-            {converted && (
-              <span title={result.convertedPriceNote} class="ml-1">
-                {board.esRefBadge}
-              </span>
-            )}
-          </span>
-        </span>
-        {isLifeMode ? (
-          /* Modo Vida activo: la barra de vida es la protagonista absoluta */
-          <span class="flex items-center gap-2 mt-1.5 min-w-0">
-            <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-90 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full inline-block shrink-0" style={`background: ${threat.color}`} />
-              <span class="font-bold text-base-content truncate">
-                {pctCareerLeft != null
-                  ? `${formatPercent(pctCareerLeft)}% de tu futuro (${yearsLeft}a)`
-                  : `${formatPercent(salaryPct ?? 0)}% de 1 año`}
-              </span>
-            </span>
+      {/* ============================================================== */}
+      {/* 1. VISTA MÓVIL (< 640px): 2 pisos ordenados, táctiles y sin solapamiento */}
+      {/* ============================================================== */}
+      <div class="sm:hidden flex flex-col gap-2 w-full">
+        {/* Piso 1: Identidad del producto + Cifra de cotización y flecha */}
+        <div class="flex items-center justify-between gap-2.5 min-w-0">
+          {/* Izquierda: Icono + Nombre + Precio */}
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
             <span
-              class="flex-1 h-[5px] bg-base-300 rounded overflow-hidden min-w-[1.5rem]"
-              aria-hidden="true"
+              class="board-cat-icon board-cat-icon--sm shrink-0"
+              style={`background: ${color}; color: #14191d`}
             >
-              <span
-                class="board-pct-fill board-bar-draw block h-full"
-                style={`width: ${Math.min(100, pctCareerLeft ?? salaryPct ?? 0).toFixed(1)}%; background: ${threat.color}`}
-              />
+              <svg
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width={2}
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                {icon}
+              </svg>
             </span>
-          </span>
-        ) : (
-          /* Modo Trabajo clásico */
-          <>
-            {salaryPct != null && (
-              <span class="flex items-center gap-2 mt-1.5 min-w-0">
-                <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate">
-                  {board.salaryBarLabel(formatPercent(salaryPct))}
-                </span>
-                <span
-                  class="flex-1 h-[4px] bg-base-300 overflow-hidden min-w-[1.5rem]"
-                  aria-hidden="true"
-                >
+            <div class="min-w-0 flex-1">
+              <div class="font-medium text-sm text-base-content flex items-center gap-1.5 leading-snug">
+                <span class="truncate">{name}</span>
+                {isFresh && !converted && (
                   <span
-                    class="board-pct-fill board-bar-draw block h-full"
-                    style={`width: ${Math.min(100, salaryPct).toFixed(1)}%; background: ${workEffort.barColor}`}
-                  />
-                </span>
-              </span>
-            )}
-            {pctCareerLeft != null && userAge != null && (
-              <span class="flex items-center gap-2 mt-1 min-w-0">
-                <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate">
-                  {formatPercent(pctCareerLeft)}% de tu vida restante
-                </span>
-                <span
-                  class="flex-1 h-[4px] bg-base-300 overflow-hidden min-w-[1.5rem]"
-                  title={`${formatPercent(pctCareerLeft)}% de tus años restantes`}
-                >
-                  <span
-                    class="board-pct-fill board-bar-draw block h-full bg-primary"
-                    style={`width: ${Math.min(100, pctCareerLeft).toFixed(1)}%`}
-                  />
-                </span>
-              </span>
-            )}
-          </>
-        )}
-      </span>
-      <span class="text-right flex flex-col items-end justify-center">
-        {isLifeMode && pctCareerLeft != null ? (
-          <>
-            <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-none block font-bold" style={`color: ${threat.color}`}>
-              -{formatPercent(pctCareerLeft)}%
+                    class="inline-flex items-center text-primary shrink-0 opacity-85"
+                    title="Cotización reciente"
+                    aria-label="Cotización reciente"
+                  >
+                    <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true">
+                      <path d="M12 2l2.4 7.2 7.6 2.4-7.6 2.4-2.4 7.2-2.4-7.2-7.6-2.4 7.6-2.4z" />
+                    </svg>
+                  </span>
+                )}
+              </div>
+              <div class="font-board-mono text-xs text-base-content/75 mt-0.5">
+                {price != null ? (
+                  <>
+                    <strong class="font-semibold text-base-content/90">{nfPrice.format(price)} {priceSymbol}</strong>
+                  </>
+                ) : (
+                  <span class="board-stamp text-info text-[0.65rem]">{priceFallback}</span>
+                )}
+                {converted && (
+                  <span title={result.convertedPriceNote} class="ml-1 text-[0.65rem] opacity-70">
+                    {board.esRefBadge}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Derecha: Cotización en grande + Unidad + Flecha táctil */}
+          <div class="flex items-center gap-1.5 shrink-0 text-right">
+            <div>
+              {isLifeMode && pctCareerLeft != null ? (
+                <>
+                  <span class="font-board-mono text-lg tabular-nums leading-none block font-bold" style={`color: ${threat.color}`}>
+                    -{formatPercent(pctCareerLeft)}%
+                  </span>
+                  <span class="font-board-mono text-[0.65rem] uppercase tracking-wider opacity-75 block mt-0.5">
+                    de tu vida
+                  </span>
+                </>
+              ) : rateText != null ? (
+                <>
+                  <span class="font-board-mono text-lg tabular-nums leading-none block text-primary font-bold">
+                    {rateText}
+                  </span>
+                  <span class="font-board-mono text-[0.65rem] uppercase tracking-wider text-base-content/75 block mt-0.5">
+                    {rateUnit}
+                  </span>
+                </>
+              ) : (
+                <span class="font-board-mono text-xs uppercase opacity-80">{rateCta} →</span>
+              )}
+            </div>
+            <span class="board-row-arrow shrink-0 text-base-content/40" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width={2} stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
             </span>
-            <span class="font-board-mono text-xs uppercase tracking-[0.08em] opacity-85 mt-0.5">
-              de tu vida
-            </span>
+          </div>
+        </div>
+
+        {/* Piso 2: Badge de Impacto (Izquierda) + Barra de progreso con % (Derecha) */}
+        <div class="flex items-center justify-between gap-2.5 pt-1.5 border-t border-base-300/50 text-xs font-board-mono">
+          {/* Badge de Nivel de Esfuerzo o Amenaza de Vida */}
+          {isLifeMode && pctCareerLeft != null ? (
             <span
-              class={`inline-flex items-center gap-1 font-board-mono text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded border mt-1 select-none ${threat.badgeClass}`}
+              class={`inline-flex items-center gap-1 font-board-mono text-[0.68rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded border shrink-0 select-none ${threat.badgeClass}`}
             >
               <span>{threat.emoji}</span>
               <span>{threat.shortLabel}</span>
             </span>
-          </>
-        ) : rateText != null ? (
-          <>
-            <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-none block text-primary">
-              {rateText}
-            </span>
-            <span class="font-board-mono text-sm uppercase tracking-[0.08em] opacity-80">
-              {rateUnit}
-            </span>
+          ) : (
             <span
-              class={`inline-flex items-center gap-1 font-board-mono text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded border mt-1 select-none ${workEffort.badgeClass}`}
+              class={`inline-flex items-center gap-1 font-board-mono text-[0.68rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded border shrink-0 select-none ${workEffort.badgeClass}`}
             >
               <span>{workEffort.emoji}</span>
               <span>{workEffort.shortLabel}</span>
             </span>
-          </>
-        ) : (
-          <span class="font-board-mono text-sm uppercase tracking-[0.08em] opacity-80 inline-block mt-1">
-            {rateCta} →
-          </span>
-        )}
-      </span>
-      <span class="board-row-arrow" aria-hidden="true">
-        <svg
-          viewBox="0 0 24 24"
-          width="20"
-          height="20"
-          fill="none"
-          stroke="currentColor"
-          stroke-width={2}
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          )}
+
+          {/* Barra de Esfuerzo / Vida */}
+          <div class="flex items-center gap-2 flex-1 justify-end min-w-0">
+            <span class="text-[0.7rem] text-base-content/75 truncate text-right">
+              {isLifeMode && pctCareerLeft != null
+                ? `${formatPercent(pctCareerLeft)}% futuro (${yearsLeft}a)`
+                : salaryPct != null
+                ? `${formatPercent(salaryPct)}% año sueldo`
+                : ""}
+            </span>
+            <div
+              class="w-16 h-1.5 bg-base-300 rounded overflow-hidden shrink-0"
+              aria-hidden="true"
+            >
+              <span
+                class="board-pct-fill block h-full"
+                style={`width: ${Math.min(100, isLifeMode ? (pctCareerLeft ?? 0) : (salaryPct ?? 0)).toFixed(1)}%; background: ${isLifeMode ? threat.color : workEffort.barColor}`}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ============================================================== */}
+      {/* 2. VISTA DESKTOP (≥ 640px): Formato horizontal de marcador ancho */}
+      {/* ============================================================== */}
+      <div class="hidden sm:contents">
+        <span
+          class="board-cat-icon board-cat-icon--sm"
+          style={`background: ${color}; color: #14191d`}
         >
-          <path d="M5 12h14M13 6l6 6-6 6" />
-        </svg>
-      </span>
+          <svg
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width={2}
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            {icon}
+          </svg>
+        </span>
+        <span class="min-w-0">
+          <span class="flex items-baseline gap-2">
+            <span class="min-w-0 truncate font-medium flex items-center gap-1.5">
+              <span class="truncate">{name}</span>
+              {isFresh && !converted && (
+                <span
+                  class="inline-flex items-center text-primary shrink-0 opacity-80"
+                  title="Cotización reciente"
+                  aria-label="Cotización reciente"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="12"
+                    height="12"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 2l2.4 7.2 7.6 2.4-7.6 2.4-2.4 7.2-2.4-7.2-7.6-2.4 7.6-2.4z" />
+                  </svg>
+                </span>
+              )}
+            </span>
+            <span class="font-board-mono text-sm opacity-85 whitespace-nowrap shrink-0">
+              {price != null ? (
+                <>
+                  {nfPrice.format(price)} {priceSymbol}
+                </>
+              ) : (
+                <span class="board-stamp text-info">{priceFallback}</span>
+              )}
+              {converted && (
+                <span title={result.convertedPriceNote} class="ml-1">
+                  {board.esRefBadge}
+                </span>
+              )}
+            </span>
+          </span>
+          {isLifeMode ? (
+            /* Modo Vida activo: la barra de vida es la protagonista absoluta */
+            <span class="flex items-center gap-2 mt-1.5 min-w-0">
+              <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-90 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full inline-block shrink-0" style={`background: ${threat.color}`} />
+                <span class="font-bold text-base-content truncate">
+                  {pctCareerLeft != null
+                    ? `${formatPercent(pctCareerLeft)}% de tu futuro (${yearsLeft}a)`
+                    : `${formatPercent(salaryPct ?? 0)}% de 1 año`}
+                </span>
+              </span>
+              <span
+                class="flex-1 h-[5px] bg-base-300 rounded overflow-hidden min-w-[1.5rem]"
+                aria-hidden="true"
+              >
+                <span
+                  class="board-pct-fill board-bar-draw block h-full"
+                  style={`width: ${Math.min(100, pctCareerLeft ?? salaryPct ?? 0).toFixed(1)}%; background: ${threat.color}`}
+                />
+              </span>
+            </span>
+          ) : (
+            /* Modo Trabajo clásico */
+            <>
+              {salaryPct != null && (
+                <span class="flex items-center gap-2 mt-1.5 min-w-0">
+                  <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate">
+                    {board.salaryBarLabel(formatPercent(salaryPct))}
+                  </span>
+                  <span
+                    class="flex-1 h-[4px] bg-base-300 overflow-hidden min-w-[1.5rem]"
+                    aria-hidden="true"
+                  >
+                    <span
+                      class="board-pct-fill board-bar-draw block h-full"
+                      style={`width: ${Math.min(100, salaryPct).toFixed(1)}%; background: ${workEffort.barColor}`}
+                    />
+                  </span>
+                </span>
+              )}
+              {pctCareerLeft != null && userAge != null && (
+                <span class="flex items-center gap-2 mt-1 min-w-0">
+                  <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate">
+                    {formatPercent(pctCareerLeft)}% de tu vida restante
+                  </span>
+                  <span
+                    class="flex-1 h-[4px] bg-base-300 overflow-hidden min-w-[1.5rem]"
+                    title={`${formatPercent(pctCareerLeft)}% de tus años restantes`}
+                  >
+                    <span
+                      class="board-pct-fill board-bar-draw block h-full bg-primary"
+                      style={`width: ${Math.min(100, pctCareerLeft).toFixed(1)}%`}
+                    />
+                  </span>
+                </span>
+              )}
+            </>
+          )}
+        </span>
+        <span class="text-right flex flex-col items-end justify-center">
+          {isLifeMode && pctCareerLeft != null ? (
+            <>
+              <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-none block font-bold" style={`color: ${threat.color}`}>
+                -{formatPercent(pctCareerLeft)}%
+              </span>
+              <span class="font-board-mono text-xs uppercase tracking-[0.08em] opacity-85 mt-0.5">
+                de tu vida
+              </span>
+              <span
+                class={`inline-flex items-center gap-1 font-board-mono text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded border mt-1 select-none ${threat.badgeClass}`}
+              >
+                <span>{threat.emoji}</span>
+                <span>{threat.shortLabel}</span>
+              </span>
+            </>
+          ) : rateText != null ? (
+            <>
+              <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-none block text-primary">
+                {rateText}
+              </span>
+              <span class="font-board-mono text-sm uppercase tracking-[0.08em] opacity-80">
+                {rateUnit}
+              </span>
+              <span
+                class={`inline-flex items-center gap-1 font-board-mono text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded border mt-1 select-none ${workEffort.badgeClass}`}
+              >
+                <span>{workEffort.emoji}</span>
+                <span>{workEffort.shortLabel}</span>
+              </span>
+            </>
+          ) : (
+            <span class="font-board-mono text-sm uppercase tracking-[0.08em] opacity-80 inline-block mt-1">
+              {rateCta} →
+            </span>
+          )}
+        </span>
+        <span class="board-row-arrow" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width={2}
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </span>
+      </div>
     </a>
   );
 }
