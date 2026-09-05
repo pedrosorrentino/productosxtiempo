@@ -555,15 +555,19 @@ export default function CountryHeroCenter({
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
           {benchmarks.map((bm) => {
             const hoursRequired = bm.price / hourlyWage;
-            let effortFormatted = "";
+            let effortValue = "";
+            let effortUnit = "";
             if (hoursRequired < 1) {
               const mins = Math.max(1, Math.round(hoursRequired * 60));
-              effortFormatted = `${mins} min`;
+              effortValue = `${mins}`;
+              effortUnit = mins === 1 ? "minuto" : "minutos";
             } else if (hoursRequired < 8) {
-              effortFormatted = `${formatHours(hoursRequired)} h`;
+              effortValue = formatHours(hoursRequired);
+              effortUnit = effortValue === "1" ? "hora" : "horas";
             } else {
               const days = hoursRequired / 8;
-              effortFormatted = `${formatWorkdays(days)} j`;
+              effortValue = formatWorkdays(days);
+              effortUnit = effortValue === "1" ? "jornada" : "jornadas";
             }
 
             return (
@@ -580,12 +584,17 @@ export default function CountryHeroCenter({
                 <span class="font-bold text-xs text-base-content block mt-2 truncate">
                   {bm.name}
                 </span>
-                <div class="mt-1 flex items-baseline justify-between">
-                  <span class="font-board-mono text-xs font-bold text-primary">
-                    {effortFormatted}
-                  </span>
+                <div class="mt-1.5 flex flex-wrap items-baseline justify-between gap-1">
+                  <div class="flex items-baseline gap-1 font-board-mono">
+                    <span class="text-sm font-bold text-primary tabular-nums">
+                      {effortValue}
+                    </span>
+                    <span class="text-xs font-semibold text-primary/90">
+                      {effortUnit}
+                    </span>
+                  </div>
                   <span class="text-[10px] font-board-mono opacity-60">
-                    {viewMode === "life" ? "de tu vida" : "de curro"}
+                    {viewMode === "life" ? "de tu vida" : "de trabajo"}
                   </span>
                 </div>
               </div>
