@@ -13,9 +13,8 @@ import { loadUserState, saveUserState } from "../../lib/storage.ts";
 import { parseUserStateFromQuery } from "../../lib/urls.ts";
 import type { Country, Product } from "../../lib/types.ts";
 import { isFreshDate, getLatestUpdatedProduct } from "../../lib/freshness.ts";
-import { board, categories, home, noSalary, priceForm, result, shareText, userForm } from "../../i18n/es.ts";
+import { board, categories, home, noSalary, priceForm, result, shareText } from "../../i18n/es.ts";
 import UserForm, { type UserFormFields } from "./UserForm.tsx";
-import Odometer from "./Odometer.tsx";
 import ShareButton from "./ShareButton.tsx";
 import PriceInput from "./PriceInput.tsx";
 import BoardRowCard, {
@@ -278,21 +277,6 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
     });
   }, [hero, netMonthly, weeklyHours]);
 
-  const heroRate = hero
-    ? isLifeMode && heroLifeImpact?.pctCareerLeft != null
-      ? formatPercent(heroLifeImpact.pctCareerLeft)
-      : isLifeMode && heroLifeImpact
-      ? formatPercent(heroLifeImpact.lifeWeeksCost)
-      : formatWorkdays(hero.workdays)
-    : "0";
-
-  const heroUnit = isLifeMode
-    ? heroLifeImpact?.pctCareerLeft != null
-      ? "% de tu vida laboral"
-      : "semanas de vida"
-    : home.workdaysUnit;
-
-  const heroAria = hero ? `${heroRate} ${heroUnit}` : "";
   const heroPct =
     hero && country.realAnnualHours ? (hero.hours / country.realAnnualHours) * 100 : null;
 
@@ -326,6 +310,43 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
     const rotated = [...g.rows.slice(start), ...g.rows.slice(0, start)];
     return { ...g, rows: rotated.slice(0, BOARD_ROWS_VISIBLE) };
   });
+
+  /** Pestaña de categoría activa en la pizarra. */
+  const [selectedCategory, setSelectedCategory] = useState<Product["category"] | "todas">("todas");
+
+  /** Presets dinámicos de sueldo adaptados a la economía del país actual. */
+  const salaryPresets = useMemo(() => {
+    const med = country.medianNetMonthly ?? 1800;
+    const p1 = Math.round((med * 0.65) / 50) * 50;
+    const p2 = Math.round((med * 0.85) / 50) * 50;
+    const p3 = Math.round(med / 50) * 50;
+    const p4 = Math.round((med * 1.35) / 50) * 50;
+    const p5 = Math.round((med * 1.75) / 50) * 50;
+    return Array.from(new Set([p1, p2, p3, p4, p5])).filter((n) => n > 0);
+  }, [country.medianNetMonthly]);
+
+  const applyPresetSalary = (amount: number) => {
+    setUserFields((prev) => ({
+      netMonthly: amount,
+      weeklyHours: prev?.weeklyHours ?? country.legalWeeklyHours,
+      monthlySavings: prev?.monthlySavings ?? null,
+      age: prev?.age ?? null,
+    }));
+    saveUserState({
+      netMonthly: amount,
+      weeklyHours: userFields?.weeklyHours ?? country.legalWeeklyHours,
+      countryCode: country.code,
+    });
+  };
+
+  /** Grupos a mostrar: si se elige una categoría, se despliegan todas sus filas; si es 'todas', las 3 rotatorias. */
+  const displayedGroups = useMemo(() => {
+    if (selectedCategory === "todas") {
+      return rotatedGrouped;
+    }
+    const match = grouped.find((g) => g.category === selectedCategory);
+    return match ? [match] : [];
+  }, [selectedCategory, rotatedGrouped, grouped]);
 
   /** Orden global de cada fila visible, para la cascada del latido. */
   const rowOrder = new Map(
@@ -398,63 +419,38 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
       : 0;
 
   return (
-    <div class="pt-4 md:pt-6">
-      {/* ---- Corriente Cinemática 3D de Partículas (Encima del RateBoard) ---- */}
-      {hero && (
-        <div class="max-w-6xl mx-auto px-4 mb-6 md:mb-8">
-          <TimeStream3D
-            workdays={hero.workdays}
-            hours={hero.hours}
-            yearsFullPay={hero.years}
-            salaryPct={heroPct}
-            userAge={userAge}
-            retirementAge={country.retirementAge}
-            productName={hero.product.name}
-            class="w-full"
-          />
-        </div>
-      )}
-
-      {/* ---- Placa de operación: Cabina de Cotización ---- */}
+    <div class="pt-2 md:pt-4">
+      {/* =========================================================================
+          BLOQUE 1: CABECERA & IDENTIDAD (Estación de Cotizaciones + Selector de País)
+          ========================================================================= */}
       <div class="max-w-6xl mx-auto px-4">
-        <div
-          class={`board-plate p-4 sm:p-5 transition-all duration-300 ${
-            userActive
-              ? "board-plate--active shadow-[0_0_30px_rgba(62,201,126,0.12)] border-accent/70"
-              : "hover:border-base-300"
-          }`}
-        >
-          {/* ---- Telemetría Superior: Cabina & Estado de Mercado ---- */}
+        <div class="board-plate p-4 sm:p-5">
+          {/* Telemetría Superior */}
           <div class="flex items-center justify-between gap-3 pb-3 mb-4 border-b border-base-300/80 text-xs font-board-mono">
             <div class="flex items-center gap-2 text-base-content/75">
-              <span class="inline-block w-2 h-2 rounded-full bg-primary/80"></span>
-              <span class="uppercase tracking-[0.14em] font-medium">Cabina de Cotización</span>
+              <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span class="uppercase tracking-[0.14em] font-medium">Estación de Cotizaciones · Tiempo Real</span>
             </div>
 
-            {/* Chip de Catálogo ordenado en su slot de telemetría */}
             <div
               class="flex items-center gap-2 px-2.5 py-1 rounded bg-base-100/90 border border-base-300 text-accent font-medium shadow-sm"
-              title="Catálogo con actualización periódica"
+              title="Catálogo activo sincronizado"
             >
               <span class="board-live-dot"></span>
               <span class="tracking-wider uppercase text-[0.7rem] sm:text-xs">
-                Catálogo activo · {products.length} productos
+                Catálogo activo · {products.length} artículos
               </span>
             </div>
           </div>
 
-          {/* ---- Zona Principal: Identidad del País & Selector Rápido ---- */}
+          {/* Identidad de País + Selector */}
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            {/* Izquierda: Bandera + Nombre del País + Badge de Origen + Referencia base */}
             <div class="min-w-0">
               <div class="flex items-center gap-2 text-xs font-board-mono uppercase tracking-[0.1em] text-base-content/75 mb-1.5">
                 <span class="font-medium">{board.operatingLabel}</span>
                 <span class="text-base-300">/</span>
                 {origin === "detected" && (
-                  <span
-                    class="board-stamp text-accent inline-flex items-center gap-1.5 py-0.5"
-                    title="Detectado por tu zona horaria"
-                  >
+                  <span class="board-stamp text-accent inline-flex items-center gap-1.5 py-0.5" title="Detectado por tu zona horaria">
                     <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
                     {board.detectedStamp}
                   </span>
@@ -486,19 +482,23 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   </strong>
                 </div>
 
-                {country.medianNetMonthly && (
+                {country.medianNetMonthly ? (
                   <span class="text-xs font-board-mono text-base-content/65 whitespace-nowrap">
-                    Mediana oficial:{" "}
+                    Mediana nacional:{" "}
                     <strong class="text-base-content/90 font-medium">
                       {country.medianNetMonthly} {country.currencySymbol}/mes
                     </strong>{" "}
                     ({country.legalWeeklyHours} h/sem)
                   </span>
+                ) : (
+                  <span class="text-xs font-board-mono text-warning font-medium">
+                    Sin salario mediano oficial
+                  </span>
                 )}
               </div>
             </div>
 
-            {/* Derecha: Selector de País & Ficha */}
+            {/* Selector de País & Enlace a su ficha */}
             <div class="flex items-center gap-2 sm:gap-3 flex-wrap sm:flex-nowrap">
               <div class="w-full sm:w-auto">
                 <label for="board-country" class="sr-only">
@@ -526,31 +526,230 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               </a>
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* ---- HUD de Motor de Cálculo (Máxima Dopamina) ---- */}
-          <div class="mt-5 pt-4 border-t border-base-300/80">
-            {userActive ? (
-              /* ESTADO PERSONALIZADO: Verde fósforo vibrante, baliza en vivo y valor por hora */
-              <div class="p-3.5 sm:p-4 rounded bg-accent/10 border-2 border-accent/60 shadow-[0_0_20px_rgba(62,201,126,0.12)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all">
-                <div class="flex items-start sm:items-center gap-3">
-                  <span class="relative flex h-3 w-3 mt-1 sm:mt-0 flex-shrink-0">
+      {/* =========================================================================
+          BLOQUE 2: EL NÚCLEO DE IMPACTO (Cifra Hero Gigante + Partículas 3D)
+          ========================================================================= */}
+      <section class="max-w-6xl mx-auto px-4 mt-6 md:mt-8">
+        {!hero || !netMonthly ? (
+          <div class="board-plate p-8 text-center">
+            <h1 class="font-signage text-4xl uppercase">{noSalary.title}</h1>
+            <p class="mt-3 text-lg opacity-85">{noSalary.body}</p>
+            <a href={`/${country.slug}`} class="board-cta mt-6">
+              {board.countryFile(country.name)} →
+            </a>
+          </div>
+        ) : (
+          <div class="board-plate p-5 sm:p-7 space-y-6">
+            {/* Telemetría y Controles del Artículo Héroe */}
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-base-300/80">
+              {/* Izquierda: Categoría + Precio de Referencia */}
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <span
+                  class="board-cat-icon shrink-0"
+                  style={`background: ${CATEGORY_COLOR[hero.product.category]}; color: #14191d`}
+                >
+                  <CategoryIcon category={hero.product.category} />
+                </span>
+                <span class="font-board-mono text-xs uppercase tracking-wider font-semibold text-base-content/75">
+                  {categories[hero.product.category]}
+                </span>
+                <span class="text-base-300 font-board-mono">/</span>
+                <span class="font-board-mono text-sm font-bold text-primary px-2.5 py-0.5 rounded bg-primary/10 border border-primary/25">
+                  {nfPrice.format(hero.price)} {hero.converted ? "€" : country.currencySymbol}
+                </span>
+                <span class="font-board-mono text-xs opacity-60">
+                  Ref. {hero.priceDate}
+                </span>
+                {hero.converted && (
+                  <span class="board-stamp text-info text-[10px] py-0.5" title={result.convertedPriceNote}>
+                    {board.esRefBadge}
+                  </span>
+                )}
+              </div>
+
+              {/* Derecha: Indicador de Rotación en Vivo + Botón para cambiar artículo */}
+              <div class="flex items-center gap-2.5 self-start sm:self-auto">
+                <span class="inline-flex items-center gap-1.5 font-board-mono text-xs text-accent bg-accent/10 border border-accent/30 px-2.5 py-1 rounded select-none">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                  Rotación automática
+                </span>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-ghost border border-base-300 font-board-mono text-xs text-base-content/85 hover:text-primary hover:border-primary transition-all cursor-pointer flex items-center gap-1.5"
+                  title="Cambiar al siguiente artículo del catálogo"
+                  onClick={() => setHeroOffset((prev) => prev + 1)}
+                >
+                  <span>Siguiente artículo</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Titular estilizado con pregunta natural y badge de tiempo */}
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              <div class="space-y-1 max-w-2xl">
+                <span class="font-board-mono text-xs uppercase tracking-widest text-base-content/60 block">
+                  Cotización en tiempo de vida
+                </span>
+                <h1
+                  key={`h1-${hero.product.id}`}
+                  class="board-hero-swap font-signage uppercase text-3xl sm:text-4xl md:text-5xl leading-tight text-base-content"
+                >
+                  ¿Cuánto tiempo cuesta {hero.product.name} en {country.name}?
+                </h1>
+              </div>
+
+              {heroPhrase != null && (
+                <div
+                  key={`cost-badge-${hero.product.id}`}
+                  class="board-hero-swap self-start lg:self-center shrink-0 bg-base-100/90 border border-primary/30 shadow-md px-4 py-2.5 rounded-lg text-left lg:text-right"
+                >
+                  <span class="font-board-mono text-[10px] sm:text-xs uppercase tracking-wider text-base-content/70 block">
+                    Equivale exactamente a
+                  </span>
+                  <span class="font-signage text-2xl sm:text-3xl md:text-4xl text-primary uppercase font-bold tracking-tight block">
+                    {heroPhrase}
+                  </span>
+                  <span class="font-board-mono text-[11px] text-base-content/60 block">
+                    de trabajo neto ({formatHours(hero.hours)} h de esfuerzo)
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Lienzo Cinemático 3D de Partículas sincronizado */}
+            <div class="w-full rounded-xl overflow-hidden border border-base-300/90 bg-base-100/80 shadow-xl">
+              <TimeStream3D
+                workdays={hero.workdays}
+                hours={hero.hours}
+                yearsFullPay={hero.years}
+                salaryPct={heroPct}
+                userAge={userAge}
+                retirementAge={country.retirementAge}
+                productName={hero.product.name}
+                class="w-full"
+              />
+            </div>
+
+            {/* Baterías de impacto visual */}
+            {isLifeMode && heroLifeImpact && (
+              <div class="mt-6 w-full space-y-3">
+                <LifeBattery
+                  age={userAge}
+                  retirementAge={country.retirementAge}
+                  yearsFullPay={hero.years}
+                  pctCareerLeft={heroLifeImpact.pctCareerLeft}
+                  threat={heroLifeImpact.threat}
+                  onAgeChange={onUserAgeChange}
+                />
+                <p class="font-board-mono text-base text-base-content/90 border-l-2 border-primary pl-3 w-full leading-relaxed break-words">
+                  {heroLifeImpact.verdict}
+                </p>
+              </div>
+            )}
+
+            {!isLifeMode && heroWorkImpact && (
+              <div class="mt-6 w-full space-y-3">
+                <WorkBattery
+                  impact={heroWorkImpact}
+                  salaryPct={heroPct}
+                  productName={hero.product.name}
+                />
+                {heroPhrase != null && (
+                  <p
+                    key={`tail-${hero.product.id}`}
+                    class="board-hero-swap text-base md:text-lg opacity-85 break-words w-full"
+                  >
+                    {home.fullPayTail(heroPhrase)}
+                  </p>
+                )}
+              </div>
+            )}
+
+            {/* Barra del año laboral real */}
+            {heroPct != null && (
+              <div class="mt-4 w-full">
+                <div class="flex justify-between font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 mb-1 font-medium">
+                  <span>{result.pctRealYearLabel}</span>
+                  <span key={`pct-${hero.product.id}`} class="board-hero-swap">
+                    {formatPercent(heroPct)}%
+                  </span>
+                </div>
+                <div
+                  class="h-4 border border-base-300 bg-base-200 rounded-xs overflow-hidden"
+                  role="img"
+                  aria-label={`Barra del año laboral: ocupa el ${formatPercent(heroPct)}%`}
+                >
+                  <div
+                    class="board-pct-fill h-full transition-all duration-500"
+                    style={`width: ${Math.min(100, heroPct).toFixed(1)}%; background: ${!isLifeMode && heroWorkImpact ? heroWorkImpact.effort.color : "var(--color-primary)"}`}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Barra de vida cuando hay edad introducida */}
+            {userAge != null && heroLifePct != null && (
+              <div class={heroPct != null ? "mt-4 w-full" : "mt-6 w-full"}>
+                <div class="flex justify-between font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 mb-1 font-medium">
+                  <span>{board.lifeBarLabel(userAge)}</span>
+                  <span key={`life-pct-${hero.product.id}`} class="board-hero-swap">
+                    {formatPercent(heroLifePct)}%
+                  </span>
+                </div>
+                <div
+                  class="h-4 border border-base-300 bg-base-200 rounded-xs overflow-hidden"
+                  role="img"
+                  aria-label={board.lifeBarAria(userAge, formatPercent(heroLifePct))}
+                >
+                  <div
+                    class="board-pct-fill h-full bg-primary transition-all duration-500"
+                    style={`width: ${Math.min(100, heroLifePct).toFixed(1)}%`}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </section>
+
+      {/* =========================================================================
+          BLOQUE 3: EL DISPARADOR DE DOPAMINA (Ajusta con tu nómina en vivo)
+          ========================================================================= */}
+      <section class="max-w-6xl mx-auto px-4 mt-8 md:mt-10">
+        <div
+          class={`board-plate p-5 sm:p-6 transition-all duration-300 ${
+            userActive
+              ? "board-plate--active shadow-[0_0_35px_rgba(62,201,126,0.16)] border-accent/80 bg-accent/5"
+              : "border-primary/40 bg-base-200/50 hover:border-primary/70"
+          }`}
+        >
+          {userActive ? (
+            /* Estado Personalizado: Feedback reactivo verde fósforo */
+            <div>
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-base-300/80">
+                <div class="flex items-center gap-3">
+                  <span class="relative flex h-3.5 w-3.5 flex-shrink-0">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                    <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-accent"></span>
                   </span>
                   <div>
                     <div class="flex items-center gap-2.5 flex-wrap">
                       <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-accent bg-accent/20 border border-accent/40 px-2.5 py-0.5 rounded">
                         ⚡ {board.yourDataStamp}
                       </span>
-                      <span class="font-board-mono text-xs text-base-content/90">
+                      <span class="font-board-mono text-sm text-base-content font-medium">
                         Tu valor hora:{" "}
-                        <strong class="text-accent text-sm sm:text-base font-bold tracking-tight">
+                        <strong class="text-accent text-base sm:text-lg font-bold tracking-tight">
                           {formatHourlyWage(activeHourlyWage, country.currencySymbol)}/h
                         </strong>
                       </span>
                     </div>
-                    <p class="font-board-mono text-[0.75rem] text-base-content/75 mt-0.5">
-                      Base aplicada: {userFields?.netMonthly} {country.currencySymbol}/mes · {userFields?.weeklyHours} h/sem
+                    <p class="font-board-mono text-xs text-base-content/75 mt-1">
+                      Nómina activa: <strong class="text-base-content">{userFields?.netMonthly} {country.currencySymbol}/mes</strong> ({userFields?.weeklyHours} h/semana)
                       {userFields?.monthlySavings != null && ` · Ahorro: ${userFields.monthlySavings} ${country.currencySymbol}/mes`}
                     </p>
                   </div>
@@ -562,7 +761,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                     onClick={() => setIsFormOpen((prev) => !prev)}
                     class="btn btn-sm btn-ghost border border-accent/50 text-accent hover:bg-accent hover:text-neutral-900 font-board-mono text-xs uppercase font-bold"
                   >
-                    {isFormOpen ? "Cerrar ▲" : "Editar nómina ✎"}
+                    {isFormOpen ? "Cerrar ▲" : "Ajustes avanzados ✎"}
                   </button>
                   <button
                     type="button"
@@ -570,90 +769,104 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                     class="btn btn-sm btn-ghost border border-base-300 text-base-content/70 hover:text-warning hover:border-warning font-board-mono text-xs uppercase"
                     title="Restablecer a la mediana nacional de referencia"
                   >
-                    ↺ Mediana
+                    ↺ Mediana ({country.medianNetMonthly} {country.currencySymbol})
                   </button>
                 </div>
               </div>
-            ) : (
-              /* ESTADO MEDIANA ESTÁNDAR: Invitación táctica al usuario */
-              <div class="p-3.5 sm:p-4 rounded bg-base-100/70 border border-base-300/90 hover:border-primary/50 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div class="flex items-start sm:items-center gap-3">
-                  <div class="p-2 rounded bg-base-200 border border-base-300 text-primary flex-shrink-0">
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="18"
-                      height="18"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                    >
-                      <line x1="12" y1="1" x2="12" y2="23"></line>
-                      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                      <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 px-2 py-0.5 rounded">
-                        Modo estándar: Mediana nacional
+
+              {/* Presets rápidos para cambiar en 1 clic */}
+              <div class="mt-4 flex items-center gap-2 flex-wrap">
+                <span class="font-board-mono text-xs opacity-75 mr-1">Probar otro sueldo:</span>
+                {salaryPresets.map((preset) => (
+                  <button
+                    type="button"
+                    key={preset}
+                    onClick={() => applyPresetSalary(preset)}
+                    class={`px-3 py-1 rounded font-board-mono text-xs font-semibold transition-all cursor-pointer ${
+                      userFields?.netMonthly === preset
+                        ? "bg-accent text-neutral-900 font-bold shadow-sm"
+                        : "bg-base-100 hover:bg-base-300 border border-base-300 text-base-content/85 hover:border-accent/50"
+                    }`}
+                  >
+                    {preset} {country.currencySymbol}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
+            /* Estado Mediana Estándar: Invitación a personalizar */
+            <div>
+              <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                <div>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 px-2.5 py-0.5 rounded">
+                      Modo estándar: Mediana nacional
+                    </span>
+                    {country.medianNetMonthly != null && (
+                      <span class="font-board-mono text-xs text-base-content/80">
+                        {country.name}: <strong class="text-base-content">{country.medianNetMonthly} {country.currencySymbol}/mes</strong> ({formatHourlyWage(medianHourlyWage, country.currencySymbol)}/h)
                       </span>
-                      {country.medianNetMonthly != null ? (
-                        <span class="font-board-mono text-xs text-base-content/80">
-                          {country.name}:{" "}
-                          <strong class="text-base-content font-medium">
-                            {formatHourlyWage(medianHourlyWage, country.currencySymbol)}/h
-                          </strong>
-                        </span>
-                      ) : (
-                        <span class="font-board-mono text-xs text-warning font-medium">
-                          {country.name}: Sin mediana oficial (introduce tu nómina)
-                        </span>
-                      )}
-                    </div>
-                    <p class="font-board-mono text-[0.75rem] text-base-content/65 mt-0.5">
-                      {country.medianNetMonthly != null
-                        ? `Cifras de referencia de ${country.name}. ¿Quieres saber cuánto te cuesta a ti según tu sueldo real?`
-                        : `Por alta informalidad o inflación en ${country.name}, introduce tu sueldo para cotizar la pizarra.`}
-                    </p>
+                    )}
                   </div>
+                  <h3 class="font-signage uppercase text-xl sm:text-2xl mt-2 text-base-content">
+                    ¿Quieres saber cuántas horas te cuesta a ti según tu sueldo real?
+                  </h3>
+                  <p class="font-board-mono text-xs opacity-80 mt-1">
+                    Pulsa un sueldo rápido para que el odómetro gire y recalcule toda la página al instante:
+                  </p>
                 </div>
 
                 <button
                   type="button"
                   onClick={() => setIsFormOpen((prev) => !prev)}
-                  class="btn btn-sm bg-primary/20 hover:bg-primary text-primary hover:text-primary-content border border-primary/50 font-board-mono text-xs uppercase font-bold tracking-wider self-start sm:self-auto flex-shrink-0 transition-all shadow-sm"
+                  class="btn btn-sm bg-primary hover:bg-primary/80 text-neutral-900 font-board-mono text-xs uppercase font-bold tracking-wider self-start lg:self-auto shrink-0 shadow-md"
                 >
                   {isFormOpen ? "Cerrar ▲" : "⚡ Ajustar con mi nómina"}
                 </button>
               </div>
-            )}
 
-            {/* ---- Cajón Plegable del Formulario ---- */}
-            {isFormOpen && (
-              <div class="mt-4 p-4 rounded bg-base-100 border border-base-300 shadow-inner">
-                <div class="flex items-center justify-between pb-3 mb-3 border-b border-base-300 text-xs font-board-mono text-base-content/80">
-                  <span class="uppercase tracking-wider font-semibold text-primary">
-                    Ajuste personalizado de nómina y jornada
-                  </span>
-                  <span class="text-accent text-[0.75rem]">Recalcula toda la pizarra al instante</span>
-                </div>
-                <UserForm
-                  countryCode={country.code}
-                  countryNetMonthly={country.medianNetMonthly}
-                  countryWeeklyHours={country.legalWeeklyHours}
-                  currencySymbol={country.currencySymbol}
-                  age={userAge}
-                  onChange={onUserFields}
-                />
+              {/* Botones de Presets Rápidos */}
+              <div class="mt-4 pt-3 border-t border-base-300/80 flex items-center gap-2 flex-wrap">
+                <span class="font-board-mono text-xs opacity-75 mr-1">Elige un sueldo rápido:</span>
+                {salaryPresets.map((preset) => (
+                  <button
+                    type="button"
+                    key={preset}
+                    onClick={() => applyPresetSalary(preset)}
+                    class="px-3 py-1.5 rounded font-board-mono text-xs font-semibold bg-base-100 hover:bg-primary hover:text-neutral-900 border border-base-300 hover:border-primary transition-all cursor-pointer shadow-xs"
+                  >
+                    {preset} {country.currencySymbol}/mes
+                  </button>
+                ))}
               </div>
-            )}
-          </div>
-        </div>
-      </div>
+            </div>
+          )}
 
-      {/* ---- Control de Vida & Modo ---- */}
+          {/* Formulario avanzado expandible */}
+          {isFormOpen && (
+            <div class="mt-5 p-4 rounded bg-base-100 border border-base-300 shadow-inner">
+              <div class="flex items-center justify-between pb-3 mb-3 border-b border-base-300 text-xs font-board-mono text-base-content/80">
+                <span class="uppercase tracking-wider font-semibold text-primary">
+                  Personalización exacta de nómina y jornada
+                </span>
+                <span class="text-accent text-[0.75rem]">Recalcula todo el tablero al instante</span>
+              </div>
+              <UserForm
+                countryCode={country.code}
+                countryNetMonthly={country.medianNetMonthly}
+                countryWeeklyHours={country.legalWeeklyHours}
+                currencySymbol={country.currencySymbol}
+                age={userAge}
+                onChange={onUserFields}
+              />
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* =========================================================================
+          BLOQUE 4: LA PALANCA EXISTENCIAL (Modo Trabajo vs. Modo Vida)
+          ========================================================================= */}
       <div class="max-w-6xl mx-auto px-4 mt-6">
         <LifeBarControl
           age={userAge}
@@ -664,134 +877,11 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
         />
       </div>
 
-      {/* ---- Cotización héroe ---- */}
-      <section class="max-w-6xl mx-auto px-4 mt-6 md:mt-10">
-        {!hero || !netMonthly ? (
-          <div class="board-plate p-8 text-center">
-            <h1 class="font-signage text-4xl uppercase">{noSalary.title}</h1>
-            <p class="mt-3 text-lg opacity-85">{noSalary.body}</p>
-            <a href={`/${country.slug}`} class="board-cta mt-6">
-              {board.countryFile(country.name)} →
-            </a>
-          </div>
-        ) : (
-          <div>
-            <p
-              key={hero.product.id}
-              class="board-hero-swap font-board-mono text-sm md:text-base opacity-90 flex flex-wrap items-center gap-x-3 gap-y-1"
-            >
-              <span>
-                {nfPrice.format(hero.price)} {hero.converted ? "€" : country.currencySymbol}
-              </span>
-              <span aria-hidden="true" class="text-secondary">·</span>
-              <span>
-                {board.priceRefLabel} {hero.priceDate}
-              </span>
-              {hero.converted && (
-                <span class="board-stamp text-info" title={result.convertedPriceNote}>
-                  {board.esRefBadge}
-                </span>
-              )}
-            </p>
-            <h1
-              key={`h1-${hero.product.id}`}
-              class="board-hero-swap font-signage uppercase text-2xl md:text-4xl mt-3 leading-tight max-w-4xl"
-            >
-              {board.heroLead(hero.product.name, country.name)}
-            </h1>
-            <div class="mt-4 flex items-end gap-4 md:gap-6 flex-wrap">
-              <Odometer
-                value={heroRate}
-                label={heroAria}
-                class="text-[clamp(4.5rem,16vw,11rem)] leading-none"
-              />
-              <span class="font-signage uppercase text-primary text-[clamp(1.5rem,4vw,3rem)] leading-none pb-1 md:pb-3">
-                {heroUnit}
-              </span>
-            </div>
-
-            {isLifeMode && heroLifeImpact && (
-              <div class="mt-6 w-full max-w-4xl space-y-3">
-                <LifeBattery
-                  age={userAge}
-                  retirementAge={country.retirementAge}
-                  yearsFullPay={hero.years}
-                  pctCareerLeft={heroLifeImpact.pctCareerLeft}
-                  threat={heroLifeImpact.threat}
-                  onAgeChange={onUserAgeChange}
-                />
-                <p class="font-board-mono text-base text-base-content/90 border-l-2 border-primary pl-3 max-w-3xl leading-relaxed break-words">
-                  {heroLifeImpact.verdict}
-                </p>
-              </div>
-            )}
-
-            {!isLifeMode && heroWorkImpact && (
-              <div class="mt-6 w-full max-w-4xl space-y-3">
-                <WorkBattery
-                  impact={heroWorkImpact}
-                  salaryPct={heroPct}
-                  productName={hero.product.name}
-                />
-                {heroPhrase != null && (
-                  <p
-                    key={`tail-${hero.product.id}`}
-                    class="board-hero-swap text-base md:text-lg opacity-85 break-words"
-                  >
-                    {home.fullPayTail(heroPhrase)}
-                  </p>
-                )}
-              </div>
-            )}
-
-            {heroPct != null && (
-              <div class="mt-4 w-full max-w-4xl">
-                <div class="flex justify-between font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 mb-1 font-medium">
-                  <span>{result.pctRealYearLabel}</span>
-                  <span key={`pct-${hero.product.id}`} class="board-hero-swap">
-                    {formatPercent(heroPct)}%
-                  </span>
-                </div>
-                <div
-                  class="h-4 border border-base-300 bg-base-200"
-                  role="img"
-                  aria-label={`Barra del año laboral: ocupa el ${formatPercent(heroPct)}%`}
-                >
-                  <div
-                    class="board-pct-fill h-full"
-                    style={`width: ${Math.min(100, heroPct).toFixed(1)}%; background: ${!isLifeMode && heroWorkImpact ? heroWorkImpact.effort.color : "var(--color-primary)"}`}
-                  />
-                </div>
-              </div>
-            )}
-            {userAge != null && heroLifePct != null && (
-              <div class={heroPct != null ? "mt-4 w-full max-w-4xl" : "mt-6 w-full max-w-4xl"}>
-                <div class="flex justify-between font-board-mono text-sm uppercase tracking-[0.08em] opacity-90 mb-1 font-medium">
-                  <span>{board.lifeBarLabel(userAge)}</span>
-                  <span key={`life-pct-${hero.product.id}`} class="board-hero-swap">
-                    {formatPercent(heroLifePct)}%
-                  </span>
-                </div>
-                <div
-                  class="h-4 border border-base-300 bg-base-200"
-                  role="img"
-                  aria-label={board.lifeBarAria(userAge, formatPercent(heroLifePct))}
-                >
-                  <div
-                    class="board-pct-fill h-full bg-primary"
-                    style={`width: ${Math.min(100, heroLifePct).toFixed(1)}%`}
-                  />
-                </div>
-              </div>
-            )}
-
-          </div>
-        )}
-      </section>
-
-      {/* ---- Ticker rodante ---- */}
+      {/* =========================================================================
+          BLOQUE 5: EL PULSO MECÁNICO (Ticker Rodante Continuo en Vivo)
+          ========================================================================= */}
       {rows.length > 0 && (
-        <div class="board-ticker mt-12 md:mt-16" aria-label={board.tickerLabel}>
+        <div class="board-ticker mt-10 md:mt-14" aria-label={board.tickerLabel}>
           <span class="board-live" title="En vivo">
             <span class="board-live-dot" aria-hidden="true" />
             <span class="hidden sm:inline">En vivo</span>
@@ -832,13 +922,54 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
         </div>
       )}
 
-      {/* ---- Pizarra completa ---- */}
+      {/* =========================================================================
+          BLOQUE 6: LA PIZARRA DE COTIZACIONES (Catálogo por Categorías con Filtros)
+          ========================================================================= */}
       {rows.length > 0 && (
-        <section class="max-w-6xl mx-auto px-4 mt-14 md:mt-20">
-          <h2 class="font-signage uppercase text-4xl md:text-5xl">{board.boardTitle}</h2>
-          <p class="mt-1 mb-6 text-base opacity-80">{board.boardSubtitle}</p>
+        <section class="max-w-6xl mx-auto px-4 mt-12 md:mt-16">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+            <div>
+              <h2 class="font-signage uppercase text-4xl md:text-5xl">{board.boardTitle}</h2>
+              <p class="mt-1 text-base opacity-80">{board.boardSubtitle}</p>
+            </div>
+
+            {/* Píldoras de Filtro Rápido por Categoría */}
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <button
+                type="button"
+                onClick={() => setSelectedCategory("todas")}
+                class={`px-3 py-1.5 rounded font-board-mono text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                  selectedCategory === "todas"
+                    ? "bg-primary text-neutral-900 shadow-sm font-bold"
+                    : "bg-base-200 hover:bg-base-300 text-base-content/80 border border-base-300"
+                }`}
+              >
+                Todas ({rows.length})
+              </button>
+              {CATEGORY_ORDER.map((cat) => {
+                const count = rows.filter((r) => r.product.category === cat).length;
+                if (count === 0) return null;
+                return (
+                  <button
+                    type="button"
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    class={`px-3 py-1.5 rounded font-board-mono text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                      selectedCategory === cat
+                        ? "bg-primary text-neutral-900 shadow-sm font-bold"
+                        : "bg-base-200 hover:bg-base-300 text-base-content/80 border border-base-300"
+                    }`}
+                  >
+                    {categories[cat]} ({count})
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Listado de Categorías y Tarjetas */}
           <div class="space-y-10" key={boardPulse}>
-            {rotatedGrouped.map((group) => (
+            {displayedGroups.map((group) => (
               <div key={group.category}>
                 <h3 class="flex items-center gap-3 mb-3">
                   <span
@@ -849,6 +980,9 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   </span>
                   <span class="font-signage uppercase text-2xl">
                     {categories[group.category]}
+                  </span>
+                  <span class="font-board-mono text-xs opacity-60">
+                    ({group.rows.length} {group.rows.length === 1 ? "artículo" : "artículos"})
                   </span>
                 </h3>
                 <div class="grid gap-1.5">
@@ -886,58 +1020,10 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
         </section>
       )}
 
-      {/* ---- Tu tipo de cambio ---- */}
-      <section class="max-w-6xl mx-auto px-4 mt-16 md:mt-24" id="exchange-panel">
-        <div class="board-plate p-6 md:p-8">
-          <div class="flex flex-wrap items-start gap-3">
-            <span class="board-cat-icon" style="background: #ffb020; color: #14191d">
-              <svg
-                viewBox="0 0 24 24"
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                stroke-width={2}
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M4 17l6-6-6-6" />
-                <path d="M12 19h8" />
-              </svg>
-            </span>
-            <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap items-center gap-2">
-                <h2 class="font-signage uppercase text-3xl md:text-4xl">
-                  {board.exchangeTitle}
-                </h2>
-                <span class="board-stamp text-primary">
-                  {userForm.currencyStamp(country.currencySymbol)}
-                </span>
-                {userActive && (
-                  <span class="board-stamp board-stamp-alert">{board.yourDataStamp}</span>
-                )}
-              </div>
-              <p class="mt-2 text-sm opacity-80 max-w-2xl">
-                {board.exchangeSubtitle(country.name)}
-              </p>
-            </div>
-          </div>
-          <div class="mt-6">
-            <UserForm
-              countryCode={country.code}
-              countryNetMonthly={country.medianNetMonthly}
-              countryWeeklyHours={country.legalWeeklyHours}
-              currencySymbol={country.currencySymbol}
-              age={userAge}
-              onChange={onUserFields}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ---- ¿Cuánto cuesta otra cosa? ---- */}
-      <section class="max-w-6xl mx-auto px-4 mt-6" aria-label={priceForm.priceLabel}>
+      {/* =========================================================================
+          BLOQUE 7: LA CALCULADORA LIBRE ("¿Cuánto cuesta otra cosa?")
+          ========================================================================= */}
+      <section class="max-w-6xl mx-auto px-4 mt-14 md:mt-20" aria-label={priceForm.priceLabel}>
         <div class="board-plate p-6 md:p-8">
           <div class="flex flex-wrap items-start gap-3">
             <span class="board-cat-icon" style="background: #3ec97e; color: #14191d">
@@ -976,13 +1062,20 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
         </div>
       </section>
 
-      {/* ---- CTA ficha del país + compartir cotización ---- */}
-      <div class="max-w-5xl mx-auto px-4 mt-14 md:mt-16 pb-20 flex flex-wrap items-center gap-6">
-        <a href={`/${country.slug}`} class="board-cta">
-          {board.countryFile(country.name)} →
-        </a>
+      {/* =========================================================================
+          BLOQUE 8: CIERRE, VIRALIDAD Y CREDIBILIDAD
+          ========================================================================= */}
+      <div class="max-w-6xl mx-auto px-4 mt-12 md:mt-16 pb-20 flex flex-wrap items-center justify-between gap-6 border-t border-base-300/80 pt-8">
+        <div class="flex items-center gap-4 flex-wrap">
+          <a href={`/${country.slug}`} class="board-cta">
+            {board.countryFile(country.name)} →
+          </a>
+          <a href="/metodo" class="btn btn-outline font-board-mono text-xs uppercase tracking-wider">
+            Metodología y Fuentes
+          </a>
+        </div>
         {hero && (
-          <div class="board-share">
+          <div class="board-share flex items-center gap-3">
             <ShareButton
               url="/"
               text={shareText({
@@ -1002,7 +1095,6 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
             />
           </div>
         )}
-        <p class="text-sm opacity-80 max-w-sm">{board.effortLine}</p>
       </div>
     </div>
   );

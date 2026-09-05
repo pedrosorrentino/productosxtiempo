@@ -1,12 +1,22 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ResultView from '../../components/preact/ResultView.tsx';
-import { brand, og } from '../../i18n/es.ts';
+import { brand, categories } from '../../i18n/es.ts';
 import { ogQuote } from '../../lib/ogQuote.ts';
 import { getProductPrice } from '../../lib/selectors.ts';
+import { calc } from '../../lib/calc.ts';
+import { formatHours, formatWorkdays, formatPercent } from '../../lib/format.ts';
 import type { Country, Product, ProductPrice } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
 import productsData from '../../data/products.json';
+import {
+  generateHreflangs,
+  generateProductSchema,
+  generateBreadcrumbSchema,
+} from '../../lib/seo.ts';
+
+const allCountries = countriesData as Country[];
+const allProducts = productsData as Product[];
 
 interface Props {
   country: Country;
@@ -39,24 +49,146 @@ export function getStaticPaths() {
 
 const { country, product, price, priceConverted } = Astro.props;
 
-// Copy clickbait de la tarjeta OG con la cifra real (misma fuente que el
-// póster: ogQuote). Sin mediana (AR/CO) degrada a título neutro.
 const quote = ogQuote(product, country);
-const ogTitle = quote
-  ? og.product.title(product.shortName, quote.effort)
-  : `${product.shortName} · ${country.name} · ${brand.name}`;
-const ogDescription = quote
-  ? og.product.description(product.shortName, country.name, quote.priceText, quote.effort)
-  : brand.subtitle;
+const hasMedianSalary = country.medianNetMonthly != null;
+
+// Cálculo estático para el bloque citable de IA y Schema.org
+let calculatedStats: { hours: number; workdays8h: number; monthsFullPay: number; pctRealYear: number } | null = null;
+if (hasMedianSalary) {
+  try {
+    const calcRes = calc({
+      price: price.value,
+      netMonthly: country.medianNetMonthly!,
+      weeklyHours: country.legalWeeklyHours,
+      realAnnualHours: country.realAnnualHours,
+      monthlySavings: null,
+      age: null,
+      retirementAge: country.retirementAge,
+    });
+    calculatedStats = {
+      hours: calcRes.hours,
+      workdays8h: calcRes.workdays8h,
+      monthsFullPay: calcRes.monthsFullPay,
+      pctRealYear: calcRes.pctRealYear ?? 0,
+    };
+  } catch (e) {
+    calculatedStats = null;
+  }
+}
+
+// 1. Título y Meta-description SEO optimizados con inclusión obligatoria del país
+const pageTitle = quote
+  ? `${product.shortName} en ${country.name}: cuesta ${quote.effort} de trabajo · ${brand.name}`
+  : `${product.shortName} en ${country.name} (${price.value} ${country.currencySymbol}) · ${brand.name}`;
+
+const pageDescription = quote
+  ? `${product.shortName} en ${country.name} vale ${quote.priceText}: equivale a ${quote.effort} con el sueldo mediano (${country.medianNetMonthly} ${country.currencySymbol}/mes). Calcula tu cifra real.`
+  : `Descubre cuántas horas de trabajo cuesta ${product.name} en ${country.name} (${price.value} ${country.currencySymbol}). Introduce tu nómina para cotizarlo en tiempo real.`;
+
+// 2. Control de Thin Content / Scaled Content Abuse: noindex a países sin sueldo de referencia
+const shouldNoIndex = !hasMedianSalary;
+
+// 3. Generación de hreflangs
+const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
+const hreflangs = generateHreflangs(allCountries, "product", product.id, siteUrl);
+
+// 4. Schema.org JSON-LD
+const canonicalUrl = `${siteUrl.replace(/\/$/, "")}/${country.slug}/${product.id}/`;
+const imageUrl = `${siteUrl.replace(/\/$/, "")}/og/${country.slug}/${product.id}.png`;
+
+const productSchema = generateProductSchema({
+  product,
+  country,
+  price,
+  canonicalUrl,
+  imageUrl,
+  hours: calculatedStats?.hours,
+  workdays8h: calculatedStats?.workdays8h,
+  monthsFullPay: calculatedStats?.monthsFullPay,
+});
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", url: `${siteUrl.replace(/\/$/, "")}/` },
+  { name: country.name, url: `${siteUrl.replace(/\/$/, "")}/${country.slug}/` },
+  { name: product.shortName, url: canonicalUrl },
+]);
+
+const combinedJsonLd = [productSchema, breadcrumbSchema];
+
+// 5. Enlazado Interno Automático:
+// A) Productos hermanos de la misma categoría en este país
+const siblingProducts = allProducts
+  .filter((p) => p.visible && p.id !== product.id && p.category === product.category)
+  .slice(0, 4)
+  .map((sibling) => {
+    const sibPrice = getProductPrice(sibling, country.code);
+    let sibHours: number | null = null;
+    if (sibPrice && hasMedianSalary) {
+      try {
+        const calcRes = calc({
+          price: sibPrice.value,
+          netMonthly: country.medianNetMonthly!,
+          weeklyHours: country.legalWeeklyHours,
+          realAnnualHours: country.realAnnualHours,
+          monthlySavings: null,
+          age: null,
+          retirementAge: country.retirementAge,
+        });
+        sibHours = calcRes.hours;
+      } catch {
+        sibHours = null;
+      }
+    }
+    return {
+      ...sibling,
+      price: sibPrice,
+      hours: sibHours,
+    };
+  });
+
+const categoryLabel = categories[product.category]?.toLowerCase() ?? product.category;
+
+// B) El mismo producto en otros países clave
+const otherCountriesForProduct = allCountries
+  .filter((c) => c.code !== country.code && c.medianNetMonthly != null)
+  .slice(0, 6);
 ---
 
 <BaseLayout
-  title={ogTitle}
-  description={ogDescription}
+  title={pageTitle}
+  description={pageDescription}
   ogImage={`/og/${country.slug}/${product.id}.png`}
   currentCountrySlug={country.slug}
+  currentCountryCode={country.code}
+  noindex={shouldNoIndex}
+  hreflangs={hreflangs}
+  jsonLd={combinedJsonLd}
 >
   <section class="max-w-5xl mx-auto px-4 py-8">
+    <!-- Migas de Pan Semánticas (Breadcrumbs) -->
+    <nav class="mb-4 text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href={`/${country.slug}`} class="hover:text-primary transition-colors">{country.name}</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-primary font-bold" aria-current="page">{product.shortName}</li>
+      </ol>
+    </nav>
+
+    {/* Bloque Citable de Respuesta Directa (GEO / AEO para Google AI Overviews & Perplexity) */}
+    {quote && calculatedStats && (
+      <aside class="board-plate p-5 mb-6 border-l-4 border-l-primary bg-base-200/90 shadow-md" aria-label="Resumen de esfuerzo laboral">
+        <h2 class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-bold mb-2">
+          Resumen Directo · Coste Laboral de {product.name}
+        </h2>
+        <p class="text-base leading-relaxed opacity-95">
+          En <strong>{country.name}</strong>, adquirir un <strong>{product.name}</strong> con un precio de referencia de <strong>{quote.priceText}</strong> requiere un esfuerzo laboral de <strong>{quote.effort}</strong> (equivalente a <strong>{formatHours(calculatedStats.hours)} horas de trabajo</strong> o <strong>{formatWorkdays(calculatedStats.workdays8h)} jornadas de 8 horas</strong>). Este cálculo se basa en el salario mediano neto de referencia de <strong>{country.medianNetMonthly} {country.currencySymbol} al mes</strong> y una semana laboral reglamentaria de <strong>{country.legalWeeklyHours} horas</strong>, absorbiendo aproximadamente el <strong>{formatPercent(calculatedStats.pctRealYear)}% del año laboral real</strong> de un empleado medio.
+        </p>
+      </aside>
+    )}
+
+    {/* Vista Interactiva Preact */}
     <ResultView
       client:load
       countryCode={country.code}
@@ -74,5 +206,93 @@ const ogDescription = quote
       catalogPriceDate={price.date}
       catalogPriceSource={price.source}
     />
+
+    {/* Enlazado Interno Programático: Categoría en este país */}
+    {siblingProducts.length > 0 && (
+      <section class="mt-14 board-plate p-6">
+        <h2 class="font-signage uppercase text-2xl md:text-3xl">
+          Otros productos de {categoryLabel} en {country.name}
+        </h2>
+        <p class="mt-1 text-sm opacity-80 font-board-mono mb-4">
+          Compara las horas de trabajo necesarias para adquirir otros artículos de {categoryLabel}:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {siblingProducts.map((sibling) => {
+            const formattedPrice = sibling.price
+              ? new Intl.NumberFormat("es-ES", { maximumFractionDigits: 2 }).format(sibling.price.value)
+              : null;
+            return (
+              <a
+                href={`/${country.slug}/${sibling.id}`}
+                class="group flex flex-col justify-between p-4 rounded-lg bg-base-200/50 hover:bg-base-200 border border-base-300 hover:border-primary/60 transition-all shadow-xs hover:shadow-md"
+              >
+                <div>
+                  <span class="block font-bold text-base text-base-content group-hover:text-primary transition-colors leading-snug">
+                    {sibling.name}
+                  </span>
+                  <div class="mt-2.5 flex flex-wrap items-baseline gap-2 font-board-mono">
+                    {formattedPrice && (
+                      <span class="text-sm font-semibold opacity-90">
+                        {formattedPrice} {country.currencySymbol}
+                      </span>
+                    )}
+                    {sibling.hours != null && (
+                      <span class="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20 font-medium">
+                        ~{formatHours(sibling.hours)} h
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-base-300/80 flex items-center justify-between">
+                  <span class="font-board-mono text-xs font-semibold text-primary flex items-center gap-1.5">
+                    Calcular horas
+                    <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
+                  </span>
+                  <span class="font-board-mono text-[10px] opacity-60 uppercase tracking-wider">
+                    {country.code}
+                  </span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    {/* Enlazado Interno Programático: Mismo producto en otros países */}
+    {otherCountriesForProduct.length > 0 && (
+      <section class="mt-8 board-plate p-6">
+        <h2 class="font-signage uppercase text-2xl md:text-3xl">
+          {product.shortName} en otros países
+        </h2>
+        <p class="mt-1 text-sm opacity-80 font-board-mono mb-4">
+          Compara cuántas horas cuesta este mismo producto según la nómina de cada país:
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+          {otherCountriesForProduct.map((otherC) => {
+            const formattedSalary = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 0 }).format(otherC.medianNetMonthly!);
+            return (
+              <a
+                href={`/${otherC.slug}/${product.id}`}
+                class="group flex flex-col justify-between p-3.5 rounded-lg bg-base-200/50 hover:bg-base-200 border border-base-300 hover:border-primary/60 transition-all text-center"
+              >
+                <div>
+                  <span class="block font-bold text-xs truncate text-base-content group-hover:text-primary transition-colors">
+                    {otherC.name}
+                  </span>
+                  <span class="block font-board-mono text-[11px] opacity-75 mt-1">
+                    {formattedSalary} {otherC.currencySymbol}/mes
+                  </span>
+                </div>
+                <span class="mt-3 font-board-mono text-[11px] font-semibold text-primary block group-hover:underline">
+                  Comparar &rarr;
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
   </section>
 </BaseLayout>

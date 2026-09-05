@@ -1,0 +1,33 @@
+# public/robots.txt
+# Reglas de rastreo de Precio en tiempo
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Rastreadores de Búsqueda de Inteligencia Artificial (AEO / GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Bloqueo de raspadores genéricos para entrenamiento masivo de datasets
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://precioentiempo.com/sitemap.xml

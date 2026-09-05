@@ -12,9 +12,21 @@ import {
   formatYears,
 } from '../lib/format.ts';
 
-const title = `Método · ${brand.name}`;
+import { generateMethodArticleSchema, generateBreadcrumbSchema } from '../lib/seo.ts';
+
+const title = `Método de Cálculo · ${brand.name}`;
 const description =
   'Cómo medimos el precio de las cosas en horas de trabajo: qué medimos, qué no medimos, de dónde salen los datos y por qué los cálculos corren en tu dispositivo.';
+
+const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
+const canonicalUrl = `${siteUrl.replace(/\/$/, "")}/metodo/`;
+
+const articleSchema = generateMethodArticleSchema(siteUrl);
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", url: `${siteUrl.replace(/\/$/, "")}/` },
+  { name: "Método", url: canonicalUrl },
+]);
+const jsonLd = [articleSchema, breadcrumbSchema];
 
 // Todas las cifras de ejemplo de esta página se DERIVAN del motor (SPEC §9:
 // el copy se regenera con calc, nunca se hardcodea contra él). Referencia de
@@ -72,7 +84,7 @@ const wage52 = formatHourlyWage(hora52, '€');
 const wage160 = formatHourlyWage(hora160, '€');
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
   <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-6">
     <div class="board-plate p-6 md:p-8">
       <p class="font-board-mono text-xs uppercase tracking-[0.14em] opacity-90 text-primary">

@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { calc } from "../../lib/calc.ts";
 import type { CalcResult } from "../../lib/calc.ts";
 import { convertCurrency } from "../../lib/currencies.ts";
@@ -109,9 +109,6 @@ export default function CompareStrip({
 
   const pool = poolOf(countries, currentCountryCode);
 
-  // Decisión documentada: la lista vive en estado local (hasta 3 códigos).
-  // La URL solo transporta el primero (?pais=) para compartir; añadir/quito
-  // las demás tarjetas no se persiste — sería ruido en el enlace.
   const [codes, setCodes] = useState<string[]>(() => {
     const fromUrl =
       initialCode != null && initialCode !== currentCountryCode
@@ -123,6 +120,8 @@ export default function CompareStrip({
     return [pick.code];
   });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const priceText = new Intl.NumberFormat("es-ES", {
     maximumFractionDigits: 2,
   }).format(price);
@@ -130,6 +129,33 @@ export default function CompareStrip({
   const nfSalary = new Intl.NumberFormat("es-ES", {
     maximumFractionDigits: 0,
   });
+
+  // Países disponibles para añadir en el modal:
+  // - No el país actual de la página (evita duplicar información)
+  // - No países ya añadidos a la comparativa
+  // - Solo países con sueldo mediano fiable
+  const availableCountries = countries.filter(
+    (c) =>
+      c.code !== currentCountryCode &&
+      !codes.includes(c.code) &&
+      c.medianNetMonthly != null,
+  );
+
+  useEffect(() => {
+    if (!isModalOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsModalOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isModalOpen]);
 
   /** Tramos de vida a partir de años de sueldo: el % se calcula contra la
    * edad del usuario (misma lógica que YearBar — "de tus N años"). */
@@ -190,18 +216,6 @@ export default function CompareStrip({
       })()
     : cards;
 
-  const options = countries.filter(
-    (c) => c.code !== currentCountryCode && !codes.includes(c.code),
-  );
-
-  const onSelect = (event: Event) => {
-    const value = (event.currentTarget as HTMLSelectElement).value;
-    if (value === "") return;
-    setCodes((prev) =>
-      prev.length < MAX_CARDS && !prev.includes(value) ? [...prev, value] : prev,
-    );
-  };
-
   const removeCard = (code: string): void =>
     setCodes((prev) => prev.filter((c) => c !== code));
 
@@ -219,30 +233,14 @@ export default function CompareStrip({
           </p>
         </div>
         <div>
-          <label
-            class="font-board-mono text-xs uppercase tracking-[0.14em] opacity-70 block mb-1"
-            for="compare-country"
-          >
-            {compare.selectLabel}
-          </label>
-          {cards.length < MAX_CARDS && options.length > 0 ? (
-            <select
-              id="compare-country"
-              class="select w-full md:w-48 font-board-mono"
-              value=""
-              onChange={onSelect}
-            >
-              <option value="">{compare.selectPlaceholder}</option>
-              {options.map((country) => (
-                <option key={country.code} value={country.code}>
-                  {country.name}
-                </option>
-              ))}
-            </select>
-          ) : (
-            <p class="font-board-mono text-xs opacity-75 md:w-48">
+          {cards.length >= MAX_CARDS ? (
+            <span class="font-board-mono text-xs opacity-75">
               {compare.maxReached}
-            </p>
+            </span>
+          ) : (
+            <span class="font-board-mono text-xs opacity-75">
+              {cards.length} / {MAX_CARDS} países comparados
+            </span>
           )}
         </div>
       </div>
@@ -321,32 +319,141 @@ export default function CompareStrip({
           </div>
         ))}
 
-        {/* ---- Esqueletos: columnas libres que invitan a añadir ---- */}
+        {/* ---- Esqueletos interactivos: al pulsar abren el modal para añadir país ---- */}
         {Array.from({ length: emptySlots }).map((_, i) => (
-          <div
-            class="board-plate border-dashed border-base-300 p-5 min-h-[11rem] flex flex-col items-center justify-center text-center gap-2 opacity-70"
+          <button
+            type="button"
+            class="board-plate border-dashed border-base-300 hover:border-primary/80 hover:bg-base-200/50 p-5 min-h-[11rem] flex flex-col items-center justify-center text-center gap-3 opacity-75 hover:opacity-100 transition-all duration-150 cursor-pointer group select-none w-full"
             key={`empty-${i}`}
-            aria-label={compare.emptySlots}
+            aria-label="Añadir país para comparar"
+            onClick={() => setIsModalOpen(true)}
           >
-            <svg
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width={2}
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M12 5v14M5 12h14" />
-            </svg>
-            <p class="font-board-mono text-sm uppercase tracking-[0.12em]">
-              {compare.emptySlots}
-            </p>
-          </div>
+            <div class="w-10 h-10 rounded-full border border-dashed border-base-content/25 group-hover:border-primary group-hover:bg-primary/10 flex items-center justify-center transition-colors">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width={2}
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="group-hover:text-primary transition-colors text-base-content/75"
+                aria-hidden="true"
+              >
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-board-mono text-sm uppercase tracking-[0.12em] group-hover:text-primary transition-colors font-medium">
+                {compare.emptySlots}
+              </p>
+              <span class="font-board-mono text-xs opacity-60 block mt-1">
+                Pulsa para elegir país
+              </span>
+            </div>
+          </button>
         ))}
       </div>
+
+      {/* Modal para seleccionar país */}
+      {isModalOpen && (
+        <div
+          class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="compare-modal-title"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setIsModalOpen(false);
+          }}
+        >
+          <div class="board-plate border border-base-300 bg-base-100 shadow-2xl p-5 sm:p-6 relative max-w-lg w-full max-h-[85vh] flex flex-col">
+            {/* Cabecera del modal */}
+            <div class="flex items-start justify-between gap-4 pb-4 border-b border-base-300">
+              <div>
+                <h3 id="compare-modal-title" class="font-signage uppercase text-2xl sm:text-3xl text-primary leading-none">
+                  Añadir país a la comparativa
+                </h3>
+                <p class="font-board-mono text-xs opacity-75 mt-1.5 leading-relaxed">
+                  Elige un país para cotizar {priceText} {currencySymbol} con su salario neto mediano:
+                </p>
+              </div>
+              <button
+                type="button"
+                class="board-card-remove static w-8 h-8 rounded hover:bg-base-300 flex items-center justify-center transition-colors text-base-content/80 hover:text-base-content shrink-0 cursor-pointer"
+                aria-label="Cerrar modal"
+                onClick={() => setIsModalOpen(false)}
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width={2} stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Lista de países filtrados */}
+            <div class="overflow-y-auto py-3 space-y-2 flex-1 overscroll-contain pr-1">
+              {availableCountries.length > 0 ? (
+                availableCountries.map((c) => {
+                  const convertedVal = convertCurrency(price, current.currency, c.currency);
+                  const convertedFormatted = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 2 }).format(convertedVal);
+                  return (
+                    <button
+                      type="button"
+                      key={c.code}
+                      class="w-full flex items-center justify-between p-3 rounded border border-base-300 bg-base-200/60 hover:bg-base-200 hover:border-primary/50 transition-all text-left group cursor-pointer"
+                      onClick={() => {
+                        setCodes((prev) =>
+                          prev.length < MAX_CARDS && !prev.includes(c.code) ? [...prev, c.code] : prev,
+                        );
+                        setIsModalOpen(false);
+                      }}
+                    >
+                      <div class="min-w-0 flex-1 pr-3">
+                        <div class="flex items-center gap-2">
+                          <span class="font-bold text-base text-base-content group-hover:text-primary transition-colors">
+                            {c.name}
+                          </span>
+                          <span class="font-board-mono text-[11px] px-1.5 py-0.2 rounded bg-base-300/80 text-base-content/75 font-semibold">
+                            {c.code}
+                          </span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-x-3 gap-y-0.5 font-board-mono text-xs opacity-80 mt-1">
+                          <span>
+                            Mediana: <strong class="text-base-content font-semibold">{nfSalary.format(c.medianNetMonthly!)} {c.currencySymbol}/mes</strong>
+                          </span>
+                          <span aria-hidden="true" class="opacity-40">·</span>
+                          <span>
+                            Precio: <strong class="text-base-content font-semibold">{convertedFormatted} {c.currencySymbol}</strong>
+                          </span>
+                        </div>
+                      </div>
+                      <span class="font-board-mono text-xs font-semibold px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary group-hover:text-primary-content transition-all shrink-0">
+                        + Añadir
+                      </span>
+                    </button>
+                  );
+                })
+              ) : (
+                <div class="p-6 text-center text-sm font-board-mono opacity-75">
+                  Ya has añadido todos los países disponibles para comparar.
+                </div>
+              )}
+            </div>
+
+            {/* Pie del modal */}
+            <div class="pt-3 border-t border-base-300 flex justify-between items-center text-xs font-board-mono opacity-70">
+              <span>{availableCountries.length} {availableCountries.length === 1 ? "país disponible" : "países disponibles"}</span>
+              <button
+                type="button"
+                class="hover:text-primary transition-colors cursor-pointer"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

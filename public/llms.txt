@@ -1,0 +1,27 @@
+# Precio en tiempo
+
+> El precio de las cosas, medido en tu tiempo de trabajo.
+
+Precio en tiempo es un conversor económico educativo y forense que transforma el precio monetario de bienes y servicios en horas, jornadas completas de 8 horas y meses de esfuerzo laboral real, neutralizando la ilusión monetaria y la inflación.
+
+## Metodología y Fórmulas
+- **Cálculo del valor de la hora**: `SueldoNetoMensual / (HorasSemanales * (52 / 12))`
+- **Convención mensual**: 52 semanas / 12 meses (≈ 4,33 semanas/mes, frente a la convención simplista e inexacta de 160 h/mes).
+- **Referencia salarial**: Salario neto mediano oficial (la persona situada en el percentil 50 de la distribución salarial, descartando el sesgo alcista de la media aritmética).
+- **Jornada real anual**: Se descuentan vacaciones, permisos y festivos oficiales según estadísticas homogéneas de la OCDE.
+
+## Países y Monedas Cubiertos
+- España (ES / EUR): Salario mediano orientativo 1.800 €, jornada legal 40h, 1.633h reales anuales.
+- México (MX / MXN): Salario mediano orientativo 9.000 $, jornada legal 40h, 2.225h reales anuales.
+- Chile (CL / CLP): Salario mediano orientativo 650.000 $, jornada legal 44h, 1.960h reales anuales.
+- Francia (FR / EUR): Salario mediano orientativo 2.100 €, jornada legal 35h, 1.505h reales anuales.
+- Alemania (DE / EUR): Salario mediano orientativo 2.600 €, jornada legal 40h, 1.345h reales anuales.
+- Estados Unidos (US / USD): Salario mediano orientativo 4.000 $, jornada legal 40h, 1.815h reales anuales.
+- Portugal, Italia, Reino Unido y Suiza.
+
+## Arquitectura de Navegación y URLs
+- Tablero principal de cotizaciones: `https://precioentiempo.com/`
+- Ficha de país: `https://precioentiempo.com/[country]/`
+- Ficha de producto en tiempo: `https://precioentiempo.com/[country]/[product]/`
+- Calculadora de precio libre: `https://precioentiempo.com/[country]/precio/`
+- Documentación técnica y calibración del motor: `https://precioentiempo.com/metodo/`

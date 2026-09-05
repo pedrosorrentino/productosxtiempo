@@ -18,7 +18,7 @@ export const cheapsharkGamingProvider: CatalogSourceProvider = {
       const res = await fetch(CHEAPSHARK_URL, {
         signal: controller.signal,
         headers: {
-          'User-Agent': 'CosteEnTiempo/1.0 (https://costeentiempo.example)',
+          'User-Agent': 'PrecioEnTiempo/1.0 (https://precioentiempo.com)',
           Accept: 'application/json',
         },
       });

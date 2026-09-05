@@ -15,11 +15,11 @@ import type { HeroUnit } from "../lib/format.ts";
 import type { Product } from "../lib/types.ts";
 
 export const brand = {
-  name: "Coste en tiempo",
+  name: "Precio en tiempo",
   promise: "El precio de las cosas, medido en tu tiempo.",
   subtitle:
     "Elige un país o pon tu sueldo. Elige una cosa. Te decimos cuántas horas de trabajo representa.",
-  domain: "costeentiempo.example",
+  domain: "precioentiempo.com",
 };
 
 export const cta = {
@@ -192,7 +192,7 @@ const capitalize = (text: string): string =>
  * 402 jornadas de 8 h
  * Año y medio de sueldo entero
  * A los 32 años: 1,5 años de vida trabajando
- * costeentiempo.example
+ * precioentiempo.com
  * ```
  *
  * `fullPayPhrase` es la frase de duración de `formatHumanDuration` para el
@@ -472,13 +472,13 @@ export const board = {
  */
 export const og = {
   home: {
-    title: "¿Cuánto tiempo de tu vida cuesta lo que compras?",
+    title: "Precio en Tiempo | ¿Cuánto tiempo de tu vida cuesta lo que compras?",
     description:
-      "Tu hora es la divisa: cada precio del catálogo, cotizado en jornadas de trabajo. Pon tu sueldo y mira tu cifra exacta.",
+      "Convierte cualquier precio en horas y jornadas de trabajo real. Elige un producto o pon tu sueldo y descubre cuánta vida te cuesta antes de comprarlo. 100% privado.",
   },
   country: {
     title: (countryName: string, wage: string): string =>
-      `En ${countryName} tu hora vale ${wage}. Mira lo que cuesta todo`,
+      `En ${countryName} tu hora vale ${wage}. Mira lo que cuesta todo · Precio en Tiempo`,
     description: (countryName: string): string =>
       `Pon tu sueldo y descubre cuántas jornadas cuestan las cosas en ${countryName}: del café al alquiler, con cifras exactas.`,
   },

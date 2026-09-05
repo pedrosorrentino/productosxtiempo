@@ -22,7 +22,7 @@ export const supermarketStaplesProvider: CatalogSourceProvider = {
       const res = await fetch(OFF_PRICES_URL, {
         signal: controller.signal,
         headers: {
-          'User-Agent': 'CosteEnTiempo/1.0 (https://costeentiempo.example)',
+          'User-Agent': 'PrecioEnTiempo/1.0 (https://precioentiempo.com)',
           Accept: 'application/json',
         },
       });

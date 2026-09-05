@@ -12,6 +12,7 @@ import { board, brand, countryPage, noSalary, og, priceForm, userForm } from '..
 import type { Country, Product } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
 import productsData from '../../data/products.json';
+import { generateHreflangs, generateBreadcrumbSchema } from '../../lib/seo.ts';
 
 export function getStaticPaths() {
   return countriesData.map((country) => ({
@@ -21,6 +22,13 @@ export function getStaticPaths() {
 }
 
 const { country } = Astro.props as { country: Country };
+
+const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
+const hreflangs = generateHreflangs(countriesData as Country[], "country", undefined, siteUrl);
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", url: `${siteUrl.replace(/\/$/, "")}/` },
+  { name: country.name, url: `${siteUrl.replace(/\/$/, "")}/${country.slug}/` },
+]);
 
 // price = 1: hourlyWage de calc no depende del precio, así obtenemos la hora del país.
 const countryWage =
@@ -134,6 +142,9 @@ const boardGroups = catalog.map((group) => ({
   description={og.country.description(country.name)}
   ogImage={`/og/${country.slug}.png`}
   currentCountrySlug={country.slug}
+  currentCountryCode={country.code}
+  hreflangs={hreflangs}
+  jsonLd={breadcrumbSchema}
 >
   <div class="max-w-5xl mx-auto px-4 pt-8 pb-20">
     <!-- ---- Placa de identidad ---- -->

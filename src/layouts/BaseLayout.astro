@@ -6,6 +6,7 @@ import '@fontsource-variable/chivo-mono';
 import { brand, cta, legalFooter, home, board } from '../i18n/es.ts';
 import type { Country } from '../lib/types.ts';
 import countriesData from '../data/countries.json';
+import { COUNTRY_LOCALES, type HreflangLink } from '../lib/seo.ts';
 
 const countries = countriesData as Country[];
 
@@ -18,6 +19,14 @@ interface Props {
   ogType?: string;
   /** Slug del país actual, si aplica (para marcarlo en el selector del header). */
   currentCountrySlug?: string;
+  /** Código del país actual (ES, MX, AR, etc.), para resolver el og:locale y el lang. */
+  currentCountryCode?: string;
+  /** Si true, inyecta noindex, follow para evitar thin content en países sin datos. */
+  noindex?: boolean;
+  /** Lista de enlaces hreflang alternativos generados para la página. */
+  hreflangs?: HreflangLink[];
+  /** Objeto o lista de objetos Schema.org JSON-LD. */
+  jsonLd?: Record<string, any> | Array<Record<string, any>>;
 }
 
 const {
@@ -26,18 +35,28 @@ const {
   ogImage = "/og/index.png",
   ogType = "website",
   currentCountrySlug,
+  currentCountryCode,
+  noindex = false,
+  hreflangs = [],
+  jsonLd,
 } = Astro.props;
 
 // Tarjeta de redes: URL canónica + póster absolutos (los crawlers no
 // resuelven rutas relativas). El póster lo genera scripts/generate-og.ts
 // en build y vive en dist/og/.
-const site = Astro.site ?? new URL("https://costeentiempo.example");
-const canonical = new URL(Astro.url.pathname, site).href;
+const site = Astro.site ?? new URL("https://precioentiempo.com");
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(pathname, site).href;
 const ogImageAbsolute = new URL(ogImage.replace(/^\//, ""), site).href;
+
+// Resolución de idioma y locale
+const localeData = currentCountryCode ? COUNTRY_LOCALES[currentCountryCode] : null;
+const htmlLang = localeData?.langCode ?? "es";
+const ogLocale = localeData?.ogLocale ?? "es_ES";
 ---
 
 <!doctype html>
-<html lang="es" data-theme="board">
+<html lang={htmlLang} data-theme="board">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -46,13 +65,24 @@ const ogImageAbsolute = new URL(ogImage.replace(/^\//, ""), site).href;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    {noindex ? (
+      <meta name="robots" content="noindex, follow" />
+    ) : (
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    )}
     <link rel="canonical" href={canonical} />
+
+    {/* Etiquetas hreflang bidireccionales + x-default */}
+    {hreflangs.map((link) => (
+      <link rel="alternate" hreflang={link.hreflang} href={link.href} />
+    ))}
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={brand.name} />
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:image" content={ogImageAbsolute} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -62,6 +92,11 @@ const ogImageAbsolute = new URL(ogImage.replace(/^\//, ""), site).href;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbsolute} />
     <title>{title}</title>
+
+    {/* Schema.org JSON-LD estructurado */}
+    {jsonLd && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
   </head>
   <body class="min-h-screen flex flex-col bg-base-100 text-base-content">
     <!--

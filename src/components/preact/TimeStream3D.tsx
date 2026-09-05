@@ -671,6 +671,14 @@ export default function TimeStream3D({
     updateSize();
     window.addEventListener("resize", updateSize);
 
+    let resizeObserver: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined") {
+      resizeObserver = new ResizeObserver(() => {
+        updateSize();
+      });
+      resizeObserver.observe(wrapper);
+    }
+
     // Parallax suave con el ratón
     let targetRotY = 0;
     let targetRotX = 0;
@@ -958,6 +966,7 @@ export default function TimeStream3D({
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", updateSize);
+      if (resizeObserver) resizeObserver.disconnect();
       wrapper.removeEventListener("pointermove", onPointerMove);
 
       crispTexture.dispose();
@@ -1003,8 +1012,8 @@ export default function TimeStream3D({
       {/* Contenedor del Canvas 3D (Altura adaptativa y holgada en móvil y escritorio) */}
       <div
         ref={canvasWrapperRef}
-        class="relative w-full overflow-hidden bg-transparent h-[380px] sm:h-[440px] md:h-[480px]"
-        style={{ minHeight: "360px" }}
+        class="relative w-full overflow-hidden bg-transparent h-[440px] sm:h-[500px] md:h-[560px]"
+        style={{ minHeight: "420px" }}
       >
         <canvas
           ref={canvasRef}
