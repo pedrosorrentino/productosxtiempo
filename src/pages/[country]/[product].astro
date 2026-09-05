@@ -5,7 +5,7 @@ import { brand, categories } from '../../i18n/es.ts';
 import { ogQuote } from '../../lib/ogQuote.ts';
 import { getProductPrice } from '../../lib/selectors.ts';
 import { calc } from '../../lib/calc.ts';
-import { formatHours, formatWorkdays, formatPercent } from '../../lib/format.ts';
+import { formatHours } from '../../lib/format.ts';
 import type { Country, Product, ProductPrice } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
 import productsData from '../../data/products.json';
@@ -176,19 +176,7 @@ const otherCountriesForProduct = allCountries
       </ol>
     </nav>
 
-    {/* Bloque Citable de Respuesta Directa (GEO / AEO para Google AI Overviews & Perplexity) */}
-    {quote && calculatedStats && (
-      <aside class="board-plate p-5 mb-6 border-l-4 border-l-primary bg-base-200/90 shadow-md" aria-label="Resumen de esfuerzo laboral">
-        <h2 class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-bold mb-2">
-          Resumen Directo · Coste Laboral de {product.name}
-        </h2>
-        <p class="text-base leading-relaxed opacity-95">
-          En <strong>{country.name}</strong>, adquirir un <strong>{product.name}</strong> con un precio de referencia de <strong>{quote.priceText}</strong> requiere un esfuerzo laboral de <strong>{quote.effort}</strong> (equivalente a <strong>{formatHours(calculatedStats.hours)} horas de trabajo</strong> o <strong>{formatWorkdays(calculatedStats.workdays8h)} jornadas de 8 horas</strong>). Este cálculo se basa en el salario mediano neto de referencia de <strong>{country.medianNetMonthly} {country.currencySymbol} al mes</strong> y una semana laboral reglamentaria de <strong>{country.legalWeeklyHours} horas</strong>, absorbiendo aproximadamente el <strong>{formatPercent(calculatedStats.pctRealYear)}% del año laboral real</strong> de un empleado medio.
-        </p>
-      </aside>
-    )}
-
-    {/* Vista Interactiva Preact */}
+    {/* Vista Interactiva Preact (Con Telemetría Unificada y Bloque Citable) */}
     <ResultView
       client:load
       countryCode={country.code}
@@ -201,6 +189,8 @@ const otherCountriesForProduct = allCountries
       retirementAge={country.retirementAge}
       productId={product.id}
       productName={product.name}
+      productShortName={product.shortName}
+      productCategory={product.category}
       catalogPrice={price.value}
       priceConverted={priceConverted}
       catalogPriceDate={price.date}
