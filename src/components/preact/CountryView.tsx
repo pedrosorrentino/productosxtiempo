@@ -338,15 +338,15 @@ export default function CountryView({
           </div>
 
           {/* Formulario rápido en línea */}
-          <div class="flex items-center gap-2">
-            <div class="relative">
+          <div class="flex items-center gap-2 w-full sm:w-auto">
+            <div class="relative flex-1 sm:flex-initial">
               <input
                 type="number"
                 min="1"
                 placeholder="Ej. 150"
                 value={quickPrice}
                 onInput={(e) => setQuickPrice((e.target as HTMLInputElement).value)}
-                class="input input-sm w-36 sm:w-44 font-board-mono font-bold pr-8 text-right bg-base-100 border-base-content/20 text-primary"
+                class="input input-sm w-full sm:w-44 font-board-mono font-bold pr-8 text-right bg-base-100 border-base-content/20 text-primary"
                 aria-label="Precio a calcular"
               />
               <span class="absolute right-3 top-1.5 font-board-mono text-xs font-bold opacity-60">
@@ -354,14 +354,14 @@ export default function CountryView({
               </span>
             </div>
 
-            {quickPrice && (
-              <a
-                href={`/${country.slug}/precio?precio=${encodeURIComponent(quickPrice)}`}
-                class="btn btn-sm btn-primary font-board-mono text-xs uppercase tracking-wider"
-              >
-                Analizar &rarr;
-              </a>
-            )}
+            <a
+              href={`/${country.slug}/precio?precio=${encodeURIComponent(quickPrice || "150")}`}
+              class={`btn btn-sm btn-primary font-board-mono text-xs uppercase tracking-wider shrink-0 transition-opacity ${
+                quickPrice ? "opacity-100" : "opacity-60 pointer-events-none"
+              }`}
+            >
+              Analizar &rarr;
+            </a>
           </div>
         </div>
 

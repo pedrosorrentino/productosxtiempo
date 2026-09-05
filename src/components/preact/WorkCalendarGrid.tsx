@@ -56,15 +56,15 @@ export default function WorkCalendarGrid({
         </div>
 
         {/* Resumen numérico rápido */}
-        <div class="flex items-center gap-3 bg-base-200/80 px-3.5 py-2 rounded-lg border border-base-300 self-start sm:self-auto shrink-0 font-board-mono text-xs">
-          <div class="text-right">
+        <div class="flex items-center justify-around sm:justify-start gap-3 bg-base-200/80 px-3.5 py-2 rounded-lg border border-base-300 w-full sm:w-auto shrink-0 font-board-mono text-xs">
+          <div class="text-center sm:text-right">
             <span class="opacity-70 block text-[10px] uppercase">Días dedicados</span>
             <strong class="text-primary text-sm font-bold">
               {safeWorkdays >= 10 ? safeWorkdays.toFixed(0) : safeWorkdays.toFixed(1).replace(".", ",")} d
             </strong>
           </div>
           <div class="w-px h-6 bg-base-content/15" />
-          <div>
+          <div class="text-center sm:text-left">
             <span class="opacity-70 block text-[10px] uppercase">Días libres</span>
             <strong class="text-accent text-sm font-bold">
               {exceedsMonth ? "0 d" : `${freeDaysCount} d`}
@@ -85,9 +85,18 @@ export default function WorkCalendarGrid({
         </div>
       )}
 
-      {/* Cuadrícula de 22 Días Laborables del Mes */}
+      {/* Cuadrícula de 22 Días Laborables del Mes (Semana Laboral L-V) */}
       <div class="mt-5">
-        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-2">
+        {/* Cabecera de días laborables (Lun a Vie) en móviles y tablets */}
+        <div class="grid grid-cols-5 lg:hidden gap-1.5 mb-1.5 text-center font-board-mono text-[10px] uppercase font-bold text-base-content/60">
+          <span>Lun</span>
+          <span>Mar</span>
+          <span>Mié</span>
+          <span>Jue</span>
+          <span>Vie</span>
+        </div>
+
+        <div class="grid grid-cols-5 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-11 gap-1.5 sm:gap-2">
           {Array.from({ length: TOTAL_MONTH_WORKDAYS }).map((_, index) => {
             const dayNum = index + 1;
             const isFullLocked = index < fullLockedDays;
@@ -118,14 +127,14 @@ export default function WorkCalendarGrid({
             return (
               <div
                 key={dayNum}
-                class={`p-2 rounded border flex flex-col justify-between min-h-[64px] transition-all duration-200 ${bgClass}`}
+                class={`p-1.5 sm:p-2 rounded border flex flex-col justify-between min-h-[46px] sm:min-h-[64px] transition-all duration-200 ${bgClass}`}
                 title={`Día laborable ${dayNum}: ${statusText}`}
               >
-                <div class="flex items-center justify-between text-[11px] font-board-mono">
-                  <span class="opacity-75">Día {dayNum}</span>
+                <div class="flex items-center justify-between text-[10px] sm:text-[11px] font-board-mono">
+                  <span class="opacity-80 font-medium">d{dayNum}</span>
                   <span class="text-xs">{icon}</span>
                 </div>
-                <div class="font-board-mono text-[10px] uppercase tracking-wider truncate mt-1">
+                <div class="font-board-mono text-[9px] sm:text-[10px] uppercase tracking-wider truncate mt-0.5 leading-tight">
                   {statusText}
                 </div>
               </div>

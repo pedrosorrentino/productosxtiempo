@@ -420,17 +420,19 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
       <div class="max-w-6xl mx-auto px-4">
         <div class="board-plate p-4 sm:p-5">
           {/* Telemetría Superior */}
-          <div class="flex items-center justify-between gap-3 pb-3 mb-4 border-b border-base-300/80 text-xs font-board-mono">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-base-300/80 text-xs font-board-mono">
             <div class="flex items-center gap-2 text-base-content/75">
-              <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-              <span class="uppercase tracking-[0.14em] font-medium">Estación de Cotizaciones · Tiempo Real</span>
+              <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse shrink-0"></span>
+              <span class="uppercase tracking-[0.1em] font-medium text-[11px] sm:text-xs">
+                Estación de Cotizaciones · Tiempo Real
+              </span>
             </div>
 
             <div
-              class="flex items-center gap-2 px-2.5 py-1 rounded bg-base-100/90 border border-base-300 text-accent font-medium shadow-sm"
+              class="flex items-center gap-2 px-2.5 py-1 rounded bg-base-100/90 border border-base-300 text-accent font-medium shadow-sm self-start sm:self-auto shrink-0"
               title="Catálogo activo sincronizado"
             >
-              <span class="board-live-dot"></span>
+              <span class="board-live-dot shrink-0"></span>
               <span class="tracking-wider uppercase text-[0.7rem] sm:text-xs">
                 Catálogo activo · {products.length} artículos
               </span>
@@ -727,21 +729,21 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               <span class="font-board-mono text-xs uppercase tracking-widest opacity-70 block mb-2">
                 Elige tu perspectiva de análisis
               </span>
-              <div class="flex flex-wrap items-center gap-2.5">
+              <div class="grid grid-cols-1 sm:flex sm:flex-wrap items-stretch sm:items-center gap-2.5 w-full sm:w-auto">
                 {/* Botón MODO TRABAJO (Destacado) */}
                 <button
                   type="button"
                   onClick={() => onViewModeChange("work")}
-                  class={`flex items-center gap-2.5 px-4 py-2.5 rounded-lg font-board-mono text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer select-none ${
+                  class={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg font-board-mono text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer select-none ${
                     viewMode === "work"
-                      ? "bg-primary text-neutral-900 font-black shadow-lg ring-2 ring-primary/50 scale-[1.02]"
+                      ? "bg-primary text-neutral-900 font-black shadow-lg ring-2 ring-primary/50 scale-[1.01]"
                       : "bg-base-100 hover:bg-base-300 text-base-content/80 font-medium border border-base-content/15"
                   }`}
                   title="Ver cotizaciones en horas y jornadas de trabajo"
                 >
-                  <span class="text-xl">💼</span>
-                  <div class="text-left">
-                    <span class="block leading-none font-bold">Modo Trabajo</span>
+                  <span class="text-xl shrink-0">💼</span>
+                  <div class="text-left min-w-0">
+                    <span class="block leading-none font-bold text-xs sm:text-sm">Modo Trabajo</span>
                     <span class="text-[10px] opacity-75 font-normal block mt-0.5 lowercase">horas y jornadas de curro</span>
                   </div>
                 </button>
@@ -750,19 +752,19 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 <button
                   type="button"
                   onClick={() => onViewModeChange("life")}
-                  class={`flex items-center gap-2.5 px-4 py-2.5 rounded-lg font-board-mono text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer select-none relative ${
+                  class={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg font-board-mono text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer select-none relative ${
                     viewMode === "life"
-                      ? "bg-warning text-neutral-900 font-black shadow-lg ring-2 ring-warning/50 scale-[1.02]"
+                      ? "bg-warning text-neutral-900 font-black shadow-lg ring-2 ring-warning/50 scale-[1.01]"
                       : "bg-base-100 hover:bg-base-300 text-base-content/80 font-medium border border-base-content/15"
                   }`}
                   title="Ver el impacto en semanas de tu vida finita"
                 >
-                  <span class="text-xl">⏳</span>
-                  <div class="text-left">
-                    <span class="block leading-none font-bold">Modo Tiempo de Vida</span>
+                  <span class="text-xl shrink-0">⏳</span>
+                  <div class="text-left min-w-0">
+                    <span class="block leading-none font-bold text-xs sm:text-sm">Modo Tiempo de Vida</span>
                     <span class="text-[10px] opacity-75 font-normal block mt-0.5 lowercase">semanas de futuro consumidas</span>
                   </div>
-                  <span class="inline-block w-2 h-2 rounded-full bg-error animate-ping ml-1" />
+                  <span class="inline-block w-2 h-2 rounded-full bg-error animate-ping ml-auto" />
                 </button>
               </div>
             </div>

@@ -866,27 +866,29 @@ export default function ResultView({
         <button
           type="button"
           onClick={() => onViewModeChange("work")}
-          class={`flex-1 py-3 px-3 rounded font-board-mono text-xs sm:text-sm uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-2 ${
+          class={`flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded font-board-mono text-xs sm:text-sm uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 ${
             !isLifeMode
               ? "bg-primary text-neutral-900 shadow-sm"
               : "text-base-content/70 hover:text-base-content hover:bg-base-200"
           }`}
         >
           <span>💼</span>
-          <span>Modo Trabajo (Nómina & Horas)</span>
+          <span class="sm:hidden">Modo Trabajo</span>
+          <span class="hidden sm:inline">Modo Trabajo (Nómina & Horas)</span>
         </button>
 
         <button
           type="button"
           onClick={() => onViewModeChange("life")}
-          class={`flex-1 py-3 px-3 rounded font-board-mono text-xs sm:text-sm uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-2 ${
+          class={`flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded font-board-mono text-xs sm:text-sm uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 ${
             isLifeMode
               ? "bg-secondary text-white shadow-sm"
               : "text-base-content/70 hover:text-base-content hover:bg-base-200"
           }`}
         >
           <span>⏳</span>
-          <span>Modo Tiempo de Vida (Tu Edad & Futuro)</span>
+          <span class="sm:hidden">Tiempo de Vida</span>
+          <span class="hidden sm:inline">Modo Tiempo de Vida (Tu Edad & Futuro)</span>
         </button>
       </div>
 

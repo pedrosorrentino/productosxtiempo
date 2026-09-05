@@ -542,7 +542,7 @@ export default function CountryHeroCenter({
 
       {/* 3. BARÓMETRO DE ESFUERZO EN [PAÍS] (BENCHMARK RÁPIDO) */}
       <div class="mt-8 pt-6 border-t border-base-content/10">
-        <div class="flex items-center justify-between gap-2 mb-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 mb-3">
           <h3 class="font-signage text-sm uppercase tracking-wider flex items-center gap-2">
             <span>⚡</span>
             <span>El Barómetro de {countryName}: ¿Cuánto cuesta vivir aquí?</span>
@@ -573,7 +573,7 @@ export default function CountryHeroCenter({
             return (
               <div
                 key={bm.key}
-                class="group p-3 rounded-lg bg-base-200/50 hover:bg-base-200 border border-base-300 hover:border-primary/50 transition-all shadow-xs"
+                class="group p-3 rounded-lg bg-base-200/50 hover:bg-base-200 border border-base-300 hover:border-primary/50 transition-all shadow-xs last:col-span-2 sm:last:col-span-1"
               >
                 <div class="flex items-center justify-between">
                   <span class="text-xl" aria-hidden="true">{bm.icon}</span>

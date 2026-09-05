@@ -198,9 +198,9 @@ html {
 
 @media (max-width: 640px) {
   .board-country-select {
-    padding: 0.4rem 0.55rem;
-    font-size: 0.8125rem;
-    max-width: 140px;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.75rem;
+    max-width: 165px;
     text-overflow: ellipsis;
   }
 }

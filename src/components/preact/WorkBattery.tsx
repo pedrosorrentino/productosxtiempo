@@ -27,7 +27,7 @@ export default function WorkBattery({
       <div class="flex flex-wrap items-center justify-between gap-2.5 mb-3">
         <div class="flex items-center gap-2 min-w-0 max-w-full">
           <span class="inline-block w-3 h-3 rounded-full shrink-0" style={`background: ${effort.color}`} />
-          <span class="font-signage uppercase text-base md:text-lg tracking-wider text-base-content/95 truncate">
+          <span class="font-signage uppercase text-base md:text-lg tracking-wider text-base-content/95 break-words">
             Escala de Sudor {productName ? `· ${productName}` : "Laboral"}
           </span>
         </div>
@@ -86,24 +86,24 @@ export default function WorkBattery({
       {/* Métricas cotidianas de esfuerzo */}
       <div class="space-y-2 py-2.5 border-y border-base-300 text-xs sm:text-sm font-board-mono">
         {/* Fila 1: Dos micro-métricas simétricas (despertador y café) */}
-        <div class="grid grid-cols-2 gap-2">
-          <div class="flex items-center gap-2 p-2 bg-base-200/60 rounded min-w-0">
-            <span class="text-lg shrink-0" aria-hidden="true">⏰</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div class="flex items-center gap-2.5 p-2 sm:p-2.5 bg-base-200/60 rounded min-w-0">
+            <span class="text-xl shrink-0" aria-hidden="true">⏰</span>
             <div class="min-w-0 flex-1">
-              <span class="font-bold text-base-content block leading-tight truncate">
+              <span class="font-bold text-base-content block leading-tight text-xs sm:text-sm">
                 {alarmsCount} {alarmsCount === 1 ? "madrugón" : "madrugones"}
               </span>
-              <span class="text-[0.6875rem] sm:text-xs opacity-75 block truncate">de despertador</span>
+              <span class="text-[0.6875rem] sm:text-xs opacity-75 block">de despertador</span>
             </div>
           </div>
 
-          <div class="flex items-center gap-2 p-2 bg-base-200/60 rounded min-w-0">
-            <span class="text-lg shrink-0" aria-hidden="true">☕</span>
+          <div class="flex items-center gap-2.5 p-2 sm:p-2.5 bg-base-200/60 rounded min-w-0">
+            <span class="text-xl shrink-0" aria-hidden="true">☕</span>
             <div class="min-w-0 flex-1">
-              <span class="font-bold text-base-content block leading-tight truncate">
+              <span class="font-bold text-base-content block leading-tight text-xs sm:text-sm">
                 ~{coffeeCount} {coffeeCount === 1 ? "café" : "cafés"}
               </span>
-              <span class="text-[0.6875rem] sm:text-xs opacity-75 block truncate">frente al monitor</span>
+              <span class="text-[0.6875rem] sm:text-xs opacity-75 block">frente al monitor</span>
             </div>
           </div>
         </div>

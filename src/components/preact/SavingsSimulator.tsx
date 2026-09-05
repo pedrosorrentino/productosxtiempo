@@ -64,7 +64,7 @@ export default function SavingsSimulator({
         </div>
 
         {/* Cifra de meses destacados */}
-        <div class="bg-base-200/90 px-4 py-2 rounded-lg border border-base-300 self-start sm:self-auto shrink-0 font-board-mono text-right">
+        <div class="bg-base-200/90 px-4 py-2 rounded-lg border border-base-300 w-full sm:w-auto self-start sm:self-auto shrink-0 font-board-mono text-center sm:text-right">
           <span class="text-[10px] uppercase opacity-70 block">Plazo de ahorro</span>
           <strong class="text-primary text-base font-bold">
             {monthsNeeded < 1 ? "Menos de 1 mes" : `${roundedMonths} meses`}
@@ -73,22 +73,26 @@ export default function SavingsSimulator({
       </div>
 
       {/* Selector de % de Ahorro */}
-      <div class="mt-4 flex items-center gap-2 flex-wrap">
-        <span class="font-board-mono text-xs opacity-80 mr-1">Elige tu ahorro mensual:</span>
-        {PRESET_PCTS.map((pct) => (
-          <button
-            type="button"
-            key={pct}
-            onClick={() => setSelectedPct(pct)}
-            class={`px-3 py-1.5 rounded font-board-mono text-xs font-semibold cursor-pointer transition-all ${
-              selectedPct === pct
-                ? "bg-info text-neutral-900 font-bold shadow-sm"
-                : "bg-base-200 hover:bg-base-300 text-base-content border border-base-300"
-            }`}
-          >
-            {pct}% ({Math.round(netMonthly * (pct / 100))} {currencySymbol}/mes)
-          </button>
-        ))}
+      <div class="mt-4 space-y-2">
+        <span class="font-board-mono text-xs opacity-80 block">Elige tu ahorro mensual:</span>
+        <div class="grid grid-cols-2 sm:flex sm:flex-wrap gap-1.5 sm:gap-2">
+          {PRESET_PCTS.map((pct) => (
+            <button
+              type="button"
+              key={pct}
+              onClick={() => setSelectedPct(pct)}
+              class={`px-2.5 py-2 sm:py-1.5 rounded font-board-mono text-xs font-semibold cursor-pointer transition-all text-center ${
+                pct === 50 ? "col-span-2 sm:col-span-1" : ""
+              } ${
+                selectedPct === pct
+                  ? "bg-info text-neutral-900 font-bold shadow-sm"
+                  : "bg-base-200 hover:bg-base-300 text-base-content border border-base-300"
+              }`}
+            >
+              {pct}% ({Math.round(netMonthly * (pct / 100))} {currencySymbol}/mes)
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Panel de Resultado Proyectado */}
