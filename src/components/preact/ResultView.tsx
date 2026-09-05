@@ -49,7 +49,7 @@ import SavingsSimulator from "./SavingsSimulator.tsx";
 import PriceInput from "./PriceInput.tsx";
 import ShareButton from "./ShareButton.tsx";
 import UserForm, { type UserFormFields } from "./UserForm.tsx";
-import LifeBarControl from "./LifeBarControl.tsx";
+import LifeWeeksGrid from "./LifeWeeksGrid.tsx";
 import LifeBattery from "./LifeBattery.tsx";
 import WorkBattery from "./WorkBattery.tsx";
 import { computeLifeImpact } from "../../lib/life.ts";
@@ -330,12 +330,14 @@ export default function ResultView({
     patch({ viewMode: mode });
   };
 
+  const effectiveUserAge = edadValida ?? (isLifeMode ? 32 : null);
+
   const lifeImpact = computed
     ? computeLifeImpact({
         hours: computed.hours,
         yearsFullPay: computed.yearsFullPay,
         weeklyHours,
-        userAge: edadValida,
+        userAge: effectiveUserAge,
         retirementAge,
       })
     : null;
@@ -555,16 +557,22 @@ export default function ResultView({
   }
 
   const effectiveHeroValue =
-    isLifeMode && lifeImpact?.pctCareerLeft != null
-      ? formatPercent(lifeImpact.pctCareerLeft)
-      : isLifeMode && lifeImpact
-      ? formatPercent(lifeImpact.lifeWeeksCost)
+    isLifeMode && lifeImpact
+      ? lifeImpact.lifeWeeksCost >= 52
+        ? (lifeImpact.lifeWeeksCost / 52).toFixed(1).replace(".", ",")
+        : lifeImpact.lifeWeeksCost >= 1
+        ? lifeImpact.lifeWeeksCost.toFixed(1).replace(".", ",")
+        : (lifeImpact.lifeWeeksCost * 7).toFixed(0)
       : hero.value;
 
   const effectiveHeroUnit =
     isLifeMode
-      ? lifeImpact?.pctCareerLeft != null
-        ? "% de tu vida laboral"
+      ? lifeImpact
+        ? lifeImpact.lifeWeeksCost >= 52
+          ? "años de vida"
+          : lifeImpact.lifeWeeksCost >= 1
+          ? "semanas de vida"
+          : "días de vida"
         : "semanas de vida"
       : hero.unit;
 
@@ -852,6 +860,254 @@ export default function ResultView({
       </div>
 
       {/* =========================================================================
+          SELECTOR MAESTRO DE PERSPECTIVA: ¿CÓMO QUIERES MEDIR ESTA COMPRA?
+          ========================================================================= */}
+      <div class="board-plate p-1.5 sm:p-2 flex items-center justify-between gap-2 border border-base-300 shadow-md">
+        <button
+          type="button"
+          onClick={() => onViewModeChange("work")}
+          class={`flex-1 py-3 px-3 rounded font-board-mono text-xs sm:text-sm uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-2 ${
+            !isLifeMode
+              ? "bg-primary text-neutral-900 shadow-sm"
+              : "text-base-content/70 hover:text-base-content hover:bg-base-200"
+          }`}
+        >
+          <span>💼</span>
+          <span>Modo Trabajo (Nómina & Horas)</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => onViewModeChange("life")}
+          class={`flex-1 py-3 px-3 rounded font-board-mono text-xs sm:text-sm uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-2 ${
+            isLifeMode
+              ? "bg-secondary text-white shadow-sm"
+              : "text-base-content/70 hover:text-base-content hover:bg-base-200"
+          }`}
+        >
+          <span>⏳</span>
+          <span>Modo Tiempo de Vida (Tu Edad & Futuro)</span>
+        </button>
+      </div>
+
+      {/* =========================================================================
+          CONTROLES DE ENTRADA (NÓMINA EN MODO TRABAJO // EDAD EN MODO VIDA)
+          ========================================================================= */}
+      {!isLifeMode ? (
+        /* Panel de Nómina y Salarios */
+        <div class="board-plate p-5 sm:p-6">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 px-2.5 py-0.5 rounded">
+                  {state.netMonthly ? "Cotizando con tus datos" : "Mediana nacional de referencia"}
+                </span>
+                <span class="font-board-mono text-xs text-base-content/80">
+                  {state.netMonthly
+                    ? `Tu sueldo: ${state.netMonthly} ${currencySymbol}/mes (${formatHourlyWage(computed.hourlyWage, currencySymbol)}/h)`
+                    : `${countryName}: ${medianNetMonthly ?? 1800} ${currencySymbol}/mes (${formatHourlyWage(computed.hourlyWage, currencySymbol)}/h)`}
+                </span>
+              </div>
+              <h3 class="font-signage uppercase text-xl sm:text-2xl mt-2 text-base-content">
+                ¿Quieres ver cuánto te cuesta a ti con tu sueldo real?
+              </h3>
+              <p class="font-board-mono text-xs opacity-80 mt-1">
+                Pulsa un sueldo rápido o mueve el deslizador para recalcular el esfuerzo al instante:
+              </p>
+            </div>
+
+            <div class="flex items-center gap-2 self-start lg:self-auto shrink-0 flex-wrap">
+              <button
+                type="button"
+                onClick={() => setIsFormOpen((prev) => !prev)}
+                class="btn btn-sm bg-primary hover:bg-primary/80 text-neutral-900 font-board-mono text-xs uppercase font-bold tracking-wider shadow-md cursor-pointer"
+              >
+                {isFormOpen ? "Cerrar ▲" : "⚡ Ajustar mi nómina"}
+              </button>
+              {state.netMonthly && (
+                <button
+                  type="button"
+                  onClick={onResetUserFields}
+                  class="btn btn-sm btn-ghost border border-base-300 text-base-content/70 hover:text-warning hover:border-warning font-board-mono text-xs uppercase cursor-pointer"
+                  title="Restablecer a la mediana nacional"
+                >
+                  ↺ Mediana ({medianNetMonthly} {currencySymbol})
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Botones de Presets Rápidos */}
+          <div class="mt-4 pt-3 border-t border-base-300/80 flex items-center gap-2 flex-wrap">
+            <span class="font-board-mono text-xs opacity-75 mr-1">Elige un sueldo rápido:</span>
+            {salaryPresets.map((preset) => (
+              <button
+                type="button"
+                key={preset}
+                onClick={() => applyPresetSalary(preset)}
+                class={`px-3 py-1.5 rounded font-board-mono text-xs font-semibold transition-all cursor-pointer shadow-xs ${
+                  state.netMonthly === preset
+                    ? "bg-accent text-neutral-900 font-bold shadow-sm"
+                    : "bg-base-100 hover:bg-primary hover:text-neutral-900 border border-base-300 hover:border-primary"
+                }`}
+              >
+                {preset} {currencySymbol}/mes
+              </button>
+            ))}
+          </div>
+
+          {/* Slider Continuo de Nómina (Scrubber Táctil a 60 FPS) */}
+          <div class="mt-4 pt-3 border-t border-base-300/80 space-y-2">
+            <div class="flex items-center justify-between text-xs font-board-mono">
+              <span class="opacity-80 flex items-center gap-1.5">
+                <span>⚡</span>
+                <span>Desliza para simular en tiempo real:</span>
+              </span>
+              <span class="font-bold text-primary bg-base-200 px-2.5 py-0.5 rounded border border-base-300">
+                {state.netMonthly ?? medianNetMonthly ?? 1800} {currencySymbol}/mes
+              </span>
+            </div>
+
+            <input
+              type="range"
+              min={sliderMin}
+              max={sliderMax}
+              step={25}
+              value={state.netMonthly ?? medianNetMonthly ?? 1800}
+              onInput={(e) => {
+                const val = Number((e.target as HTMLInputElement).value);
+                if (Number.isFinite(val) && val > 0) {
+                  applyPresetSalary(val);
+                }
+              }}
+              class="salary-slider"
+              aria-label="Ajustar nómina mensual en tiempo real"
+            />
+
+            <div class="flex justify-between text-[11px] font-board-mono opacity-60">
+              <span>{sliderMin} {currencySymbol}</span>
+              <span>Mediana: {medianNetMonthly} {currencySymbol}</span>
+              <span>{sliderMax} {currencySymbol}</span>
+            </div>
+          </div>
+
+          {/* Formulario desplegable avanzado */}
+          {isFormOpen && (
+            <div class="mt-6 pt-5 border-t border-base-300">
+              <UserForm
+                countryCode={countryCode}
+                countryNetMonthly={medianNetMonthly}
+                countryWeeklyHours={legalWeeklyHours}
+                currencySymbol={currencySymbol}
+                age={edadValida}
+                onChange={setUserFields}
+              />
+            </div>
+          )}
+        </div>
+      ) : (
+        /* Panel de Tu Edad y Futuro Consciente */
+        <div class="board-plate p-5 sm:p-6 border-l-4 border-l-secondary bg-base-200/90 shadow-md">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/30 px-2.5 py-0.5 rounded">
+                  Tu tiempo finito en la Tierra
+                </span>
+                <span class="font-board-mono text-xs text-base-content/80">
+                  {lifeImpact?.yearsLeft != null
+                    ? `Te quedan ~${lifeImpact.yearsLeft} años (${lifeImpact.weeksLeft?.toLocaleString()} semanas) hasta los ${retirementAge}`
+                    : `Jubilación de referencia: ${retirementAge} años`}
+                </span>
+              </div>
+              <h3 class="font-signage uppercase text-xl sm:text-2xl mt-2 text-base-content">
+                ¿Cuántos años tienes ahora mismo?
+              </h3>
+              <p class="font-board-mono text-xs opacity-80 mt-1">
+                Toca tu edad o desliza para calcular qué porcentaje de tu vida útil restante te cuesta:
+              </p>
+            </div>
+
+            {/* Stepper numérico de edad */}
+            <div class="flex items-center gap-1.5 bg-base-300/80 rounded-lg p-1 border border-base-content/10 self-start lg:self-auto shrink-0 font-board-mono">
+              <button
+                type="button"
+                onClick={() => onAgeChange(Math.max(16, (effectiveUserAge ?? 32) - 1))}
+                class="w-8 h-8 rounded bg-base-200 hover:bg-secondary hover:text-white font-bold transition-all text-sm flex items-center justify-center cursor-pointer select-none"
+                title="Restar 1 año"
+              >
+                -
+              </button>
+              <div class="px-3 text-center min-w-[4rem]">
+                <span class="text-base font-bold text-secondary tabular-nums block leading-tight">
+                  {effectiveUserAge ?? 32}
+                </span>
+                <span class="text-[10px] uppercase opacity-75 block leading-tight">
+                  años
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => onAgeChange(Math.min(80, (effectiveUserAge ?? 32) + 1))}
+                class="w-8 h-8 rounded bg-base-200 hover:bg-secondary hover:text-white font-bold transition-all text-sm flex items-center justify-center cursor-pointer select-none"
+                title="Sumar 1 año"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          {/* Botones de Presets de Edad */}
+          <div class="mt-4 pt-3 border-t border-base-300/80 flex items-center gap-2 flex-wrap">
+            <span class="font-board-mono text-xs opacity-75 mr-1">Tramos rápidos:</span>
+            {[20, 25, 30, 35, 40, 50, 60].map((agePreset) => (
+              <button
+                type="button"
+                key={agePreset}
+                onClick={() => onAgeChange(agePreset)}
+                class={`px-3 py-1.5 rounded font-board-mono text-xs font-semibold transition-all cursor-pointer shadow-xs ${
+                  (effectiveUserAge ?? 32) === agePreset
+                    ? "bg-secondary text-white font-bold shadow-sm"
+                    : "bg-base-100 hover:bg-secondary hover:text-white border border-base-300 hover:border-secondary"
+                }`}
+              >
+                {agePreset} años
+              </button>
+            ))}
+          </div>
+
+          {/* Slider Continuo de Edad */}
+          <div class="mt-4 pt-3 border-t border-base-300/80 space-y-2">
+            <div class="flex items-center justify-between text-xs font-board-mono">
+              <span class="opacity-80 flex items-center gap-1.5">
+                <span>⏳</span>
+                <span>Desliza tu edad en tiempo real:</span>
+              </span>
+              <span class="font-bold text-secondary bg-base-200 px-2.5 py-0.5 rounded border border-base-300">
+                {effectiveUserAge ?? 32} años
+              </span>
+            </div>
+
+            <input
+              type="range"
+              min="18"
+              max="70"
+              value={effectiveUserAge ?? 32}
+              onInput={(e) => onAgeChange(Number((e.target as HTMLInputElement).value))}
+              class="salary-slider"
+              aria-label="Ajustar edad en tiempo real"
+            />
+
+            <div class="flex justify-between text-[11px] font-board-mono opacity-60">
+              <span>18 años (inicio laboral)</span>
+              <span>Jubilación: {retirementAge} años</span>
+              <span>70 años</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* =========================================================================
           BLOQUE 2: EL NÚCLEO DE IMPACTO (Tacómetro Radial & Contador Cinético)
           ========================================================================= */}
       <section class="mt-4" aria-label={heroAria}>
@@ -859,211 +1115,110 @@ export default function ResultView({
           value={effectiveHeroValue}
           unit={effectiveHeroUnit}
           label={heroAria}
-          pctMonth={computed && netMonthly && effectivePrice != null ? (effectivePrice / netMonthly) * 100 : 15}
+          pctMonth={
+            isLifeMode
+              ? lifeImpact?.pctCareerLeft ?? (lifeImpact?.lifeWeeksCost ? (lifeImpact.lifeWeeksCost / 52) * 100 : 5)
+              : computed && netMonthly && effectivePrice != null
+              ? (effectivePrice / netMonthly) * 100
+              : 15
+          }
           secondaryText={!isLifeMode && hero.next ? `= ${hero.next}` : null}
           fullPayTail={!isLifeMode ? home.fullPayTail(phrase) : null}
           isLifeMode={isLifeMode}
+          lifeThreat={isLifeMode ? lifeImpact?.threat : null}
+          lifeVerdict={isLifeMode ? lifeImpact?.verdict : null}
         />
       </section>
 
       {/* =========================================================================
-          BLOQUE 3: DISPARADOR DE DOPAMINA SALARIAL (Ajuste de Nómina en 1 Clic)
-          ========================================================================= */}
-      <div class="board-plate p-5 sm:p-6">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-          <div>
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 px-2.5 py-0.5 rounded">
-                {state.netMonthly ? "Cotizando con tus datos" : "Mediana nacional de referencia"}
-              </span>
-              <span class="font-board-mono text-xs text-base-content/80">
-                {state.netMonthly
-                  ? `Tu sueldo: ${state.netMonthly} ${currencySymbol}/mes (${formatHourlyWage(computed.hourlyWage, currencySymbol)}/h)`
-                  : `${countryName}: ${medianNetMonthly ?? 1800} ${currencySymbol}/mes (${formatHourlyWage(computed.hourlyWage, currencySymbol)}/h)`}
-              </span>
-            </div>
-            <h3 class="font-signage uppercase text-xl sm:text-2xl mt-2 text-base-content">
-              ¿Quieres ver cuánto te cuesta a ti con tu sueldo real?
-            </h3>
-            <p class="font-board-mono text-xs opacity-80 mt-1">
-              Pulsa un sueldo rápido para que el odómetro gire y recalcule el esfuerzo al instante:
-            </p>
-          </div>
-
-          <div class="flex items-center gap-2 self-start lg:self-auto shrink-0 flex-wrap">
-            <button
-              type="button"
-              onClick={() => setIsFormOpen((prev) => !prev)}
-              class="btn btn-sm bg-primary hover:bg-primary/80 text-neutral-900 font-board-mono text-xs uppercase font-bold tracking-wider shadow-md cursor-pointer"
-            >
-              {isFormOpen ? "Cerrar ▲" : "⚡ Ajustar mi nómina"}
-            </button>
-            {state.netMonthly && (
-              <button
-                type="button"
-                onClick={onResetUserFields}
-                class="btn btn-sm btn-ghost border border-base-300 text-base-content/70 hover:text-warning hover:border-warning font-board-mono text-xs uppercase cursor-pointer"
-                title="Restablecer a la mediana nacional"
-              >
-                ↺ Mediana ({medianNetMonthly} {currencySymbol})
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Botones de Presets Rápidos */}
-        <div class="mt-4 pt-3 border-t border-base-300/80 flex items-center gap-2 flex-wrap">
-          <span class="font-board-mono text-xs opacity-75 mr-1">Elige un sueldo rápido:</span>
-          {salaryPresets.map((preset) => (
-            <button
-              type="button"
-              key={preset}
-              onClick={() => applyPresetSalary(preset)}
-              class={`px-3 py-1.5 rounded font-board-mono text-xs font-semibold transition-all cursor-pointer shadow-xs ${
-                state.netMonthly === preset
-                  ? "bg-accent text-neutral-900 font-bold shadow-sm"
-                  : "bg-base-100 hover:bg-primary hover:text-neutral-900 border border-base-300 hover:border-primary"
-              }`}
-            >
-              {preset} {currencySymbol}/mes
-            </button>
-          ))}
-        </div>
-
-        {/* Slider Continuo de Nómina (Scrubber Táctil a 60 FPS) */}
-        <div class="mt-4 pt-3 border-t border-base-300/80 space-y-2">
-          <div class="flex items-center justify-between text-xs font-board-mono">
-            <span class="opacity-80 flex items-center gap-1.5">
-              <span>⚡</span>
-              <span>Desliza para simular en tiempo real:</span>
-            </span>
-            <span class="font-bold text-primary bg-base-200 px-2.5 py-0.5 rounded border border-base-300">
-              {state.netMonthly ?? medianNetMonthly ?? 1800} {currencySymbol}/mes
-            </span>
-          </div>
-
-          <input
-            type="range"
-            min={sliderMin}
-            max={sliderMax}
-            step={25}
-            value={state.netMonthly ?? medianNetMonthly ?? 1800}
-            onInput={(e) => {
-              const val = Number((e.target as HTMLInputElement).value);
-              if (Number.isFinite(val) && val > 0) {
-                applyPresetSalary(val);
-              }
-            }}
-            class="salary-slider"
-            aria-label="Ajustar nómina mensual en tiempo real"
-          />
-
-          <div class="flex justify-between text-[11px] font-board-mono opacity-60">
-            <span>{sliderMin} {currencySymbol}</span>
-            <span>Mediana: {medianNetMonthly} {currencySymbol}</span>
-            <span>{sliderMax} {currencySymbol}</span>
-          </div>
-        </div>
-
-        {/* Formulario desplegable avanzado */}
-        {isFormOpen && (
-          <div class="mt-6 pt-5 border-t border-base-300">
-            <UserForm
-              countryCode={countryCode}
-              countryNetMonthly={medianNetMonthly}
-              countryWeeklyHours={legalWeeklyHours}
-              currencySymbol={currencySymbol}
-              age={edadValida}
-              onChange={setUserFields}
-            />
-          </div>
-        )}
-      </div>
-
-      {/* =========================================================================
-          NUEVAS GRÁFICAS DE INTERACCIÓN & DOPAMINA VISUAL
+          CENTRO DE GRÁFICAS E IMPACTO VISUAL (100% ADAPTATIVO AL MODO)
           ========================================================================= */}
       {computed && effectivePrice != null && (
         <section class="space-y-4" aria-label="Visualizaciones interactivas de esfuerzo">
-          {/* 1. Calendario del Mes Laboral (Días Cautivos vs Días Libres) */}
-          <WorkCalendarGrid
-            workdays8h={computed.workdays8h}
-            hours={computed.hours}
-            productName={displayName ?? "este producto"}
-            currencySymbol={currencySymbol}
-          />
+          {!isLifeMode ? (
+            /* GRÁFICAS EN MODO TRABAJO */
+            <>
+              {/* 1. Calendario del Mes Laboral (Días Cautivos vs Días Libres) */}
+              <WorkCalendarGrid
+                workdays8h={computed.workdays8h}
+                hours={computed.hours}
+                productName={displayName ?? "este producto"}
+                currencySymbol={currencySymbol}
+              />
 
-          {/* 2. Gráfica Comparativa Salarial de Esfuerzo */}
-          <SalaryBenchmarkChart
-            productPrice={effectivePrice}
-            currentNetMonthly={netMonthly ?? 1800}
-            medianNetMonthly={medianNetMonthly ?? 1800}
-            legalWeeklyHours={legalWeeklyHours}
-            realAnnualHours={realAnnualHours}
-            currencySymbol={currencySymbol}
-            onSelectSalary={(salary) => applyPresetSalary(salary)}
-          />
+              {/* 2. Gráfica Comparativa Salarial de Esfuerzo */}
+              <SalaryBenchmarkChart
+                productPrice={effectivePrice}
+                currentNetMonthly={netMonthly ?? 1800}
+                medianNetMonthly={medianNetMonthly ?? 1800}
+                legalWeeklyHours={legalWeeklyHours}
+                realAnnualHours={realAnnualHours}
+                currencySymbol={currencySymbol}
+                onSelectSalary={(salary) => applyPresetSalary(salary)}
+              />
 
-          {/* 3. Simulador de Ahorro y Fecha de Compra Libre de Deuda */}
-          <SavingsSimulator
-            productPrice={effectivePrice}
-            netMonthly={netMonthly ?? 1800}
-            currencySymbol={currencySymbol}
-            productName={displayName ?? "este producto"}
-          />
+              {/* 3. Simulador de Ahorro y Fecha de Compra Libre de Deuda */}
+              <SavingsSimulator
+                productPrice={effectivePrice}
+                netMonthly={netMonthly ?? 1800}
+                currencySymbol={currencySymbol}
+                productName={displayName ?? "este producto"}
+              />
+
+              {/* 4. Escala de Sudor Laboral */}
+              {workImpact && (
+                <WorkBattery
+                  impact={workImpact}
+                  productName={displayName ?? undefined}
+                />
+              )}
+            </>
+          ) : (
+            /* GRÁFICAS EN MODO TIEMPO DE VIDA */
+            lifeImpact && (
+              <>
+                {/* 1. Matriz de Semanas de Vida Consciente (Life in Weeks) */}
+                <LifeWeeksGrid
+                  userAge={effectiveUserAge ?? 32}
+                  retirementAge={retirementAge}
+                  yearsFullPay={computed.yearsFullPay}
+                  pctCareerLeft={lifeImpact.pctCareerLeft}
+                  lifeWeeksCost={lifeImpact.lifeWeeksCost}
+                  threat={lifeImpact.threat}
+                  productName={displayName ?? "este producto"}
+                  onAgeChange={(age) => onAgeChange(age)}
+                />
+
+                {/* 2. Batería Existencial (Vida vivida, restante y mordisco) */}
+                <LifeBattery
+                  age={effectiveUserAge ?? 32}
+                  retirementAge={retirementAge}
+                  yearsFullPay={computed.yearsFullPay}
+                  pctCareerLeft={lifeImpact.pctCareerLeft}
+                  threat={lifeImpact.threat}
+                  onAgeChange={(age) => onAgeChange(age)}
+                />
+
+                {/* 3. Veredicto de Amenaza Vital */}
+                <div class={`p-4 rounded-lg border ${lifeImpact.threat.badgeClass}`}>
+                  <div class="flex items-center gap-2 mb-1 flex-wrap">
+                    <span class="text-xl shrink-0" aria-hidden="true">{lifeImpact.threat.emoji}</span>
+                    <span class="font-signage uppercase text-lg tracking-wider font-bold">
+                      {lifeImpact.threat.label}
+                    </span>
+                    <span class="font-board-mono text-sm opacity-85 sm:ml-auto break-words">
+                      {lifeImpact.threat.description}
+                    </span>
+                  </div>
+                  <p class="font-board-mono text-base leading-relaxed mt-1 break-words">
+                    {lifeImpact.verdict}
+                  </p>
+                </div>
+              </>
+            )
+          )}
         </section>
       )}
-
-      {/* =========================================================================
-          BLOQUE 4: PALANCA EXISTENCIAL (Modo Trabajo vs Modo Tiempo de Vida)
-          ========================================================================= */}
-      <div class="space-y-4">
-        <LifeBarControl
-          age={edadValida}
-          viewMode={viewMode}
-          onAgeChange={onAgeChange}
-          onViewModeChange={onViewModeChange}
-          retirementAge={retirementAge}
-        />
-
-        {/* Visualización de Batería en Modo Trabajo */}
-        {!isLifeMode && workImpact && (
-          <div class="w-full space-y-3">
-            <WorkBattery
-              impact={workImpact}
-              productName={displayName ?? undefined}
-            />
-          </div>
-        )}
-
-        {/* Visualización de Batería en Modo Vida */}
-        {isLifeMode && lifeImpact && (
-          <div class="w-full space-y-3">
-            <LifeBattery
-              age={edadValida}
-              retirementAge={retirementAge}
-              yearsFullPay={computed.yearsFullPay}
-              pctCareerLeft={lifeImpact.pctCareerLeft}
-              threat={lifeImpact.threat}
-              onAgeChange={onAgeChange}
-            />
-            <div class={`p-4 rounded-lg border ${lifeImpact.threat.badgeClass}`}>
-              <div class="flex items-center gap-2 mb-1 flex-wrap">
-                <span class="text-xl shrink-0" aria-hidden="true">{lifeImpact.threat.emoji}</span>
-                <span class="font-signage uppercase text-lg tracking-wider font-bold">
-                  {lifeImpact.threat.label}
-                </span>
-                <span class="font-board-mono text-sm opacity-85 sm:ml-auto break-words">
-                  {lifeImpact.threat.description}
-                </span>
-              </div>
-              <p class="font-board-mono text-base leading-relaxed mt-1 break-words">
-                {lifeImpact.verdict}
-              </p>
-            </div>
-          </div>
-        )}
-      </div>
 
       {/* =========================================================================
           BLOQUE 5: DIAGNÓSTICO LABORAL OFICIAL (E-E-A-T & Motores de IA)

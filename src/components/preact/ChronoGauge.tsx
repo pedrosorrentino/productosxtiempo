@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "preact/hooks";
+import type { ThreatLevel } from "../../lib/life.ts";
 
 export interface ChronoGaugeProps {
   /** Cifra principal formateada (ej. "27,4" o "120") */
@@ -15,6 +16,10 @@ export interface ChronoGaugeProps {
   fullPayTail?: string | null;
   /** Si estamos en modo vida consciente */
   isLifeMode?: boolean;
+  /** Nivel de amenaza vital (en modo vida) */
+  lifeThreat?: ThreatLevel | null;
+  /** Veredicto existencial (en modo vida) */
+  lifeVerdict?: string | null;
 }
 
 /**
@@ -32,6 +37,8 @@ export default function ChronoGauge({
   secondaryText = null,
   fullPayTail = null,
   isLifeMode = false,
+  lifeThreat = null,
+  lifeVerdict = null,
 }: ChronoGaugeProps) {
   // Parsing numérico para interpolación fluida
   const numericTarget = parseFloat(value.replace(",", "."));
@@ -96,23 +103,31 @@ export default function ChronoGauge({
   const safePct = Math.max(0, Math.min(100, pctMonth ?? 15));
   const strokeOffset = arcLength - (safePct / 100) * arcLength;
 
-  // Selección de color según el porcentaje de la nómina
-  let arcColor = "#3ec97e"; // Verde esmeralda: gasto ligero (< 15%)
+  // Selección de color y etiquetas según el modo activo
+  let arcColor = "#3ec97e";
   let impactBadge = "Impacto Ligero";
   let badgeClass = "text-accent bg-accent/10 border-accent/30";
+  let centerTop = isLifeMode ? "Consume" : "Absorbe";
+  let centerBottom = isLifeMode ? "de tu futuro" : "de tu mes";
 
-  if (safePct >= 15 && safePct < 40) {
-    arcColor = "#ffb020"; // Ámbar: impacto moderado
-    impactBadge = "Impacto Moderado";
-    badgeClass = "text-primary bg-primary/10 border-primary/30";
-  } else if (safePct >= 40 && safePct < 85) {
-    arcColor = "#f97316"; // Naranja: alto impacto
-    impactBadge = "Alto Impacto";
-    badgeClass = "text-warning bg-warning/10 border-warning/30";
-  } else if (safePct >= 85) {
-    arcColor = "#e8482e"; // Rojo: sobreesfuerzo vital
-    impactBadge = "Sobreesfuerzo Vital";
-    badgeClass = "text-error bg-error/10 border-error/30";
+  if (isLifeMode) {
+    arcColor = lifeThreat?.color ?? "#ffb020";
+    impactBadge = lifeThreat ? `${lifeThreat.emoji} ${lifeThreat.label}` : "Amenaza Vital";
+    badgeClass = lifeThreat?.badgeClass ?? "text-warning bg-warning/10 border-warning/30";
+  } else {
+    if (safePct >= 15 && safePct < 40) {
+      arcColor = "#ffb020"; // Ámbar: impacto moderado
+      impactBadge = "Impacto Moderado";
+      badgeClass = "text-primary bg-primary/10 border-primary/30";
+    } else if (safePct >= 40 && safePct < 85) {
+      arcColor = "#f97316"; // Naranja: alto impacto
+      impactBadge = "Alto Impacto";
+      badgeClass = "text-warning bg-warning/10 border-warning/30";
+    } else if (safePct >= 85) {
+      arcColor = "#e8482e"; // Rojo: sobreesfuerzo vital
+      impactBadge = "Sobreesfuerzo Vital";
+      badgeClass = "text-error bg-error/10 border-error/30";
+    }
   }
 
   return (
@@ -169,19 +184,23 @@ export default function ChronoGauge({
             />
           </svg>
 
-          {/* Centro del Tacómetro: % de la Nómina */}
+          {/* Centro del Tacómetro: % de la Nómina o % de Vida Restante */}
           <div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none pt-2">
             <span class="font-board-mono text-[11px] uppercase tracking-wider text-base-content/70">
-              Absorbe
+              {centerTop}
             </span>
             <span
               class="font-signage text-3xl font-bold leading-none my-0.5 tracking-tight"
               style={{ color: arcColor }}
             >
-              {safePct >= 100 ? "+100%" : `${Math.round(safePct)}%`}
+              {safePct >= 100
+                ? "+100%"
+                : isLifeMode && safePct < 1
+                ? `${safePct.toFixed(1).replace(".", ",")}%`
+                : `${Math.round(safePct)}%`}
             </span>
             <span class="font-board-mono text-[10px] text-base-content/60">
-              de tu mes
+              {centerBottom}
             </span>
           </div>
         </div>
@@ -193,7 +212,7 @@ export default function ChronoGauge({
               {impactBadge}
             </span>
             <span class="font-board-mono text-xs text-base-content/65">
-              Esfuerzo real requerido
+              {isLifeMode ? "Impacto en tu tiempo de vida" : "Esfuerzo real requerido"}
             </span>
           </div>
 
@@ -213,10 +232,17 @@ export default function ChronoGauge({
             </span>
           </div>
 
-          {/* Subtítulos humanos y equivalencias */}
+          {/* Subtítulos humanos en Modo Trabajo */}
           {!isLifeMode && fullPayTail && (
             <p class="mt-2 text-base sm:text-lg opacity-90 break-words font-medium">
               {fullPayTail}
+            </p>
+          )}
+
+          {/* Veredicto existencial en Modo Vida */}
+          {isLifeMode && lifeVerdict && (
+            <p class="mt-2 text-base sm:text-lg opacity-95 break-words font-medium text-base-content/95">
+              {lifeVerdict}
             </p>
           )}
 
