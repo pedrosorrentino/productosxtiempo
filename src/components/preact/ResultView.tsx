@@ -42,7 +42,10 @@ import {
 import { CATEGORY_COLOR, CATEGORY_PATHS } from "./BoardRowCard.tsx";
 import CompareStrip from "./CompareStrip.tsx";
 import CountryPicker, { type PickerCountry } from "./CountryPicker.tsx";
-import Odometer from "./Odometer.tsx";
+import ChronoGauge from "./ChronoGauge.tsx";
+import WorkCalendarGrid from "./WorkCalendarGrid.tsx";
+import SalaryBenchmarkChart from "./SalaryBenchmarkChart.tsx";
+import SavingsSimulator from "./SavingsSimulator.tsx";
 import PriceInput from "./PriceInput.tsx";
 import ShareButton from "./ShareButton.tsx";
 import UserForm, { type UserFormFields } from "./UserForm.tsx";
@@ -133,9 +136,6 @@ const computeHero = (r: CalcResult): Hero => {
   return { value: formatYears(r.yearsFullPay), unit: heroUnits.años, next: null };
 };
 
-/** El valor del hero es rodable (dígitos y separadores) o frase ("menos de un"). */
-const isRollable = (value: string): boolean => /^[\d.,]+$/.test(value);
-
 export interface ResultViewProps {
   countryCode: string;
   countryName: string;
@@ -211,6 +211,17 @@ export default function ResultView({
     const p4 = Math.round((med * 1.35) / 50) * 50;
     const p5 = Math.round((med * 1.75) / 50) * 50;
     return Array.from(new Set([p1, p2, p3, p4, p5])).filter((n) => n > 0);
+  }, [medianNetMonthly]);
+
+  /** Límites mínimo y máximo para el slider continuo de nómina */
+  const sliderMin = useMemo(() => {
+    const med = medianNetMonthly ?? 1800;
+    return Math.max(300, Math.round((med * 0.45) / 50) * 50);
+  }, [medianNetMonthly]);
+
+  const sliderMax = useMemo(() => {
+    const med = medianNetMonthly ?? 1800;
+    return Math.round((med * 2.8) / 50) * 50;
   }, [medianNetMonthly]);
 
   // Montaje: storage + query params (los params PISAN el storage, SPEC §7).
@@ -841,37 +852,18 @@ export default function ResultView({
       </div>
 
       {/* =========================================================================
-          BLOQUE 2: EL NÚCLEO DE IMPACTO (Odómetro Monumental & Subtítulo Humano)
+          BLOQUE 2: EL NÚCLEO DE IMPACTO (Tacómetro Radial & Contador Cinético)
           ========================================================================= */}
       <section class="mt-4" aria-label={heroAria}>
-        <div class="flex items-end gap-4 md:gap-6 flex-wrap">
-          {isRollable(effectiveHeroValue) ? (
-            <Odometer
-              value={effectiveHeroValue}
-              label={heroAria}
-              class="text-[clamp(4rem,14vw,10rem)] leading-none"
-            />
-          ) : (
-            <p
-              class="font-signage text-[clamp(3rem,10vw,7rem)] leading-none"
-              aria-label={heroAria}
-            >
-              {effectiveHeroValue}{" "}
-              <span class="text-primary">{effectiveHeroUnit}</span>
-            </p>
-          )}
-          {isRollable(effectiveHeroValue) && (
-            <span class="font-signage uppercase text-primary text-[clamp(1.5rem,4vw,3rem)] leading-none pb-1 md:pb-3">
-              {effectiveHeroUnit}
-            </span>
-          )}
-        </div>
-        {!isLifeMode && (
-          <p class="mt-4 text-lg md:text-xl opacity-90 break-words">{home.fullPayTail(phrase)}</p>
-        )}
-        {!isLifeMode && hero.next && (
-          <p class="mt-1 font-board-mono text-sm opacity-85 break-words">= {hero.next}</p>
-        )}
+        <ChronoGauge
+          value={effectiveHeroValue}
+          unit={effectiveHeroUnit}
+          label={heroAria}
+          pctMonth={computed && netMonthly && effectivePrice != null ? (effectivePrice / netMonthly) * 100 : 15}
+          secondaryText={!isLifeMode && hero.next ? `= ${hero.next}` : null}
+          fullPayTail={!isLifeMode ? home.fullPayTail(phrase) : null}
+          isLifeMode={isLifeMode}
+        />
       </section>
 
       {/* =========================================================================
@@ -938,6 +930,41 @@ export default function ResultView({
           ))}
         </div>
 
+        {/* Slider Continuo de Nómina (Scrubber Táctil a 60 FPS) */}
+        <div class="mt-4 pt-3 border-t border-base-300/80 space-y-2">
+          <div class="flex items-center justify-between text-xs font-board-mono">
+            <span class="opacity-80 flex items-center gap-1.5">
+              <span>⚡</span>
+              <span>Desliza para simular en tiempo real:</span>
+            </span>
+            <span class="font-bold text-primary bg-base-200 px-2.5 py-0.5 rounded border border-base-300">
+              {state.netMonthly ?? medianNetMonthly ?? 1800} {currencySymbol}/mes
+            </span>
+          </div>
+
+          <input
+            type="range"
+            min={sliderMin}
+            max={sliderMax}
+            step={25}
+            value={state.netMonthly ?? medianNetMonthly ?? 1800}
+            onInput={(e) => {
+              const val = Number((e.target as HTMLInputElement).value);
+              if (Number.isFinite(val) && val > 0) {
+                applyPresetSalary(val);
+              }
+            }}
+            class="salary-slider"
+            aria-label="Ajustar nómina mensual en tiempo real"
+          />
+
+          <div class="flex justify-between text-[11px] font-board-mono opacity-60">
+            <span>{sliderMin} {currencySymbol}</span>
+            <span>Mediana: {medianNetMonthly} {currencySymbol}</span>
+            <span>{sliderMax} {currencySymbol}</span>
+          </div>
+        </div>
+
         {/* Formulario desplegable avanzado */}
         {isFormOpen && (
           <div class="mt-6 pt-5 border-t border-base-300">
@@ -952,6 +979,40 @@ export default function ResultView({
           </div>
         )}
       </div>
+
+      {/* =========================================================================
+          NUEVAS GRÁFICAS DE INTERACCIÓN & DOPAMINA VISUAL
+          ========================================================================= */}
+      {computed && effectivePrice != null && (
+        <section class="space-y-4" aria-label="Visualizaciones interactivas de esfuerzo">
+          {/* 1. Calendario del Mes Laboral (Días Cautivos vs Días Libres) */}
+          <WorkCalendarGrid
+            workdays8h={computed.workdays8h}
+            hours={computed.hours}
+            productName={displayName ?? "este producto"}
+            currencySymbol={currencySymbol}
+          />
+
+          {/* 2. Gráfica Comparativa Salarial de Esfuerzo */}
+          <SalaryBenchmarkChart
+            productPrice={effectivePrice}
+            currentNetMonthly={netMonthly ?? 1800}
+            medianNetMonthly={medianNetMonthly ?? 1800}
+            legalWeeklyHours={legalWeeklyHours}
+            realAnnualHours={realAnnualHours}
+            currencySymbol={currencySymbol}
+            onSelectSalary={(salary) => applyPresetSalary(salary)}
+          />
+
+          {/* 3. Simulador de Ahorro y Fecha de Compra Libre de Deuda */}
+          <SavingsSimulator
+            productPrice={effectivePrice}
+            netMonthly={netMonthly ?? 1800}
+            currencySymbol={currencySymbol}
+            productName={displayName ?? "este producto"}
+          />
+        </section>
+      )}
 
       {/* =========================================================================
           BLOQUE 4: PALANCA EXISTENCIAL (Modo Trabajo vs Modo Tiempo de Vida)

@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   calc,
+  calcHourlyWage,
   CalcError,
   WEEKS_PER_MONTH,
   STANDARD_DAY_HOURS,
@@ -78,5 +79,10 @@ describe("calc engine", () => {
     expect(() => calc({ ...baseInput, weeklyHours: 81 })).toThrow(CalcError);
     expect(() => calc({ ...baseInput, weeklyHours: MIN_WEEKLY_HOURS })).not.toThrow();
     expect(() => calc({ ...baseInput, weeklyHours: MAX_WEEKLY_HOURS })).not.toThrow();
+  });
+
+  it("calculates standalone hourly wage correctly", () => {
+    const wage = calcHourlyWage(1800, 40);
+    expect(wage).toBeCloseTo(1800 / (40 * (52 / 12)), 5);
   });
 });

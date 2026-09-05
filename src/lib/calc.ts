@@ -52,6 +52,11 @@ export class CalcError extends Error {
 const isPositiveFinite = (n: number): boolean =>
   Number.isFinite(n) && n > 0;
 
+/** Calcula el salario neto por hora a partir del sueldo mensual y la jornada semanal. */
+export function calcHourlyWage(netMonthly: number, weeklyHours: number): number {
+  return netMonthly / (weeklyHours * WEEKS_PER_MONTH);
+}
+
 /**
  * Calcula todas las magnitudes del producto a partir del precio y los datos
  * económicos del usuario (los suyos o los del país, resueltos con selectors).
@@ -76,7 +81,7 @@ export function calc(input: CalcInput): CalcResult {
     );
   }
 
-  const hourlyWage = input.netMonthly / (input.weeklyHours * WEEKS_PER_MONTH);
+  const hourlyWage = calcHourlyWage(input.netMonthly, input.weeklyHours);
   const hours = input.price / hourlyWage;
   const workdays8h = hours / STANDARD_DAY_HOURS;
   const weeks = hours / input.weeklyHours;
