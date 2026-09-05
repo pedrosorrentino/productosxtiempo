@@ -5,6 +5,7 @@ import { og } from '../i18n/es.ts';
 import type { Country, Product } from '../lib/types.ts';
 import countriesData from '../data/countries.json';
 import productsData from '../data/products.json';
+import { generateHomeHreflangs, generateWebSiteSchema } from '../lib/seo.ts';
 
 /**
  * Portada = tablero de cotizaciones. Todo el catálogo visible viaja a la isla
@@ -12,12 +13,18 @@ import productsData from '../data/products.json';
  * vivo, en el dispositivo, sin pedir nada al servidor. */
 const countries = countriesData as Country[];
 const products = (productsData as Product[]).filter((product) => product.visible);
+
+const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
+const hreflangs = generateHomeHreflangs(countries, siteUrl);
+const jsonLd = generateWebSiteSchema(siteUrl);
 ---
 
 <BaseLayout
   title={og.home.title}
   description={og.home.description}
   ogImage="/og/index.png"
+  hreflangs={hreflangs}
+  jsonLd={jsonLd}
 >
   <RateBoard client:load countries={countries} products={products} heroProductId="tesla-model-3" />
 </BaseLayout>

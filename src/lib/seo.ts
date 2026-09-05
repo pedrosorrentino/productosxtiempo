@@ -186,3 +186,68 @@ export function generateFAQSchema(faqs: Array<{ question: string; answer: string
     })),
   };
 }
+
+/**
+ * Genera Schema.org WebSite y Organization para la portada.
+ */
+export function generateWebSiteSchema(siteUrl: string = "https://precioentiempo.com") {
+  const cleanSite = siteUrl.replace(/\/$/, "");
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Precio en tiempo",
+      alternateName: ["PrecioEnTiempo", "precioentiempo.com"],
+      url: `${cleanSite}/`,
+      description: "Calculadora económica y conversor de precios a horas y jornadas de trabajo real.",
+      inLanguage: "es-ES",
+      publisher: {
+        "@type": "Organization",
+        name: "Precio en tiempo",
+        url: `${cleanSite}/`,
+        logo: {
+          "@type": "ImageObject",
+          url: `${cleanSite}/apple-touch-icon.png`,
+        },
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Precio en tiempo",
+      url: `${cleanSite}/`,
+      logo: `${cleanSite}/apple-touch-icon.png`,
+    },
+  ];
+}
+
+/**
+ * Genera hreflangs bidireccionales para la portada hacia los hubs nacionales.
+ */
+export function generateHomeHreflangs(
+  countries: Country[],
+  siteUrl: string = "https://precioentiempo.com"
+): HreflangLink[] {
+  const cleanSite = siteUrl.replace(/\/$/, "");
+  const links: HreflangLink[] = [];
+
+  for (const c of countries) {
+    const localeInfo = COUNTRY_LOCALES[c.code] ?? { hreflang: `es-${c.code}` };
+    links.push({
+      hreflang: localeInfo.hreflang,
+      href: `${cleanSite}/${c.slug}/`,
+    });
+  }
+
+  links.push({
+    hreflang: "es",
+    href: `${cleanSite}/`,
+  });
+
+  links.push({
+    hreflang: "x-default",
+    href: `${cleanSite}/`,
+  });
+
+  return links;
+}

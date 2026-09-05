@@ -4,6 +4,7 @@ import ResultView from '../../components/preact/ResultView.tsx';
 import { brand } from '../../i18n/es.ts';
 import type { Country } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
+import { generateHreflangs, generateBreadcrumbSchema } from '../../lib/seo.ts';
 
 export function getStaticPaths() {
   return countriesData.map((country) => ({
@@ -16,13 +17,32 @@ interface Props {
   country: Country;
 }
 
-const { country } = Astro.props;
+const { country } = Astro.props as Props;
+const allCountries = countriesData as Country[];
+
+const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
+const cleanSite = siteUrl.replace(/\/$/, "");
+const canonicalUrl = `${cleanSite}/${country.slug}/precio/`;
+const hreflangs = generateHreflangs(allCountries, "precio", undefined, siteUrl);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", url: `${cleanSite}/` },
+  { name: country.name, url: `${cleanSite}/${country.slug}/` },
+  { name: "Calculadora de Precio", url: canonicalUrl },
+]);
+
+const pageTitle = `Calculadora de Precios en Horas en ${country.name} · ${brand.name}`;
+const pageDescription = `Calcula cuántas horas y jornadas de trabajo te cuesta cualquier compra o gasto en ${country.name} (${country.currencySymbol}) según el salario mediano oficial o tu propia nómina.`;
 ---
 
 <BaseLayout
-  title={`${country.name} · ${brand.name}`}
-  description={brand.subtitle}
+  title={pageTitle}
+  description={pageDescription}
   currentCountrySlug={country.slug}
+  currentCountryCode={country.code}
+  ogImage={`/og/${country.slug}.png`}
+  hreflangs={hreflangs}
+  jsonLd={breadcrumbSchema}
 >
   <section class="max-w-5xl mx-auto px-4 py-8">
     <ResultView

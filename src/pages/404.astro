@@ -5,7 +5,7 @@ import { brand, notFound, cta } from '../i18n/es.ts';
 const title = `${notFound.code} · ${brand.name}`;
 ---
 
-<BaseLayout title={title} description={notFound.title}>
+<BaseLayout title={title} description={notFound.title} noindex={true}>
   <section class="max-w-2xl mx-auto px-4 py-16 text-center">
     <div class="board-plate p-8 md:p-12">
       <p class="font-signage text-8xl md:text-9xl text-primary leading-none tracking-tight">
