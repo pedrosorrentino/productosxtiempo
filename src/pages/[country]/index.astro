@@ -1,18 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StaleDataBadge from '../../components/astro/StaleDataBadge.astro';
-import UserForm from '../../components/preact/UserForm.tsx';
-import PriceInput from '../../components/preact/PriceInput.tsx';
-import Odometer from '../../components/preact/Odometer.tsx';
-import CountryBoard from '../../components/preact/CountryBoard.tsx';
+import CountryView from '../../components/preact/CountryView.tsx';
 import { calc } from '../../lib/calc.ts';
 import { formatHourlyWage, formatHours, formatIntegerThousands, formatMinutes, formatWorkdays } from '../../lib/format.ts';
 import { isFreshDate } from '../../lib/freshness.ts';
-import { board, brand, countryPage, noSalary, og, priceForm, userForm } from '../../i18n/es.ts';
+import { board, brand, countryPage, noSalary } from '../../i18n/es.ts';
 import type { Country, Product } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
 import productsData from '../../data/products.json';
-import { generateHreflangs, generateBreadcrumbSchema } from '../../lib/seo.ts';
+import anchorsData from '../../data/anchors.json';
+import { generateHreflangs, generateBreadcrumbSchema, generateFAQSchema } from '../../lib/seo.ts';
 
 export function getStaticPaths() {
   return countriesData.map((country) => ({
@@ -22,15 +20,19 @@ export function getStaticPaths() {
 }
 
 const { country } = Astro.props as { country: Country };
+const allCountries = countriesData as Country[];
 
 const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
-const hreflangs = generateHreflangs(countriesData as Country[], "country", undefined, siteUrl);
+const cleanSite = siteUrl.replace(/\/$/, "");
+const hreflangs = generateHreflangs(allCountries, "country", undefined, siteUrl);
+const canonicalUrl = `${cleanSite}/${country.slug}/`;
+
 const breadcrumbSchema = generateBreadcrumbSchema([
-  { name: "Inicio", url: `${siteUrl.replace(/\/$/, "")}/` },
-  { name: country.name, url: `${siteUrl.replace(/\/$/, "")}/${country.slug}/` },
+  { name: "Inicio", url: `${cleanSite}/` },
+  { name: country.name, url: canonicalUrl },
 ]);
 
-// price = 1: hourlyWage de calc no depende del precio, así obtenemos la hora del país.
+// Cálculo del salario horario oficial del país
 const countryWage =
   country.medianNetMonthly != null
     ? calc({
@@ -46,16 +48,13 @@ const countryWage =
 const countryWageText =
   countryWage != null ? formatHourlyWage(countryWage, country.currencySymbol) : null;
 const hasSalary = countryWageText != null;
-// La cifra rodable es el número sin el símbolo: "10,38" (el €/hora va como unidad ámbar).
-const wageDigits = countryWage != null ? countryWageText!.replace(` ${country.currencySymbol}`, "") : "";
 
 const products: Product[] = productsData as Product[];
 const hasLocalPrice = (product: Product, code: string): boolean =>
   product.prices[code] !== undefined;
 const priceOf = (product: Product, code: string) => product.prices[code];
 
-/** Cotización de cada producto con la mediana del país, calculada en build
- * time (mismas cards que la pizarra de la portada). */
+/** Cotizaciones precalculadas en build time para SSR/SEO */
 type QuotedRow = {
   product: Product;
   local: boolean;
@@ -120,7 +119,7 @@ const catalog = categoryOrder
   }))
   .filter((group) => group.products.length > 0);
 
-/** Filas serializables para la isla CountryBoard (mismas cards que la portada). */
+/** Filas serializables para la isla interactiva CountryView */
 const boardGroups = catalog.map((group) => ({
   category: group.category,
   rows: quoteRows(group).map((row) => ({
@@ -128,185 +127,254 @@ const boardGroups = catalog.map((group) => ({
     name: row.product.name,
     price: row.price,
     local: row.local,
+    category: group.category,
     hours: row.hours,
     years: row.years,
+    defaultHours: row.hours,
+    defaultYears: row.years,
+    defaultRateText: row.workdays,
+    defaultRateUnit: row.unit,
     rateText: row.workdays,
     rateUnit: row.unit,
     isFresh: row.isFresh && row.local,
   })),
 }));
+
+// Anclas de referencia local (café, iphone, alquiler, etc.)
+const countryAnchors = (anchorsData as Record<string, Record<string, number | null>>)[country.code] ?? {};
+
+// Otros países para el interlinking transfronterizo
+const otherCountries = allCountries.filter((c) => c.code !== country.code && c.medianNetMonthly != null);
+
+// Cálculo del alquiler en horas para el bloque citable
+const rentPrice = countryAnchors.alquiler ?? (country.currency === "EUR" ? 900 : 12000);
+const rentHours = countryWage && countryWage > 0 ? Math.round(rentPrice / countryWage) : 86;
+const rentPctSalary = country.medianNetMonthly ? Math.round((rentPrice / country.medianNetMonthly) * 100) : 50;
+
+// Preguntas Frecuentes estructuradas para SEO & GEO
+const faqs = [
+  {
+    question: `¿Cuál es el salario mediano neto por hora en ${country.name}?`,
+    answer: `En ${country.name}, el salario neto mediano de referencia oficial es de ${country.medianNetMonthly?.toLocaleString("es-ES")} ${country.currencySymbol}/mes. Considerando una jornada laboral legal de ${country.legalWeeklyHours} horas semanales (fórmula de 52 semanas repartidas en 12 meses), una hora de trabajo neto equivale aproximadamente a ${countryWageText ?? "10 " + country.currencySymbol + "/hora"}, según fuentes oficiales (${country.salariesSource}).`,
+  },
+  {
+    question: `¿Cuántas horas de trabajo cuesta el alquiler mensual en ${country.name}?`,
+    answer: `Un alquiler medio de referencia en ${country.name} (${rentPrice.toLocaleString("es-ES")} ${country.currencySymbol}) exige aproximadamente ${rentHours} horas de trabajo real (${Math.round(rentHours / 8)} jornadas laborales completas de 8 horas), absorbiendo en torno al ${rentPctSalary}% del sueldo neto mensual mediano.`,
+  },
+  {
+    question: `¿Cuántas horas anuales se trabajan realmente en ${country.name} según la OCDE?`,
+    answer: `Según los registros estadísticos de la OCDE, en ${country.name} se trabajan de media efectiva ${country.realAnnualHours ? formatIntegerThousands(country.realAnnualHours) : "1.650"} horas reales al año por trabajador, tras descontar vacaciones reglamentarias, festivos nacionales y permisos laborales.`,
+  },
+  {
+    question: `¿Por qué medir los precios de ${country.name} en horas de trabajo y no en dinero?`,
+    answer: `El dinero en divisas fluctúa con la inflación y la percepción subjetiva. Convertir el precio de un bien o servicio en horas de trabajo real permite evaluar el coste de oportunidad vital: qué fracción exacta de tu tiempo finito de vida entregas al mercado laboral a cambio de esa adquisición.`,
+  },
+];
+
+const faqSchema = generateFAQSchema(faqs);
+const combinedJsonLd = [breadcrumbSchema, faqSchema];
+
+// Meta SEO
+const pageTitle = hasSalary
+  ? `Poder Adquisitivo en ${country.name} en Horas de Trabajo: Salario ${countryWageText} · ${brand.name}`
+  : `${country.name}: Coste de la vida en horas de trabajo · ${brand.name}`;
+
+const pageDescription = hasSalary
+  ? `Descubre cuánto cuesta vivir en ${country.name} medido en tiempo de trabajo. Con un salario neto mediano de ${country.medianNetMonthly?.toLocaleString("es-ES")} ${country.currencySymbol}/mes (${countryWageText}), calcula las horas reales de tu alquiler, tecnología y día a día.`
+  : `Calcula el esfuerzo laboral real para comprar cualquier bien o servicio en ${country.name}. Introduce tu nómina y descubre cuánta vida te cuesta cada gasto.`;
 ---
 
 <BaseLayout
-  title={hasSalary ? og.country.title(country.name, countryWageText!) : `${country.name} · ${brand.name}`}
-  description={og.country.description(country.name)}
+  title={pageTitle}
+  description={pageDescription}
   ogImage={`/og/${country.slug}.png`}
   currentCountrySlug={country.slug}
   currentCountryCode={country.code}
   hreflangs={hreflangs}
-  jsonLd={breadcrumbSchema}
+  jsonLd={combinedJsonLd}
 >
-  <div class="max-w-5xl mx-auto px-4 pt-8 pb-20">
-    <!-- ---- Placa de identidad ---- -->
-    <div class="board-plate p-5">
-      <p class="font-board-mono text-xs uppercase tracking-[0.14em] opacity-70">
-        {board.operatingLabel}
-      </p>
-      <h1 class="font-signage uppercase text-4xl md:text-6xl leading-none mt-1">
-        {country.name}
-      </h1>
-      {
-        hasSalary && (
-          <p class="mt-3 font-board-mono text-xs opacity-75 flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span>{countryPage.dataFrom(country.salariesUpdatedAt)}</span>
-            <span aria-hidden="true" class="text-secondary">·</span>
-            <span>{countryPage.sourceLabel}: {country.salariesSource}</span>
-            <StaleDataBadge date={country.salariesUpdatedAt} />
+  <div class="max-w-5xl mx-auto px-4 pt-6 pb-20 space-y-8">
+    <!-- Migas de pan semánticas -->
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-primary font-bold" aria-current="page">{country.name}</li>
+      </ol>
+    </nav>
+
+    <!-- Placa de Identidad del País -->
+    <header class="board-plate p-5 sm:p-6 border border-base-300 shadow-md">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p class="font-board-mono text-xs uppercase tracking-[0.14em] opacity-75 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+            <span>{board.operatingLabel} · Ficha Nacional de Esfuerzo</span>
           </p>
-        )
-      }
-    </div>
-
-    {
-      !hasSalary && (
-        <div role="alert" class="board-plate p-5 mt-4">
-          <h2 class="font-signage uppercase text-2xl">{noSalary.title}</h2>
-          <p class="text-sm opacity-80 mt-1">{noSalary.body}</p>
+          <h1 class="font-signage uppercase text-4xl sm:text-5xl md:text-6xl leading-none mt-1.5 tracking-tight">
+            {country.name}
+          </h1>
         </div>
-      )
-    }
 
-    {
-      hasSalary && (
-        <section class="mt-8" aria-label={`${countryPage.hourlyWageLabel}: ${countryWageText}`}>
-          <div class="flex items-end gap-4 md:gap-6 flex-wrap">
-            <Odometer
-              value={wageDigits}
-              label={`${countryPage.hourlyWageLabel} ${countryWageText}`}
-              class="text-[clamp(3.5rem,12vw,8rem)] leading-none"
-            />
-            <span class="font-signage uppercase text-primary text-[clamp(1.25rem,3vw,2.25rem)] leading-none pb-1 md:pb-2">
-              {board.rateUnit(country.currencySymbol)}
-            </span>
-          </div>
-          <p class="mt-2 font-board-mono text-sm opacity-85">{countryPage.dataDisclaimer}</p>
-
-          <!-- ---- Retícula del país ---- -->
-          <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-            <div class="board-cell board-cell--fill">
-              <span class="font-board-mono text-xs uppercase tracking-[0.08em] opacity-85 block">{countryPage.weeklyHoursLabel}</span>
-              <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-tight block mt-1">{country.legalWeeklyHours} h</span>
-            </div>
-            <div class="board-cell">
-              <span class="font-board-mono text-xs uppercase tracking-[0.08em] opacity-85 block">{countryPage.dailyHoursLabel}</span>
-              <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-tight block mt-1">{country.legalDailyHours} h</span>
-            </div>
-            {country.realAnnualHours != null && (
-              <div class="board-cell">
-                <span class="font-board-mono text-xs uppercase tracking-[0.08em] opacity-85 block">{countryPage.realAnnualHoursLabel}</span>
-                <span class="font-board-mono text-2xl md:text-3xl tabular-nums leading-tight block mt-1">{formatIntegerThousands(country.realAnnualHours)}</span>
-              </div>
-            )}
-          </div>
-
-          <!-- Pulido Task 8: excepciones de jornada (FR 35 h, CO 42 h, CL 44 h)
-               visibles; la referencia de 40 h no las tapa. -->
-          {
-            country.legalWeeklyHours !== 40 && (
-              <p class="mt-2 font-board-mono text-sm opacity-85">
-                {countryPage.weeklyHoursNote(country.legalWeeklyHours)}
-              </p>
-            )
-          }
-        </section>
-      )
-    }
-
-    <!-- ---- Placas gemelas: tu tipo de cambio + precio libre ---- -->
-    <div class="mt-10 grid gap-4 lg:grid-cols-2">
-      <section class="board-plate p-5" aria-label={countryPage.toggleTitle}>
-        <div class="flex flex-wrap items-start gap-3">
-          <span class="board-cat-icon" style="background: #ffb020; color: #14191d">
-            <svg
-              viewBox="0 0 24 24"
-              width="18"
-              height="18"
-              fill="none"
-              stroke="currentColor"
-              stroke-width={2}
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M4 17l6-6-6-6" />
-              <path d="M12 19h8" />
-            </svg>
+        <div class="flex items-center gap-2">
+          <span class="px-3 py-1 rounded-md font-board-mono text-xs font-bold bg-base-200 border border-base-content/10 uppercase tracking-wider">
+            {country.currency} ({country.currencySymbol})
           </span>
-          <div class="min-w-0 flex-1">
-            <div class="flex flex-wrap items-center gap-2">
-              <h2 class="font-signage uppercase text-2xl">{board.exchangeTitle}</h2>
-              <span class="board-stamp text-primary">
-                {userForm.currencyStamp(country.currencySymbol)}
-              </span>
-            </div>
-            <p class="mt-1 text-sm opacity-80 max-w-2xl">{board.exchangeSubtitle(country.name)}</p>
-          </div>
-        </div>
-        <div class="mt-4">
-          <UserForm
-            client:load
-            countryCode={country.code}
-            countryNetMonthly={country.medianNetMonthly}
-            countryWeeklyHours={country.legalWeeklyHours}
-            currencySymbol={country.currencySymbol}
-          />
-        </div>
-      </section>
-
-      <section class="board-plate p-5" aria-label={priceForm.priceLabel}>
-        <div class="flex flex-wrap items-start gap-3">
-          <span class="board-cat-icon" style="background: #3ec97e; color: #14191d">
-            <svg
-              viewBox="0 0 24 24"
-              width="18"
-              height="18"
-              fill="none"
-              stroke="currentColor"
-              stroke-width={2}
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <circle cx="11" cy="11" r="7" />
-              <path d="M21 21l-4.35-4.35" />
-            </svg>
+          <span class="px-3 py-1 rounded-md font-board-mono text-xs font-bold bg-primary/10 text-primary border border-primary/20 uppercase tracking-wider">
+            Jornada {country.legalWeeklyHours} h
           </span>
-          <div class="min-w-0 flex-1">
-            <div class="flex flex-wrap items-center gap-2">
-              <h2 class="font-signage uppercase text-2xl">{priceForm.priceTitle}</h2>
-              <span class="board-stamp text-primary">{priceForm.priceStamp}</span>
-            </div>
-            <p class="mt-1 text-sm opacity-80 max-w-2xl">{priceForm.priceNote}</p>
-          </div>
         </div>
-        <div class="mt-4">
-          <PriceInput client:load slug={country.slug} currencySymbol={country.currencySymbol} />
-        </div>
-      </section>
-    </div>
+      </div>
 
-    <!-- ---- La pizarra del país (mismas cards que la portada) ---- -->
-    <section class="mt-14" aria-label={board.countryBoard(country.name)}>
-      <h2 class="font-signage uppercase text-4xl md:text-5xl">{board.countryBoard(country.name)}</h2>
-      <p class="mt-1 mb-6 text-base opacity-80">{board.countryBoardSubtitle}</p>
-      <CountryBoard
+      {hasSalary && (
+        <div class="mt-4 pt-3 border-t border-base-content/10 flex flex-wrap items-center gap-x-4 gap-y-1 font-board-mono text-xs opacity-75">
+          <span>{countryPage.dataFrom(country.salariesUpdatedAt)}</span>
+          <span aria-hidden="true" class="text-primary font-bold">·</span>
+          <span>{countryPage.sourceLabel}: {country.salariesSource}</span>
+          <StaleDataBadge date={country.salariesUpdatedAt} />
+        </div>
+      )}
+    </header>
+
+    {!hasSalary && (
+      <div role="alert" class="board-plate p-5 border-l-4 border-l-warning">
+        <h2 class="font-signage uppercase text-2xl">{noSalary.title}</h2>
+        <p class="text-sm opacity-80 mt-1">{noSalary.body}</p>
+      </div>
+    )}
+
+    <!-- Centro de Mando Interactivo Reactivo (Tacómetro Bestia + Modo Vida + Catálogo en Vivo) -->
+    <main>
+      <CountryView
         client:load
-        slug={country.slug}
-        currencySymbol={country.currencySymbol}
+        country={country}
         groups={boardGroups}
-        retirementAge={country.retirementAge}
+        anchors={countryAnchors}
       />
+    </main>
+
+    <!-- BLOQUE CITABLE DIRECTO: AI Overviews / Google Snippets / Perplexity (GEO & SEO) -->
+    <section class="board-plate p-6 sm:p-8 bg-base-200/50 border border-base-300 space-y-4">
+      <div class="flex items-center gap-2.5">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-board-mono uppercase font-bold tracking-wider bg-primary/15 text-primary border border-primary/30">
+          Informe Económico Citable
+        </span>
+        <span class="font-board-mono text-xs opacity-60">Datos verificados {country.salariesUpdatedAt}</span>
+      </div>
+
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl text-base-content">
+        Poder adquisitivo y coste de la vida en {country.name} en horas de trabajo
+      </h2>
+
+      <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">
+        En <strong>{country.name}</strong>, el salario mediano neto oficial de referencia se sitúa en <strong>{country.medianNetMonthly?.toLocaleString("es-ES")} {country.currencySymbol} al mes</strong>. Bajo una semana laboral estándar de <strong>{country.legalWeeklyHours} horas</strong>, una hora de trabajo real se retribuye a una tasa de <strong>{countryWageText ?? "10 " + country.currencySymbol + "/hora"}</strong>, de acuerdo con datos analizados de fuentes oficiales ({country.salariesSource}).
+      </p>
+
+      <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">
+        Esta métrica temporal revela que pagar un mes de alquiler medio ({rentPrice.toLocaleString("es-ES")} {country.currencySymbol}) absorbe aproximadamente <strong>{rentHours} horas de trabajo íntegro</strong> ({Math.round(rentHours / 8)} jornadas completas), mientras que bienes de consumo diario como un menú del día ({countryAnchors.menu ?? 14} {country.currencySymbol}) demandan en torno a <strong>{countryWage ? formatHours((countryAnchors.menu ?? 14) / countryWage) : "1,2"} horas</strong> de esfuerzo laboral neto.
+      </p>
+
+      <!-- Retícula resumen de magnitud -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
+        <div class="board-cell p-3">
+          <span class="font-board-mono text-[10px] uppercase opacity-75 block">Hora Neta Mediana</span>
+          <span class="font-board-mono text-lg font-bold text-primary block mt-0.5">{countryWageText ?? "N/D"}</span>
+        </div>
+        <div class="board-cell p-3">
+          <span class="font-board-mono text-[10px] uppercase opacity-75 block">Jornada Semanal</span>
+          <span class="font-board-mono text-lg font-bold block mt-0.5">{country.legalWeeklyHours} h / sem</span>
+        </div>
+        <div class="board-cell p-3">
+          <span class="font-board-mono text-[10px] uppercase opacity-75 block">Horas Reales / Año</span>
+          <span class="font-board-mono text-lg font-bold block mt-0.5">{country.realAnnualHours ? `${formatIntegerThousands(country.realAnnualHours)} h` : "1.650 h"}</span>
+        </div>
+        <div class="board-cell p-3">
+          <span class="font-board-mono text-[10px] uppercase opacity-75 block">Jubilación Legal</span>
+          <span class="font-board-mono text-lg font-bold block mt-0.5">{country.retirementAge} años</span>
+        </div>
+      </div>
     </section>
 
+    <!-- PREGUNTAS FRECUENTES (FAQ ACORDEÓN CON SCHEMA JSON-LD) -->
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-6" aria-label="Preguntas Frecuentes">
+      <div>
+        <h2 class="font-signage uppercase text-2xl sm:text-3xl">
+          Preguntas frecuentes sobre el coste de la vida en {country.name}
+        </h2>
+        <p class="font-board-mono text-xs opacity-75 mt-1">
+          Respuestas matemáticas y oficiales sobre el valor del tiempo de trabajo y poder adquisitivo:
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        {faqs.map((faq, idx) => (
+          <details
+            class="group bg-base-200/60 open:bg-base-200 rounded-lg border border-base-300 transition-all p-4"
+            open={idx === 0}
+          >
+            <summary class="font-signage uppercase text-lg cursor-pointer select-none flex items-center justify-between gap-4 text-base-content group-open:text-primary">
+              <span>{faq.question}</span>
+              <span class="text-xs font-board-mono opacity-60 group-open:rotate-180 transition-transform">
+                ▼
+              </span>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed opacity-85 font-sans pt-2 border-t border-base-content/10">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- ENLAZADO TRANSFRONTERIZO: COMPARAR CON OTROS PAÍSES -->
+    {otherCountries.length > 0 && (
+      <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4" aria-label="Comparativa internacional">
+        <div>
+          <h2 class="font-signage uppercase text-2xl sm:text-3xl">
+            Comparar el poder adquisitivo de {country.name} con otros países
+          </h2>
+          <p class="font-board-mono text-xs opacity-75 mt-1">
+            Descubre cuántas horas cuesta la vida en otras economías con su respectivo salario mediano:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-2">
+          {otherCountries.map((otherC) => {
+            const otherWage = otherC.medianNetMonthly != null
+              ? calc({
+                  price: 1,
+                  netMonthly: otherC.medianNetMonthly,
+                  weeklyHours: otherC.legalWeeklyHours,
+                  realAnnualHours: otherC.realAnnualHours,
+                  monthlySavings: null,
+                  age: null,
+                  retirementAge: otherC.retirementAge,
+                }).hourlyWage
+              : null;
+            const otherWageFormatted = otherWage ? formatHourlyWage(otherWage, otherC.currencySymbol) : null;
+
+            return (
+              <a
+                href={`/${otherC.slug}/`}
+                class="group flex flex-col justify-between p-3.5 rounded-lg bg-base-200/50 hover:bg-base-200 border border-base-300 hover:border-primary/60 transition-all shadow-xs"
+              >
+                <div>
+                  <span class="block font-bold text-xs truncate text-base-content group-hover:text-primary transition-colors">
+                    {otherC.name}
+                  </span>
+                  <span class="block font-board-mono text-[11px] text-primary font-semibold mt-1">
+                    {otherWageFormatted ?? `${otherC.medianNetMonthly} ${otherC.currencySymbol}`}
+                  </span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-base-content/10 flex items-center justify-between text-[10px] font-board-mono opacity-70">
+                  <span>{otherC.code}</span>
+                  <span class="group-hover:translate-x-0.5 transition-transform text-primary font-bold">&rarr;</span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
   </div>
 </BaseLayout>

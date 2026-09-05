@@ -168,3 +168,21 @@ export function generateMethodArticleSchema(siteUrl: string = "https://precioent
     },
   };
 }
+
+/**
+ * Genera Schema.org FAQPage para preguntas frecuentes.
+ */
+export function generateFAQSchema(faqs: Array<{ question: string; answer: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
