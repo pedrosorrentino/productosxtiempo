@@ -12,7 +12,7 @@ import { getCountry, getProductPrice } from "../../lib/selectors.ts";
 import { loadUserState, saveUserState } from "../../lib/storage.ts";
 import { parseUserStateFromQuery } from "../../lib/urls.ts";
 import type { Country, Product } from "../../lib/types.ts";
-import { isFreshDate, getLatestUpdatedProduct } from "../../lib/freshness.ts";
+import { isFreshDate } from "../../lib/freshness.ts";
 import { board, categories, home, noSalary, priceForm, result, shareText } from "../../i18n/es.ts";
 import UserForm, { type UserFormFields } from "./UserForm.tsx";
 import ShareButton from "./ShareButton.tsx";
@@ -23,7 +23,6 @@ import BoardRowCard, {
   CategoryIcon,
   nfPrice,
 } from "./BoardRowCard.tsx";
-import LifeBarControl from "./LifeBarControl.tsx";
 import LifeBattery from "./LifeBattery.tsx";
 import WorkBattery from "./WorkBattery.tsx";
 import TimeStream3D from "./TimeStream3D.tsx";
@@ -291,11 +290,6 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
 
   const userActive =
     userFields != null && (userFields.netMonthly != null || userFields.weeklyHours != null);
-
-  const latestUpdated = useMemo(
-    () => getLatestUpdatedProduct(products, country.code),
-    [products, country.code],
-  );
 
   const grouped = CATEGORY_ORDER.map((category) => ({
     category,
@@ -717,137 +711,270 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
       </section>
 
       {/* =========================================================================
-          BLOQUE 3: EL DISPARADOR DE DOPAMINA (Ajusta con tu nómina en vivo)
+          BLOQUE 3: CENTRO DE MANDO UNIFICADO (PERSPECTIVA + DATOS EN VIVO)
           ========================================================================= */}
       <section class="max-w-6xl mx-auto px-4 mt-8 md:mt-10">
         <div
-          class={`board-plate p-5 sm:p-6 transition-all duration-300 ${
+          class={`board-plate p-5 sm:p-7 transition-all duration-300 shadow-xl space-y-6 ${
             userActive
               ? "board-plate--active shadow-[0_0_35px_rgba(62,201,126,0.16)] border-accent/80 bg-accent/5"
-              : "border-primary/40 bg-base-200/50 hover:border-primary/70"
+              : "border-primary/40 bg-base-200/60 hover:border-primary/70"
           }`}
         >
-          {userActive ? (
-            /* Estado Personalizado: Feedback reactivo verde fósforo */
+          {/* 1. SELECCIÓN DE PERSPECTIVA: BOTONES DESTACADOS (TRABAJO VS TIEMPO DE VIDA) */}
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-base-content/10">
             <div>
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-base-300/80">
-                <div class="flex items-center gap-3">
-                  <span class="relative flex h-3.5 w-3.5 flex-shrink-0">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-accent"></span>
-                  </span>
-                  <div>
-                    <div class="flex items-center gap-2.5 flex-wrap">
-                      <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-accent bg-accent/20 border border-accent/40 px-2.5 py-0.5 rounded">
-                        ⚡ {board.yourDataStamp}
-                      </span>
-                      <span class="font-board-mono text-sm text-base-content font-medium">
-                        Tu valor hora:{" "}
-                        <strong class="text-accent text-base sm:text-lg font-bold tracking-tight">
-                          {formatHourlyWage(activeHourlyWage, country.currencySymbol)}/h
-                        </strong>
-                      </span>
-                    </div>
-                    <p class="font-board-mono text-xs text-base-content/75 mt-1">
-                      Nómina activa: <strong class="text-base-content">{userFields?.netMonthly} {country.currencySymbol}/mes</strong> ({userFields?.weeklyHours} h/semana)
-                      {userFields?.monthlySavings != null && ` · Ahorro: ${userFields.monthlySavings} ${country.currencySymbol}/mes`}
-                    </p>
+              <span class="font-board-mono text-xs uppercase tracking-widest opacity-70 block mb-2">
+                Elige tu perspectiva de análisis
+              </span>
+              <div class="flex flex-wrap items-center gap-2.5">
+                {/* Botón MODO TRABAJO (Destacado) */}
+                <button
+                  type="button"
+                  onClick={() => onViewModeChange("work")}
+                  class={`flex items-center gap-2.5 px-4 py-2.5 rounded-lg font-board-mono text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer select-none ${
+                    viewMode === "work"
+                      ? "bg-primary text-neutral-900 font-black shadow-lg ring-2 ring-primary/50 scale-[1.02]"
+                      : "bg-base-100 hover:bg-base-300 text-base-content/80 font-medium border border-base-content/15"
+                  }`}
+                  title="Ver cotizaciones en horas y jornadas de trabajo"
+                >
+                  <span class="text-xl">💼</span>
+                  <div class="text-left">
+                    <span class="block leading-none font-bold">Modo Trabajo</span>
+                    <span class="text-[10px] opacity-75 font-normal block mt-0.5 lowercase">horas y jornadas de curro</span>
                   </div>
-                </div>
+                </button>
 
-                <div class="flex items-center gap-2 self-end sm:self-auto flex-shrink-0">
-                  <button
-                    type="button"
-                    onClick={() => setIsFormOpen((prev) => !prev)}
-                    class="btn btn-sm btn-ghost border border-accent/50 text-accent hover:bg-accent hover:text-neutral-900 font-board-mono text-xs uppercase font-bold"
-                  >
-                    {isFormOpen ? "Cerrar ▲" : "Ajustes avanzados ✎"}
-                  </button>
+                {/* Botón MODO TIEMPO DE VIDA (Destacado) */}
+                <button
+                  type="button"
+                  onClick={() => onViewModeChange("life")}
+                  class={`flex items-center gap-2.5 px-4 py-2.5 rounded-lg font-board-mono text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer select-none relative ${
+                    viewMode === "life"
+                      ? "bg-warning text-neutral-900 font-black shadow-lg ring-2 ring-warning/50 scale-[1.02]"
+                      : "bg-base-100 hover:bg-base-300 text-base-content/80 font-medium border border-base-content/15"
+                  }`}
+                  title="Ver el impacto en semanas de tu vida finita"
+                >
+                  <span class="text-xl">⏳</span>
+                  <div class="text-left">
+                    <span class="block leading-none font-bold">Modo Tiempo de Vida</span>
+                    <span class="text-[10px] opacity-75 font-normal block mt-0.5 lowercase">semanas de futuro consumidas</span>
+                  </div>
+                  <span class="inline-block w-2 h-2 rounded-full bg-error animate-ping ml-1" />
+                </button>
+              </div>
+            </div>
+
+            {/* Estado de la cotización & botón de restablecer */}
+            <div class="flex items-center gap-2 self-start md:self-center flex-wrap">
+              {userActive ? (
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-board-mono text-xs font-bold text-accent bg-accent/15 border border-accent/30 px-3 py-1 rounded-full flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                    ⚡ Cotizando con tus datos
+                  </span>
                   <button
                     type="button"
                     onClick={onResetUserFields}
-                    class="btn btn-sm btn-ghost border border-base-300 text-base-content/70 hover:text-warning hover:border-warning font-board-mono text-xs uppercase"
+                    class="btn btn-xs btn-ghost border border-base-300 text-base-content/70 hover:text-warning hover:border-warning font-board-mono"
                     title="Restablecer a la mediana nacional de referencia"
                   >
                     ↺ Mediana ({country.medianNetMonthly} {country.currencySymbol})
                   </button>
                 </div>
+              ) : (
+                <span class="font-board-mono text-xs text-base-content/75 bg-base-100 px-3 py-1 rounded-full border border-base-content/10">
+                  📌 Mediana nacional ({country.name}: {formatHourlyWage(medianHourlyWage, country.currencySymbol)}/h)
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* 2. GRID UNIFICADO: CONFIGURACIÓN INTEGRAL DE DATOS (NÓMINA + EDAD + JORNADA) */}
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            {/* Columna 1: Tu Nómina y Valor de la Hora (7 cols) */}
+            <div class="lg:col-span-7 bg-base-100/70 p-4 sm:p-5 rounded-xl border border-base-content/10 flex flex-col justify-between space-y-4">
+              <div class="flex flex-wrap items-baseline justify-between gap-3">
+                <div>
+                  <span class="font-board-mono text-xs uppercase opacity-70 block">
+                    Tu valor hora neto
+                  </span>
+                  <div class="flex items-baseline gap-1.5 mt-0.5">
+                    <span class="font-signage text-3xl sm:text-4xl text-primary font-black tabular-nums">
+                      {formatHourlyWage(activeHourlyWage, country.currencySymbol)}
+                    </span>
+                    <span class="font-board-mono text-xs opacity-75 font-semibold">/ hora</span>
+                  </div>
+                </div>
+
+                <div class="text-left sm:text-right">
+                  <span class="font-board-mono text-xs opacity-70 block">Sueldo neto mensual</span>
+                  <div class="flex items-center gap-1.5 mt-0.5">
+                    <input
+                      type="number"
+                      min="300"
+                      max="20000"
+                      step="50"
+                      value={netMonthly ?? 1800}
+                      onInput={(e) => {
+                        const val = Number((e.target as HTMLInputElement).value);
+                        if (val > 0) applyPresetSalary(val);
+                      }}
+                      class="input input-xs w-28 font-board-mono text-right font-bold bg-base-200 text-primary border-base-content/20"
+                      aria-label="Salario neto mensual"
+                    />
+                    <span class="font-board-mono text-xs font-bold text-primary">{country.currencySymbol}</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Presets rápidos para cambiar en 1 clic */}
-              <div class="mt-4 flex items-center gap-2 flex-wrap">
-                <span class="font-board-mono text-xs opacity-75 mr-1">Probar otro sueldo:</span>
+              {/* Slider de Sueldo */}
+              <div>
+                <input
+                  type="range"
+                  min={Math.max(400, Math.round((country.medianNetMonthly ?? 1800) * 0.35))}
+                  max={Math.round((country.medianNetMonthly ?? 1800) * 3)}
+                  step="25"
+                  value={netMonthly ?? 1800}
+                  onInput={(e) => applyPresetSalary(Number((e.target as HTMLInputElement).value))}
+                  class="range range-primary range-sm w-full cursor-pointer"
+                  aria-label="Ajustar sueldo mensual con barra deslizante"
+                />
+              </div>
+
+              {/* Presets Rápidos de Nómina */}
+              <div class="flex items-center gap-1.5 flex-wrap pt-1">
+                <span class="font-board-mono text-[11px] opacity-70 mr-1">Sueldos de referencia:</span>
                 {salaryPresets.map((preset) => (
                   <button
                     type="button"
                     key={preset}
                     onClick={() => applyPresetSalary(preset)}
-                    class={`px-3 py-1 rounded font-board-mono text-xs font-semibold transition-all cursor-pointer ${
-                      userFields?.netMonthly === preset
-                        ? "bg-accent text-neutral-900 font-bold shadow-sm"
-                        : "bg-base-100 hover:bg-base-300 border border-base-300 text-base-content/85 hover:border-accent/50"
+                    class={`px-2.5 py-1 rounded font-board-mono text-xs font-semibold transition-all cursor-pointer ${
+                      netMonthly === preset
+                        ? "bg-primary text-neutral-900 font-bold shadow-xs"
+                        : "bg-base-200 hover:bg-base-300 text-base-content/85 border border-base-content/10"
                     }`}
                   >
                     {preset} {country.currencySymbol}
                   </button>
                 ))}
               </div>
+
+              {/* Ajuste Rápido de Jornada Semanal */}
+              <div class="flex items-center justify-between gap-2 pt-2 border-t border-base-content/10 text-xs font-board-mono opacity-80">
+                <span>Jornada semanal:</span>
+                <div class="flex items-center gap-1">
+                  {[35, 37.5, 40, 42].map((h) => (
+                    <button
+                      key={h}
+                      type="button"
+                      onClick={() => {
+                        setUserFields((prev) => ({
+                          netMonthly: prev?.netMonthly ?? country.medianNetMonthly ?? 1800,
+                          weeklyHours: h,
+                          monthlySavings: prev?.monthlySavings ?? null,
+                          age: prev?.age ?? null,
+                        }));
+                        saveUserState({ weeklyHours: h });
+                      }}
+                      class={`px-2 py-0.5 rounded text-[11px] font-board-mono transition-colors cursor-pointer ${
+                        weeklyHours === h
+                          ? "bg-primary/20 text-primary font-bold border border-primary/40"
+                          : "bg-base-200 hover:bg-base-300 text-base-content/70"
+                      }`}
+                    >
+                      {h} h/sem
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
-          ) : (
-            /* Estado Mediana Estándar: Invitación a personalizar */
-            <div>
-              <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+
+            {/* Columna 2: Tu Edad y Horizonte Existencial (5 cols) */}
+            <div class="lg:col-span-5 bg-base-100/70 p-4 sm:p-5 rounded-xl border border-base-content/10 flex flex-col justify-between space-y-4">
+              <div class="flex items-center justify-between gap-2">
                 <div>
-                  <div class="flex items-center gap-2 flex-wrap">
-                    <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 px-2.5 py-0.5 rounded">
-                      Modo estándar: Mediana nacional
-                    </span>
-                    {country.medianNetMonthly != null && (
-                      <span class="font-board-mono text-xs text-base-content/80">
-                        {country.name}: <strong class="text-base-content">{country.medianNetMonthly} {country.currencySymbol}/mes</strong> ({formatHourlyWage(medianHourlyWage, country.currencySymbol)}/h)
-                      </span>
-                    )}
-                  </div>
-                  <h3 class="font-signage uppercase text-xl sm:text-2xl mt-2 text-base-content">
-                    ¿Quieres saber cuántas horas te cuesta a ti según tu sueldo real?
-                  </h3>
-                  <p class="font-board-mono text-xs opacity-80 mt-1">
-                    Pulsa un sueldo rápido para que el odómetro gire y recalcule toda la página al instante:
-                  </p>
+                  <span class="font-board-mono text-xs uppercase opacity-70 block">
+                    ¿Qué edad tienes?
+                  </span>
+                  <span class="font-board-mono text-xs text-warning font-semibold block mt-0.5">
+                    Te quedan ~{Math.max(0, country.retirementAge - (userAge ?? 30))} años de trabajo activo
+                  </span>
                 </div>
 
+                {/* Contador de edad - / + */}
+                <div class="flex items-center gap-1 bg-base-200 p-1 rounded-lg border border-base-content/10">
+                  <button
+                    type="button"
+                    class="w-7 h-7 rounded bg-base-100 hover:bg-warning hover:text-neutral-900 font-bold transition-all flex items-center justify-center cursor-pointer text-sm"
+                    onClick={() => onUserAgeChange(Math.max(16, (userAge ?? 30) - 1))}
+                  >
+                    -
+                  </button>
+                  <span class="font-board-mono text-base font-bold text-warning px-2 tabular-nums">
+                    {userAge ?? 30} <span class="text-xs font-normal opacity-70">años</span>
+                  </span>
+                  <button
+                    type="button"
+                    class="w-7 h-7 rounded bg-base-100 hover:bg-warning hover:text-neutral-900 font-bold transition-all flex items-center justify-center cursor-pointer text-sm"
+                    onClick={() => onUserAgeChange(Math.min(80, (userAge ?? 30) + 1))}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* Slider de Edad */}
+              <div>
+                <input
+                  type="range"
+                  min="18"
+                  max="75"
+                  value={userAge ?? 30}
+                  onInput={(e) => onUserAgeChange(Number((e.target as HTMLInputElement).value))}
+                  class="range range-warning range-sm w-full cursor-pointer"
+                  aria-label="Ajustar edad con barra deslizante"
+                />
+                <div class="flex justify-between text-[10px] font-board-mono opacity-60 mt-1">
+                  <span>18 a (Comienzo)</span>
+                  <span>40 a (Medio)</span>
+                  <span>{country.retirementAge} a (Jubilación)</span>
+                </div>
+              </div>
+
+              {/* Métrica de Semanas Laborables Restantes */}
+              <div class="p-3 rounded-lg bg-warning/10 border border-warning/25 flex items-center justify-between font-board-mono text-xs">
+                <span class="opacity-80">Semanas laborales restantes:</span>
+                <strong class="text-warning font-bold text-sm tabular-nums">
+                  ~{Math.round(Math.max(0, country.retirementAge - (userAge ?? 30)) * 52).toLocaleString("es-ES")} semanas
+                </strong>
+              </div>
+
+              {/* Pie con enlace a opciones avanzadas */}
+              <div class="pt-2 border-t border-base-content/10 flex items-center justify-between">
                 <button
                   type="button"
                   onClick={() => setIsFormOpen((prev) => !prev)}
-                  class="btn btn-sm bg-primary hover:bg-primary/80 text-neutral-900 font-board-mono text-xs uppercase font-bold tracking-wider self-start lg:self-auto shrink-0 shadow-md"
+                  class="text-xs font-board-mono text-primary hover:underline cursor-pointer flex items-center gap-1"
                 >
-                  {isFormOpen ? "Cerrar ▲" : "⚡ Ajustar con mi nómina"}
+                  <span>{isFormOpen ? "Cerrar opciones ▲" : "Opciones avanzadas (ahorro...) ✎"}</span>
                 </button>
-              </div>
-
-              {/* Botones de Presets Rápidos */}
-              <div class="mt-4 pt-3 border-t border-base-300/80 flex items-center gap-2 flex-wrap">
-                <span class="font-board-mono text-xs opacity-75 mr-1">Elige un sueldo rápido:</span>
-                {salaryPresets.map((preset) => (
-                  <button
-                    type="button"
-                    key={preset}
-                    onClick={() => applyPresetSalary(preset)}
-                    class="px-3 py-1.5 rounded font-board-mono text-xs font-semibold bg-base-100 hover:bg-primary hover:text-neutral-900 border border-base-300 hover:border-primary transition-all cursor-pointer shadow-xs"
-                  >
-                    {preset} {country.currencySymbol}/mes
-                  </button>
-                ))}
+                <span class="text-[10px] font-board-mono opacity-50">
+                  Jubilación oficial: {country.retirementAge} años
+                </span>
               </div>
             </div>
-          )}
+          </div>
 
-          {/* Formulario avanzado expandible */}
+          {/* Formulario avanzado expandible (UserForm con ahorro mensual, etc.) */}
           {isFormOpen && (
-            <div class="mt-5 p-4 rounded bg-base-100 border border-base-300 shadow-inner">
-              <div class="flex items-center justify-between pb-3 mb-3 border-b border-base-300 text-xs font-board-mono text-base-content/80">
+            <div class="mt-4 p-4 rounded-xl bg-base-100 border border-base-300 shadow-inner">
+              <div class="flex items-center justify-between pb-3 mb-3 border-b border-base-content/10 text-xs font-board-mono text-base-content/80">
                 <span class="uppercase tracking-wider font-semibold text-primary">
-                  Personalización exacta de nómina y jornada
+                  Personalización detallada (Ahorro mensual y datos)
                 </span>
                 <span class="text-accent text-[0.75rem]">Recalcula todo el tablero al instante</span>
               </div>
@@ -863,64 +990,6 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
           )}
         </div>
       </section>
-
-      {/* =========================================================================
-          BLOQUE 4: LA PALANCA EXISTENCIAL (Modo Trabajo vs. Modo Vida)
-          ========================================================================= */}
-      <div class="max-w-6xl mx-auto px-4 mt-6">
-        <LifeBarControl
-          age={userAge}
-          viewMode={viewMode}
-          onAgeChange={onUserAgeChange}
-          onViewModeChange={onViewModeChange}
-          retirementAge={country.retirementAge}
-        />
-      </div>
-
-      {/* =========================================================================
-          BLOQUE 5: EL PULSO MECÁNICO (Ticker Rodante Continuo en Vivo)
-          ========================================================================= */}
-      {rows.length > 0 && (
-        <div class="board-ticker mt-10 md:mt-14" aria-label={board.tickerLabel}>
-          <span class="board-live" title="En vivo">
-            <span class="board-live-dot" aria-hidden="true" />
-            <span class="hidden sm:inline">En vivo</span>
-          </span>
-          <div class="board-ticker-window">
-            <div class="board-ticker-track">
-              {[0, 1].map((copy) => (
-                <div
-                  class="flex gap-10 pr-10"
-                  key={copy}
-                  aria-hidden={copy === 1 ? "true" : undefined}
-                >
-                  {latestUpdated && (
-                    <span class="board-ticker-item text-primary font-medium" key="latest-update">
-                      <span class="text-accent mr-1.5">●</span>
-                      ACTUALIZACIÓN: {latestUpdated.product.shortName} ({latestUpdated.source})
-                      <span aria-hidden="true" class="board-ticker-dot mx-2">
-                        ·
-                      </span>
-                    </span>
-                  )}
-                  {rows.map((row) => {
-                    const rate = rateOf(row);
-                    return (
-                      <span class="board-ticker-item" key={row.product.id}>
-                        {row.product.shortName}
-                        <span aria-hidden="true" class="board-ticker-dot mx-2">
-                          ·
-                        </span>
-                        <strong>{rate.text}</strong> {rate.unit}
-                      </span>
-                    );
-                  })}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* =========================================================================
           BLOQUE 6: LA PIZARRA DE COTIZACIONES (Catálogo por Categorías con Filtros)
