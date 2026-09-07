@@ -423,7 +423,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-base-300/80 text-xs font-board-mono">
             <div class="flex items-center gap-2 text-base-content/75">
               <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse shrink-0"></span>
-              <span class="uppercase tracking-[0.1em] font-medium text-[11px] sm:text-xs">
+              <span class="uppercase tracking-[0.1em] font-medium text-xs sm:text-sm">
                 Estación de Cotizaciones · Tiempo Real
               </span>
             </div>
@@ -433,7 +433,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               title="Catálogo activo sincronizado"
             >
               <span class="board-live-dot shrink-0"></span>
-              <span class="tracking-wider uppercase text-[0.7rem] sm:text-xs">
+              <span class="tracking-wider uppercase text-xs sm:text-sm">
                 Catálogo activo · {products.length} artículos
               </span>
             </div>
@@ -560,7 +560,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   Ref. {hero.priceDate}
                 </span>
                 {hero.converted && (
-                  <span class="board-stamp text-info text-[10px] py-0.5" title={result.convertedPriceNote}>
+                  <span class="board-stamp text-info text-xs py-0.5" title={result.convertedPriceNote}>
                     {board.esRefBadge}
                   </span>
                 )}
@@ -603,13 +603,13 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   key={`cost-badge-${hero.product.id}`}
                   class="board-hero-swap self-start lg:self-center shrink-0 bg-base-100/90 border border-primary/30 shadow-md px-4 py-2.5 rounded-lg text-left lg:text-right"
                 >
-                  <span class="font-board-mono text-[10px] sm:text-xs uppercase tracking-wider text-base-content/70 block">
+                  <span class="font-board-mono text-xs sm:text-sm uppercase tracking-wider text-base-content/70 block">
                     Equivale exactamente a
                   </span>
                   <span class="font-signage text-2xl sm:text-3xl md:text-4xl text-primary uppercase font-bold tracking-tight block">
                     {heroPhrase}
                   </span>
-                  <span class="font-board-mono text-[11px] text-base-content/60 block">
+                  <span class="font-board-mono text-xs sm:text-sm text-base-content/70 block">
                     de trabajo neto ({formatHours(hero.hours)} h de esfuerzo)
                   </span>
                 </div>
@@ -743,8 +743,8 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 >
                   <span class="text-xl shrink-0">💼</span>
                   <div class="text-left min-w-0">
-                    <span class="block leading-none font-bold text-xs sm:text-sm">Modo Trabajo</span>
-                    <span class="text-[10px] opacity-75 font-normal block mt-0.5 lowercase">horas y jornadas de curro</span>
+                    <span class="block leading-none font-bold text-sm sm:text-base">Modo Trabajo</span>
+                    <span class="text-xs opacity-80 font-normal block mt-0.5 lowercase">horas y jornadas de curro</span>
                   </div>
                 </button>
 
@@ -761,8 +761,8 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 >
                   <span class="text-xl shrink-0">⏳</span>
                   <div class="text-left min-w-0">
-                    <span class="block leading-none font-bold text-xs sm:text-sm">Modo Tiempo de Vida</span>
-                    <span class="text-[10px] opacity-75 font-normal block mt-0.5 lowercase">semanas de futuro consumidas</span>
+                    <span class="block leading-none font-bold text-sm sm:text-base">Modo Tiempo de Vida</span>
+                    <span class="text-xs opacity-80 font-normal block mt-0.5 lowercase">semanas de futuro consumidas</span>
                   </div>
                   <span class="inline-block w-2 h-2 rounded-full bg-error animate-ping ml-auto" />
                 </button>
@@ -848,13 +848,13 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
 
               {/* Presets Rápidos de Nómina */}
               <div class="flex items-center gap-1.5 flex-wrap pt-1">
-                <span class="font-board-mono text-[11px] opacity-70 mr-1">Sueldos de referencia:</span>
+                <span class="font-board-mono text-xs opacity-75 mr-1">Sueldos de referencia:</span>
                 {salaryPresets.map((preset) => (
                   <button
                     type="button"
                     key={preset}
                     onClick={() => applyPresetSalary(preset)}
-                    class={`px-2.5 py-1 rounded font-board-mono text-xs font-semibold transition-all cursor-pointer ${
+                    class={`px-2.5 py-1 rounded font-board-mono text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                       netMonthly === preset
                         ? "bg-primary text-neutral-900 font-bold shadow-xs"
                         : "bg-base-200 hover:bg-base-300 text-base-content/85 border border-base-content/10"
@@ -866,7 +866,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               </div>
 
               {/* Ajuste Rápido de Jornada Semanal */}
-              <div class="flex items-center justify-between gap-2 pt-2 border-t border-base-content/10 text-xs font-board-mono opacity-80">
+              <div class="flex items-center justify-between gap-2 pt-2 border-t border-base-content/10 text-xs sm:text-sm font-board-mono opacity-80">
                 <span>Jornada semanal:</span>
                 <div class="flex items-center gap-1">
                   {[35, 37.5, 40, 42].map((h) => (
@@ -882,10 +882,10 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                         }));
                         saveUserState({ weeklyHours: h });
                       }}
-                      class={`px-2 py-0.5 rounded text-[11px] font-board-mono transition-colors cursor-pointer ${
+                      class={`px-2.5 py-0.5 rounded text-xs font-board-mono transition-colors cursor-pointer ${
                         weeklyHours === h
                           ? "bg-primary/20 text-primary font-bold border border-primary/40"
-                          : "bg-base-200 hover:bg-base-300 text-base-content/70"
+                          : "bg-base-200 hover:bg-base-300 text-base-content/75"
                       }`}
                     >
                       {h} h/sem
@@ -940,7 +940,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   class="range range-warning range-sm w-full cursor-pointer"
                   aria-label="Ajustar edad con barra deslizante"
                 />
-                <div class="flex justify-between text-[10px] font-board-mono opacity-60 mt-1">
+                <div class="flex justify-between text-xs font-board-mono opacity-70 mt-1">
                   <span>18 a (Comienzo)</span>
                   <span>40 a (Medio)</span>
                   <span>{country.retirementAge} a (Jubilación)</span>
@@ -948,9 +948,9 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               </div>
 
               {/* Métrica de Semanas Laborables Restantes */}
-              <div class="p-3 rounded-lg bg-warning/10 border border-warning/25 flex items-center justify-between font-board-mono text-xs">
+              <div class="p-3 rounded-lg bg-warning/10 border border-warning/25 flex items-center justify-between font-board-mono text-xs sm:text-sm">
                 <span class="opacity-80">Semanas laborales restantes:</span>
-                <strong class="text-warning font-bold text-sm tabular-nums">
+                <strong class="text-warning font-bold text-sm sm:text-base tabular-nums">
                   ~{Math.round(Math.max(0, country.retirementAge - (userAge ?? 30)) * 52).toLocaleString("es-ES")} semanas
                 </strong>
               </div>
@@ -960,11 +960,11 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 <button
                   type="button"
                   onClick={() => setIsFormOpen((prev) => !prev)}
-                  class="text-xs font-board-mono text-primary hover:underline cursor-pointer flex items-center gap-1"
+                  class="text-xs sm:text-sm font-board-mono text-primary hover:underline cursor-pointer flex items-center gap-1 font-medium"
                 >
                   <span>{isFormOpen ? "Cerrar opciones ▲" : "Opciones avanzadas (ahorro...) ✎"}</span>
                 </button>
-                <span class="text-[10px] font-board-mono opacity-50">
+                <span class="text-xs font-board-mono opacity-60">
                   Jubilación oficial: {country.retirementAge} años
                 </span>
               </div>
@@ -978,7 +978,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 <span class="uppercase tracking-wider font-semibold text-primary">
                   Personalización detallada (Ahorro mensual y datos)
                 </span>
-                <span class="text-accent text-[0.75rem]">Recalcula todo el tablero al instante</span>
+                <span class="text-accent text-xs font-semibold">Recalcula todo el tablero al instante</span>
               </div>
               <UserForm
                 countryCode={country.code}
@@ -998,21 +998,22 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
           ========================================================================= */}
       {rows.length > 0 && (
         <section class="max-w-6xl mx-auto px-4 mt-12 md:mt-16">
-          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+          {/* Cabecera de la pizarra + Filtros en línea inferior */}
+          <div class="mb-6 space-y-3.5">
             <div>
               <h2 class="font-signage uppercase text-4xl md:text-5xl">{board.boardTitle}</h2>
-              <p class="mt-1 text-base opacity-80">{board.boardSubtitle}</p>
+              <p class="mt-1.5 text-base md:text-lg opacity-85 leading-relaxed">{board.boardSubtitle}</p>
             </div>
 
-            {/* Píldoras de Filtro Rápido por Categoría */}
-            <div class="flex items-center gap-1.5 flex-wrap">
+            {/* Píldoras de Filtro Rápido por Categoría: colocadas directamente en la línea debajo de la descripción */}
+            <div class="flex items-center gap-2 flex-wrap pt-1">
               <button
                 type="button"
                 onClick={() => setSelectedCategory("todas")}
-                class={`px-3 py-1.5 rounded font-board-mono text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                class={`px-3.5 py-1.5 rounded-lg font-board-mono text-xs md:text-sm font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                   selectedCategory === "todas"
                     ? "bg-primary text-neutral-900 shadow-sm font-bold"
-                    : "bg-base-200 hover:bg-base-300 text-base-content/80 border border-base-300"
+                    : "bg-base-200 hover:bg-base-300 text-base-content/85 border border-base-300"
                 }`}
               >
                 Todas ({rows.length})
@@ -1025,10 +1026,10 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                     type="button"
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    class={`px-3 py-1.5 rounded font-board-mono text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                    class={`px-3.5 py-1.5 rounded-lg font-board-mono text-xs md:text-sm font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                       selectedCategory === cat
                         ? "bg-primary text-neutral-900 shadow-sm font-bold"
-                        : "bg-base-200 hover:bg-base-300 text-base-content/80 border border-base-300"
+                        : "bg-base-200 hover:bg-base-300 text-base-content/85 border border-base-300"
                     }`}
                   >
                     {categories[cat]} ({count})

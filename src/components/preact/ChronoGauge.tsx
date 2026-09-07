@@ -186,7 +186,7 @@ export default function ChronoGauge({
 
           {/* Centro del Tacómetro: % de la Nómina o % de Vida Restante */}
           <div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none pt-2">
-            <span class="font-board-mono text-[11px] uppercase tracking-wider text-base-content/70">
+            <span class="font-board-mono text-xs uppercase tracking-wider text-base-content/75 font-semibold">
               {centerTop}
             </span>
             <span
@@ -199,7 +199,7 @@ export default function ChronoGauge({
                 ? `${safePct.toFixed(1).replace(".", ",")}%`
                 : `${Math.round(safePct)}%`}
             </span>
-            <span class="font-board-mono text-[10px] text-base-content/60">
+            <span class="font-board-mono text-xs text-base-content/70">
               {centerBottom}
             </span>
           </div>
@@ -208,10 +208,10 @@ export default function ChronoGauge({
         {/* Centro/Derecha: Cifra Heroica Gigante con Micro-Animación */}
         <div class="flex-1 text-center lg:text-left min-w-0">
           <div class="flex items-center justify-center lg:justify-start gap-2 mb-2 flex-wrap">
-            <span class={`font-board-mono text-xs uppercase px-2.5 py-0.5 rounded border font-bold ${badgeClass}`}>
+            <span class={`font-board-mono text-sm uppercase px-3 py-1 rounded-md border font-bold ${badgeClass}`}>
               {impactBadge}
             </span>
-            <span class="font-board-mono text-xs text-base-content/65">
+            <span class="font-board-mono text-sm text-base-content/75">
               {isLifeMode ? "Impacto en tu tiempo de vida" : "Esfuerzo real requerido"}
             </span>
           </div>

@@ -177,7 +177,7 @@ export default function BoardRowCard({
               </svg>
             </span>
             <div class="min-w-0 flex-1">
-              <div class="font-medium text-sm text-base-content flex items-center gap-1.5 leading-snug">
+              <div class="font-semibold text-base text-base-content flex items-center gap-1.5 leading-snug">
                 <span class="truncate">{name}</span>
                 {isFresh && !converted && (
                   <span
@@ -185,22 +185,22 @@ export default function BoardRowCard({
                     title="Cotización reciente"
                     aria-label="Cotización reciente"
                   >
-                    <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true">
                       <path d="M12 2l2.4 7.2 7.6 2.4-7.6 2.4-2.4 7.2-2.4-7.2-7.6-2.4 7.6-2.4z" />
                     </svg>
                   </span>
                 )}
               </div>
-              <div class="font-board-mono text-xs text-base-content/75 mt-0.5">
+              <div class="font-board-mono text-sm text-base-content/85 mt-0.5">
                 {price != null ? (
                   <>
-                    <strong class="font-semibold text-base-content/90">{nfPrice.format(price)} {priceSymbol}</strong>
+                    <strong class="font-bold text-base-content/95">{nfPrice.format(price)} {priceSymbol}</strong>
                   </>
                 ) : (
-                  <span class="board-stamp text-info text-[0.65rem]">{priceFallback}</span>
+                  <span class="board-stamp text-info text-xs">{priceFallback}</span>
                 )}
                 {converted && (
-                  <span title={result.convertedPriceNote} class="ml-1 text-[0.65rem] opacity-70">
+                  <span title={result.convertedPriceNote} class="ml-1 text-xs opacity-75">
                     {board.esRefBadge}
                   </span>
                 )}
@@ -213,28 +213,28 @@ export default function BoardRowCard({
             <div>
               {isLifeMode && pctCareerLeft != null ? (
                 <>
-                  <span class="font-board-mono text-lg tabular-nums leading-none block font-bold" style={`color: ${threat.color}`}>
+                  <span class="font-board-mono text-xl tabular-nums leading-none block font-bold" style={`color: ${threat.color}`}>
                     -{formatPercent(pctCareerLeft)}%
                   </span>
-                  <span class="font-board-mono text-[0.65rem] uppercase tracking-wider opacity-75 block mt-0.5">
+                  <span class="font-board-mono text-xs uppercase tracking-wider opacity-75 block mt-0.5">
                     de tu vida
                   </span>
                 </>
               ) : rateText != null ? (
                 <>
-                  <span class="font-board-mono text-lg tabular-nums leading-none block text-primary font-bold">
+                  <span class="font-board-mono text-xl tabular-nums leading-none block text-primary font-bold">
                     {rateText}
                   </span>
-                  <span class="font-board-mono text-[0.65rem] uppercase tracking-wider text-base-content/75 block mt-0.5">
+                  <span class="font-board-mono text-xs uppercase tracking-wider text-base-content/80 block mt-0.5">
                     {rateUnit}
                   </span>
                 </>
               ) : (
-                <span class="font-board-mono text-xs uppercase opacity-80">{rateCta} →</span>
+                <span class="font-board-mono text-sm uppercase opacity-85 font-medium">{rateCta} →</span>
               )}
             </div>
             <span class="board-row-arrow shrink-0 text-base-content/40" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width={2} stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width={2} stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </span>
@@ -246,14 +246,14 @@ export default function BoardRowCard({
           {/* Badge de Nivel de Esfuerzo o Amenaza de Vida */}
           {isLifeMode && pctCareerLeft != null ? (
             <span
-              class={`inline-flex items-center gap-1 font-board-mono text-[0.68rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded border shrink-0 select-none ${threat.badgeClass}`}
+              class={`inline-flex items-center gap-1 font-board-mono text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded border shrink-0 select-none ${threat.badgeClass}`}
             >
               <span>{threat.emoji}</span>
               <span>{threat.shortLabel}</span>
             </span>
           ) : (
             <span
-              class={`inline-flex items-center gap-1 font-board-mono text-[0.68rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded border shrink-0 select-none ${workEffort.badgeClass}`}
+              class={`inline-flex items-center gap-1 font-board-mono text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded border shrink-0 select-none ${workEffort.badgeClass}`}
             >
               <span>{workEffort.emoji}</span>
               <span>{workEffort.shortLabel}</span>
@@ -262,7 +262,7 @@ export default function BoardRowCard({
 
           {/* Barra de Esfuerzo / Vida */}
           <div class="flex items-center gap-2 flex-1 justify-end min-w-0">
-            <span class="text-[0.7rem] text-base-content/75 truncate text-right">
+            <span class="text-xs text-base-content/80 truncate text-right">
               {isLifeMode && pctCareerLeft != null
                 ? `${formatPercent(pctCareerLeft)}% futuro (${yearsLeft}a)`
                 : salaryPct != null
@@ -270,7 +270,7 @@ export default function BoardRowCard({
                 : ""}
             </span>
             <div
-              class="w-16 h-1.5 bg-base-300 rounded overflow-hidden shrink-0"
+              class="w-16 h-2 bg-base-300 rounded overflow-hidden shrink-0"
               aria-hidden="true"
             >
               <span
@@ -305,8 +305,8 @@ export default function BoardRowCard({
           </svg>
         </span>
         <span class="min-w-0">
-          <span class="flex items-baseline gap-2">
-            <span class="min-w-0 truncate font-medium flex items-center gap-1.5">
+          <span class="flex items-baseline gap-2.5">
+            <span class="min-w-0 truncate font-semibold text-base sm:text-lg flex items-center gap-1.5">
               <span class="truncate">{name}</span>
               {isFresh && !converted && (
                 <span
@@ -326,16 +326,16 @@ export default function BoardRowCard({
                 </span>
               )}
             </span>
-            <span class="font-board-mono text-sm opacity-85 whitespace-nowrap shrink-0">
+            <span class="font-board-mono text-sm sm:text-base opacity-90 whitespace-nowrap shrink-0">
               {price != null ? (
                 <>
-                  {nfPrice.format(price)} {priceSymbol}
+                  <strong class="font-semibold text-base-content/95">{nfPrice.format(price)} {priceSymbol}</strong>
                 </>
               ) : (
                 <span class="board-stamp text-info">{priceFallback}</span>
               )}
               {converted && (
-                <span title={result.convertedPriceNote} class="ml-1">
+                <span title={result.convertedPriceNote} class="ml-1 text-xs opacity-75">
                   {board.esRefBadge}
                 </span>
               )}
@@ -344,7 +344,7 @@ export default function BoardRowCard({
           {isLifeMode ? (
             /* Modo Vida activo: la barra de vida es la protagonista absoluta */
             <span class="flex items-center gap-2 mt-1.5 min-w-0">
-              <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-90 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate flex items-center gap-1.5">
+              <span class="font-board-mono text-xs sm:text-sm uppercase tracking-[0.06em] opacity-90 max-w-[10.5rem] sm:max-w-[16rem] sm:w-64 shrink-0 truncate flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full inline-block shrink-0" style={`background: ${threat.color}`} />
                 <span class="font-bold text-base-content truncate">
                   {pctCareerLeft != null
@@ -353,7 +353,7 @@ export default function BoardRowCard({
                 </span>
               </span>
               <span
-                class="flex-1 h-[5px] bg-base-300 rounded overflow-hidden min-w-[1.5rem]"
+                class="flex-1 h-[6px] bg-base-300 rounded overflow-hidden min-w-[1.5rem]"
                 aria-hidden="true"
               >
                 <span
@@ -367,11 +367,11 @@ export default function BoardRowCard({
             <>
               {salaryPct != null && (
                 <span class="flex items-center gap-2 mt-1.5 min-w-0">
-                  <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate">
+                  <span class="font-board-mono text-xs sm:text-sm uppercase tracking-[0.06em] opacity-85 max-w-[10.5rem] sm:max-w-[16rem] sm:w-64 shrink-0 truncate">
                     {board.salaryBarLabel(formatPercent(salaryPct))}
                   </span>
                   <span
-                    class="flex-1 h-[4px] bg-base-300 overflow-hidden min-w-[1.5rem]"
+                    class="flex-1 h-[5px] bg-base-300 rounded overflow-hidden min-w-[1.5rem]"
                     aria-hidden="true"
                   >
                     <span
@@ -383,11 +383,11 @@ export default function BoardRowCard({
               )}
               {pctCareerLeft != null && userAge != null && (
                 <span class="flex items-center gap-2 mt-1 min-w-0">
-                  <span class="font-board-mono text-xs uppercase tracking-[0.06em] opacity-80 max-w-[10.5rem] sm:max-w-[15rem] sm:w-60 shrink-0 truncate">
+                  <span class="font-board-mono text-xs sm:text-sm uppercase tracking-[0.06em] opacity-85 max-w-[10.5rem] sm:max-w-[16rem] sm:w-64 shrink-0 truncate">
                     {formatPercent(pctCareerLeft)}% de tu vida restante
                   </span>
                   <span
-                    class="flex-1 h-[4px] bg-base-300 overflow-hidden min-w-[1.5rem]"
+                    class="flex-1 h-[5px] bg-base-300 rounded overflow-hidden min-w-[1.5rem]"
                     title={`${formatPercent(pctCareerLeft)}% de tus años restantes`}
                   >
                     <span

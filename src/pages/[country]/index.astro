@@ -256,10 +256,10 @@ const pageDescription = hasSalary
     <!-- BLOQUE CITABLE DIRECTO: AI Overviews / Google Snippets / Perplexity (GEO & SEO) -->
     <section class="board-plate p-6 sm:p-8 bg-base-200/50 border border-base-300 space-y-4">
       <div class="flex items-center gap-2.5">
-        <span class="px-2.5 py-0.5 rounded text-[11px] font-board-mono uppercase font-bold tracking-wider bg-primary/15 text-primary border border-primary/30">
+        <span class="px-2.5 py-0.5 rounded text-xs font-board-mono uppercase font-bold tracking-wider bg-primary/15 text-primary border border-primary/30">
           Informe Económico Citable
         </span>
-        <span class="font-board-mono text-xs opacity-60">Datos verificados {country.salariesUpdatedAt}</span>
+        <span class="font-board-mono text-sm opacity-75">Datos verificados {country.salariesUpdatedAt}</span>
       </div>
 
       <h2 class="font-signage uppercase text-2xl sm:text-3xl text-base-content">
@@ -277,19 +277,19 @@ const pageDescription = hasSalary
       <!-- Retícula resumen de magnitud -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
         <div class="board-cell p-3">
-          <span class="font-board-mono text-[10px] uppercase opacity-75 block">Hora Neta Mediana</span>
+          <span class="font-board-mono text-xs uppercase opacity-80 block font-semibold">Hora Neta Mediana</span>
           <span class="font-board-mono text-lg font-bold text-primary block mt-0.5">{countryWageText ?? "N/D"}</span>
         </div>
         <div class="board-cell p-3">
-          <span class="font-board-mono text-[10px] uppercase opacity-75 block">Jornada Semanal</span>
+          <span class="font-board-mono text-xs uppercase opacity-80 block font-semibold">Jornada Semanal</span>
           <span class="font-board-mono text-lg font-bold block mt-0.5">{country.legalWeeklyHours} h / sem</span>
         </div>
         <div class="board-cell p-3">
-          <span class="font-board-mono text-[10px] uppercase opacity-75 block">Horas Reales / Año</span>
+          <span class="font-board-mono text-xs uppercase opacity-80 block font-semibold">Horas Reales / Año</span>
           <span class="font-board-mono text-lg font-bold block mt-0.5">{country.realAnnualHours ? `${formatIntegerThousands(country.realAnnualHours)} h` : "1.650 h"}</span>
         </div>
         <div class="board-cell p-3">
-          <span class="font-board-mono text-[10px] uppercase opacity-75 block">Jubilación Legal</span>
+          <span class="font-board-mono text-xs uppercase opacity-80 block font-semibold">Jubilación Legal</span>
           <span class="font-board-mono text-lg font-bold block mt-0.5">{country.retirementAge} años</span>
         </div>
       </div>
@@ -301,7 +301,7 @@ const pageDescription = hasSalary
         <h2 class="font-signage uppercase text-2xl sm:text-3xl">
           Preguntas frecuentes sobre el coste de la vida en {country.name}
         </h2>
-        <p class="font-board-mono text-xs opacity-75 mt-1">
+        <p class="font-board-mono text-sm opacity-80 mt-1">
           Respuestas matemáticas y oficiales sobre el valor del tiempo de trabajo y poder adquisitivo:
         </p>
       </div>
@@ -359,14 +359,14 @@ const pageDescription = hasSalary
                 class="group flex flex-col justify-between p-3.5 rounded-lg bg-base-200/50 hover:bg-base-200 border border-base-300 hover:border-primary/60 transition-all shadow-xs"
               >
                 <div>
-                  <span class="block font-bold text-xs truncate text-base-content group-hover:text-primary transition-colors">
+                  <span class="block font-bold text-sm truncate text-base-content group-hover:text-primary transition-colors">
                     {otherC.name}
                   </span>
-                  <span class="block font-board-mono text-[11px] text-primary font-semibold mt-1">
+                  <span class="block font-board-mono text-xs text-primary font-semibold mt-1">
                     {otherWageFormatted ?? `${otherC.medianNetMonthly} ${otherC.currencySymbol}`}
                   </span>
                 </div>
-                <div class="mt-3 pt-2 border-t border-base-content/10 flex items-center justify-between text-[10px] font-board-mono opacity-70">
+                <div class="mt-3 pt-2 border-t border-base-content/10 flex items-center justify-between text-xs font-board-mono opacity-80 font-semibold">
                   <span>{otherC.code}</span>
                   <span class="group-hover:translate-x-0.5 transition-transform text-primary font-bold">&rarr;</span>
                 </div>

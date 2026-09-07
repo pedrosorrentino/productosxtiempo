@@ -797,7 +797,7 @@ export default function ResultView({
               </span>
             )}
             {productCategory && (
-              <span class="font-board-mono text-xs uppercase tracking-wider font-semibold text-base-content/75">
+              <span class="font-board-mono text-sm uppercase tracking-wider font-semibold text-base-content/75">
                 {categories[productCategory]}
               </span>
             )}
@@ -806,17 +806,17 @@ export default function ResultView({
               {formatAmount(effectivePrice ?? catalogPrice ?? 0)} {currencySymbol}
             </span>
             {catalogPriceDate && (
-              <span class="font-board-mono text-xs opacity-60">
+              <span class="font-board-mono text-sm opacity-70">
                 Ref. {catalogPriceDate}
               </span>
             )}
             {showConvertedBadge && (
-              <span class="board-stamp text-info text-[10px] py-0.5" title={result.convertedPriceNote}>
+              <span class="board-stamp text-info text-xs py-0.5" title={result.convertedPriceNote}>
                 {board.esRefBadge}
               </span>
             )}
             {stalePriceDate != null && (
-              <span class="board-stamp board-stamp-alert text-[10px] py-0.5" title={staleness.badgeTitle(stalePriceDate)}>
+              <span class="board-stamp board-stamp-alert text-xs py-0.5" title={staleness.badgeTitle(stalePriceDate)}>
                 {staleness.badge}
               </span>
             )}
@@ -825,12 +825,12 @@ export default function ResultView({
           {/* Derecha: Badge de Cotización Activa */}
           <div class="flex items-center gap-2">
             {state.netMonthly ? (
-              <span class="inline-flex items-center gap-1.5 font-board-mono text-xs text-accent bg-accent/10 border border-accent/30 px-2.5 py-1 rounded">
+              <span class="inline-flex items-center gap-1.5 font-board-mono text-sm text-accent bg-accent/10 border border-accent/30 px-2.5 py-1 rounded">
                 <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                 Cotizando con tu nómina
               </span>
             ) : (
-              <span class="inline-flex items-center gap-1.5 font-board-mono text-xs text-base-content/70 bg-base-200 border border-base-300 px-2.5 py-1 rounded">
+              <span class="inline-flex items-center gap-1.5 font-board-mono text-sm text-base-content/70 bg-base-200 border border-base-300 px-2.5 py-1 rounded">
                 Mediana de {countryName}
               </span>
             )}
@@ -840,7 +840,7 @@ export default function ResultView({
         {/* Titular estilizado con pregunta natural y badge de tiempo */}
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div class="space-y-1 max-w-2xl">
-            <span class="font-board-mono text-xs uppercase tracking-widest text-base-content/60 block">
+            <span class="font-board-mono text-sm uppercase tracking-widest text-base-content/60 block">
               Cotización laboral exacta · {productShortName ?? displayName}
             </span>
             <h1 class="font-signage uppercase text-3xl sm:text-4xl md:text-5xl leading-tight text-base-content">
@@ -850,7 +850,7 @@ export default function ResultView({
           </div>
 
           {/* Badge de Impacto Héroe */}
-          <div class="self-start lg:self-auto shrink-0 font-board-mono text-xs font-semibold px-3 py-2 rounded-lg bg-base-200/90 border border-base-300 text-base-content/90 flex items-center gap-2 shadow-xs">
+          <div class="self-start lg:self-auto shrink-0 font-board-mono text-sm font-semibold px-3.5 py-2 rounded-lg bg-base-200/90 border border-base-300 text-base-content/90 flex items-center gap-2 shadow-xs">
             <span class="text-primary font-bold">⏱</span>
             <span>
               Equivale a <strong class="text-primary">{hero.value} {hero.unit}</strong> netos
@@ -860,13 +860,13 @@ export default function ResultView({
       </div>
 
       {/* =========================================================================
-          SELECTOR MAESTRO DE PERSPECTIVA: ¿CÓMO QUIERES MEDIR ESTA COMPRA?
+          SELECTOR CENTRAL DE MODO: TRABAJO (NÓMINA) vs TIEMPO DE VIDA (EDAD)
           ========================================================================= */}
       <div class="board-plate p-1.5 sm:p-2 flex items-center justify-between gap-2 border border-base-300 shadow-md">
         <button
           type="button"
           onClick={() => onViewModeChange("work")}
-          class={`flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded font-board-mono text-xs sm:text-sm uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 ${
+          class={`flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded font-board-mono text-sm sm:text-base uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 ${
             !isLifeMode
               ? "bg-primary text-neutral-900 shadow-sm"
               : "text-base-content/70 hover:text-base-content hover:bg-base-200"
@@ -880,7 +880,7 @@ export default function ResultView({
         <button
           type="button"
           onClick={() => onViewModeChange("life")}
-          class={`flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded font-board-mono text-xs sm:text-sm uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 ${
+          class={`flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded font-board-mono text-sm sm:text-base uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 ${
             isLifeMode
               ? "bg-secondary text-white shadow-sm"
               : "text-base-content/70 hover:text-base-content hover:bg-base-200"
@@ -901,10 +901,10 @@ export default function ResultView({
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div>
               <div class="flex items-center gap-2 flex-wrap">
-                <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 px-2.5 py-0.5 rounded">
+                <span class="font-board-mono text-sm font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 px-2.5 py-0.5 rounded">
                   {state.netMonthly ? "Cotizando con tus datos" : "Mediana nacional de referencia"}
                 </span>
-                <span class="font-board-mono text-xs text-base-content/80">
+                <span class="font-board-mono text-sm text-base-content/80">
                   {state.netMonthly
                     ? `Tu sueldo: ${state.netMonthly} ${currencySymbol}/mes (${formatHourlyWage(computed.hourlyWage, currencySymbol)}/h)`
                     : `${countryName}: ${medianNetMonthly ?? 1800} ${currencySymbol}/mes (${formatHourlyWage(computed.hourlyWage, currencySymbol)}/h)`}
@@ -913,7 +913,7 @@ export default function ResultView({
               <h3 class="font-signage uppercase text-xl sm:text-2xl mt-2 text-base-content">
                 ¿Quieres ver cuánto te cuesta a ti con tu sueldo real?
               </h3>
-              <p class="font-board-mono text-xs opacity-80 mt-1">
+              <p class="font-board-mono text-sm opacity-85 mt-1">
                 Pulsa un sueldo rápido o mueve el deslizador para recalcular el esfuerzo al instante:
               </p>
             </div>
@@ -922,7 +922,7 @@ export default function ResultView({
               <button
                 type="button"
                 onClick={() => setIsFormOpen((prev) => !prev)}
-                class="btn btn-sm bg-primary hover:bg-primary/80 text-neutral-900 font-board-mono text-xs uppercase font-bold tracking-wider shadow-md cursor-pointer"
+                class="btn btn-sm bg-primary hover:bg-primary/80 text-neutral-900 font-board-mono text-sm uppercase font-bold tracking-wider shadow-md cursor-pointer"
               >
                 {isFormOpen ? "Cerrar ▲" : "⚡ Ajustar mi nómina"}
               </button>
@@ -930,7 +930,7 @@ export default function ResultView({
                 <button
                   type="button"
                   onClick={onResetUserFields}
-                  class="btn btn-sm btn-ghost border border-base-300 text-base-content/70 hover:text-warning hover:border-warning font-board-mono text-xs uppercase cursor-pointer"
+                  class="btn btn-sm btn-ghost border border-base-300 text-base-content/70 hover:text-warning hover:border-warning font-board-mono text-sm uppercase cursor-pointer"
                   title="Restablecer a la mediana nacional"
                 >
                   ↺ Mediana ({medianNetMonthly} {currencySymbol})
@@ -941,13 +941,13 @@ export default function ResultView({
 
           {/* Botones de Presets Rápidos */}
           <div class="mt-4 pt-3 border-t border-base-300/80 flex items-center gap-2 flex-wrap">
-            <span class="font-board-mono text-xs opacity-75 mr-1">Elige un sueldo rápido:</span>
+            <span class="font-board-mono text-sm opacity-80 mr-1">Elige un sueldo rápido:</span>
             {salaryPresets.map((preset) => (
               <button
                 type="button"
                 key={preset}
                 onClick={() => applyPresetSalary(preset)}
-                class={`px-3 py-1.5 rounded font-board-mono text-xs font-semibold transition-all cursor-pointer shadow-xs ${
+                class={`px-3.5 py-1.5 rounded font-board-mono text-sm font-semibold transition-all cursor-pointer shadow-xs ${
                   state.netMonthly === preset
                     ? "bg-accent text-neutral-900 font-bold shadow-sm"
                     : "bg-base-100 hover:bg-primary hover:text-neutral-900 border border-base-300 hover:border-primary"
@@ -960,8 +960,8 @@ export default function ResultView({
 
           {/* Slider Continuo de Nómina (Scrubber Táctil a 60 FPS) */}
           <div class="mt-4 pt-3 border-t border-base-300/80 space-y-2">
-            <div class="flex items-center justify-between text-xs font-board-mono">
-              <span class="opacity-80 flex items-center gap-1.5">
+            <div class="flex items-center justify-between text-sm font-board-mono">
+              <span class="opacity-85 flex items-center gap-1.5">
                 <span>⚡</span>
                 <span>Desliza para simular en tiempo real:</span>
               </span>
@@ -986,7 +986,7 @@ export default function ResultView({
               aria-label="Ajustar nómina mensual en tiempo real"
             />
 
-            <div class="flex justify-between text-[11px] font-board-mono opacity-60">
+            <div class="flex justify-between text-xs font-board-mono opacity-75">
               <span>{sliderMin} {currencySymbol}</span>
               <span>Mediana: {medianNetMonthly} {currencySymbol}</span>
               <span>{sliderMax} {currencySymbol}</span>
@@ -1013,10 +1013,10 @@ export default function ResultView({
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div>
               <div class="flex items-center gap-2 flex-wrap">
-                <span class="font-board-mono text-xs font-bold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/30 px-2.5 py-0.5 rounded">
+                <span class="font-board-mono text-sm font-bold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/30 px-2.5 py-0.5 rounded">
                   Tu tiempo finito en la Tierra
                 </span>
-                <span class="font-board-mono text-xs text-base-content/80">
+                <span class="font-board-mono text-sm text-base-content/80">
                   {lifeImpact?.yearsLeft != null
                     ? `Te quedan ~${lifeImpact.yearsLeft} años (${lifeImpact.weeksLeft?.toLocaleString()} semanas) hasta los ${retirementAge}`
                     : `Jubilación de referencia: ${retirementAge} años`}
@@ -1025,7 +1025,7 @@ export default function ResultView({
               <h3 class="font-signage uppercase text-xl sm:text-2xl mt-2 text-base-content">
                 ¿Cuántos años tienes ahora mismo?
               </h3>
-              <p class="font-board-mono text-xs opacity-80 mt-1">
+              <p class="font-board-mono text-sm opacity-85 mt-1">
                 Toca tu edad o desliza para calcular qué porcentaje de tu vida útil restante te cuesta:
               </p>
             </div>
@@ -1044,7 +1044,7 @@ export default function ResultView({
                 <span class="text-base font-bold text-secondary tabular-nums block leading-tight">
                   {effectiveUserAge ?? 32}
                 </span>
-                <span class="text-[10px] uppercase opacity-75 block leading-tight">
+                <span class="text-xs uppercase opacity-75 block leading-tight">
                   años
                 </span>
               </div>
@@ -1061,13 +1061,13 @@ export default function ResultView({
 
           {/* Botones de Presets de Edad */}
           <div class="mt-4 pt-3 border-t border-base-300/80 flex items-center gap-2 flex-wrap">
-            <span class="font-board-mono text-xs opacity-75 mr-1">Tramos rápidos:</span>
+            <span class="font-board-mono text-sm opacity-80 mr-1">Tramos rápidos:</span>
             {[20, 25, 30, 35, 40, 50, 60].map((agePreset) => (
               <button
                 type="button"
                 key={agePreset}
                 onClick={() => onAgeChange(agePreset)}
-                class={`px-3 py-1.5 rounded font-board-mono text-xs font-semibold transition-all cursor-pointer shadow-xs ${
+                class={`px-3.5 py-1.5 rounded font-board-mono text-sm font-semibold transition-all cursor-pointer shadow-xs ${
                   (effectiveUserAge ?? 32) === agePreset
                     ? "bg-secondary text-white font-bold shadow-sm"
                     : "bg-base-100 hover:bg-secondary hover:text-white border border-base-300 hover:border-secondary"
@@ -1080,8 +1080,8 @@ export default function ResultView({
 
           {/* Slider Continuo de Edad */}
           <div class="mt-4 pt-3 border-t border-base-300/80 space-y-2">
-            <div class="flex items-center justify-between text-xs font-board-mono">
-              <span class="opacity-80 flex items-center gap-1.5">
+            <div class="flex items-center justify-between text-sm font-board-mono">
+              <span class="opacity-85 flex items-center gap-1.5">
                 <span>⏳</span>
                 <span>Desliza tu edad en tiempo real:</span>
               </span>
@@ -1100,7 +1100,7 @@ export default function ResultView({
               aria-label="Ajustar edad en tiempo real"
             />
 
-            <div class="flex justify-between text-[11px] font-board-mono opacity-60">
+            <div class="flex justify-between text-xs font-board-mono opacity-75">
               <span>18 años (inicio laboral)</span>
               <span>Jubilación: {retirementAge} años</span>
               <span>70 años</span>

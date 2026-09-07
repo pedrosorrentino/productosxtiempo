@@ -58,15 +58,15 @@ export default function SavingsSimulator({
           <h3 class="font-signage uppercase text-2xl text-base-content mt-1">
             Simulador de Ahorro Libre de Deuda
           </h3>
-          <p class="font-board-mono text-xs opacity-75 mt-0.5">
+          <p class="font-board-mono text-sm opacity-80 mt-0.5">
             ¿Cuánto tardarías en comprar {productName} apartando una parte de tu nómina?
           </p>
         </div>
 
         {/* Cifra de meses destacados */}
         <div class="bg-base-200/90 px-4 py-2 rounded-lg border border-base-300 w-full sm:w-auto self-start sm:self-auto shrink-0 font-board-mono text-center sm:text-right">
-          <span class="text-[10px] uppercase opacity-70 block">Plazo de ahorro</span>
-          <strong class="text-primary text-base font-bold">
+          <span class="text-xs uppercase opacity-75 block">Plazo de ahorro</span>
+          <strong class="text-primary text-base sm:text-lg font-bold">
             {monthsNeeded < 1 ? "Menos de 1 mes" : `${roundedMonths} meses`}
           </strong>
         </div>
@@ -74,14 +74,14 @@ export default function SavingsSimulator({
 
       {/* Selector de % de Ahorro */}
       <div class="mt-4 space-y-2">
-        <span class="font-board-mono text-xs opacity-80 block">Elige tu ahorro mensual:</span>
+        <span class="font-board-mono text-sm font-medium opacity-85 block">Elige tu ahorro mensual:</span>
         <div class="grid grid-cols-2 sm:flex sm:flex-wrap gap-1.5 sm:gap-2">
           {PRESET_PCTS.map((pct) => (
             <button
               type="button"
               key={pct}
               onClick={() => setSelectedPct(pct)}
-              class={`px-2.5 py-2 sm:py-1.5 rounded font-board-mono text-xs font-semibold cursor-pointer transition-all text-center ${
+              class={`px-3 py-2 sm:py-1.5 rounded-lg font-board-mono text-xs sm:text-sm font-semibold cursor-pointer transition-all text-center ${
                 pct === 50 ? "col-span-2 sm:col-span-1" : ""
               } ${
                 selectedPct === pct
@@ -96,23 +96,23 @@ export default function SavingsSimulator({
       </div>
 
       {/* Panel de Resultado Proyectado */}
-      <div class="mt-5 p-4 rounded-lg bg-base-200/50 border border-base-300 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div class="mt-5 p-4 sm:p-5 rounded-lg bg-base-200/50 border border-base-300 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div class="space-y-1">
           <div class="flex items-center gap-2">
-            <span class="text-base font-bold text-base-content">
+            <span class="text-base sm:text-lg font-bold text-base-content">
               📅 Fecha estimada de compra:
             </span>
-            <strong class="font-board-mono text-primary text-base font-bold capitalize">
+            <strong class="font-board-mono text-primary text-base sm:text-lg font-bold capitalize">
               {targetDateFormatted}
             </strong>
           </div>
-          <p class="text-xs font-board-mono opacity-80">
+          <p class="text-xs sm:text-sm font-board-mono opacity-85 leading-relaxed">
             Apartando <strong>{monthlySavingsAmount} {currencySymbol} al mes</strong> ({selectedPct}% de tu sueldo),
             acumulas los <strong>{productPrice} {currencySymbol}</strong> en {roundedMonths} meses al contado.
           </p>
         </div>
 
-        <div class="shrink-0 flex items-center gap-1.5 font-board-mono text-xs text-accent bg-accent/10 border border-accent/30 px-3 py-1.5 rounded">
+        <div class="shrink-0 flex items-center gap-1.5 font-board-mono text-xs sm:text-sm text-accent bg-accent/10 border border-accent/30 px-3.5 py-2 rounded-lg font-medium">
           <span>✓</span>
           <span>Sin préstamos ni intereses</span>
         </div>

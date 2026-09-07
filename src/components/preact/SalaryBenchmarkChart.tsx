@@ -148,31 +148,31 @@ export default function SalaryBenchmarkChart({
                 <div class="min-w-0">
                   <div class="flex items-center gap-2 flex-wrap">
                     <span
-                      class={`font-bold uppercase text-xs ${
+                      class={`font-bold uppercase text-sm ${
                         isActive ? "text-primary" : "text-base-content"
                       }`}
                     >
                       {tier.name}
                     </span>
                     {isActive && (
-                      <span class="px-1.5 py-0.2 bg-primary text-neutral-900 rounded font-bold text-[10px]">
+                      <span class="px-2 py-0.5 bg-primary text-neutral-900 rounded font-extrabold text-xs">
                         ACTIVO
                       </span>
                     )}
-                    <span class="opacity-60 text-[11px] hidden sm:inline">
+                    <span class="opacity-70 text-xs hidden sm:inline">
                       · {tier.salary} {currencySymbol}/mes ({formatHourlyWage(tier.hourlyWage, currencySymbol)}/h)
                     </span>
                   </div>
-                  <div class="opacity-70 text-[10px] sm:hidden font-board-mono mt-0.5">
+                  <div class="opacity-75 text-xs sm:hidden font-board-mono mt-0.5">
                     {tier.salary} {currencySymbol}/mes ({formatHourlyWage(tier.hourlyWage, currencySymbol)}/h)
                   </div>
                 </div>
 
                 <div class="text-right shrink-0 leading-tight">
-                  <strong class={`text-sm font-bold block sm:inline ${isActive ? "text-primary" : "text-base-content"}`}>
+                  <strong class={`text-base font-bold block sm:inline ${isActive ? "text-primary" : "text-base-content"}`}>
                     {formatHours(tier.hoursNeeded)} h
                   </strong>
-                  <span class="opacity-70 text-[10px] sm:text-[11px] block sm:inline sm:ml-1">
+                  <span class="opacity-70 text-xs block sm:inline sm:ml-1">
                     de trabajo
                   </span>
                 </div>

@@ -149,7 +149,7 @@ export default function CountryHeroCenter({
             {viewMode === "work" ? "Mando de Esfuerzo y Salario" : "Terminal de Longevidad Laboral"}
           </span>
           {isCustomSalary && (
-            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold font-board-mono bg-primary text-primary-content tracking-wider uppercase">
+            <span class="px-2 py-0.5 rounded-full text-xs font-bold font-board-mono bg-primary text-primary-content tracking-wider uppercase">
               Personalizado
             </span>
           )}
@@ -236,7 +236,7 @@ export default function CountryHeroCenter({
 
               {/* Centro de datos del tacómetro */}
               <div class="absolute inset-0 flex flex-col items-center justify-center text-center select-none pt-2">
-                <span class="font-board-mono text-[11px] uppercase tracking-widest opacity-75 block">
+                <span class="font-board-mono text-xs uppercase tracking-widest opacity-80 block">
                   Tu hora neta
                 </span>
                 <div class="flex items-baseline gap-1 mt-0.5">
@@ -254,7 +254,7 @@ export default function CountryHeroCenter({
                 <span class="font-board-mono text-xs uppercase tracking-wider text-primary font-bold mt-0.5">
                   por hora trabajada
                 </span>
-                <span class="mt-1 px-2 py-0.5 rounded text-[10px] font-board-mono bg-base-300 text-base-content/80 border border-base-content/10">
+                <span class="mt-1 px-2 py-0.5 rounded text-xs font-board-mono bg-base-300 text-base-content/85 border border-base-content/10 font-semibold">
                   {isCustomSalary ? "⚡ Nómina ajustada" : "📌 Mediana de referencia"}
                 </span>
               </div>
@@ -273,25 +273,25 @@ export default function CountryHeroCenter({
             {/* Métricas de conversión instantáneas */}
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
               <div class="board-cell p-3">
-                <span class="font-board-mono text-[10px] uppercase opacity-75 block">1 Jornada (8h)</span>
+                <span class="font-board-mono text-xs uppercase opacity-80 block">1 Jornada (8h)</span>
                 <span class="font-board-mono text-lg font-bold tabular-nums text-primary block mt-0.5">
                   {(hourlyWage * 8).toLocaleString("es-ES", { maximumFractionDigits: 0 })} {currencySymbol}
                 </span>
               </div>
               <div class="board-cell p-3">
-                <span class="font-board-mono text-[10px] uppercase opacity-75 block">1 Mes neto</span>
+                <span class="font-board-mono text-xs uppercase opacity-80 block">1 Mes neto</span>
                 <span class="font-board-mono text-lg font-bold tabular-nums block mt-0.5">
                   {activeSalary.toLocaleString("es-ES")} {currencySymbol}
                 </span>
               </div>
               <div class="board-cell p-3">
-                <span class="font-board-mono text-[10px] uppercase opacity-75 block">Semana legal</span>
+                <span class="font-board-mono text-xs uppercase opacity-80 block">Semana legal</span>
                 <span class="font-board-mono text-lg font-bold tabular-nums block mt-0.5">
                   {activeHours} h
                 </span>
               </div>
               <div class="board-cell p-3">
-                <span class="font-board-mono text-[10px] uppercase opacity-75 block">Año real OCDE</span>
+                <span class="font-board-mono text-xs uppercase opacity-80 block">Año real OCDE</span>
                 <span class="font-board-mono text-lg font-bold tabular-nums block mt-0.5">
                   {realAnnualHours ? `${formatIntegerThousands(realAnnualHours)} h` : "1.650 h"}
                 </span>
@@ -392,10 +392,10 @@ export default function CountryHeroCenter({
                   <button
                     key={h}
                     type="button"
-                    class={`px-2 py-0.5 rounded text-[11px] font-board-mono transition-colors cursor-pointer ${
+                    class={`px-2.5 py-0.5 rounded text-xs font-board-mono transition-colors cursor-pointer ${
                       activeHours === h
                         ? "bg-primary/20 text-primary font-bold border border-primary/40"
-                        : "bg-base-300/60 hover:bg-base-300 text-base-content/70"
+                        : "bg-base-300/60 hover:bg-base-300 text-base-content/75"
                     }`}
                     onClick={() => onHoursChange(h)}
                   >
@@ -421,7 +421,7 @@ export default function CountryHeroCenter({
               <span class="font-board-mono text-xs opacity-80 mt-1 block max-w-[11rem]">
                 semanas de trabajo hasta tu jubilación oficial ({retirementAge} años)
               </span>
-              <span class="mt-2 text-[10px] font-board-mono px-2 py-0.5 rounded bg-warning/20 text-warning font-semibold border border-warning/30">
+              <span class="mt-2 text-xs font-board-mono px-2 py-0.5 rounded bg-warning/20 text-warning font-semibold border border-warning/30">
                 ~{totalLifetimeHoursWorked.toLocaleString("es-ES")} h de vida
               </span>
             </div>
@@ -477,7 +477,7 @@ export default function CountryHeroCenter({
                 aria-label="Ajustar edad en la barra deslizante"
               />
 
-              <div class="flex justify-between text-[10px] font-board-mono opacity-60 mt-1">
+              <div class="flex justify-between text-xs font-board-mono opacity-70 mt-1">
                 <span>18 años (Inicio laboral)</span>
                 <span>40 años (Madurez)</span>
                 <span>{retirementAge} años (Jubilación)</span>
@@ -496,7 +496,7 @@ export default function CountryHeroCenter({
                 {/* Segmento 1: Años vividos */}
                 <div
                   style={{ width: `${Math.min(100, (activeAge / 83) * 100)}%` }}
-                  class="bg-neutral-content/40 h-full rounded-l transition-all duration-300 flex items-center justify-center text-[10px] font-bold text-base-300 truncate px-1"
+                  class="bg-neutral-content/40 h-full rounded-l transition-all duration-300 flex items-center justify-center text-xs font-bold text-base-300 truncate px-1"
                   title={`${activeAge} años vividos`}
                 >
                   {activeAge} a
@@ -505,7 +505,7 @@ export default function CountryHeroCenter({
                 {/* Segmento 2: Años de trabajo restantes */}
                 <div
                   style={{ width: `${Math.max(0, (yearsUntilRetirement / 83) * 100)}%` }}
-                  class="bg-warning h-full transition-all duration-300 flex items-center justify-center text-[10px] font-extrabold text-warning-content truncate px-1 shadow-sm"
+                  class="bg-warning h-full transition-all duration-300 flex items-center justify-center text-xs font-extrabold text-warning-content truncate px-1 shadow-sm"
                   title={`${yearsUntilRetirement} años de trabajo restantes`}
                 >
                   {yearsUntilRetirement > 5 ? `${yearsUntilRetirement} a trabajo` : `${yearsUntilRetirement}a`}
@@ -514,14 +514,14 @@ export default function CountryHeroCenter({
                 {/* Segmento 3: Años de jubilación / libertad */}
                 <div
                   style={{ width: `${Math.max(0, ((83 - Math.max(retirementAge, activeAge)) / 83) * 100)}%` }}
-                  class="bg-accent/80 h-full rounded-r transition-all duration-300 flex items-center justify-center text-[10px] font-bold text-accent-content truncate px-1"
+                  class="bg-accent/80 h-full rounded-r transition-all duration-300 flex items-center justify-center text-xs font-bold text-accent-content truncate px-1"
                   title={`~${Math.max(0, 83 - Math.max(retirementAge, activeAge))} años de jubilación`}
                 >
                   Libertad
                 </div>
               </div>
 
-              <div class="flex flex-wrap items-center justify-between text-[11px] font-board-mono opacity-80 pt-1">
+              <div class="flex flex-wrap items-center justify-between text-xs font-board-mono opacity-85 pt-1">
                 <span class="flex items-center gap-1.5">
                   <span class="w-2.5 h-2.5 rounded-full bg-neutral-content/40 inline-block" />
                   Vivido: {activeAge} años
@@ -547,7 +547,7 @@ export default function CountryHeroCenter({
             <span>⚡</span>
             <span>El Barómetro de {countryName}: ¿Cuánto cuesta vivir aquí?</span>
           </h3>
-          <span class="font-board-mono text-[11px] opacity-70">
+          <span class="font-board-mono text-sm opacity-70">
             Recalculado con tu hora de {formattedWage} {currencySymbol}
           </span>
         </div>
@@ -593,7 +593,7 @@ export default function CountryHeroCenter({
                       {effortUnit}
                     </span>
                   </div>
-                  <span class="text-[10px] font-board-mono opacity-60">
+                  <span class="text-xs font-board-mono opacity-60">
                     {viewMode === "life" ? "de tu vida" : "de trabajo"}
                   </span>
                 </div>

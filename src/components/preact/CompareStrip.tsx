@@ -234,11 +234,11 @@ export default function CompareStrip({
         </div>
         <div>
           {cards.length >= MAX_CARDS ? (
-            <span class="font-board-mono text-xs opacity-75">
+            <span class="font-board-mono text-sm opacity-80">
               {compare.maxReached}
             </span>
           ) : (
-            <span class="font-board-mono text-xs opacity-75">
+            <span class="font-board-mono text-sm opacity-80">
               {cards.length} / {MAX_CARDS} países comparados
             </span>
           )}
@@ -348,7 +348,7 @@ export default function CompareStrip({
               <p class="font-board-mono text-sm uppercase tracking-[0.12em] group-hover:text-primary transition-colors font-medium">
                 {compare.emptySlots}
               </p>
-              <span class="font-board-mono text-xs opacity-60 block mt-1">
+              <span class="font-board-mono text-sm opacity-75 block mt-1">
                 Pulsa para elegir país
               </span>
             </div>
@@ -374,7 +374,7 @@ export default function CompareStrip({
                 <h3 id="compare-modal-title" class="font-signage uppercase text-2xl sm:text-3xl text-primary leading-none">
                   Añadir país a la comparativa
                 </h3>
-                <p class="font-board-mono text-xs opacity-75 mt-1.5 leading-relaxed">
+                <p class="font-board-mono text-sm opacity-80 mt-1.5 leading-relaxed">
                   Elige un país para cotizar {priceText} {currencySymbol} con su salario neto mediano:
                 </p>
               </div>
@@ -413,11 +413,11 @@ export default function CompareStrip({
                           <span class="font-bold text-base text-base-content group-hover:text-primary transition-colors">
                             {c.name}
                           </span>
-                          <span class="font-board-mono text-[11px] px-1.5 py-0.2 rounded bg-base-300/80 text-base-content/75 font-semibold">
+                          <span class="font-board-mono text-xs px-2 py-0.5 rounded bg-base-300/80 text-base-content/85 font-semibold">
                             {c.code}
                           </span>
                         </div>
-                        <div class="flex flex-wrap items-center gap-x-3 gap-y-0.5 font-board-mono text-xs opacity-80 mt-1">
+                        <div class="flex flex-wrap items-center gap-x-3 gap-y-0.5 font-board-mono text-sm opacity-85 mt-1">
                           <span>
                             Mediana: <strong class="text-base-content font-semibold">{nfSalary.format(c.medianNetMonthly!)} {c.currencySymbol}/mes</strong>
                           </span>
@@ -427,7 +427,7 @@ export default function CompareStrip({
                           </span>
                         </div>
                       </div>
-                      <span class="font-board-mono text-xs font-semibold px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary group-hover:text-primary-content transition-all shrink-0">
+                      <span class="font-board-mono text-sm font-semibold px-3 py-1.5 rounded-md bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary group-hover:text-primary-content transition-all shrink-0">
                         + Añadir
                       </span>
                     </button>
@@ -441,7 +441,7 @@ export default function CompareStrip({
             </div>
 
             {/* Pie del modal */}
-            <div class="pt-3 border-t border-base-300 flex justify-between items-center text-xs font-board-mono opacity-70">
+            <div class="pt-3 border-t border-base-300 flex justify-between items-center text-sm font-board-mono opacity-80">
               <span>{availableCountries.length} {availableCountries.length === 1 ? "país disponible" : "países disponibles"}</span>
               <button
                 type="button"

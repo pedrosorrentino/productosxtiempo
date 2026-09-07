@@ -93,7 +93,7 @@ export default function WorkBattery({
               <span class="font-bold text-base-content block leading-tight text-xs sm:text-sm">
                 {alarmsCount} {alarmsCount === 1 ? "madrugón" : "madrugones"}
               </span>
-              <span class="text-[0.6875rem] sm:text-xs opacity-75 block">de despertador</span>
+              <span class="text-xs opacity-80 block">de despertador</span>
             </div>
           </div>
 
@@ -103,7 +103,7 @@ export default function WorkBattery({
               <span class="font-bold text-base-content block leading-tight text-xs sm:text-sm">
                 ~{coffeeCount} {coffeeCount === 1 ? "café" : "cafés"}
               </span>
-              <span class="text-[0.6875rem] sm:text-xs opacity-75 block">frente al monitor</span>
+              <span class="text-xs opacity-80 block">frente al monitor</span>
             </div>
           </div>
         </div>
@@ -113,7 +113,7 @@ export default function WorkBattery({
           <span class="text-base sm:text-lg shrink-0 mt-0.5 sm:mt-0 text-primary" aria-hidden="true">🏁</span>
           <div class="min-w-0 flex-1">
             <div class="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-              <span class="text-[0.6875rem] uppercase tracking-[0.08em] opacity-75 font-semibold shrink-0">
+              <span class="text-xs uppercase tracking-[0.08em] opacity-80 font-semibold shrink-0">
                 Meta de amortización:
               </span>
               <span class="font-bold text-primary break-words text-xs sm:text-sm">

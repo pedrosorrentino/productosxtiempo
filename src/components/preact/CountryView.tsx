@@ -331,7 +331,7 @@ export default function CountryView({
               <h2 class="font-signage uppercase text-xl sm:text-2xl leading-none">
                 ¿Tienes otro gasto en mente en {country.name}?
               </h2>
-              <p class="font-board-mono text-xs opacity-75 mt-1">
+              <p class="font-board-mono text-sm opacity-85 mt-1">
                 Escribe cualquier importe y descubre cuántas horas o jornadas te cuesta exactamente:
               </p>
             </div>
@@ -346,17 +346,17 @@ export default function CountryView({
                 placeholder="Ej. 150"
                 value={quickPrice}
                 onInput={(e) => setQuickPrice((e.target as HTMLInputElement).value)}
-                class="input input-sm w-full sm:w-44 font-board-mono font-bold pr-8 text-right bg-base-100 border-base-content/20 text-primary"
+                class="input input-sm w-full sm:w-44 font-board-mono font-bold pr-8 text-right bg-base-100 border-base-content/20 text-primary text-sm"
                 aria-label="Precio a calcular"
               />
-              <span class="absolute right-3 top-1.5 font-board-mono text-xs font-bold opacity-60">
+              <span class="absolute right-3 top-1.5 font-board-mono text-sm font-bold opacity-60">
                 {country.currencySymbol}
               </span>
             </div>
 
             <a
               href={`/${country.slug}/precio?precio=${encodeURIComponent(quickPrice || "150")}`}
-              class={`btn btn-sm btn-primary font-board-mono text-xs uppercase tracking-wider shrink-0 transition-opacity ${
+              class={`btn btn-sm btn-primary font-board-mono text-sm uppercase tracking-wider shrink-0 transition-opacity ${
                 quickPrice ? "opacity-100" : "opacity-60 pointer-events-none"
               }`}
             >
@@ -380,7 +380,7 @@ export default function CountryView({
               <span class="font-signage text-2xl font-black text-primary">
                 {quickCalculation.text}
               </span>
-              <span class="font-board-mono text-xs uppercase tracking-wider font-semibold opacity-80">
+              <span class="font-board-mono text-sm uppercase tracking-wider font-semibold opacity-80">
                 {quickCalculation.unit}
               </span>
             </div>
@@ -395,7 +395,7 @@ export default function CountryView({
             <h2 class="font-signage uppercase text-3xl sm:text-4xl md:text-5xl">
               {board.countryBoard(country.name)}
             </h2>
-            <p class="font-board-mono text-xs sm:text-sm opacity-80 mt-1">
+            <p class="font-board-mono text-sm sm:text-base opacity-85 mt-1">
               {viewMode === "life"
                 ? "Nivel de amenaza vital y semanas de futuro consumidas por cada artículo:"
                 : "Todo el catálogo nacional cotizado en jornadas y horas de esfuerzo laboral:"}
@@ -410,15 +410,15 @@ export default function CountryView({
                 placeholder="Buscar artículo..."
                 value={searchQuery}
                 onInput={(e) => setSearchQuery((e.target as HTMLInputElement).value)}
-                class="input input-sm w-full font-board-mono bg-base-200/90 border-base-content/20 text-xs pl-8 pr-3"
+                class="input input-sm w-full font-board-mono bg-base-200/90 border-base-content/20 text-sm pl-8 pr-3"
                 aria-label="Buscar en el catálogo"
               />
-              <span class="absolute left-2.5 top-2 opacity-50 text-xs">🔍</span>
+              <span class="absolute left-2.5 top-2 opacity-50 text-sm">🔍</span>
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  class="absolute right-2 top-1.5 opacity-60 hover:opacity-100 font-bold text-xs"
+                  class="absolute right-2 top-1.5 opacity-60 hover:opacity-100 font-bold text-sm"
                 >
                   ✕
                 </button>
@@ -431,7 +431,7 @@ export default function CountryView({
         <div class="flex items-center gap-1.5 overflow-x-auto pb-1 select-none">
           <button
             type="button"
-            class={`px-3 py-1.5 rounded-full font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
+            class={`px-3.5 py-1.5 rounded-full font-board-mono text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
               selectedCategory === "all"
                 ? "bg-primary text-primary-content font-bold shadow-xs"
                 : "bg-base-200/80 hover:bg-base-200 text-base-content/75"
@@ -444,7 +444,7 @@ export default function CountryView({
             <button
               key={g.category}
               type="button"
-              class={`flex items-center gap-1.5 px-3 py-1.5 rounded-full font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
+              class={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-board-mono text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
                 selectedCategory === g.category
                   ? "bg-primary text-primary-content font-bold shadow-xs"
                   : "bg-base-200/80 hover:bg-base-200 text-base-content/75"
@@ -452,7 +452,7 @@ export default function CountryView({
               onClick={() => setSelectedCategory(g.category)}
             >
               <span>{categories[g.category]}</span>
-              <span class="opacity-60 text-[10px]">({g.rows.length})</span>
+              <span class="opacity-70 text-xs">({g.rows.length})</span>
             </button>
           ))}
         </div>
@@ -462,12 +462,12 @@ export default function CountryView({
           <div class="board-plate p-10 text-center">
             <span class="text-4xl block mb-2">🔍</span>
             <p class="font-signage uppercase text-xl">Sin resultados</p>
-            <p class="font-board-mono text-xs opacity-75 mt-1">
+            <p class="font-board-mono text-sm opacity-80 mt-1">
               No hemos encontrado productos que coincidan con "{searchQuery}".
             </p>
             <button
               type="button"
-              class="btn btn-xs btn-outline btn-primary font-board-mono mt-4"
+              class="btn btn-sm btn-outline btn-primary font-board-mono mt-4"
               onClick={() => {
                 setSearchQuery("");
                 setSelectedCategory("all");

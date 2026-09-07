@@ -56,17 +56,17 @@ export default function WorkCalendarGrid({
         </div>
 
         {/* Resumen numérico rápido */}
-        <div class="flex items-center justify-around sm:justify-start gap-3 bg-base-200/80 px-3.5 py-2 rounded-lg border border-base-300 w-full sm:w-auto shrink-0 font-board-mono text-xs">
+        <div class="flex items-center justify-around sm:justify-start gap-3 bg-base-200/80 px-3.5 py-2 rounded-lg border border-base-300 w-full sm:w-auto shrink-0 font-board-mono text-xs sm:text-sm">
           <div class="text-center sm:text-right">
-            <span class="opacity-70 block text-[10px] uppercase">Días dedicados</span>
-            <strong class="text-primary text-sm font-bold">
+            <span class="opacity-75 block text-xs uppercase">Días dedicados</span>
+            <strong class="text-primary text-sm sm:text-base font-bold">
               {safeWorkdays >= 10 ? safeWorkdays.toFixed(0) : safeWorkdays.toFixed(1).replace(".", ",")} d
             </strong>
           </div>
           <div class="w-px h-6 bg-base-content/15" />
           <div class="text-center sm:text-left">
-            <span class="opacity-70 block text-[10px] uppercase">Días libres</span>
-            <strong class="text-accent text-sm font-bold">
+            <span class="opacity-75 block text-xs uppercase">Días libres</span>
+            <strong class="text-accent text-sm sm:text-base font-bold">
               {exceedsMonth ? "0 d" : `${freeDaysCount} d`}
             </strong>
           </div>
@@ -75,8 +75,8 @@ export default function WorkCalendarGrid({
 
       {/* Alerta si supera el mes completo */}
       {exceedsMonth && (
-        <div class="mt-4 p-3 bg-secondary/10 border border-secondary/30 rounded font-board-mono text-xs text-secondary-content flex items-center gap-2.5">
-          <span class="text-base shrink-0">⏳</span>
+        <div class="mt-4 p-3.5 bg-secondary/10 border border-secondary/30 rounded-lg font-board-mono text-xs sm:text-sm text-secondary-content flex items-center gap-2.5">
+          <span class="text-lg shrink-0">⏳</span>
           <div>
             <strong>Supera el mes laboral completo:</strong> Este importe requiere{" "}
             <strong>{monthsRequired} meses íntegros de trabajo</strong> (todo el salario neto acumulado
@@ -88,7 +88,7 @@ export default function WorkCalendarGrid({
       {/* Cuadrícula de 22 Días Laborables del Mes (Semana Laboral L-V) */}
       <div class="mt-5">
         {/* Cabecera de días laborables (Lun a Vie) en móviles y tablets */}
-        <div class="grid grid-cols-5 lg:hidden gap-1.5 mb-1.5 text-center font-board-mono text-[10px] uppercase font-bold text-base-content/60">
+        <div class="grid grid-cols-5 lg:hidden gap-1.5 mb-1.5 text-center font-board-mono text-xs uppercase font-bold text-base-content/70">
           <span>Lun</span>
           <span>Mar</span>
           <span>Mié</span>
@@ -127,14 +127,14 @@ export default function WorkCalendarGrid({
             return (
               <div
                 key={dayNum}
-                class={`p-1.5 sm:p-2 rounded border flex flex-col justify-between min-h-[46px] sm:min-h-[64px] transition-all duration-200 ${bgClass}`}
+                class={`p-1.5 sm:p-2 rounded border flex flex-col justify-between min-h-[48px] sm:min-h-[64px] transition-all duration-200 ${bgClass}`}
                 title={`Día laborable ${dayNum}: ${statusText}`}
               >
-                <div class="flex items-center justify-between text-[10px] sm:text-[11px] font-board-mono">
+                <div class="flex items-center justify-between text-xs font-board-mono">
                   <span class="opacity-80 font-medium">d{dayNum}</span>
                   <span class="text-xs">{icon}</span>
                 </div>
-                <div class="font-board-mono text-[9px] sm:text-[10px] uppercase tracking-wider truncate mt-0.5 leading-tight">
+                <div class="font-board-mono text-xs uppercase tracking-wider truncate mt-0.5 leading-tight">
                   {statusText}
                 </div>
               </div>
@@ -143,7 +143,7 @@ export default function WorkCalendarGrid({
         </div>
 
         {/* Leyenda explicativa interactiva */}
-        <div class="mt-4 pt-3 border-t border-base-300/60 flex flex-wrap items-center justify-between gap-3 text-xs font-board-mono">
+        <div class="mt-4 pt-3 border-t border-base-300/60 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm font-board-mono">
           <div class="flex items-center gap-4 flex-wrap">
             <span class="flex items-center gap-1.5 text-primary">
               <span class="w-2.5 h-2.5 rounded-full bg-primary" />
@@ -155,7 +155,7 @@ export default function WorkCalendarGrid({
             </span>
           </div>
 
-          <span class="opacity-70 text-[11px]">
+          <span class="opacity-75 text-xs">
             * Basado en mes estándar de 22 jornadas de 8h ({hours.toFixed(1).replace(".", ",")} h totales)
           </span>
         </div>

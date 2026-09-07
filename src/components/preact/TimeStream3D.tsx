@@ -1029,13 +1029,13 @@ export default function TimeStream3D({
             <div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
               <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#00f5d4] shadow-[0_0_12px_#00f5d4] shrink-0" />
               <span
-                class="font-signage uppercase tracking-wider text-[11px] sm:text-base text-[#00f5d4] font-bold truncate block"
+                class="font-signage uppercase tracking-wider text-xs sm:text-base text-[#00f5d4] font-bold truncate block"
                 title="Tu Reserva Vital"
               >
                 Tu Reserva Vital
               </span>
             </div>
-            <span class="text-[9px] sm:text-[11px] text-base-content/60 leading-tight truncate hidden xs:block">
+            <span class="text-xs sm:text-sm text-base-content/70 leading-tight truncate hidden xs:block">
               Nebulosa de vida
             </span>
           </div>
@@ -1044,14 +1044,14 @@ export default function TimeStream3D({
           <div class="flex-1 max-w-[48%] sm:max-w-xs min-w-0 flex flex-col items-end gap-0.5 text-right">
             <div class="flex items-center justify-end gap-1.5 sm:gap-2 w-full min-w-0">
               <span
-                class="font-signage uppercase tracking-wider text-[11px] sm:text-base text-[#ffb020] font-bold truncate block transition-all duration-500"
+                class="font-signage uppercase tracking-wider text-xs sm:text-base text-[#ffb020] font-bold truncate block transition-all duration-500"
                 title={productName}
               >
                 {productName}
               </span>
               <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#ffb020] shadow-[0_0_12px_#ffb020] shrink-0" />
             </div>
-            <span class="text-[9px] sm:text-[11px] text-base-content/60 text-right leading-tight whitespace-nowrap">
+            <span class="text-xs sm:text-sm text-base-content/70 text-right leading-tight whitespace-nowrap">
               <span class="hidden sm:inline">Agujero negro drena el </span>
               <span class="sm:hidden">Drena el </span>
               <strong class="text-error font-bold">{pctFormatted}%</strong>
@@ -1070,18 +1070,18 @@ export default function TimeStream3D({
             {/* Etiqueta del nivel de flujo (nunca se fragmenta internamente) */}
             <div class="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0">
               <span class={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${flowConfig.dotClass} shadow-[0_0_8px_currentColor] shrink-0`} />
-              <span class="font-bold tracking-wide uppercase text-[10px] sm:text-[11px]">
+              <span class="font-bold tracking-wide uppercase text-xs sm:text-sm">
                 {flowConfig.label}<span class="hidden sm:inline">:</span>
               </span>
             </div>
 
             {/* Métrica de tiempo absorbido (siempre unida y legible) */}
-            <div class="whitespace-nowrap font-medium text-[10px] sm:text-xs text-base-content/90 shrink-0">
+            <div class="whitespace-nowrap font-medium text-xs sm:text-sm text-base-content/95 shrink-0">
               <span class="sm:hidden text-base-content/40 mr-1">·</span>
               <span class="hidden sm:inline">Transfiriendo </span>
               <strong class="text-base-content font-bold">{hoursFormatted} h</strong>{" "}
-              <span class="text-base-content/80">({daysFormatted} días)</span>
-              <span class="hidden md:inline text-base-content/70"> hacia el vórtice</span>
+              <span class="text-base-content/85">({daysFormatted} días)</span>
+              <span class="hidden md:inline text-base-content/75"> hacia el vórtice</span>
             </div>
           </div>
         </div>

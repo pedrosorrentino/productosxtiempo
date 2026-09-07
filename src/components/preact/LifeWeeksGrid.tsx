@@ -56,14 +56,14 @@ export default function LifeWeeksGrid({
           <h3 class="font-signage uppercase text-2xl sm:text-3xl text-base-content mt-1">
             Matriz de Semanas de Vida Consciente
           </h3>
-          <p class="font-board-mono text-xs opacity-75 mt-0.5">
+          <p class="font-board-mono text-sm opacity-85 mt-1">
             A tus {userAge} años has vivido {livedWeeks.toLocaleString()} semanas. Te quedan ~{yearsLeft} años ({totalRemainingWeeks.toLocaleString()} semanas) de trabajo hasta los {retirementAge}.
           </p>
         </div>
 
         {/* Badge de Mordisco */}
         <div class="bg-base-200/90 px-3.5 py-2 rounded-lg border border-base-300 self-start sm:self-auto shrink-0 font-board-mono text-right">
-          <span class="text-[10px] uppercase opacity-70 block">Mordisco a tu futuro</span>
+          <span class="text-xs uppercase opacity-75 block">Mordisco a tu futuro</span>
           <strong class="text-secondary text-base font-bold tabular-nums">
             -{lifeWeeksCost >= 1 ? `${lifeWeeksCost.toFixed(1).replace(".", ",")} semanas` : `${(lifeWeeksCost * 7).toFixed(0)} días`}
           </strong>
@@ -72,14 +72,14 @@ export default function LifeWeeksGrid({
 
       {/* Selector Rápido de Edad */}
       {onAgeChange && (
-        <div class="mt-4 pt-1 flex items-center gap-2 flex-wrap text-xs font-board-mono">
+        <div class="mt-4 pt-1 flex items-center gap-2 flex-wrap text-sm font-board-mono">
           <span class="opacity-75 mr-1">Cambia tu edad al instante:</span>
           {PRESET_AGES.map((age) => (
             <button
               type="button"
               key={age}
               onClick={() => onAgeChange(age)}
-              class={`px-2.5 py-1 rounded transition-all cursor-pointer font-bold ${
+              class={`px-3 py-1 rounded transition-all cursor-pointer font-bold ${
                 userAge === age
                   ? "bg-secondary text-white shadow-sm"
                   : "bg-base-200 hover:bg-base-300 text-base-content border border-base-300"
@@ -93,7 +93,7 @@ export default function LifeWeeksGrid({
 
       {/* Visualización de Bloques de Años Restantes */}
       <div class="mt-5 space-y-3">
-        <div class="flex justify-between items-center text-xs font-board-mono opacity-80">
+        <div class="flex justify-between items-center text-sm font-board-mono opacity-85">
           <span>Cada casilla representa 1 año entero de tu vida activa restante:</span>
           <span class="font-bold text-secondary">{displayYearBlocks} años por vivir</span>
         </div>
@@ -104,7 +104,7 @@ export default function LifeWeeksGrid({
             return (
               <div
                 key={index}
-                class={`h-8 rounded flex flex-col items-center justify-center text-[10px] font-board-mono transition-all duration-300 ${
+                class={`h-8 rounded flex flex-col items-center justify-center text-xs font-board-mono font-semibold transition-all duration-300 ${
                   isEaten
                     ? "bg-secondary text-white font-bold shadow-[0_0_10px_rgba(232,72,46,0.5)] animate-pulse"
                     : "bg-accent/15 border border-accent/30 text-accent"
@@ -124,7 +124,7 @@ export default function LifeWeeksGrid({
       </div>
 
       {/* Tarjetas de Equivalencias Existenciales */}
-      <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-board-mono">
+      <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm font-board-mono">
         <div class="p-3 rounded-lg bg-base-200/50 border border-base-300">
           <span class="text-base block mb-1">🏖️</span>
           <strong class="text-base-content block text-sm font-bold">
