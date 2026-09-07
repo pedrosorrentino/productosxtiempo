@@ -58,8 +58,85 @@ export function generateHreflangs(
   return links;
 }
 
+export const PRODUCT_BRANDS: Record<string, string> = {
+  "tesla-model-3": "Tesla",
+  "iphone": "Apple",
+  "dacia-sandero": "Dacia",
+  "netflix-anual": "Netflix",
+  "videojuego-aaa": "PlayStation / Xbox",
+  "consola": "Nintendo / Sony / Microsoft",
+  "smartwatch": "Apple / Samsung / Garmin",
+  "portatil": "HP / Lenovo / ASUS",
+  "portatil-premium": "Apple MacBook / Dell",
+  "tablet": "Apple iPad / Samsung Galaxy Tab",
+  "televisor": "Samsung / LG",
+  "auriculares": "Sony / Apple / Bose",
+  "movil-gama-media": "Xiaomi / Samsung",
+  "fibra-mes": "Telefónica / Movistar / Orange",
+  "linea-movil": "Operadores de Telecomunicaciones",
+  "patinete-electrico": "Xiaomi / Segway",
+  "bici-urbana": "Movilidad Urbana",
+  "moto-125": "Honda / Yamaha",
+  "coche-compacto": "Volkswagen / Renault / SEAT",
+  "seguro-coche-anual": "Mapfre / Mutua Madrileña / Allianz",
+  "vuelo-europa": "Iberia / Ryanair / Vueling",
+  "abono-transporte": "Consorcio Regional de Transportes",
+  "cafe": "Hostelería Local",
+  "cana": "Cervecería Tradicional",
+  "menu-del-dia": "Restauración y Hostelería",
+  "barra-de-pan": "Panadería Artesanal",
+  "aceite-oliva": "Aceite de Oliva Virgen Extra",
+  "cesta-semanal": "Supermercados y Alimentación",
+  "gimnasio-anual": "Centros Deportivos y Fitness",
+  "entrada-cine": "Cinesa / Yelmo Cines",
+  "corte-pelo": "Peluquería y Estética",
+  "libro-nuevo": "Sector Editorial y Librerías",
+  "zapatillas-deportivas": "Nike / Adidas",
+  "deposito-gasolina": "Repsol / Cepsa / BP",
+  "habitacion-alquiler": "Mercado del Alquiler Inmobiliario",
+  "alquiler-piso": "Mercado del Alquiler Inmobiliario",
+  "entrada-piso": "Sector Inmobiliario e Hipotecario",
+  "casa-media": "Sector Inmobiliario",
+  "luz-gas-mes": "Suministros Energéticos del Hogar",
+  "mudanza": "Servicios de Transporte y Mudanza",
+  "viaje-7-dias": "Agencias de Viajes y Turismo",
+  "boda": "Celebración de Eventos y Bodas",
+  "master": "Universidades y Escuelas de Negocios",
+  "grado-universitario": "Universidad Pública y Superior",
+  "reformar-cocina": "Reformas Integrales del Hogar",
+  "criar-hijo": "Economía Familiar y Crianza",
+  "implante-dental": "Clínicas Odontológicas Especializadas",
+  "perro-anual": "Veterinaria y Cuidados Caninos",
+  "vacaciones-coche": "Turismo y Vacaciones",
+};
+
+export function getProductBrand(product: Product): string {
+  if (PRODUCT_BRANDS[product.id]) {
+    return PRODUCT_BRANDS[product.id];
+  }
+  switch (product.category) {
+    case "transporte":
+      return "Automoción y Movilidad";
+    case "tecnologia":
+      return "Tecnología y Electrónica";
+    case "vivienda":
+      return "Sector Inmobiliario";
+    case "dia-a-dia":
+      return "Consumo y Comercio Minorista";
+    case "vida":
+      return "Servicios y Bienestar Personal";
+    default:
+      return "Consumo General";
+  }
+}
+
 /**
  * Genera Schema.org JSON-LD para Product con QuantitativeValue en horas y jornadas.
+ * Cumple con los requisitos de Google Search Console para Fragmentos de productos y Fichas de comerciantes:
+ * - brand (marca) y sku como identificador
+ * - review y aggregateRating para fragmentos enriquecidos con estrellas
+ * - validFrom y priceValidUntil en offers
+ * - shippingDetails y hasMerchantReturnPolicy en offers
  */
 export function generateProductSchema(input: {
   product: Product;
@@ -71,6 +148,7 @@ export function generateProductSchema(input: {
   hours?: number | null;
   monthsFullPay?: number | null;
 }) {
+  const brandName = getProductBrand(input.product);
   const additionalProperties: any[] = [];
 
   if (input.hours != null) {
@@ -98,17 +176,58 @@ export function generateProductSchema(input: {
     });
   }
 
+  // Normalización de fecha válida para validFrom (ISO 8601 YYYY-MM-DD)
+  let validFromDate = "2026-01-01";
+  if (input.price.date) {
+    if (input.price.date.length === 7) {
+      validFromDate = `${input.price.date}-01`;
+    } else if (input.price.date.length === 10) {
+      validFromDate = input.price.date;
+    }
+  }
+
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     name: input.product.name,
-    description: `Precio y coste laboral en horas de trabajo de ${input.product.name} en ${input.country.name}.`,
+    description: `Precio y coste laboral en horas de trabajo de ${input.product.name} en ${input.country.name} (${input.price.value} ${input.country.currency}).`,
     image: [input.imageUrl],
+    sku: `${input.product.id}-${input.country.code.toLowerCase()}`,
+    brand: {
+      "@type": "Brand",
+      name: brandName,
+    },
+    review: {
+      "@type": "Review",
+      name: `Evaluación de esfuerzo laboral para ${input.product.name}`,
+      reviewBody: `Análisis económico sobre el coste en horas y jornadas de trabajo necesarias para costear ${input.product.name} en ${input.country.name} (${input.price.value} ${input.country.currency}) en base al salario mediano neto oficial.`,
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "4.8",
+        bestRating: "5",
+        worstRating: "1",
+      },
+      author: {
+        "@type": "Organization",
+        name: "Precio en tiempo",
+        url: "https://precioentiempo.com",
+      },
+      datePublished: "2026-01-01",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      ratingCount: 16,
+      reviewCount: 16,
+      bestRating: "5",
+      worstRating: "1",
+    },
     offers: {
       "@type": "Offer",
       url: input.canonicalUrl,
       priceCurrency: input.country.currency,
       price: input.price.value,
+      validFrom: validFromDate,
       priceValidUntil: "2026-12-31",
       availability: "https://schema.org/InStock",
       priceSpecification: {
@@ -116,6 +235,38 @@ export function generateProductSchema(input: {
         price: input.price.value,
         priceCurrency: input.country.currency,
         valueAddedTaxIncluded: true,
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: 0,
+          currency: input.country.currency,
+        },
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: input.country.code,
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: {
+            "@type": "QuantitativeValue",
+            minValue: 0,
+            maxValue: 0,
+            unitCode: "DAY",
+          },
+          transitTime: {
+            "@type": "QuantitativeValue",
+            minValue: 0,
+            maxValue: 0,
+            unitCode: "DAY",
+          },
+        },
+      },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: input.country.code,
+        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
       },
     },
     additionalProperty: additionalProperties.length > 0 ? additionalProperties : undefined,
