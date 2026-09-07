@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { brand } from '../i18n/es.ts';
+import { generateBreadcrumbSchema } from '../lib/seo.ts';
+
+const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
+const cleanSite = siteUrl.replace(/\/$/, "");
+const canonicalUrl = `${cleanSite}/cookies/`;
+
+const title = `Política de Cookies y Almacenamiento Local · ${brand.name}`;
+const description = "Información sobre el uso de cookies y almacenamiento local (localStorage) técnico en Precio en Tiempo.";
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", url: `${cleanSite}/` },
+  { name: "Cookies", url: canonicalUrl },
+]);
+---
+
+<BaseLayout title={title} description={description} jsonLd={breadcrumbSchema}>
+  <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-6">
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-primary font-bold" aria-current="page">Cookies</li>
+      </ol>
+    </nav>
+
+    <div class="board-plate p-6 md:p-8">
+      <p class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-semibold">
+        Transparencia Técnica
+      </p>
+      <h1 class="font-signage uppercase text-4xl md:text-6xl leading-none mt-2">
+        Política de Cookies
+      </h1>
+      <p class="mt-4 text-base md:text-lg opacity-90 leading-relaxed max-w-2xl">
+        No utilizamos cookies invasivas de seguimiento publicitario ni rastreadores de terceros para vender tus hábitos de consumo.
+      </p>
+    </div>
+
+    <div class="board-plate p-6 md:p-8 space-y-6 text-sm md:text-base leading-relaxed opacity-90 font-sans">
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">1. ¿Qué tecnologías utilizamos?</h2>
+        <p>
+          Este sitio web utiliza preferentemente la API de <strong>Almacenamiento Local (<code>localStorage</code>)</strong> de tu navegador en lugar de cookies tradicionales de sesión.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">2. Finalidad del Almacenamiento Local</h2>
+        <p>
+          El uso de almacenamiento local tiene carácter exclusivamente técnico y funcional:
+        </p>
+        <ul class="list-disc list-inside space-y-1 pl-2">
+          <li><strong>País seleccionado:</strong> Recordar tu país de preferencia para mostrar los precios y salarios correspondientes en tu próxima visita.</li>
+          <li><strong>Datos personalizados (opcional):</strong> Si introduces tu nómina, jornada o edad para ver las cotizaciones calculadas con tus datos reales, estos valores se guardan en tu propio navegador para evitar que tengas que escribirlos de nuevo cada vez que cambias de página.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">3. Cómo borrar estos datos</h2>
+        <p>
+          Puedes eliminar en cualquier momento la información almacenada borrando los datos de navegación o la memoria local del navegador a través de la configuración de privacidad de tu dispositivo (Chrome, Firefox, Safari, Edge).
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

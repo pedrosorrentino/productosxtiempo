@@ -1,0 +1,98 @@
+{
+  "ES": {
+    "pppFactor": 0.56,
+    "inflationRate": 3.4,
+    "minWageMonthly": 1425,
+    "minWageSource": "Eurostat / BOE (SMI)",
+    "gdpPerCapitaUSD": 32670,
+    "source": "Banco Mundial & Eurostat"
+  },
+  "PT": {
+    "pppFactor": 0.51,
+    "inflationRate": 2.8,
+    "minWageMonthly": 820,
+    "minWageSource": "Eurostat (Salário Mínimo)",
+    "gdpPerCapitaUSD": 27270,
+    "source": "Banco Mundial & Eurostat"
+  },
+  "FR": {
+    "pppFactor": 0.68,
+    "inflationRate": 2.5,
+    "minWageMonthly": 1766,
+    "minWageSource": "Eurostat (SMIC)",
+    "gdpPerCapitaUSD": 44460,
+    "source": "Banco Mundial & Eurostat"
+  },
+  "DE": {
+    "pppFactor": 0.7,
+    "inflationRate": 2.4,
+    "minWageMonthly": 2054,
+    "minWageSource": "Eurostat (Mindestlohn)",
+    "gdpPerCapitaUSD": 52750,
+    "source": "Banco Mundial & Eurostat"
+  },
+  "IT": {
+    "pppFactor": 0.6,
+    "inflationRate": 1.2,
+    "minWageMonthly": null,
+    "minWageSource": "Convenios colectivos sectoriales (sin SMI legal único)",
+    "gdpPerCapitaUSD": 38330,
+    "source": "Banco Mundial & Eurostat"
+  },
+  "GB": {
+    "pppFactor": 0.66,
+    "inflationRate": 2.6,
+    "minWageMonthly": 1920,
+    "minWageSource": "UK Gov (National Living Wage)",
+    "gdpPerCapitaUSD": 48860,
+    "source": "Banco Mundial & ONS"
+  },
+  "US": {
+    "pppFactor": 1,
+    "inflationRate": 2.9,
+    "minWageMonthly": 1256,
+    "minWageSource": "Federal Minimum Wage ($7.25/h · 40h)",
+    "gdpPerCapitaUSD": 81690,
+    "source": "Banco Mundial & US DOL"
+  },
+  "MX": {
+    "pppFactor": 9.75,
+    "inflationRate": 4.8,
+    "minWageMonthly": 7468,
+    "minWageSource": "CONASAMI México",
+    "gdpPerCapitaUSD": 13920,
+    "source": "Banco Mundial & INEGI"
+  },
+  "AR": {
+    "pppFactor": 139.69,
+    "inflationRate": 115,
+    "minWageMonthly": 260000,
+    "minWageSource": "Consejo del Salario (SMVM)",
+    "gdpPerCapitaUSD": 13730,
+    "source": "Banco Mundial & INDEC"
+  },
+  "CO": {
+    "pppFactor": 1425.43,
+    "inflationRate": 6.8,
+    "minWageMonthly": 1300000,
+    "minWageSource": "Ministerio del Trabajo (SMLMV)",
+    "gdpPerCapitaUSD": 6970,
+    "source": "Banco Mundial & DANE"
+  },
+  "CL": {
+    "pppFactor": 432.56,
+    "inflationRate": 4.1,
+    "minWageMonthly": 500000,
+    "minWageSource": "Ley 21.578 Chile (Ingreso Mínimo)",
+    "gdpPerCapitaUSD": 17070,
+    "source": "Banco Mundial & INE Chile"
+  },
+  "CH": {
+    "pppFactor": 1,
+    "inflationRate": 1.4,
+    "minWageMonthly": 3800,
+    "minWageSource": "Cantones con salario mínimo (Ginebra/Neuchâtel)",
+    "gdpPerCapitaUSD": 99990,
+    "source": "Banco Mundial & BFS Suiza"
+  }
+}

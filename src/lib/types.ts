@@ -21,6 +21,18 @@ export type Country = {
   hoursUpdatedAt: string;
   hoursSource: string;
   informalityNote: string | null;
+  pppFactor?: number | null;
+  inflationRate?: number | null;
+};
+
+export type SalaryPreset = {
+  id: string;
+  label: string;
+  shortLabel: string;
+  monthlyNet: number;
+  source: string;
+  description: string;
+  icon?: string;
 };
 
 export type ProductPrice = {

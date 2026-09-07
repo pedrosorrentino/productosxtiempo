@@ -25,7 +25,6 @@ import BoardRowCard, {
 } from "./BoardRowCard.tsx";
 import LifeBattery from "./LifeBattery.tsx";
 import WorkBattery from "./WorkBattery.tsx";
-import TimeStream3D from "./TimeStream3D.tsx";
 import { computeLifeImpact } from "../../lib/life.ts";
 import { computeWorkImpact } from "../../lib/work.ts";
 
@@ -125,8 +124,32 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
   const [origin, setOrigin] = useState<"default" | "detected" | "saved">("default");
   const [heroOffset, setHeroOffset] = useState(0);
   /** Latido de la pizarra: cada tick re-estampa las filas en cascada. */
-  const [boardPulse, setBoardPulse] = useState(0);
+  const [boardPulse, setBoardPulse] = useState<number>(0);
   const [viewMode, setViewMode] = useState<"work" | "life">("work");
+  const [TimeStreamComponent, setTimeStreamComponent] = useState<any>(null);
+
+  // Carga diferida de Three.js / TimeStream3D para proteger Core Web Vitals (TBT e INP)
+  useEffect(() => {
+    let active = true;
+    const load3D = () => {
+      import("./TimeStream3D.tsx")
+        .then((m) => {
+          if (active) setTimeStreamComponent(() => m.default);
+        })
+        .catch(() => {});
+    };
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      (window as any).requestIdleCallback(load3D, { timeout: 1500 });
+    } else {
+      setTimeout(load3D, 200);
+    }
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [userFields, setUserFields] = useState<{
     netMonthly: number | null;
@@ -415,6 +438,26 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
   return (
     <div class="pt-2 md:pt-4">
       {/* =========================================================================
+          CABECERA HERO INSTITUCIONAL (H1 SEO Principal de la Herramienta)
+          ========================================================================= */}
+      <div class="max-w-6xl mx-auto px-4 mb-4">
+        <div class="board-plate p-5 sm:p-6 border-l-4 border-l-primary flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="space-y-1">
+            <h1 class="font-signage uppercase text-3xl sm:text-4xl md:text-5xl leading-tight text-base-content tracking-tight">
+              Calculadora de precios en tiempo de trabajo
+            </h1>
+            <p class="font-board-mono text-xs sm:text-sm text-base-content/80 max-w-3xl leading-relaxed">
+              Convierte cualquier precio o gasto en horas, jornadas completas y años de vida laboral real. Sin sesgos, 100% privado en tu dispositivo.
+            </p>
+          </div>
+          <div class="hidden sm:flex items-center gap-2 font-board-mono text-xs text-primary shrink-0 bg-primary/10 px-3 py-1.5 rounded border border-primary/20">
+            <span>⏱</span>
+            <span>Tu tiempo es tu divisa</span>
+          </div>
+        </div>
+      </div>
+
+      {/* =========================================================================
           BLOQUE 1: CABECERA & IDENTIDAD (Estación de Cotizaciones + Selector de País)
           ========================================================================= */}
       <div class="max-w-6xl mx-auto px-4">
@@ -531,7 +574,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
       <section class="max-w-6xl mx-auto px-4 mt-6 md:mt-8">
         {!hero || !netMonthly ? (
           <div class="board-plate p-8 text-center">
-            <h1 class="font-signage text-4xl uppercase">{noSalary.title}</h1>
+            <h2 class="font-signage text-4xl uppercase">{noSalary.title}</h2>
             <p class="mt-3 text-lg opacity-85">{noSalary.body}</p>
             <a href={`/${country.slug}`} class="board-cta mt-6">
               {board.countryFile(country.name)} →
@@ -590,12 +633,12 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 <span class="font-board-mono text-xs uppercase tracking-widest text-base-content/60 block">
                   Cotización en tiempo de vida
                 </span>
-                <h1
-                  key={`h1-${hero.product.id}`}
+                <h2
+                  key={`h2-${hero.product.id}`}
                   class="board-hero-swap font-signage uppercase text-3xl sm:text-4xl md:text-5xl leading-tight text-base-content"
                 >
                   ¿Cuánto tiempo cuesta {hero.product.name} en {country.name}?
-                </h1>
+                </h2>
               </div>
 
               {heroPhrase != null && (
@@ -616,18 +659,25 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               )}
             </div>
 
-            {/* Lienzo Cinemático 3D de Partículas sincronizado */}
-            <div class="w-full rounded-xl overflow-hidden border border-base-300/90 bg-base-100/80 shadow-xl">
-              <TimeStream3D
-                workdays={hero.workdays}
-                hours={hero.hours}
-                yearsFullPay={hero.years}
-                salaryPct={heroPct}
-                userAge={userAge}
-                retirementAge={country.retirementAge}
-                productName={hero.product.name}
-                class="w-full"
-              />
+            {/* Lienzo Cinemático 3D de Partículas sincronizado (Carga diferida) */}
+            <div class="w-full rounded-xl overflow-hidden border border-base-300/90 bg-base-100/80 shadow-xl min-h-[140px] flex items-center justify-center">
+              {TimeStreamComponent ? (
+                <TimeStreamComponent
+                  workdays={hero.workdays}
+                  hours={hero.hours}
+                  yearsFullPay={hero.years}
+                  salaryPct={heroPct}
+                  userAge={userAge}
+                  retirementAge={country.retirementAge}
+                  productName={hero.product.name}
+                  class="w-full"
+                />
+              ) : (
+                <div class="py-12 text-center font-board-mono text-xs opacity-60 tracking-widest uppercase flex items-center justify-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                  <span>Cargando simulación temporal 3D...</span>
+                </div>
+              )}
             </div>
 
             {/* Baterías de impacto visual */}
@@ -1149,7 +1199,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
         {hero && (
           <div class="board-share flex items-center gap-3">
             <ShareButton
-              url="/"
+              url={`/${country.slug}/${hero.product.id}`}
               text={shareText({
                 productName: hero.product.name,
                 countryName: country.name,
@@ -1164,6 +1214,16 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 age: userFields?.age ?? null,
                 yearsFullPay: hero.years,
               })}
+              productName={hero.product.name}
+              countryName={country.name}
+              countrySlug={country.slug}
+              price={hero.product.prices[country.code]?.value}
+              currencySymbol={country.currencySymbol}
+              hours={hero.hours}
+              workdays8h={hero.workdays}
+              months={hero.months}
+              years={hero.years}
+              ogImageUrl={`/og/${country.slug}/${hero.product.id}.png`}
             />
           </div>
         )}

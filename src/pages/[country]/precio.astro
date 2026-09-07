@@ -4,7 +4,12 @@ import ResultView from '../../components/preact/ResultView.tsx';
 import { brand } from '../../i18n/es.ts';
 import type { Country } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
-import { generateHreflangs, generateBreadcrumbSchema } from '../../lib/seo.ts';
+import {
+  generateHreflangs,
+  generateBreadcrumbSchema,
+  generateWebApplicationSchema,
+  generateFAQSchema,
+} from '../../lib/seo.ts';
 
 export function getStaticPaths() {
   return countriesData.map((country) => ({
@@ -28,8 +33,28 @@ const hreflangs = generateHreflangs(allCountries, "precio", undefined, siteUrl);
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Inicio", url: `${cleanSite}/` },
   { name: country.name, url: `${cleanSite}/${country.slug}/` },
-  { name: "Calculadora de Precio", url: canonicalUrl },
+  { name: "Calculadora de Precios", url: canonicalUrl },
 ]);
+
+const webAppSchema = generateWebApplicationSchema({
+  name: `Calculadora de Precios en Horas en ${country.name}`,
+  description: `Herramienta para calcular cuántas horas y jornadas de trabajo cuesta cualquier compra o gasto en ${country.name} (${country.currencySymbol}) según el salario mediano o tu propia nómina.`,
+  url: canonicalUrl,
+});
+
+const faqs = [
+  {
+    question: `¿Cómo convierto cualquier precio a horas de trabajo en ${country.name}?`,
+    answer: `Introduce el importe en ${country.currencySymbol} en el formulario superior. Si no introduces tu sueldo, el sistema utiliza el salario neto mediano oficial de ${country.name} (${country.medianNetMonthly ? country.medianNetMonthly.toLocaleString('es-ES') + ' ' + country.currencySymbol + '/mes' : 'referencia'}). Si prefieres tu cálculo exacto, añade tu nómina neta mensual.`,
+  },
+  {
+    question: `¿Se guardan en algún servidor las cifras que introduzco?`,
+    answer: `No. Todos los cálculos se realizan íntegramente en tu navegador web mediante JavaScript local. Ningún dato salarial ni importe personal se transmite a nuestros servidores.`,
+  },
+];
+const faqSchema = generateFAQSchema(faqs);
+
+const combinedJsonLd = [breadcrumbSchema, webAppSchema, faqSchema];
 
 const pageTitle = `Calculadora de Precios en Horas en ${country.name} · ${brand.name}`;
 const pageDescription = `Calcula cuántas horas y jornadas de trabajo te cuesta cualquier compra o gasto en ${country.name} (${country.currencySymbol}) según el salario mediano oficial o tu propia nómina.`;
@@ -42,19 +67,90 @@ const pageDescription = `Calcula cuántas horas y jornadas de trabajo te cuesta 
   currentCountryCode={country.code}
   ogImage={`/og/${country.slug}.png`}
   hreflangs={hreflangs}
-  jsonLd={breadcrumbSchema}
+  jsonLd={combinedJsonLd}
 >
-  <section class="max-w-5xl mx-auto px-4 py-8">
-    <ResultView
-      client:load
-      countryCode={country.code}
-      countryName={country.name}
-      countrySlug={country.slug}
-      currencySymbol={country.currencySymbol}
-      medianNetMonthly={country.medianNetMonthly}
-      legalWeeklyHours={country.legalWeeklyHours}
-      realAnnualHours={country.realAnnualHours}
-      retirementAge={country.retirementAge}
-    />
-  </section>
+  <div class="max-w-5xl mx-auto px-4 py-8 space-y-8">
+    <!-- Migas de pan semánticas -->
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href={`/${country.slug}`} class="hover:text-primary transition-colors">{country.name}</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-primary font-bold" aria-current="page">Calculadora de Precio</li>
+      </ol>
+    </nav>
+
+    <!-- Encabezado Institucional de la Calculadora -->
+    <header class="board-plate p-6 sm:p-8 border border-base-300 shadow-md">
+      <p class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-semibold flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+        <span>Herramienta Abierta de Cotización · {country.name}</span>
+      </p>
+      <h1 class="font-signage uppercase text-3xl sm:text-5xl md:text-6xl leading-tight mt-2 tracking-tight">
+        Calculadora libre de esfuerzo laboral en {country.name}
+      </h1>
+      <p class="mt-3 text-sm sm:text-base opacity-85 font-sans max-w-2xl leading-relaxed">
+        Escribe cualquier importe o gasto en <strong>{country.currency} ({country.currencySymbol})</strong> y el motor calculará cuántas horas, jornadas de 8h y meses de vida productiva representa, con el sueldo mediano de {country.name} o con tu propia nómina.
+      </p>
+    </header>
+
+    <!-- Vista Interactiva de Cálculo -->
+    <main>
+      <ResultView
+        client:load
+        countryCode={country.code}
+        countryName={country.name}
+        countrySlug={country.slug}
+        currencySymbol={country.currencySymbol}
+        medianNetMonthly={country.medianNetMonthly}
+        minWageMonthly={country.minWageMonthly}
+        legalWeeklyHours={country.legalWeeklyHours}
+        realAnnualHours={country.realAnnualHours}
+        retirementAge={country.retirementAge}
+        productName="Cualquier compra o gasto"
+        productShortName="Gasto personalizado"
+      />
+    </main>
+
+    <!-- Guía y Metodología de Uso -->
+    <section class="board-plate p-6 sm:p-8 space-y-6 border border-base-300">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl text-base-content">
+        Cómo interpretar el resultado
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-sans text-sm">
+        <div class="board-cell p-4 space-y-2">
+          <strong class="font-signage text-lg text-primary block uppercase">1. En Horas</strong>
+          <p class="opacity-80 leading-relaxed text-xs">
+            Indica el tiempo neto exacto de dedicación laboral que requiere el importe, considerando tu salario neto por hora.
+          </p>
+        </div>
+        <div class="board-cell p-4 space-y-2">
+          <strong class="font-signage text-lg text-primary block uppercase">2. En Jornadas</strong>
+          <p class="opacity-80 leading-relaxed text-xs">
+            Turnos completos de 8 horas de trabajo íntegro que debes realizar para costear la compra sin gastar en nada más.
+          </p>
+        </div>
+        <div class="board-cell p-4 space-y-2">
+          <strong class="font-signage text-lg text-primary block uppercase">3. En Tiempo Vital</strong>
+          <p class="opacity-80 leading-relaxed text-xs">
+            Si activas el Modo Vida e introduces tu edad, calcula el porcentaje de tus años laborales restantes que devora ese gasto.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas Frecuentes -->
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4" aria-label="Preguntas Frecuentes">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">Preguntas Frecuentes</h2>
+      <div class="space-y-4 pt-2">
+        {faqs.map((faq) => (
+          <div class="border-b border-base-300 pb-3">
+            <h3 class="font-bold text-base text-base-content">{faq.question}</h3>
+            <p class="text-sm opacity-80 mt-1 leading-relaxed font-sans">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
 </BaseLayout>

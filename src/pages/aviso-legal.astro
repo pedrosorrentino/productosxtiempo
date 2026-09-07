@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { brand } from '../i18n/es.ts';
+import { generateBreadcrumbSchema } from '../lib/seo.ts';
+
+const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
+const cleanSite = siteUrl.replace(/\/$/, "");
+const canonicalUrl = `${cleanSite}/aviso-legal/`;
+
+const title = `Aviso Legal y Condiciones de Uso · ${brand.name}`;
+const description = "Información legal, titularidad del sitio web, condiciones de uso y exención de responsabilidad financiera de Precio en Tiempo.";
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", url: `${cleanSite}/` },
+  { name: "Aviso Legal", url: canonicalUrl },
+]);
+---
+
+<BaseLayout title={title} description={description} jsonLd={breadcrumbSchema}>
+  <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-6">
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-primary font-bold" aria-current="page">Aviso Legal</li>
+      </ol>
+    </nav>
+
+    <div class="board-plate p-6 md:p-8">
+      <p class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-semibold">
+        Información Legal y Regulatoria
+      </p>
+      <h1 class="font-signage uppercase text-4xl md:text-6xl leading-none mt-2">
+        Aviso Legal
+      </h1>
+      <p class="mt-4 text-base md:text-lg opacity-90 leading-relaxed max-w-2xl">
+        En cumplimiento con el deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE).
+      </p>
+    </div>
+
+    <div class="board-plate p-6 md:p-8 space-y-6 text-sm md:text-base leading-relaxed opacity-90 font-sans">
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">1. Titularidad del Sitio Web</h2>
+        <p>
+          El presente sitio web <strong>{brand.domain}</strong> (en adelante, "el Sitio") es una plataforma independiente de divulgación económica y matemática, operada con fines educativos y de concienciación financiera.
+        </p>
+        <p>
+          Para cualquier consulta, propuesta o comunicación, puedes contactar a través de nuestro canal habilitado en la página de <a href="/contacto" class="text-primary underline">Contacto</a>.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">2. Objeto y Naturaleza Educativa</h2>
+        <p>
+          El Sitio tiene por objeto proporcionar estimaciones numéricas y conversiones ilustrativas que transforman precios monetarios en tiempo de trabajo equivalente (horas, jornadas laborales y meses de sueldo), con base en salarios medianos oficiales de fuentes públicas o en los datos introducidos voluntariamente por el usuario.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">3. Exención de Asesoramiento Financiero</h2>
+        <p>
+          <strong>Ningún contenido, cálculo, estimación o dato presentado en este sitio web constituye asesoramiento financiero, recomendación de inversión, consejo fiscal ni recomendación contractual de compra o abstención de compra.</strong>
+        </p>
+        <p>
+          Las cifras de esfuerzo laboral son modelos matemáticos simplificados y orientativos. Cada usuario es el único responsable de sus decisiones económicas y patrimoniales.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">4. Fuentes de Datos y Exactitud</h2>
+        <p>
+          Los precios de los productos y los datos salariales se recopilan de fuentes estadísticas oficiales (como el INE en España, Eurostat y la OCDE) o catálogos públicos comerciales de referencia. Si bien procuramos mantener la información actualizada, los precios y salarios pueden variar por inflación, localización geográfica o convenios colectivos específicos.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">5. Propiedad Intelectual</h2>
+        <p>
+          El código fuente, diseño visual, maquetación, algoritmos de cálculo y marcas son titularidad del proyecto o se utilizan bajo licencias abiertas aplicables. Se autoriza la cita de los datos y cifras siempre que se enlace e identifique la fuente como <strong>{brand.name} ({brand.domain})</strong>.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { brand } from '../i18n/es.ts';
+import { generateBreadcrumbSchema } from '../lib/seo.ts';
+
+const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
+const cleanSite = siteUrl.replace(/\/$/, "");
+const canonicalUrl = `${cleanSite}/sobre-el-proyecto/`;
+
+const title = `Sobre el Proyecto · Misión y Transparencia · ${brand.name}`;
+const description = "Por qué medimos el precio de las cosas en tiempo de trabajo: conoce el origen, la misión contra la ilusión monetaria y los principios de Precio en Tiempo.";
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", url: `${cleanSite}/` },
+  { name: "Sobre el Proyecto", url: canonicalUrl },
+]);
+---
+
+<BaseLayout title={title} description={description} jsonLd={breadcrumbSchema}>
+  <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-6">
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-primary font-bold" aria-current="page">Sobre el Proyecto</li>
+      </ol>
+    </nav>
+
+    <div class="board-plate p-6 md:p-8">
+      <p class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-semibold">
+        Manifiesto y Transparencia
+      </p>
+      <h1 class="font-signage uppercase text-4xl md:text-6xl leading-none mt-2">
+        Sobre el Proyecto
+      </h1>
+      <p class="mt-4 text-base md:text-lg opacity-90 leading-relaxed max-w-2xl">
+        El dinero es abstracto y cambia con la inflación. Tu tiempo de vida es finito e irremplazable. Esta web nació para traducir el mercado a la única unidad que de verdad importa.
+      </p>
+    </div>
+
+    <div class="board-plate p-6 md:p-8 space-y-6 text-sm md:text-base leading-relaxed opacity-90 font-sans">
+      <section class="space-y-3">
+        <h2 class="font-signage uppercase text-2xl md:text-3xl text-base-content">
+          1. El Problema de la Ilusión Monetaria
+        </h2>
+        <p>
+          Vivimos rodeados de precios expresados en divisas que fluctúan constantemente. Escuchar que un teléfono cuesta 1.200 € o que un coche cuesta 35.000 € no transmite intuitivamente el sacrificio real que exige su adquisición.
+        </p>
+        <p>
+          Al convertir esa cifra económica en <strong>jornadas íntegras de trabajo</strong> o en el <strong>porcentaje de tu vida laboral que deberás entregar</strong> al mercado a cambio de ese bien, la decisión de compra adquiere una dimensión lúcida y consciente.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="font-signage uppercase text-2xl md:text-3xl text-base-content">
+          2. Nuestros Tres Principios
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div class="board-cell p-4 space-y-2">
+            <span class="font-signage text-xl text-primary block uppercase">Cero Moralina</span>
+            <p class="text-xs font-board-mono opacity-80 leading-relaxed">
+              No juzgamos si una compra es buena o mala. Informamos del esfuerzo laboral con datos matemáticos objetivos; la decisión es siempre tuya.
+            </p>
+          </div>
+          <div class="board-cell p-4 space-y-2">
+            <span class="font-signage text-xl text-primary block uppercase">Rigor Estadístico</span>
+            <p class="text-xs font-board-mono opacity-80 leading-relaxed">
+              Utilizamos el salario mediano neto (percentil 50 de la población real), la convención estricta 52/12 y horas reales de la OCDE, descartando medias infladas.
+            </p>
+          </div>
+          <div class="board-cell p-4 space-y-2">
+            <span class="font-signage text-xl text-primary block uppercase">Privacidad Total</span>
+            <p class="text-xs font-board-mono opacity-80 leading-relaxed">
+              Tus cifras de nómina y edad jamás salen de tu navegador. El cálculo corre íntegramente en tu dispositivo sin registro alguno.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="font-signage uppercase text-2xl md:text-3xl text-base-content">
+          3. Metodología Abierta y Verificable
+        </h2>
+        <p>
+          Creemos en la transparencia científica y en los datos abiertos. Por eso no utilizamos algoritmos propietarios ni estimaciones arbitrarias: todos los parámetros provienen de organismos públicos oficiales (<strong>Banco Mundial, OCDE, Eurostat, INE, MITECO</strong>) y de iniciativas comunitarias abiertas (<strong>Open Food Facts</strong>). Consulta todos los detalles y fórmulas en nuestra <a href="/metodo" class="text-primary underline font-medium">Guía Metodológica</a>.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

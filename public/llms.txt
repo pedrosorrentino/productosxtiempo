@@ -19,9 +19,24 @@ Precio en tiempo es un conversor económico educativo y forense que transforma e
 - Estados Unidos (US / USD): Salario mediano orientativo 4.000 $, jornada legal 40h, 1.815h reales anuales.
 - Portugal, Italia, Reino Unido y Suiza.
 
+## Fuentes Oficiales y APIs Abiertas Sincronizadas
+- **Eurostat API**: Salarios Mínimos Oficiales (`earn_mw_cur`) y precios de electricidad doméstica (`nrg_pc_204`).
+- **Banco Mundial (World Bank Open Data API)**: Paridad de Poder Adquisitivo (`PA.NUS.PPP`) e inflación anual (`FP.CPI.TOTL.ZG`).
+- **INE (España)**: Encuesta Anual de Estructura Salarial (EAES) y perfiles por sector (TIC, Hostelería, Sanidad, Jóvenes).
+- **MITECO (Gobierno de España)**: Precios oficiales en tiempo real de carburantes en >11.000 estaciones terrestres.
+- **Banco Central Europeo (BCE / Frankfurter API)**: Tipos de cambio oficiales diarios de divisas internacionales.
+- **Open Food Facts**: Precios colaborativos de cesta básica de la compra (AOVE, leche entera, huevos).
+- **CoinGecko API**: Cotización pública en tiempo real de Bitcoin.
+
 ## Arquitectura de Navegación y URLs
 - Tablero principal de cotizaciones: `https://precioentiempo.com/`
 - Ficha de país: `https://precioentiempo.com/[country]/`
+- Hub de categoría temática: `https://precioentiempo.com/[country]/categoria/[category]/`
 - Ficha de producto en tiempo: `https://precioentiempo.com/[country]/[product]/`
 - Calculadora de precio libre: `https://precioentiempo.com/[country]/precio/`
 - Documentación técnica y calibración del motor: `https://precioentiempo.com/metodo/`
+- Sobre el proyecto y misión: `https://precioentiempo.com/sobre-el-proyecto/`
+- Contacto y reporte de erratas: `https://precioentiempo.com/contacto/`
+- Información legal: `https://precioentiempo.com/aviso-legal/`
+- Privacidad y protección de datos: `https://precioentiempo.com/privacidad/`
+- Política de cookies: `https://precioentiempo.com/cookies/`

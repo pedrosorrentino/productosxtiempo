@@ -5,7 +5,7 @@ import { og } from '../i18n/es.ts';
 import type { Country, Product } from '../lib/types.ts';
 import countriesData from '../data/countries.json';
 import productsData from '../data/products.json';
-import { generateHomeHreflangs, generateWebSiteSchema } from '../lib/seo.ts';
+import { generateHomeHreflangs, generateWebSiteSchema, generateWebApplicationSchema } from '../lib/seo.ts';
 
 /**
  * Portada = tablero de cotizaciones. Todo el catálogo visible viaja a la isla
@@ -16,7 +16,14 @@ const products = (productsData as Product[]).filter((product) => product.visible
 
 const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
 const hreflangs = generateHomeHreflangs(countries, siteUrl);
-const jsonLd = generateWebSiteSchema(siteUrl);
+const webSiteSchemas = generateWebSiteSchema(siteUrl);
+const webAppSchema = generateWebApplicationSchema({
+  name: "Calculadora de Precios en Tiempo de Trabajo",
+  description: "Convierte precios de productos y gastos en horas, jornadas y años de trabajo real.",
+  url: `${siteUrl.replace(/\/$/, "")}/`,
+  applicationCategory: "FinanceApplication",
+});
+const jsonLd = [...webSiteSchemas, webAppSchema];
 ---
 
 <BaseLayout

@@ -1,19 +1,35 @@
 // src/lib/seo.ts
 import type { Country, Product, ProductPrice } from "./types.ts";
 
-export const COUNTRY_LOCALES: Record<string, { hreflang: string; ogLocale: string; langCode: string }> = {
+/**
+ * Países hispanohablantes donde el contenido en español coincide de forma legítima
+ * con el idioma y las búsquedas locales de los usuarios en Google.
+ */
+export const SPANISH_LOCALES: Record<string, { hreflang: string; ogLocale: string; langCode: string }> = {
   ES: { hreflang: "es-ES", ogLocale: "es_ES", langCode: "es-ES" },
-  PT: { hreflang: "es-PT", ogLocale: "es_PT", langCode: "es-PT" },
-  FR: { hreflang: "es-FR", ogLocale: "es_FR", langCode: "es-FR" },
-  DE: { hreflang: "es-DE", ogLocale: "es_DE", langCode: "es-DE" },
-  IT: { hreflang: "es-IT", ogLocale: "es_IT", langCode: "es-IT" },
-  GB: { hreflang: "es-GB", ogLocale: "es_GB", langCode: "es-GB" },
-  US: { hreflang: "es-US", ogLocale: "es_US", langCode: "es-US" },
   MX: { hreflang: "es-MX", ogLocale: "es_MX", langCode: "es-MX" },
   AR: { hreflang: "es-AR", ogLocale: "es_AR", langCode: "es-AR" },
   CO: { hreflang: "es-CO", ogLocale: "es_CO", langCode: "es-CO" },
   CL: { hreflang: "es-CL", ogLocale: "es_CL", langCode: "es-CL" },
-  CH: { hreflang: "es-CH", ogLocale: "es_CH", langCode: "es-CH" },
+};
+
+/**
+ * Mapeo completo de países para BaseLayout (og:locale y lang de documento).
+ * Los países no hispanohablantes se sirven con lang="es" sin generar hreflang forzado.
+ */
+export const COUNTRY_LOCALES: Record<string, { hreflang?: string; ogLocale: string; langCode: string }> = {
+  ES: { hreflang: "es-ES", ogLocale: "es_ES", langCode: "es-ES" },
+  MX: { hreflang: "es-MX", ogLocale: "es_MX", langCode: "es-MX" },
+  AR: { hreflang: "es-AR", ogLocale: "es_AR", langCode: "es-AR" },
+  CO: { hreflang: "es-CO", ogLocale: "es_CO", langCode: "es-CO" },
+  CL: { hreflang: "es-CL", ogLocale: "es_CL", langCode: "es-CL" },
+  PT: { ogLocale: "es_PT", langCode: "es" },
+  FR: { ogLocale: "es_FR", langCode: "es" },
+  DE: { ogLocale: "es_DE", langCode: "es" },
+  IT: { ogLocale: "es_IT", langCode: "es" },
+  GB: { ogLocale: "es_GB", langCode: "es" },
+  US: { ogLocale: "es_US", langCode: "es" },
+  CH: { ogLocale: "es_CH", langCode: "es" },
 };
 
 export interface HreflangLink {
@@ -22,25 +38,29 @@ export interface HreflangLink {
 }
 
 /**
- * Genera el set completo y bidireccional de etiquetas hreflang para una ruta.
- * Incluye auto-referencia, retorno entre todos los países y x-default (apuntando a España).
+ * Genera el set de etiquetas hreflang legítimo enfocado en países hispanohablantes.
+ * Incluye auto-referencia, retorno entre países hispanohablantes y x-default.
  */
 export function generateHreflangs(
   countries: Country[],
-  currentPathType: "product" | "country" | "precio",
-  productId?: string,
+  currentPathType: "product" | "country" | "precio" | "category",
+  identifier?: string, // productId o categorySlug
   siteUrl: string = "https://precioentiempo.com"
 ): HreflangLink[] {
   const links: HreflangLink[] = [];
   const cleanSite = siteUrl.replace(/\/$/, "");
 
   for (const c of countries) {
-    const localeInfo = COUNTRY_LOCALES[c.code] ?? { hreflang: `es-${c.code}`, ogLocale: `es_${c.code}`, langCode: "es" };
+    const localeInfo = SPANISH_LOCALES[c.code];
+    if (!localeInfo) continue; // No emitir hreflang para países sin búsqueda en español
+
     let path = `/${c.slug}`;
-    if (currentPathType === "product" && productId) {
-      path = `/${c.slug}/${productId}`;
+    if (currentPathType === "product" && identifier) {
+      path = `/${c.slug}/${identifier}`;
     } else if (currentPathType === "precio") {
       path = `/${c.slug}/precio`;
+    } else if (currentPathType === "category" && identifier) {
+      path = `/${c.slug}/categoria/${identifier}`;
     }
     links.push({
       hreflang: localeInfo.hreflang,
@@ -48,8 +68,16 @@ export function generateHreflangs(
     });
   }
 
-  // x-default apunta a la versión de España o a la raíz
-  const defaultPath = currentPathType === "product" && productId ? `/espana/${productId}/` : currentPathType === "precio" ? `/espana/precio/` : `/espana/`;
+  // x-default apunta a la versión de España
+  let defaultPath = `/espana/`;
+  if (currentPathType === "product" && identifier) {
+    defaultPath = `/espana/${identifier}/`;
+  } else if (currentPathType === "precio") {
+    defaultPath = `/espana/precio/`;
+  } else if (currentPathType === "category" && identifier) {
+    defaultPath = `/espana/categoria/${identifier}/`;
+  }
+
   links.push({
     hreflang: "x-default",
     href: `${cleanSite}${defaultPath}`,
@@ -108,6 +136,18 @@ export const PRODUCT_BRANDS: Record<string, string> = {
   "implante-dental": "Clínicas Odontológicas Especializadas",
   "perro-anual": "Veterinaria y Cuidados Caninos",
   "vacaciones-coche": "Turismo y Vacaciones",
+  "toyota-corolla": "Toyota",
+  "mg-zs": "MG Motor",
+  "seat-ibiza": "SEAT",
+  "hyundai-tucson": "Hyundai",
+  "renault-clio": "Renault",
+  "toyota-yaris-cross": "Toyota",
+  "peugeot-208": "Peugeot",
+  "kia-sportage": "Kia",
+  "toyota-c-hr": "Toyota",
+  "volkswagen-golf": "Volkswagen",
+  "tesla-model-y": "Tesla",
+  "nissan-versa": "Nissan",
 };
 
 export function getProductBrand(product: Product): string {
@@ -131,12 +171,11 @@ export function getProductBrand(product: Product): string {
 }
 
 /**
- * Genera Schema.org JSON-LD para Product con QuantitativeValue en horas y jornadas.
- * Cumple con los requisitos de Google Search Console para Fragmentos de productos y Fichas de comerciantes:
- * - brand (marca) y sku como identificador
- * - review y aggregateRating para fragmentos enriquecidos con estrellas
- * - validFrom y priceValidUntil en offers
- * - shippingDetails y hasMerchantReturnPolicy en offers
+ * Genera Schema.org JSON-LD legítimo para el análisis económico del producto
+ * con especificaciones cuantitativas de esfuerzo laboral (horas, jornadas y meses de sueldo).
+ * Cumple rigurosamente las políticas de Google Search Central contra Spammy Structured Markup:
+ * - No incluye reseñas inventadas ni calificaciones agregadas sin feedback de usuarios reales.
+ * - No incluye ofertas de comerciante con inventario ficticio ni envíos gratuitos irreales.
  */
 export function generateProductSchema(input: {
   product: Product;
@@ -176,16 +215,6 @@ export function generateProductSchema(input: {
     });
   }
 
-  // Normalización de fecha válida para validFrom (ISO 8601 YYYY-MM-DD)
-  let validFromDate = "2026-01-01";
-  if (input.price.date) {
-    if (input.price.date.length === 7) {
-      validFromDate = `${input.price.date}-01`;
-    } else if (input.price.date.length === 10) {
-      validFromDate = input.price.date;
-    }
-  }
-
   return {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -197,79 +226,80 @@ export function generateProductSchema(input: {
       "@type": "Brand",
       name: brandName,
     },
-    review: {
-      "@type": "Review",
-      name: `Evaluación de esfuerzo laboral para ${input.product.name}`,
-      reviewBody: `Análisis económico sobre el coste en horas y jornadas de trabajo necesarias para costear ${input.product.name} en ${input.country.name} (${input.price.value} ${input.country.currency}) en base al salario mediano neto oficial.`,
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "4.8",
-        bestRating: "5",
-        worstRating: "1",
-      },
-      author: {
-        "@type": "Organization",
-        name: "Precio en tiempo",
-        url: "https://precioentiempo.com",
-      },
-      datePublished: "2026-01-01",
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: 16,
-      reviewCount: 16,
-      bestRating: "5",
-      worstRating: "1",
-    },
     offers: {
       "@type": "Offer",
       url: input.canonicalUrl,
       priceCurrency: input.country.currency,
       price: input.price.value,
-      validFrom: validFromDate,
-      priceValidUntil: "2026-12-31",
-      availability: "https://schema.org/InStock",
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         price: input.price.value,
         priceCurrency: input.country.currency,
         valueAddedTaxIncluded: true,
       },
-      shippingDetails: {
-        "@type": "OfferShippingDetails",
-        shippingRate: {
-          "@type": "MonetaryAmount",
-          value: 0,
-          currency: input.country.currency,
-        },
-        shippingDestination: {
-          "@type": "DefinedRegion",
-          addressCountry: input.country.code,
-        },
-        deliveryTime: {
-          "@type": "ShippingDeliveryTime",
-          handlingTime: {
-            "@type": "QuantitativeValue",
-            minValue: 0,
-            maxValue: 0,
-            unitCode: "DAY",
-          },
-          transitTime: {
-            "@type": "QuantitativeValue",
-            minValue: 0,
-            maxValue: 0,
-            unitCode: "DAY",
-          },
-        },
-      },
-      hasMerchantReturnPolicy: {
-        "@type": "MerchantReturnPolicy",
-        applicableCountry: input.country.code,
-        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
-      },
     },
     additionalProperty: additionalProperties.length > 0 ? additionalProperties : undefined,
+  };
+}
+
+/**
+ * Genera Schema.org CollectionPage para hubs temáticos de categorías.
+ */
+export function generateCategorySchema(input: {
+  categoryName: string;
+  categoryDescription: string;
+  country: Country;
+  canonicalUrl: string;
+  items: Array<{ name: string; url: string }>;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${input.categoryName} en ${input.country.name} en Horas de Trabajo`,
+    description: input.categoryDescription,
+    url: input.canonicalUrl,
+    inLanguage: "es-ES",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: input.items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        url: item.url,
+      })),
+    },
+  };
+}
+
+/**
+ * Genera Schema.org WebApplication para herramientas interactivas y calculadoras.
+ */
+export function generateWebApplicationSchema(input: {
+  name: string;
+  description: string;
+  url: string;
+  applicationCategory?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    applicationCategory: input.applicationCategory ?? "FinanceApplication",
+    operatingSystem: "All",
+    browserRequirements: "Requires JavaScript. Requires HTML5.",
+    inLanguage: "es-ES",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "EUR",
+    },
+    provider: {
+      "@type": "Organization",
+      name: "Precio en tiempo",
+      url: "https://precioentiempo.com",
+    },
   };
 }
 
@@ -373,7 +403,7 @@ export function generateWebSiteSchema(siteUrl: string = "https://precioentiempo.
 }
 
 /**
- * Genera hreflangs bidireccionales para la portada hacia los hubs nacionales.
+ * Genera hreflangs bidireccionales para la portada hacia los hubs hispanohablantes.
  */
 export function generateHomeHreflangs(
   countries: Country[],
@@ -383,7 +413,8 @@ export function generateHomeHreflangs(
   const links: HreflangLink[] = [];
 
   for (const c of countries) {
-    const localeInfo = COUNTRY_LOCALES[c.code] ?? { hreflang: `es-${c.code}` };
+    const localeInfo = SPANISH_LOCALES[c.code];
+    if (!localeInfo) continue;
     links.push({
       hreflang: localeInfo.hreflang,
       href: `${cleanSite}/${c.slug}/`,

@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { brand } from '../i18n/es.ts';
+import { generateBreadcrumbSchema } from '../lib/seo.ts';
+
+const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
+const cleanSite = siteUrl.replace(/\/$/, "");
+const canonicalUrl = `${cleanSite}/contacto/`;
+
+const title = `Contacto y Reporte de Datos · ${brand.name}`;
+const description = "¿Tienes una sugerencia, detectas un precio desactualizado o quieres proponer un nuevo producto? Contáctanos directamente.";
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", url: `${cleanSite}/` },
+  { name: "Contacto", url: canonicalUrl },
+]);
+---
+
+<BaseLayout title={title} description={description} jsonLd={breadcrumbSchema}>
+  <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-6">
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-primary font-bold" aria-current="page">Contacto</li>
+      </ol>
+    </nav>
+
+    <div class="board-plate p-6 md:p-8">
+      <p class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-semibold">
+        Canal Directo de Comunicación
+      </p>
+      <h1 class="font-signage uppercase text-4xl md:text-6xl leading-none mt-2">
+        Contacto
+      </h1>
+      <p class="mt-4 text-base md:text-lg opacity-90 leading-relaxed max-w-2xl">
+        ¿Has detectado un precio oficial desactualizado? ¿Quieres sugerir un nuevo bien para el catálogo o colaborar en la divulgación del proyecto? Escríbenos.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="board-plate p-6 md:p-8 space-y-4">
+        <h2 class="font-signage uppercase text-2xl text-base-content">
+          Buzón de Sugerencias y Erratas
+        </h2>
+        <p class="text-sm opacity-90 leading-relaxed font-sans">
+          Mantenemos los precios y las estadísticas salariales en constante revisión mediante fuentes oficiales y automatizaciones semanales. Si detectas cualquier discrepancia en tu país o convenio, agradecemos tu reporte para calibrar el motor de cálculo.
+        </p>
+        <div class="pt-2">
+          <span class="font-board-mono text-xs uppercase opacity-70 block">Correo Electrónico Oficial</span>
+          <a
+            href="mailto:contacto@precioentiempo.com"
+            class="font-board-mono text-lg text-primary font-bold hover:underline mt-1 inline-block"
+          >
+            contacto@precioentiempo.com
+          </a>
+        </div>
+      </div>
+
+      <div class="board-plate p-6 md:p-8 space-y-4">
+        <h2 class="font-signage uppercase text-2xl text-base-content">
+          Prensa y Divulgación
+        </h2>
+        <p class="text-sm opacity-90 leading-relaxed font-sans">
+          Si eres periodista, docente o investigador y deseas utilizar nuestros datos de poder adquisitivo o solicitar un informe comparativo a medida sobre el coste de vida medido en horas de trabajo, estamos a tu disposición.
+        </p>
+        <div class="pt-2">
+          <span class="font-board-mono text-xs uppercase opacity-70 block">Documentación Metodológica</span>
+          <a href="/metodo" class="btn btn-outline btn-sm font-board-mono text-xs uppercase mt-2">
+            Ver Metodología Completa →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

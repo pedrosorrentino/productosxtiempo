@@ -10,6 +10,7 @@ import type { Country, Product } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
 import productsData from '../../data/products.json';
 import anchorsData from '../../data/anchors.json';
+import macroData from '../../data/macro.json';
 import { generateHreflangs, generateBreadcrumbSchema, generateFAQSchema } from '../../lib/seo.ts';
 
 export function getStaticPaths() {
@@ -48,6 +49,11 @@ const countryWage =
 const countryWageText =
   countryWage != null ? formatHourlyWage(countryWage, country.currencySymbol) : null;
 const hasSalary = countryWageText != null;
+
+const countryMacro = (macroData as Record<string, any>)[country.code] || {};
+const pppFactor = country.pppFactor ?? countryMacro.pppFactor ?? null;
+const inflationRate = country.inflationRate ?? countryMacro.inflationRate ?? null;
+const minWageMonthly = country.minWageMonthly ?? countryMacro.minWageMonthly ?? null;
 
 const products: Product[] = productsData as Product[];
 const hasLocalPrice = (product: Product, code: string): boolean =>
@@ -235,6 +241,80 @@ const pageDescription = hasSalary
         </div>
       )}
     </header>
+
+    <!-- Navegación a Hubs de Categoría -->
+    <section class="board-plate p-4 sm:p-5 border border-base-300" aria-label="Categorías temáticas">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <span class="font-board-mono text-xs uppercase tracking-wider opacity-75 font-semibold">
+          Explorar por categorías en {country.name}:
+        </span>
+        <div class="flex flex-wrap items-center gap-2">
+          {categoryOrder.map((cat) => (
+            <a
+              href={`/${country.slug}/categoria/${cat}`}
+              class="px-3 py-1.5 rounded-md font-board-mono text-xs uppercase font-medium bg-base-200 hover:bg-base-300 border border-base-content/10 hover:border-primary/50 text-base-content hover:text-primary transition-all"
+            >
+              {cat === 'transporte' ? 'Transporte' : cat === 'tecnologia' ? 'Tecnología' : cat === 'vivienda' ? 'Vivienda' : cat === 'dia-a-dia' ? 'Día a día' : 'Vida'} →
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Radiografía Socioeconómica y Esfuerzo Laboral Oficial (Banco Mundial, OCDE, Eurostat) -->
+    <section class="board-plate p-5 sm:p-6 border border-base-300 space-y-4" aria-label="Radiografía socioeconómica oficial">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-base-300/80 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-primary inline-block"></span>
+          <h2 class="font-signage uppercase text-xl sm:text-2xl tracking-wide">
+            Radiografía Económica Oficial de {country.name}
+          </h2>
+        </div>
+        <span class="font-board-mono text-xs opacity-75">
+          Fuentes: Banco Mundial · OCDE · Eurostat / INE
+        </span>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 font-board-mono text-xs sm:text-sm">
+        <div class="board-cell p-3.5 space-y-1">
+          <span class="opacity-70 text-xs block uppercase">Sueldo Mediano Neto</span>
+          <strong class="text-base sm:text-xl font-bold text-primary block">
+            {country.medianNetMonthly ? `${country.medianNetMonthly} ${country.currencySymbol}/mes` : 'No disponible'}
+          </strong>
+          <span class="text-[11px] opacity-60 block">Percentil 50 representativo</span>
+        </div>
+
+        <div class="board-cell p-3.5 space-y-1">
+          <span class="opacity-70 text-xs block uppercase">Salario Mínimo Legal (SMI)</span>
+          <strong class="text-base sm:text-xl font-bold block">
+            {minWageMonthly ? `${minWageMonthly} ${country.currencySymbol}/mes` : 'Convenio sectorial'}
+          </strong>
+          <span class="text-[11px] opacity-60 block">
+            {minWageMonthly && country.medianNetMonthly
+              ? `${Math.round((minWageMonthly / country.medianNetMonthly) * 100)}% del sueldo mediano`
+              : 'Regulado sectorialmente'}
+          </span>
+        </div>
+
+        <div class="board-cell p-3.5 space-y-1">
+          <span class="opacity-70 text-xs block uppercase">Jornada Anual Efectiva</span>
+          <strong class="text-base sm:text-xl font-bold block">
+            {country.realAnnualHours ? `${country.realAnnualHours} h/año` : `${country.legalWeeklyHours} h/sem`}
+          </strong>
+          <span class="text-[11px] opacity-60 block">OCDE (descontando festivos)</span>
+        </div>
+
+        <div class="board-cell p-3.5 space-y-1">
+          <span class="opacity-70 text-xs block uppercase">Paridad Poder Compra (PPA)</span>
+          <strong class="text-base sm:text-xl font-bold text-accent block">
+            {pppFactor ? `${pppFactor} ${country.currency}/$ int.` : 'N/D'}
+          </strong>
+          <span class="text-[11px] opacity-60 block">
+            {inflationRate ? `PPA · Inflación oficial: ${inflationRate}%` : 'Factor PPA Banco Mundial'}
+          </span>
+        </div>
+      </div>
+    </section>
 
     {!hasSalary && (
       <div role="alert" class="board-plate p-5 border-l-4 border-l-warning">

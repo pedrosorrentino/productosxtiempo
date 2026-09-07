@@ -1,0 +1,58 @@
+{
+  "ES": [
+    {
+      "id": "smi",
+      "label": "Salario Mínimo (SMI)",
+      "shortLabel": "SMI Oficial",
+      "monthlyNet": 1323,
+      "source": "BOE / Ministerio de Trabajo (1.134 € en 14 pagas)",
+      "description": "Salario mínimo interprofesional legal regulado por el Estado.",
+      "icon": "⚖️"
+    },
+    {
+      "id": "joven",
+      "label": "Jóvenes (< 25 años)",
+      "shortLabel": "Primer Empleo (<25)",
+      "monthlyNet": 1250,
+      "source": "INE · Encuesta Anual de Estructura Salarial",
+      "description": "Retribución neta estimada para menores de 25 años en España.",
+      "icon": "🌱"
+    },
+    {
+      "id": "hosteleria",
+      "label": "Hostelería y Comercio",
+      "shortLabel": "Hostelería / Tiendas",
+      "monthlyNet": 1280,
+      "source": "INE · Sector H / Comercio al por menor",
+      "description": "Salario neto de referencia en servicios de restauración y comercio.",
+      "icon": "☕"
+    },
+    {
+      "id": "construccion",
+      "label": "Construcción e Industria",
+      "shortLabel": "Construcción",
+      "monthlyNet": 1750,
+      "source": "INE · Sector F (Construcción)",
+      "description": "Salario neto medio en edificación y obra civil.",
+      "icon": "🏗️"
+    },
+    {
+      "id": "sanidad",
+      "label": "Sanidad y Educación",
+      "shortLabel": "Sanidad / Educación",
+      "monthlyNet": 2200,
+      "source": "INE · Sector Q (Sanidad) y P (Educación)",
+      "description": "Personal sanitario, enfermería, docencia y servicios asistenciales.",
+      "icon": "🏥"
+    },
+    {
+      "id": "tech",
+      "label": "Tecnología y Software (TIC)",
+      "shortLabel": "Tecnología / TIC",
+      "monthlyNet": 2650,
+      "source": "INE · Sector J (Información y Comunicaciones)",
+      "description": "Desarrollo de software, sistemas informáticos e ingeniería técnica.",
+      "icon": "💻"
+    }
+  ]
+}

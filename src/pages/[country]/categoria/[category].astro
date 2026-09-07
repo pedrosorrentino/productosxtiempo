@@ -1,0 +1,305 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { calc } from '../../../lib/calc.ts';
+import { formatHours, formatWorkdays } from '../../../lib/format.ts';
+import { brand, categories as categoryLabels } from '../../../i18n/es.ts';
+import type { Country, Product } from '../../../lib/types.ts';
+import countriesData from '../../../data/countries.json';
+import productsData from '../../../data/products.json';
+import { getProductPrice } from '../../../lib/selectors.ts';
+import {
+  generateHreflangs,
+  generateCategorySchema,
+  generateBreadcrumbSchema,
+  generateFAQSchema,
+} from '../../../lib/seo.ts';
+
+export function getStaticPaths() {
+  const categoriesList: Product['category'][] = [
+    'transporte',
+    'tecnologia',
+    'vivienda',
+    'dia-a-dia',
+    'vida',
+  ];
+  const paths: any[] = [];
+
+  for (const country of countriesData as Country[]) {
+    for (const category of categoriesList) {
+      const catProducts = (productsData as Product[]).filter(
+        (p) => p.visible && p.category === category
+      );
+      if (catProducts.length === 0) continue;
+
+      paths.push({
+        params: { country: country.slug, category },
+        props: { country, category, products: catProducts },
+      });
+    }
+  }
+
+  return paths;
+}
+
+interface Props {
+  country: Country;
+  category: Product['category'];
+  products: Product[];
+}
+
+const { country, category, products } = Astro.props as Props;
+const allCountries = countriesData as Country[];
+const categoryName = categoryLabels[category] ?? category;
+
+const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
+const cleanSite = siteUrl.replace(/\/$/, "");
+const canonicalUrl = `${cleanSite}/${country.slug}/categoria/${category}/`;
+
+const hreflangs = generateHreflangs(allCountries, "category", category, siteUrl);
+
+export interface QuotedProduct extends Product {
+  price: ReturnType<typeof getProductPrice>;
+  hours: number | null;
+  workdays: number | null;
+  months: number | null;
+}
+
+// Cálculo de métricas de productos para la tabla comparativa
+const hasMedianSalary = country.medianNetMonthly != null;
+const quotedProducts: QuotedProduct[] = products.map((p: Product): QuotedProduct => {
+  const price = getProductPrice(p, country.code);
+  let hours: number | null = null;
+  let workdays: number | null = null;
+  let months: number | null = null;
+
+  if (price && hasMedianSalary) {
+    try {
+      const res = calc({
+        price: price.value,
+        netMonthly: country.medianNetMonthly!,
+        weeklyHours: country.legalWeeklyHours,
+        realAnnualHours: country.realAnnualHours,
+        monthlySavings: null,
+        age: null,
+        retirementAge: country.retirementAge,
+      });
+      hours = res.hours;
+      workdays = res.workdays8h;
+      months = res.monthsFullPay;
+    } catch {
+      // ignore
+    }
+  }
+
+  return {
+    ...p,
+    price,
+    hours,
+    workdays,
+    months,
+  };
+});
+
+// Breadcrumbs semánticos
+const breadcrumbItems = [
+  { name: "Inicio", url: `${cleanSite}/` },
+  { name: country.name, url: `${cleanSite}/${country.slug}/` },
+  { name: categoryName, url: canonicalUrl },
+];
+const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
+
+// Schema CollectionPage
+const categorySchema = generateCategorySchema({
+  categoryName,
+  categoryDescription: `Comparativa de esfuerzo laboral y coste en horas de trabajo para artículos de ${categoryName.toLowerCase()} en ${country.name}.`,
+  country,
+  canonicalUrl,
+  items: quotedProducts.map((p) => ({
+    name: p.name,
+    url: `${cleanSite}/${country.slug}/${p.id}/`,
+  })),
+});
+
+// FAQs temáticas
+const faqs = [
+  {
+    question: `¿Cuánto tiempo de trabajo cuesta de media la categoría de ${categoryName.toLowerCase()} en ${country.name}?`,
+    answer: `En ${country.name}, con un salario neto mediano de ${country.medianNetMonthly ? country.medianNetMonthly.toLocaleString('es-ES') + ' ' + country.currencySymbol + '/mes' : 'referencia'}, los gastos de ${categoryName.toLowerCase()} abarcan desde pequeñas compras de consumo hasta desembolsos equivalentes a meses o jornadas completas de esfuerzo laboral.`,
+  },
+  {
+    question: `¿Cómo se calcula el esfuerzo laboral para artículos de ${categoryName.toLowerCase()}?`,
+    answer: `Dividiendo el precio en moneda local entre el salario neto por hora derivado de la jornada legal de ${country.legalWeeklyHours} horas semanales bajo la fórmula estándar 52/12.`,
+  },
+];
+const faqSchema = generateFAQSchema(faqs);
+
+const combinedJsonLd = [categorySchema, breadcrumbSchema, faqSchema];
+
+// Meta SEO
+const pageTitle = hasMedianSalary
+  ? `${categoryName} en ${country.name}: coste en horas y jornadas de trabajo · ${brand.name}`
+  : `${categoryName} en ${country.name}: esfuerzo laboral comparado · ${brand.name}`;
+
+const pageDescription = hasMedianSalary
+  ? `Descubre cuántas horas y jornadas de trabajo cuesta comprar artículos de ${categoryName.toLowerCase()} en ${country.name} con el sueldo mediano (${country.medianNetMonthly?.toLocaleString('es-ES')} ${country.currencySymbol}/mes). Consulta la tabla comparativa completa.`
+  : `Comparativa de precios y esfuerzo laboral en horas de trabajo para ${categoryName.toLowerCase()} en ${country.name}. Introduce tu nómina y calcula tu cifra real.`;
+
+const allCategories: Product['category'][] = [
+  'transporte',
+  'tecnologia',
+  'vivienda',
+  'dia-a-dia',
+  'vida',
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  ogImage={`/og/${country.slug}.png`}
+  currentCountrySlug={country.slug}
+  currentCountryCode={country.code}
+  hreflangs={hreflangs}
+  jsonLd={combinedJsonLd}
+>
+  <div class="max-w-5xl mx-auto px-4 pt-6 pb-20 space-y-8">
+    <!-- Migas de pan semánticas -->
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href={`/${country.slug}`} class="hover:text-primary transition-colors">{country.name}</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-primary font-bold" aria-current="page">{categoryName}</li>
+      </ol>
+    </nav>
+
+    <!-- Placa de Identidad de la Categoría -->
+    <header class="board-plate p-6 sm:p-8 border border-base-300 shadow-md">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p class="font-board-mono text-xs uppercase tracking-[0.14em] opacity-75 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+            <span>Hub Temático · {country.name}</span>
+          </p>
+          <h1 class="font-signage uppercase text-4xl sm:text-5xl md:text-6xl leading-none mt-2 tracking-tight">
+            {categoryName} en {country.name}
+          </h1>
+          <p class="mt-3 text-sm sm:text-base opacity-85 font-sans max-w-2xl">
+            Cotización completa de bienes de {categoryName.toLowerCase()} medidos en tiempo de trabajo con el salario neto mediano oficial de {country.name}.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="px-3 py-1 rounded-md font-board-mono text-xs font-bold bg-base-200 border border-base-content/10 uppercase tracking-wider">
+            {country.currency} ({country.currencySymbol})
+          </span>
+          {country.medianNetMonthly && (
+            <span class="px-3 py-1 rounded-md font-board-mono text-xs font-bold bg-primary/10 text-primary border border-primary/20 uppercase tracking-wider">
+              {country.medianNetMonthly.toLocaleString('es-ES')} {country.currencySymbol}/mes
+            </span>
+          )}
+        </div>
+      </div>
+
+      <!-- Selector de otras categorías del mismo país -->
+      <div class="mt-6 pt-4 border-t border-base-content/10 flex flex-wrap items-center gap-2">
+        <span class="font-board-mono text-xs opacity-70 uppercase tracking-wider mr-2">Otras categorías:</span>
+        {allCategories.map((cat) => (
+          <a
+            href={`/${country.slug}/categoria/${cat}`}
+            class={`px-3 py-1 rounded text-xs font-board-mono uppercase transition-colors ${
+              cat === category
+                ? 'bg-primary text-primary-content font-bold'
+                : 'bg-base-200 hover:bg-base-300 border border-base-content/10'
+            }`}
+          >
+            {categoryLabels[cat]}
+          </a>
+        ))}
+      </div>
+    </header>
+
+    <!-- Tabla Comparativa de Esfuerzo Laboral -->
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-6" aria-label="Tabla comparativa">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-base-300">
+        <div>
+          <h2 class="font-signage uppercase text-2xl sm:text-3xl">
+            Catálogo de {categoryName} en horas de trabajo
+          </h2>
+          <p class="font-board-mono text-xs sm:text-sm opacity-75 mt-0.5">
+            Precios oficiales y cálculo del tiempo laboral neto necesario para costear cada bien.
+          </p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-base-300 font-board-mono text-xs uppercase tracking-wider opacity-75">
+              <th class="py-3 px-4">Artículo</th>
+              <th class="py-3 px-4 text-right">Precio ({country.currencySymbol})</th>
+              <th class="py-3 px-4 text-right">Horas de Trabajo</th>
+              <th class="py-3 px-4 text-right">Jornadas (8h)</th>
+              <th class="py-3 px-4 text-right">Acción</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300/60 font-sans text-sm">
+            {quotedProducts.map((item) => (
+              <tr class="hover:bg-base-200/50 transition-colors">
+                <td class="py-3 px-4 font-semibold text-base-content">
+                  <a href={`/${country.slug}/${item.id}`} class="hover:text-primary transition-colors flex items-center gap-1.5">
+                    {item.name}
+                  </a>
+                </td>
+                <td class="py-3 px-4 text-right font-board-mono text-base-content/90 font-medium">
+                  {item.price ? `${item.price.value.toLocaleString('es-ES')} ${country.currencySymbol}` : 'N/D'}
+                </td>
+                <td class="py-3 px-4 text-right font-board-mono text-primary font-bold">
+                  {item.hours != null ? `${formatHours(item.hours)} h` : '—'}
+                </td>
+                <td class="py-3 px-4 text-right font-board-mono text-base-content/80">
+                  {item.workdays != null ? `${formatWorkdays(item.workdays)} j` : '—'}
+                </td>
+                <td class="py-3 px-4 text-right">
+                  <a
+                    href={`/${country.slug}/${item.id}`}
+                    class="btn btn-xs btn-outline font-board-mono uppercase tracking-wider text-xs"
+                  >
+                    Ver análisis →
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Bloque Citable de Análisis (GEO & AI Overviews) -->
+    <section class="board-plate p-6 sm:p-8 bg-base-200/50 border border-base-300 space-y-4">
+      <span class="px-2.5 py-0.5 rounded text-xs font-board-mono uppercase font-bold tracking-wider bg-primary/15 text-primary border border-primary/30 inline-block">
+        Informe Económico Citable · {categoryName}
+      </span>
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl text-base-content">
+        Poder adquisitivo aplicado a {categoryName.toLowerCase()} en {country.name}
+      </h2>
+      <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">
+        En <strong>{country.name}</strong>, adquirir artículos y servicios pertenecientes al sector de <strong>{categoryName.toLowerCase()}</strong> demanda un rango de esfuerzo laboral que refleja la capacidad adquisitiva real del salario mediano ({country.medianNetMonthly ? country.medianNetMonthly.toLocaleString('es-ES') + ' ' + country.currencySymbol + '/mes' : 'referencia'}). La conversión a tiempo de trabajo neutraliza los incrementos nominales por inflación y permite calibrar qué fracción de tu vida productiva comprometes con cada adquisición.
+      </p>
+    </section>
+
+    <!-- Preguntas Frecuentes -->
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4" aria-label="Preguntas Frecuentes">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">Preguntas Frecuentes</h2>
+      <div class="space-y-4 pt-2">
+        {faqs.map((faq) => (
+          <div class="border-b border-base-300 pb-3">
+            <h3 class="font-bold text-base text-base-content">{faq.question}</h3>
+            <p class="text-sm opacity-80 mt-1 leading-relaxed font-sans">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

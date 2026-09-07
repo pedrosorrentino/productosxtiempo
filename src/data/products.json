@@ -1122,58 +1122,58 @@
     "category": "dia-a-dia",
     "prices": {
       "ES": {
-        "value": 81,
+        "value": 82.17,
         "date": "2026-09",
-        "note": "Depósito medio de 45 L de Gasolina 95 E5 (1.80 €/L). Datos oficiales de 10.915 estaciones.",
+        "note": "Depósito medio de 45 L de Gasolina 95 E5 (1.83 €/L). Datos oficiales de 10.933 estaciones.",
         "source": "MITECO (Gobierno de España)",
         "origin": "local"
       },
       "GB": {
         "value": 69.58,
         "date": "2026-09",
-        "note": "Precio convertido desde España (81 €). Edítalo.",
+        "note": "Precio convertido desde España (82.17 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "US": {
         "value": 94.14,
         "date": "2026-09",
-        "note": "Precio convertido desde España (81 €). Edítalo.",
+        "note": "Precio convertido desde España (82.17 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "MX": {
         "value": 1590.85,
         "date": "2026-09",
-        "note": "Precio convertido desde España (81 €). Edítalo.",
+        "note": "Precio convertido desde España (82.17 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CH": {
         "value": 76.18,
         "date": "2026-09",
-        "note": "Precio convertido desde España (81 €). Edítalo.",
+        "note": "Precio convertido desde España (82.17 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "AR": {
-        "value": 93150,
+        "value": 94496,
         "date": "2026-09",
-        "note": "Precio convertido desde España (81 €). Edítalo.",
+        "note": "Precio convertido desde España (82.17 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 356400,
+        "value": 361548,
         "date": "2026-09",
-        "note": "Precio convertido desde España (81 €). Edítalo.",
+        "note": "Precio convertido desde España (82.17 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 82620,
+        "value": 83813,
         "date": "2026-09",
-        "note": "Precio convertido desde España (81 €). Edítalo.",
+        "note": "Precio convertido desde España (82.17 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
@@ -4551,6 +4551,3633 @@
         "date": "2026-09",
         "note": "Precio de referencia de España (8.75 €). Edítalo.",
         "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "deposito-diesel",
+    "name": "Depósito de diésel (45 L)",
+    "shortName": "Depósito diésel",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 81.27,
+        "date": "2026-09",
+        "note": "Depósito medio de 45 L de Gasóleo A (1.81 €/L). Datos oficiales de 11.282 estaciones.",
+        "source": "MITECO (Gobierno de España)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 69.81,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (81.27 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 94.45,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (81.27 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 1596.15,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (81.27 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 93461,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (81.27 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 357588,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (81.27 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 82895,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (81.27 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 76.43,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (81.27 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 81.27,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (81.27 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 81.27,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (81.27 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 81.27,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (81.27 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 81.27,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (81.27 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "leche-mes",
+    "name": "Leche entera (12 litros / mes)",
+    "shortName": "Leche (12 L)",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 11.4,
+        "date": "2026-09",
+        "note": "Pack de 12 litros de leche entera de vaca (0,95 €/L). Consumo mensual orientativo de un hogar.",
+        "source": "Índice de Supermercados / Open Food Facts",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 9.79,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 13.25,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 223.9,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 13110,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 50160,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 11628,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 10.72,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 11.4,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 11.4,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 11.4,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 11.4,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "huevos-docena",
+    "name": "Docena de huevos camperos (L)",
+    "shortName": "Docena de huevos",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 2.75,
+        "date": "2026-09",
+        "note": "Docena de huevos camperos de gallinas criadas en suelo (Categoría L).",
+        "source": "Índice de Supermercados / Open Food Facts",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 2.36,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 3.2,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 54.01,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 3163,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 12100,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 2805,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 2.59,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 2.75,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 2.75,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 2.75,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 2.75,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "factura-luz-mes",
+    "name": "Factura de la luz doméstica (mes)",
+    "shortName": "Factura de la luz (mes)",
+    "category": "vivienda",
+    "prices": {
+      "ES": {
+        "value": 61.25,
+        "date": "2026-09",
+        "note": "Consumo doméstico medio de 250 kWh/mes a ~0.245 €/kWh según estadísticas oficiales de Eurostat y PVPC.",
+        "source": "Eurostat / REE (Mercado Regulado)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 52.61,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (61.25 €). Edítalo.",
+        "source": "Eurostat / REE (Mercado Regulado) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 71.18,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (61.25 €). Edítalo.",
+        "source": "Eurostat / REE (Mercado Regulado) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 1202.96,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (61.25 €). Edítalo.",
+        "source": "Eurostat / REE (Mercado Regulado) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 70438,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (61.25 €). Edítalo.",
+        "source": "Eurostat / REE (Mercado Regulado) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 269500,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (61.25 €). Edítalo.",
+        "source": "Eurostat / REE (Mercado Regulado) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 62475,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (61.25 €). Edítalo.",
+        "source": "Eurostat / REE (Mercado Regulado) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 57.61,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (61.25 €). Edítalo.",
+        "source": "Eurostat / REE (Mercado Regulado) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 61.25,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (61.25 €). Edítalo.",
+        "source": "Eurostat / REE (Mercado Regulado) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 61.25,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (61.25 €). Edítalo.",
+        "source": "Eurostat / REE (Mercado Regulado) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 61.25,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (61.25 €). Edítalo.",
+        "source": "Eurostat / REE (Mercado Regulado) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 61.25,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (61.25 €). Edítalo.",
+        "source": "Eurostat / REE (Mercado Regulado) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "bitcoin",
+    "name": "1 Bitcoin (BTC)",
+    "shortName": "1 Bitcoin",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 68314,
+        "date": "2026-09",
+        "note": "Cotización de mercado de 1 Bitcoin en euros (68.314 €).",
+        "source": "CoinGecko API (Tiempo Real)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 58680.36,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (68314 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 79394.53,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (68314 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 1341693.79,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (68314 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 78561100,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (68314 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 300581600,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (68314 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 69680280,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (68314 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 64249.32,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (68314 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 68218,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (68218 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 68218,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (68218 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 68218,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (68218 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 68218,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (68218 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "menu-big-mac",
+    "name": "Menú Big Mac / Comida rápida",
+    "shortName": "Menú Big Mac",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 6.19,
+        "date": "2026-07",
+        "note": "Precio oficial de referencia del Big Mac (6.19 €). Datos del índice oficial de The Economist.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      },
+      "US": {
+        "value": 6.22,
+        "date": "2026-07",
+        "note": "Precio oficial en moneda local según The Economist Big Mac Index.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 5.49,
+        "date": "2026-07",
+        "note": "Precio oficial en moneda local según The Economist Big Mac Index.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      },
+      "CH": {
+        "value": 7.3,
+        "date": "2026-07",
+        "note": "Precio oficial en moneda local según The Economist Big Mac Index.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      },
+      "MX": {
+        "value": 109,
+        "date": "2026-07",
+        "note": "Precio oficial en moneda local según The Economist Big Mac Index.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      },
+      "AR": {
+        "value": 8700,
+        "date": "2026-07",
+        "note": "Precio oficial en moneda local según The Economist Big Mac Index.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      },
+      "CO": {
+        "value": 25900,
+        "date": "2026-07",
+        "note": "Precio oficial en moneda local según The Economist Big Mac Index.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      },
+      "CL": {
+        "value": 4990,
+        "date": "2026-07",
+        "note": "Precio oficial en moneda local según The Economist Big Mac Index.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      },
+      "PT": {
+        "value": 5.65,
+        "date": "2026-07",
+        "note": "Precio oficial en moneda local según The Economist Big Mac Index.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      },
+      "FR": {
+        "value": 5.6,
+        "date": "2026-07",
+        "note": "Precio oficial en moneda local según The Economist Big Mac Index.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      },
+      "DE": {
+        "value": 6.99,
+        "date": "2026-07",
+        "note": "Precio oficial en moneda local según The Economist Big Mac Index.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      },
+      "IT": {
+        "value": 6.56,
+        "date": "2026-07",
+        "note": "Precio oficial en moneda local según The Economist Big Mac Index.",
+        "source": "The Economist (Big Mac Index)",
+        "origin": "local"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "arroz-kilo",
+    "name": "Arroz redondo (1 kg)",
+    "shortName": "Arroz (1 kg)",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 1.15,
+        "date": "2026-09",
+        "note": "Paquete de 1 kg de arroz redondo (1.15 €) sincronizado con el lineal de Mercadona.",
+        "source": "Mercadona (API en Vivo)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 0.99,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.15 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1.34,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.15 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 22.59,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.15 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 1323,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.15 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 5060,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.15 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 1173,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.15 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 1.08,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.15 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 1.15,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1.15 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 1.15,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1.15 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 1.15,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1.15 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 1.15,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1.15 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "pasta-paquete",
+    "name": "Pasta clásica / Macarrones (1 kg)",
+    "shortName": "Pasta (1 kg)",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 1.2,
+        "date": "2026-09",
+        "note": "Paquete de 1 kg de pasta de trigo clásica (1.20 €) sincronizado con el lineal de Mercadona.",
+        "source": "Mercadona (API en Vivo)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 1.03,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1.39,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 23.57,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 1380,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 5280,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 1224,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 1.13,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 1.2,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 1.2,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 1.2,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 1.2,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "cerveza-pack",
+    "name": "Pack de cerveza (6 latas de 33 cl)",
+    "shortName": "Pack cerveza (6)",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 3.6,
+        "date": "2026-09",
+        "note": "Pack de 6 latas de cerveza clásica rubia (3.60 €) sincronizado con el lineal de Mercadona.",
+        "source": "Mercadona (API en Vivo)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 3.09,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 4.18,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 70.7,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 4140,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 15840,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 3672,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 3.39,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 3.6,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 3.6,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 3.6,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 3.6,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "cafe-molido",
+    "name": "Café molido tueste natural (500 g)",
+    "shortName": "Café molido",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 4.5,
+        "date": "2026-09",
+        "note": "Paquete de 500 g de café molido natural (4.50 €) sincronizado con el lineal de Mercadona.",
+        "source": "Mercadona (API en Vivo)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 3.87,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4.5 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 5.23,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4.5 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 88.38,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4.5 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 5175,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4.5 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 19800,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4.5 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 4590,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4.5 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 4.23,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4.5 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 4.5,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (4.5 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 4.5,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (4.5 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 4.5,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (4.5 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 4.5,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (4.5 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "pechuga-pollo-kilo",
+    "name": "Pechuga de pollo fileteada (1 kg)",
+    "shortName": "Pechuga de pollo",
+    "category": "dia-a-dia",
+    "prices": {
+      "ES": {
+        "value": 7.2,
+        "date": "2026-09",
+        "note": "Bandeja de 1 kg de pechuga de pollo al corte (7.20 €) sincronizado con el lineal de Mercadona.",
+        "source": "Mercadona (API en Vivo)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 6.18,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 8.37,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 141.41,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 8280,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 31680,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 7344,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 6.77,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 7.2,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 7.2,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 7.2,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 7.2,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "deposito-gasolina-98",
+    "name": "Depósito Gasolina 98 (45 L)",
+    "shortName": "Depósito 98",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 89.51,
+        "date": "2026-09",
+        "note": "Depósito medio de 45 L de Gasolina 98 E5 (1.99 €/L). Datos oficiales de 5512 estaciones.",
+        "source": "MITECO (Gobierno de España)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 76.89,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (89.51 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 104.03,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (89.51 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 1757.99,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (89.51 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 102937,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (89.51 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 393844,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (89.51 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 91300,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (89.51 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 84.18,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (89.51 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 89.51,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (89.51 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 89.51,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (89.51 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 89.51,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (89.51 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 89.51,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (89.51 €). Edítalo.",
+        "source": "MITECO (Gobierno de España) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "factura-gas-mes",
+    "name": "Factura del gas doméstico (mes)",
+    "shortName": "Factura del gas (mes)",
+    "category": "vivienda",
+    "prices": {
+      "ES": {
+        "value": 55,
+        "date": "2026-09",
+        "note": "Gasto medio mensual de gas natural doméstico (cocina, agua caliente y calefacción) según estadísticas de Eurostat (dataset nrg_pc_202).",
+        "source": "Eurostat (Estadísticas Energéticas)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 47.24,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Eurostat (Estadísticas Energéticas) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 63.92,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Eurostat (Estadísticas Energéticas) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 1080.21,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Eurostat (Estadísticas Energéticas) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 63250,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Eurostat (Estadísticas Energéticas) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 242000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Eurostat (Estadísticas Energéticas) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 56100,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Eurostat (Estadísticas Energéticas) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 51.73,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (55 €). Edítalo.",
+        "source": "Eurostat (Estadísticas Energéticas) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 55,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (55 €). Edítalo.",
+        "source": "Eurostat (Estadísticas Energéticas) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 55,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (55 €). Edítalo.",
+        "source": "Eurostat (Estadísticas Energéticas) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 55,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (55 €). Edítalo.",
+        "source": "Eurostat (Estadísticas Energéticas) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 55,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (55 €). Edítalo.",
+        "source": "Eurostat (Estadísticas Energéticas) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "ethereum",
+    "name": "1 Ethereum (ETH)",
+    "shortName": "1 Ethereum",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 2142,
+        "date": "2026-09",
+        "note": "Cotización de mercado de 1 Ethereum en euros (2142 €).",
+        "source": "CoinGecko API (Tiempo Real)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 1839.94,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2142 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 2489.43,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2142 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 42069.09,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2142 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 2463300,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2142 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 9424800,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2142 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 2184840,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2142 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 2014.55,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (2142 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 2144,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (2144 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 2144,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (2144 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 2144,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (2144 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 2144,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (2144 €). Edítalo.",
+        "source": "CoinGecko API (Tiempo Real) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "chatgpt-plus",
+    "name": "ChatGPT Plus (suscripción 1 año)",
+    "shortName": "ChatGPT Plus (año)",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 240,
+        "date": "2026-09",
+        "note": "Suscripción anual a ChatGPT Plus (tarifa oficial de 20 $/mes + impuestos).",
+        "source": "OpenAI (Tarifa Oficial)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 206.16,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (240 €). Edítalo.",
+        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 278.93,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (240 €). Edítalo.",
+        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 4713.62,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (240 €). Edítalo.",
+        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 276000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (240 €). Edítalo.",
+        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 1056000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (240 €). Edítalo.",
+        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 244800,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (240 €). Edítalo.",
+        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 225.72,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (240 €). Edítalo.",
+        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 240,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (240 €). Edítalo.",
+        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 240,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (240 €). Edítalo.",
+        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 240,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (240 €). Edítalo.",
+        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 240,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (240 €). Edítalo.",
+        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "spotify-anual",
+    "name": "Spotify Premium (suscripción 1 año)",
+    "shortName": "Spotify (año)",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 131.88,
+        "date": "2026-09",
+        "note": "Plan individual de Spotify Premium (10,99 €/mes prorrateado en 12 meses).",
+        "source": "Spotify (Tarifa Oficial)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 113.28,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (131.88 €). Edítalo.",
+        "source": "Spotify (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 153.27,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (131.88 €). Edítalo.",
+        "source": "Spotify (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 2590.14,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (131.88 €). Edítalo.",
+        "source": "Spotify (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 151662,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (131.88 €). Edítalo.",
+        "source": "Spotify (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 580272,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (131.88 €). Edítalo.",
+        "source": "Spotify (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 134518,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (131.88 €). Edítalo.",
+        "source": "Spotify (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 124.03,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (131.88 €). Edítalo.",
+        "source": "Spotify (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 131.88,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (131.88 €). Edítalo.",
+        "source": "Spotify (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 131.88,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (131.88 €). Edítalo.",
+        "source": "Spotify (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 131.88,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (131.88 €). Edítalo.",
+        "source": "Spotify (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 131.88,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (131.88 €). Edítalo.",
+        "source": "Spotify (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "amazon-prime",
+    "name": "Amazon Prime (suscripción anual)",
+    "shortName": "Amazon Prime (año)",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 49.9,
+        "date": "2026-09",
+        "note": "Cuota anual del servicio de suscripción y envíos Amazon Prime España.",
+        "source": "Amazon (Tarifa Oficial)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 42.86,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (49.9 €). Edítalo.",
+        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 57.99,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (49.9 €). Edítalo.",
+        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 980.04,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (49.9 €). Edítalo.",
+        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 57385,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (49.9 €). Edítalo.",
+        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 219560,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (49.9 €). Edítalo.",
+        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 50898,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (49.9 €). Edítalo.",
+        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 46.93,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (49.9 €). Edítalo.",
+        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 49.9,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (49.9 €). Edítalo.",
+        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 49.9,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (49.9 €). Edítalo.",
+        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 49.9,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (49.9 €). Edítalo.",
+        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 49.9,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (49.9 €). Edítalo.",
+        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "carnet-conducir",
+    "name": "Carnet de conducir B (autoescuela completa)",
+    "shortName": "Carnet de conducir",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 950,
+        "date": "2026-09",
+        "note": "Coste medio de obtención del permiso B (matrícula, clases prácticas y tasas DGT).",
+        "source": "DGT / Estudio de precios FACUA",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 816.03,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "DGT / Estudio de precios FACUA (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1104.09,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "DGT / Estudio de precios FACUA (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 18658.1,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "DGT / Estudio de precios FACUA (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 1092500,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "DGT / Estudio de precios FACUA (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 4180000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "DGT / Estudio de precios FACUA (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 969000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "DGT / Estudio de precios FACUA (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 893.48,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "DGT / Estudio de precios FACUA (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 950,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (950 €). Edítalo.",
+        "source": "DGT / Estudio de precios FACUA (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 950,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (950 €). Edítalo.",
+        "source": "DGT / Estudio de precios FACUA (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 950,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (950 €). Edítalo.",
+        "source": "DGT / Estudio de precios FACUA (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 950,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (950 €). Edítalo.",
+        "source": "DGT / Estudio de precios FACUA (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "itv-turismo",
+    "name": "ITV de turismo (inspección periódica oficial)",
+    "shortName": "Inspección ITV",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 48,
+        "date": "2026-09",
+        "note": "Tarifa media oficial de inspección técnica periódica para turismos.",
+        "source": "Tarifas Oficiales Autonómicas de ITV",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 41.23,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (48 €). Edítalo.",
+        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 55.79,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (48 €). Edítalo.",
+        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 942.72,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (48 €). Edítalo.",
+        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 55200,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (48 €). Edítalo.",
+        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 211200,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (48 €). Edítalo.",
+        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 48960,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (48 €). Edítalo.",
+        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 45.14,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (48 €). Edítalo.",
+        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 48,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (48 €). Edítalo.",
+        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 48,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (48 €). Edítalo.",
+        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 48,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (48 €). Edítalo.",
+        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 48,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (48 €). Edítalo.",
+        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "placas-solares",
+    "name": "Instalación solar fotovoltaica (4 kW autoconsumo)",
+    "shortName": "Placas solares (4 kW)",
+    "category": "vivienda",
+    "prices": {
+      "ES": {
+        "value": 4600,
+        "date": "2026-09",
+        "note": "Instalación residencial estándar llave en mano de 4 kW para autoconsumo doméstico.",
+        "source": "IDAE / Unión Española Fotovoltaica",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 3951.31,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 5346.12,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 90344.46,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 5290000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 20240000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 4692000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 4326.3,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 4600,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 4600,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 4600,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 4600,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "aire-acondicionado",
+    "name": "Aire acondicionado split con instalación",
+    "shortName": "Aire acondicionado",
+    "category": "vivienda",
+    "prices": {
+      "ES": {
+        "value": 950,
+        "date": "2026-09",
+        "note": "Equipo de climatización tipo split de 3.000 frigorías con instalación autorizada RITE.",
+        "source": "Tarifas Medias de Climatización Residencial",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 816.03,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 1104.09,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 18658.1,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 1092500,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 4180000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 969000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 893.48,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 950,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 950,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 950,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 950,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "fianza-alquiler",
+    "name": "Fianza legal de alquiler (2 meses)",
+    "shortName": "Fianza de alquiler",
+    "category": "vivienda",
+    "prices": {
+      "ES": {
+        "value": 1800,
+        "date": "2026-09",
+        "note": "Fianza legal exigida de dos mensualidades según la Ley de Arrendamientos Urbanos (LAU).",
+        "source": "Ley de Arrendamientos Urbanos (LAU)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 1546.16,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1800 €). Edítalo.",
+        "source": "Ley de Arrendamientos Urbanos (LAU) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 2091.96,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1800 €). Edítalo.",
+        "source": "Ley de Arrendamientos Urbanos (LAU) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 35352.18,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1800 €). Edítalo.",
+        "source": "Ley de Arrendamientos Urbanos (LAU) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 2070000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1800 €). Edítalo.",
+        "source": "Ley de Arrendamientos Urbanos (LAU) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 7920000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1800 €). Edítalo.",
+        "source": "Ley de Arrendamientos Urbanos (LAU) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 1836000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1800 €). Edítalo.",
+        "source": "Ley de Arrendamientos Urbanos (LAU) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 1692.9,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (1800 €). Edítalo.",
+        "source": "Ley de Arrendamientos Urbanos (LAU) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 1800,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1800 €). Edítalo.",
+        "source": "Ley de Arrendamientos Urbanos (LAU) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 1800,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1800 €). Edítalo.",
+        "source": "Ley de Arrendamientos Urbanos (LAU) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 1800,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1800 €). Edítalo.",
+        "source": "Ley de Arrendamientos Urbanos (LAU) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 1800,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (1800 €). Edítalo.",
+        "source": "Ley de Arrendamientos Urbanos (LAU) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "sesion-psicologo",
+    "name": "Sesión de psicólogo privado (1 hora)",
+    "shortName": "Sesión de psicólogo",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 60,
+        "date": "2026-09",
+        "note": "Tarifa media de consulta clínica individual de psicología sanitaria privada.",
+        "source": "Consejo General de la Psicología",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 51.54,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (60 €). Edítalo.",
+        "source": "Consejo General de la Psicología (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 69.73,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (60 €). Edítalo.",
+        "source": "Consejo General de la Psicología (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 1178.41,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (60 €). Edítalo.",
+        "source": "Consejo General de la Psicología (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 69000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (60 €). Edítalo.",
+        "source": "Consejo General de la Psicología (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 264000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (60 €). Edítalo.",
+        "source": "Consejo General de la Psicología (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 61200,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (60 €). Edítalo.",
+        "source": "Consejo General de la Psicología (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 56.43,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (60 €). Edítalo.",
+        "source": "Consejo General de la Psicología (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 60,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (60 €). Edítalo.",
+        "source": "Consejo General de la Psicología (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 60,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (60 €). Edítalo.",
+        "source": "Consejo General de la Psicología (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 60,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (60 €). Edítalo.",
+        "source": "Consejo General de la Psicología (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 60,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (60 €). Edítalo.",
+        "source": "Consejo General de la Psicología (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "ortodoncia-invisible",
+    "name": "Tratamiento de ortodoncia invisible",
+    "shortName": "Ortodoncia invisible",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 3400,
+        "date": "2026-09",
+        "note": "Tratamiento correctivo completo mediante alineadores transparentes (18-24 meses).",
+        "source": "Consejo General de Dentistas de España",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 2920.53,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3400 €). Edítalo.",
+        "source": "Consejo General de Dentistas de España (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 3951.48,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3400 €). Edítalo.",
+        "source": "Consejo General de Dentistas de España (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 66776.34,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3400 €). Edítalo.",
+        "source": "Consejo General de Dentistas de España (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 3910000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3400 €). Edítalo.",
+        "source": "Consejo General de Dentistas de España (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 14960000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3400 €). Edítalo.",
+        "source": "Consejo General de Dentistas de España (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 3468000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3400 €). Edítalo.",
+        "source": "Consejo General de Dentistas de España (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 3197.7,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (3400 €). Edítalo.",
+        "source": "Consejo General de Dentistas de España (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 3400,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (3400 €). Edítalo.",
+        "source": "Consejo General de Dentistas de España (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 3400,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (3400 €). Edítalo.",
+        "source": "Consejo General de Dentistas de España (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 3400,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (3400 €). Edítalo.",
+        "source": "Consejo General de Dentistas de España (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 3400,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (3400 €). Edítalo.",
+        "source": "Consejo General de Dentistas de España (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "gafas-graduadas",
+    "name": "Gafas graduadas completas (montura + cristales)",
+    "shortName": "Gafas graduadas",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 210,
+        "date": "2026-09",
+        "note": "Montura graduada con cristales orgánicos antirreflejantes de gama media.",
+        "source": "FEDAO (Federación Española de Óptica)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 180.39,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (210 €). Edítalo.",
+        "source": "FEDAO (Federación Española de Óptica) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 244.06,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (210 €). Edítalo.",
+        "source": "FEDAO (Federación Española de Óptica) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 4124.42,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (210 €). Edítalo.",
+        "source": "FEDAO (Federación Española de Óptica) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 241500,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (210 €). Edítalo.",
+        "source": "FEDAO (Federación Española de Óptica) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 924000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (210 €). Edítalo.",
+        "source": "FEDAO (Federación Española de Óptica) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 214200,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (210 €). Edítalo.",
+        "source": "FEDAO (Federación Española de Óptica) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 197.51,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (210 €). Edítalo.",
+        "source": "FEDAO (Federación Española de Óptica) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 210,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (210 €). Edítalo.",
+        "source": "FEDAO (Federación Española de Óptica) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 210,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (210 €). Edítalo.",
+        "source": "FEDAO (Federación Española de Óptica) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 210,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (210 €). Edítalo.",
+        "source": "FEDAO (Federación Española de Óptica) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 210,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (210 €). Edítalo.",
+        "source": "FEDAO (Federación Española de Óptica) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "guarderia-mes",
+    "name": "Guardería privada mensual (0 a 3 años)",
+    "shortName": "Guardería (mes)",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 410,
+        "date": "2026-09",
+        "note": "Mensualidad media en escuela infantil privada para el primer ciclo de educación infantil.",
+        "source": "Gasto Medio en Educación Infantil (INE)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 352.18,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (410 €). Edítalo.",
+        "source": "Gasto Medio en Educación Infantil (INE) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 476.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (410 €). Edítalo.",
+        "source": "Gasto Medio en Educación Infantil (INE) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 8052.44,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (410 €). Edítalo.",
+        "source": "Gasto Medio en Educación Infantil (INE) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 471500,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (410 €). Edítalo.",
+        "source": "Gasto Medio en Educación Infantil (INE) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 1804000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (410 €). Edítalo.",
+        "source": "Gasto Medio en Educación Infantil (INE) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 418200,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (410 €). Edítalo.",
+        "source": "Gasto Medio en Educación Infantil (INE) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 385.61,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (410 €). Edítalo.",
+        "source": "Gasto Medio en Educación Infantil (INE) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 410,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (410 €). Edítalo.",
+        "source": "Gasto Medio en Educación Infantil (INE) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 410,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (410 €). Edítalo.",
+        "source": "Gasto Medio en Educación Infantil (INE) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 410,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (410 €). Edítalo.",
+        "source": "Gasto Medio en Educación Infantil (INE) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 410,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (410 €). Edítalo.",
+        "source": "Gasto Medio en Educación Infantil (INE) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "seguro-salud",
+    "name": "Seguro médico privado individual (año)",
+    "shortName": "Seguro médico (año)",
+    "category": "vida",
+    "prices": {
+      "ES": {
+        "value": 650,
+        "date": "2026-09",
+        "note": "Póliza médica privada individual completa sin copago para un adulto.",
+        "source": "UNESPA (Asociación Empresarial del Seguro)",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 558.34,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (650 €). Edítalo.",
+        "source": "UNESPA (Asociación Empresarial del Seguro) (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 755.43,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (650 €). Edítalo.",
+        "source": "UNESPA (Asociación Empresarial del Seguro) (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 12766.07,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (650 €). Edítalo.",
+        "source": "UNESPA (Asociación Empresarial del Seguro) (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 747500,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (650 €). Edítalo.",
+        "source": "UNESPA (Asociación Empresarial del Seguro) (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 2860000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (650 €). Edítalo.",
+        "source": "UNESPA (Asociación Empresarial del Seguro) (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 663000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (650 €). Edítalo.",
+        "source": "UNESPA (Asociación Empresarial del Seguro) (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 611.33,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (650 €). Edítalo.",
+        "source": "UNESPA (Asociación Empresarial del Seguro) (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 650,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (650 €). Edítalo.",
+        "source": "UNESPA (Asociación Empresarial del Seguro) (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 650,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (650 €). Edítalo.",
+        "source": "UNESPA (Asociación Empresarial del Seguro) (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 650,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (650 €). Edítalo.",
+        "source": "UNESPA (Asociación Empresarial del Seguro) (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 650,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (650 €). Edítalo.",
+        "source": "UNESPA (Asociación Empresarial del Seguro) (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "toyota-corolla",
+    "name": "Toyota Corolla Híbrido 140H",
+    "shortName": "Toyota Corolla",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 26000,
+        "date": "2026-09",
+        "note": "PVP oficial recomendado para el compacto híbrido más vendido del mundo (versión 140H Active Plus). Edítalo.",
+        "source": "Toyota España / ANFAC",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 22333.48,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (26000 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 30217.2,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (26000 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 510642.6,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (26000 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 29900000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (26000 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 114400000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (26000 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 26520000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (26000 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 24453,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (26000 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 26000,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (26000 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 26000,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (26000 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 26000,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (26000 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 26000,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (26000 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "mg-zs",
+    "name": "MG ZS 1.5 VTi-tech (SUV)",
+    "shortName": "MG ZS",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 17890,
+        "date": "2026-09",
+        "note": "PVP del SUV compacto low-cost revelación de ventas en España (acabado Comfort). Edítalo.",
+        "source": "MG Motor España / ANFAC",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 15367.15,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (17890 €). Edítalo.",
+        "source": "MG Motor España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 20791.76,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (17890 €). Edítalo.",
+        "source": "MG Motor España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 351361.39,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (17890 €). Edítalo.",
+        "source": "MG Motor España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 20573500,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (17890 €). Edítalo.",
+        "source": "MG Motor España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 78716000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (17890 €). Edítalo.",
+        "source": "MG Motor España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 18247800,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (17890 €). Edítalo.",
+        "source": "MG Motor España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 16825.54,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (17890 €). Edítalo.",
+        "source": "MG Motor España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 17890,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (17890 €). Edítalo.",
+        "source": "MG Motor España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 17890,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (17890 €). Edítalo.",
+        "source": "MG Motor España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 17890,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (17890 €). Edítalo.",
+        "source": "MG Motor España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 17890,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (17890 €). Edítalo.",
+        "source": "MG Motor España / ANFAC (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "seat-ibiza",
+    "name": "SEAT Ibiza 1.0 TSI",
+    "shortName": "SEAT Ibiza",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 15450,
+        "date": "2026-09",
+        "note": "PVP orientativo del utilitario histórico superventas en España (motor 1.0 TSI 95 CV). Edítalo.",
+        "source": "SEAT España / ANFAC",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 13271.24,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (15450 €). Edítalo.",
+        "source": "SEAT España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 17955.99,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (15450 €). Edítalo.",
+        "source": "SEAT España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 303439.55,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (15450 €). Edítalo.",
+        "source": "SEAT España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 17767500,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (15450 €). Edítalo.",
+        "source": "SEAT España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 67980000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (15450 €). Edítalo.",
+        "source": "SEAT España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 15759000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (15450 €). Edítalo.",
+        "source": "SEAT España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 14530.73,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (15450 €). Edítalo.",
+        "source": "SEAT España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 15450,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (15450 €). Edítalo.",
+        "source": "SEAT España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 15450,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (15450 €). Edítalo.",
+        "source": "SEAT España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 15450,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (15450 €). Edítalo.",
+        "source": "SEAT España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 15450,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (15450 €). Edítalo.",
+        "source": "SEAT España / ANFAC (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "hyundai-tucson",
+    "name": "Hyundai Tucson 1.6 TGDI (SUV)",
+    "shortName": "Hyundai Tucson",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 28400,
+        "date": "2026-09",
+        "note": "PVP de partida del SUV familiar líder de matriculaciones en España (acabado Klass). Edítalo.",
+        "source": "Hyundai España / ANFAC",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 24395.03,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (28400 €). Edítalo.",
+        "source": "Hyundai España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 33006.48,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (28400 €). Edítalo.",
+        "source": "Hyundai España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 557778.84,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (28400 €). Edítalo.",
+        "source": "Hyundai España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 32660000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (28400 €). Edítalo.",
+        "source": "Hyundai España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 124960000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (28400 €). Edítalo.",
+        "source": "Hyundai España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 28968000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (28400 €). Edítalo.",
+        "source": "Hyundai España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 26710.2,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (28400 €). Edítalo.",
+        "source": "Hyundai España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 28400,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (28400 €). Edítalo.",
+        "source": "Hyundai España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 28400,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (28400 €). Edítalo.",
+        "source": "Hyundai España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 28400,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (28400 €). Edítalo.",
+        "source": "Hyundai España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 28400,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (28400 €). Edítalo.",
+        "source": "Hyundai España / ANFAC (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "renault-clio",
+    "name": "Renault Clio TCe 90",
+    "shortName": "Renault Clio",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 16900,
+        "date": "2026-09",
+        "note": "PVP oficial del utilitario superventas europeo (acabado Evolution 90 CV). Edítalo.",
+        "source": "Renault España / ANFAC",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 14516.76,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16900 €). Edítalo.",
+        "source": "Renault España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 19641.18,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16900 €). Edítalo.",
+        "source": "Renault España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 331917.69,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16900 €). Edítalo.",
+        "source": "Renault España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 19435000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16900 €). Edítalo.",
+        "source": "Renault España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 74360000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16900 €). Edítalo.",
+        "source": "Renault España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 17238000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16900 €). Edítalo.",
+        "source": "Renault España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 15894.45,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16900 €). Edítalo.",
+        "source": "Renault España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 16900,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (16900 €). Edítalo.",
+        "source": "Renault España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 16900,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (16900 €). Edítalo.",
+        "source": "Renault España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 16900,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (16900 €). Edítalo.",
+        "source": "Renault España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 16900,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (16900 €). Edítalo.",
+        "source": "Renault España / ANFAC (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "toyota-yaris-cross",
+    "name": "Toyota Yaris Cross 120H (B-SUV)",
+    "shortName": "Yaris Cross",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 24500,
+        "date": "2026-09",
+        "note": "PVP del crossover urbano híbrido más vendido en España (acabado Active Plus). Edítalo.",
+        "source": "Toyota España / ANFAC",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 21045.01,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (24500 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 28473.9,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (24500 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 481182.45,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (24500 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 28175000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (24500 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 107800000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (24500 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 24990000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (24500 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 23042.25,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (24500 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 24500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (24500 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 24500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (24500 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 24500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (24500 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 24500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (24500 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "peugeot-208",
+    "name": "Peugeot 208 PureTech 100",
+    "shortName": "Peugeot 208",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 18300,
+        "date": "2026-09",
+        "note": "PVP oficial del utilitario líder de ventas en Europa (acabado Active). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 15719.33,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (18300 €). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 21268.26,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (18300 €). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 359413.83,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (18300 €). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 21045000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (18300 €). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 80520000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (18300 €). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 18666000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (18300 €). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 17211.15,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (18300 €). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 18300,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (18300 €). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 18300,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (18300 €). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 18300,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (18300 €). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 18300,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (18300 €). Edítalo.",
+        "source": "Peugeot España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "kia-sportage",
+    "name": "Kia Sportage 1.6 T-GDi (SUV)",
+    "shortName": "Kia Sportage",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 29200,
+        "date": "2026-09",
+        "note": "PVP de partida del SUV familiar superventas de Kia (acabado Concept). Edítalo.",
+        "source": "Kia España / ANFAC",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 25082.22,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (29200 €). Edítalo.",
+        "source": "Kia España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 33936.24,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (29200 €). Edítalo.",
+        "source": "Kia España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 573490.92,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (29200 €). Edítalo.",
+        "source": "Kia España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 33580000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (29200 €). Edítalo.",
+        "source": "Kia España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 128480000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (29200 €). Edítalo.",
+        "source": "Kia España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 29784000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (29200 €). Edítalo.",
+        "source": "Kia España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 27462.6,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (29200 €). Edítalo.",
+        "source": "Kia España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 29200,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (29200 €). Edítalo.",
+        "source": "Kia España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 29200,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (29200 €). Edítalo.",
+        "source": "Kia España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 29200,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (29200 €). Edítalo.",
+        "source": "Kia España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 29200,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (29200 €). Edítalo.",
+        "source": "Kia España / ANFAC (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "toyota-c-hr",
+    "name": "Toyota C-HR 140H (SUV Coupé)",
+    "shortName": "Toyota C-HR",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 31750,
+        "date": "2026-09",
+        "note": "PVP oficial del SUV híbrido coupé superventas (acabado Active). Edítalo.",
+        "source": "Toyota España / ANFAC",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 27272.62,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31750 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 36899.85,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31750 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 623573.18,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31750 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 36512500,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31750 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 139700000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31750 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 32385000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31750 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 29860.88,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31750 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 31750,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (31750 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 31750,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (31750 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 31750,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (31750 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 31750,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (31750 €). Edítalo.",
+        "source": "Toyota España / ANFAC (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "volkswagen-golf",
+    "name": "Volkswagen Golf 1.5 TSI",
+    "shortName": "VW Golf",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 31500,
+        "date": "2026-09",
+        "note": "PVP oficial del compacto de referencia europeo (motor 1.5 TSI 115 CV). Edítalo.",
+        "source": "Volkswagen España / KBA",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 27057.87,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31500 €). Edítalo.",
+        "source": "Volkswagen España / KBA (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 36609.3,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31500 €). Edítalo.",
+        "source": "Volkswagen España / KBA (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 618663.15,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31500 €). Edítalo.",
+        "source": "Volkswagen España / KBA (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 36225000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31500 €). Edítalo.",
+        "source": "Volkswagen España / KBA (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 138600000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31500 €). Edítalo.",
+        "source": "Volkswagen España / KBA (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 32130000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31500 €). Edítalo.",
+        "source": "Volkswagen España / KBA (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 29625.75,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (31500 €). Edítalo.",
+        "source": "Volkswagen España / KBA (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 31500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (31500 €). Edítalo.",
+        "source": "Volkswagen España / KBA (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 31500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (31500 €). Edítalo.",
+        "source": "Volkswagen España / KBA (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 31500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (31500 €). Edítalo.",
+        "source": "Volkswagen España / KBA (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 31500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (31500 €). Edítalo.",
+        "source": "Volkswagen España / KBA (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "tesla-model-y",
+    "name": "Tesla Model Y Tracción Trasera",
+    "shortName": "Tesla Model Y",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 44490,
+        "date": "2026-09",
+        "note": "PVP oficial del vehículo eléctrico y SUV más vendido del mundo (versión estándar RWD sin ayudas). Edítalo.",
+        "source": "Tesla España / JATO Dynamics",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 38216.02,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (44490 €). Edítalo.",
+        "source": "Tesla España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 51706.28,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (44490 €). Edítalo.",
+        "source": "Tesla España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 873788.05,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (44490 €). Edítalo.",
+        "source": "Tesla España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 51163500,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (44490 €). Edítalo.",
+        "source": "Tesla España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 195756000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (44490 €). Edítalo.",
+        "source": "Tesla España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 45379800,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (44490 €). Edítalo.",
+        "source": "Tesla España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 41842.85,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (44490 €). Edítalo.",
+        "source": "Tesla España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 44490,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (44490 €). Edítalo.",
+        "source": "Tesla España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 44490,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (44490 €). Edítalo.",
+        "source": "Tesla España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 44490,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (44490 €). Edítalo.",
+        "source": "Tesla España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 44490,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (44490 €). Edítalo.",
+        "source": "Tesla España / JATO Dynamics (convertido)",
+        "origin": "converted"
+      }
+    },
+    "visible": true
+  },
+  {
+    "id": "nissan-versa",
+    "name": "Nissan Versa Sense",
+    "shortName": "Nissan Versa",
+    "category": "transporte",
+    "prices": {
+      "ES": {
+        "value": 16500,
+        "date": "2026-09",
+        "note": "PVP de referencia del sedán subcompacto más vendido en México y Latinoamérica. Edítalo.",
+        "source": "AMDA / Nissan México",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 14173.17,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16500 €). Edítalo.",
+        "source": "AMDA / Nissan México (convertido)",
+        "origin": "converted"
+      },
+      "US": {
+        "value": 19176.3,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16500 €). Edítalo.",
+        "source": "AMDA / Nissan México (convertido)",
+        "origin": "converted"
+      },
+      "MX": {
+        "value": 324061.65,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16500 €). Edítalo.",
+        "source": "AMDA / Nissan México (convertido)",
+        "origin": "converted"
+      },
+      "AR": {
+        "value": 18975000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16500 €). Edítalo.",
+        "source": "AMDA / Nissan México (convertido)",
+        "origin": "converted"
+      },
+      "CO": {
+        "value": 72600000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16500 €). Edítalo.",
+        "source": "AMDA / Nissan México (convertido)",
+        "origin": "converted"
+      },
+      "CL": {
+        "value": 16830000,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16500 €). Edítalo.",
+        "source": "AMDA / Nissan México (convertido)",
+        "origin": "converted"
+      },
+      "CH": {
+        "value": 15518.25,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (16500 €). Edítalo.",
+        "source": "AMDA / Nissan México (convertido)",
+        "origin": "converted"
+      },
+      "PT": {
+        "value": 16500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (16500 €). Edítalo.",
+        "source": "AMDA / Nissan México (convertido)",
+        "origin": "converted"
+      },
+      "FR": {
+        "value": 16500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (16500 €). Edítalo.",
+        "source": "AMDA / Nissan México (convertido)",
+        "origin": "converted"
+      },
+      "DE": {
+        "value": 16500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (16500 €). Edítalo.",
+        "source": "AMDA / Nissan México (convertido)",
+        "origin": "converted"
+      },
+      "IT": {
+        "value": 16500,
+        "date": "2026-09",
+        "note": "Precio de referencia de España (16500 €). Edítalo.",
+        "source": "AMDA / Nissan México (convertido)",
         "origin": "converted"
       }
     },

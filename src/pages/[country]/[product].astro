@@ -107,9 +107,14 @@ const productSchema = generateProductSchema({
   monthsFullPay: calculatedStats?.monthsFullPay,
 });
 
+const cleanSite = siteUrl.replace(/\/$/, "");
+const categoryName = categories[product.category] ?? product.category;
+const categoryUrl = `${cleanSite}/${country.slug}/categoria/${product.category}/`;
+
 const breadcrumbSchema = generateBreadcrumbSchema([
-  { name: "Inicio", url: `${siteUrl.replace(/\/$/, "")}/` },
-  { name: country.name, url: `${siteUrl.replace(/\/$/, "")}/${country.slug}/` },
+  { name: "Inicio", url: `${cleanSite}/` },
+  { name: country.name, url: `${cleanSite}/${country.slug}/` },
+  { name: categoryName, url: categoryUrl },
   { name: product.shortName, url: canonicalUrl },
 ]);
 
@@ -172,6 +177,8 @@ const otherCountriesForProduct = allCountries
         <li aria-hidden="true">/</li>
         <li><a href={`/${country.slug}`} class="hover:text-primary transition-colors">{country.name}</a></li>
         <li aria-hidden="true">/</li>
+        <li><a href={`/${country.slug}/categoria/${product.category}`} class="hover:text-primary transition-colors">{categoryName}</a></li>
+        <li aria-hidden="true">/</li>
         <li class="text-primary font-bold" aria-current="page">{product.shortName}</li>
       </ol>
     </nav>
@@ -184,6 +191,7 @@ const otherCountriesForProduct = allCountries
       countrySlug={country.slug}
       currencySymbol={country.currencySymbol}
       medianNetMonthly={country.medianNetMonthly}
+      minWageMonthly={country.minWageMonthly}
       legalWeeklyHours={country.legalWeeklyHours}
       realAnnualHours={country.realAnnualHours}
       retirementAge={country.retirementAge}

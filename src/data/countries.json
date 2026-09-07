@@ -10,13 +10,15 @@
     "realAnnualHours": 1633,
     "medianNetMonthly": 1800,
     "meanNetMonthly": null,
-    "minWageMonthly": null,
+    "minWageMonthly": 1425,
     "retirementAge": 67,
     "salariesUpdatedAt": "2026-08",
     "salariesSource": "Referencia de producto (mediano neto orientativo). Sustituible por el usuario.",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Orden de magnitud OCDE horas anuales reales.",
-    "informalityNote": null
+    "informalityNote": null,
+    "pppFactor": 0.56,
+    "inflationRate": 3.4
   },
   {
     "code": "PT",
@@ -29,13 +31,15 @@
     "realAnnualHours": 1650,
     "medianNetMonthly": 1100,
     "meanNetMonthly": null,
-    "minWageMonthly": null,
+    "minWageMonthly": 820,
     "retirementAge": 67,
     "salariesUpdatedAt": "2026-08",
     "salariesSource": "Referencia de producto, orientativa",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Orden de magnitud OCDE horas anuales reales.",
-    "informalityNote": null
+    "informalityNote": null,
+    "pppFactor": 0.51,
+    "inflationRate": 2.8
   },
   {
     "code": "FR",
@@ -48,13 +52,15 @@
     "realAnnualHours": 1505,
     "medianNetMonthly": 2100,
     "meanNetMonthly": null,
-    "minWageMonthly": null,
+    "minWageMonthly": 1766,
     "retirementAge": 64,
     "salariesUpdatedAt": "2026-08",
     "salariesSource": "Referencia de producto, orientativa",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Orden de magnitud OCDE horas anuales reales.",
-    "informalityNote": null
+    "informalityNote": null,
+    "pppFactor": 0.68,
+    "inflationRate": 2.5
   },
   {
     "code": "DE",
@@ -67,13 +73,15 @@
     "realAnnualHours": 1345,
     "medianNetMonthly": 2600,
     "meanNetMonthly": null,
-    "minWageMonthly": null,
+    "minWageMonthly": 2054,
     "retirementAge": 67,
     "salariesUpdatedAt": "2026-08",
     "salariesSource": "Referencia de producto, orientativa",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Orden de magnitud OCDE horas anuales reales.",
-    "informalityNote": null
+    "informalityNote": null,
+    "pppFactor": 0.7,
+    "inflationRate": 2.4
   },
   {
     "code": "IT",
@@ -92,7 +100,9 @@
     "salariesSource": "Referencia de producto, orientativa",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Orden de magnitud OCDE horas anuales reales.",
-    "informalityNote": null
+    "informalityNote": null,
+    "pppFactor": 0.6,
+    "inflationRate": 1.2
   },
   {
     "code": "GB",
@@ -105,13 +115,15 @@
     "realAnnualHours": 1530,
     "medianNetMonthly": 2300,
     "meanNetMonthly": null,
-    "minWageMonthly": null,
+    "minWageMonthly": 1920,
     "retirementAge": 67,
     "salariesUpdatedAt": "2026-08",
     "salariesSource": "Referencia de producto, orientativa",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Orden de magnitud OCDE horas anuales reales.",
-    "informalityNote": null
+    "informalityNote": null,
+    "pppFactor": 0.66,
+    "inflationRate": 2.6
   },
   {
     "code": "US",
@@ -124,13 +136,15 @@
     "realAnnualHours": 1815,
     "medianNetMonthly": 4000,
     "meanNetMonthly": null,
-    "minWageMonthly": null,
+    "minWageMonthly": 1256,
     "retirementAge": 67,
     "salariesUpdatedAt": "2026-08",
     "salariesSource": "Referencia de producto, orientativa",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Orden de magnitud OCDE horas anuales reales.",
-    "informalityNote": null
+    "informalityNote": null,
+    "pppFactor": 1,
+    "inflationRate": 2.9
   },
   {
     "code": "MX",
@@ -143,13 +157,15 @@
     "realAnnualHours": 2225,
     "medianNetMonthly": 9000,
     "meanNetMonthly": null,
-    "minWageMonthly": null,
+    "minWageMonthly": 7468,
     "retirementAge": 65,
     "salariesUpdatedAt": "2026-08",
     "salariesSource": "Referencia de producto, orientativa",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Orden de magnitud OCDE horas anuales reales.",
-    "informalityNote": "Alta informalidad laboral: el salario formal no representa a buena parte de la población."
+    "informalityNote": "Alta informalidad laboral: el salario formal no representa a buena parte de la población.",
+    "pppFactor": 9.75,
+    "inflationRate": 4.8
   },
   {
     "code": "AR",
@@ -162,13 +178,15 @@
     "realAnnualHours": null,
     "medianNetMonthly": null,
     "meanNetMonthly": null,
-    "minWageMonthly": null,
+    "minWageMonthly": 260000,
     "retirementAge": 65,
     "salariesUpdatedAt": "2026-08",
     "salariesSource": "Referencia de producto, orientativa",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Sin dato fiable; la ficha no muestra % del año real.",
-    "informalityNote": "Inflación e informalidad altas: las cifras se desactualizan rápido. Introduce tu sueldo."
+    "informalityNote": "Inflación e informalidad altas: las cifras se desactualizan rápido. Introduce tu sueldo.",
+    "pppFactor": 139.69,
+    "inflationRate": 115
   },
   {
     "code": "CO",
@@ -181,13 +199,15 @@
     "realAnnualHours": null,
     "medianNetMonthly": null,
     "meanNetMonthly": null,
-    "minWageMonthly": null,
+    "minWageMonthly": 1300000,
     "retirementAge": 62,
     "salariesUpdatedAt": "2026-08",
     "salariesSource": "Referencia de producto, orientativa",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Sin dato fiable; la ficha no muestra % del año real.",
-    "informalityNote": "Alta informalidad laboral (~55 %): el salario mediano formal no representa a la mayoría. Introduce tu sueldo."
+    "informalityNote": "Alta informalidad laboral (~55 %): el salario mediano formal no representa a la mayoría. Introduce tu sueldo.",
+    "pppFactor": 1425.43,
+    "inflationRate": 6.8
   },
   {
     "code": "CL",
@@ -200,13 +220,15 @@
     "realAnnualHours": 1960,
     "medianNetMonthly": 650000,
     "meanNetMonthly": null,
-    "minWageMonthly": null,
+    "minWageMonthly": 500000,
     "retirementAge": 65,
     "salariesUpdatedAt": "2026-08",
     "salariesSource": "Referencia de producto, orientativa",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Orden de magnitud OCDE horas anuales reales.",
-    "informalityNote": null
+    "informalityNote": null,
+    "pppFactor": 432.56,
+    "inflationRate": 4.1
   },
   {
     "code": "CH",
@@ -219,12 +241,14 @@
     "realAnnualHours": 1440,
     "medianNetMonthly": 6500,
     "meanNetMonthly": null,
-    "minWageMonthly": null,
+    "minWageMonthly": 3800,
     "retirementAge": 65,
     "salariesUpdatedAt": "2026-08",
     "salariesSource": "Referencia de producto, orientativa",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Orden de magnitud OCDE horas anuales reales.",
-    "informalityNote": null
+    "informalityNote": null,
+    "pppFactor": 1,
+    "inflationRate": 1.4
   }
 ]

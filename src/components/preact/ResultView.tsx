@@ -17,6 +17,7 @@ import {
 } from "../../lib/format.ts";
 import anchorsData from "../../data/anchors.json";
 import countriesData from "../../data/countries.json";
+import sectorsData from "../../data/sectors.json";
 import { buildShareUrl, parseUserStateFromQuery } from "../../lib/urls.ts";
 import { loadUserState, saveUserState } from "../../lib/storage.ts";
 import type { Product, UserState } from "../../lib/types.ts";
@@ -142,6 +143,7 @@ export interface ResultViewProps {
   countrySlug: string;
   currencySymbol: string;
   medianNetMonthly: number | null;
+  minWageMonthly?: number | null;
   legalWeeklyHours: number;
   realAnnualHours: number | null;
   retirementAge: number;
@@ -186,6 +188,7 @@ export default function ResultView({
   countrySlug,
   currencySymbol,
   medianNetMonthly,
+  minWageMonthly = null,
   legalWeeklyHours,
   realAnnualHours,
   retirementAge,
@@ -201,17 +204,72 @@ export default function ResultView({
   const [state, setState] = useState<Partial<UserState>>({});
   const [mounted, setMounted] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [selectedPresetLabel, setSelectedPresetLabel] = useState<string | null>(null);
 
-  /** Presets dinámicos de sueldo adaptados a la economía del país actual. */
-  const salaryPresets = useMemo(() => {
+  /** Presets oficiales enriquecidos por sector de actividad económica y edad */
+  const richPresets = useMemo(() => {
     const med = medianNetMonthly ?? 1800;
-    const p1 = Math.round((med * 0.65) / 50) * 50;
-    const p2 = Math.round((med * 0.85) / 50) * 50;
-    const p3 = Math.round(med / 50) * 50;
-    const p4 = Math.round((med * 1.35) / 50) * 50;
-    const p5 = Math.round((med * 1.75) / 50) * 50;
-    return Array.from(new Set([p1, p2, p3, p4, p5])).filter((n) => n > 0);
-  }, [medianNetMonthly]);
+    const countrySectors = (sectorsData as Record<string, any[]>)[countryCode];
+    if (countrySectors && countrySectors.length > 0) {
+      return [
+        {
+          id: "mediana",
+          label: "Mediana Oficial",
+          shortLabel: "Mediana",
+          monthlyNet: med,
+          source: "INE / Percentil 50",
+          icon: "🟢",
+        },
+        ...countrySectors,
+      ];
+    }
+    return [
+      {
+        id: "mediana",
+        label: "Mediana Nacional",
+        shortLabel: "Mediana",
+        monthlyNet: med,
+        source: "Estadística oficial percentil 50",
+        icon: "🟢",
+      },
+      ...(minWageMonthly
+        ? [
+            {
+              id: "smi",
+              label: "Salario Mínimo (SMI)",
+              shortLabel: "Salario Mínimo",
+              monthlyNet: minWageMonthly,
+              source: "Salario mínimo regulado por ley",
+              icon: "⚖️",
+            },
+          ]
+        : []),
+      {
+        id: "servicios",
+        label: "Servicios / Hostelería",
+        shortLabel: "Servicios",
+        monthlyNet: Math.round((med * 0.72) / 50) * 50,
+        source: "Sector servicios",
+        icon: "☕",
+      },
+      {
+        id: "industria",
+        label: "Industria / Construcción",
+        shortLabel: "Industria",
+        monthlyNet: Math.round((med * 0.95) / 50) * 50,
+        source: "Sector manufacturas",
+        icon: "🏗️",
+      },
+      {
+        id: "tech",
+        label: "Profesional / Tech",
+        shortLabel: "Tecnología",
+        monthlyNet: Math.round((med * 1.5) / 50) * 50,
+        source: "Sector tecnológico / técnico",
+        icon: "💻",
+      },
+    ];
+  }, [countryCode, medianNetMonthly, minWageMonthly]);
 
   /** Límites mínimo y máximo para el slider continuo de nómina */
   const sliderMin = useMemo(() => {
@@ -312,11 +370,13 @@ export default function ResultView({
   const setLabel = (value: string | null) => patch({ customLabel: value });
   const setUserFields = (fields: UserFormFields) => patch(fields);
 
-  const applyPresetSalary = (amount: number) => {
+  const applyPresetSalary = (amount: number, label?: string) => {
     patch({ netMonthly: amount });
+    setSelectedPresetLabel(label ?? null);
   };
 
   const onResetUserFields = () => {
+    setSelectedPresetLabel(null);
     patch({ netMonthly: null });
   };
 
@@ -477,16 +537,29 @@ export default function ResultView({
       </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-base-300">
-        <div class="w-full sm:w-auto">
+        <div class="board-share w-full sm:w-auto flex justify-center sm:justify-end order-1 sm:order-2">
+          <ShareButton
+            url={shareUrl}
+            text={shareTextFor()}
+            productName={displayName}
+            countryName={countryName}
+            countrySlug={countrySlug}
+            price={effectivePrice}
+            currencySymbol={currencySymbol}
+            hours={computed?.hours}
+            workdays8h={computed?.workdays8h}
+            months={computed?.monthsFullPay}
+            years={computed?.yearsFullPay}
+            ogImageUrl={productId && countrySlug ? `/og/${countrySlug}/${productId}.png` : undefined}
+          />
+        </div>
+        <div class="w-full sm:w-auto flex justify-center sm:justify-start order-2 sm:order-1">
           <CountryPicker
             countries={pickerCountries}
             label={result.otherCountry}
             placeholder={countryName}
             hrefFor={hrefFor}
           />
-        </div>
-        <div class="board-share w-full sm:w-auto flex justify-end">
-          <ShareButton url={shareUrl} text={shareTextFor()} />
         </div>
       </div>
     </section>
@@ -496,9 +569,15 @@ export default function ResultView({
     return (
       <div>
         <div class="board-plate p-5">
-          <h1 class="font-signage uppercase text-3xl md:text-5xl leading-none">
-            {displayName ?? result.unnamedThing}
-          </h1>
+          {productId ? (
+            <h1 class="font-signage uppercase text-3xl md:text-5xl leading-none">
+              {displayName ?? result.unnamedThing}
+            </h1>
+          ) : (
+            <h2 class="font-signage uppercase text-2xl md:text-4xl leading-none">
+              {displayName ?? result.unnamedThing}
+            </h2>
+          )}
           <div class="mt-2">{priceLine}</div>
         </div>
         {netMonthly == null ? (
@@ -843,9 +922,15 @@ export default function ResultView({
             <span class="font-board-mono text-sm uppercase tracking-widest text-base-content/60 block">
               Cotización laboral exacta · {productShortName ?? displayName}
             </span>
-            <h1 class="font-signage uppercase text-3xl sm:text-4xl md:text-5xl leading-tight text-base-content">
-              {productName ? `¿Cuánto tiempo cuesta ${displayName} en ${countryName}?` : (displayName ?? result.unnamedThing)}
-            </h1>
+            {productId ? (
+              <h1 class="font-signage uppercase text-3xl sm:text-4xl md:text-5xl leading-tight text-base-content">
+                {productName ? `¿Cuánto tiempo cuesta ${displayName} en ${countryName}?` : (displayName ?? result.unnamedThing)}
+              </h1>
+            ) : (
+              <h2 class="font-signage uppercase text-2xl sm:text-3xl md:text-4xl leading-tight text-base-content">
+                {displayName ?? result.unnamedThing}
+              </h2>
+            )}
             {!productCategory && <div class="mt-2">{priceLine}</div>}
           </div>
 
@@ -901,8 +986,12 @@ export default function ResultView({
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div>
               <div class="flex items-center gap-2 flex-wrap">
-                <span class="font-board-mono text-sm font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 px-2.5 py-0.5 rounded">
-                  {state.netMonthly ? "Cotizando con tus datos" : "Mediana nacional de referencia"}
+                <span class="font-board-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 px-2.5 py-0.5 rounded">
+                  {selectedPresetLabel
+                    ? selectedPresetLabel
+                    : state.netMonthly
+                    ? "Cotizando con tu sueldo personalizado"
+                    : "Mediana nacional de referencia"}
                 </span>
                 <span class="font-board-mono text-sm text-base-content/80">
                   {state.netMonthly
@@ -914,7 +1003,7 @@ export default function ResultView({
                 ¿Quieres ver cuánto te cuesta a ti con tu sueldo real?
               </h3>
               <p class="font-board-mono text-sm opacity-85 mt-1">
-                Pulsa un sueldo rápido o mueve el deslizador para recalcular el esfuerzo al instante:
+                Pulsa un perfil laboral oficial o mueve el deslizador para recalcular el esfuerzo al instante:
               </p>
             </div>
 
@@ -939,23 +1028,31 @@ export default function ResultView({
             </div>
           </div>
 
-          {/* Botones de Presets Rápidos */}
-          <div class="mt-4 pt-3 border-t border-base-300/80 flex items-center gap-2 flex-wrap">
-            <span class="font-board-mono text-sm opacity-80 mr-1">Elige un sueldo rápido:</span>
-            {salaryPresets.map((preset) => (
-              <button
-                type="button"
-                key={preset}
-                onClick={() => applyPresetSalary(preset)}
-                class={`px-3.5 py-1.5 rounded font-board-mono text-sm font-semibold transition-all cursor-pointer shadow-xs ${
-                  state.netMonthly === preset
-                    ? "bg-accent text-neutral-900 font-bold shadow-sm"
-                    : "bg-base-100 hover:bg-primary hover:text-neutral-900 border border-base-300 hover:border-primary"
-                }`}
-              >
-                {preset} {currencySymbol}/mes
-              </button>
-            ))}
+          {/* Botones de Presets Oficiales por Perfil y Sector */}
+          <div class="mt-4 pt-3 border-t border-base-300/80 space-y-2">
+            <div class="flex items-center justify-between gap-2 flex-wrap text-xs font-board-mono">
+              <span class="opacity-80">Presets oficiales por sector o perfil laboral:</span>
+              <span class="text-xs opacity-60">Fuentes: INE · Eurostat · BOE</span>
+            </div>
+            <div class="flex items-center gap-2 flex-wrap">
+              {richPresets.map((preset) => (
+                <button
+                  type="button"
+                  key={preset.id}
+                  onClick={() => applyPresetSalary(preset.monthlyNet, `${preset.label} (${preset.source})`)}
+                  class={`px-3 py-1.5 rounded font-board-mono text-xs sm:text-sm font-semibold transition-all cursor-pointer shadow-xs flex items-center gap-1.5 ${
+                    state.netMonthly === preset.monthlyNet
+                      ? "bg-primary text-neutral-900 font-bold shadow-sm"
+                      : "bg-base-100 hover:bg-base-200 border border-base-300 hover:border-primary/60 text-base-content/90"
+                  }`}
+                  title={`${preset.label} (${preset.monthlyNet} ${currencySymbol}/mes) · ${preset.source}`}
+                >
+                  <span>{preset.icon}</span>
+                  <span>{preset.shortLabel}</span>
+                  <span class="opacity-70 font-normal">({preset.monthlyNet} {currencySymbol})</span>
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Slider Continuo de Nómina (Scrubber Táctil a 60 FPS) */}
@@ -979,7 +1076,7 @@ export default function ResultView({
               onInput={(e) => {
                 const val = Number((e.target as HTMLInputElement).value);
                 if (Number.isFinite(val) && val > 0) {
-                  applyPresetSalary(val);
+                  applyPresetSalary(val, undefined);
                 }
               }}
               class="salary-slider"
@@ -1389,16 +1486,29 @@ export default function ResultView({
         </div>
 
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-base-300">
-          <div class="w-full sm:w-auto">
+          <div class="board-share w-full sm:w-auto flex justify-center sm:justify-end order-1 sm:order-2">
+            <ShareButton
+              url={shareUrl}
+              text={shareTextFor()}
+              productName={displayName}
+              countryName={countryName}
+              countrySlug={countrySlug}
+              price={effectivePrice}
+              currencySymbol={currencySymbol}
+              hours={computed?.hours}
+              workdays8h={computed?.workdays8h}
+              months={computed?.monthsFullPay}
+              years={computed?.yearsFullPay}
+              ogImageUrl={productId && countrySlug ? `/og/${countrySlug}/${productId}.png` : undefined}
+            />
+          </div>
+          <div class="w-full sm:w-auto flex justify-center sm:justify-start order-2 sm:order-1">
             <CountryPicker
               countries={pickerCountries}
               label={result.otherCountry}
               placeholder={countryName}
               hrefFor={hrefFor}
             />
-          </div>
-          <div class="board-share w-full sm:w-auto flex justify-end">
-            <ShareButton url={shareUrl} text={shareTextFor()} />
           </div>
         </div>
       </section>

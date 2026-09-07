@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { brand } from '../i18n/es.ts';
+import { generateBreadcrumbSchema } from '../lib/seo.ts';
+
+const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
+const cleanSite = siteUrl.replace(/\/$/, "");
+const canonicalUrl = `${cleanSite}/privacidad/`;
+
+const title = `Política de Privacidad · ${brand.name}`;
+const description = "Conoce nuestra política de privacidad: los cálculos se ejecutan 100% en tu navegador y no almacenamos tus datos financieros ni nóminas.";
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", url: `${cleanSite}/` },
+  { name: "Privacidad", url: canonicalUrl },
+]);
+---
+
+<BaseLayout title={title} description={description} jsonLd={breadcrumbSchema}>
+  <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-6">
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-primary font-bold" aria-current="page">Privacidad</li>
+      </ol>
+    </nav>
+
+    <div class="board-plate p-6 md:p-8">
+      <p class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-semibold">
+        Compromiso de Privacidad por Diseño
+      </p>
+      <h1 class="font-signage uppercase text-4xl md:text-6xl leading-none mt-2">
+        Política de Privacidad
+      </h1>
+      <p class="mt-4 text-base md:text-lg opacity-90 leading-relaxed max-w-2xl">
+        Tu nómina, tus horas de trabajo y tu edad son datos estrictamente tuyos. Nuestra arquitectura está construida para que ningún dato personal viaje a nuestros servidores.
+      </p>
+    </div>
+
+    <div class="board-plate p-6 md:p-8 space-y-6 text-sm md:text-base leading-relaxed opacity-90 font-sans">
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">1. Principio Fundamental: Ejecución 100 % Local</h2>
+        <p>
+          En <strong>{brand.name}</strong> aplicamos el principio de <em>Privacy by Design</em> (Privacidad desde el Diseño):
+        </p>
+        <ul class="list-disc list-inside space-y-1 pl-2">
+          <li>El motor de cálculo matemático corre íntegramente en JavaScript dentro de tu navegador web.</li>
+          <li>Cuando introduces tu sueldo neto, tu jornada laboral o tu edad, <strong>esas cifras NO se envían a ningún servidor</strong> ni se registran en bases de datos.</li>
+          <li>La información se conserva exclusivamente en el almacenamiento local de tu navegador (<code>localStorage</code>) si decides guardarla para futuras visitas.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">2. Datos de Navegación e Infraestructura</h2>
+        <p>
+          Al acceder al sitio, nuestra red de distribución de contenidos (Cloudflare) procesa temporalmente metadatos técnicos de conexión habituales (dirección IP, tipo de navegador y país de procedencia estimado) con el único fin de servir el contenido de forma segura, mitigar ataques de denegación de servicio (DDoS) y seleccionar por defecto la moneda correspondiente a tu ubicación.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">3. Enlaces a Terceros</h2>
+        <p>
+          El sitio web puede incluir enlaces informativos hacia fuentes oficiales (INE, OCDE, Eurostat) o plataformas de fabricantes de productos de referencia. No nos responsabilizamos de las políticas de privacidad ni prácticas de dichos sitios web externos.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-signage uppercase text-2xl text-base-content">4. Ejercicio de Derechos</h2>
+        <p>
+          Dado que no recopilamos identificadores personales ni almacenamos perfiles de usuario, no mantenemos ficheros de datos susceptibles de cesión o venta a terceros. Para cualquier duda respecto al tratamiento técnico, puedes contactarnos en <a href="/contacto" class="text-primary underline">nuestra página de contacto</a>.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

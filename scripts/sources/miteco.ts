@@ -48,7 +48,7 @@ export const mitecoFuelProvider: CatalogSourceProvider = {
       const tankPrice = Math.round(roundedAvg * LITROS_DEPOSITO * 100) / 100;
       const date = new Date().toISOString().slice(0, 7);
 
-      return [
+      const updates: NormalizedPriceUpdate[] = [
         {
           productId: 'deposito-gasolina',
           countryCode: 'ES',
@@ -59,6 +59,58 @@ export const mitecoFuelProvider: CatalogSourceProvider = {
           origin: 'local',
         },
       ];
+
+      const dieselPrices = list
+        .map((item: Record<string, string>) =>
+          parseFloat((item['Precio Gasoleo A'] || '').replace(',', '.'))
+        )
+        .filter((val: number) => !isNaN(val) && val > 0.6 && val < 3.5);
+
+      if (dieselPrices.length > 0) {
+        const avgDiesel = dieselPrices.reduce((a, b) => a + b, 0) / dieselPrices.length;
+        const roundedDiesel = Math.round(avgDiesel * 1000) / 1000;
+        const tankDieselPrice = Math.round(roundedDiesel * LITROS_DEPOSITO * 100) / 100;
+        updates.push({
+          productId: 'deposito-diesel',
+          productName: 'Depósito de diésel (45 L)',
+          shortName: 'Depósito diésel',
+          category: 'transporte',
+          countryCode: 'ES',
+          value: tankDieselPrice,
+          date,
+          note: `Depósito medio de ${LITROS_DEPOSITO} L de Gasóleo A (${roundedDiesel.toFixed(2)} €/L). Datos oficiales de ${dieselPrices.length.toLocaleString('es-ES')} estaciones.`,
+          source: 'MITECO (Gobierno de España)',
+          origin: 'local',
+          visible: true,
+        });
+      }
+
+      const g98Prices = list
+        .map((item: Record<string, string>) =>
+          parseFloat((item['Precio Gasolina 98 E5'] || '').replace(',', '.'))
+        )
+        .filter((val: number) => !isNaN(val) && val > 0.6 && val < 3.5);
+
+      if (g98Prices.length > 0) {
+        const avgG98 = g98Prices.reduce((a, b) => a + b, 0) / g98Prices.length;
+        const roundedG98 = Math.round(avgG98 * 1000) / 1000;
+        const tankG98Price = Math.round(roundedG98 * LITROS_DEPOSITO * 100) / 100;
+        updates.push({
+          productId: 'deposito-gasolina-98',
+          productName: 'Depósito Gasolina 98 (45 L)',
+          shortName: 'Depósito 98',
+          category: 'transporte',
+          countryCode: 'ES',
+          value: tankG98Price,
+          date,
+          note: `Depósito medio de ${LITROS_DEPOSITO} L de Gasolina 98 E5 (${roundedG98.toFixed(2)} €/L). Datos oficiales de ${g98Prices.length.toLocaleString('es-ES')} estaciones.`,
+          source: 'MITECO (Gobierno de España)',
+          origin: 'local',
+          visible: true,
+        });
+      }
+
+      return updates;
     } finally {
       clearTimeout(timeout);
     }

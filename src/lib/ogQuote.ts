@@ -55,7 +55,7 @@ export function ogQuote(product: Product, country: Country): OgQuote | null {
       price: price.value,
       netMonthly: country.medianNetMonthly,
       weeklyHours: country.legalWeeklyHours,
-      realAnnualHours: null,
+      realAnnualHours: country.realAnnualHours,
       monthlySavings: null,
       age: null,
       retirementAge: country.retirementAge,

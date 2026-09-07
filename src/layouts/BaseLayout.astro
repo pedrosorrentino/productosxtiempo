@@ -126,7 +126,7 @@ const ogLocale = localeData?.ogLocale ?? "es_ES";
     <header class="board-marquee">
       <a href="/" class="board-brand">{brand.name}</a>
       <span class="board-tagline hidden md:inline">{brand.promise}</span>
-      <nav class="ml-auto">
+      <nav class="ml-auto flex items-center gap-3">
         <select id="board-country-select" class="board-country-select" aria-label={board.changeCountryLabel}>
           <option value="" disabled selected={!currentCountrySlug}>{home.countryPlaceholder}</option>
           {countries.map((country) => (
@@ -141,26 +141,39 @@ const ogLocale = localeData?.ogLocale ?? "es_ES";
     </main>
 
     <footer class="border-t border-base-300 bg-base-200 px-6 py-8">
-      <div class="md:flex md:items-start md:gap-10">
-        <div class="md:max-w-md">
-          <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
-            <a href="/" class="board-brand">{brand.name}</a>
-            <a href="/metodo" class="board-navlink">{cta.method}</a>
+      <div class="max-w-6xl mx-auto space-y-6">
+        <div class="md:flex md:items-start md:gap-10">
+          <div class="md:max-w-md space-y-3">
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+              <a href="/" class="board-brand">{brand.name}</a>
+              <a href="/metodo" class="board-navlink">{cta.method}</a>
+            </div>
+            <p class="font-board-mono text-xs leading-relaxed opacity-70">
+              {legalFooter.join(" ")}
+            </p>
+            <nav class="flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-2 text-xs font-board-mono text-base-content/80" aria-label="Información legal y de confianza">
+              <a href="/sobre-el-proyecto" class="hover:text-primary transition-colors">Sobre el Proyecto</a>
+              <span class="opacity-40" aria-hidden="true">·</span>
+              <a href="/contacto" class="hover:text-primary transition-colors">Contacto</a>
+              <span class="opacity-40" aria-hidden="true">·</span>
+              <a href="/aviso-legal" class="hover:text-primary transition-colors">Aviso Legal</a>
+              <span class="opacity-40" aria-hidden="true">·</span>
+              <a href="/privacidad" class="hover:text-primary transition-colors">Privacidad</a>
+              <span class="opacity-40" aria-hidden="true">·</span>
+              <a href="/cookies" class="hover:text-primary transition-colors">Cookies</a>
+            </nav>
           </div>
-          <p class="mt-3 font-board-mono text-xs leading-relaxed opacity-70 max-w-3xl">
-            {legalFooter.join(" ")}
-          </p>
+          <nav
+            class="mt-6 md:mt-0 md:flex-1 md:min-w-0 flex flex-wrap items-center gap-x-3 gap-y-2 md:flex-nowrap md:items-start"
+            aria-label={board.footerCountriesLabel}
+          >
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-2 md:grid md:flex-1 md:min-w-0 md:grid-rows-3 md:grid-flow-col md:gap-x-8 md:gap-y-1">
+              {countries.map((country) => (
+                <a href={`/${country.slug}`} class="board-footer-link">{country.name}</a>
+              ))}
+            </div>
+          </nav>
         </div>
-        <nav
-          class="mt-6 md:mt-0 md:flex-1 md:min-w-0 flex flex-wrap items-center gap-x-3 gap-y-2 md:flex-nowrap md:items-start"
-          aria-label={board.footerCountriesLabel}
-        >
-          <div class="flex flex-wrap items-center gap-x-3 gap-y-2 md:grid md:flex-1 md:min-w-0 md:grid-rows-3 md:grid-flow-col md:gap-x-8 md:gap-y-1">
-            {countries.map((country) => (
-              <a href={`/${country.slug}`} class="board-footer-link">{country.name}</a>
-            ))}
-          </div>
-        </nav>
       </div>
     </footer>
 
