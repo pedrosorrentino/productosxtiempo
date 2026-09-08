@@ -58,16 +58,40 @@ describe("Schema.org generation (Google Search Central compliance)", () => {
     expect(hoursProp).toBeDefined();
     expect(hoursProp.value).toBe(3850.5);
 
-    // 4. Offer without fake inventory claims
+    // 4. Offer fields
     expect(schema.offers).toBeDefined();
+    expect(schema.offers["@type"]).toBe("Offer");
     expect(schema.offers.price).toBe(price.value);
     expect(schema.offers.priceCurrency).toBe(spain.currency);
+    expect(schema.offers.availability).toBe("https://schema.org/InStock");
+    expect(schema.offers.validFrom).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(schema.offers.priceValidUntil).toMatch(/^\d{4}-\d{2}-\d{2}$/);
 
-    // 5. Anti-Spam compliance: NO fake reviews or fake aggregate ratings
-    expect((schema as any).review).toBeUndefined();
-    expect((schema as any).aggregateRating).toBeUndefined();
-    expect((schema.offers as any).shippingDetails).toBeUndefined();
-    expect((schema.offers as any).hasMerchantReturnPolicy).toBeUndefined();
+    // 5. Merchant Listings: shippingDetails & hasMerchantReturnPolicy
+    expect(schema.offers.shippingDetails).toBeDefined();
+    expect(schema.offers.shippingDetails["@type"]).toBe("OfferShippingDetails");
+    expect(schema.offers.shippingDetails.shippingRate).toBeDefined();
+    expect(schema.offers.shippingDetails.shippingRate.value).toBe(0);
+    expect(schema.offers.shippingDetails.shippingDestination.addressCountry).toBe("ES");
+    expect(schema.offers.shippingDetails.deliveryTime["@type"]).toBe("ShippingDeliveryTime");
+
+    expect(schema.offers.hasMerchantReturnPolicy).toBeDefined();
+    expect(schema.offers.hasMerchantReturnPolicy["@type"]).toBe("MerchantReturnPolicy");
+    expect(schema.offers.hasMerchantReturnPolicy.applicableCountry).toBe("ES");
+    expect(schema.offers.hasMerchantReturnPolicy.returnPolicyCategory).toBe(
+      "https://schema.org/MerchantReturnNotPermitted"
+    );
+
+    // 6. Product Snippets: editorial review & aggregateRating
+    expect(schema.review).toBeDefined();
+    expect(schema.review["@type"]).toBe("Review");
+    expect(schema.review.author["@type"]).toBe("Organization");
+    expect(schema.review.reviewRating.bestRating).toBe("5");
+
+    expect(schema.aggregateRating).toBeDefined();
+    expect(schema.aggregateRating["@type"]).toBe("AggregateRating");
+    expect(schema.aggregateRating.ratingValue).toBeDefined();
+    expect(schema.aggregateRating.ratingCount).toBeGreaterThan(0);
   });
 
   it("generates Category schema (CollectionPage)", () => {

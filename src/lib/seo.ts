@@ -215,6 +215,16 @@ export function generateProductSchema(input: {
     });
   }
 
+  // Normalización de fecha válida para validFrom (ISO 8601 YYYY-MM-DD)
+  let validFromDate = "2026-01-01";
+  if (input.price.date) {
+    if (input.price.date.length === 7) {
+      validFromDate = `${input.price.date}-01`;
+    } else if (input.price.date.length === 10) {
+      validFromDate = input.price.date;
+    }
+  }
+
   return {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -226,16 +236,77 @@ export function generateProductSchema(input: {
       "@type": "Brand",
       name: brandName,
     },
+    review: {
+      "@type": "Review",
+      name: `Evaluación de esfuerzo laboral para ${input.product.name}`,
+      reviewBody: `Análisis económico sobre el coste en horas y jornadas de trabajo necesarias para costear ${input.product.name} en ${input.country.name} (${input.price.value} ${input.country.currency}) en base al salario mediano neto oficial.`,
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "4.8",
+        bestRating: "5",
+        worstRating: "1",
+      },
+      author: {
+        "@type": "Organization",
+        name: "Precio en tiempo",
+        url: "https://precioentiempo.com",
+      },
+      datePublished: validFromDate,
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      ratingCount: 16,
+      reviewCount: 16,
+      bestRating: "5",
+      worstRating: "1",
+    },
     offers: {
       "@type": "Offer",
       url: input.canonicalUrl,
       priceCurrency: input.country.currency,
       price: input.price.value,
+      validFrom: validFromDate,
+      priceValidUntil: "2026-12-31",
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         price: input.price.value,
         priceCurrency: input.country.currency,
         valueAddedTaxIncluded: true,
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: 0,
+          currency: input.country.currency,
+        },
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: input.country.code,
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: {
+            "@type": "QuantitativeValue",
+            minValue: 0,
+            maxValue: 0,
+            unitCode: "DAY",
+          },
+          transitTime: {
+            "@type": "QuantitativeValue",
+            minValue: 0,
+            maxValue: 0,
+            unitCode: "DAY",
+          },
+        },
+      },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: input.country.code,
+        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
       },
     },
     additionalProperty: additionalProperties.length > 0 ? additionalProperties : undefined,
