@@ -177,8 +177,8 @@ export default function BoardRowCard({
               </svg>
             </span>
             <div class="min-w-0 flex-1">
-              <div class="font-semibold text-base text-base-content flex items-center gap-1.5 leading-snug">
-                <span class="truncate">{name}</span>
+              <div class="font-semibold text-base text-base-content flex items-start gap-1.5 leading-snug">
+                <span class="line-clamp-2" title={name}>{name}</span>
                 {isFresh && !converted && (
                   <span
                     class="inline-flex items-center text-primary shrink-0 opacity-85"
@@ -307,7 +307,7 @@ export default function BoardRowCard({
         <span class="min-w-0">
           <span class="flex items-baseline gap-2.5">
             <span class="min-w-0 truncate font-semibold text-base sm:text-lg flex items-center gap-1.5">
-              <span class="truncate">{name}</span>
+              <span class="truncate" title={name}>{name}</span>
               {isFresh && !converted && (
                 <span
                   class="inline-flex items-center text-primary shrink-0 opacity-80"

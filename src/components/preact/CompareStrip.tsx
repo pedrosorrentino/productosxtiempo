@@ -445,7 +445,7 @@ export default function CompareStrip({
               <span>{availableCountries.length} {availableCountries.length === 1 ? "país disponible" : "países disponibles"}</span>
               <button
                 type="button"
-                class="hover:text-primary transition-colors cursor-pointer"
+                class="min-h-11 inline-flex items-center hover:text-primary transition-colors cursor-pointer"
                 onClick={() => setIsModalOpen(false)}
               >
                 Cerrar

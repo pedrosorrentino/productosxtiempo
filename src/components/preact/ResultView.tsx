@@ -951,7 +951,7 @@ export default function ResultView({
         <button
           type="button"
           onClick={() => onViewModeChange("work")}
-          class={`flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded font-board-mono text-sm sm:text-base uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 ${
+          class={`min-h-11 flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded font-board-mono text-sm sm:text-base uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 ${
             !isLifeMode
               ? "bg-primary text-neutral-900 shadow-sm"
               : "text-base-content/70 hover:text-base-content hover:bg-base-200"
@@ -965,7 +965,7 @@ export default function ResultView({
         <button
           type="button"
           onClick={() => onViewModeChange("life")}
-          class={`flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded font-board-mono text-sm sm:text-base uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 ${
+          class={`min-h-11 flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded font-board-mono text-sm sm:text-base uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 ${
             isLifeMode
               ? "bg-secondary text-white shadow-sm"
               : "text-base-content/70 hover:text-base-content hover:bg-base-200"
@@ -1011,7 +1011,7 @@ export default function ResultView({
               <button
                 type="button"
                 onClick={() => setIsFormOpen((prev) => !prev)}
-                class="btn btn-sm bg-primary hover:bg-primary/80 text-neutral-900 font-board-mono text-sm uppercase font-bold tracking-wider shadow-md cursor-pointer"
+                class="btn btn-sm w-full sm:w-auto bg-primary hover:bg-primary/80 text-neutral-900 font-board-mono text-sm uppercase font-bold tracking-wider shadow-md cursor-pointer"
               >
                 {isFormOpen ? "Cerrar ▲" : "⚡ Ajustar mi nómina"}
               </button>
@@ -1040,7 +1040,7 @@ export default function ResultView({
                   type="button"
                   key={preset.id}
                   onClick={() => applyPresetSalary(preset.monthlyNet, `${preset.label} (${preset.source})`)}
-                  class={`px-3 py-1.5 rounded font-board-mono text-xs sm:text-sm font-semibold transition-all cursor-pointer shadow-xs flex items-center gap-1.5 ${
+                  class={`min-h-11 px-3 py-1.5 rounded font-board-mono text-xs sm:text-sm font-semibold transition-all cursor-pointer shadow-xs inline-flex items-center gap-1.5 ${
                     state.netMonthly === preset.monthlyNet
                       ? "bg-primary text-neutral-900 font-bold shadow-sm"
                       : "bg-base-100 hover:bg-base-200 border border-base-300 hover:border-primary/60 text-base-content/90"
@@ -1132,7 +1132,7 @@ export default function ResultView({
               <button
                 type="button"
                 onClick={() => onAgeChange(Math.max(16, (effectiveUserAge ?? 32) - 1))}
-                class="w-8 h-8 rounded bg-base-200 hover:bg-secondary hover:text-white font-bold transition-all text-sm flex items-center justify-center cursor-pointer select-none"
+                class="w-11 h-11 rounded bg-base-200 hover:bg-secondary hover:text-white font-bold transition-all text-base flex items-center justify-center cursor-pointer select-none"
                 title="Restar 1 año"
               >
                 -
@@ -1148,7 +1148,7 @@ export default function ResultView({
               <button
                 type="button"
                 onClick={() => onAgeChange(Math.min(80, (effectiveUserAge ?? 32) + 1))}
-                class="w-8 h-8 rounded bg-base-200 hover:bg-secondary hover:text-white font-bold transition-all text-sm flex items-center justify-center cursor-pointer select-none"
+                class="w-11 h-11 rounded bg-base-200 hover:bg-secondary hover:text-white font-bold transition-all text-base flex items-center justify-center cursor-pointer select-none"
                 title="Sumar 1 año"
               >
                 +
@@ -1164,7 +1164,7 @@ export default function ResultView({
                 type="button"
                 key={agePreset}
                 onClick={() => onAgeChange(agePreset)}
-                class={`px-3.5 py-1.5 rounded font-board-mono text-sm font-semibold transition-all cursor-pointer shadow-xs ${
+                class={`min-h-11 inline-flex items-center px-3.5 py-1.5 rounded font-board-mono text-sm font-semibold transition-all cursor-pointer shadow-xs ${
                   (effectiveUserAge ?? 32) === agePreset
                     ? "bg-secondary text-white font-bold shadow-sm"
                     : "bg-base-100 hover:bg-secondary hover:text-white border border-base-300 hover:border-secondary"
@@ -1285,7 +1285,6 @@ export default function ResultView({
                   lifeWeeksCost={lifeImpact.lifeWeeksCost}
                   threat={lifeImpact.threat}
                   productName={displayName ?? "este producto"}
-                  onAgeChange={(age) => onAgeChange(age)}
                 />
 
                 {/* 2. Batería Existencial (Vida vivida, restante y mordisco) */}
@@ -1295,7 +1294,6 @@ export default function ResultView({
                   yearsFullPay={computed.yearsFullPay}
                   pctCareerLeft={lifeImpact.pctCareerLeft}
                   threat={lifeImpact.threat}
-                  onAgeChange={(age) => onAgeChange(age)}
                 />
 
                 {/* 3. Veredicto de Amenaza Vital */}
@@ -1322,33 +1320,40 @@ export default function ResultView({
       {/* =========================================================================
           BLOQUE 5: DIAGNÓSTICO LABORAL OFICIAL (E-E-A-T & Motores de IA)
           ========================================================================= */}
-      <section class="board-plate p-6 border-l-4 border-l-primary bg-base-200/70 shadow-sm" aria-label="Diagnóstico laboral oficial">
-        <div class="flex items-center justify-between gap-3 pb-3 border-b border-base-300 mb-3 flex-wrap">
-          <h2 class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-bold">
+      {/* El diagnóstico repite la cifra que ya manda el marcador: se pliega
+          para no duplicarla en el scroll, pero sigue en el HTML para SEO/IA. */}
+      <details class="board-details board-plate p-6 border-l-4 border-l-primary bg-base-200/70 shadow-sm">
+        <summary>
+          <span class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-bold">
             Diagnóstico Laboral Oficial · {displayName ?? result.unnamedThing} en {countryName}
-          </h2>
-          <span class="font-board-mono text-xs opacity-60">
+          </span>
+          <span class="font-board-mono text-xs opacity-60 ml-auto hidden sm:inline">
             Percentil 50 (Mediana) · Horas reales OCDE
           </span>
-        </div>
+          <span class="board-caret shrink-0" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width={2} stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+          </span>
+        </summary>
 
-        <p class="text-base leading-relaxed text-base-content/95">
-          En <strong>{countryName}</strong>, adquirir un <strong>{displayName ?? result.unnamedThing}</strong> con un precio de mercado de <strong>{formatAmount(effectivePrice ?? catalogPrice ?? 0)} {currencySymbol}</strong> requiere un esfuerzo laboral de <strong>{hero.value} {hero.unit}</strong> de trabajo íntegro (equivalente a <strong>{formatHours(computed.hours)} horas</strong> o <strong>{formatWorkdays(computed.workdays8h)} jornadas de 8 horas</strong>). Este cálculo se fundamenta en el salario neto mediano oficial de <strong>{medianNetMonthly ?? 1800} {currencySymbol}/mes</strong> y la semana legal de <strong>{legalWeeklyHours} horas</strong>, absorbiendo aproximadamente el <strong>{formatPercent(computed.pctRealYear ?? 0)}% del año laboral real</strong> de un empleado medio.
-        </p>
+        <div class="mt-3">
+          <p class="text-base leading-relaxed text-base-content/95">
+            En <strong>{countryName}</strong>, adquirir un <strong>{displayName ?? result.unnamedThing}</strong> con un precio de mercado de <strong>{formatAmount(effectivePrice ?? catalogPrice ?? 0)} {currencySymbol}</strong> requiere un esfuerzo laboral de <strong>{hero.value} {hero.unit}</strong> de trabajo íntegro (equivalente a <strong>{formatHours(computed.hours)} horas</strong> o <strong>{formatWorkdays(computed.workdays8h)} jornadas de 8 horas</strong>). Este cálculo se fundamenta en el salario neto mediano oficial de <strong>{medianNetMonthly ?? 1800} {currencySymbol}/mes</strong> y la semana legal de <strong>{legalWeeklyHours} horas</strong>, absorbiendo aproximadamente el <strong>{formatPercent(computed.pctRealYear ?? 0)}% del año laboral real</strong> de un empleado medio.
+          </p>
 
-        <div class="mt-4 pt-3 border-t border-base-300/80 flex flex-wrap items-center justify-between gap-2 text-xs font-board-mono opacity-80">
-          <div class="flex items-center gap-4 flex-wrap">
-            <span>{result.effortDisclaimer}</span>
-            <span>{modeA.disclaimer}</span>
-            {ageLineText && <span class="text-primary font-medium">{ageLineText}</span>}
+          <div class="mt-4 pt-3 border-t border-base-300/80 flex flex-wrap items-center justify-between gap-2 text-xs font-board-mono opacity-80">
+            <div class="flex items-center gap-4 flex-wrap">
+              <span>{result.effortDisclaimer}</span>
+              <span>{modeA.disclaimer}</span>
+              {ageLineText && <span class="text-primary font-medium">{ageLineText}</span>}
+            </div>
+            {catalogPriceSource && (
+              <span class="text-primary font-medium">
+                Fuente oficial: {catalogPriceSource} {catalogPriceDate ? `· ${catalogPriceDate}` : ""}
+              </span>
+            )}
           </div>
-          {catalogPriceSource && (
-            <span class="text-primary font-medium">
-              Fuente oficial: {catalogPriceSource} {catalogPriceDate ? `· ${catalogPriceDate}` : ""}
-            </span>
-          )}
         </div>
-      </section>
+      </details>
 
       {/* =========================================================================
           BLOQUE 6: DESGLOSE DE MAGNITUDES & ANCLAS CALLEJERAS

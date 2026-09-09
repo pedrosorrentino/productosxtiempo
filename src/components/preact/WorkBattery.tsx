@@ -41,7 +41,7 @@ export default function WorkBattery({
             <span>{effort.label}</span>
           </span>
           {salaryLabel && (
-            <span class="font-board-mono text-xs font-semibold px-2 py-0.5 bg-base-300 text-primary rounded shrink-0 break-words">
+            <span class="font-board-mono text-xs font-semibold px-2 py-0.5 bg-base-300 text-primary rounded min-w-0 break-words">
               {salaryLabel}
             </span>
           )}

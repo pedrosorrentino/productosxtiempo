@@ -8,7 +8,6 @@ export interface LifeBatteryProps {
   yearsFullPay: number;
   pctCareerLeft: number | null;
   threat: ThreatLevel;
-  onAgeChange?: (newAge: number) => void;
 }
 
 export default function LifeBattery({
@@ -17,7 +16,6 @@ export default function LifeBattery({
   yearsFullPay,
   pctCareerLeft,
   threat,
-  onAgeChange,
 }: LifeBatteryProps) {
   const currentAge = age ?? 30;
   const isEstimated = age == null;
@@ -129,28 +127,6 @@ export default function LifeBattery({
           </span>
         </div>
 
-        {onAgeChange && (
-          <div class="flex items-center gap-1.5 text-sm">
-            <span class="opacity-80">Ajustar:</span>
-            <button
-              type="button"
-              class="w-6 h-6 rounded bg-base-300 hover:bg-primary hover:text-primary-content transition-colors flex items-center justify-center leading-none font-bold text-base cursor-pointer"
-              onClick={() => onAgeChange(Math.max(16, currentAge - 1))}
-              title="Restar un año"
-            >
-              -
-            </button>
-            <span class="font-bold px-1 text-primary tabular-nums">{currentAge}</span>
-            <button
-              type="button"
-              class="w-6 h-6 rounded bg-base-300 hover:bg-primary hover:text-primary-content transition-colors flex items-center justify-center leading-none font-bold text-base cursor-pointer"
-              onClick={() => onAgeChange(Math.min(80, currentAge + 1))}
-              title="Sumar un año"
-            >
-              +
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

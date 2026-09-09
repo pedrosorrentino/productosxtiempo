@@ -62,7 +62,7 @@ const ogLocale = localeData?.ogLocale ?? "es_ES";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     {noindex ? (
@@ -151,16 +151,16 @@ const ogLocale = localeData?.ogLocale ?? "es_ES";
             <p class="font-board-mono text-xs leading-relaxed opacity-70">
               {legalFooter.join(" ")}
             </p>
-            <nav class="flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-2 text-xs font-board-mono text-base-content/80" aria-label="Información legal y de confianza">
-              <a href="/sobre-el-proyecto" class="hover:text-primary transition-colors">Sobre el Proyecto</a>
+            <nav class="flex flex-wrap items-center gap-x-2 gap-y-0 pt-1 text-xs font-board-mono text-base-content/80" aria-label="Información legal y de confianza">
+              <a href="/sobre-el-proyecto" class="board-legal-link">Sobre el Proyecto</a>
               <span class="opacity-40" aria-hidden="true">·</span>
-              <a href="/contacto" class="hover:text-primary transition-colors">Contacto</a>
+              <a href="/contacto" class="board-legal-link">Contacto</a>
               <span class="opacity-40" aria-hidden="true">·</span>
-              <a href="/aviso-legal" class="hover:text-primary transition-colors">Aviso Legal</a>
+              <a href="/aviso-legal" class="board-legal-link">Aviso Legal</a>
               <span class="opacity-40" aria-hidden="true">·</span>
-              <a href="/privacidad" class="hover:text-primary transition-colors">Privacidad</a>
+              <a href="/privacidad" class="board-legal-link">Privacidad</a>
               <span class="opacity-40" aria-hidden="true">·</span>
-              <a href="/cookies" class="hover:text-primary transition-colors">Cookies</a>
+              <a href="/cookies" class="board-legal-link">Cookies</a>
             </nav>
           </div>
           <nav

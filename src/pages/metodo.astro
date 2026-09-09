@@ -151,8 +151,8 @@ const wage160 = formatHourlyWage(hora160, '€');
           nuestra referencia.
         </p>
       </div>
-      <div class="overflow-x-auto mt-5 border border-base-300">
-        <table class="w-full text-left font-body text-sm">
+      <div class="md:overflow-x-auto mt-5 md:border md:border-base-300">
+        <table class="board-table w-full text-left font-body text-sm">
           <thead>
             <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
               <th class="p-3.5">Usamos</th>
@@ -162,14 +162,14 @@ const wage160 = formatHourlyWage(hora160, '€');
           </thead>
           <tbody class="divide-y divide-base-300">
             <tr class="bg-base-200/50">
-              <td class="p-3.5 font-semibold text-base-content">Neto</td>
-              <td class="p-3.5 opacity-90">Tras impuestos y cotizaciones</td>
-              <td class="p-3.5 opacity-90">Es lo que puedes gastar</td>
+              <td class="p-3.5 font-semibold text-base-content" data-label="Usamos">Neto</td>
+              <td class="p-3.5 opacity-90" data-label="Es">Tras impuestos y cotizaciones</td>
+              <td class="p-3.5 opacity-90" data-label="Por qué">Es lo que puedes gastar</td>
             </tr>
             <tr class="bg-base-200/50">
-              <td class="p-3.5 font-semibold text-base-content">Mediano</td>
-              <td class="p-3.5 opacity-90">El sueldo de la persona del medio</td>
-              <td class="p-3.5 opacity-90">La media la infla la cola alta</td>
+              <td class="p-3.5 font-semibold text-base-content" data-label="Usamos">Mediano</td>
+              <td class="p-3.5 opacity-90" data-label="Es">El sueldo de la persona del medio</td>
+              <td class="p-3.5 opacity-90" data-label="Por qué">La media la infla la cola alta</td>
             </tr>
           </tbody>
         </table>
@@ -253,8 +253,8 @@ const wage160 = formatHourlyWage(hora160, '€');
           lejana.
         </p>
       </div>
-      <div class="overflow-x-auto mt-5 border border-base-300">
-        <table class="w-full text-left font-body text-sm">
+      <div class="md:overflow-x-auto mt-5 md:border md:border-base-300">
+        <table class="board-table w-full text-left font-body text-sm">
           <thead>
             <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
               <th class="p-3.5">Modo</th>
@@ -264,14 +264,14 @@ const wage160 = formatHourlyWage(hora160, '€');
           </thead>
           <tbody class="divide-y divide-base-300">
             <tr class="bg-base-200/50">
-              <td class="p-3.5 font-semibold text-base-content">A</td>
-              <td class="p-3.5 opacity-90">¿Cuánto es de mi sueldo entero?</td>
-              <td class="p-3.5 font-board-mono text-primary text-xs uppercase tracking-[0.08em]">Meses / años de sueldo</td>
+              <td class="p-3.5 font-semibold text-base-content" data-label="Modo">A</td>
+              <td class="p-3.5 opacity-90" data-label="Pregunta">¿Cuánto es de mi sueldo entero?</td>
+              <td class="p-3.5 font-board-mono text-primary text-xs uppercase tracking-[0.08em]" data-label="Unidad">Meses / años de sueldo</td>
             </tr>
             <tr class="bg-base-200/50">
-              <td class="p-3.5 font-semibold text-base-content">B</td>
-              <td class="p-3.5 opacity-90">¿Cuánto tardaré apartando?</td>
-              <td class="p-3.5 font-board-mono text-primary text-xs uppercase tracking-[0.08em]">Meses / años de calendario</td>
+              <td class="p-3.5 font-semibold text-base-content" data-label="Modo">B</td>
+              <td class="p-3.5 opacity-90" data-label="Pregunta">¿Cuánto tardaré apartando?</td>
+              <td class="p-3.5 font-board-mono text-primary text-xs uppercase tracking-[0.08em]" data-label="Unidad">Meses / años de calendario</td>
             </tr>
           </tbody>
         </table>
@@ -379,8 +379,8 @@ const wage160 = formatHourlyWage(hora160, '€');
           En <strong>Precio en tiempo</strong> no existen algoritmos opacos ni cifras inventadas. Toda la plataforma se nutre exclusivamente de <strong>fuentes públicas oficiales, estadísticas gubernamentales abiertas y APIs de datos de libre acceso</strong> sincronizadas periódicamente:
         </p>
       </div>
-      <div class="overflow-x-auto mt-4 border border-base-300">
-        <table class="w-full text-left font-body text-xs sm:text-sm">
+      <div class="md:overflow-x-auto mt-4 md:border md:border-base-300">
+        <table class="board-table w-full text-left font-body text-xs sm:text-sm">
           <thead>
             <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
               <th class="p-3">Área de Dato</th>
@@ -391,58 +391,58 @@ const wage160 = formatHourlyWage(hora160, '€');
           </thead>
           <tbody class="divide-y divide-base-300 font-board-mono">
             <tr class="bg-base-200/50">
-              <td class="p-3 font-semibold text-base-content">Sueldo Mediano Nacional</td>
-              <td class="p-3 font-sans">INE (España) · Eurostat · INEGI · DANE · INDEC</td>
-              <td class="p-3 text-xs opacity-90">Percentil 50 de la distribución salarial neta</td>
-              <td class="p-3 text-primary text-xs">Datos abiertos</td>
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Sueldo Mediano Nacional</td>
+              <td class="p-3 font-sans" data-label="Fuente">INE (España) · Eurostat · INEGI · DANE · INDEC</td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Percentil 50 de la distribución salarial neta</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">Datos abiertos</td>
             </tr>
             <tr class="bg-base-200/50">
-              <td class="p-3 font-semibold text-base-content">Salarios Mínimos (SMI)</td>
-              <td class="p-3 font-sans">Eurostat (`earn_mw_cur`) · BOE · Ministerios de Trabajo</td>
-              <td class="p-3 text-xs opacity-90">Salario Mínimo Legal mensual prorrateado</td>
-              <td class="p-3 text-primary text-xs">API REST Abierta</td>
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Salarios Mínimos (SMI)</td>
+              <td class="p-3 font-sans" data-label="Fuente">Eurostat (`earn_mw_cur`) · BOE · Ministerios de Trabajo</td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Salario Mínimo Legal mensual prorrateado</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">API REST Abierta</td>
             </tr>
             <tr class="bg-base-200/50">
-              <td class="p-3 font-semibold text-base-content">Poder Adquisitivo (PPA)</td>
-              <td class="p-3 font-sans">Banco Mundial (World Bank Open Data)</td>
-              <td class="p-3 text-xs opacity-90">Paridad de Poder Adquisitivo (`PA.NUS.PPP`)</td>
-              <td class="p-3 text-primary text-xs">API Abierta</td>
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Poder Adquisitivo (PPA)</td>
+              <td class="p-3 font-sans" data-label="Fuente">Banco Mundial (World Bank Open Data)</td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Paridad de Poder Adquisitivo (`PA.NUS.PPP`)</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">API Abierta</td>
             </tr>
             <tr class="bg-base-200/50">
-              <td class="p-3 font-semibold text-base-content">Sectores y Edades</td>
-              <td class="p-3 font-sans">INE · Encuesta Anual de Estructura Salarial</td>
-              <td class="p-3 text-xs opacity-90">Salario medio neto: TIC, Hostelería, Sanidad, &lt;25 años</td>
-              <td class="p-3 text-primary text-xs">Microdatos oficiales</td>
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Sectores y Edades</td>
+              <td class="p-3 font-sans" data-label="Fuente">INE · Encuesta Anual de Estructura Salarial</td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Salario medio neto: TIC, Hostelería, Sanidad, &lt;25 años</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">Microdatos oficiales</td>
             </tr>
             <tr class="bg-base-200/50">
-              <td class="p-3 font-semibold text-base-content">Jornada Laboral Real</td>
-              <td class="p-3 font-sans">OCDE (Organización para la Cooperación y el Desarrollo Económicos)</td>
-              <td class="p-3 text-xs opacity-90">Horas trabajadas efectivas al año (descontando festivos/bajas)</td>
-              <td class="p-3 text-primary text-xs">Estadísticas OCDE</td>
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Jornada Laboral Real</td>
+              <td class="p-3 font-sans" data-label="Fuente">OCDE (Organización para la Cooperación y el Desarrollo Económicos)</td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Horas trabajadas efectivas al año (descontando festivos/bajas)</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">Estadísticas OCDE</td>
             </tr>
             <tr class="bg-base-200/50">
-              <td class="p-3 font-semibold text-base-content">Carburantes Oficiales</td>
-              <td class="p-3 font-sans">MITECO (Ministerio para la Transición Ecológica de España)</td>
-              <td class="p-3 text-xs opacity-90">Gasolina 95 E5 y Gasóleo A de &gt;11.000 estaciones de servicio</td>
-              <td class="p-3 text-primary text-xs">API Oficial REST</td>
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Carburantes Oficiales</td>
+              <td class="p-3 font-sans" data-label="Fuente">MITECO (Ministerio para la Transición Ecológica de España)</td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Gasolina 95 E5 y Gasóleo A de &gt;11.000 estaciones de servicio</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">API Oficial REST</td>
             </tr>
             <tr class="bg-base-200/50">
-              <td class="p-3 font-semibold text-base-content">Suministro Eléctrico</td>
-              <td class="p-3 font-sans">Eurostat (`nrg_pc_204`) · Red Eléctrica de España (REE)</td>
-              <td class="p-3 text-xs opacity-90">Precio medio €/kWh y factura doméstica tipo (250 kWh/mes)</td>
-              <td class="p-3 text-primary text-xs">API Oficial</td>
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Suministro Eléctrico</td>
+              <td class="p-3 font-sans" data-label="Fuente">Eurostat (`nrg_pc_204`) · Red Eléctrica de España (REE)</td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Precio medio €/kWh y factura doméstica tipo (250 kWh/mes)</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">API Oficial</td>
             </tr>
             <tr class="bg-base-200/50">
-              <td class="p-3 font-semibold text-base-content">Cesta de Supermercado</td>
-              <td class="p-3 font-sans">Open Food Facts Prices / Base de Datos Abierta</td>
-              <td class="p-3 text-xs opacity-90">Aceite de oliva, leche, huevos y básicos de la compra</td>
-              <td class="p-3 text-primary text-xs">Colaborativa / Open</td>
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Cesta de Supermercado</td>
+              <td class="p-3 font-sans" data-label="Fuente">Open Food Facts Prices / Base de Datos Abierta</td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Aceite de oliva, leche, huevos y básicos de la compra</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">Colaborativa / Open</td>
             </tr>
             <tr class="bg-base-200/50">
-              <td class="p-3 font-semibold text-base-content">Tipos de Cambio</td>
-              <td class="p-3 font-sans">Banco Central Europeo (BCE) vía Frankfurter API</td>
-              <td class="p-3 text-xs opacity-90">Cotizaciones oficiales cruzadas EUR/USD/GBP/CHF...</td>
-              <td class="p-3 text-primary text-xs">API en Vivo</td>
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Tipos de Cambio</td>
+              <td class="p-3 font-sans" data-label="Fuente">Banco Central Europeo (BCE) vía Frankfurter API</td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Cotizaciones oficiales cruzadas EUR/USD/GBP/CHF...</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">API en Vivo</td>
             </tr>
           </tbody>
         </table>

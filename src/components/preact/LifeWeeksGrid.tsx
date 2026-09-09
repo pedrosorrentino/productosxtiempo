@@ -9,10 +9,7 @@ export interface LifeWeeksGridProps {
   lifeWeeksCost: number;
   threat: ThreatLevel;
   productName?: string;
-  onAgeChange?: (age: number) => void;
 }
-
-const PRESET_AGES = [20, 25, 30, 35, 40, 50, 60];
 
 /**
  * Matriz de Semanas de Vida ("Life in Weeks").
@@ -28,7 +25,6 @@ export default function LifeWeeksGrid({
   lifeWeeksCost,
   threat,
   productName = "este producto",
-  onAgeChange,
 }: LifeWeeksGridProps) {
   const yearsLeft = Math.max(0, retirementAge - userAge);
   const totalRemainingWeeks = Math.round(yearsLeft * 52);
@@ -69,27 +65,6 @@ export default function LifeWeeksGrid({
           </strong>
         </div>
       </div>
-
-      {/* Selector Rápido de Edad */}
-      {onAgeChange && (
-        <div class="mt-4 pt-1 flex items-center gap-2 flex-wrap text-sm font-board-mono">
-          <span class="opacity-75 mr-1">Cambia tu edad al instante:</span>
-          {PRESET_AGES.map((age) => (
-            <button
-              type="button"
-              key={age}
-              onClick={() => onAgeChange(age)}
-              class={`px-3 py-1 rounded transition-all cursor-pointer font-bold ${
-                userAge === age
-                  ? "bg-secondary text-white shadow-sm"
-                  : "bg-base-200 hover:bg-base-300 text-base-content border border-base-300"
-              }`}
-            >
-              {age} años
-            </button>
-          ))}
-        </div>
-      )}
 
       {/* Visualización de Bloques de Años Restantes */}
       <div class="mt-5 space-y-3">

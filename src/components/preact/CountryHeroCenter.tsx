@@ -159,7 +159,7 @@ export default function CountryHeroCenter({
         <div class="flex items-center gap-1 bg-base-300/80 p-1 rounded-lg border border-base-content/10 select-none">
           <button
             type="button"
-            class={`flex items-center gap-2 px-3 py-1.5 rounded-md font-board-mono text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+            class={`min-h-11 flex items-center gap-2 px-3 py-1.5 rounded-md font-board-mono text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer ${
               viewMode === "work"
                 ? "bg-base-100 text-primary font-bold shadow"
                 : "text-base-content/70 hover:text-base-content font-medium"
@@ -173,7 +173,7 @@ export default function CountryHeroCenter({
 
           <button
             type="button"
-            class={`flex items-center gap-2 px-3 py-1.5 rounded-md font-board-mono text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer relative ${
+            class={`min-h-11 flex items-center gap-2 px-3 py-1.5 rounded-md font-board-mono text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer relative ${
               viewMode === "life"
                 ? "bg-primary text-primary-content font-extrabold shadow"
                 : "text-base-content/70 hover:text-base-content font-medium"
@@ -270,8 +270,9 @@ export default function CountryHeroCenter({
 
           {/* Panel Interactivo: Sliders, Presets y Métricas de Esfuerzo */}
           <div class="lg:col-span-7 space-y-5">
-            {/* Métricas de conversión instantáneas */}
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            {/* Métricas de conversión instantáneas (la jornada semanal ya se
+                muestra en el control de abajo: no se repite) */}
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
               <div class="board-cell p-3">
                 <span class="font-board-mono text-xs uppercase opacity-80 block">1 Jornada (8h)</span>
                 <span class="font-board-mono text-lg font-bold tabular-nums text-primary block mt-0.5">
@@ -282,12 +283,6 @@ export default function CountryHeroCenter({
                 <span class="font-board-mono text-xs uppercase opacity-80 block">1 Mes neto</span>
                 <span class="font-board-mono text-lg font-bold tabular-nums block mt-0.5">
                   {activeSalary.toLocaleString("es-ES")} {currencySymbol}
-                </span>
-              </div>
-              <div class="board-cell p-3">
-                <span class="font-board-mono text-xs uppercase opacity-80 block">Semana legal</span>
-                <span class="font-board-mono text-lg font-bold tabular-nums block mt-0.5">
-                  {activeHours} h
                 </span>
               </div>
               <div class="board-cell p-3">
@@ -339,7 +334,7 @@ export default function CountryHeroCenter({
                 <div class="flex flex-wrap items-center gap-1.5">
                   <button
                     type="button"
-                    class={`px-2.5 py-1 rounded text-xs font-board-mono font-medium transition-all cursor-pointer ${
+                    class={`min-h-11 inline-flex items-center px-3 py-1 rounded text-xs font-board-mono font-medium transition-all cursor-pointer ${
                       activeSalary === presetLow
                         ? "bg-primary text-primary-content font-bold shadow-xs"
                         : "bg-base-300/80 hover:bg-base-300 text-base-content/80"
@@ -350,7 +345,7 @@ export default function CountryHeroCenter({
                   </button>
                   <button
                     type="button"
-                    class={`px-2.5 py-1 rounded text-xs font-board-mono font-medium transition-all cursor-pointer ${
+                    class={`min-h-11 inline-flex items-center px-3 py-1 rounded text-xs font-board-mono font-medium transition-all cursor-pointer ${
                       activeSalary === presetMed && !isCustomSalary
                         ? "bg-primary text-primary-content font-bold shadow-xs"
                         : "bg-base-300/80 hover:bg-base-300 text-base-content/80"
@@ -361,7 +356,7 @@ export default function CountryHeroCenter({
                   </button>
                   <button
                     type="button"
-                    class={`px-2.5 py-1 rounded text-xs font-board-mono font-medium transition-all cursor-pointer ${
+                    class={`min-h-11 inline-flex items-center px-3 py-1 rounded text-xs font-board-mono font-medium transition-all cursor-pointer ${
                       activeSalary === presetHigh
                         ? "bg-primary text-primary-content font-bold shadow-xs"
                         : "bg-base-300/80 hover:bg-base-300 text-base-content/80"
@@ -375,7 +370,7 @@ export default function CountryHeroCenter({
                 {isCustomSalary && (
                   <button
                     type="button"
-                    class="text-xs font-board-mono text-primary hover:underline cursor-pointer"
+                    class="min-h-11 inline-flex items-center text-xs font-board-mono text-primary hover:underline cursor-pointer"
                     onClick={() => onSalaryChange(presetMed)}
                   >
                     ↺ Restablecer mediana
@@ -387,12 +382,12 @@ export default function CountryHeroCenter({
             {/* Ajuste fino de horas semanales */}
             <div class="flex flex-wrap items-center justify-between gap-2 px-1 text-xs font-board-mono opacity-85">
               <span>Jornada de trabajo semanal:</span>
-              <div class="flex items-center gap-1">
+              <div class="flex flex-wrap items-center gap-1">
                 {[35, 37.5, 40, 42].map((h) => (
                   <button
                     key={h}
                     type="button"
-                    class={`px-2.5 py-0.5 rounded text-xs font-board-mono transition-colors cursor-pointer ${
+                    class={`min-h-11 inline-flex items-center px-3 py-0.5 rounded text-xs font-board-mono transition-colors cursor-pointer ${
                       activeHours === h
                         ? "bg-primary/20 text-primary font-bold border border-primary/40"
                         : "bg-base-300/60 hover:bg-base-300 text-base-content/75"
@@ -448,7 +443,7 @@ export default function CountryHeroCenter({
                 <div class="flex items-center gap-1.5 bg-base-100 p-1 rounded-lg border border-base-content/10">
                   <button
                     type="button"
-                    class="w-7 h-7 rounded bg-base-200 hover:bg-primary hover:text-primary-content font-bold transition-all flex items-center justify-center cursor-pointer"
+                    class="w-11 h-11 rounded bg-base-200 hover:bg-primary hover:text-primary-content font-bold transition-all flex items-center justify-center cursor-pointer"
                     onClick={() => onAgeChange(Math.max(16, activeAge - 1))}
                   >
                     -
@@ -458,7 +453,7 @@ export default function CountryHeroCenter({
                   </span>
                   <button
                     type="button"
-                    class="w-7 h-7 rounded bg-base-200 hover:bg-primary hover:text-primary-content font-bold transition-all flex items-center justify-center cursor-pointer"
+                    class="w-11 h-11 rounded bg-base-200 hover:bg-primary hover:text-primary-content font-bold transition-all flex items-center justify-center cursor-pointer"
                     onClick={() => onAgeChange(Math.min(80, activeAge + 1))}
                   >
                     +

@@ -70,6 +70,11 @@ export default function CountryView({
   // Calculadora rápida de precio libre
   const [quickPrice, setQuickPrice] = useState<string>("");
 
+  // Divulgación progresiva del catálogo: 6 filas por categoría hasta que el
+  // usuario pide el resto (la ficha de país listaba los 88 productos enteros).
+  const VISIBLE_PER_CATEGORY = 6;
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
+
   useEffect(() => {
     const saved = loadUserState();
     if (saved?.netMonthly != null) setUserNetMonthly(saved.netMonthly);
@@ -418,7 +423,8 @@ export default function CountryView({
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  class="absolute right-2 top-1.5 opacity-60 hover:opacity-100 font-bold text-sm"
+                  class="absolute right-0 top-0 w-11 h-11 inline-flex items-center justify-center opacity-60 hover:opacity-100 font-bold text-sm"
+                  aria-label="Limpiar búsqueda"
                 >
                   ✕
                 </button>
@@ -427,11 +433,12 @@ export default function CountryView({
           </div>
         </div>
 
-        {/* Píldoras de filtro por categoría */}
-        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 select-none">
+        {/* Píldoras de filtro por categoría: envuelven en vez de esconderse
+            tras un scroll horizontal en móvil */}
+        <div class="flex flex-wrap items-center gap-1.5 pb-1 select-none">
           <button
             type="button"
-            class={`px-3.5 py-1.5 rounded-full font-board-mono text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
+            class={`min-h-11 inline-flex items-center px-3.5 py-1.5 rounded-full font-board-mono text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
               selectedCategory === "all"
                 ? "bg-primary text-primary-content font-bold shadow-xs"
                 : "bg-base-200/80 hover:bg-base-200 text-base-content/75"
@@ -444,7 +451,7 @@ export default function CountryView({
             <button
               key={g.category}
               type="button"
-              class={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-board-mono text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
+              class={`min-h-11 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-board-mono text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
                 selectedCategory === g.category
                   ? "bg-primary text-primary-content font-bold shadow-xs"
                   : "bg-base-200/80 hover:bg-base-200 text-base-content/75"
@@ -478,7 +485,18 @@ export default function CountryView({
           </div>
         ) : (
           <div class="space-y-10">
-            {filteredCatalog.map((group) => (
+            {filteredCatalog.map((group) => {
+              const isFiltering =
+                selectedCategory !== "all" || searchQuery.trim() !== "";
+              const isExpanded = expandedCategories[group.category] === true;
+              const canCollapse =
+                !isFiltering && group.rows.length > VISIBLE_PER_CATEGORY;
+              const visibleRows =
+                canCollapse && !isExpanded
+                  ? group.rows.slice(0, VISIBLE_PER_CATEGORY)
+                  : group.rows;
+              const hiddenCount = group.rows.length - VISIBLE_PER_CATEGORY;
+              return (
               <div key={group.category} class="space-y-3">
                 <h3 class="flex items-center gap-3">
                   <span
@@ -496,7 +514,7 @@ export default function CountryView({
                 </h3>
 
                 <div class="grid gap-1.5">
-                  {group.rows.map((row) => (
+                  {visibleRows.map((row) => (
                     <BoardRowCard
                       key={row.id}
                       href={`/${country.slug}/${row.id}`}
@@ -520,8 +538,28 @@ export default function CountryView({
                     />
                   ))}
                 </div>
+
+                {canCollapse && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setExpandedCategories((prev) => ({
+                        ...prev,
+                        [group.category]: !isExpanded,
+                      }))
+                    }
+                    class="min-h-11 w-full inline-flex items-center justify-center gap-2 border border-base-300 bg-base-200/60 hover:bg-base-200 hover:border-primary/50 hover:text-primary font-board-mono text-xs uppercase tracking-wider transition-colors cursor-pointer"
+                    aria-expanded={isExpanded}
+                  >
+                    {isExpanded
+                      ? "Ver menos"
+                      : `Ver los ${hiddenCount} restantes`}
+                    <span aria-hidden="true">{isExpanded ? "▲" : "▼"}</span>
+                  </button>
+                )}
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </section>

@@ -300,19 +300,26 @@ export default function TimeStream3D({
     const canvas = canvasRef.current;
     if (!wrapper || !canvas) return;
 
+    // Adaptación móvil: la nebulosa sigue visible, pero con menos partículas,
+    // sin antialias y a DPR 1 para no quemar GPU en un teléfono.
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({
         canvas,
         alpha: true, // Mismo fondo que la web
-        antialias: true,
-        powerPreference: "high-performance",
+        antialias: !isMobile,
+        powerPreference: isMobile ? "default" : "high-performance",
       });
     } catch {
       return;
     }
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2));
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 16 / 9, 0.1, 100);
@@ -340,8 +347,8 @@ export default function TimeStream3D({
     // 1. LADO IZQUIERDO: NEBULOSA MIXTA (PARTÍCULAS DETALLADAS + DIFUMINADAS)
     // =========================================================================
     // Mezcla de estrellas y chispas nítidas y detalladas con nubes suaves difuminadas
-    const CRISP_COUNT = 340;   // Partículas nítidas, definidas y brillantes
-    const DIFFUSE_COUNT = 200; // Partículas difuminadas y vaporosas de gas
+    const CRISP_COUNT = isMobile ? 170 : 340;   // Partículas nítidas, definidas y brillantes
+    const DIFFUSE_COUNT = isMobile ? 90 : 200;  // Partículas difuminadas y vaporosas de gas
     const TOTAL_NEBULA_COUNT = CRISP_COUNT + DIFFUSE_COUNT; // 540 en total
 
     const crispPositions = new Float32Array(CRISP_COUNT * 3);
@@ -477,8 +484,8 @@ export default function TimeStream3D({
     // 2. CORRIENTE DE NAVEGACIÓN MIXTA (DETALLADAS + DIFUMINADAS HACIA EL CUBO)
     // =========================================================================
     // Mezcla de partículas nítidas y detalladas con motas difuminadas en el flujo
-    const STREAM_CRISP_COUNT = 100;   // Partículas nítidas y definidas
-    const STREAM_DIFFUSE_COUNT = 60;  // Partículas difuminadas y vaporosas
+    const STREAM_CRISP_COUNT = isMobile ? 55 : 100;   // Partículas nítidas y definidas
+    const STREAM_DIFFUSE_COUNT = isMobile ? 32 : 60;  // Partículas difuminadas y vaporosas
     const STREAM_COUNT = STREAM_CRISP_COUNT + STREAM_DIFFUSE_COUNT; // 160 en total
 
     const streamCrispPositions = new Float32Array(STREAM_CRISP_COUNT * 3);
@@ -698,6 +705,7 @@ export default function TimeStream3D({
     // BUCLE CINEMÁTICO 60/120 FPS
     // =========================================================================
     let animationFrameId: number;
+    let running = false;
 
     // Estado dinámico del coste interpolado para transiciones fluidas entre objetos
     let currentCostIntensity = computeCostIntensity(workdaysRef.current);
@@ -961,10 +969,49 @@ export default function TimeStream3D({
       renderer.render(scene, camera);
     };
 
-    animate();
+    const start = () => {
+      if (running) return;
+      running = true;
+      lastTime = performance.now() * 0.001;
+      animate();
+    };
+
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(animationFrameId);
+    };
+
+    let intersectionObserver: IntersectionObserver | null = null;
+    let onVisibilityChange: (() => void) | null = null;
+
+    if (prefersReducedMotion) {
+      // Preferencia de movimiento reducido: un único fotograma estático.
+      updateSize();
+      renderer.render(scene, camera);
+    } else {
+      // La nebulosa solo consume GPU cuando está a la vista.
+      intersectionObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) start();
+          else stop();
+        },
+        { threshold: 0.05 },
+      );
+      intersectionObserver.observe(wrapper);
+
+      onVisibilityChange = () => {
+        if (document.hidden) stop();
+        else start();
+      };
+      document.addEventListener("visibilitychange", onVisibilityChange);
+    }
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      stop();
+      intersectionObserver?.disconnect();
+      if (onVisibilityChange) {
+        document.removeEventListener("visibilitychange", onVisibilityChange);
+      }
       window.removeEventListener("resize", updateSize);
       if (resizeObserver) resizeObserver.disconnect();
       wrapper.removeEventListener("pointermove", onPointerMove);
@@ -1009,11 +1056,11 @@ export default function TimeStream3D({
     <div
       class={`w-full overflow-hidden select-none flex flex-col bg-transparent ${className}`}
     >
-      {/* Contenedor del Canvas 3D (Altura adaptativa y holgada en móvil y escritorio) */}
+      {/* Contenedor del Canvas 3D (Altura adaptativa: compacta en móvil para
+          que la nebulosa siga presente sin comerse la primera pantalla) */}
       <div
         ref={canvasWrapperRef}
-        class="relative w-full overflow-hidden bg-transparent h-[440px] sm:h-[500px] md:h-[560px]"
-        style={{ minHeight: "420px" }}
+        class="relative w-full overflow-hidden bg-transparent h-[320px] sm:h-[500px] md:h-[560px]"
       >
         <canvas
           ref={canvasRef}
@@ -1035,7 +1082,7 @@ export default function TimeStream3D({
                 Tu Reserva Vital
               </span>
             </div>
-            <span class="text-xs sm:text-sm text-base-content/70 leading-tight truncate hidden xs:block">
+            <span class="text-xs sm:text-sm text-base-content/70 leading-tight truncate hidden sm:block">
               Nebulosa de vida
             </span>
           </div>

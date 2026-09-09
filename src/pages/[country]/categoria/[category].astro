@@ -208,7 +208,7 @@ const allCategories: Product['category'][] = [
         {allCategories.map((cat) => (
           <a
             href={`/${country.slug}/categoria/${cat}`}
-            class={`px-3 py-1 rounded text-xs font-board-mono uppercase transition-colors ${
+            class={`min-h-11 inline-flex items-center px-3 py-1 rounded text-xs font-board-mono uppercase transition-colors ${
               cat === category
                 ? 'bg-primary text-primary-content font-bold'
                 : 'bg-base-200 hover:bg-base-300 border border-base-content/10'
@@ -233,7 +233,32 @@ const allCategories: Product['category'][] = [
         </div>
       </div>
 
-      <div class="overflow-x-auto">
+      <!-- Vista móvil: tarjetas apiladas (la tabla exige scroll horizontal) -->
+      <div class="grid gap-2 md:hidden">
+        {quotedProducts.map((item) => (
+          <a
+            href={`/${country.slug}/${item.id}`}
+            class="board-plate p-4 flex items-center justify-between gap-3 min-h-11"
+          >
+            <span class="min-w-0">
+              <span class="block font-semibold text-base text-base-content truncate">{item.name}</span>
+              <span class="block font-board-mono text-xs opacity-80 mt-0.5">
+                {item.price ? `${item.price.value.toLocaleString('es-ES')} ${country.currencySymbol}` : 'N/D'}
+              </span>
+            </span>
+            <span class="text-right shrink-0">
+              <span class="block font-board-mono text-primary font-bold">
+                {item.hours != null ? `${formatHours(item.hours)} h` : '—'}
+              </span>
+              <span class="block font-board-mono text-xs opacity-80">
+                {item.workdays != null ? `${formatWorkdays(item.workdays)} j` : '—'}
+              </span>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <div class="hidden md:block overflow-x-auto">
         <table class="w-full text-left border-collapse">
           <thead>
             <tr class="border-b border-base-300 font-board-mono text-xs uppercase tracking-wider opacity-75">

@@ -92,12 +92,10 @@ export default function PriceInput({
   };
 
   const formClass = submitInline
-    ? "flex flex-wrap items-end gap-4"
+    ? "flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-end gap-4"
     : "grid gap-4 sm:grid-cols-2";
-  const fieldClass = submitInline ? "flex-1 min-w-40" : "";
-  const submitClass = submitInline
-    ? "shrink-0 whitespace-nowrap h-11 py-0"
-    : "sm:col-span-2";
+  const fieldClass = submitInline ? "w-full sm:flex-1 sm:min-w-40" : "";
+  const submitClass = submitInline ? "w-full sm:w-auto h-11 py-0" : "sm:col-span-2";
 
   return (
     <form class={formClass} onSubmit={onSubmit}>
@@ -137,7 +135,14 @@ export default function PriceInput({
       )}
       {!inline && (
         <div class={submitClass}>
-          <button type="submit" class={`board-cta ${submitInline ? "h-11 py-0" : ""}`}>
+          <button
+            type="submit"
+            class={`board-cta ${
+              submitInline
+                ? "h-11 py-0 w-full sm:w-auto justify-center whitespace-normal sm:whitespace-nowrap"
+                : ""
+            }`}
+          >
             {priceForm.submit}
           </button>
         </div>

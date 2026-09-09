@@ -252,7 +252,7 @@ const pageDescription = hasSalary
           {categoryOrder.map((cat) => (
             <a
               href={`/${country.slug}/categoria/${cat}`}
-              class="px-3 py-1.5 rounded-md font-board-mono text-xs uppercase font-medium bg-base-200 hover:bg-base-300 border border-base-content/10 hover:border-primary/50 text-base-content hover:text-primary transition-all"
+              class="min-h-11 inline-flex items-center px-3 py-1.5 rounded-md font-board-mono text-xs uppercase font-medium bg-base-200 hover:bg-base-300 border border-base-content/10 hover:border-primary/50 text-base-content hover:text-primary transition-all"
             >
               {cat === 'transporte' ? 'Transporte' : cat === 'tecnologia' ? 'Tecnología' : cat === 'vivienda' ? 'Vivienda' : cat === 'dia-a-dia' ? 'Día a día' : 'Vida'} →
             </a>
@@ -333,15 +333,21 @@ const pageDescription = hasSalary
       />
     </main>
 
-    <!-- BLOQUE CITABLE DIRECTO: AI Overviews / Google Snippets / Perplexity (GEO & SEO) -->
-    <section class="board-plate p-6 sm:p-8 bg-base-200/50 border border-base-300 space-y-4">
-      <div class="flex items-center gap-2.5">
+    <!-- BLOQUE CITABLE DIRECTO: AI Overviews / Google Snippets / Perplexity (GEO & SEO).
+         Plegado por defecto: repite cifras ya mostradas arriba, así que no ocupa
+         scroll, pero sigue en el HTML para los rastreadores. -->
+    <details class="board-details board-plate p-6 sm:p-8 bg-base-200/50 border border-base-300">
+      <summary>
         <span class="px-2.5 py-0.5 rounded text-xs font-board-mono uppercase font-bold tracking-wider bg-primary/15 text-primary border border-primary/30">
           Informe Económico Citable
         </span>
         <span class="font-board-mono text-sm opacity-75">Datos verificados {country.salariesUpdatedAt}</span>
-      </div>
+        <span class="board-caret ml-auto" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width={2} stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+        </span>
+      </summary>
 
+      <div class="mt-4 space-y-4">
       <h2 class="font-signage uppercase text-2xl sm:text-3xl text-base-content">
         Poder adquisitivo y coste de la vida en {country.name} en horas de trabajo
       </h2>
@@ -373,7 +379,8 @@ const pageDescription = hasSalary
           <span class="font-board-mono text-lg font-bold block mt-0.5">{country.retirementAge} años</span>
         </div>
       </div>
-    </section>
+      </div>
+    </details>
 
     <!-- PREGUNTAS FRECUENTES (FAQ ACORDEÓN CON SCHEMA JSON-LD) -->
     <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-6" aria-label="Preguntas Frecuentes">
@@ -387,12 +394,11 @@ const pageDescription = hasSalary
       </div>
 
       <div class="space-y-3">
-        {faqs.map((faq, idx) => (
+        {faqs.map((faq) => (
           <details
             class="group bg-base-200/60 open:bg-base-200 rounded-lg border border-base-300 transition-all p-4"
-            open={idx === 0}
           >
-            <summary class="font-signage uppercase text-lg cursor-pointer select-none flex items-center justify-between gap-4 text-base-content group-open:text-primary">
+            <summary class="min-h-11 font-signage uppercase text-lg cursor-pointer select-none flex items-center justify-between gap-4 text-base-content group-open:text-primary">
               <span>{faq.question}</span>
               <span class="text-xs font-board-mono opacity-60 group-open:rotate-180 transition-transform">
                 ▼

@@ -311,7 +311,7 @@ export default function ShareModal({
           </div>
           <button
             type="button"
-            class="w-9 h-9 rounded-md hover:bg-base-300 flex items-center justify-center transition-colors text-base-content/80 hover:text-base-content cursor-pointer"
+            class="w-11 h-11 rounded-md hover:bg-base-300 flex items-center justify-center transition-colors text-base-content/80 hover:text-base-content cursor-pointer"
             aria-label="Cerrar modal"
             onClick={onClose}
           >
@@ -337,7 +337,7 @@ export default function ShareModal({
             {/* X / Twitter */}
             <button
               type="button"
-              class={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
+              class={`min-h-11 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
                 selectedNetwork === "x"
                   ? "bg-black text-white ring-2 ring-white/40 shadow-lg font-bold scale-[1.02]"
                   : "bg-base-200 text-base-content/75 hover:bg-base-300 hover:text-base-content"
@@ -353,7 +353,7 @@ export default function ShareModal({
             {/* WhatsApp */}
             <button
               type="button"
-              class={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
+              class={`min-h-11 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
                 selectedNetwork === "whatsapp"
                   ? "bg-[#25D366] text-slate-950 font-bold shadow-lg ring-2 ring-emerald-400 scale-[1.02]"
                   : "bg-base-200 text-base-content/75 hover:bg-base-300 hover:text-base-content"
@@ -369,7 +369,7 @@ export default function ShareModal({
             {/* Telegram */}
             <button
               type="button"
-              class={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
+              class={`min-h-11 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
                 selectedNetwork === "telegram"
                   ? "bg-[#229ED9] text-white font-bold shadow-lg ring-2 ring-sky-300 scale-[1.02]"
                   : "bg-base-200 text-base-content/75 hover:bg-base-300 hover:text-base-content"
@@ -385,7 +385,7 @@ export default function ShareModal({
             {/* Facebook */}
             <button
               type="button"
-              class={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
+              class={`min-h-11 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
                 selectedNetwork === "facebook"
                   ? "bg-[#1877F2] text-white font-bold shadow-lg ring-2 ring-blue-300 scale-[1.02]"
                   : "bg-base-200 text-base-content/75 hover:bg-base-300 hover:text-base-content"
@@ -401,7 +401,7 @@ export default function ShareModal({
             {/* Instagram */}
             <button
               type="button"
-              class={`col-span-2 sm:col-span-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
+              class={`min-h-11 col-span-2 sm:col-span-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg font-board-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
                 selectedNetwork === "instagram"
                   ? "bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white font-bold shadow-lg ring-2 ring-pink-400 scale-[1.02]"
                   : "bg-base-200 text-base-content/75 hover:bg-base-300 hover:text-base-content"
@@ -543,7 +543,7 @@ export default function ShareModal({
                   3. Mensaje a Publicar (Editable)
                 </label>
                 <div class="flex items-center gap-3">
-                  <label class="flex items-center gap-1.5 font-board-mono text-xs cursor-pointer select-none opacity-85 hover:opacity-100">
+                  <label class="min-h-11 flex items-center gap-1.5 font-board-mono text-xs cursor-pointer select-none opacity-85 hover:opacity-100">
                     <input
                       type="checkbox"
                       checked={includeHashtags}
@@ -571,7 +571,7 @@ export default function ShareModal({
                 {isEditingText && (
                   <button
                     type="button"
-                    class="absolute bottom-2 right-2 text-[10px] font-board-mono px-2 py-1 rounded bg-base-300 hover:bg-primary hover:text-primary-content transition-colors cursor-pointer flex items-center gap-1"
+                    class="absolute bottom-2 right-2 min-h-6 text-[10px] font-board-mono px-2 py-1 rounded bg-base-300 hover:bg-primary hover:text-primary-content transition-colors cursor-pointer inline-flex items-center gap-1"
                     onClick={() => {
                       setIsEditingText(false);
                       updateStory(viralAngle, metricFocus, selectedNetwork, includeHashtags);
@@ -804,7 +804,7 @@ export default function ShareModal({
                       </span>
                       <button
                         type="button"
-                        class="px-3 py-1 rounded bg-gradient-to-r from-[#833ab4] to-[#fd1d1d] text-white font-bold text-xs cursor-pointer hover:opacity-90 transition-opacity"
+                        class="min-h-6 inline-flex items-center px-3 py-1 rounded bg-gradient-to-r from-[#833ab4] to-[#fd1d1d] text-white font-bold text-xs cursor-pointer hover:opacity-90 transition-opacity"
                         onClick={handleDownloadImage}
                       >
                         Descargar para Story / Post
@@ -821,7 +821,7 @@ export default function ShareModal({
                 {/* Botón Principal: Compartir ahora en la red seleccionada */}
                 <button
                   type="button"
-                  class={`flex-1 min-w-[200px] py-3 px-4 rounded-lg font-board-mono text-xs uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xl ${
+                  class={`min-h-11 flex-1 min-w-0 sm:min-w-[200px] py-3 px-4 rounded-lg font-board-mono text-xs uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xl ${
                     selectedNetwork === "x"
                       ? "bg-black text-white hover:bg-zinc-800 ring-2 ring-white/30"
                       : selectedNetwork === "whatsapp"
@@ -849,7 +849,7 @@ export default function ShareModal({
                 {/* Botón Descargar Infografía */}
                 <button
                   type="button"
-                  class="py-3 px-3.5 rounded-lg bg-base-200 border border-base-300 hover:border-primary/60 text-base-content font-board-mono text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-sm"
+                  class="min-h-11 py-3 px-3.5 rounded-lg bg-base-200 border border-base-300 hover:border-primary/60 text-base-content font-board-mono text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-sm"
                   title="Descargar infografía oficial en alta resolución (1200x630)"
                   onClick={handleDownloadImage}
                 >
@@ -862,7 +862,7 @@ export default function ShareModal({
                 {/* Botón Copiar Texto */}
                 <button
                   type="button"
-                  class="py-3 px-3.5 rounded-lg bg-base-200 border border-base-300 hover:border-primary/60 text-base-content font-board-mono text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-sm"
+                  class="min-h-11 py-3 px-3.5 rounded-lg bg-base-200 border border-base-300 hover:border-primary/60 text-base-content font-board-mono text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-sm"
                   title="Copiar texto con ganchos al portapapeles"
                   onClick={handleCopyText}
                 >
@@ -876,7 +876,7 @@ export default function ShareModal({
                 {/* Botón Copiar Enlace Directo */}
                 <button
                   type="button"
-                  class="py-3 px-3.5 rounded-lg bg-base-200 border border-base-300 hover:border-primary/60 text-base-content font-board-mono text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-sm"
+                  class="min-h-11 py-3 px-3.5 rounded-lg bg-base-200 border border-base-300 hover:border-primary/60 text-base-content font-board-mono text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-sm"
                   title="Copiar URL directa al portapapeles"
                   onClick={handleCopyLink}
                 >
@@ -891,7 +891,7 @@ export default function ShareModal({
                 {typeof navigator !== "undefined" && typeof navigator.share === "function" && (
                   <button
                     type="button"
-                    class="py-3 px-3.5 rounded-lg bg-base-200 border border-base-300 hover:border-accent/60 text-accent font-board-mono text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-sm"
+                    class="min-h-11 py-3 px-3.5 rounded-lg bg-base-200 border border-base-300 hover:border-accent/60 text-accent font-board-mono text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-sm"
                     title="Abrir menú nativo de compartir del teléfono"
                     onClick={handleShareNative}
                   >
@@ -913,7 +913,7 @@ export default function ShareModal({
           <span class="truncate pr-4">URL canónica: <strong class="text-primary">{absoluteUrl}</strong></span>
           <button
             type="button"
-            class="hover:text-primary transition-colors cursor-pointer font-bold uppercase tracking-wider shrink-0"
+            class="min-h-11 inline-flex items-center hover:text-primary transition-colors cursor-pointer font-bold uppercase tracking-wider shrink-0"
             onClick={onClose}
           >
             Cerrar

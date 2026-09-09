@@ -81,7 +81,7 @@ export default function SavingsSimulator({
               type="button"
               key={pct}
               onClick={() => setSelectedPct(pct)}
-              class={`px-3 py-2 sm:py-1.5 rounded-lg font-board-mono text-xs sm:text-sm font-semibold cursor-pointer transition-all text-center ${
+              class={`min-h-11 inline-flex items-center justify-center px-3 py-2 rounded-lg font-board-mono text-xs sm:text-sm font-semibold cursor-pointer transition-all text-center ${
                 pct === 50 ? "col-span-2 sm:col-span-1" : ""
               } ${
                 selectedPct === pct

@@ -41,11 +41,19 @@
 
 /* Criterio 13 (SPEC §17): controles táctiles de ≥ 44 px en móvil (WCAG 2.5.5).
    El default de daisyUI v5 es 2,5 rem (40 px); basta con subir la altura
-   mínima de btn/input/select aquí, en un solo sitio centralizado. */
+   mínima de btn/input/select/range aquí, en un solo sitio centralizado. */
 .btn,
 .input,
-.select {
+.select,
+.range {
   min-height: 2.75rem;
+}
+
+/* Tailwind no conoce --font-body por sí solo: mapea la voz de cuerpo del
+   tablero a la utilidad font-sans (si no, cae a system-ui y la web pierde
+   Chivo en todos los párrafos). */
+@theme inline {
+  --font-sans: var(--font-body);
 }
 
 :root {
@@ -60,6 +68,16 @@ html {
   font-family: var(--font-body);
   font-size: 16.5px;
   -webkit-text-size-adjust: 100%;
+  /* La marquesina es sticky: deja aire al saltar a un ancla o al enfocar. */
+  scroll-padding-top: 5rem;
+  /* Red de seguridad: nada debe provocar scroll horizontal en móvil.
+     `clip` (no `hidden`) no crea contenedor de scroll, así el header sigue
+     pegado arriba y el scroll vertical funciona igual. */
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
 }
 
 @media (min-width: 768px) {
@@ -111,6 +129,9 @@ html {
 /* ---- Marquesina del tablero (header) ---- */
 
 .board-marquee {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -127,6 +148,9 @@ html {
 }
 
 .board-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
   font-family: var(--font-signage);
   font-variation-settings: "wght" 800;
   font-size: clamp(1.4rem, 4.8vw, 1.85rem);
@@ -152,6 +176,10 @@ html {
 }
 
 .board-navlink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
   font-family: var(--font-board-mono);
   font-size: 0.875rem;
   letter-spacing: 0.06em;
@@ -167,6 +195,53 @@ html {
   color: #151a17;
   background: #ffb020;
   border-color: #ffb020;
+}
+
+/* Tablas de contenido: en móvil se apilan como fichas con su etiqueta
+   (la tabla horizontal exige scroll lateral y se pierde el contexto). */
+@media (max-width: 767px) {
+  .board-table thead {
+    display: none;
+  }
+
+  .board-table,
+  .board-table tbody,
+  .board-table tr,
+  .board-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .board-table tr {
+    border: 1px solid #2d3832;
+    background: #151a17;
+    margin-bottom: 0.5rem;
+    padding: 0.4rem 0.25rem;
+  }
+
+  .board-table td {
+    display: grid;
+    grid-template-columns: minmax(6.5rem, 38%) 1fr;
+    gap: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    text-align: left !important;
+  }
+
+  .board-table td::before {
+    content: attr(data-label);
+    font-family: var(--font-board-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.7;
+  }
+}
+
+/* Migas de pan: enlaces de texto con zona táctil mínima de 24 px (WCAG 2.5.8). */
+nav[aria-label="Migas de pan"] a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.5rem;
 }
 
 /* ---- Enlace de país en el pie ---- */
@@ -190,7 +265,31 @@ html {
   opacity: 1;
 }
 
+/* Enlaces legales del pie: en móvil, zona táctil de 44 px. */
+.board-legal-link {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: 0.25rem;
+  font-family: var(--font-board-mono);
+  font-size: 0.75rem;
+  color: #f2ead8;
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .board-legal-link {
+    min-height: 2.75rem;
+  }
+}
+
+.board-legal-link:hover {
+  color: #ffb020;
+  opacity: 1;
+}
+
 .board-country-select {
+  min-height: 2.75rem;
   font-family: var(--font-board-mono);
   font-size: 0.875rem;
   letter-spacing: 0.06em;
@@ -220,6 +319,25 @@ html {
 .board-country-select option {
   background: #151a17;
   color: #f2ead8;
+}
+
+/* Móviles estrechos (≤400 px): marca y selector tienen que caber en una fila
+   sin empujar el ancho de la página. */
+@media (max-width: 400px) {
+  .board-marquee {
+    padding: 0.625rem 0.6rem;
+    gap: 0.4rem;
+  }
+
+  .board-brand {
+    font-size: 1.15rem;
+  }
+
+  .board-country-select {
+    max-width: 42vw;
+    padding: 0.35rem 0.4rem;
+    font-size: 0.75rem;
+  }
 }
 
 /* ---- Dígito split-flap ---- */
@@ -610,6 +728,8 @@ html {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  min-height: 2.75rem;
+  cursor: pointer;
 }
 
 .board-details > summary::-webkit-details-marker {
@@ -629,15 +749,15 @@ html {
 
 .board-card-remove {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
+  top: 0.125rem;
+  right: 0.125rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   padding: 0;
-  border: 1px solid #2d3832;
+  border: 1px solid transparent;
   background: transparent;
   color: #f2ead8;
   opacity: 0.6;
@@ -676,20 +796,27 @@ html {
   letter-spacing: -0.05em;
 }
 
-/* ---- Slider de Nómina Interactivo (Dopamina Scrubber) ---- */
+/* ---- Slider de Nómina Interactivo (Dopamina Scrubber) ----
+   El input mide 44 px de alto para que el dedo tenga área real (WCAG 2.5.5);
+   el track visible sigue siendo una barra de 8 px centrada. */
 .salary-slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
+  height: 2.75rem;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.salary-slider::-webkit-slider-runnable-track {
   height: 8px;
   background: #2d3832;
   border-radius: 4px;
-  outline: none;
-  cursor: pointer;
   transition: background 150ms ease;
 }
 
-.salary-slider:hover {
+.salary-slider:hover::-webkit-slider-runnable-track {
   background: #38473f;
 }
 
@@ -698,6 +825,7 @@ html {
   appearance: none;
   width: 24px;
   height: 24px;
+  margin-top: -8px;
   border-radius: 50%;
   background: #ffb020;
   border: 3px solid #151a17;
@@ -710,6 +838,17 @@ html {
   cursor: grabbing;
   transform: scale(1.2);
   box-shadow: 0 0 16px rgba(255, 176, 32, 0.8);
+}
+
+.salary-slider::-moz-range-track {
+  height: 8px;
+  background: #2d3832;
+  border-radius: 4px;
+  transition: background 150ms ease;
+}
+
+.salary-slider:hover::-moz-range-track {
+  background: #38473f;
 }
 
 .salary-slider::-moz-range-thumb {

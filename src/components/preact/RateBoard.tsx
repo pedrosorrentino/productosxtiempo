@@ -522,7 +522,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 </div>
 
                 {country.medianNetMonthly ? (
-                  <span class="text-xs font-board-mono text-base-content/65 whitespace-nowrap">
+                  <span class="text-xs font-board-mono text-base-content/65">
                     Mediana nacional:{" "}
                     <strong class="text-base-content/90 font-medium">
                       {country.medianNetMonthly} {country.currencySymbol}/mes
@@ -559,7 +559,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
 
               <a
                 href={`/${country.slug}`}
-                class="board-navlink whitespace-nowrap inline-flex items-center justify-center px-3.5 h-11 text-xs font-board-mono uppercase tracking-wider text-base-content/85 hover:text-primary hover:border-primary border border-base-300 bg-base-100/60 transition-colors"
+                class="board-navlink w-full sm:w-auto whitespace-nowrap inline-flex items-center justify-center px-3.5 h-11 text-xs font-board-mono uppercase tracking-wider text-base-content/85 hover:text-primary hover:border-primary border border-base-300 bg-base-100/60 transition-colors"
               >
                 {board.countryFile(country.name)} →
               </a>
@@ -576,7 +576,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
           <div class="board-plate p-8 text-center">
             <h2 class="font-signage text-4xl uppercase">{noSalary.title}</h2>
             <p class="mt-3 text-lg opacity-85">{noSalary.body}</p>
-            <a href={`/${country.slug}`} class="board-cta mt-6">
+            <a href={`/${country.slug}`} class="board-cta mt-6 w-full sm:w-auto justify-center">
               {board.countryFile(country.name)} →
             </a>
           </div>
@@ -610,7 +610,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               </div>
 
               {/* Derecha: Indicador de Rotación en Vivo + Botón para cambiar artículo */}
-              <div class="flex items-center gap-2.5 self-start sm:self-auto">
+              <div class="flex flex-wrap items-center gap-2.5 self-start sm:self-auto">
                 <span class="inline-flex items-center gap-1.5 font-board-mono text-xs text-accent bg-accent/10 border border-accent/30 px-2.5 py-1 rounded select-none">
                   <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                   Rotación automática
@@ -689,7 +689,6 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   yearsFullPay={hero.years}
                   pctCareerLeft={heroLifeImpact.pctCareerLeft}
                   threat={heroLifeImpact.threat}
-                  onAgeChange={onUserAgeChange}
                 />
                 <p class="font-board-mono text-base text-base-content/90 border-l-2 border-primary pl-3 w-full leading-relaxed break-words">
                   {heroLifeImpact.verdict}
@@ -904,7 +903,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                     type="button"
                     key={preset}
                     onClick={() => applyPresetSalary(preset)}
-                    class={`px-2.5 py-1 rounded font-board-mono text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                    class={`min-h-11 inline-flex items-center px-3 py-1 rounded font-board-mono text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                       netMonthly === preset
                         ? "bg-primary text-neutral-900 font-bold shadow-xs"
                         : "bg-base-200 hover:bg-base-300 text-base-content/85 border border-base-content/10"
@@ -916,9 +915,9 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               </div>
 
               {/* Ajuste Rápido de Jornada Semanal */}
-              <div class="flex items-center justify-between gap-2 pt-2 border-t border-base-content/10 text-xs sm:text-sm font-board-mono opacity-80">
+              <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-base-content/10 text-xs sm:text-sm font-board-mono opacity-80">
                 <span>Jornada semanal:</span>
-                <div class="flex items-center gap-1">
+                <div class="flex flex-wrap items-center gap-1">
                   {[35, 37.5, 40, 42].map((h) => (
                     <button
                       key={h}
@@ -932,7 +931,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                         }));
                         saveUserState({ weeklyHours: h });
                       }}
-                      class={`px-2.5 py-0.5 rounded text-xs font-board-mono transition-colors cursor-pointer ${
+                      class={`min-h-11 inline-flex items-center px-3 py-0.5 rounded text-xs font-board-mono transition-colors cursor-pointer ${
                         weeklyHours === h
                           ? "bg-primary/20 text-primary font-bold border border-primary/40"
                           : "bg-base-200 hover:bg-base-300 text-base-content/75"
@@ -947,7 +946,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
 
             {/* Columna 2: Tu Edad y Horizonte Existencial (5 cols) */}
             <div class="lg:col-span-5 bg-base-100/70 p-4 sm:p-5 rounded-xl border border-base-content/10 flex flex-col justify-between space-y-4">
-              <div class="flex items-center justify-between gap-2">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <div>
                   <span class="font-board-mono text-xs uppercase opacity-70 block">
                     ¿Qué edad tienes?
@@ -957,11 +956,11 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   </span>
                 </div>
 
-                {/* Contador de edad - / + */}
-                <div class="flex items-center gap-1 bg-base-200 p-1 rounded-lg border border-base-content/10">
+                {/* Contador de edad - / + (a ancho completo en móvil) */}
+                <div class="w-full sm:w-auto flex items-center justify-between sm:justify-start gap-1 bg-base-200 p-1 rounded-lg border border-base-content/10">
                   <button
                     type="button"
-                    class="w-7 h-7 rounded bg-base-100 hover:bg-warning hover:text-neutral-900 font-bold transition-all flex items-center justify-center cursor-pointer text-sm"
+                    class="w-11 h-11 rounded bg-base-100 hover:bg-warning hover:text-neutral-900 font-bold transition-all flex items-center justify-center cursor-pointer text-base"
                     onClick={() => onUserAgeChange(Math.max(16, (userAge ?? 30) - 1))}
                   >
                     -
@@ -971,7 +970,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   </span>
                   <button
                     type="button"
-                    class="w-7 h-7 rounded bg-base-100 hover:bg-warning hover:text-neutral-900 font-bold transition-all flex items-center justify-center cursor-pointer text-sm"
+                    class="w-11 h-11 rounded bg-base-100 hover:bg-warning hover:text-neutral-900 font-bold transition-all flex items-center justify-center cursor-pointer text-base"
                     onClick={() => onUserAgeChange(Math.min(80, (userAge ?? 30) + 1))}
                   >
                     +
@@ -979,8 +978,9 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 </div>
               </div>
 
-              {/* Slider de Edad */}
-              <div>
+              {/* Slider de Edad: solo en pantallas grandes. En móvil el
+                  stepper de arriba manda para no duplicar el control. */}
+              <div class="hidden sm:block">
                 <input
                   type="range"
                   min="18"
@@ -1010,7 +1010,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                 <button
                   type="button"
                   onClick={() => setIsFormOpen((prev) => !prev)}
-                  class="text-xs sm:text-sm font-board-mono text-primary hover:underline cursor-pointer flex items-center gap-1 font-medium"
+                  class="min-h-11 text-xs sm:text-sm font-board-mono text-primary hover:underline cursor-pointer inline-flex items-center gap-1 font-medium"
                 >
                   <span>{isFormOpen ? "Cerrar opciones ▲" : "Opciones avanzadas (ahorro...) ✎"}</span>
                 </button>
@@ -1060,7 +1060,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               <button
                 type="button"
                 onClick={() => setSelectedCategory("todas")}
-                class={`px-3.5 py-1.5 rounded-lg font-board-mono text-xs md:text-sm font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                class={`min-h-11 inline-flex items-center px-3.5 py-1.5 rounded-lg font-board-mono text-xs md:text-sm font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                   selectedCategory === "todas"
                     ? "bg-primary text-neutral-900 shadow-sm font-bold"
                     : "bg-base-200 hover:bg-base-300 text-base-content/85 border border-base-300"
@@ -1076,7 +1076,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                     type="button"
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    class={`px-3.5 py-1.5 rounded-lg font-board-mono text-xs md:text-sm font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                    class={`min-h-11 inline-flex items-center px-3.5 py-1.5 rounded-lg font-board-mono text-xs md:text-sm font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                       selectedCategory === cat
                         ? "bg-primary text-neutral-900 shadow-sm font-bold"
                         : "bg-base-200 hover:bg-base-300 text-base-content/85 border border-base-300"
@@ -1188,11 +1188,8 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
           BLOQUE 8: CIERRE, VIRALIDAD Y CREDIBILIDAD
           ========================================================================= */}
       <div class="max-w-6xl mx-auto px-4 mt-12 md:mt-16 pb-20 flex flex-wrap items-center justify-between gap-6 border-t border-base-300/80 pt-8">
-        <div class="flex items-center gap-4 flex-wrap">
-          <a href={`/${country.slug}`} class="board-cta">
-            {board.countryFile(country.name)} →
-          </a>
-          <a href="/metodo" class="btn btn-outline font-board-mono text-xs uppercase tracking-wider">
+        <div class="flex items-center gap-4 flex-wrap w-full sm:w-auto">
+          <a href="/metodo" class="btn btn-outline w-full sm:w-auto font-board-mono text-xs uppercase tracking-wider">
             Metodología y Fuentes
           </a>
         </div>

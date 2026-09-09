@@ -45,10 +45,10 @@ export default function ShareButton({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div class="flex justify-center sm:justify-end">
+    <div class="flex justify-center sm:justify-end w-full sm:w-auto">
       <button
         type="button"
-        class={buttonClass || "btn btn-outline border-base-300 hover:border-primary hover:bg-primary/10 hover:text-primary transition-all flex items-center gap-2 cursor-pointer"}
+        class={buttonClass || "btn btn-outline w-full sm:w-auto justify-center border-base-300 hover:border-primary hover:bg-primary/10 hover:text-primary transition-all flex items-center gap-2 cursor-pointer"}
         onClick={(e) => {
           (e.currentTarget as HTMLButtonElement | null)?.blur?.();
           setIsModalOpen(true);
