@@ -3,9 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ResultView from '../../components/preact/ResultView.tsx';
 import { brand, categories } from '../../i18n/es.ts';
 import { ogQuote } from '../../lib/ogQuote.ts';
-import { getProductPrice } from '../../lib/selectors.ts';
+import { getProductPrice, referenceSalary } from '../../lib/selectors.ts';
 import { calc } from '../../lib/calc.ts';
-import { formatHours } from '../../lib/format.ts';
+import { formatHours, formatHumanDuration, formatIntegerThousands, formatPercent, formatWorkdays } from '../../lib/format.ts';
 import type { Country, Product, ProductPrice } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
 import productsData from '../../data/products.json';
@@ -50,15 +50,23 @@ export function getStaticPaths() {
 const { country, product, price, priceConverted } = Astro.props;
 
 const quote = ogQuote(product, country);
-const hasMedianSalary = country.medianNetMonthly != null;
+const ref = referenceSalary(country);
+const hasReference = ref != null;
 
-// Cálculo estático para el bloque citable de IA y Schema.org
-let calculatedStats: { hours: number; workdays8h: number; monthsFullPay: number; pctRealYear: number } | null = null;
-if (hasMedianSalary) {
+// Cálculo estático (build time) con el sueldo de referencia declarado:
+// mediano neto cuando existe; SMI etiquetado cuando la ficha no lo publica.
+let calculatedStats: {
+  hours: number;
+  workdays8h: number;
+  monthsFullPay: number;
+  yearsFullPay: number;
+  pctRealYear: number;
+} | null = null;
+if (ref) {
   try {
     const calcRes = calc({
       price: price.value,
-      netMonthly: country.medianNetMonthly!,
+      netMonthly: ref.monthly,
       weeklyHours: country.legalWeeklyHours,
       realAnnualHours: country.realAnnualHours,
       monthlySavings: null,
@@ -69,6 +77,7 @@ if (hasMedianSalary) {
       hours: calcRes.hours,
       workdays8h: calcRes.workdays8h,
       monthsFullPay: calcRes.monthsFullPay,
+      yearsFullPay: calcRes.yearsFullPay,
       pctRealYear: calcRes.pctRealYear ?? 0,
     };
   } catch (e) {
@@ -76,17 +85,32 @@ if (hasMedianSalary) {
   }
 }
 
-// 1. Título y Meta-description SEO optimizados con inclusión obligatoria del país
-const pageTitle = quote
-  ? `${product.shortName} en ${country.name}: cuesta ${quote.effort} de trabajo · ${brand.name}`
-  : `${product.shortName} en ${country.name} (${price.value} ${country.currencySymbol}) · ${brand.name}`;
+// 1. Título y Meta-description SEO optimizados con el patrón de búsqueda
+// ("precio / cuánto cuesta [producto] en [país]") y el país obligatorio.
+const nfPrice = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 2 });
+const priceText = `${nfPrice.format(price.value)} ${country.currencySymbol}`;
+const effortText = quote?.effort ?? (calculatedStats
+  ? formatHumanDuration(
+      calculatedStats.hours,
+      calculatedStats.workdays8h,
+      calculatedStats.monthsFullPay,
+      calculatedStats.yearsFullPay,
+    )
+  : null);
 
-const pageDescription = quote
-  ? `${product.shortName} en ${country.name} vale ${quote.priceText}: equivale a ${quote.effort} con el sueldo mediano (${country.medianNetMonthly} ${country.currencySymbol}/mes). Calcula tu cifra real.`
-  : `Descubre cuántas horas de trabajo cuesta ${product.name} en ${country.name} (${price.value} ${country.currencySymbol}). Introduce tu nómina para cotizarlo en tiempo real.`;
+const pageTitle = ref?.kind === "median" && effortText
+  ? `${product.shortName} en ${country.name}: precio ${priceText} y ${effortText} de trabajo · ${brand.name}`
+  : `${product.shortName} en ${country.name}: precio ${priceText} · ${brand.name}`;
 
-// 2. Control de Thin Content / Scaled Content Abuse: noindex a países sin sueldo de referencia
-const shouldNoIndex = !hasMedianSalary;
+const pageDescription = ref?.kind === "median" && calculatedStats
+  ? `${product.shortName} en ${country.name} cuesta ${priceText}: son ${effortText} con el sueldo mediano neto (${formatIntegerThousands(ref.monthly)} ${country.currencySymbol}/mes). Calcula tu cifra real con tu nómina.`
+  : ref?.kind === "min" && calculatedStats
+    ? `${product.shortName} en ${country.name} cuesta ${priceText}. Con el SMI de referencia (${formatIntegerThousands(ref.monthly)} ${country.currencySymbol}/mes) son ${effortText} de trabajo. Pon tu nómina y calcula tu cifra real.`
+    : `Descubre cuántas horas de trabajo cuesta ${product.name} en ${country.name} (${priceText}). Introduce tu nómina para cotizarlo en tiempo real.`;
+
+// 2. Control de Thin Content / Scaled Content Abuse: noindex solo si el país
+// no declara ninguna referencia salarial (hoy ninguno).
+const shouldNoIndex = !hasReference;
 
 // 3. Generación de hreflangs
 const siteUrl = Astro.site?.href ?? "https://precioentiempo.com";
@@ -128,11 +152,11 @@ const siblingProducts = allProducts
   .map((sibling) => {
     const sibPrice = getProductPrice(sibling, country.code);
     let sibHours: number | null = null;
-    if (sibPrice && hasMedianSalary) {
+    if (sibPrice && ref) {
       try {
         const calcRes = calc({
           price: sibPrice.value,
-          netMonthly: country.medianNetMonthly!,
+          netMonthly: ref.monthly,
           weeklyHours: country.legalWeeklyHours,
           realAnnualHours: country.realAnnualHours,
           monthlySavings: null,
@@ -204,6 +228,35 @@ const otherCountriesForProduct = allCountries
       catalogPriceDate={price.date}
       catalogPriceSource={price.source}
     />
+
+    {/* BLOQUE CITABLE: precio local + esfuerzo laboral en el HTML servido
+        (GEO/SEO). Responde "cuánto cuesta [producto] en [país]" sin depender
+        de la isla interactiva. */}
+    <section class="mt-8 board-plate p-6 sm:p-8 border border-base-300" aria-label={`Precio y esfuerzo laboral de ${product.shortName} en ${country.name}`}>
+      <h2 class="font-signage uppercase text-2xl md:text-3xl">
+        {product.shortName} en {country.name}: {priceText}
+      </h2>
+      {calculatedStats && ref ? (
+        <>
+          <p class="mt-3 text-sm sm:text-base leading-relaxed opacity-90 font-sans">
+            En {country.name}, {product.name} cuesta <strong>{priceText}</strong>. Con el {ref.label} de referencia ({formatIntegerThousands(ref.monthly)} {country.currencySymbol}/mes, {country.legalWeeklyHours} h semanales) equivale a <strong>{formatHours(calculatedStats.hours)} horas de trabajo</strong> ({formatWorkdays(calculatedStats.workdays8h)} jornadas de 8 h), el {formatPercent(calculatedStats.monthsFullPay * 100)}% de una nómina mensual.
+            {ref.kind === "min" && " Es una referencia sobre el SMI declarado, no el sueldo mediano neto: con tu neto real el esfuerzo sube."}
+          </p>
+          <p class="mt-2 text-sm opacity-80 font-sans">
+            El sueldo de referencia es orientativo y editable. La cifra que cuenta es la tuya: introduce tu nómina en la calculadora y ajusta el precio si el tuyo es otro.
+          </p>
+        </>
+      ) : (
+        <p class="mt-3 text-sm sm:text-base leading-relaxed opacity-90 font-sans">
+          {product.name} en {country.name} cuesta {priceText}. Introduce tu nómina en la calculadora para ver cuántas horas y jornadas de trabajo representa.
+        </p>
+      )}
+      <div class="mt-5 pt-3 border-t border-base-300/80 flex flex-wrap gap-x-5 gap-y-2 font-board-mono text-sm">
+        <a href={`/${country.slug}/`} class="text-primary hover:underline">Poder adquisitivo en {country.name} &rarr;</a>
+        <a href={`/${country.slug}/precio/?precio=${price.value}`} class="text-primary hover:underline">Calcular otro precio &rarr;</a>
+        <a href="/metodo/" class="text-primary hover:underline">Método de cálculo &rarr;</a>
+      </div>
+    </section>
 
     {/* Enlazado Interno Programático: Categoría en este país */}
     {siblingProducts.length > 0 && (

@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StaleDataBadge from '../../components/astro/StaleDataBadge.astro';
 import CountryView from '../../components/preact/CountryView.tsx';
-import { calc } from '../../lib/calc.ts';
+import { calc, calcHourlyWage } from '../../lib/calc.ts';
 import { formatHourlyWage, formatHours, formatIntegerThousands, formatMinutes, formatWorkdays } from '../../lib/format.ts';
 import { isFreshDate } from '../../lib/freshness.ts';
 import { board, brand, countryPage, noSalary } from '../../i18n/es.ts';
@@ -11,6 +11,7 @@ import countriesData from '../../data/countries.json';
 import productsData from '../../data/products.json';
 import anchorsData from '../../data/anchors.json';
 import macroData from '../../data/macro.json';
+import { referenceSalary } from '../../lib/selectors.ts';
 import { generateHreflangs, generateBreadcrumbSchema, generateFAQSchema } from '../../lib/seo.ts';
 
 export function getStaticPaths() {
@@ -49,6 +50,23 @@ const countryWage =
 const countryWageText =
   countryWage != null ? formatHourlyWage(countryWage, country.currencySymbol) : null;
 const hasSalary = countryWageText != null;
+
+// Sueldo de referencia declarado: mediano neto o, si la ficha no lo publica
+// (Colombia, Argentina), el SMI etiquetado como referencia. Ataca las
+// búsquedas "cuánto vale una hora / un día de trabajo en [país]".
+const refSalary = referenceSalary(country);
+const refWage = refSalary?.monthly ?? null;
+const refWageText = refWage != null ? refWage.toLocaleString("es-ES") : null;
+const refIsSmi = refSalary?.kind === "min";
+const refHourlyWage = refWage != null ? calcHourlyWage(refWage, country.legalWeeklyHours) : null;
+const nfGroup1 = new Intl.NumberFormat("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1, useGrouping: "always" });
+const nfGroup2 = new Intl.NumberFormat("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: "always" });
+const refHourlyText = refHourlyWage != null
+  ? `${(refHourlyWage < 20 ? nfGroup2 : nfGroup1).format(refHourlyWage)} ${country.currencySymbol}`
+  : null;
+const refDailyWage = refHourlyWage != null ? refHourlyWage * 8 : null;
+const nfMoney0 = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 0 });
+const refDailyText = refDailyWage != null ? `${nfMoney0.format(refDailyWage)} ${country.currencySymbol}` : null;
 
 const countryMacro = (macroData as Record<string, any>)[country.code] || {};
 const pppFactor = country.pppFactor ?? countryMacro.pppFactor ?? null;
@@ -175,6 +193,18 @@ const faqs = [
     question: `¿Por qué medir los precios de ${country.name} en horas de trabajo y no en dinero?`,
     answer: `El dinero en divisas fluctúa con la inflación y la percepción subjetiva. Convertir el precio de un bien o servicio en horas de trabajo real permite evaluar el coste de oportunidad vital: qué fracción exacta de tu tiempo finito de vida entregas al mercado laboral a cambio de esa adquisición.`,
   },
+  {
+    question: `¿Cuánto vale una hora de trabajo en ${country.name}?`,
+    answer: refIsSmi
+      ? `La ficha de ${country.name} no publica un sueldo mediano neto. Como referencia, el SMI declarado (${refWage?.toLocaleString("es-ES")} ${country.currencySymbol}/mes) equivale a ${refHourlyText} por hora con una jornada de ${country.legalWeeklyHours} h semanales. Es una referencia sobre el SMI, no el sueldo mediano: con tu neto real la hora baja.`
+      : `Con el sueldo mediano neto de referencia (${refWage?.toLocaleString("es-ES")} ${country.currencySymbol}/mes) y una jornada de ${country.legalWeeklyHours} h semanales, una hora de trabajo vale aproximadamente ${refHourlyText}. Es orientativo: tu hora real sale de tu propia nómina.`,
+  },
+  {
+    question: `¿Cuánto vale un día de trabajo en ${country.name}?`,
+    answer: refIsSmi
+      ? `Un día de trabajo (jornada de 8 horas) equivale a unos ${refDailyText} en ${country.name}, según el SMI declarado. Es una referencia bruta, no el sueldo mediano neto.`
+      : `Un día de trabajo de 8 horas vale aproximadamente ${refDailyText} en ${country.name}, calculado con el sueldo mediano neto de referencia (${refWage?.toLocaleString("es-ES")} ${country.currencySymbol}/mes).`,
+  },
 ];
 
 const faqSchema = generateFAQSchema(faqs);
@@ -183,11 +213,11 @@ const combinedJsonLd = [breadcrumbSchema, faqSchema];
 // Meta SEO
 const pageTitle = hasSalary
   ? `Poder Adquisitivo en ${country.name} en Horas de Trabajo: Salario ${countryWageText} · ${brand.name}`
-  : `${country.name}: Coste de la vida en horas de trabajo · ${brand.name}`;
+  : `${country.name}: cuánto vale una hora y un día de trabajo (SMI ${refWage?.toLocaleString("es-ES")} ${country.currencySymbol}) · ${brand.name}`;
 
 const pageDescription = hasSalary
   ? `Descubre cuánto cuesta vivir en ${country.name} medido en tiempo de trabajo. Con un salario neto mediano de ${country.medianNetMonthly?.toLocaleString("es-ES")} ${country.currencySymbol}/mes (${countryWageText}), calcula las horas reales de tu alquiler, tecnología y día a día.`
-  : `Calcula el esfuerzo laboral real para comprar cualquier bien o servicio en ${country.name}. Introduce tu nómina y descubre cuánta vida te cuesta cada gasto.`;
+  : `En ${country.name} no hay mediano neto publicado: usa el SMI de referencia (${refWage?.toLocaleString("es-ES")} ${country.currencySymbol}/mes), que sale a ${refHourlyText} la hora y ${refDailyText} el día de 8 h. Calcula cuánto de tu tiempo cuesta cualquier compra.`;
 ---
 
 <BaseLayout
@@ -315,6 +345,32 @@ const pageDescription = hasSalary
         </div>
       </div>
     </section>
+
+    <!-- VALOR DE LA HORA Y EL DÍA DE TRABAJO (long tail "cuánto vale un día/hora de trabajo en [país]") -->
+    {refWage != null && (
+      <section class="board-plate p-5 sm:p-6 border border-base-300 space-y-3" aria-label={`Valor de la hora y el día de trabajo en ${country.name}`}>
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-primary inline-block"></span>
+          <h2 class="font-signage uppercase text-xl sm:text-2xl tracking-wide">
+            ¿Cuánto vale una hora y un día de trabajo en {country.name}?
+          </h2>
+        </div>
+        <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">
+          {hasSalary ? (
+            <>
+              Con el sueldo mediano neto de referencia de {country.name} (<strong>{refWageText} {country.currencySymbol}/mes</strong>) y la jornada legal de {country.legalWeeklyHours} h semanales, una hora de trabajo vale <strong>{refHourlyText}</strong> y un día de 8 horas, <strong>{refDailyText}</strong>.
+            </>
+          ) : (
+            <>
+              Esta ficha no publica un sueldo mediano neto. Como referencia, el SMI declarado (<strong>{refWageText} {country.currencySymbol}/mes</strong>) sale a <strong>{refHourlyText}</strong> por hora y <strong>{refDailyText}</strong> por jornada de 8 horas. Es una referencia sobre el SMI, no el mediano.
+            </>
+          )}
+        </p>
+        <p class="text-xs font-board-mono opacity-75">
+          Fórmula: sueldo de referencia ÷ ({country.legalWeeklyHours} h × 52 ÷ 12). Fuente: {country.salariesSource}. Dato de {country.salariesUpdatedAt}.
+        </p>
+      </section>
+    )}
 
     {!hasSalary && (
       <div role="alert" class="board-plate p-5 border-l-4 border-l-warning">

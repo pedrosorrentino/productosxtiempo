@@ -1,0 +1,868 @@
+{
+  "prices": {
+    "CO:iphone": {
+      "value": 2211695,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:auriculares": {
+      "value": 185166,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:portatil": {
+      "value": 2568500,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:portatil-premium": {
+      "value": 4471310,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:tablet": {
+      "value": 811969,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:televisor": {
+      "value": 1849900,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:movil-gama-media": {
+      "value": 1090725,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:consola": {
+      "value": 373948,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:smartwatch": {
+      "value": 257385,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:moto-125": {
+      "value": 1429799,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:libro-nuevo": {
+      "value": 28.49,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:iphone": {
+      "value": 363,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:tablet": {
+      "value": 104.24,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:cana": {
+      "value": 4.25,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:iphone": {
+      "value": 422.8,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:aire-acondicionado": {
+      "value": 885.51,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:cana": {
+      "value": 4.25,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:iphone": {
+      "value": 219,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:tablet": {
+      "value": 152.5,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:televisor": {
+      "value": 378.11,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:moto-125": {
+      "value": 911.25,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "US:iphone": {
+      "value": 300,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "US:cana": {
+      "value": 4.12,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "US:tablet": {
+      "value": 250,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CL:iphone": {
+      "value": 494990,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CL:consola": {
+      "value": 57490,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "IT:iphone": {
+      "value": 419.5,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "IT:televisor": {
+      "value": 399.5,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "MX:iphone": {
+      "value": 11563.13,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "MX:tablet": {
+      "value": 3602.59,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "MX:consola": {
+      "value": 2221.73,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "MX:movil-gama-media": {
+      "value": 5506.7,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "PT:iphone": {
+      "value": 525,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:bici-urbana": {
+      "value": 3245680,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:patinete-electrico": {
+      "value": 2388195,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CO:aire-acondicionado": {
+      "value": 1949900,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "CH:iphone": {
+      "value": 501.72,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "GB:iphone": {
+      "value": 203.5,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "AR:iphone": {
+      "value": 949339,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:cafe": {
+      "value": 9.49,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:barra-de-pan": {
+      "value": 3.63,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:arroz-kilo": {
+      "value": 8.78,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:huevos-docena": {
+      "value": 7.95,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:leche-mes": {
+      "value": 23.88,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:aceite-oliva": {
+      "value": 17.47,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:pechuga-pollo-kilo": {
+      "value": 9.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:pasta-paquete": {
+      "value": 3.97,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:portatil": {
+      "value": 497.62,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:portatil-premium": {
+      "value": 1180.5,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:televisor": {
+      "value": 390.97,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:auriculares": {
+      "value": 49.97,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:movil-gama-media": {
+      "value": 179.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:consola": {
+      "value": 31.12,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:smartwatch": {
+      "value": 39.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:moto-125": {
+      "value": 205.92,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:bici-urbana": {
+      "value": 894,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:patinete-electrico": {
+      "value": 289,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:aire-acondicionado": {
+      "value": 936.77,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:placas-solares": {
+      "value": 1599.1,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:gafas-graduadas": {
+      "value": 13.42,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:cana": {
+      "value": 2,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:cerveza-pack": {
+      "value": 14.5,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "DE:dacia-sandero": {
+      "value": 78.38,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:seat-ibiza": {
+      "value": 35.01,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:renault-clio": {
+      "value": 31.5,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:volkswagen-golf": {
+      "value": 15.96,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:toyota-corolla": {
+      "value": 35.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:peugeot-208": {
+      "value": 69.61,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:kia-sportage": {
+      "value": 79.8,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:hyundai-tucson": {
+      "value": 166.64,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:nissan-versa": {
+      "value": 24.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:mg-zs": {
+      "value": 77,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:toyota-yaris-cross": {
+      "value": 120.9,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:toyota-c-hr": {
+      "value": 24.69,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:tesla-model-3": {
+      "value": 29.95,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:tesla-model-y": {
+      "value": 59.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "DE:coche-compacto": {
+      "value": 0,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:cafe": {
+      "value": 13.5,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:barra-de-pan": {
+      "value": 4.28,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:arroz-kilo": {
+      "value": 7.63,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:huevos-docena": {
+      "value": 8.64,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:leche-mes": {
+      "value": 37.68,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:aceite-oliva": {
+      "value": 14.31,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:pechuga-pollo-kilo": {
+      "value": 16.07,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:pasta-paquete": {
+      "value": 2.95,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:portatil": {
+      "value": 322.49,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:portatil-premium": {
+      "value": 716.5,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:tablet": {
+      "value": 199.95,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:televisor": {
+      "value": 399,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:auriculares": {
+      "value": 23.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:movil-gama-media": {
+      "value": 60.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:consola": {
+      "value": 37.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:smartwatch": {
+      "value": 58.65,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:moto-125": {
+      "value": 248.79,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:bici-urbana": {
+      "value": 642,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:patinete-electrico": {
+      "value": 349.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:placas-solares": {
+      "value": 152.3,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:gafas-graduadas": {
+      "value": 17.36,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:libro-nuevo": {
+      "value": 4.47,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:cerveza-pack": {
+      "value": 9.55,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "FR:dacia-sandero": {
+      "value": 94.19,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:seat-ibiza": {
+      "value": 60.44,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:renault-clio": {
+      "value": 43.46,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:volkswagen-golf": {
+      "value": 25.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:toyota-corolla": {
+      "value": 73.9,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:peugeot-208": {
+      "value": 65.5,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:kia-sportage": {
+      "value": 81.6,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:hyundai-tucson": {
+      "value": 159.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:nissan-versa": {
+      "value": 70.59,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:mg-zs": {
+      "value": 36.3,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:toyota-yaris-cross": {
+      "value": 140.25,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:toyota-c-hr": {
+      "value": 30.29,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:tesla-model-3": {
+      "value": 81.39,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:tesla-model-y": {
+      "value": 39.92,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "FR:coche-compacto": {
+      "value": 0,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:cafe": {
+      "value": 12.57,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:barra-de-pan": {
+      "value": 5.78,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:arroz-kilo": {
+      "value": 4.62,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:huevos-docena": {
+      "value": 7.32,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:leche-mes": {
+      "value": 28.68,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:aceite-oliva": {
+      "value": 10,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:pechuga-pollo-kilo": {
+      "value": 17.75,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:pasta-paquete": {
+      "value": 2.26,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:portatil": {
+      "value": 430,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:portatil-premium": {
+      "value": 484.5,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:auriculares": {
+      "value": 34.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:movil-gama-media": {
+      "value": 65,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:consola": {
+      "value": 44.26,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:smartwatch": {
+      "value": 49.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:bici-urbana": {
+      "value": 599,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:patinete-electrico": {
+      "value": 232.49,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:aire-acondicionado": {
+      "value": 746.38,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:placas-solares": {
+      "value": 2204,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:gafas-graduadas": {
+      "value": 18.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:libro-nuevo": {
+      "value": 14.2,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:cerveza-pack": {
+      "value": 9,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "ES:dacia-sandero": {
+      "value": 6.95,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:seat-ibiza": {
+      "value": 42.57,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:renault-clio": {
+      "value": 36.3,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:volkswagen-golf": {
+      "value": 15.96,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:toyota-corolla": {
+      "value": 39.95,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:peugeot-208": {
+      "value": 82.84,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:kia-sportage": {
+      "value": 82.12,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:hyundai-tucson": {
+      "value": 137.48,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:nissan-versa": {
+      "value": 111.8,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:mg-zs": {
+      "value": 18.84,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:toyota-yaris-cross": {
+      "value": 75.13,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:toyota-c-hr": {
+      "value": 96.04,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:tesla-model-3": {
+      "value": 16,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:tesla-model-y": {
+      "value": 171.32,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "ES:coche-compacto": {
+      "value": 10367.38,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "US:cafe": {
+      "value": 17.95,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "US:barra-de-pan": {
+      "value": 5.17,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "US:arroz-kilo": {
+      "value": 6.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12",
+      "rejected": true
+    },
+    "US:huevos-docena": {
+      "value": 3.74,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "US:leche-mes": {
+      "value": 41.52,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "US:aceite-oliva": {
+      "value": 24.99,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    },
+    "US:pechuga-pollo-kilo": {
+      "value": 7.24,
+      "date": "2026-09",
+      "fetchedAt": "2026-09-12"
+    }
+  }
+}

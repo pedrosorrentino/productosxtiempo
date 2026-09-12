@@ -1,0 +1,2478 @@
+{
+  "_readme": "Todos los productos comprables x 12 paises, priorizados por pais (GSC). El proveedor valida plausibilidad y gasta 1 busqueda por par no cacheado.",
+  "generated": "2026-09-12",
+  "targets": [
+    {
+      "country": "DE",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "DE",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "DE",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "DE",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "DE",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "DE",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "DE",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "DE",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "DE",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "DE",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "DE",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "DE",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "DE",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "DE",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "DE",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "DE",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "DE",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "DE",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "DE",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "DE",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "DE",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "DE",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "DE",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "DE",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "DE",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "DE",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "DE",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "DE",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "DE",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "DE",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "DE",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "DE",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "DE",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "DE",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "DE",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "DE",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "DE",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "DE",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "DE",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "DE",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "DE",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    },
+    {
+      "country": "FR",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "FR",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "FR",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "FR",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "FR",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "FR",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "FR",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "FR",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "FR",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "FR",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "FR",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "FR",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "FR",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "FR",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "FR",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "FR",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "FR",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "FR",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "FR",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "FR",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "FR",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "FR",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "FR",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "FR",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "FR",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "FR",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "FR",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "FR",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "FR",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "FR",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "FR",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "FR",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "FR",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "FR",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "FR",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "FR",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "FR",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "FR",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "FR",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "FR",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "FR",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    },
+    {
+      "country": "ES",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "ES",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "ES",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "ES",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "ES",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "ES",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "ES",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "ES",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "ES",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "ES",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "ES",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "ES",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "ES",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "ES",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "ES",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "ES",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "ES",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "ES",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "ES",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "ES",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "ES",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "ES",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "ES",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "ES",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "ES",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "ES",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "ES",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "ES",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "ES",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "ES",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "ES",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "ES",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "ES",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "ES",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "ES",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "ES",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "ES",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "ES",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "ES",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "ES",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "ES",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    },
+    {
+      "country": "US",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "US",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "US",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "US",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "US",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "US",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "US",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "US",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "US",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "US",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "US",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "US",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "US",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "US",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "US",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "US",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "US",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "US",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "US",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "US",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "US",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "US",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "US",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "US",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "US",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "US",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "US",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "US",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "US",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "US",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "US",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "US",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "US",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "US",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "US",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "US",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "US",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "US",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "US",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "US",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "US",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    },
+    {
+      "country": "CL",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "CL",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "CL",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "CL",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "CL",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "CL",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "CL",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "CL",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "CL",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "CL",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "CL",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "CL",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "CL",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "CL",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "CL",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "CL",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "CL",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "CL",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "CL",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "CL",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "CL",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "CL",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "CL",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "CL",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "CL",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "CL",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "CL",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "CL",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "CL",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "CL",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "CL",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "CL",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "CL",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "CL",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "CL",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "CL",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "CL",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "CL",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "CL",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "CL",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "CL",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    },
+    {
+      "country": "IT",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "IT",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "IT",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "IT",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "IT",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "IT",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "IT",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "IT",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "IT",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "IT",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "IT",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "IT",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "IT",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "IT",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "IT",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "IT",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "IT",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "IT",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "IT",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "IT",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "IT",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "IT",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "IT",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "IT",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "IT",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "IT",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "IT",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "IT",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "IT",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "IT",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "IT",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "IT",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "IT",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "IT",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "IT",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "IT",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "IT",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "IT",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "IT",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "IT",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "IT",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    },
+    {
+      "country": "MX",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "MX",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "MX",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "MX",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "MX",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "MX",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "MX",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "MX",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "MX",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "MX",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "MX",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "MX",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "MX",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "MX",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "MX",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "MX",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "MX",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "MX",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "MX",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "MX",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "MX",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "MX",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "MX",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "MX",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "MX",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "MX",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "MX",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "MX",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "MX",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "MX",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "MX",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "MX",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "MX",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "MX",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "MX",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "MX",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "MX",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "MX",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "MX",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "MX",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "MX",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    },
+    {
+      "country": "PT",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "PT",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "PT",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "PT",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "PT",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "PT",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "PT",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "PT",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "PT",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "PT",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "PT",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "PT",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "PT",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "PT",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "PT",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "PT",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "PT",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "PT",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "PT",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "PT",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "PT",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "PT",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "PT",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "PT",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "PT",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "PT",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "PT",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "PT",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "PT",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "PT",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "PT",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "PT",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "PT",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "PT",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "PT",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "PT",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "PT",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "PT",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "PT",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "PT",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "PT",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    },
+    {
+      "country": "CO",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "CO",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "CO",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "CO",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "CO",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "CO",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "CO",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "CO",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "CO",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "CO",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "CO",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "CO",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "CO",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "CO",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "CO",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "CO",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "CO",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "CO",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "CO",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "CO",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "CO",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "CO",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "CO",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "CO",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "CO",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "CO",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "CO",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "CO",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "CO",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "CO",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "CO",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "CO",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "CO",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "CO",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "CO",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "CO",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "CO",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "CO",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "CO",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "CO",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "CO",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    },
+    {
+      "country": "CH",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "CH",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "CH",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "CH",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "CH",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "CH",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "CH",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "CH",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "CH",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "CH",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "CH",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "CH",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "CH",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "CH",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "CH",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "CH",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "CH",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "CH",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "CH",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "CH",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "CH",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "CH",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "CH",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "CH",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "CH",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "CH",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "CH",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "CH",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "CH",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "CH",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "CH",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "CH",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "CH",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "CH",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "CH",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "CH",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "CH",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "CH",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "CH",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "CH",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "CH",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    },
+    {
+      "country": "GB",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "GB",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "GB",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "GB",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "GB",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "GB",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "GB",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "GB",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "GB",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "GB",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "GB",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "GB",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "GB",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "GB",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "GB",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "GB",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "GB",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "GB",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "GB",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "GB",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "GB",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "GB",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "GB",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "GB",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "GB",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "GB",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "GB",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "GB",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "GB",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "GB",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "GB",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "GB",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "GB",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "GB",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "GB",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "GB",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "GB",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "GB",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "GB",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "GB",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "GB",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    },
+    {
+      "country": "AR",
+      "productId": "cafe",
+      "query": "ground coffee 500g"
+    },
+    {
+      "country": "AR",
+      "productId": "barra-de-pan",
+      "query": "bread 500g"
+    },
+    {
+      "country": "AR",
+      "productId": "arroz-kilo",
+      "query": "rice 1kg"
+    },
+    {
+      "country": "AR",
+      "productId": "huevos-docena",
+      "query": "eggs 12 pack"
+    },
+    {
+      "country": "AR",
+      "productId": "leche-mes",
+      "query": "milk 1 liter",
+      "factor": 12
+    },
+    {
+      "country": "AR",
+      "productId": "aceite-oliva",
+      "query": "olive oil 1 liter"
+    },
+    {
+      "country": "AR",
+      "productId": "pechuga-pollo-kilo",
+      "query": "chicken breast 1kg"
+    },
+    {
+      "country": "AR",
+      "productId": "pasta-paquete",
+      "query": "pasta 1kg"
+    },
+    {
+      "country": "AR",
+      "productId": "iphone",
+      "query": "iphone"
+    },
+    {
+      "country": "AR",
+      "productId": "portatil",
+      "query": "laptop"
+    },
+    {
+      "country": "AR",
+      "productId": "portatil-premium",
+      "query": "macbook"
+    },
+    {
+      "country": "AR",
+      "productId": "tablet",
+      "query": "tablet"
+    },
+    {
+      "country": "AR",
+      "productId": "televisor",
+      "query": "smart tv 55 inch"
+    },
+    {
+      "country": "AR",
+      "productId": "auriculares",
+      "query": "wireless earbuds"
+    },
+    {
+      "country": "AR",
+      "productId": "movil-gama-media",
+      "query": "mid range smartphone"
+    },
+    {
+      "country": "AR",
+      "productId": "consola",
+      "query": "game console"
+    },
+    {
+      "country": "AR",
+      "productId": "smartwatch",
+      "query": "smartwatch"
+    },
+    {
+      "country": "AR",
+      "productId": "moto-125",
+      "query": "125cc motorcycle"
+    },
+    {
+      "country": "AR",
+      "productId": "bici-urbana",
+      "query": "urban bicycle"
+    },
+    {
+      "country": "AR",
+      "productId": "patinete-electrico",
+      "query": "electric scooter"
+    },
+    {
+      "country": "AR",
+      "productId": "aire-acondicionado",
+      "query": "split air conditioner"
+    },
+    {
+      "country": "AR",
+      "productId": "placas-solares",
+      "query": "solar panel kit 4kw"
+    },
+    {
+      "country": "AR",
+      "productId": "gafas-graduadas",
+      "query": "prescription glasses"
+    },
+    {
+      "country": "AR",
+      "productId": "libro-nuevo",
+      "query": "book"
+    },
+    {
+      "country": "AR",
+      "productId": "cana",
+      "query": "beer can 330ml"
+    },
+    {
+      "country": "AR",
+      "productId": "cerveza-pack",
+      "query": "beer 6 pack"
+    },
+    {
+      "country": "AR",
+      "productId": "dacia-sandero",
+      "query": "dacia sandero"
+    },
+    {
+      "country": "AR",
+      "productId": "seat-ibiza",
+      "query": "seat ibiza"
+    },
+    {
+      "country": "AR",
+      "productId": "renault-clio",
+      "query": "renault clio"
+    },
+    {
+      "country": "AR",
+      "productId": "volkswagen-golf",
+      "query": "volkswagen golf"
+    },
+    {
+      "country": "AR",
+      "productId": "toyota-corolla",
+      "query": "toyota corolla"
+    },
+    {
+      "country": "AR",
+      "productId": "peugeot-208",
+      "query": "peugeot 208"
+    },
+    {
+      "country": "AR",
+      "productId": "kia-sportage",
+      "query": "kia sportage"
+    },
+    {
+      "country": "AR",
+      "productId": "hyundai-tucson",
+      "query": "hyundai tucson"
+    },
+    {
+      "country": "AR",
+      "productId": "nissan-versa",
+      "query": "nissan versa"
+    },
+    {
+      "country": "AR",
+      "productId": "mg-zs",
+      "query": "mg zs"
+    },
+    {
+      "country": "AR",
+      "productId": "toyota-yaris-cross",
+      "query": "toyota yaris cross"
+    },
+    {
+      "country": "AR",
+      "productId": "toyota-c-hr",
+      "query": "toyota c-hr"
+    },
+    {
+      "country": "AR",
+      "productId": "tesla-model-3",
+      "query": "tesla model 3"
+    },
+    {
+      "country": "AR",
+      "productId": "tesla-model-y",
+      "query": "tesla model y"
+    },
+    {
+      "country": "AR",
+      "productId": "coche-compacto",
+      "query": "compact car"
+    }
+  ]
+}

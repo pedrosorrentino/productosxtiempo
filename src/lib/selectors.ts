@@ -64,6 +64,37 @@ export function getProductPrice(
   return esPrice;
 }
 
+export type ReferenceSalary = {
+  monthly: number;
+  kind: "median" | "min";
+  /** Etiqueta humana para el copy: "sueldo mediano neto" o "salario mínimo (SMI)". */
+  label: string;
+};
+
+/**
+ * Sueldo de referencia declarado por la ficha (build time). Usa el mediano
+ * neto cuando existe; si la ficha no lo publica (CO, AR), cae al SMI y lo
+ * etiqueta como tal para no confundirlo con el mediano. Devuelve null si el
+ * país no declara ninguna cifra.
+ */
+export function referenceSalary(country: Country): ReferenceSalary | null {
+  if (country.medianNetMonthly != null && country.medianNetMonthly > 0) {
+    return {
+      monthly: country.medianNetMonthly,
+      kind: "median",
+      label: "sueldo mediano neto",
+    };
+  }
+  if (country.minWageMonthly != null && country.minWageMonthly > 0) {
+    return {
+      monthly: country.minWageMonthly,
+      kind: "min",
+      label: "salario mínimo (SMI)",
+    };
+  }
+  return null;
+}
+
 /** Sueldo neto mensual efectivo: el del usuario o la mediano del país. */
 export function effectiveNetMonthly(
   country: Country,

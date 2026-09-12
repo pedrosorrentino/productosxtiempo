@@ -1,0 +1,12 @@
+{
+  "_readme": [
+    "Precios reales verificados a mano para productos que ninguna API publica cubre",
+    "(suscripciones, seguros, servicios profesionales, vehiculos concretos).",
+    "Cada entrada DEBE llevar productId, countryCode, value y source; anade url y date",
+    "para auditoria. origin se marca siempre como 'local' y NO se sobreescribe por la",
+    "conversion automatica. El proveedor 'curated-manual' (scripts/sources/curated-prices.ts)",
+    "lee este archivo en cada 'pnpm sync-catalog'."
+  ],
+  "updated": "2026-09",
+  "prices": []
+}

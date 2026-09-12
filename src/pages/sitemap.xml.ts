@@ -48,9 +48,8 @@ export const GET: APIRoute = async ({ site }) => {
 
   // 4. Fichas de Producto Programáticas
   for (const country of countries) {
-    // Excluir países sin sueldo mediano oficial (AR, CO) para mantener sitemap limpio de noindex
-    if (country.medianNetMonthly == null) continue;
-
+    // CO y AR no publican mediano neto, pero sí un SMI de referencia: sus
+    // fichas de producto se indexan y entran al sitemap.
     for (const product of products) {
       if (!product.visible) continue;
       const price = getProductPrice(product, country.code);

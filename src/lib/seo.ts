@@ -171,11 +171,15 @@ export function getProductBrand(product: Product): string {
 }
 
 /**
- * Genera Schema.org JSON-LD legítimo para el análisis económico del producto
- * con especificaciones cuantitativas de esfuerzo laboral (horas, jornadas y meses de sueldo).
- * Cumple rigurosamente las políticas de Google Search Central contra Spammy Structured Markup:
- * - No incluye reseñas inventadas ni calificaciones agregadas sin feedback de usuarios reales.
- * - No incluye ofertas de comerciante con inventario ficticio ni envíos gratuitos irreales.
+ * Genera Schema.org JSON-LD para el análisis económico del producto con
+ * especificaciones cuantitativas de esfuerzo laboral (horas, jornadas y meses
+ * de sueldo).
+ *
+ * Decisión documentada: este sitio NO vende ni permite comprar, así que el
+ * schema se limita a lo verificable (nombre, descripción, imagen, marca y las
+ * magnitudes de esfuerzo). No emite `review`, `aggregateRating` ni `offers`
+ * porque serían datos inventados (reseñas, stock, envío) y Google los trata
+ * como spam de datos estructurados.
  */
 export function generateProductSchema(input: {
   product: Product;
@@ -215,16 +219,6 @@ export function generateProductSchema(input: {
     });
   }
 
-  // Normalización de fecha válida para validFrom (ISO 8601 YYYY-MM-DD)
-  let validFromDate = "2026-01-01";
-  if (input.price.date) {
-    if (input.price.date.length === 7) {
-      validFromDate = `${input.price.date}-01`;
-    } else if (input.price.date.length === 10) {
-      validFromDate = input.price.date;
-    }
-  }
-
   return {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -232,82 +226,10 @@ export function generateProductSchema(input: {
     description: `Precio y coste laboral en horas de trabajo de ${input.product.name} en ${input.country.name} (${input.price.value} ${input.country.currency}).`,
     image: [input.imageUrl],
     sku: `${input.product.id}-${input.country.code.toLowerCase()}`,
+    url: input.canonicalUrl,
     brand: {
       "@type": "Brand",
       name: brandName,
-    },
-    review: {
-      "@type": "Review",
-      name: `Evaluación de esfuerzo laboral para ${input.product.name}`,
-      reviewBody: `Análisis económico sobre el coste en horas y jornadas de trabajo necesarias para costear ${input.product.name} en ${input.country.name} (${input.price.value} ${input.country.currency}) en base al salario mediano neto oficial.`,
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "4.8",
-        bestRating: "5",
-        worstRating: "1",
-      },
-      author: {
-        "@type": "Organization",
-        name: "Precio en tiempo",
-        url: "https://precioentiempo.com",
-      },
-      datePublished: validFromDate,
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: 16,
-      reviewCount: 16,
-      bestRating: "5",
-      worstRating: "1",
-    },
-    offers: {
-      "@type": "Offer",
-      url: input.canonicalUrl,
-      priceCurrency: input.country.currency,
-      price: input.price.value,
-      validFrom: validFromDate,
-      priceValidUntil: "2026-12-31",
-      availability: "https://schema.org/InStock",
-      itemCondition: "https://schema.org/NewCondition",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: input.price.value,
-        priceCurrency: input.country.currency,
-        valueAddedTaxIncluded: true,
-      },
-      shippingDetails: {
-        "@type": "OfferShippingDetails",
-        shippingRate: {
-          "@type": "MonetaryAmount",
-          value: 0,
-          currency: input.country.currency,
-        },
-        shippingDestination: {
-          "@type": "DefinedRegion",
-          addressCountry: input.country.code,
-        },
-        deliveryTime: {
-          "@type": "ShippingDeliveryTime",
-          handlingTime: {
-            "@type": "QuantitativeValue",
-            minValue: 0,
-            maxValue: 0,
-            unitCode: "DAY",
-          },
-          transitTime: {
-            "@type": "QuantitativeValue",
-            minValue: 0,
-            maxValue: 0,
-            unitCode: "DAY",
-          },
-        },
-      },
-      hasMerchantReturnPolicy: {
-        "@type": "MerchantReturnPolicy",
-        applicableCountry: input.country.code,
-        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
-      },
     },
     additionalProperty: additionalProperties.length > 0 ? additionalProperties : undefined,
   };

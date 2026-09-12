@@ -12,6 +12,46 @@ El sincronizador se compone de tres piezas clave:
 2. **Orquestador Central (`scripts/sync-catalog.ts`):** Consulta todos los proveedores en paralelo con `Promise.allSettled`, aplica límites de tiempo y actualiza `src/data/products.json` recalculando las divisas internacionales (Frankfurter/BCE) de forma automática.
 3. **Automatización GitHub Actions (`.github/workflows/update-catalog.yml`):** Un robot programado que corre semanalmente o bajo demanda, actualiza el catálogo y hace commit a `master`, activando el redespliegue en Cloudflare Pages.
 
+### 1.1 Proveedores activos
+
+Los proveedores se ejecutan en el orden de `CATALOG_PROVIDERS` (`scripts/sources/index.ts`). Un proveedor posterior sobreescribe el precio del mismo producto/país que uno anterior, así que los datos reales por país van al final para imponerse a los de referencia.
+
+| Proveedor | Fuente | Tipo |
+|---|---|---|
+| `the-economist-big-mac` | The Economist · Big Mac Index | Oficial |
+| `mercadona-staples` | Mercadona (API en vivo) | Privada |
+| `miteco-combustibles` | MITECO · carburantes | Oficial |
+| `eurostat-official` | Eurostat | Oficial |
+| `worldbank-macro` | Banco Mundial (PPA, inflación) | Oficial |
+| `cheapshark-gaming` | CheapShark | Privada |
+| `supermarket-staples` | Open Food Facts Prices | Abierta |
+| `automotive-top-sellers` | ANFAC / JATO | Oficial |
+| `curated-social-services` | Servicios de referencia (ES) | Curada |
+| `coingecko-crypto` | CoinGecko · BTC/ETH por divisa | Mercado |
+| `steam-regional` | Steam · precio regional | Oficial |
+| `serpapi-shopping` | Google Shopping (LatAm+UE+US) | Mercado |
+| `falabella-cl` | Falabella Chile (scrape JSON) | Tienda |
+| `liverpool-mx` | Liverpool México (render JS) | Tienda |
+| `apple-store` | Apple Store por país | Oficial |
+| `mercadolibre-market` | MercadoLibre (requiere token) | Mercado |
+| `numbeo-cost-of-living` | Numbeo · cesta por país | Colaborativa |
+| `curated-manual` | `scripts/data/curated-prices.json` | Curada |
+
+### 1.2 Presupuesto de SerpApi y cachés
+
+**SerpApi (plan gratuito: 250 búsquedas/mes)** — cada par producto×país cuesta 1 búsqueda:
+
+- `SERPAPI_KEY` se lee de **`.env`** (no se versiona). En GitHub Actions no está definido, así que el proveedor **se salta solo** y no gasta cuota.
+- `scripts/data/serpapi-targets.json`: objetivos priorizados por las páginas con más impresiones en GSC.
+- `scripts/data/serpapi-cache.json`: caché de **30 días**. Se **guarda al instante** tras cada acierto (un corte no pierde cuota) y marca como `rejected` los resultados implausibles o sin resultado para no repetirlos.
+- **Filtro de plausibilidad:** si el precio supera 0,25×–4× el valor vigente del catálogo se descarta (evita packs, accesorios o unidades distintas).
+- Variables de control: `SERPAPI_MAX_CALLS` (por defecto `10`, tope por sync) y `SERPAPI_RESERVE` (por defecto `20`, cuota que no se toca). Si la cuota se agota, el proveedor usa solo la caché y termina sin colgarse.
+
+**Otras cachés:**
+
+- `scripts/data/numbeo-cache.json`: caché diaria de Numbeo. Ante un HTTP 429 detiene el barrido y reutiliza la última copia.
+- `scripts/data/curated-prices.json`: precios reales verificados a mano (con `source`, `url` y `date`) para lo que ninguna API cubre.
+
 ---
 
 ## 2. Cómo Añadir una Nueva Fuente o API en 5 Minutos

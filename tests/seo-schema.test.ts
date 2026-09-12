@@ -49,7 +49,7 @@ describe("Schema.org generation (Google Search Central compliance)", () => {
     expect(schema.brand["@type"]).toBe("Brand");
     expect(schema.brand.name).toBe("Tesla");
 
-    // 3. Quantitative properties (Horas, Jornadas, Meses de sueldo)
+    // 4. Magnitudes de esfuerzo laboral
     expect(schema.additionalProperty).toBeDefined();
     expect(Array.isArray(schema.additionalProperty)).toBe(true);
     expect(schema.additionalProperty?.length).toBe(3);
@@ -58,40 +58,14 @@ describe("Schema.org generation (Google Search Central compliance)", () => {
     expect(hoursProp).toBeDefined();
     expect(hoursProp.value).toBe(3850.5);
 
-    // 4. Offer fields
-    expect(schema.offers).toBeDefined();
-    expect(schema.offers["@type"]).toBe("Offer");
-    expect(schema.offers.price).toBe(price.value);
-    expect(schema.offers.priceCurrency).toBe(spain.currency);
-    expect(schema.offers.availability).toBe("https://schema.org/InStock");
-    expect(schema.offers.validFrom).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-    expect(schema.offers.priceValidUntil).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    // 5. URL canónica del producto
+    expect(schema.url).toBe("https://precioentiempo.com/espana/tesla-model-3/");
 
-    // 5. Merchant Listings: shippingDetails & hasMerchantReturnPolicy
-    expect(schema.offers.shippingDetails).toBeDefined();
-    expect(schema.offers.shippingDetails["@type"]).toBe("OfferShippingDetails");
-    expect(schema.offers.shippingDetails.shippingRate).toBeDefined();
-    expect(schema.offers.shippingDetails.shippingRate.value).toBe(0);
-    expect(schema.offers.shippingDetails.shippingDestination.addressCountry).toBe("ES");
-    expect(schema.offers.shippingDetails.deliveryTime["@type"]).toBe("ShippingDeliveryTime");
-
-    expect(schema.offers.hasMerchantReturnPolicy).toBeDefined();
-    expect(schema.offers.hasMerchantReturnPolicy["@type"]).toBe("MerchantReturnPolicy");
-    expect(schema.offers.hasMerchantReturnPolicy.applicableCountry).toBe("ES");
-    expect(schema.offers.hasMerchantReturnPolicy.returnPolicyCategory).toBe(
-      "https://schema.org/MerchantReturnNotPermitted"
-    );
-
-    // 6. Product Snippets: editorial review & aggregateRating
-    expect(schema.review).toBeDefined();
-    expect(schema.review["@type"]).toBe("Review");
-    expect(schema.review.author["@type"]).toBe("Organization");
-    expect(schema.review.reviewRating.bestRating).toBe("5");
-
-    expect(schema.aggregateRating).toBeDefined();
-    expect(schema.aggregateRating["@type"]).toBe("AggregateRating");
-    expect(schema.aggregateRating.ratingValue).toBeDefined();
-    expect(schema.aggregateRating.ratingCount).toBeGreaterThan(0);
+    // 6. Sin datos inventados: nada de reseñas, ratings ni ofertas de comercio
+    // (el sitio no vende y Google trata ese markup como spam).
+    expect(schema.review).toBeUndefined();
+    expect(schema.aggregateRating).toBeUndefined();
+    expect(schema.offers).toBeUndefined();
   });
 
   it("generates Category schema (CollectionPage)", () => {
