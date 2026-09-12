@@ -168,7 +168,7 @@ const allCategories: Product['category'][] = [
       <ol class="flex items-center gap-2 flex-wrap">
         <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
         <li aria-hidden="true">/</li>
-        <li><a href={`/${country.slug}`} class="hover:text-primary transition-colors">{country.name}</a></li>
+        <li><a href={`/${country.slug}/`} class="hover:text-primary transition-colors">{country.name}</a></li>
         <li aria-hidden="true">/</li>
         <li class="text-primary font-bold" aria-current="page">{categoryName}</li>
       </ol>
@@ -207,7 +207,7 @@ const allCategories: Product['category'][] = [
         <span class="font-board-mono text-xs opacity-70 uppercase tracking-wider mr-2">Otras categorías:</span>
         {allCategories.map((cat) => (
           <a
-            href={`/${country.slug}/categoria/${cat}`}
+            href={`/${country.slug}/categoria/${cat}/`}
             class={`min-h-11 inline-flex items-center px-3 py-1 rounded text-xs font-board-mono uppercase transition-colors ${
               cat === category
                 ? 'bg-primary text-primary-content font-bold'
@@ -237,7 +237,7 @@ const allCategories: Product['category'][] = [
       <div class="grid gap-2 md:hidden">
         {quotedProducts.map((item) => (
           <a
-            href={`/${country.slug}/${item.id}`}
+            href={`/${country.slug}/${item.id}/`}
             class="board-plate p-4 flex items-center justify-between gap-3 min-h-11"
           >
             <span class="min-w-0">
@@ -273,7 +273,7 @@ const allCategories: Product['category'][] = [
             {quotedProducts.map((item) => (
               <tr class="hover:bg-base-200/50 transition-colors">
                 <td class="py-3 px-4 font-semibold text-base-content">
-                  <a href={`/${country.slug}/${item.id}`} class="hover:text-primary transition-colors flex items-center gap-1.5">
+                  <a href={`/${country.slug}/${item.id}/`} class="hover:text-primary transition-colors flex items-center gap-1.5">
                     {item.name}
                   </a>
                 </td>
@@ -288,7 +288,7 @@ const allCategories: Product['category'][] = [
                 </td>
                 <td class="py-3 px-4 text-right">
                   <a
-                    href={`/${country.slug}/${item.id}`}
+                    href={`/${country.slug}/${item.id}/`}
                     class="btn btn-xs btn-outline font-board-mono uppercase tracking-wider text-xs"
                   >
                     Ver análisis →

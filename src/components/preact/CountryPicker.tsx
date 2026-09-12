@@ -25,7 +25,7 @@ export default function CountryPicker({
   placeholder,
   hrefFor,
 }: CountryPickerProps) {
-  const href = (slug: string): string => (hrefFor ? hrefFor(slug) : `/${slug}`);
+  const href = (slug: string): string => (hrefFor ? hrefFor(slug) : `/${slug}/`);
 
   const navigate = (event: Event) => {
     const slug = (event.currentTarget as HTMLSelectElement).value;

@@ -311,7 +311,7 @@ export default function CompareStrip({
                 <span class="font-board-mono text-sm block mb-1">
                   {compare.addRow(`${priceText} ${currencySymbol}`)}
                 </span>
-                <a href={`/${current.slug}/precio`} class="link link-primary">
+                <a href={`/${current.slug}/precio/`} class="link link-primary">
                   {compare.putYourSalary}
                 </a>
               </p>

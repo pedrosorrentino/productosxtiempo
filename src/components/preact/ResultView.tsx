@@ -419,7 +419,7 @@ export default function ResultView({
   // Otro país: conserva neto/horas/ahorro/edad (son independientes de la
   // moneda), suelta el precio y el nombre (atados al país/producto actual).
   const hrefFor = (slug: string): string =>
-    buildShareUrl(`/${slug}/${productId ?? "precio"}`, {
+    buildShareUrl(`/${slug}/${productId ?? "precio"}/`, {
       ...state,
       priceOverride: null,
       customLabel: productId == null ? (state.customLabel ?? null) : null,
@@ -584,7 +584,7 @@ export default function ResultView({
           <div role="alert" class="board-plate p-5 mt-4">
             <h2 class="font-signage uppercase text-2xl">{noSalary.title}</h2>
             <p class="text-sm opacity-80 mt-1">{noSalary.body}</p>
-            <a class="board-navlink inline-block mt-3" href={`/${countrySlug}`}>
+            <a class="board-navlink inline-block mt-3" href={`/${countrySlug}/`}>
               {noSalary.goToCountry}
             </a>
           </div>

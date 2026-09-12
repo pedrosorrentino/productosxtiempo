@@ -558,7 +558,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               </div>
 
               <a
-                href={`/${country.slug}`}
+                href={`/${country.slug}/`}
                 class="board-navlink w-full sm:w-auto whitespace-nowrap inline-flex items-center justify-center px-3.5 h-11 text-xs font-board-mono uppercase tracking-wider text-base-content/85 hover:text-primary hover:border-primary border border-base-300 bg-base-100/60 transition-colors"
               >
                 {board.countryFile(country.name)} →
@@ -576,7 +576,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
           <div class="board-plate p-8 text-center">
             <h2 class="font-signage text-4xl uppercase">{noSalary.title}</h2>
             <p class="mt-3 text-lg opacity-85">{noSalary.body}</p>
-            <a href={`/${country.slug}`} class="board-cta mt-6 w-full sm:w-auto justify-center">
+            <a href={`/${country.slug}/`} class="board-cta mt-6 w-full sm:w-auto justify-center">
               {board.countryFile(country.name)} →
             </a>
           </div>
@@ -1114,7 +1114,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                     return (
                       <BoardRowCard
                         key={row.product.id}
-                        href={`/${country.slug}/${row.product.id}`}
+                        href={`/${country.slug}/${row.product.id}/`}
                         name={row.product.name}
                         icon={CATEGORY_PATHS[row.product.category]}
                         color={CATEGORY_COLOR[row.product.category]}
@@ -1189,14 +1189,14 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
           ========================================================================= */}
       <div class="max-w-6xl mx-auto px-4 mt-12 md:mt-16 pb-20 flex flex-wrap items-center justify-between gap-6 border-t border-base-300/80 pt-8">
         <div class="flex items-center gap-4 flex-wrap w-full sm:w-auto">
-          <a href="/metodo" class="btn btn-outline w-full sm:w-auto font-board-mono text-xs uppercase tracking-wider">
+          <a href="/metodo/" class="btn btn-outline w-full sm:w-auto font-board-mono text-xs uppercase tracking-wider">
             Metodología y Fuentes
           </a>
         </div>
         {hero && (
           <div class="board-share flex items-center gap-3">
             <ShareButton
-              url={`/${country.slug}/${hero.product.id}`}
+              url={`/${country.slug}/${hero.product.id}/`}
               text={shareText({
                 productName: hero.product.name,
                 countryName: country.name,

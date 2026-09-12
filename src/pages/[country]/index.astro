@@ -251,7 +251,7 @@ const pageDescription = hasSalary
         <div class="flex flex-wrap items-center gap-2">
           {categoryOrder.map((cat) => (
             <a
-              href={`/${country.slug}/categoria/${cat}`}
+              href={`/${country.slug}/categoria/${cat}/`}
               class="min-h-11 inline-flex items-center px-3 py-1.5 rounded-md font-board-mono text-xs uppercase font-medium bg-base-200 hover:bg-base-300 border border-base-content/10 hover:border-primary/50 text-base-content hover:text-primary transition-all"
             >
               {cat === 'transporte' ? 'Transporte' : cat === 'tecnologia' ? 'Tecnología' : cat === 'vivienda' ? 'Vivienda' : cat === 'dia-a-dia' ? 'Día a día' : 'Vida'} →

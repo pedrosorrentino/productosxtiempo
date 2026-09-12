@@ -360,7 +360,7 @@ export default function CountryView({
             </div>
 
             <a
-              href={`/${country.slug}/precio?precio=${encodeURIComponent(quickPrice || "150")}`}
+              href={`/${country.slug}/precio/?precio=${encodeURIComponent(quickPrice || "150")}`}
               class={`btn btn-sm btn-primary font-board-mono text-sm uppercase tracking-wider shrink-0 transition-opacity ${
                 quickPrice ? "opacity-100" : "opacity-60 pointer-events-none"
               }`}
@@ -517,7 +517,7 @@ export default function CountryView({
                   {visibleRows.map((row) => (
                     <BoardRowCard
                       key={row.id}
-                      href={`/${country.slug}/${row.id}`}
+                      href={`/${country.slug}/${row.id}/`}
                       name={row.name}
                       icon={CATEGORY_PATHS[group.category]}
                       color={CATEGORY_COLOR[group.category]}

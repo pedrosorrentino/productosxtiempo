@@ -103,7 +103,7 @@ export default function CountryBoard({
               {group.rows.map((row) => (
                 <BoardRowCard
                   key={row.id}
-                  href={`/${slug}/${row.id}`}
+                  href={`/${slug}/${row.id}/`}
                   name={row.name}
                   icon={CATEGORY_PATHS[group.category]}
                   color={CATEGORY_COLOR[group.category]}

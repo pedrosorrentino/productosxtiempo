@@ -146,21 +146,21 @@ const ogLocale = localeData?.ogLocale ?? "es_ES";
           <div class="md:max-w-md space-y-3">
             <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
               <a href="/" class="board-brand">{brand.name}</a>
-              <a href="/metodo" class="board-navlink">{cta.method}</a>
+              <a href="/metodo/" class="board-navlink">{cta.method}</a>
             </div>
             <p class="font-board-mono text-xs leading-relaxed opacity-70">
               {legalFooter.join(" ")}
             </p>
             <nav class="flex flex-wrap items-center gap-x-2 gap-y-0 pt-1 text-xs font-board-mono text-base-content/80" aria-label="Información legal y de confianza">
-              <a href="/sobre-el-proyecto" class="board-legal-link">Sobre el Proyecto</a>
+              <a href="/sobre-el-proyecto/" class="board-legal-link">Sobre el Proyecto</a>
               <span class="opacity-40" aria-hidden="true">·</span>
-              <a href="/contacto" class="board-legal-link">Contacto</a>
+              <a href="/contacto/" class="board-legal-link">Contacto</a>
               <span class="opacity-40" aria-hidden="true">·</span>
-              <a href="/aviso-legal" class="board-legal-link">Aviso Legal</a>
+              <a href="/aviso-legal/" class="board-legal-link">Aviso Legal</a>
               <span class="opacity-40" aria-hidden="true">·</span>
-              <a href="/privacidad" class="board-legal-link">Privacidad</a>
+              <a href="/privacidad/" class="board-legal-link">Privacidad</a>
               <span class="opacity-40" aria-hidden="true">·</span>
-              <a href="/cookies" class="board-legal-link">Cookies</a>
+              <a href="/cookies/" class="board-legal-link">Cookies</a>
             </nav>
           </div>
           <nav
@@ -169,7 +169,7 @@ const ogLocale = localeData?.ogLocale ?? "es_ES";
           >
             <div class="flex flex-wrap items-center gap-x-3 gap-y-2 md:grid md:flex-1 md:min-w-0 md:grid-rows-3 md:grid-flow-col md:gap-x-8 md:gap-y-1">
               {countries.map((country) => (
-                <a href={`/${country.slug}`} class="board-footer-link">{country.name}</a>
+                <a href={`/${country.slug}/`} class="board-footer-link">{country.name}</a>
               ))}
             </div>
           </nav>
@@ -180,7 +180,7 @@ const ogLocale = localeData?.ogLocale ?? "es_ES";
     <script>
       const select = document.querySelector<HTMLSelectElement>('#board-country-select');
       select?.addEventListener('change', () => {
-        if (select.value) location.href = `/${select.value}`;
+        if (select.value) location.href = `/${select.value}/`;
       });
     </script>
   </body>

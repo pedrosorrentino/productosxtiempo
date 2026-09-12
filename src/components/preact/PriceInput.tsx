@@ -83,7 +83,7 @@ export default function PriceInput({
     if (price != null) parts.push(`precio=${encodeURIComponent(String(price))}`);
     if (name !== "") parts.push(`nombre=${encodeURIComponent(name)}`);
     location.href =
-      parts.length > 0 ? `/${slug}/precio?${parts.join("&")}` : `/${slug}/precio`;
+      parts.length > 0 ? `/${slug}/precio/?${parts.join("&")}` : `/${slug}/precio/`;
   };
 
   const onSubmit = (event: Event) => {
