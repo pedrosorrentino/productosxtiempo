@@ -212,12 +212,12 @@ const combinedJsonLd = [breadcrumbSchema, faqSchema];
 
 // Meta SEO
 const pageTitle = hasSalary
-  ? `Poder Adquisitivo en ${country.name} en Horas de Trabajo: Salario ${countryWageText} · ${brand.name}`
-  : `${country.name}: cuánto vale una hora y un día de trabajo (SMI ${refWage?.toLocaleString("es-ES")} ${country.currencySymbol}) · ${brand.name}`;
+  ? `${country.name}: sueldo por hora ${countryWageText} y cuánto vale un día de trabajo · ${brand.name}`
+  : `${country.name}: cuánto vale una hora y un día de trabajo (SMI ${refWageText} ${country.currencySymbol}/mes) · ${brand.name}`;
 
 const pageDescription = hasSalary
-  ? `Descubre cuánto cuesta vivir en ${country.name} medido en tiempo de trabajo. Con un salario neto mediano de ${country.medianNetMonthly?.toLocaleString("es-ES")} ${country.currencySymbol}/mes (${countryWageText}), calcula las horas reales de tu alquiler, tecnología y día a día.`
-  : `En ${country.name} no hay mediano neto publicado: usa el SMI de referencia (${refWage?.toLocaleString("es-ES")} ${country.currencySymbol}/mes), que sale a ${refHourlyText} la hora y ${refDailyText} el día de 8 h. Calcula cuánto de tu tiempo cuesta cualquier compra.`;
+  ? `En ${country.name}, una hora de trabajo vale ${countryWageText} y un día de 8 h ${refDailyText}. Sale del sueldo mediano neto (${country.medianNetMonthly?.toLocaleString("es-ES")} ${country.currencySymbol}/mes). Mira cuántas horas cuestan tu alquiler, la tecnología y el día a día.`
+  : `En ${country.name} no hay mediano neto publicado: con el SMI de referencia (${refWageText} ${country.currencySymbol}/mes) la hora sale a ${refHourlyText} y el día de 8 h a ${refDailyText}. Calcula cuánto de tu tiempo cuesta cualquier compra.`;
 ---
 
 <BaseLayout
@@ -248,7 +248,7 @@ const pageDescription = hasSalary
             <span>{board.operatingLabel} · Ficha Nacional de Esfuerzo</span>
           </p>
           <h1 class="font-signage uppercase text-4xl sm:text-5xl md:text-6xl leading-none mt-1.5 tracking-tight">
-            {country.name}
+            {country.name}: cuánto vale una hora y un día de trabajo
           </h1>
         </div>
 

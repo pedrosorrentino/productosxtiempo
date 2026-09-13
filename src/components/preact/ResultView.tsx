@@ -571,7 +571,7 @@ export default function ResultView({
         <div class="board-plate p-5">
           {productId ? (
             <h1 class="font-signage uppercase text-3xl md:text-5xl leading-none">
-              {displayName ?? result.unnamedThing}
+              {`¿Cuánto cuesta ${displayName ?? result.unnamedThing} en ${countryName}?`}
             </h1>
           ) : (
             <h2 class="font-signage uppercase text-2xl md:text-4xl leading-none">

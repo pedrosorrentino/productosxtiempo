@@ -360,7 +360,7 @@ export default function CountryView({
             </div>
 
             <a
-              href={`/${country.slug}/precio/?precio=${encodeURIComponent(quickPrice || "150")}`}
+              href={quickPrice ? `/${country.slug}/precio/?precio=${encodeURIComponent(quickPrice)}` : `/${country.slug}/precio/`}
               class={`btn btn-sm btn-primary font-board-mono text-sm uppercase tracking-wider shrink-0 transition-opacity ${
                 quickPrice ? "opacity-100" : "opacity-60 pointer-events-none"
               }`}
