@@ -175,11 +175,16 @@ export function getProductBrand(product: Product): string {
  * especificaciones cuantitativas de esfuerzo laboral (horas, jornadas y meses
  * de sueldo).
  *
- * Decisión documentada: este sitio NO vende ni permite comprar, así que el
- * schema se limita a lo verificable (nombre, descripción, imagen, marca y las
- * magnitudes de esfuerzo). No emite `review`, `aggregateRating` ni `offers`
- * porque serían datos inventados (reseñas, stock, envío) y Google los trata
- * como spam de datos estructurados.
+ * Decisión documentada (Search Console, error crítico de Product snippets:
+ * "Debe especificarse offers, review o aggregateRating"):
+ * Google exige al menos uno de esos tres campos y encuadra los agregadores de
+ * precios entre las páginas elegibles para fragmentos de producto.
+ * Como este sitio no vende ni permite comprar, NO emite `review` ni
+ * `aggregateRating` (no hay reseñas reales: inventarlas es spam).
+ * En su lugar emite un `Offer` mínimo y 100% verificable con lo que la página
+ * muestra de verdad: el precio y su divisa. No incluye `availability`,
+ * `itemCondition`, envío, devoluciones ni `priceValidUntil` porque la página no
+ * los muestra y serían datos inventados.
  */
 export function generateProductSchema(input: {
   product: Product;
@@ -230,6 +235,12 @@ export function generateProductSchema(input: {
     brand: {
       "@type": "Brand",
       name: brandName,
+    },
+    offers: {
+      "@type": "Offer",
+      url: input.canonicalUrl,
+      priceCurrency: input.country.currency,
+      price: input.price.value,
     },
     additionalProperty: additionalProperties.length > 0 ? additionalProperties : undefined,
   };

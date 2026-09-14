@@ -27,7 +27,7 @@ describe("Schema.org generation (Google Search Central compliance)", () => {
     const tesla = products.find((p) => p.id === "tesla-model-3")!;
     const price = tesla.prices["ES"]!;
 
-    const schema = generateProductSchema({
+    const schema: any = generateProductSchema({
       product: tesla,
       country: spain,
       price,
@@ -61,11 +61,23 @@ describe("Schema.org generation (Google Search Central compliance)", () => {
     // 5. URL canónica del producto
     expect(schema.url).toBe("https://precioentiempo.com/espana/tesla-model-3/");
 
-    // 6. Sin datos inventados: nada de reseñas, ratings ni ofertas de comercio
-    // (el sitio no vende y Google trata ese markup como spam).
+    // 6. Product snippets exigen uno de offers/review/aggregateRating.
+    //    Este sitio es un agregador de precios: emite un Offer mínimo y real
+    //    (precio y divisa visibles en la página), sin reseñas ni ratings.
     expect(schema.review).toBeUndefined();
     expect(schema.aggregateRating).toBeUndefined();
-    expect(schema.offers).toBeUndefined();
+    expect(schema.offers).toBeDefined();
+    expect(schema.offers["@type"]).toBe("Offer");
+    expect(schema.offers.price).toBe(price.value);
+    expect(schema.offers.priceCurrency).toBe("EUR");
+    expect(schema.offers.url).toBe("https://precioentiempo.com/espana/tesla-model-3/");
+
+    // 7. Sin datos de comercio inventados que la página no muestre.
+    expect(schema.offers.availability).toBeUndefined();
+    expect(schema.offers.itemCondition).toBeUndefined();
+    expect(schema.offers.shippingDetails).toBeUndefined();
+    expect(schema.offers.hasMerchantReturnPolicy).toBeUndefined();
+    expect(schema.offers.priceValidUntil).toBeUndefined();
   });
 
   it("generates Category schema (CollectionPage)", () => {
