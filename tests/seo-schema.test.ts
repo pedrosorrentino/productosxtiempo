@@ -71,6 +71,8 @@ describe("Schema.org generation (Google Search Central compliance)", () => {
     expect(schema.offers.price).toBe(price.value);
     expect(schema.offers.priceCurrency).toBe("EUR");
     expect(schema.offers.url).toBe("https://precioentiempo.com/espana/tesla-model-3/");
+    // La fecha visible del precio (YYYY-MM) se normaliza a ISO para validFrom.
+    expect(schema.offers.validFrom).toBe("2026-08-01");
 
     // 7. Sin datos de comercio inventados que la página no muestre.
     expect(schema.offers.availability).toBeUndefined();
@@ -78,6 +80,29 @@ describe("Schema.org generation (Google Search Central compliance)", () => {
     expect(schema.offers.shippingDetails).toBeUndefined();
     expect(schema.offers.hasMerchantReturnPolicy).toBeUndefined();
     expect(schema.offers.priceValidUntil).toBeUndefined();
+  });
+
+  it("normalizes the price date to a full ISO date for Offer.validFrom", () => {
+    const iphone = products.find((p) => p.id === "iphone")!;
+    const base = iphone.prices["ES"]!;
+
+    const withFullDate: any = generateProductSchema({
+      product: iphone,
+      country: spain,
+      price: { ...base, date: "2026-09-15" },
+      canonicalUrl: "https://precioentiempo.com/espana/iphone/",
+      imageUrl: "https://precioentiempo.com/og/espana/iphone.png",
+    });
+    expect(withFullDate.offers.validFrom).toBe("2026-09-15");
+
+    const withInvalidDate: any = generateProductSchema({
+      product: iphone,
+      country: spain,
+      price: { ...base, date: "" },
+      canonicalUrl: "https://precioentiempo.com/espana/iphone/",
+      imageUrl: "https://precioentiempo.com/og/espana/iphone.png",
+    });
+    expect(withInvalidDate.offers.validFrom).toBeUndefined();
   });
 
   it("generates Category schema (CollectionPage)", () => {

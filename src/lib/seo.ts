@@ -171,6 +171,17 @@ export function getProductBrand(product: Product): string {
 }
 
 /**
+ * Normaliza la fecha del precio (YYYY-MM o YYYY-MM-DD) a una fecha ISO
+ * completa (YYYY-MM-DD) para usarla como `validFrom` del Offer.
+ */
+function toIsoDate(date: string | undefined): string | undefined {
+  if (!date) return undefined;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(date)) return date;
+  if (/^\d{4}-\d{2}$/.test(date)) return `${date}-01`;
+  return undefined;
+}
+
+/**
  * Genera Schema.org JSON-LD para el análisis económico del producto con
  * especificaciones cuantitativas de esfuerzo laboral (horas, jornadas y meses
  * de sueldo).
@@ -182,10 +193,11 @@ export function getProductBrand(product: Product): string {
  * Como este sitio no vende ni permite comprar, NO emite `review` ni
  * `aggregateRating` (no hay reseñas reales: inventarlas es spam).
  * En su lugar emite un `Offer` mínimo y 100% verificable con lo que la página
- * muestra de verdad: el precio y su divisa. No incluye `availability`,
- * `itemCondition`, envío, devoluciones ni `priceValidUntil` porque la página no
- * los muestra y serían datos inventados.
+ * muestra de verdad: el precio, su divisa y la fecha de referencia (`validFrom`).
+ * No incluye `availability`, `itemCondition`, envío, devoluciones ni
+ * `priceValidUntil` porque la página no los muestra y serían datos inventados.
  */
+
 export function generateProductSchema(input: {
   product: Product;
   country: Country;
@@ -241,6 +253,7 @@ export function generateProductSchema(input: {
       url: input.canonicalUrl,
       priceCurrency: input.country.currency,
       price: input.price.value,
+      validFrom: toIsoDate(input.price.date),
     },
     additionalProperty: additionalProperties.length > 0 ? additionalProperties : undefined,
   };
