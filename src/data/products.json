@@ -850,31 +850,31 @@
         "origin": "local"
       },
       "GB": {
-        "value": 17.16,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (20 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 12.19,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14.2 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "US": {
-        "value": 23.18,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (20 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 16.46,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14.2 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "MX": {
-        "value": 393.6,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (20 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 279.45,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14.2 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "CH": {
-        "value": 18.9,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (20 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 13.42,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (14.2 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "AR": {
@@ -1315,31 +1315,31 @@
         "origin": "local"
       },
       "GB": {
-        "value": 772.33,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (900 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 369,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (430 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "US": {
-        "value": 1043.28,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (900 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 498.46,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (430 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "MX": {
-        "value": 12959,
+        "value": 12299,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
         "origin": "local"
       },
       "CH": {
-        "value": 850.59,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (900 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 406.39,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (430 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "AR": {
@@ -1357,7 +1357,7 @@
         "origin": "local"
       },
       "CL": {
-        "value": 699990,
+        "value": 679990,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Falabella Chile (CLP).",
         "source": "Falabella Chile (precio de tienda)",
@@ -1422,7 +1422,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 10499,
+        "value": 5999,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -1450,7 +1450,7 @@
         "origin": "local"
       },
       "CL": {
-        "value": 319990,
+        "value": 294990,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Falabella Chile (CLP).",
         "source": "Falabella Chile (precio de tienda)",
@@ -1515,7 +1515,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 974,
+        "value": 1299,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -1608,7 +1608,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 6599,
+        "value": 6322,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -1636,7 +1636,7 @@
         "origin": "local"
       },
       "CL": {
-        "value": 419990,
+        "value": 364990,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Falabella Chile (CLP).",
         "source": "Falabella Chile (precio de tienda)",
@@ -1794,7 +1794,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 13999,
+        "value": 12879,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -1887,7 +1887,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 2120,
+        "value": 1999,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -1915,7 +1915,7 @@
         "origin": "local"
       },
       "CL": {
-        "value": 169990,
+        "value": 184990,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Falabella Chile (CLP).",
         "source": "Falabella Chile (precio de tienda)",
@@ -1966,31 +1966,31 @@
         "origin": "local"
       },
       "GB": {
-        "value": 1115.6,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (1300 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 415.77,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (484.5 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "US": {
-        "value": 1506.96,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (1300 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 561.63,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (484.5 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "MX": {
-        "value": 34999,
+        "value": 37499,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
         "origin": "local"
       },
       "CH": {
-        "value": 1228.63,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (1300 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 457.9,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (484.5 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "AR": {
@@ -2008,7 +2008,7 @@
         "origin": "local"
       },
       "CL": {
-        "value": 865990,
+        "value": 879990,
         "date": "2026-09",
         "note": "Precio mediano de tienda en Falabella Chile (CLP).",
         "source": "Falabella Chile (precio de tienda)",
@@ -2245,31 +2245,31 @@
         "origin": "local"
       },
       "GB": {
-        "value": 343.26,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (400 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 514.03,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (599 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "US": {
-        "value": 463.68,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (400 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 694.36,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (599 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "MX": {
-        "value": 7871.92,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (400 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 11788.2,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (599 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "CH": {
-        "value": 378.04,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (400 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 566.11,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (599 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "AR": {
@@ -2452,10 +2452,10 @@
         "origin": "local"
       },
       "CH": {
-        "value": 29770.65,
+        "value": 9798.21,
         "date": "2026-09",
-        "note": "Precio convertido desde España (31500 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
+        "note": "Precio convertido desde España (10367.38 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "AR": {
@@ -2617,31 +2617,31 @@
         "origin": "local"
       },
       "GB": {
-        "value": 429.08,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (500 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 199.51,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (232.49 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "US": {
-        "value": 579.6,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (500 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 269.5,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (232.49 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "MX": {
-        "value": 9839.9,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (500 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 4575.36,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (232.49 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "CH": {
-        "value": 472.55,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (500 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
+        "value": 219.73,
+        "date": "2026-09",
+        "note": "Precio convertido desde España (232.49 €). Edítalo.",
+        "source": "Google Shopping (vía SerpApi) (convertido)",
         "origin": "converted"
       },
       "AR": {
@@ -4470,10 +4470,10 @@
     "category": "dia-a-dia",
     "prices": {
       "ES": {
-        "value": 10,
+        "value": 8.75,
         "date": "2026-09",
-        "note": "Precio mediano de Google Shopping (ES).",
-        "source": "Google Shopping (vía SerpApi)",
+        "note": "Precio medio de 1 litro de AOVE envasado (8.75 €).",
+        "source": "Índice de Supermercados / Open Food Facts",
         "origin": "local"
       },
       "GB": {
@@ -4498,24 +4498,24 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 11500,
+        "value": 10063,
         "date": "2026-09",
-        "note": "Precio convertido desde España (10 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (8.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 44000,
+        "value": 38500,
         "date": "2026-09",
-        "note": "Precio convertido desde España (10 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (8.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 10200,
+        "value": 8925,
         "date": "2026-09",
-        "note": "Precio convertido desde España (10 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (8.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
         "origin": "converted"
       },
       "CH": {
@@ -4656,10 +4656,10 @@
     "category": "dia-a-dia",
     "prices": {
       "ES": {
-        "value": 28.68,
+        "value": 11.4,
         "date": "2026-09",
-        "note": "Precio mediano de Google Shopping (ES).",
-        "source": "Google Shopping (vía SerpApi)",
+        "note": "Pack de 12 litros de leche entera de vaca (0,95 €/L). Consumo mensual orientativo de un hogar.",
+        "source": "Índice de Supermercados / Open Food Facts",
         "origin": "local"
       },
       "GB": {
@@ -4684,24 +4684,24 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 32982,
+        "value": 13110,
         "date": "2026-09",
-        "note": "Precio convertido desde España (28.68 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 126192,
+        "value": 50160,
         "date": "2026-09",
-        "note": "Precio convertido desde España (28.68 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 29254,
+        "value": 11628,
         "date": "2026-09",
-        "note": "Precio convertido desde España (28.68 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (11.4 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
         "origin": "converted"
       },
       "CH": {
@@ -4749,10 +4749,10 @@
     "category": "dia-a-dia",
     "prices": {
       "ES": {
-        "value": 7.32,
+        "value": 2.75,
         "date": "2026-09",
-        "note": "Precio mediano de Google Shopping (ES).",
-        "source": "Google Shopping (vía SerpApi)",
+        "note": "Docena de huevos camperos de gallinas criadas en suelo (Categoría L).",
+        "source": "Índice de Supermercados / Open Food Facts",
         "origin": "local"
       },
       "GB": {
@@ -4777,24 +4777,24 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 8418,
+        "value": 3163,
         "date": "2026-09",
-        "note": "Precio convertido desde España (7.32 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 32208,
+        "value": 12100,
         "date": "2026-09",
-        "note": "Precio convertido desde España (7.32 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 7466,
+        "value": 2805,
         "date": "2026-09",
-        "note": "Precio convertido desde España (7.32 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (2.75 €). Edítalo.",
+        "source": "Índice de Supermercados / Open Food Facts (convertido)",
         "origin": "converted"
       },
       "CH": {
@@ -4935,86 +4935,86 @@
     "category": "vida",
     "prices": {
       "ES": {
-        "value": 66507,
+        "value": 67428,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Bitcoin (66.507 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (67.428 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "GB": {
-        "value": 57034,
+        "value": 57717,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Bitcoin (57.034 £).",
+        "note": "Cotización de mercado de 1 Bitcoin (57.717 £).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "US": {
-        "value": 77162,
+        "value": 77873,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Bitcoin (77.162 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (77.873 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "MX": {
-        "value": 1309448,
+        "value": 1329667,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Bitcoin (1.309.448 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (1.329.667 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "AR": {
-        "value": 116452779,
+        "value": 117484248,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Bitcoin (116.452.779 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (117.484.248 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CO": {
-        "value": 292630800,
+        "value": 296683200,
         "date": "2026-09",
-        "note": "Precio convertido desde España (66507 €). Edítalo.",
+        "note": "Precio convertido desde España (67428 €). Edítalo.",
         "source": "CoinGecko API (mercado) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 72683167,
+        "value": 73640250,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Bitcoin (72.683.167 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (73.640.250 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CH": {
-        "value": 62963,
+        "value": 63608,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Bitcoin (62.963 Fr.).",
+        "note": "Cotización de mercado de 1 Bitcoin (63.608 Fr.).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "PT": {
-        "value": 66507,
+        "value": 67428,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Bitcoin (66.507 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (67.428 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "FR": {
-        "value": 66507,
+        "value": 67428,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Bitcoin (66.507 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (67.428 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "DE": {
-        "value": 66507,
+        "value": 67428,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Bitcoin (66.507 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (67.428 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "IT": {
-        "value": 66507,
+        "value": 67428,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Bitcoin (66.507 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (67.428 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       }
@@ -5214,10 +5214,10 @@
     "category": "dia-a-dia",
     "prices": {
       "ES": {
-        "value": 2.26,
+        "value": 1.2,
         "date": "2026-09",
-        "note": "Precio mediano de Google Shopping (ES).",
-        "source": "Google Shopping (vía SerpApi)",
+        "note": "Paquete de 1 kg de pasta de trigo clásica (1.20 €) sincronizado con el lineal de Mercadona.",
+        "source": "Mercadona (API en Vivo)",
         "origin": "local"
       },
       "GB": {
@@ -5242,24 +5242,24 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 2599,
+        "value": 1380,
         "date": "2026-09",
-        "note": "Precio convertido desde España (2.26 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 9944,
+        "value": 5280,
         "date": "2026-09",
-        "note": "Precio convertido desde España (2.26 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 2305,
+        "value": 1224,
         "date": "2026-09",
-        "note": "Precio convertido desde España (2.26 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (1.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
         "origin": "converted"
       },
       "CH": {
@@ -5307,10 +5307,10 @@
     "category": "dia-a-dia",
     "prices": {
       "ES": {
-        "value": 9,
+        "value": 3.6,
         "date": "2026-09",
-        "note": "Precio mediano de Google Shopping (ES).",
-        "source": "Google Shopping (vía SerpApi)",
+        "note": "Pack de 6 latas de cerveza clásica rubia (3.60 €) sincronizado con el lineal de Mercadona.",
+        "source": "Mercadona (API en Vivo)",
         "origin": "local"
       },
       "GB": {
@@ -5335,10 +5335,10 @@
         "origin": "local"
       },
       "AR": {
-        "value": 10350,
+        "value": 4140,
         "date": "2026-09",
-        "note": "Precio convertido desde España (9 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
         "origin": "converted"
       },
       "CO": {
@@ -5349,10 +5349,10 @@
         "origin": "local"
       },
       "CL": {
-        "value": 9180,
+        "value": 3672,
         "date": "2026-09",
-        "note": "Precio convertido desde España (9 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (3.6 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
         "origin": "converted"
       },
       "CH": {
@@ -5493,10 +5493,10 @@
     "category": "dia-a-dia",
     "prices": {
       "ES": {
-        "value": 17.75,
+        "value": 7.2,
         "date": "2026-09",
-        "note": "Precio mediano de Google Shopping (ES).",
-        "source": "Google Shopping (vía SerpApi)",
+        "note": "Bandeja de 1 kg de pechuga de pollo al corte (7.20 €) sincronizado con el lineal de Mercadona.",
+        "source": "Mercadona (API en Vivo)",
         "origin": "local"
       },
       "GB": {
@@ -5521,24 +5521,24 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 20413,
+        "value": 8280,
         "date": "2026-09",
-        "note": "Precio convertido desde España (17.75 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 78100,
+        "value": 31680,
         "date": "2026-09",
-        "note": "Precio convertido desde España (17.75 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 18105,
+        "value": 7344,
         "date": "2026-09",
-        "note": "Precio convertido desde España (17.75 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (7.2 €). Edítalo.",
+        "source": "Mercadona (API en Vivo) (convertido)",
         "origin": "converted"
       },
       "CH": {
@@ -5779,30 +5779,30 @@
         "origin": "local"
       },
       "GB": {
-        "value": 1866,
+        "value": 1863,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Ethereum (1866 £).",
+        "note": "Cotización de mercado de 1 Ethereum (1863 £).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "US": {
-        "value": 2524,
+        "value": 2513,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Ethereum (2524 $).",
+        "note": "Cotización de mercado de 1 Ethereum (2513 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "MX": {
-        "value": 42834,
+        "value": 42908,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Ethereum (42.834 $).",
+        "note": "Cotización de mercado de 1 Ethereum (42.908 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "AR": {
-        "value": 3809303,
+        "value": 3791225,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Ethereum (3.809.303 $).",
+        "note": "Cotización de mercado de 1 Ethereum (3.791.225 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -5814,16 +5814,16 @@
         "origin": "converted"
       },
       "CL": {
-        "value": 2377549,
+        "value": 2376376,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Ethereum (2.377.549 $).",
+        "note": "Cotización de mercado de 1 Ethereum (2.376.376 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CH": {
-        "value": 2060,
+        "value": 2053,
         "date": "2026-09",
-        "note": "Cotización de mercado de 1 Ethereum (2060 Fr.).",
+        "note": "Cotización de mercado de 1 Ethereum (2053 Fr.).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -6330,10 +6330,10 @@
     "category": "vivienda",
     "prices": {
       "ES": {
-        "value": 2204,
+        "value": 4600,
         "date": "2026-09",
-        "note": "Precio mediano de Google Shopping (ES).",
-        "source": "Google Shopping (vía SerpApi)",
+        "note": "Instalación residencial estándar llave en mano de 4 kW para autoconsumo doméstico.",
+        "source": "IDAE / Unión Española Fotovoltaica",
         "origin": "local"
       },
       "GB": {
@@ -6358,24 +6358,24 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 2534600,
+        "value": 5290000,
         "date": "2026-09",
-        "note": "Precio convertido desde España (2204 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 9697600,
+        "value": 20240000,
         "date": "2026-09",
-        "note": "Precio convertido desde España (2204 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 2248080,
+        "value": 4692000,
         "date": "2026-09",
-        "note": "Precio convertido desde España (2204 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (4600 €). Edítalo.",
+        "source": "IDAE / Unión Española Fotovoltaica (convertido)",
         "origin": "converted"
       },
       "CH": {
@@ -6423,10 +6423,10 @@
     "category": "vivienda",
     "prices": {
       "ES": {
-        "value": 746.38,
+        "value": 950,
         "date": "2026-09",
-        "note": "Precio mediano de Google Shopping (ES).",
-        "source": "Google Shopping (vía SerpApi)",
+        "note": "Equipo de climatización tipo split de 3.000 frigorías con instalación autorizada RITE.",
+        "source": "Tarifas Medias de Climatización Residencial",
         "origin": "local"
       },
       "GB": {
@@ -6451,10 +6451,10 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 858337,
+        "value": 1092500,
         "date": "2026-09",
-        "note": "Precio convertido desde España (746.38 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
         "origin": "converted"
       },
       "CO": {
@@ -6465,10 +6465,10 @@
         "origin": "local"
       },
       "CL": {
-        "value": 761308,
+        "value": 969000,
         "date": "2026-09",
-        "note": "Precio convertido desde España (746.38 €). Edítalo.",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
+        "note": "Precio convertido desde España (950 €). Edítalo.",
+        "source": "Tarifas Medias de Climatización Residencial (convertido)",
         "origin": "converted"
       },
       "CH": {
