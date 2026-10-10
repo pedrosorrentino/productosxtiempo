@@ -1985,7 +1985,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 39999,
+        "value": 42499,
         "date": "2026-10",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -2344,11 +2344,12 @@
         "origin": "local"
       },
       "GB": {
-        "value": 11866.82,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (14000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 14765,
+        "date": "2026-10",
+        "note": "Essential TCe 100 (On The Road)",
+        "source": "Dacia · web oficial del país",
+        "origin": "local",
+        "url": "https://dacia.co.uk/vehicles/sandero.html"
       },
       "US": {
         "value": 15688.4,
@@ -2365,25 +2366,28 @@
         "origin": "converted"
       },
       "CH": {
-        "value": 13038.2,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (14000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 15290,
+        "date": "2026-10",
+        "note": "expression TCe 100",
+        "source": "Dacia · web oficial del país",
+        "origin": "local",
+        "url": "https://de.dacia.ch/modelle/sandero.html"
       },
       "AR": {
-        "value": 16100000,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (14000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 35740000,
+        "date": "2026-10",
+        "note": "Intens 1.6 (se vende como Renault Sandero)",
+        "source": "Renault Argentina · lista oficial",
+        "origin": "local",
+        "url": "https://www.renault.com.ar/automoviles/sandero/precios-y-versiones.html"
       },
       "CO": {
-        "value": 61600000,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (14000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 65990000,
+        "date": "2026-10",
+        "note": "Life+ 1.6 (se vende como Renault Sandero)",
+        "source": "Renault Colombia · lista oficial",
+        "origin": "local",
+        "url": "https://www.renault.com.co/vehiculos/sandero/versiones-y-precios.html"
       },
       "CL": {
         "value": 14280000,
@@ -2393,32 +2397,36 @@
         "origin": "converted"
       },
       "PT": {
-        "value": 14000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (14000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 14950,
+        "date": "2026-10",
+        "note": "essential TCe 100",
+        "source": "Dacia · web oficial del país",
+        "origin": "local",
+        "url": "https://www.dacia.pt/gama/sandero-citadino/versoes-precos.html"
       },
       "FR": {
-        "value": 14000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (14000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 13990,
+        "date": "2026-10",
+        "note": "essential TCe 100",
+        "source": "Dacia · web oficial del país",
+        "origin": "local",
+        "url": "https://www.dacia.fr/gamme-vehicules/sandero-citadine/configurateur.html"
       },
       "DE": {
-        "value": 14000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (14000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 12790,
+        "date": "2026-10",
+        "note": "Essential SCe 65",
+        "source": "Dacia · web oficial del país",
+        "origin": "local",
+        "url": "https://www.dacia.de/modelle/sandero-stadtauto/preise-versionen.html"
       },
       "IT": {
-        "value": 14000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (14000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 16600,
+        "date": "2026-10",
+        "note": "Streetway expression Eco-G 120",
+        "source": "Dacia · web oficial del país",
+        "origin": "local",
+        "url": "https://www.dacia.it/gamma/sandero-streetway.html"
       }
     },
     "visible": true
@@ -2530,18 +2538,20 @@
         "origin": "local"
       },
       "GB": {
-        "value": 28281.17,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (33365 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 37990,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/en_GB/model-3/design"
       },
       "US": {
-        "value": 37388.82,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (33365 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 36990,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/model-3/design"
       },
       "MX": {
         "value": 680479.18,
@@ -2551,11 +2561,12 @@
         "origin": "converted"
       },
       "CH": {
-        "value": 31072.82,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (33365 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 36990,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/de_CH/model-3/design"
       },
       "AR": {
         "value": 38369750,
@@ -2565,46 +2576,52 @@
         "origin": "converted"
       },
       "CO": {
-        "value": 146806000,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (33365 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 114990000,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/es_co/model-3/design"
       },
       "CL": {
-        "value": 34032300,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (33365 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 29900000,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/es_CL/model-3/design"
       },
       "PT": {
-        "value": 33365,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (33365 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 36990,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/pt_PT/model-3/design"
       },
       "FR": {
-        "value": 33365,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (33365 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 36990,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/fr_FR/model-3/design"
       },
       "DE": {
-        "value": 33365,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (33365 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 36990,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/de_DE/model-3/design"
       },
       "IT": {
-        "value": 33365,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (33365 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 36990,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/it_IT/model-3/design"
       }
     },
     "visible": true
@@ -4484,11 +4501,12 @@
         "origin": "local"
       },
       "GB": {
-        "value": 7.42,
+        "value": 8.73,
         "date": "2026-10",
-        "note": "Precio convertido desde España (8.75 €). Edítalo.",
-        "source": "Índice de Supermercados / Open Food Facts (convertido)",
-        "origin": "converted"
+        "note": "1 litro de aceite de oliva, precio al consumo.",
+        "source": "ONS · precios de la compra",
+        "origin": "local",
+        "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/adhocs/2724shoppingpricescomparisontooldatadownloadbeforethe2025update"
       },
       "US": {
         "value": 9.81,
@@ -4520,11 +4538,12 @@
         "origin": "converted"
       },
       "CL": {
-        "value": 8925,
+        "value": 16054.7,
         "date": "2026-10",
-        "note": "Precio convertido desde España (8.75 €). Edítalo.",
-        "source": "Índice de Supermercados / Open Food Facts (convertido)",
-        "origin": "converted"
+        "note": "1 litro de aceite de oliva, precio al consumidor.",
+        "source": "ODEPA · Ministerio de Agricultura de Chile",
+        "origin": "local",
+        "url": "https://datos.odepa.gob.cl/dataset/precios-consumidor/resource/9f885df4-afeb-4b75-8bab-9334f79db00f"
       },
       "CH": {
         "value": 8.15,
@@ -4534,11 +4553,12 @@
         "origin": "converted"
       },
       "PT": {
-        "value": 8.75,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (8.75 €). Edítalo.",
-        "source": "Índice de Supermercados / Open Food Facts (convertido)",
-        "origin": "converted"
+        "value": 6.86,
+        "date": "2026-10",
+        "note": "1 litro de aceite de oliva, precio al consumo.",
+        "source": "Observatorio Agroalimentario de Portugal",
+        "origin": "local",
+        "url": "https://observatorioagroalimentar.gov.pt/wp-content/uploads/2026/09/Observatorio_Resumo_Periodo-082026.pdf"
       },
       "FR": {
         "value": 14.31,
@@ -4555,11 +4575,12 @@
         "origin": "converted"
       },
       "IT": {
-        "value": 8.75,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (8.75 €). Edítalo.",
-        "source": "Índice de Supermercados / Open Food Facts (convertido)",
-        "origin": "converted"
+        "value": 8.21,
+        "date": "2026-10",
+        "note": "1 litro de aceite de oliva, precio al consumo (Milán).",
+        "source": "Osservaprezzi · Ministerio de Empresa de Italia",
+        "origin": "local",
+        "url": "https://osservaprezzi.mise.gov.it/prezzi/livelli/beni-e-servizi-di-largo-consumo/archivio-rilevazioni-beni-e-servizi-di-largo-consumo?ANNO=2025&MESE=12&f%5BPROVINCIA%5D=Milano&f%5BTIPO_RECORD_MISE%5D=altri_alim"
       }
     },
     "visible": true
@@ -4948,86 +4969,86 @@
     "category": "vida",
     "prices": {
       "ES": {
-        "value": 73988,
+        "value": 74068,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.988 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (74.068 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "GB": {
-        "value": 62597,
+        "value": 62743,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (62.597 £).",
+        "note": "Cotización de mercado de 1 Bitcoin (62.743 £).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "US": {
-        "value": 82888,
+        "value": 82978,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (82.888 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (82.978 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "MX": {
-        "value": 1526314,
+        "value": 1527966,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (1.526.314 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (1.527.966 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "AR": {
-        "value": 125810739,
+        "value": 125946935,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (125.810.739 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (125.946.935 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CO": {
-        "value": 325547200,
+        "value": 325899200,
         "date": "2026-10",
-        "note": "Precio convertido desde España (73988 €). Edítalo.",
+        "note": "Precio convertido desde España (74068 €). Edítalo.",
         "source": "CoinGecko API (mercado) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 80979405,
+        "value": 81067068,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (80.979.405 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (81.067.068 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CH": {
-        "value": 68769,
+        "value": 68844,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (68.769 Fr.).",
+        "note": "Cotización de mercado de 1 Bitcoin (68.844 Fr.).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "PT": {
-        "value": 73988,
+        "value": 74068,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.988 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (74.068 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "FR": {
-        "value": 73988,
+        "value": 74068,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.988 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (74.068 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "DE": {
-        "value": 73988,
+        "value": 74068,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.988 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (74.068 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "IT": {
-        "value": 73988,
+        "value": 74068,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.988 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (74.068 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       }
@@ -5517,11 +5538,12 @@
         "origin": "local"
       },
       "GB": {
-        "value": 6.81,
+        "value": 8.01,
         "date": "2026-10",
-        "note": "Precio medio de mercado en United Kingdom.",
-        "source": "Numbeo (coste de la vida, colaborativo)",
-        "origin": "local"
+        "note": "1 kg de pechuga de pollo, precio al consumo.",
+        "source": "ONS · precios de la compra",
+        "origin": "local",
+        "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/adhocs/2724shoppingpricescomparisontooldatadownloadbeforethe2025update"
       },
       "US": {
         "value": 12.4,
@@ -5531,11 +5553,12 @@
         "origin": "local"
       },
       "MX": {
-        "value": 152,
+        "value": 117.77,
         "date": "2026-10",
-        "note": "Precio medio de mercado en Mexico.",
-        "source": "Numbeo (coste de la vida, colaborativo)",
-        "origin": "local"
+        "note": "1 kg de pechuga de pollo, precio medio al consumidor.",
+        "source": "INEGI · precios al consumidor",
+        "origin": "local",
+        "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/lp/lp2026_08.pdf"
       },
       "AR": {
         "value": 9300,
@@ -5553,11 +5576,12 @@
         "origin": "local"
       },
       "CL": {
-        "value": 5862,
+        "value": 4797.2,
         "date": "2026-10",
-        "note": "Precio medio de mercado en Chile.",
-        "source": "Numbeo (coste de la vida, colaborativo)",
-        "origin": "local"
+        "note": "1 kg de pechuga de pollo, precio al consumidor.",
+        "source": "ODEPA · Ministerio de Agricultura de Chile",
+        "origin": "local",
+        "url": "https://datos.odepa.gob.cl/dataset/precios-consumidor/resource/9f885df4-afeb-4b75-8bab-9334f79db00f"
       },
       "CH": {
         "value": 23.18,
@@ -5567,18 +5591,20 @@
         "origin": "local"
       },
       "PT": {
-        "value": 6.71,
+        "value": 6.52,
         "date": "2026-10",
-        "note": "Precio medio de mercado en Portugal.",
-        "source": "Numbeo (coste de la vida, colaborativo)",
-        "origin": "local"
+        "note": "1 kg de pechuga de pollo, precio al consumo.",
+        "source": "Observatorio Agroalimentario de Portugal",
+        "origin": "local",
+        "url": "https://observatorioagroalimentar.gov.pt/wp-content/uploads/2026/09/Observatorio_Resumo_Periodo-082026.pdf"
       },
       "FR": {
-        "value": 12.18,
+        "value": 11.83,
         "date": "2026-10",
-        "note": "Precio medio de mercado en France.",
-        "source": "Numbeo (coste de la vida, colaborativo)",
-        "origin": "local"
+        "note": "1 kg de pechuga de pollo, precio al consumo.",
+        "source": "FranceAgriMer · Observatorio de precios y márgenes",
+        "origin": "local",
+        "url": "https://observatoire-prixmarges.franceagrimer.fr/sites/default/files/PDF/2026_rapport_ofpm_v2.pdf"
       },
       "DE": {
         "value": 10.44,
@@ -5588,11 +5614,12 @@
         "origin": "local"
       },
       "IT": {
-        "value": 11.15,
+        "value": 14.92,
         "date": "2026-10",
-        "note": "Precio medio de mercado en Italy.",
-        "source": "Numbeo (coste de la vida, colaborativo)",
-        "origin": "local"
+        "note": "1 kg de pechuga de pollo, precio al consumo (Milán).",
+        "source": "Osservaprezzi · Ministerio de Empresa de Italia",
+        "origin": "local",
+        "url": "https://osservaprezzi.mise.gov.it/prezzi/livelli/beni-e-servizi-di-largo-consumo/archivio-rilevazioni-beni-e-servizi-di-largo-consumo?ANNO=2025&MESE=12&f%5BPROVINCIA%5D=Milano&f%5BTIPO_RECORD_MISE%5D=altri_alim"
       }
     },
     "visible": true
@@ -5604,58 +5631,58 @@
     "category": "transporte",
     "prices": {
       "ES": {
-        "value": 87.44,
+        "value": 87.48,
         "date": "2026-10",
         "note": "Depósito medio de 45 L de Gasolina 98 E5 (1.94 €/L). Datos oficiales de 5503 estaciones.",
         "source": "MITECO (Gobierno de España)",
         "origin": "local"
       },
       "GB": {
-        "value": 74.12,
+        "value": 74.15,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.44 €). Edítalo.",
+        "note": "Precio convertido desde España (87.48 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "US": {
-        "value": 97.99,
+        "value": 98.03,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.44 €). Edítalo.",
+        "note": "Precio convertido desde España (87.48 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "MX": {
-        "value": 1783.34,
+        "value": 1784.15,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.44 €). Edítalo.",
+        "note": "Precio convertido desde España (87.48 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "AR": {
-        "value": 100556,
+        "value": 100602,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.44 €). Edítalo.",
+        "note": "Precio convertido desde España (87.48 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 384736,
+        "value": 384912,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.44 €). Edítalo.",
+        "note": "Precio convertido desde España (87.48 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 89189,
+        "value": 89230,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.44 €). Edítalo.",
+        "note": "Precio convertido desde España (87.48 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CH": {
-        "value": 81.43,
+        "value": 81.47,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.44 €). Edítalo.",
+        "note": "Precio convertido desde España (87.48 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
@@ -5793,51 +5820,51 @@
     "category": "vida",
     "prices": {
       "ES": {
-        "value": 2237,
+        "value": 2236,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2237 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2236 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "GB": {
-        "value": 1893,
+        "value": 1894,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (1893 £).",
+        "note": "Cotización de mercado de 1 Ethereum (1894 £).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "US": {
-        "value": 2506,
+        "value": 2505,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2506 $).",
+        "note": "Cotización de mercado de 1 Ethereum (2505 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "MX": {
-        "value": 46147,
+        "value": 46135,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (46.147 $).",
+        "note": "Cotización de mercado de 1 Ethereum (46.135 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "AR": {
-        "value": 3803830,
+        "value": 3802807,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (3.803.830 $).",
+        "note": "Cotización de mercado de 1 Ethereum (3.802.807 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CO": {
-        "value": 9842800,
+        "value": 9838400,
         "date": "2026-10",
-        "note": "Precio convertido desde España (2237 €). Edítalo.",
+        "note": "Precio convertido desde España (2236 €). Edítalo.",
         "source": "CoinGecko API (mercado) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 2448375,
+        "value": 2447717,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2.448.375 $).",
+        "note": "Cotización de mercado de 1 Ethereum (2.447.717 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -5849,30 +5876,30 @@
         "origin": "local"
       },
       "PT": {
-        "value": 2237,
+        "value": 2236,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2237 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2236 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "FR": {
-        "value": 2237,
+        "value": 2236,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2237 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2236 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "DE": {
-        "value": 2237,
+        "value": 2236,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2237 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2236 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "IT": {
-        "value": 2237,
+        "value": 2236,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2237 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2236 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       }
@@ -6204,81 +6231,92 @@
         "origin": "local"
       },
       "GB": {
-        "value": 805.25,
+        "value": 85,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "DGT / Estudio de precios FACUA (convertido)",
-        "origin": "converted"
+        "note": "Tasas del DVSA: teórico 23 £ + práctico 62 £ en día laborable. No incluye autoescuela.",
+        "source": "DVSA · gov.uk, tasas oficiales",
+        "origin": "local",
+        "url": "https://www.gov.uk/driving-test-cost"
       },
       "US": {
-        "value": 1064.57,
+        "value": 46,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "DGT / Estudio de precios FACUA (convertido)",
-        "origin": "converted"
+        "note": "Estado de California: tasa de la licencia de conducir de coche, que cubre los dos exámenes. Varía por estado.",
+        "source": "California DMV · tasas oficiales",
+        "origin": "local",
+        "url": "https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/licensing-fees/"
       },
       "MX": {
-        "value": 19375.25,
+        "value": 1142,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "DGT / Estudio de precios FACUA (convertido)",
-        "origin": "converted"
+        "note": "Ciudad de México: expedición de la licencia tipo A para automovilista. Varía por estado.",
+        "source": "SEMOVI Ciudad de México · tarifas oficiales",
+        "origin": "local",
+        "url": "https://www.cdmx.gob.mx/public/InformacionTramite.xhtml?idTramite=2500"
       },
       "AR": {
-        "value": 1092500,
+        "value": 42230,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "DGT / Estudio de precios FACUA (convertido)",
-        "origin": "converted"
+        "note": "Ciudad de Buenos Aires: arancel de otorgamiento o renovación. No incluye curso ni exámenes.",
+        "source": "Gobierno de la Ciudad de Buenos Aires · aranceles",
+        "origin": "local",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/gobierno/licencias-de-conducir/aranceles"
       },
       "CO": {
-        "value": 4180000,
+        "value": 329900,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "DGT / Estudio de precios FACUA (convertido)",
-        "origin": "converted"
+        "note": "Bogotá: expedición de la licencia de automóvil. No incluye curso ni exámenes médicos.",
+        "source": "Secretaría de Movilidad de Bogotá · tarifas oficiales",
+        "origin": "local",
+        "url": "https://bogota.gov.co/mi-ciudad/movilidad/tarifas-de-tramites-de-transito-y-transporte-en-bogota-para-2026"
       },
       "CL": {
-        "value": 969000,
+        "value": 45000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "DGT / Estudio de precios FACUA (convertido)",
-        "origin": "converted"
+        "note": "Derechos municipales de la licencia no profesional clase B (40.000-49.000 $ según municipio).",
+        "source": "ChileAtiende · derechos municipales",
+        "origin": "local",
+        "url": "https://www.chileatiende.gob.cl/fichas/24065-licencia-de-conducir-no-profesional-clase-b"
       },
       "CH": {
-        "value": 884.74,
+        "value": 170,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "DGT / Estudio de precios FACUA (convertido)",
-        "origin": "converted"
+        "note": "Cantón de Vaud: tasas de examen del carnet B (teórico 40 + práctico 130 CHF). Varía por cantón.",
+        "source": "Cantón de Vaud · tasas oficiales",
+        "origin": "local",
+        "url": "https://www.vd.ch/mobilite/automobile-et-navigation/frais-des-prestations-du-san/permis-de-conduire"
       },
       "PT": {
-        "value": 950,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (950 €). Edítalo.",
-        "source": "DGT / Estudio de precios FACUA (convertido)",
-        "origin": "converted"
+        "value": 45,
+        "date": "2026-10",
+        "note": "Tasas de examen de la categoría B: teórico 15 € + práctico 30 €. No incluye autoescuela.",
+        "source": "IMT Portugal · tasas oficiales",
+        "origin": "local",
+        "url": "https://www.imt-ip.pt/condutores/informacoes-gerais/automoveis-ligeiros/"
       },
       "FR": {
-        "value": 950,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (950 €). Edítalo.",
-        "source": "DGT / Estudio de precios FACUA (convertido)",
-        "origin": "converted"
+        "value": 30,
+        "date": "2026-10",
+        "note": "Tasa estatal del examen teórico del permiso B. El práctico no tiene tasa (se paga a la autoescuela).",
+        "source": "Service-Public.fr · tasas oficiales",
+        "origin": "local",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33694"
       },
       "DE": {
-        "value": 950,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (950 €). Edítalo.",
-        "source": "DGT / Estudio de precios FACUA (convertido)",
-        "origin": "converted"
+        "value": 154.82,
+        "date": "2026-10",
+        "note": "Tasas de examen del carnet B: teórico 24,99 € + práctico 129,83 €. No incluye autoescuela ni expedición.",
+        "source": "TÜV · tasas oficiales (GebOSt)",
+        "origin": "local",
+        "url": "https://www.tuev-hessen.de/324/gebuehren-entgelte-und-auslagen-fuer-fahrerlaubnispruefungen/"
       },
       "IT": {
-        "value": 950,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (950 €). Edítalo.",
-        "source": "DGT / Estudio de precios FACUA (convertido)",
-        "origin": "converted"
+        "value": 58.4,
+        "date": "2026-10",
+        "note": "Tasas de la Motorizzazione del examen de patente B (teórico + práctico). No incluye autoescuela.",
+        "source": "Motorizzazione Civile · tasas oficiales",
+        "origin": "local",
+        "url": "https://www.ilportaledellautomobilista.it/gms/dettaglionormativa.downloadallegato_1:download/159269/CONSEGUIMENTI.pdf"
       }
     },
     "visible": true
@@ -6297,60 +6335,68 @@
         "origin": "local"
       },
       "GB": {
-        "value": 40.69,
+        "value": 54.85,
         "date": "2026-10",
-        "note": "Precio convertido desde España (48 €). Edítalo.",
-        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
-        "origin": "converted"
+        "note": "Tarifa MÁXIMA legal del MOT de un turismo (el centro puede cobrar menos).",
+        "source": "DVSA · gov.uk, tarifas oficiales",
+        "origin": "local",
+        "url": "https://www.gov.uk/getting-an-mot/mot-test-fees"
       },
       "US": {
-        "value": 53.79,
+        "value": 37,
         "date": "2026-10",
-        "note": "Precio convertido desde España (48 €). Edítalo.",
-        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
-        "origin": "converted"
+        "note": "Estado de Nueva York: inspección de seguridad (10 $) + emisiones (27 $). Son máximos legales.",
+        "source": "NY DMV · tarifas oficiales",
+        "origin": "local",
+        "url": "https://dmv.ny.gov/forms/vs77.pdf"
       },
       "MX": {
-        "value": 978.96,
+        "value": 764.44,
         "date": "2026-10",
-        "note": "Precio convertido desde España (48 €). Edítalo.",
-        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
-        "origin": "converted"
+        "note": "Ciudad de México: verificación vehicular semestral, tarifa unificada. En México la inspección depende de cada estado.",
+        "source": "SEDEMA Ciudad de México · tarifa oficial",
+        "origin": "local",
+        "url": "https://sedema.cdmx.gob.mx/programas/programa/verificacion-vehicular"
       },
       "AR": {
-        "value": 55200,
+        "value": 96968,
         "date": "2026-10",
-        "note": "Precio convertido desde España (48 €). Edítalo.",
-        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
-        "origin": "converted"
+        "note": "Ciudad de Buenos Aires: verificación técnica obligatoria de un auto particular.",
+        "source": "Gobierno de la Ciudad de Buenos Aires · tarifas oficiales",
+        "origin": "local",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/verificacion-tecnica-vehicular/tarifas"
       },
       "CO": {
-        "value": 211200,
+        "value": 317000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (48 €). Edítalo.",
-        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
-        "origin": "converted"
+        "note": "Revisión técnico-mecánica y de emisiones de un carro particular. El valor oficial es un rango (317.000-370.000 $).",
+        "source": "RUNT / Ministerio de Transporte de Colombia",
+        "origin": "local",
+        "url": "https://www.runt.gov.co/sites/default/files/documentos/ABC%20Renovaci%C3%B3n%20RTM.pdf"
       },
       "CL": {
-        "value": 48960,
+        "value": 20000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (48 €). Edítalo.",
-        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
-        "origin": "converted"
+        "note": "Revisión técnica de un auto particular. La tarifa la fija cada planta dentro de un máximo regulado (14.000-22.000 $).",
+        "source": "ChileAtiende (Ministerio de Transportes)",
+        "origin": "local",
+        "url": "https://www.chileatiende.gob.cl/fichas/23978-revision-tecnica-de-vehiculos-motorizados"
       },
       "CH": {
-        "value": 44.7,
+        "value": 60,
         "date": "2026-10",
-        "note": "Precio convertido desde España (48 €). Edítalo.",
-        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
-        "origin": "converted"
+        "note": "Cantón de Berna: inspección periódica de un turismo hasta 3.500 kg. En Suiza la cobra cada cantón (rango habitual 50-70 CHF).",
+        "source": "Cantón de Berna · tarifas oficiales",
+        "origin": "local",
+        "url": "https://www.svsa.sid.be.ch/content/dam/svsa_sid/dokumente/de/gebuehrentarife/svsa-gebuehren-fzp-d.pdf"
       },
       "PT": {
-        "value": 48,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (48 €). Edítalo.",
-        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
-        "origin": "converted"
+        "value": 30.46,
+        "date": "2026-10",
+        "note": "Inspección periódica obligatoria de un vehículo ligero (sin IVA).",
+        "source": "IMT Portugal · tarifas oficiales",
+        "origin": "local",
+        "url": "https://www.imt-ip.pt/veiculos/inspecao-de-veiculos/tarifas-das-inspecoes/"
       },
       "FR": {
         "value": 48,
@@ -6360,18 +6406,20 @@
         "origin": "converted"
       },
       "DE": {
-        "value": 48,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (48 €). Edítalo.",
-        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
-        "origin": "converted"
+        "value": 63.3,
+        "date": "2026-10",
+        "note": "Hauptuntersuchung de un turismo hasta 3,5 t, con IVA. Varía por región y organismo (63,30-108,50 €); los gases se cobran aparte.",
+        "source": "TÜV Hessen · tarifas oficiales (GebOSt)",
+        "origin": "local",
+        "url": "https://www.tuev-hessen.de/297/preise-und-gebuehren-der-hauptuntersuchung/"
       },
       "IT": {
-        "value": 48,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (48 €). Edítalo.",
-        "source": "Tarifas Oficiales Autonómicas de ITV (convertido)",
-        "origin": "converted"
+        "value": 79.02,
+        "date": "2026-10",
+        "note": "Revisión periódica en centro autorizado: tarifa fija + IVA + derechos.",
+        "source": "Motorizzazione Civile · tarifas oficiales",
+        "origin": "local",
+        "url": "https://www.ilportaledellautomobilista.it/web/portale-automobilista/veicoli/revisioni"
       }
     },
     "visible": true
@@ -7320,11 +7368,12 @@
         "origin": "local"
       },
       "GB": {
-        "value": 13095.88,
+        "value": 21610,
         "date": "2026-10",
-        "note": "Precio convertido desde España (15450 €). Edítalo.",
-        "source": "SEAT España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "SE",
+        "source": "SEAT · configurador oficial",
+        "origin": "local",
+        "url": "https://www.seat.co.uk/configurator/w/version?wf=seat-gb-en&carlineGroup=CARLINE-GROUP-KJG"
       },
       "US": {
         "value": 17313.27,
@@ -7334,11 +7383,12 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 315102.75,
+        "value": 348900,
         "date": "2026-10",
-        "note": "Precio convertido desde España (15450 €). Edítalo.",
-        "source": "SEAT España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "FR (precio de contado desde)",
+        "source": "SEAT México · web oficial",
+        "origin": "local",
+        "url": "https://www.seat.mx/autos/ibiza"
       },
       "AR": {
         "value": 17767500,
@@ -7348,46 +7398,52 @@
         "origin": "converted"
       },
       "CO": {
-        "value": 67980000,
+        "value": 79990000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (15450 €). Edítalo.",
-        "source": "SEAT España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "precio de preventa",
+        "source": "SEAT Colombia · web oficial",
+        "origin": "local",
+        "url": "https://www.seat.co/"
       },
       "CL": {
-        "value": 15759000,
+        "value": 21490000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (15450 €). Edítalo.",
-        "source": "SEAT España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "FR 1.0 TSI AT",
+        "source": "SEAT Chile · web oficial",
+        "origin": "local",
+        "url": "https://www.seat.cl/ibiza/Nuevo-Ibiza"
       },
       "CH": {
-        "value": 14388.59,
+        "value": 24250,
         "date": "2026-10",
-        "note": "Precio convertido desde España (15450 €). Edítalo.",
-        "source": "SEAT España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "acabado de acceso",
+        "source": "SEAT · configurador oficial",
+        "origin": "local",
+        "url": "https://www.seat.ch/de/configurator/w/version?wf=seat-ch-de&carlineGroup=CARLINE-GROUP-KJG"
       },
       "PT": {
-        "value": 15450,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (15450 €). Edítalo.",
-        "source": "SEAT España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 20524.73,
+        "date": "2026-10",
+        "note": "1.0 TSI Style 95 cv",
+        "source": "SEAT · web oficial del país",
+        "origin": "local",
+        "url": "https://www.seat.pt/ofertas-seat/automoveis-novos/campanha-novo-seat-ibiza"
       },
       "FR": {
-        "value": 15450,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (15450 €). Edítalo.",
-        "source": "SEAT España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 16660,
+        "date": "2026-10",
+        "note": "acabado de acceso",
+        "source": "SEAT · web oficial del país",
+        "origin": "local",
+        "url": "https://www.seat.fr/voitures/ibiza"
       },
       "DE": {
-        "value": 15450,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (15450 €). Edítalo.",
-        "source": "SEAT España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 19910,
+        "date": "2026-10",
+        "note": "1.0 MPI 80 CV",
+        "source": "SEAT Alemania · tarifa oficial en PDF",
+        "origin": "local",
+        "url": "https://www.seat.de/content/dam/countries/de/seat-website/download/pdf/model-range/Preisliste_SEAT_Ibiza_Doppel_21-07-2026.pdf"
       },
       "IT": {
         "value": 15450,
@@ -7506,11 +7562,12 @@
         "origin": "local"
       },
       "GB": {
-        "value": 14324.95,
+        "value": 20995,
         "date": "2026-10",
-        "note": "Precio convertido desde España (16900 €). Edítalo.",
-        "source": "Renault España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "generation full hybrid E-Tech 145",
+        "source": "Renault · web oficial del país",
+        "origin": "local",
+        "url": "https://www.renault.co.uk/hybrid-cars/clio.html"
       },
       "US": {
         "value": 18938.14,
@@ -7548,39 +7605,44 @@
         "origin": "converted"
       },
       "CH": {
-        "value": 15738.97,
+        "value": 19900,
         "date": "2026-10",
-        "note": "Precio convertido desde España (16900 €). Edítalo.",
-        "source": "Renault España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "evolution TCe 115",
+        "source": "Renault · web oficial del país",
+        "origin": "local",
+        "url": "https://de.renault.ch/hybrid/neuer-clio.html"
       },
       "PT": {
-        "value": 16900,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (16900 €). Edítalo.",
-        "source": "Renault España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 21990,
+        "date": "2026-10",
+        "note": "evolution TCe 115",
+        "source": "Renault · web oficial del país",
+        "origin": "local",
+        "url": "https://www.renault.pt/veiculos-hibridos/novo-clio/caracteristicas.html"
       },
       "FR": {
-        "value": 16900,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (16900 €). Edítalo.",
-        "source": "Renault España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 19900,
+        "date": "2026-10",
+        "note": "evolution TCe 115",
+        "source": "Renault · web oficial del país",
+        "origin": "local",
+        "url": "https://www.renault.fr/vehicules-hybrides/nouvelle-clio/configurateur.html"
       },
       "DE": {
-        "value": 16900,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (16900 €). Edítalo.",
-        "source": "Renault España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 19900,
+        "date": "2026-10",
+        "note": "Evolution TCe 115",
+        "source": "Renault · web oficial del país",
+        "origin": "local",
+        "url": "https://www.renault.de/hybridfahrzeuge/clio/preise-versionen.html"
       },
       "IT": {
-        "value": 16900,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (16900 €). Edítalo.",
-        "source": "Renault España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 17838,
+        "date": "2026-10",
+        "note": "evolution TCe 115",
+        "source": "Renault · web oficial del país",
+        "origin": "local",
+        "url": "https://www.renault.it/veicoli-ibridi/clio/versioni-e-prezzi.html"
       }
     },
     "visible": true
@@ -7599,11 +7661,12 @@
         "origin": "local"
       },
       "GB": {
-        "value": 20766.94,
+        "value": 27445,
         "date": "2026-10",
-        "note": "Precio convertido desde España (24500 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "Hybrid, acabado de acceso (On The Road)",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.co.uk/new-cars/yaris-cross"
       },
       "US": {
         "value": 27454.7,
@@ -7620,60 +7683,68 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 28175000,
+        "value": 41464000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (24500 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "XLI 1.5 CVT (precio sugerido al público)",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.com.ar/modelos/yaris-cross-hybrid"
       },
       "CO": {
-        "value": 107800000,
+        "value": 125900000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (24500 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "XS 1.5 HEV 4x2 (precio sugerido al público)",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.com.co/vehiculos/hibridos/yaris-cross/version/xs-1-5-hev-4-x-2-e-cvt"
       },
       "CL": {
-        "value": 24990000,
+        "value": 22990000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (24500 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "Acabado de acceso (precio desde)",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://toyota.cl/modelos/suv/yaris-cross-hybrid/"
       },
       "CH": {
-        "value": 22816.85,
+        "value": 27900,
         "date": "2026-10",
-        "note": "Precio convertido desde España (24500 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "Comfort 1.5 Hybrid 116",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://de.toyota.ch/neuwagen-kaufen/yaris-cross"
       },
       "PT": {
-        "value": 24500,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (24500 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 27730,
+        "date": "2026-10",
+        "note": "Acabado de acceso",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.pt/carros/yaris-cross"
       },
       "FR": {
-        "value": 24500,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (24500 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 25000,
+        "date": "2026-10",
+        "note": "Hybride 116, acabado de acceso",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.fr/vehicules-neufs/yaris-cross"
       },
       "DE": {
-        "value": 24500,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (24500 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 24955.2,
+        "date": "2026-10",
+        "note": "Basis (precio de acción sobre 27.640 € de lista)",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.de/neuwagen/yaris-cross"
       },
       "IT": {
-        "value": 24500,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (24500 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 29600,
+        "date": "2026-10",
+        "note": "Icon (precio de lista)",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.it/gamma/yaris-cross"
       }
     },
     "visible": true
@@ -7692,11 +7763,12 @@
         "origin": "local"
       },
       "GB": {
-        "value": 15511.63,
+        "value": 20065,
         "date": "2026-10",
-        "note": "Precio convertido desde España (18300 €). Edítalo.",
-        "source": "Peugeot España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "note": "STYLE Turbo 100 (On The Road)",
+        "source": "Peugeot · web oficial del país",
+        "origin": "local",
+        "url": "https://store.peugeot.co.uk/offers/208-5-door"
       },
       "US": {
         "value": 20506.98,
@@ -7713,11 +7785,12 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 21045000,
+        "value": 28390000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (18300 €). Edítalo.",
-        "source": "Peugeot España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "note": "Active 1.6",
+        "source": "Peugeot Argentina · lista oficial",
+        "origin": "local",
+        "url": "https://www.peugeot.com.ar/gama/208.html"
       },
       "CO": {
         "value": 80520000,
@@ -7734,39 +7807,44 @@
         "origin": "converted"
       },
       "CH": {
-        "value": 17042.79,
+        "value": 24750,
         "date": "2026-10",
-        "note": "Precio convertido desde España (18300 €). Edítalo.",
-        "source": "Peugeot España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "note": "acabado de acceso",
+        "source": "Peugeot · web oficial del país",
+        "origin": "local",
+        "url": "https://www.peugeot.ch/de/modelle/208-kleinwagen/konfigurator.html"
       },
       "PT": {
-        "value": 18300,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (18300 €). Edítalo.",
-        "source": "Peugeot España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "value": 18565,
+        "date": "2026-10",
+        "note": "acabado de acceso (oferta particulares)",
+        "source": "Peugeot · web oficial del país",
+        "origin": "local",
+        "url": "https://www.peugeot.pt/comprar/ofertas-do-momento/passageiros/particulares/peugeot-208-gasolina-easy-credit.html"
       },
       "FR": {
-        "value": 18300,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (18300 €). Edítalo.",
-        "source": "Peugeot España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "value": 23400,
+        "date": "2026-10",
+        "note": "acabado de acceso",
+        "source": "Peugeot · web oficial del país",
+        "origin": "local",
+        "url": "https://www.peugeot.fr/nos-vehicules/208/hybride-essence.html"
       },
       "DE": {
-        "value": 18300,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (18300 €). Edítalo.",
-        "source": "Peugeot España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "value": 24480,
+        "date": "2026-10",
+        "note": "STYLE TURBO 100",
+        "source": "Peugeot Alemania · tarifa oficial en PDF",
+        "origin": "local",
+        "url": "https://www.peugeot.de/content/dam/peugeot/germany/downloads/Preisliste_208.pdf"
       },
       "IT": {
-        "value": 18300,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (18300 €). Edítalo.",
-        "source": "Peugeot España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "value": 19870,
+        "date": "2026-10",
+        "note": "acabado de acceso",
+        "source": "Peugeot · web oficial del país",
+        "origin": "local",
+        "url": "https://www.peugeot.it/gamma-modelli/nuova-peugeot-208/208-ibrido-benzina.html"
       }
     },
     "visible": true
@@ -7785,25 +7863,28 @@
         "origin": "local"
       },
       "GB": {
-        "value": 24750.8,
+        "value": 31395,
         "date": "2026-10",
-        "note": "Precio convertido desde España (29200 €). Edítalo.",
-        "source": "Kia España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "Pure 1.6 T-GDi (On The Road)",
+        "source": "Kia · web oficial del país",
+        "origin": "local",
+        "url": "https://www.kia.com/uk/new-cars/sportage/pricing/"
       },
       "US": {
-        "value": 32721.52,
+        "value": 28990,
         "date": "2026-10",
-        "note": "Precio convertido desde España (29200 €). Edítalo.",
-        "source": "Kia España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "LX (versión de acceso)",
+        "source": "Kia EE. UU. · web oficial",
+        "origin": "local",
+        "url": "https://www.kia.com/us/en/sportage"
       },
       "MX": {
-        "value": 595534,
+        "value": 647900,
         "date": "2026-10",
-        "note": "Precio convertido desde España (29200 €). Edítalo.",
-        "source": "Kia España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "EX 2.5 GDI",
+        "source": "Kia México · web oficial",
+        "origin": "local",
+        "url": "https://www.kia.com/mx/showroom/sportage.html"
       },
       "AR": {
         "value": 33580000,
@@ -7813,53 +7894,60 @@
         "origin": "converted"
       },
       "CO": {
-        "value": 128480000,
+        "value": 125990000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (29200 €). Edítalo.",
-        "source": "Kia España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "versión de acceso",
+        "source": "Kia Colombia · web oficial",
+        "origin": "local",
+        "url": "https://kia.com.co/nuestros-vehiculos/suv-sportage"
       },
       "CL": {
-        "value": 29784000,
+        "value": 24990000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (29200 €). Edítalo.",
-        "source": "Kia España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "LX 2.0 6MT (precio de lista)",
+        "source": "Kia Chile · web oficial",
+        "origin": "local",
+        "url": "https://www.kia.cl/promociones/kia-sportage.html"
       },
       "CH": {
-        "value": 27193.96,
+        "value": 32950,
         "date": "2026-10",
-        "note": "Precio convertido desde España (29200 €). Edítalo.",
-        "source": "Kia España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "1.6 T-GDi 150 CV (con descuento sobre 35.950 CHF de lista)",
+        "source": "Kia Suiza · web oficial",
+        "origin": "local",
+        "url": "https://www.kia.ch/de/modelle/neuer-sportage"
       },
       "PT": {
-        "value": 29200,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (29200 €). Edítalo.",
-        "source": "Kia España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 35840,
+        "date": "2026-10",
+        "note": "1.6 T-GDi Drive (gasolina)",
+        "source": "Kia · web oficial del país",
+        "origin": "local",
+        "url": "https://kia.pt/modelos/kia-sportage/"
       },
       "FR": {
-        "value": 29200,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (29200 €). Edítalo.",
-        "source": "Kia España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 39550,
+        "date": "2026-10",
+        "note": "Hybride Motion",
+        "source": "Kia · web oficial del país",
+        "origin": "local",
+        "url": "https://www.kia.com/fr/modeles/sportage/decouvrir/"
       },
       "DE": {
-        "value": 29200,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (29200 €). Edítalo.",
-        "source": "Kia España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 33990,
+        "date": "2026-10",
+        "note": "1.6 T-GDI",
+        "source": "Kia · web oficial del país",
+        "origin": "local",
+        "url": "https://www.kia.com/de/modelle/sportage/entdecken/"
       },
       "IT": {
-        "value": 29200,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (29200 €). Edítalo.",
-        "source": "Kia España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 33900,
+        "date": "2026-10",
+        "note": "1.6 T-GDi 150 CV Business (precio de lista)",
+        "source": "Kia · web oficial del país",
+        "origin": "local",
+        "url": "https://www.kia.com/it/guida-all-acquisto/promozioni/kia-sportage-benzina"
       }
     },
     "visible": true
@@ -7878,11 +7966,12 @@
         "origin": "local"
       },
       "GB": {
-        "value": 26912.25,
+        "value": 31695,
         "date": "2026-10",
-        "note": "Precio convertido desde España (31750 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "Hybrid, acabado de acceso (On The Road)",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.co.uk/new-cars/c-hr"
       },
       "US": {
         "value": 35579.05,
@@ -7920,39 +8009,44 @@
         "origin": "converted"
       },
       "CH": {
-        "value": 29568.78,
+        "value": 32900,
         "date": "2026-10",
-        "note": "Precio convertido desde España (31750 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "note": "Comfort 1.8 Hybrid (con prima sobre 34.900 CHF de lista)",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://de.toyota.ch/neuwagen-kaufen/c-hr"
       },
       "PT": {
-        "value": 31750,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (31750 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 32330,
+        "date": "2026-10",
+        "note": "Comfort (acabado de acceso)",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.pt/carros/c-hr"
       },
       "FR": {
-        "value": 31750,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (31750 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 29750,
+        "date": "2026-10",
+        "note": "Hybride 140, acabado de acceso",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.fr/vehicules-neufs/toyota-c-hr"
       },
       "DE": {
-        "value": 31750,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (31750 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 30110.7,
+        "date": "2026-10",
+        "note": "Active (precio de acción sobre 33.990 € de lista)",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.de/neuwagen/c-hr"
       },
       "IT": {
-        "value": 31750,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (31750 €). Edítalo.",
-        "source": "Toyota España / ANFAC (convertido)",
-        "origin": "converted"
+        "value": 36250,
+        "date": "2026-10",
+        "note": "1.8 Hybrid 140 Active (precio de lista)",
+        "source": "Toyota · web oficial del país",
+        "origin": "local",
+        "url": "https://www.toyota.it/gamma/c-hr"
       }
     },
     "visible": true
@@ -8064,25 +8158,28 @@
         "origin": "local"
       },
       "GB": {
-        "value": 37711.06,
+        "value": 44990,
         "date": "2026-10",
-        "note": "Precio convertido desde España (44490 €). Edítalo.",
-        "source": "Tesla España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/en_GB/model-y/design"
       },
       "US": {
-        "value": 49855.49,
+        "value": 39990,
         "date": "2026-10",
-        "note": "Precio convertido desde España (44490 €). Edítalo.",
-        "source": "Tesla España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/model-y/design"
       },
       "MX": {
-        "value": 907373.55,
+        "value": 799000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (44490 €). Edítalo.",
-        "source": "Tesla España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/es_mx/model-y/design"
       },
       "AR": {
         "value": 51163500,
@@ -8092,53 +8189,60 @@
         "origin": "converted"
       },
       "CO": {
-        "value": 195756000,
+        "value": 119990000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (44490 €). Edítalo.",
-        "source": "Tesla España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/es_co/model-y/design"
       },
       "CL": {
-        "value": 45379800,
+        "value": 36900000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (44490 €). Edítalo.",
-        "source": "Tesla España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/es_CL/model-y/design"
       },
       "CH": {
-        "value": 41433.54,
+        "value": 40990,
         "date": "2026-10",
-        "note": "Precio convertido desde España (44490 €). Edítalo.",
-        "source": "Tesla España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/de_CH/model-y/design"
       },
       "PT": {
-        "value": 44490,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (44490 €). Edítalo.",
-        "source": "Tesla España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "value": 40990,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/pt_PT/model-y/design"
       },
       "FR": {
-        "value": 44490,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (44490 €). Edítalo.",
-        "source": "Tesla España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "value": 40990,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/fr_FR/model-y/design"
       },
       "DE": {
-        "value": 44490,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (44490 €). Edítalo.",
-        "source": "Tesla España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "value": 39990,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/de_DE/model-y/design"
       },
       "IT": {
-        "value": 44490,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (44490 €). Edítalo.",
-        "source": "Tesla España / JATO Dynamics (convertido)",
-        "origin": "converted"
+        "value": 40990,
+        "date": "2026-10",
+        "note": "Versión de acceso del configurador oficial (precio de contado).",
+        "source": "Tesla · configurador oficial del país",
+        "origin": "local",
+        "url": "https://www.tesla.com/it_IT/model-y/design"
       }
     },
     "visible": true
@@ -8164,39 +8268,44 @@
         "origin": "converted"
       },
       "US": {
-        "value": 18489.9,
+        "value": 17390,
         "date": "2026-10",
-        "note": "Precio convertido desde España (16500 €). Edítalo.",
-        "source": "AMDA / Nissan México (convertido)",
-        "origin": "converted"
+        "note": "S (versión de acceso, sin tasas de destino)",
+        "source": "Nissan EE. UU. · web oficial",
+        "origin": "local",
+        "url": "https://www.nissanusa.com/vehicles/cars/versa.html"
       },
       "MX": {
-        "value": 336517.5,
+        "value": 374900,
         "date": "2026-10",
-        "note": "Precio convertido desde España (16500 €). Edítalo.",
-        "source": "AMDA / Nissan México (convertido)",
-        "origin": "converted"
+        "note": "Sense Base TM (precio de lista)",
+        "source": "Nissan México · web oficial",
+        "origin": "local",
+        "url": "https://www.nissan.com.mx/vehiculos/todos/versa.html"
       },
       "AR": {
-        "value": 18975000,
+        "value": 34815400,
         "date": "2026-10",
-        "note": "Precio convertido desde España (16500 €). Edítalo.",
-        "source": "AMDA / Nissan México (convertido)",
-        "origin": "converted"
+        "note": "MT (precio sugerido al público)",
+        "source": "Nissan Argentina · web oficial",
+        "origin": "local",
+        "url": "https://www.nissan.com.ar/vehiculos/nuevos/nuevo-versa.html"
       },
       "CO": {
-        "value": 72600000,
+        "value": 73990000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (16500 €). Edítalo.",
-        "source": "AMDA / Nissan México (convertido)",
-        "origin": "converted"
+        "note": "Sense MT",
+        "source": "Nissan Colombia · web oficial",
+        "origin": "local",
+        "url": "https://www.nissan.com.co/vehiculos/nuevos/versa.html"
       },
       "CL": {
-        "value": 16830000,
+        "value": 12990000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (16500 €). Edítalo.",
-        "source": "AMDA / Nissan México (convertido)",
-        "origin": "converted"
+        "note": "Sense mecánico (precio desde, con bonos)",
+        "source": "Nissan Chile · web oficial",
+        "origin": "local",
+        "url": "https://www.nissan.cl/vehiculos/nuevos/versa.html"
       },
       "CH": {
         "value": 15366.45,

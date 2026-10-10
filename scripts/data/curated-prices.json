@@ -485,6 +485,987 @@
       "source": "Sportline Argentina (precio de tienda)",
       "url": "https://www.sportline.com.ar/running-pro-017020hc518n125/p",
       "note": "Par de zapatillas de running de gama media."
+    },
+    {
+      "productId": "tesla-model-3",
+      "countryCode": "PT",
+      "value": 36990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/pt_PT/model-3/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-3",
+      "countryCode": "FR",
+      "value": 36990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/fr_FR/model-3/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-3",
+      "countryCode": "DE",
+      "value": 36990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/de_DE/model-3/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-3",
+      "countryCode": "IT",
+      "value": 36990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/it_IT/model-3/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-3",
+      "countryCode": "GB",
+      "value": 37990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/en_GB/model-3/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-3",
+      "countryCode": "US",
+      "value": 36990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/model-3/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-3",
+      "countryCode": "CO",
+      "value": 114990000.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/es_co/model-3/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-3",
+      "countryCode": "CL",
+      "value": 29900000.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/es_CL/model-3/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-3",
+      "countryCode": "CH",
+      "value": 36990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/de_CH/model-3/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-y",
+      "countryCode": "PT",
+      "value": 40990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/pt_PT/model-y/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-y",
+      "countryCode": "FR",
+      "value": 40990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/fr_FR/model-y/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-y",
+      "countryCode": "DE",
+      "value": 39990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/de_DE/model-y/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-y",
+      "countryCode": "IT",
+      "value": 40990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/it_IT/model-y/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-y",
+      "countryCode": "GB",
+      "value": 44990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/en_GB/model-y/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-y",
+      "countryCode": "US",
+      "value": 39990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/model-y/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-y",
+      "countryCode": "MX",
+      "value": 799000.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/es_mx/model-y/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-y",
+      "countryCode": "CO",
+      "value": 119990000.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/es_co/model-y/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-y",
+      "countryCode": "CL",
+      "value": 36900000.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/es_CL/model-y/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "tesla-model-y",
+      "countryCode": "CH",
+      "value": 40990.0,
+      "date": "2026-10",
+      "source": "Tesla · configurador oficial del país",
+      "url": "https://www.tesla.com/de_CH/model-y/design",
+      "note": "Versión de acceso del configurador oficial (precio de contado)."
+    },
+    {
+      "productId": "toyota-yaris-cross",
+      "countryCode": "DE",
+      "value": 24955.2,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.de/neuwagen/yaris-cross",
+      "note": "Basis (precio de acción sobre 27.640 € de lista)"
+    },
+    {
+      "productId": "toyota-c-hr",
+      "countryCode": "FR",
+      "value": 29750.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.fr/vehicules-neufs/toyota-c-hr",
+      "note": "Hybride 140, acabado de acceso"
+    },
+    {
+      "productId": "toyota-yaris-cross",
+      "countryCode": "CH",
+      "value": 27900.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://de.toyota.ch/neuwagen-kaufen/yaris-cross",
+      "note": "Comfort 1.5 Hybrid 116"
+    },
+    {
+      "productId": "toyota-yaris-cross",
+      "countryCode": "CL",
+      "value": 22990000.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://toyota.cl/modelos/suv/yaris-cross-hybrid/",
+      "note": "Acabado de acceso (precio desde)"
+    },
+    {
+      "productId": "toyota-c-hr",
+      "countryCode": "IT",
+      "value": 36250.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.it/gamma/c-hr",
+      "note": "1.8 Hybrid 140 Active (precio de lista)"
+    },
+    {
+      "productId": "toyota-c-hr",
+      "countryCode": "CH",
+      "value": 32900.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://de.toyota.ch/neuwagen-kaufen/c-hr",
+      "note": "Comfort 1.8 Hybrid (con prima sobre 34.900 CHF de lista)"
+    },
+    {
+      "productId": "toyota-yaris-cross",
+      "countryCode": "CO",
+      "value": 125900000.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.com.co/vehiculos/hibridos/yaris-cross/version/xs-1-5-hev-4-x-2-e-cvt",
+      "note": "XS 1.5 HEV 4x2 (precio sugerido al público)"
+    },
+    {
+      "productId": "toyota-c-hr",
+      "countryCode": "GB",
+      "value": 31695.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.co.uk/new-cars/c-hr",
+      "note": "Hybrid, acabado de acceso (On The Road)"
+    },
+    {
+      "productId": "toyota-yaris-cross",
+      "countryCode": "GB",
+      "value": 27445.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.co.uk/new-cars/yaris-cross",
+      "note": "Hybrid, acabado de acceso (On The Road)"
+    },
+    {
+      "productId": "toyota-c-hr",
+      "countryCode": "DE",
+      "value": 30110.7,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.de/neuwagen/c-hr",
+      "note": "Active (precio de acción sobre 33.990 € de lista)"
+    },
+    {
+      "productId": "toyota-yaris-cross",
+      "countryCode": "FR",
+      "value": 25000.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.fr/vehicules-neufs/yaris-cross",
+      "note": "Hybride 116, acabado de acceso"
+    },
+    {
+      "productId": "toyota-c-hr",
+      "countryCode": "PT",
+      "value": 32330.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.pt/carros/c-hr",
+      "note": "Comfort (acabado de acceso)"
+    },
+    {
+      "productId": "toyota-yaris-cross",
+      "countryCode": "IT",
+      "value": 29600.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.it/gamma/yaris-cross",
+      "note": "Icon (precio de lista)"
+    },
+    {
+      "productId": "toyota-yaris-cross",
+      "countryCode": "PT",
+      "value": 27730.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.pt/carros/yaris-cross",
+      "note": "Acabado de acceso"
+    },
+    {
+      "productId": "toyota-yaris-cross",
+      "countryCode": "AR",
+      "value": 41464000.0,
+      "date": "2026-10",
+      "source": "Toyota · web oficial del país",
+      "url": "https://www.toyota.com.ar/modelos/yaris-cross-hybrid",
+      "note": "XLI 1.5 CVT (precio sugerido al público)"
+    },
+    {
+      "productId": "dacia-sandero",
+      "countryCode": "PT",
+      "value": 14950.0,
+      "date": "2026-10",
+      "source": "Dacia · web oficial del país",
+      "url": "https://www.dacia.pt/gama/sandero-citadino/versoes-precos.html",
+      "note": "essential TCe 100"
+    },
+    {
+      "productId": "dacia-sandero",
+      "countryCode": "FR",
+      "value": 13990.0,
+      "date": "2026-10",
+      "source": "Dacia · web oficial del país",
+      "url": "https://www.dacia.fr/gamme-vehicules/sandero-citadine/configurateur.html",
+      "note": "essential TCe 100"
+    },
+    {
+      "productId": "dacia-sandero",
+      "countryCode": "DE",
+      "value": 12790.0,
+      "date": "2026-10",
+      "source": "Dacia · web oficial del país",
+      "url": "https://www.dacia.de/modelle/sandero-stadtauto/preise-versionen.html",
+      "note": "Essential SCe 65"
+    },
+    {
+      "productId": "dacia-sandero",
+      "countryCode": "IT",
+      "value": 16600.0,
+      "date": "2026-10",
+      "source": "Dacia · web oficial del país",
+      "url": "https://www.dacia.it/gamma/sandero-streetway.html",
+      "note": "Streetway expression Eco-G 120"
+    },
+    {
+      "productId": "dacia-sandero",
+      "countryCode": "GB",
+      "value": 14765.0,
+      "date": "2026-10",
+      "source": "Dacia · web oficial del país",
+      "url": "https://dacia.co.uk/vehicles/sandero.html",
+      "note": "Essential TCe 100 (On The Road)"
+    },
+    {
+      "productId": "dacia-sandero",
+      "countryCode": "AR",
+      "value": 35740000.0,
+      "date": "2026-10",
+      "source": "Renault Argentina · lista oficial",
+      "url": "https://www.renault.com.ar/automoviles/sandero/precios-y-versiones.html",
+      "note": "Intens 1.6 (se vende como Renault Sandero)"
+    },
+    {
+      "productId": "dacia-sandero",
+      "countryCode": "CO",
+      "value": 65990000.0,
+      "date": "2026-10",
+      "source": "Renault Colombia · lista oficial",
+      "url": "https://www.renault.com.co/vehiculos/sandero/versiones-y-precios.html",
+      "note": "Life+ 1.6 (se vende como Renault Sandero)"
+    },
+    {
+      "productId": "dacia-sandero",
+      "countryCode": "CH",
+      "value": 15290.0,
+      "date": "2026-10",
+      "source": "Dacia · web oficial del país",
+      "url": "https://de.dacia.ch/modelle/sandero.html",
+      "note": "expression TCe 100"
+    },
+    {
+      "productId": "renault-clio",
+      "countryCode": "PT",
+      "value": 21990.0,
+      "date": "2026-10",
+      "source": "Renault · web oficial del país",
+      "url": "https://www.renault.pt/veiculos-hibridos/novo-clio/caracteristicas.html",
+      "note": "evolution TCe 115"
+    },
+    {
+      "productId": "renault-clio",
+      "countryCode": "FR",
+      "value": 19900.0,
+      "date": "2026-10",
+      "source": "Renault · web oficial del país",
+      "url": "https://www.renault.fr/vehicules-hybrides/nouvelle-clio/configurateur.html",
+      "note": "evolution TCe 115"
+    },
+    {
+      "productId": "renault-clio",
+      "countryCode": "DE",
+      "value": 19900.0,
+      "date": "2026-10",
+      "source": "Renault · web oficial del país",
+      "url": "https://www.renault.de/hybridfahrzeuge/clio/preise-versionen.html",
+      "note": "Evolution TCe 115"
+    },
+    {
+      "productId": "renault-clio",
+      "countryCode": "IT",
+      "value": 17838.0,
+      "date": "2026-10",
+      "source": "Renault · web oficial del país",
+      "url": "https://www.renault.it/veicoli-ibridi/clio/versioni-e-prezzi.html",
+      "note": "evolution TCe 115"
+    },
+    {
+      "productId": "renault-clio",
+      "countryCode": "GB",
+      "value": 20995.0,
+      "date": "2026-10",
+      "source": "Renault · web oficial del país",
+      "url": "https://www.renault.co.uk/hybrid-cars/clio.html",
+      "note": "generation full hybrid E-Tech 145"
+    },
+    {
+      "productId": "renault-clio",
+      "countryCode": "CH",
+      "value": 19900.0,
+      "date": "2026-10",
+      "source": "Renault · web oficial del país",
+      "url": "https://de.renault.ch/hybrid/neuer-clio.html",
+      "note": "evolution TCe 115"
+    },
+    {
+      "productId": "peugeot-208",
+      "countryCode": "PT",
+      "value": 18565.0,
+      "date": "2026-10",
+      "source": "Peugeot · web oficial del país",
+      "url": "https://www.peugeot.pt/comprar/ofertas-do-momento/passageiros/particulares/peugeot-208-gasolina-easy-credit.html",
+      "note": "acabado de acceso (oferta particulares)"
+    },
+    {
+      "productId": "peugeot-208",
+      "countryCode": "FR",
+      "value": 23400.0,
+      "date": "2026-10",
+      "source": "Peugeot · web oficial del país",
+      "url": "https://www.peugeot.fr/nos-vehicules/208/hybride-essence.html",
+      "note": "acabado de acceso"
+    },
+    {
+      "productId": "peugeot-208",
+      "countryCode": "DE",
+      "value": 24480.0,
+      "date": "2026-10",
+      "source": "Peugeot Alemania · tarifa oficial en PDF",
+      "url": "https://www.peugeot.de/content/dam/peugeot/germany/downloads/Preisliste_208.pdf",
+      "note": "STYLE TURBO 100"
+    },
+    {
+      "productId": "peugeot-208",
+      "countryCode": "IT",
+      "value": 19870.0,
+      "date": "2026-10",
+      "source": "Peugeot · web oficial del país",
+      "url": "https://www.peugeot.it/gamma-modelli/nuova-peugeot-208/208-ibrido-benzina.html",
+      "note": "acabado de acceso"
+    },
+    {
+      "productId": "peugeot-208",
+      "countryCode": "GB",
+      "value": 20065.0,
+      "date": "2026-10",
+      "source": "Peugeot · web oficial del país",
+      "url": "https://store.peugeot.co.uk/offers/208-5-door",
+      "note": "STYLE Turbo 100 (On The Road)"
+    },
+    {
+      "productId": "peugeot-208",
+      "countryCode": "AR",
+      "value": 28390000.0,
+      "date": "2026-10",
+      "source": "Peugeot Argentina · lista oficial",
+      "url": "https://www.peugeot.com.ar/gama/208.html",
+      "note": "Active 1.6"
+    },
+    {
+      "productId": "peugeot-208",
+      "countryCode": "CH",
+      "value": 24750.0,
+      "date": "2026-10",
+      "source": "Peugeot · web oficial del país",
+      "url": "https://www.peugeot.ch/de/modelle/208-kleinwagen/konfigurator.html",
+      "note": "acabado de acceso"
+    },
+    {
+      "productId": "seat-ibiza",
+      "countryCode": "PT",
+      "value": 20524.73,
+      "date": "2026-10",
+      "source": "SEAT · web oficial del país",
+      "url": "https://www.seat.pt/ofertas-seat/automoveis-novos/campanha-novo-seat-ibiza",
+      "note": "1.0 TSI Style 95 cv"
+    },
+    {
+      "productId": "seat-ibiza",
+      "countryCode": "FR",
+      "value": 16660.0,
+      "date": "2026-10",
+      "source": "SEAT · web oficial del país",
+      "url": "https://www.seat.fr/voitures/ibiza",
+      "note": "acabado de acceso"
+    },
+    {
+      "productId": "seat-ibiza",
+      "countryCode": "DE",
+      "value": 19910.0,
+      "date": "2026-10",
+      "source": "SEAT Alemania · tarifa oficial en PDF",
+      "url": "https://www.seat.de/content/dam/countries/de/seat-website/download/pdf/model-range/Preisliste_SEAT_Ibiza_Doppel_21-07-2026.pdf",
+      "note": "1.0 MPI 80 CV"
+    },
+    {
+      "productId": "seat-ibiza",
+      "countryCode": "GB",
+      "value": 21610.0,
+      "date": "2026-10",
+      "source": "SEAT · configurador oficial",
+      "url": "https://www.seat.co.uk/configurator/w/version?wf=seat-gb-en&carlineGroup=CARLINE-GROUP-KJG",
+      "note": "SE"
+    },
+    {
+      "productId": "seat-ibiza",
+      "countryCode": "MX",
+      "value": 348900.0,
+      "date": "2026-10",
+      "source": "SEAT México · web oficial",
+      "url": "https://www.seat.mx/autos/ibiza",
+      "note": "FR (precio de contado desde)"
+    },
+    {
+      "productId": "seat-ibiza",
+      "countryCode": "CO",
+      "value": 79990000.0,
+      "date": "2026-10",
+      "source": "SEAT Colombia · web oficial",
+      "url": "https://www.seat.co/",
+      "note": "precio de preventa"
+    },
+    {
+      "productId": "seat-ibiza",
+      "countryCode": "CL",
+      "value": 21490000.0,
+      "date": "2026-10",
+      "source": "SEAT Chile · web oficial",
+      "url": "https://www.seat.cl/ibiza/Nuevo-Ibiza",
+      "note": "FR 1.0 TSI AT"
+    },
+    {
+      "productId": "seat-ibiza",
+      "countryCode": "CH",
+      "value": 24250.0,
+      "date": "2026-10",
+      "source": "SEAT · configurador oficial",
+      "url": "https://www.seat.ch/de/configurator/w/version?wf=seat-ch-de&carlineGroup=CARLINE-GROUP-KJG",
+      "note": "acabado de acceso"
+    },
+    {
+      "productId": "nissan-versa",
+      "countryCode": "US",
+      "value": 17390.0,
+      "date": "2026-10",
+      "source": "Nissan EE. UU. · web oficial",
+      "url": "https://www.nissanusa.com/vehicles/cars/versa.html",
+      "note": "S (versión de acceso, sin tasas de destino)"
+    },
+    {
+      "productId": "nissan-versa",
+      "countryCode": "MX",
+      "value": 374900.0,
+      "date": "2026-10",
+      "source": "Nissan México · web oficial",
+      "url": "https://www.nissan.com.mx/vehiculos/todos/versa.html",
+      "note": "Sense Base TM (precio de lista)"
+    },
+    {
+      "productId": "nissan-versa",
+      "countryCode": "AR",
+      "value": 34815400.0,
+      "date": "2026-10",
+      "source": "Nissan Argentina · web oficial",
+      "url": "https://www.nissan.com.ar/vehiculos/nuevos/nuevo-versa.html",
+      "note": "MT (precio sugerido al público)"
+    },
+    {
+      "productId": "nissan-versa",
+      "countryCode": "CO",
+      "value": 73990000.0,
+      "date": "2026-10",
+      "source": "Nissan Colombia · web oficial",
+      "url": "https://www.nissan.com.co/vehiculos/nuevos/versa.html",
+      "note": "Sense MT"
+    },
+    {
+      "productId": "nissan-versa",
+      "countryCode": "CL",
+      "value": 12990000.0,
+      "date": "2026-10",
+      "source": "Nissan Chile · web oficial",
+      "url": "https://www.nissan.cl/vehiculos/nuevos/versa.html",
+      "note": "Sense mecánico (precio desde, con bonos)"
+    },
+    {
+      "productId": "kia-sportage",
+      "countryCode": "PT",
+      "value": 35840.0,
+      "date": "2026-10",
+      "source": "Kia · web oficial del país",
+      "url": "https://kia.pt/modelos/kia-sportage/",
+      "note": "1.6 T-GDi Drive (gasolina)"
+    },
+    {
+      "productId": "kia-sportage",
+      "countryCode": "FR",
+      "value": 39550.0,
+      "date": "2026-10",
+      "source": "Kia · web oficial del país",
+      "url": "https://www.kia.com/fr/modeles/sportage/decouvrir/",
+      "note": "Hybride Motion"
+    },
+    {
+      "productId": "kia-sportage",
+      "countryCode": "DE",
+      "value": 33990.0,
+      "date": "2026-10",
+      "source": "Kia · web oficial del país",
+      "url": "https://www.kia.com/de/modelle/sportage/entdecken/",
+      "note": "1.6 T-GDI"
+    },
+    {
+      "productId": "kia-sportage",
+      "countryCode": "IT",
+      "value": 33900.0,
+      "date": "2026-10",
+      "source": "Kia · web oficial del país",
+      "url": "https://www.kia.com/it/guida-all-acquisto/promozioni/kia-sportage-benzina",
+      "note": "1.6 T-GDi 150 CV Business (precio de lista)"
+    },
+    {
+      "productId": "kia-sportage",
+      "countryCode": "GB",
+      "value": 31395.0,
+      "date": "2026-10",
+      "source": "Kia · web oficial del país",
+      "url": "https://www.kia.com/uk/new-cars/sportage/pricing/",
+      "note": "Pure 1.6 T-GDi (On The Road)"
+    },
+    {
+      "productId": "kia-sportage",
+      "countryCode": "US",
+      "value": 28990.0,
+      "date": "2026-10",
+      "source": "Kia EE. UU. · web oficial",
+      "url": "https://www.kia.com/us/en/sportage",
+      "note": "LX (versión de acceso)"
+    },
+    {
+      "productId": "kia-sportage",
+      "countryCode": "MX",
+      "value": 647900.0,
+      "date": "2026-10",
+      "source": "Kia México · web oficial",
+      "url": "https://www.kia.com/mx/showroom/sportage.html",
+      "note": "EX 2.5 GDI"
+    },
+    {
+      "productId": "kia-sportage",
+      "countryCode": "CO",
+      "value": 125990000.0,
+      "date": "2026-10",
+      "source": "Kia Colombia · web oficial",
+      "url": "https://kia.com.co/nuestros-vehiculos/suv-sportage",
+      "note": "versión de acceso"
+    },
+    {
+      "productId": "kia-sportage",
+      "countryCode": "CL",
+      "value": 24990000.0,
+      "date": "2026-10",
+      "source": "Kia Chile · web oficial",
+      "url": "https://www.kia.cl/promociones/kia-sportage.html",
+      "note": "LX 2.0 6MT (precio de lista)"
+    },
+    {
+      "productId": "kia-sportage",
+      "countryCode": "CH",
+      "value": 32950.0,
+      "date": "2026-10",
+      "source": "Kia Suiza · web oficial",
+      "url": "https://www.kia.ch/de/modelle/neuer-sportage",
+      "note": "1.6 T-GDi 150 CV (con descuento sobre 35.950 CHF de lista)"
+    },
+    {
+      "productId": "itv-turismo",
+      "countryCode": "PT",
+      "value": 30.46,
+      "date": "2026-10",
+      "source": "IMT Portugal · tarifas oficiales",
+      "url": "https://www.imt-ip.pt/veiculos/inspecao-de-veiculos/tarifas-das-inspecoes/",
+      "note": "Inspección periódica obligatoria de un vehículo ligero (sin IVA)."
+    },
+    {
+      "productId": "itv-turismo",
+      "countryCode": "DE",
+      "value": 63.3,
+      "date": "2026-10",
+      "source": "TÜV Hessen · tarifas oficiales (GebOSt)",
+      "url": "https://www.tuev-hessen.de/297/preise-und-gebuehren-der-hauptuntersuchung/",
+      "note": "Hauptuntersuchung de un turismo hasta 3,5 t, con IVA. Varía por región y organismo (63,30-108,50 €); los gases se cobran aparte."
+    },
+    {
+      "productId": "itv-turismo",
+      "countryCode": "IT",
+      "value": 79.02,
+      "date": "2026-10",
+      "source": "Motorizzazione Civile · tarifas oficiales",
+      "url": "https://www.ilportaledellautomobilista.it/web/portale-automobilista/veicoli/revisioni",
+      "note": "Revisión periódica en centro autorizado: tarifa fija + IVA + derechos."
+    },
+    {
+      "productId": "itv-turismo",
+      "countryCode": "GB",
+      "value": 54.85,
+      "date": "2026-10",
+      "source": "DVSA · gov.uk, tarifas oficiales",
+      "url": "https://www.gov.uk/getting-an-mot/mot-test-fees",
+      "note": "Tarifa MÁXIMA legal del MOT de un turismo (el centro puede cobrar menos)."
+    },
+    {
+      "productId": "itv-turismo",
+      "countryCode": "US",
+      "value": 37.0,
+      "date": "2026-10",
+      "source": "NY DMV · tarifas oficiales",
+      "url": "https://dmv.ny.gov/forms/vs77.pdf",
+      "note": "Estado de Nueva York: inspección de seguridad (10 $) + emisiones (27 $). Son máximos legales."
+    },
+    {
+      "productId": "itv-turismo",
+      "countryCode": "MX",
+      "value": 764.44,
+      "date": "2026-10",
+      "source": "SEDEMA Ciudad de México · tarifa oficial",
+      "url": "https://sedema.cdmx.gob.mx/programas/programa/verificacion-vehicular",
+      "note": "Ciudad de México: verificación vehicular semestral, tarifa unificada. En México la inspección depende de cada estado."
+    },
+    {
+      "productId": "itv-turismo",
+      "countryCode": "AR",
+      "value": 96968.0,
+      "date": "2026-10",
+      "source": "Gobierno de la Ciudad de Buenos Aires · tarifas oficiales",
+      "url": "https://buenosaires.gob.ar/gcaba_historico/verificacion-tecnica-vehicular/tarifas",
+      "note": "Ciudad de Buenos Aires: verificación técnica obligatoria de un auto particular."
+    },
+    {
+      "productId": "itv-turismo",
+      "countryCode": "CO",
+      "value": 317000.0,
+      "date": "2026-10",
+      "source": "RUNT / Ministerio de Transporte de Colombia",
+      "url": "https://www.runt.gov.co/sites/default/files/documentos/ABC%20Renovaci%C3%B3n%20RTM.pdf",
+      "note": "Revisión técnico-mecánica y de emisiones de un carro particular. El valor oficial es un rango (317.000-370.000 $)."
+    },
+    {
+      "productId": "itv-turismo",
+      "countryCode": "CL",
+      "value": 20000.0,
+      "date": "2026-10",
+      "source": "ChileAtiende (Ministerio de Transportes)",
+      "url": "https://www.chileatiende.gob.cl/fichas/23978-revision-tecnica-de-vehiculos-motorizados",
+      "note": "Revisión técnica de un auto particular. La tarifa la fija cada planta dentro de un máximo regulado (14.000-22.000 $)."
+    },
+    {
+      "productId": "itv-turismo",
+      "countryCode": "CH",
+      "value": 60.0,
+      "date": "2026-10",
+      "source": "Cantón de Berna · tarifas oficiales",
+      "url": "https://www.svsa.sid.be.ch/content/dam/svsa_sid/dokumente/de/gebuehrentarife/svsa-gebuehren-fzp-d.pdf",
+      "note": "Cantón de Berna: inspección periódica de un turismo hasta 3.500 kg. En Suiza la cobra cada cantón (rango habitual 50-70 CHF)."
+    },
+    {
+      "productId": "carnet-conducir",
+      "countryCode": "PT",
+      "value": 45.0,
+      "date": "2026-10",
+      "source": "IMT Portugal · tasas oficiales",
+      "url": "https://www.imt-ip.pt/condutores/informacoes-gerais/automoveis-ligeiros/",
+      "note": "Tasas de examen de la categoría B: teórico 15 € + práctico 30 €. No incluye autoescuela."
+    },
+    {
+      "productId": "carnet-conducir",
+      "countryCode": "FR",
+      "value": 30.0,
+      "date": "2026-10",
+      "source": "Service-Public.fr · tasas oficiales",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33694",
+      "note": "Tasa estatal del examen teórico del permiso B. El práctico no tiene tasa (se paga a la autoescuela)."
+    },
+    {
+      "productId": "carnet-conducir",
+      "countryCode": "DE",
+      "value": 154.82,
+      "date": "2026-10",
+      "source": "TÜV · tasas oficiales (GebOSt)",
+      "url": "https://www.tuev-hessen.de/324/gebuehren-entgelte-und-auslagen-fuer-fahrerlaubnispruefungen/",
+      "note": "Tasas de examen del carnet B: teórico 24,99 € + práctico 129,83 €. No incluye autoescuela ni expedición."
+    },
+    {
+      "productId": "carnet-conducir",
+      "countryCode": "IT",
+      "value": 58.4,
+      "date": "2026-10",
+      "source": "Motorizzazione Civile · tasas oficiales",
+      "url": "https://www.ilportaledellautomobilista.it/gms/dettaglionormativa.downloadallegato_1:download/159269/CONSEGUIMENTI.pdf",
+      "note": "Tasas de la Motorizzazione del examen de patente B (teórico + práctico). No incluye autoescuela."
+    },
+    {
+      "productId": "carnet-conducir",
+      "countryCode": "GB",
+      "value": 85.0,
+      "date": "2026-10",
+      "source": "DVSA · gov.uk, tasas oficiales",
+      "url": "https://www.gov.uk/driving-test-cost",
+      "note": "Tasas del DVSA: teórico 23 £ + práctico 62 £ en día laborable. No incluye autoescuela."
+    },
+    {
+      "productId": "carnet-conducir",
+      "countryCode": "US",
+      "value": 46.0,
+      "date": "2026-10",
+      "source": "California DMV · tasas oficiales",
+      "url": "https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/licensing-fees/",
+      "note": "Estado de California: tasa de la licencia de conducir de coche, que cubre los dos exámenes. Varía por estado."
+    },
+    {
+      "productId": "carnet-conducir",
+      "countryCode": "MX",
+      "value": 1142.0,
+      "date": "2026-10",
+      "source": "SEMOVI Ciudad de México · tarifas oficiales",
+      "url": "https://www.cdmx.gob.mx/public/InformacionTramite.xhtml?idTramite=2500",
+      "note": "Ciudad de México: expedición de la licencia tipo A para automovilista. Varía por estado."
+    },
+    {
+      "productId": "carnet-conducir",
+      "countryCode": "AR",
+      "value": 42230.0,
+      "date": "2026-10",
+      "source": "Gobierno de la Ciudad de Buenos Aires · aranceles",
+      "url": "https://buenosaires.gob.ar/gcaba_historico/gobierno/licencias-de-conducir/aranceles",
+      "note": "Ciudad de Buenos Aires: arancel de otorgamiento o renovación. No incluye curso ni exámenes."
+    },
+    {
+      "productId": "carnet-conducir",
+      "countryCode": "CO",
+      "value": 329900.0,
+      "date": "2026-10",
+      "source": "Secretaría de Movilidad de Bogotá · tarifas oficiales",
+      "url": "https://bogota.gov.co/mi-ciudad/movilidad/tarifas-de-tramites-de-transito-y-transporte-en-bogota-para-2026",
+      "note": "Bogotá: expedición de la licencia de automóvil. No incluye curso ni exámenes médicos."
+    },
+    {
+      "productId": "carnet-conducir",
+      "countryCode": "CL",
+      "value": 45000.0,
+      "date": "2026-10",
+      "source": "ChileAtiende · derechos municipales",
+      "url": "https://www.chileatiende.gob.cl/fichas/24065-licencia-de-conducir-no-profesional-clase-b",
+      "note": "Derechos municipales de la licencia no profesional clase B (40.000-49.000 $ según municipio)."
+    },
+    {
+      "productId": "carnet-conducir",
+      "countryCode": "CH",
+      "value": 170.0,
+      "date": "2026-10",
+      "source": "Cantón de Vaud · tasas oficiales",
+      "url": "https://www.vd.ch/mobilite/automobile-et-navigation/frais-des-prestations-du-san/permis-de-conduire",
+      "note": "Cantón de Vaud: tasas de examen del carnet B (teórico 40 + práctico 130 CHF). Varía por cantón."
+    },
+    {
+      "productId": "aceite-oliva",
+      "countryCode": "PT",
+      "value": 6.86,
+      "date": "2026-10",
+      "source": "Observatorio Agroalimentario de Portugal",
+      "url": "https://observatorioagroalimentar.gov.pt/wp-content/uploads/2026/09/Observatorio_Resumo_Periodo-082026.pdf",
+      "note": "1 litro de aceite de oliva, precio al consumo."
+    },
+    {
+      "productId": "aceite-oliva",
+      "countryCode": "IT",
+      "value": 8.21,
+      "date": "2026-10",
+      "source": "Osservaprezzi · Ministerio de Empresa de Italia",
+      "url": "https://osservaprezzi.mise.gov.it/prezzi/livelli/beni-e-servizi-di-largo-consumo/archivio-rilevazioni-beni-e-servizi-di-largo-consumo?ANNO=2025&MESE=12&f%5BPROVINCIA%5D=Milano&f%5BTIPO_RECORD_MISE%5D=altri_alim",
+      "note": "1 litro de aceite de oliva, precio al consumo (Milán)."
+    },
+    {
+      "productId": "aceite-oliva",
+      "countryCode": "GB",
+      "value": 8.73,
+      "date": "2026-10",
+      "source": "ONS · precios de la compra",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/adhocs/2724shoppingpricescomparisontooldatadownloadbeforethe2025update",
+      "note": "1 litro de aceite de oliva, precio al consumo."
+    },
+    {
+      "productId": "aceite-oliva",
+      "countryCode": "CL",
+      "value": 16054.7,
+      "date": "2026-10",
+      "source": "ODEPA · Ministerio de Agricultura de Chile",
+      "url": "https://datos.odepa.gob.cl/dataset/precios-consumidor/resource/9f885df4-afeb-4b75-8bab-9334f79db00f",
+      "note": "1 litro de aceite de oliva, precio al consumidor."
+    },
+    {
+      "productId": "pechuga-pollo-kilo",
+      "countryCode": "PT",
+      "value": 6.52,
+      "date": "2026-10",
+      "source": "Observatorio Agroalimentario de Portugal",
+      "url": "https://observatorioagroalimentar.gov.pt/wp-content/uploads/2026/09/Observatorio_Resumo_Periodo-082026.pdf",
+      "note": "1 kg de pechuga de pollo, precio al consumo."
+    },
+    {
+      "productId": "pechuga-pollo-kilo",
+      "countryCode": "FR",
+      "value": 11.83,
+      "date": "2026-10",
+      "source": "FranceAgriMer · Observatorio de precios y márgenes",
+      "url": "https://observatoire-prixmarges.franceagrimer.fr/sites/default/files/PDF/2026_rapport_ofpm_v2.pdf",
+      "note": "1 kg de pechuga de pollo, precio al consumo."
+    },
+    {
+      "productId": "pechuga-pollo-kilo",
+      "countryCode": "IT",
+      "value": 14.92,
+      "date": "2026-10",
+      "source": "Osservaprezzi · Ministerio de Empresa de Italia",
+      "url": "https://osservaprezzi.mise.gov.it/prezzi/livelli/beni-e-servizi-di-largo-consumo/archivio-rilevazioni-beni-e-servizi-di-largo-consumo?ANNO=2025&MESE=12&f%5BPROVINCIA%5D=Milano&f%5BTIPO_RECORD_MISE%5D=altri_alim",
+      "note": "1 kg de pechuga de pollo, precio al consumo (Milán)."
+    },
+    {
+      "productId": "pechuga-pollo-kilo",
+      "countryCode": "GB",
+      "value": 8.01,
+      "date": "2026-10",
+      "source": "ONS · precios de la compra",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/adhocs/2724shoppingpricescomparisontooldatadownloadbeforethe2025update",
+      "note": "1 kg de pechuga de pollo, precio al consumo."
+    },
+    {
+      "productId": "pechuga-pollo-kilo",
+      "countryCode": "MX",
+      "value": 117.77,
+      "date": "2026-10",
+      "source": "INEGI · precios al consumidor",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/lp/lp2026_08.pdf",
+      "note": "1 kg de pechuga de pollo, precio medio al consumidor."
+    },
+    {
+      "productId": "pechuga-pollo-kilo",
+      "countryCode": "CL",
+      "value": 4797.2,
+      "date": "2026-10",
+      "source": "ODEPA · Ministerio de Agricultura de Chile",
+      "url": "https://datos.odepa.gob.cl/dataset/precios-consumidor/resource/9f885df4-afeb-4b75-8bab-9334f79db00f",
+      "note": "1 kg de pechuga de pollo, precio al consumidor."
     }
   ]
 }
