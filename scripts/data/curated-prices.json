@@ -1466,6 +1466,645 @@
       "source": "ODEPA · Ministerio de Agricultura de Chile",
       "url": "https://datos.odepa.gob.cl/dataset/precios-consumidor/resource/9f885df4-afeb-4b75-8bab-9334f79db00f",
       "note": "1 kg de pechuga de pollo, precio al consumidor."
+    },
+    {
+      "productId": "corte-pelo",
+      "countryCode": "PT",
+      "value": 15.0,
+      "date": "2026-10",
+      "source": "Precio de la carta de una peluquería (reserva online)",
+      "url": "https://fresha.com/lp/en/tt/men's-haircuts/in/pt-lisbon/santa-maria-dos-olivais",
+      "note": "Corte de hombre en Dom Juan Barbershop (Lisboa)."
+    },
+    {
+      "productId": "corte-pelo",
+      "countryCode": "FR",
+      "value": 28.0,
+      "date": "2026-10",
+      "source": "Precio de la carta de una peluquería (reserva online)",
+      "url": "https://www.fresha.com/lp/en/bt/barbershops/in/fr-paris-paris",
+      "note": "Coupe homme en Les Maîtres Barbiers Perruquiers (París)."
+    },
+    {
+      "productId": "corte-pelo",
+      "countryCode": "DE",
+      "value": 25.0,
+      "date": "2026-10",
+      "source": "Precio de la carta de una peluquería (reserva online)",
+      "url": "https://fresha.com/lp/en/tt/men's-haircuts/in/de-berlin",
+      "note": "Männer Haarschnitt en un salón de Berlín (Pariser Platz)."
+    },
+    {
+      "productId": "corte-pelo",
+      "countryCode": "IT",
+      "value": 25.0,
+      "date": "2026-10",
+      "source": "Precio de la carta de una peluquería (reserva online)",
+      "url": "https://www.fresha.com/lp/en/tt/men's-haircuts/in/it-milan/zone-1-of-milan",
+      "note": "Taglio uomo en Modart (Milán)."
+    },
+    {
+      "productId": "corte-pelo",
+      "countryCode": "GB",
+      "value": 32.0,
+      "date": "2026-10",
+      "source": "Precio de la carta de una peluquería (reserva online)",
+      "url": "https://www.fresha.com/lp/en/tt/men's-haircuts/in/gb-london/surrey-quays",
+      "note": "Corte de hombre en Copper Row Barbers (Londres)."
+    },
+    {
+      "productId": "corte-pelo",
+      "countryCode": "US",
+      "value": 40.0,
+      "date": "2026-10",
+      "source": "Precio de la carta de una peluquería (reserva online)",
+      "url": "https://fresha.com/lp/en/tt/men's-haircuts/in/us-new-york/manhattan",
+      "note": "Corte de hombre en Pall Mall Barbers (Manhattan, Nueva York)."
+    },
+    {
+      "productId": "corte-pelo",
+      "countryCode": "MX",
+      "value": 300.0,
+      "date": "2026-10",
+      "source": "Precio de la carta de una peluquería (reserva online)",
+      "url": "https://www.fresha.com/lp/es/bt/peluquer%C3%ADas/mx-ciudad-de-m%C3%A9xico/ciudad-de-m%C3%A9xico",
+      "note": "Corte de hombre en Tony M (Ciudad de México)."
+    },
+    {
+      "productId": "corte-pelo",
+      "countryCode": "AR",
+      "value": 22000.0,
+      "date": "2026-10",
+      "source": "Precio de la carta de una peluquería (reserva online)",
+      "url": "https://fresha.com/lp/en/bt/barbershops/in/ar-buenos-aires-ciudad-aut%C3%B3noma-de-buenos-aires",
+      "note": "Corte masculino en Axel (Buenos Aires)."
+    },
+    {
+      "productId": "corte-pelo",
+      "countryCode": "CO",
+      "value": 30000.0,
+      "date": "2026-10",
+      "source": "Precio de la carta de una peluquería (reserva online)",
+      "url": "https://www.fresha.com/lp/es/bt/barber%C3%ADas/co-bogot%C3%A1",
+      "note": "Corte de hombre en Shaloons Studio (Bogotá)."
+    },
+    {
+      "productId": "corte-pelo",
+      "countryCode": "CL",
+      "value": 12000.0,
+      "date": "2026-10",
+      "source": "Precio de la carta de una peluquería (reserva online)",
+      "url": "https://www.fresha.com/lp/es/tt/cortes-de-pelo-para-hombre/cl-santiago",
+      "note": "Corte en Barbería Galicia (Santiago)."
+    },
+    {
+      "productId": "corte-pelo",
+      "countryCode": "CH",
+      "value": 50.0,
+      "date": "2026-10",
+      "source": "Precio de la carta de una peluquería (reserva online)",
+      "url": "https://www.fresha.com/lp/en/tt/men's-haircuts/in/ch-z%C3%BCrich",
+      "note": "Corte de hombre en Tsek Hair Studio (Zúrich)."
+    },
+    {
+      "productId": "habitacion-alquiler",
+      "countryCode": "PT",
+      "value": 450.0,
+      "date": "2026-10",
+      "source": "OLX Portugal · anuncios de habitación",
+      "url": "https://www.olx.pt/imoveis/quartos-para-aluguer/lisboa/",
+      "note": "Habitación en piso compartido en Lisboa."
+    },
+    {
+      "productId": "habitacion-alquiler",
+      "countryCode": "FR",
+      "value": 1000.0,
+      "date": "2026-10",
+      "source": "Spotahome · anuncios de habitación",
+      "url": "https://www.spotahome.com/fr/s/paris/for-rent:rooms",
+      "note": "Habitación en piso compartido en París."
+    },
+    {
+      "productId": "habitacion-alquiler",
+      "countryCode": "DE",
+      "value": 605.0,
+      "date": "2026-10",
+      "source": "HousingAnywhere · anuncios de habitación",
+      "url": "https://housinganywhere.com/s/Berlin--Germany/private-rooms",
+      "note": "Habitación (WG-Zimmer) en Berlín, gastos incluidos."
+    },
+    {
+      "productId": "habitacion-alquiler",
+      "countryCode": "IT",
+      "value": 600.0,
+      "date": "2026-10",
+      "source": "Coinquilino · anuncios de habitación",
+      "url": "https://coinquilino.app/stanze-in-affitto/milano/single-room-TmPud2",
+      "note": "Habitación individual en piso compartido en Milán."
+    },
+    {
+      "productId": "habitacion-alquiler",
+      "countryCode": "GB",
+      "value": 1350.0,
+      "date": "2026-10",
+      "source": "SpareRoom · anuncios de habitación",
+      "url": "https://www.spareroom.co.uk/flatshare/london/euston/15365786",
+      "note": "Habitación doble en piso compartido en Londres, facturas incluidas."
+    },
+    {
+      "productId": "habitacion-alquiler",
+      "countryCode": "US",
+      "value": 1250.0,
+      "date": "2026-10",
+      "source": "SpareRoom EE. UU. · anuncios de habitación",
+      "url": "https://www.spareroom.com/rooms-for-rent/manhattan/yorkville/103213881",
+      "note": "Habitación en apartamento compartido en Manhattan (Nueva York)."
+    },
+    {
+      "productId": "habitacion-alquiler",
+      "countryCode": "MX",
+      "value": 4000.0,
+      "date": "2026-10",
+      "source": "Rentola México · anuncios de habitación",
+      "url": "https://rentola.mx/renta/habitacion/ciudad-de-mexico",
+      "note": "Cuarto en renta en Ciudad de México (rango visto: 2.200-7.000 $)."
+    },
+    {
+      "productId": "habitacion-alquiler",
+      "countryCode": "AR",
+      "value": 290000.0,
+      "date": "2026-10",
+      "source": "Roomgo Argentina · anuncios de habitación",
+      "url": "https://www.roomgo.com.ar/en-alquiler-capital-federal/alquiler-habitacion-individual-en-el-centro-geografico-c-buenos-aires-caballito/H06101019486264",
+      "note": "Habitación individual en casa compartida en Buenos Aires (Caballito)."
+    },
+    {
+      "productId": "habitacion-alquiler",
+      "countryCode": "CO",
+      "value": 670000.0,
+      "date": "2026-10",
+      "source": "Fincaraiz · anuncios de habitación",
+      "url": "https://www.fincaraiz.com.co/arriendo/habitaciones/bogota/bogota-dc",
+      "note": "Habitación en apartamento compartido en Bogotá."
+    },
+    {
+      "productId": "habitacion-alquiler",
+      "countryCode": "CL",
+      "value": 350000.0,
+      "date": "2026-10",
+      "source": "ArriendodePieza · anuncios de habitación",
+      "url": "https://arriendodepieza.cl/arriendo-pieza-santiago/",
+      "note": "Pieza en piso compartido en Santiago (rango visto: 170.000-585.000 $)."
+    },
+    {
+      "productId": "habitacion-alquiler",
+      "countryCode": "CH",
+      "value": 1270.0,
+      "date": "2026-10",
+      "source": "Flatfox · anuncios de habitación",
+      "url": "https://flatfox.ch/de/wohnung/klingenstrasse-24-8005-zurich/86286680",
+      "note": "Habitación (WG-Zimmer) en Zúrich, gastos incluidos."
+    },
+    {
+      "productId": "ortodoncia-invisible",
+      "countryCode": "IT",
+      "value": 2500.0,
+      "date": "2026-10",
+      "source": "Commissione Albo Odontoiatri · nomenclátor provincial de precios",
+      "url": "https://www.ordinemedicifc.it/wp-content/uploads/2016/10/Nomenclatore-tariffario-prestazioni-odontoiatriche.pdf",
+      "note": "Tratamiento con alineadores, 2.500 € POR AÑO según el nomenclátor colegial (el total depende de la duración, habitualmente 1-2 años). Estudio del caso y retención aparte."
+    },
+    {
+      "productId": "implante-dental",
+      "countryCode": "IT",
+      "value": 2520.0,
+      "date": "2026-10",
+      "source": "Commissione Albo Odontoiatri · nomenclátor provincial de precios",
+      "url": "https://www.ordinemedicifc.it/wp-content/uploads/2016/10/Nomenclatore-tariffario-prestazioni-odontoiatriche.pdf",
+      "note": "Implante (1.080 €) + pilar (360 €) + corona cerámica (1.080 €). No incluye injerto de hueso ni elevación de seno."
+    },
+    {
+      "productId": "ortodoncia-invisible",
+      "countryCode": "US",
+      "value": 6372.0,
+      "date": "2026-10",
+      "source": "ADA Health Policy Institute · encuesta de honorarios 2024",
+      "url": "https://plaindentalcost.com/rankings/most-expensive-procedures/",
+      "note": "Tratamiento ortodóncico completo de adulto (18-24 meses), media nacional de lo que cobra un dentista general sin seguro."
+    },
+    {
+      "productId": "implante-dental",
+      "countryCode": "US",
+      "value": 4155.0,
+      "date": "2026-10",
+      "source": "ADA Health Policy Institute · encuesta de honorarios 2024",
+      "url": "https://plaindentalcost.com/procedures?category=Implants",
+      "note": "Colocación del implante (2.312 $) + corona de porcelana (1.843 $), media nacional. No incluye pilar personalizado ni injerto."
+    },
+    {
+      "productId": "implante-dental",
+      "countryCode": "AR",
+      "value": 1541823.0,
+      "date": "2026-10",
+      "source": "Colegio Odontológico de Córdoba · aranceles orientadores",
+      "url": "https://colodontcba.org.ar/wp-content/uploads/ARANCELES-GENERALES-21.pdf",
+      "note": "Implante (1.000.718 $) + corona de circonio (541.105 $) según el arancel colegiado, que es ORIENTADOR y no obligatorio. No incluye injerto ni planificación."
+    },
+    {
+      "productId": "sesion-psicologo",
+      "countryCode": "FR",
+      "value": 50.0,
+      "date": "2026-10",
+      "source": "Assurance Maladie (ameli.fr)",
+      "url": "https://www.ameli.fr/assure/remboursements/rembourse/remboursement-seance-psychologue-mon-soutien-psy",
+      "note": "Sesión del dispositivo público «Mon soutien psy» (~45-60 min), tarifa convenida única. Un psicólogo no convenido cobra 50-100 €."
+    },
+    {
+      "productId": "sesion-psicologo",
+      "countryCode": "DE",
+      "value": 100.55,
+      "date": "2026-10",
+      "source": "Bundespsychotherapeutenkammer · baremo GOÄ",
+      "url": "https://api.bptk.de/uploads/GOP_Infotabelle_Stand_2020_6ca43d9d82.pdf",
+      "note": "Psicoterapia conductual individual de 50 minutos como mínimo, baremo oficial GOÄ 2,3 (la tarifa aplicable habitual)."
+    },
+    {
+      "productId": "sesion-psicologo",
+      "countryCode": "IT",
+      "value": 115.0,
+      "date": "2026-10",
+      "source": "Consiglio Nazionale Ordine degli Psicologi · tarifario",
+      "url": "https://www.psy.it/lo_psicologo/nomenclatore.html",
+      "note": "Consulta de apoyo psicológico individual, 50-60 min: máximo orientativo del tarifario del Colegio de Psicólogos."
+    },
+    {
+      "productId": "sesion-psicologo",
+      "countryCode": "US",
+      "value": 167.0,
+      "date": "2026-10",
+      "source": "CMS · tarifa oficial de Medicare 2026",
+      "url": "https://www.cms.gov/medicare/payment/fee-schedules/physician",
+      "note": "Psicoterapia individual de 60 minutos (código 90837), tarifa nacional de Medicare. El pago privado suele ir de 140 a 200 $."
+    },
+    {
+      "productId": "sesion-psicologo",
+      "countryCode": "AR",
+      "value": 30000.0,
+      "date": "2026-10",
+      "source": "Colegio de Psicólogos de Córdoba · aranceles mínimos",
+      "url": "https://cppc.org.ar/wp-content/uploads/2026/04/004-26-Aranceles-Profesionales-Minimos-1-1.pdf",
+      "note": "Psicoterapia individual, 50 min: arancel MÍNIMO colegiado en vigor desde abril de 2026."
+    },
+    {
+      "productId": "sesion-psicologo",
+      "countryCode": "CL",
+      "value": 20610.0,
+      "date": "2026-10",
+      "source": "FONASA · arancel de libre elección",
+      "url": "https://adjuntos.fonasa.gob.cl/sites/fonasa/prestadores/modalidad-libre-eleccion",
+      "note": "Consulta de psicólogo clínico, sesión de 45 minutos, arancel público de libre elección (nivel 3)."
+    },
+    {
+      "productId": "sesion-psicologo",
+      "countryCode": "CH",
+      "value": 154.8,
+      "date": "2026-10",
+      "source": "Cantón de Friburgo · tarifa oficial de psicoterapia",
+      "url": "https://bdlf.fr.ch/data/842.1.19/fr",
+      "note": "Sesión de psicoterapia de unos 60 minutos (2,58 CHF por minuto), tarifa oficial del cantón de Friburgo."
+    },
+    {
+      "productId": "gafas-graduadas",
+      "countryCode": "FR",
+      "value": 39.0,
+      "date": "2026-10",
+      "source": "Direct Optic Francia · tarifa pública",
+      "url": "https://www.direct-optic.fr/",
+      "note": "Montura + cristales monofocales con antirreflejo y antirrayado, todo incluido."
+    },
+    {
+      "productId": "gafas-graduadas",
+      "countryCode": "IT",
+      "value": 49.0,
+      "date": "2026-10",
+      "source": "GrandVision Italia · precios expuestos",
+      "url": "https://www.grandvision.it/occhiali-da-vista/categorie",
+      "note": "Gafas completas: montura + lentes monofocales, precio de entrada."
+    },
+    {
+      "productId": "gafas-graduadas",
+      "countryCode": "GB",
+      "value": 80.0,
+      "date": "2026-10",
+      "source": "Asda Opticians · precios expuestos",
+      "url": "https://opticians.asda.com/glasses",
+      "note": "Gafas completas con antirreflejo y antirrayado, gama de entrada."
+    },
+    {
+      "productId": "gafas-graduadas",
+      "countryCode": "US",
+      "value": 95.0,
+      "date": "2026-10",
+      "source": "Warby Parker · precios expuestos",
+      "url": "https://www.warbyparker.com/homepage-glasses",
+      "note": "Montura + cristales monofocales con antirreflejo, antirrayado y filtro UV, precio de entrada."
+    },
+    {
+      "productId": "gafas-graduadas",
+      "countryCode": "MX",
+      "value": 300.0,
+      "date": "2026-10",
+      "source": "Lentica (óptica de Ciudad de México)",
+      "url": "https://lentica.mx/",
+      "note": "Armazón + micas graduadas + antirreflejo, precio de entrada (varía con la graduación)."
+    },
+    {
+      "productId": "gafas-graduadas",
+      "countryCode": "AR",
+      "value": 72490.0,
+      "date": "2026-10",
+      "source": "Óptica Infinito Argentina",
+      "url": "https://opticainfinito.com.ar/productos/armazon-de-receta-cristales-antirreflejo-stock-1sdfs/",
+      "note": "Armazón de receta + cristales orgánicos con antirreflejo, precio final con impuestos."
+    },
+    {
+      "productId": "gafas-graduadas",
+      "countryCode": "CO",
+      "value": 440000.0,
+      "date": "2026-10",
+      "source": "OKIO Colombia · tarifa pública",
+      "url": "https://co.okio.la/",
+      "note": "Montura + cristales monofocales con la fórmula + antirreflejo + estuche."
+    },
+    {
+      "productId": "gafas-graduadas",
+      "countryCode": "CL",
+      "value": 30000.0,
+      "date": "2026-10",
+      "source": "Optisalud Chile · esquema de precios",
+      "url": "https://optisalud.cl/pages/precios-lentes-opticos-optica-online-optisalud",
+      "note": "Marco + cristales monofocales con antirreflejo, capa dura y filtro UV, precio de entrada."
+    },
+    {
+      "productId": "gafas-graduadas",
+      "countryCode": "CH",
+      "value": 179.0,
+      "date": "2026-10",
+      "source": "Lengacher Optik Suiza",
+      "url": "https://www.lengacheroptik.ch/Brillenfassungen/",
+      "note": "Montura + cristales orgánicos monofocales, ambos con antirreflejo. Precio completo."
+    },
+    {
+      "productId": "aire-acondicionado",
+      "countryCode": "PT",
+      "value": 587.99,
+      "date": "2026-10",
+      "source": "Maisclima + Radio Popular (equipo e instalación)",
+      "url": "https://www.maisclima.pt/produto/ar-condicionado-artom-mono-split-9000-btu-wifi/",
+      "note": "Equipo split de 9.000 BTU (328 €) + instalación por empresa certificada (259,99 €)."
+    },
+    {
+      "productId": "aire-acondicionado",
+      "countryCode": "FR",
+      "value": 2217.0,
+      "date": "2026-10",
+      "source": "Eau-Go.fr · precio cerrado con instalación",
+      "url": "https://www.eau-go.fr/climatisation-reversible-daikin-33-kw-mono-split-perfera-bluevolution-781.html",
+      "note": "Daikin Perfera 3,3 kW entregado e instalado: unidad interior y exterior, 5 m de cobre, soporte, conexión eléctrica y mano de obra."
+    },
+    {
+      "productId": "aire-acondicionado",
+      "countryCode": "DE",
+      "value": 2899.99,
+      "date": "2026-10",
+      "source": "Klimaanlagen-Heizungen.de · precio cerrado con montaje",
+      "url": "https://www.klimaanlagen-heizungen.de/kaisai-ice-3-5-klimaanlage-inkl-montage-zum-festpreis",
+      "note": "Equipo de 3,5 kW con montaje completo y puesta en marcha, precio cerrado."
+    },
+    {
+      "productId": "aire-acondicionado",
+      "countryCode": "IT",
+      "value": 1839.0,
+      "date": "2026-10",
+      "source": "GM-Termoidraulica · oferta con instalación",
+      "url": "https://www.gm-termoidraulica.it/offerta-tutto-incluso/climatizzatori-con-installazione/climatizzatore-monosplit-daikin-perfera-all-seasons-da-12000-btu-wifi-ftxm35a-a-r32-con-installazione.html",
+      "note": "Daikin Perfera 12.000 BTU con instalación «llave en mano». Varía según la zona."
+    },
+    {
+      "productId": "aire-acondicionado",
+      "countryCode": "GB",
+      "value": 1400.0,
+      "date": "2026-10",
+      "source": "Micro-Climate (instalador, guía de precios reales)",
+      "url": "https://micro-climate.co.uk/air-conditioning-installation-uk-cost-guide",
+      "note": "Split de una habitación (2,5-3,5 kW) totalmente instalado, con certificación de gases fluorados. Rango habitual 1.400-2.200 £."
+    },
+    {
+      "productId": "aire-acondicionado",
+      "countryCode": "US",
+      "value": 1399.0,
+      "date": "2026-10",
+      "source": "HVAC-IT · paquete instalado",
+      "url": "https://hvac-it.com/mini-split-packages",
+      "note": "Minisplit de 12.000 BTU instalado: equipo, instalación, vacío, conexión eléctrica y puesta en marcha."
+    },
+    {
+      "productId": "aire-acondicionado",
+      "countryCode": "MX",
+      "value": 5290.0,
+      "date": "2026-10",
+      "source": "Climastock Outlet (Monterrey)",
+      "url": "https://climastockoutlet.com/products/minisplit-midea-care-1-ton-110v-frio-y-calor",
+      "note": "Minisplit Midea de 1 tonelada con instalación básica incluida."
+    },
+    {
+      "productId": "aire-acondicionado",
+      "countryCode": "CL",
+      "value": 438939.0,
+      "date": "2026-10",
+      "source": "Clima Air Chile · oferta con instalación",
+      "url": "https://climaair.cl/producto/aire-acondicionado-split-inverter-hisense-12000-btu-incluye-instalacion",
+      "note": "Split inverter Hisense de 12.000 BTU con instalación incluida."
+    },
+    {
+      "productId": "aire-acondicionado",
+      "countryCode": "CH",
+      "value": 3500.0,
+      "date": "2026-10",
+      "source": "Kibernetik Suiza",
+      "url": "https://support.kibernetik.ch/hc/de/articles/30399348252445-Was-kostet-eine-Klimaanlage-inklusive-Installation",
+      "note": "Equipo de pared con montaje, puesta en marcha y material. Rango habitual 3.500-5.500 CHF según tubería y accesos."
+    },
+    {
+      "productId": "grado-universitario",
+      "countryCode": "PT",
+      "value": 2091.0,
+      "date": "2026-10",
+      "source": "Universidade de Lisboa / tope fijado por el Ministerio",
+      "url": "https://ulisboa.pt/en/curso/licenciatura/portuguese-studies",
+      "note": "Licenciatura pública de 3 años a 697 €/año (máximo legal, congelado desde 2018). Universidad de Lisboa, 2025/26."
+    },
+    {
+      "productId": "grado-universitario",
+      "countryCode": "FR",
+      "value": 534.0,
+      "date": "2026-10",
+      "source": "Campus France / Ministerio de Enseñanza Superior",
+      "url": "https://www.campusfrance.org/fr/cout-etudes-superieures-france-frais-inscription",
+      "note": "Licence pública de 3 años: 178 €/año de matrícula (UE) + 105 €/año de contribución estudiantil. Curso 2026-27."
+    },
+    {
+      "productId": "grado-universitario",
+      "countryCode": "DE",
+      "value": 2260.8,
+      "date": "2026-10",
+      "source": "Freie Universität Berlin · tasas oficiales",
+      "url": "https://www.fu-berlin.de/en/studium/studieren/studienorganisation/gebuehren",
+      "note": "Bachelor de 3 años: la universidad pública no cobra matrícula, solo 376,80 € por semestre (incluye el abono de transporte). Freie Universität Berlin, 2026/27."
+    },
+    {
+      "productId": "grado-universitario",
+      "countryCode": "IT",
+      "value": 6591.12,
+      "date": "2026-10",
+      "source": "Università di Bologna · importes máximos oficiales",
+      "url": "https://www.unibo.it/en/attachments/tasse/Tabellaimportimassimi2526.pdf/@@download/file/Tabella-importi-massimi-25-26.pdf",
+      "note": "Laurea de 3 años: 2.197,04 €/año con renta alta y sin exención (con renta baja, solo 157 €). Universidad de Bolonia, 2025/26."
+    },
+    {
+      "productId": "grado-universitario",
+      "countryCode": "GB",
+      "value": 28605.0,
+      "date": "2026-10",
+      "source": "University of Manchester / tope del Departamento de Educación",
+      "url": "https://studentsupport.manchester.ac.uk/finances/tuition-fees/fee-amounts/standard-tuition-fees",
+      "note": "Grado de 3 años a 9.535 £/año (tope legal para estudiantes nacionales). Universidad de Manchester, 2025/26. Se puede financiar con préstamo estatal."
+    },
+    {
+      "productId": "grado-universitario",
+      "countryCode": "US",
+      "value": 47800.0,
+      "date": "2026-10",
+      "source": "College Board · tendencias de precios 2025",
+      "url": "https://research.collegeboard.org/trends/college-pricing/highlights",
+      "note": "Carrera de 4 años en una universidad pública: 11.950 $/año de matrícula y tasas para residentes del estado, media nacional 2025-26."
+    },
+    {
+      "productId": "grado-universitario",
+      "countryCode": "CO",
+      "value": 20000000.0,
+      "date": "2026-10",
+      "source": "Universidad Nacional de Colombia",
+      "url": "https://unal.edu.co/registro-y-matricula",
+      "note": "Carrera de 4 años en la Universidad Nacional: la matrícula depende de la renta y el estrato (de casi 0 a 5.000.000 $/semestre). Valor representativo de estrato medio-alto."
+    },
+    {
+      "productId": "grado-universitario",
+      "countryCode": "CL",
+      "value": 39839000.0,
+      "date": "2026-10",
+      "source": "Universidad de Chile · aranceles oficiales",
+      "url": "https://uchile.cl/admision-y-matriculas/aranceles-y-credito/aranceles/estudiantes-nuevos",
+      "note": "Carrera de 5 años (Ingeniería Comercial) a 7.967.800 $/año. Universidad de Chile, aranceles 2026. Hay gratuidad estatal para el 60% más vulnerable."
+    },
+    {
+      "productId": "grado-universitario",
+      "countryCode": "CH",
+      "value": 4380.0,
+      "date": "2026-10",
+      "source": "ETH Zúrich · tasas oficiales",
+      "url": "https://ethz.ch/students/en/studies/financial/tuition-fees.html",
+      "note": "Bachelor de 3 años a 730 CHF/semestre (suizos, residentes y UE). ETH Zúrich desde otoño de 2025. Los extracomunitarios sin permiso pagan 4.380 CHF al año."
+    },
+    {
+      "productId": "master",
+      "countryCode": "PT",
+      "value": 1200.0,
+      "date": "2026-10",
+      "source": "Universidade de Lisboa · fijación de matrículas",
+      "url": "https://www.ulisboa.pt/sites/default/files/documents/page/2024/deliberacaopropinas24-25_0.pdf",
+      "note": "Máster público de un año; cada universidad fija el precio (sin el tope de la licenciatura). Valor representativo. Universidad de Lisboa, 2024/25."
+    },
+    {
+      "productId": "master",
+      "countryCode": "FR",
+      "value": 255.0,
+      "date": "2026-10",
+      "source": "Campus France / Ministerio de Enseñanza Superior",
+      "url": "https://www.campusfrance.org/fr/cout-etudes-superieures-france-frais-inscription",
+      "note": "Máster público de un año: 255 € de matrícula para estudiantes de la UE. Curso 2026-27. El máster oficial dura dos años."
+    },
+    {
+      "productId": "master",
+      "countryCode": "DE",
+      "value": 753.6,
+      "date": "2026-10",
+      "source": "Freie Universität Berlin · tasas oficiales",
+      "url": "https://www.fu-berlin.de/en/studium/studieren/studienorganisation/gebuehren",
+      "note": "Máster público de un año (2 semestres) a 376,80 € por semestre, sin matrícula. Freie Universität Berlin, 2026/27."
+    },
+    {
+      "productId": "master",
+      "countryCode": "IT",
+      "value": 2707.04,
+      "date": "2026-10",
+      "source": "Università di Bologna · importes máximos oficiales",
+      "url": "https://www.unibo.it/en/attachments/tasse/Tabellaimportimassimi2526.pdf/@@download/file/Tabella-importi-massimi-25-26.pdf",
+      "note": "Laurea magistrale de un año (2.550 € + 157,04 €) con renta alta. Desde 157 € con renta baja. Universidad de Bolonia, 2025/26."
+    },
+    {
+      "productId": "master",
+      "countryCode": "GB",
+      "value": 12000.0,
+      "date": "2026-10",
+      "source": "University of Manchester · tasas oficiales",
+      "url": "https://studentsupport.manchester.ac.uk/finances/tuition-fees/fee-amounts/standard-tuition-fees",
+      "note": "Máster de un año (MSc) para estudiantes nacionales. Universidad de Manchester, 2025/26."
+    },
+    {
+      "productId": "master",
+      "countryCode": "US",
+      "value": 12116.0,
+      "date": "2026-10",
+      "source": "NCES (Departamento de Educación de EE. UU.)",
+      "url": "https://nces.ed.gov/ipeds/trendgenerator/app/answer/13/207",
+      "note": "Máster: 12.116 $/año de matrícula y tasas en universidades públicas, media nacional 2024-25. Suele durar dos años."
+    },
+    {
+      "productId": "master",
+      "countryCode": "AR",
+      "value": 1400000.0,
+      "date": "2026-10",
+      "source": "UBA · Secretaría de Posgrado",
+      "url": "https://posgrado.filo.uba.ar/maestria-2026",
+      "note": "Maestría de pago en la UBA (Filosofía y Letras), primer año: 140.000 $/mes durante 9 meses + matrícula. El grado público sí es gratuito."
+    },
+    {
+      "productId": "master",
+      "countryCode": "CO",
+      "value": 8000000.0,
+      "date": "2026-10",
+      "source": "Universidad Nacional de Colombia",
+      "url": "https://posgrados.unal.edu.co/",
+      "note": "Maestría de un año en la Universidad Nacional: 3.000.000-6.000.000 $/semestre según renta. Valor representativo."
+    },
+    {
+      "productId": "master",
+      "countryCode": "CL",
+      "value": 5297040.0,
+      "date": "2026-10",
+      "source": "Universidad de Chile · aranceles oficiales",
+      "url": "https://ciencias.uchile.cl/postgrados/5355/ciencias-biologicas",
+      "note": "Magíster de un año (Ciencias Biológicas) en la Universidad de Chile, arancel 2026. Otros programas van de 5,6 a 8,2 millones."
+    },
+    {
+      "productId": "master",
+      "countryCode": "CH",
+      "value": 1460.0,
+      "date": "2026-10",
+      "source": "ETH Zúrich · tasas oficiales",
+      "url": "https://ethz.ch/students/en/studies/financial/tuition-fees.html",
+      "note": "Máster de un año (2 semestres) a 730 CHF por semestre en la ETH Zúrich. Los extracomunitarios sin permiso pagan 4.380 CHF."
     }
   ]
 }

@@ -760,81 +760,92 @@
         "origin": "local"
       },
       "GB": {
-        "value": 15.26,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (18 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 32,
+        "date": "2026-10",
+        "note": "Corte de hombre en Copper Row Barbers (Londres).",
+        "source": "Precio de la carta de una peluquería (reserva online)",
+        "origin": "local",
+        "url": "https://www.fresha.com/lp/en/tt/men's-haircuts/in/gb-london/surrey-quays"
       },
       "US": {
-        "value": 20.17,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (18 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 40,
+        "date": "2026-10",
+        "note": "Corte de hombre en Pall Mall Barbers (Manhattan, Nueva York).",
+        "source": "Precio de la carta de una peluquería (reserva online)",
+        "origin": "local",
+        "url": "https://fresha.com/lp/en/tt/men's-haircuts/in/us-new-york/manhattan"
       },
       "MX": {
-        "value": 367.11,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (18 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 300,
+        "date": "2026-10",
+        "note": "Corte de hombre en Tony M (Ciudad de México).",
+        "source": "Precio de la carta de una peluquería (reserva online)",
+        "origin": "local",
+        "url": "https://www.fresha.com/lp/es/bt/peluquer%C3%ADas/mx-ciudad-de-m%C3%A9xico/ciudad-de-m%C3%A9xico"
       },
       "CH": {
-        "value": 16.76,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (18 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 50,
+        "date": "2026-10",
+        "note": "Corte de hombre en Tsek Hair Studio (Zúrich).",
+        "source": "Precio de la carta de una peluquería (reserva online)",
+        "origin": "local",
+        "url": "https://www.fresha.com/lp/en/tt/men's-haircuts/in/ch-z%C3%BCrich"
       },
       "AR": {
-        "value": 20700,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (18 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 22000,
+        "date": "2026-10",
+        "note": "Corte masculino en Axel (Buenos Aires).",
+        "source": "Precio de la carta de una peluquería (reserva online)",
+        "origin": "local",
+        "url": "https://fresha.com/lp/en/bt/barbershops/in/ar-buenos-aires-ciudad-aut%C3%B3noma-de-buenos-aires"
       },
       "CO": {
-        "value": 79200,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (18 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 30000,
+        "date": "2026-10",
+        "note": "Corte de hombre en Shaloons Studio (Bogotá).",
+        "source": "Precio de la carta de una peluquería (reserva online)",
+        "origin": "local",
+        "url": "https://www.fresha.com/lp/es/bt/barber%C3%ADas/co-bogot%C3%A1"
       },
       "CL": {
-        "value": 18360,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (18 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 12000,
+        "date": "2026-10",
+        "note": "Corte en Barbería Galicia (Santiago).",
+        "source": "Precio de la carta de una peluquería (reserva online)",
+        "origin": "local",
+        "url": "https://www.fresha.com/lp/es/tt/cortes-de-pelo-para-hombre/cl-santiago"
       },
       "PT": {
-        "value": 18,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (18 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 15,
+        "date": "2026-10",
+        "note": "Corte de hombre en Dom Juan Barbershop (Lisboa).",
+        "source": "Precio de la carta de una peluquería (reserva online)",
+        "origin": "local",
+        "url": "https://fresha.com/lp/en/tt/men's-haircuts/in/pt-lisbon/santa-maria-dos-olivais"
       },
       "FR": {
-        "value": 18,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (18 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 28,
+        "date": "2026-10",
+        "note": "Coupe homme en Les Maîtres Barbiers Perruquiers (París).",
+        "source": "Precio de la carta de una peluquería (reserva online)",
+        "origin": "local",
+        "url": "https://www.fresha.com/lp/en/bt/barbershops/in/fr-paris-paris"
       },
       "DE": {
-        "value": 18,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (18 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 25,
+        "date": "2026-10",
+        "note": "Männer Haarschnitt en un salón de Berlín (Pariser Platz).",
+        "source": "Precio de la carta de una peluquería (reserva online)",
+        "origin": "local",
+        "url": "https://fresha.com/lp/en/tt/men's-haircuts/in/de-berlin"
       },
       "IT": {
-        "value": 18,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (18 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 25,
+        "date": "2026-10",
+        "note": "Taglio uomo en Modart (Milán).",
+        "source": "Precio de la carta de una peluquería (reserva online)",
+        "origin": "local",
+        "url": "https://www.fresha.com/lp/en/tt/men's-haircuts/in/it-milan/zone-1-of-milan"
       }
     },
     "visible": true
@@ -3012,81 +3023,92 @@
         "origin": "local"
       },
       "GB": {
-        "value": 381.43,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (450 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 1350,
+        "date": "2026-10",
+        "note": "Habitación doble en piso compartido en Londres, facturas incluidas.",
+        "source": "SpareRoom · anuncios de habitación",
+        "origin": "local",
+        "url": "https://www.spareroom.co.uk/flatshare/london/euston/15365786"
       },
       "US": {
-        "value": 504.27,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (450 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 1250,
+        "date": "2026-10",
+        "note": "Habitación en apartamento compartido en Manhattan (Nueva York).",
+        "source": "SpareRoom EE. UU. · anuncios de habitación",
+        "origin": "local",
+        "url": "https://www.spareroom.com/rooms-for-rent/manhattan/yorkville/103213881"
       },
       "MX": {
-        "value": 9177.75,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (450 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 4000,
+        "date": "2026-10",
+        "note": "Cuarto en renta en Ciudad de México (rango visto: 2.200-7.000 $).",
+        "source": "Rentola México · anuncios de habitación",
+        "origin": "local",
+        "url": "https://rentola.mx/renta/habitacion/ciudad-de-mexico"
       },
       "CH": {
-        "value": 419.09,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (450 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 1270,
+        "date": "2026-10",
+        "note": "Habitación (WG-Zimmer) en Zúrich, gastos incluidos.",
+        "source": "Flatfox · anuncios de habitación",
+        "origin": "local",
+        "url": "https://flatfox.ch/de/wohnung/klingenstrasse-24-8005-zurich/86286680"
       },
       "AR": {
-        "value": 517500,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (450 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 290000,
+        "date": "2026-10",
+        "note": "Habitación individual en casa compartida en Buenos Aires (Caballito).",
+        "source": "Roomgo Argentina · anuncios de habitación",
+        "origin": "local",
+        "url": "https://www.roomgo.com.ar/en-alquiler-capital-federal/alquiler-habitacion-individual-en-el-centro-geografico-c-buenos-aires-caballito/H06101019486264"
       },
       "CO": {
-        "value": 1980000,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (450 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 670000,
+        "date": "2026-10",
+        "note": "Habitación en apartamento compartido en Bogotá.",
+        "source": "Fincaraiz · anuncios de habitación",
+        "origin": "local",
+        "url": "https://www.fincaraiz.com.co/arriendo/habitaciones/bogota/bogota-dc"
       },
       "CL": {
-        "value": 459000,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (450 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 350000,
+        "date": "2026-10",
+        "note": "Pieza en piso compartido en Santiago (rango visto: 170.000-585.000 $).",
+        "source": "ArriendodePieza · anuncios de habitación",
+        "origin": "local",
+        "url": "https://arriendodepieza.cl/arriendo-pieza-santiago/"
       },
       "PT": {
         "value": 450,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (450 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "date": "2026-10",
+        "note": "Habitación en piso compartido en Lisboa.",
+        "source": "OLX Portugal · anuncios de habitación",
+        "origin": "local",
+        "url": "https://www.olx.pt/imoveis/quartos-para-aluguer/lisboa/"
       },
       "FR": {
-        "value": 450,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (450 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 1000,
+        "date": "2026-10",
+        "note": "Habitación en piso compartido en París.",
+        "source": "Spotahome · anuncios de habitación",
+        "origin": "local",
+        "url": "https://www.spotahome.com/fr/s/paris/for-rent:rooms"
       },
       "DE": {
-        "value": 450,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (450 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 605,
+        "date": "2026-10",
+        "note": "Habitación (WG-Zimmer) en Berlín, gastos incluidos.",
+        "source": "HousingAnywhere · anuncios de habitación",
+        "origin": "local",
+        "url": "https://housinganywhere.com/s/Berlin--Germany/private-rooms"
       },
       "IT": {
-        "value": 450,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (450 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 600,
+        "date": "2026-10",
+        "note": "Habitación individual en piso compartido en Milán.",
+        "source": "Coinquilino · anuncios de habitación",
+        "origin": "local",
+        "url": "https://coinquilino.app/stanze-in-affitto/milano/single-room-TmPud2"
       }
     },
     "visible": true
@@ -3757,18 +3779,20 @@
         "origin": "local"
       },
       "GB": {
-        "value": 6781.04,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (8000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 12000,
+        "date": "2026-10",
+        "note": "Máster de un año (MSc) para estudiantes nacionales. Universidad de Manchester, 2025/26.",
+        "source": "University of Manchester · tasas oficiales",
+        "origin": "local",
+        "url": "https://studentsupport.manchester.ac.uk/finances/tuition-fees/fee-amounts/standard-tuition-fees"
       },
       "US": {
-        "value": 8964.8,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (8000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 12116,
+        "date": "2026-10",
+        "note": "Máster: 12.116 $/año de matrícula y tasas en universidades públicas, media nacional 2024-25. Suele durar dos años.",
+        "source": "NCES (Departamento de Educación de EE. UU.)",
+        "origin": "local",
+        "url": "https://nces.ed.gov/ipeds/trendgenerator/app/answer/13/207"
       },
       "MX": {
         "value": 163160,
@@ -3778,60 +3802,68 @@
         "origin": "converted"
       },
       "CH": {
-        "value": 7450.4,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (8000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 1460,
+        "date": "2026-10",
+        "note": "Máster de un año (2 semestres) a 730 CHF por semestre en la ETH Zúrich. Los extracomunitarios sin permiso pagan 4.380 CHF.",
+        "source": "ETH Zúrich · tasas oficiales",
+        "origin": "local",
+        "url": "https://ethz.ch/students/en/studies/financial/tuition-fees.html"
       },
       "AR": {
-        "value": 9200000,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (8000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 1400000,
+        "date": "2026-10",
+        "note": "Maestría de pago en la UBA (Filosofía y Letras), primer año: 140.000 $/mes durante 9 meses + matrícula. El grado público sí es gratuito.",
+        "source": "UBA · Secretaría de Posgrado",
+        "origin": "local",
+        "url": "https://posgrado.filo.uba.ar/maestria-2026"
       },
       "CO": {
-        "value": 35200000,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (8000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 8000000,
+        "date": "2026-10",
+        "note": "Maestría de un año en la Universidad Nacional: 3.000.000-6.000.000 $/semestre según renta. Valor representativo.",
+        "source": "Universidad Nacional de Colombia",
+        "origin": "local",
+        "url": "https://posgrados.unal.edu.co/"
       },
       "CL": {
-        "value": 8160000,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (8000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 5297040,
+        "date": "2026-10",
+        "note": "Magíster de un año (Ciencias Biológicas) en la Universidad de Chile, arancel 2026. Otros programas van de 5,6 a 8,2 millones.",
+        "source": "Universidad de Chile · aranceles oficiales",
+        "origin": "local",
+        "url": "https://ciencias.uchile.cl/postgrados/5355/ciencias-biologicas"
       },
       "PT": {
-        "value": 8000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (8000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 1200,
+        "date": "2026-10",
+        "note": "Máster público de un año; cada universidad fija el precio (sin el tope de la licenciatura). Valor representativo. Universidad de Lisboa, 2024/25.",
+        "source": "Universidade de Lisboa · fijación de matrículas",
+        "origin": "local",
+        "url": "https://www.ulisboa.pt/sites/default/files/documents/page/2024/deliberacaopropinas24-25_0.pdf"
       },
       "FR": {
-        "value": 8000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (8000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 255,
+        "date": "2026-10",
+        "note": "Máster público de un año: 255 € de matrícula para estudiantes de la UE. Curso 2026-27. El máster oficial dura dos años.",
+        "source": "Campus France / Ministerio de Enseñanza Superior",
+        "origin": "local",
+        "url": "https://www.campusfrance.org/fr/cout-etudes-superieures-france-frais-inscription"
       },
       "DE": {
-        "value": 8000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (8000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 753.6,
+        "date": "2026-10",
+        "note": "Máster público de un año (2 semestres) a 376,80 € por semestre, sin matrícula. Freie Universität Berlin, 2026/27.",
+        "source": "Freie Universität Berlin · tasas oficiales",
+        "origin": "local",
+        "url": "https://www.fu-berlin.de/en/studium/studieren/studienorganisation/gebuehren"
       },
       "IT": {
-        "value": 8000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (8000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 2707.04,
+        "date": "2026-10",
+        "note": "Laurea magistrale de un año (2.550 € + 157,04 €) con renta alta. Desde 157 € con renta baja. Universidad de Bolonia, 2025/26.",
+        "source": "Università di Bologna · importes máximos oficiales",
+        "origin": "local",
+        "url": "https://www.unibo.it/en/attachments/tasse/Tabellaimportimassimi2526.pdf/@@download/file/Tabella-importi-massimi-25-26.pdf"
       }
     },
     "visible": true
@@ -4036,18 +4068,20 @@
         "origin": "local"
       },
       "GB": {
-        "value": 4238.15,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (5000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 28605,
+        "date": "2026-10",
+        "note": "Grado de 3 años a 9.535 £/año (tope legal para estudiantes nacionales). Universidad de Manchester, 2025/26. Se puede financiar con préstamo estatal.",
+        "source": "University of Manchester / tope del Departamento de Educación",
+        "origin": "local",
+        "url": "https://studentsupport.manchester.ac.uk/finances/tuition-fees/fee-amounts/standard-tuition-fees"
       },
       "US": {
-        "value": 5603,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (5000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 47800,
+        "date": "2026-10",
+        "note": "Carrera de 4 años en una universidad pública: 11.950 $/año de matrícula y tasas para residentes del estado, media nacional 2025-26.",
+        "source": "College Board · tendencias de precios 2025",
+        "origin": "local",
+        "url": "https://research.collegeboard.org/trends/college-pricing/highlights"
       },
       "MX": {
         "value": 101975,
@@ -4057,11 +4091,12 @@
         "origin": "converted"
       },
       "CH": {
-        "value": 4656.5,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (5000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 4380,
+        "date": "2026-10",
+        "note": "Bachelor de 3 años a 730 CHF/semestre (suizos, residentes y UE). ETH Zúrich desde otoño de 2025. Los extracomunitarios sin permiso pagan 4.380 CHF al año.",
+        "source": "ETH Zúrich · tasas oficiales",
+        "origin": "local",
+        "url": "https://ethz.ch/students/en/studies/financial/tuition-fees.html"
       },
       "AR": {
         "value": 5750000,
@@ -4071,46 +4106,52 @@
         "origin": "converted"
       },
       "CO": {
-        "value": 22000000,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (5000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 20000000,
+        "date": "2026-10",
+        "note": "Carrera de 4 años en la Universidad Nacional: la matrícula depende de la renta y el estrato (de casi 0 a 5.000.000 $/semestre). Valor representativo de estrato medio-alto.",
+        "source": "Universidad Nacional de Colombia",
+        "origin": "local",
+        "url": "https://unal.edu.co/registro-y-matricula"
       },
       "CL": {
-        "value": 5100000,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (5000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 39839000,
+        "date": "2026-10",
+        "note": "Carrera de 5 años (Ingeniería Comercial) a 7.967.800 $/año. Universidad de Chile, aranceles 2026. Hay gratuidad estatal para el 60% más vulnerable.",
+        "source": "Universidad de Chile · aranceles oficiales",
+        "origin": "local",
+        "url": "https://uchile.cl/admision-y-matriculas/aranceles-y-credito/aranceles/estudiantes-nuevos"
       },
       "PT": {
-        "value": 5000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (5000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 2091,
+        "date": "2026-10",
+        "note": "Licenciatura pública de 3 años a 697 €/año (máximo legal, congelado desde 2018). Universidad de Lisboa, 2025/26.",
+        "source": "Universidade de Lisboa / tope fijado por el Ministerio",
+        "origin": "local",
+        "url": "https://ulisboa.pt/en/curso/licenciatura/portuguese-studies"
       },
       "FR": {
-        "value": 5000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (5000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 534,
+        "date": "2026-10",
+        "note": "Licence pública de 3 años: 178 €/año de matrícula (UE) + 105 €/año de contribución estudiantil. Curso 2026-27.",
+        "source": "Campus France / Ministerio de Enseñanza Superior",
+        "origin": "local",
+        "url": "https://www.campusfrance.org/fr/cout-etudes-superieures-france-frais-inscription"
       },
       "DE": {
-        "value": 5000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (5000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 2260.8,
+        "date": "2026-10",
+        "note": "Bachelor de 3 años: la universidad pública no cobra matrícula, solo 376,80 € por semestre (incluye el abono de transporte). Freie Universität Berlin, 2026/27.",
+        "source": "Freie Universität Berlin · tasas oficiales",
+        "origin": "local",
+        "url": "https://www.fu-berlin.de/en/studium/studieren/studienorganisation/gebuehren"
       },
       "IT": {
-        "value": 5000,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (5000 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 6591.12,
+        "date": "2026-10",
+        "note": "Laurea de 3 años: 2.197,04 €/año con renta alta y sin exención (con renta baja, solo 157 €). Universidad de Bolonia, 2025/26.",
+        "source": "Università di Bologna · importes máximos oficiales",
+        "origin": "local",
+        "url": "https://www.unibo.it/en/attachments/tasse/Tabellaimportimassimi2526.pdf/@@download/file/Tabella-importi-massimi-25-26.pdf"
       }
     },
     "visible": true
@@ -4136,11 +4177,12 @@
         "origin": "converted"
       },
       "US": {
-        "value": 1456.78,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (1300 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 4155,
+        "date": "2026-10",
+        "note": "Colocación del implante (2.312 $) + corona de porcelana (1.843 $), media nacional. No incluye pilar personalizado ni injerto.",
+        "source": "ADA Health Policy Institute · encuesta de honorarios 2024",
+        "origin": "local",
+        "url": "https://plaindentalcost.com/procedures?category=Implants"
       },
       "MX": {
         "value": 26513.5,
@@ -4157,11 +4199,12 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 1495000,
-        "date": "2026-08",
-        "note": "Precio convertido desde España (1300 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 1541823,
+        "date": "2026-10",
+        "note": "Implante (1.000.718 $) + corona de circonio (541.105 $) según el arancel colegiado, que es ORIENTADOR y no obligatorio. No incluye injerto ni planificación.",
+        "source": "Colegio Odontológico de Córdoba · aranceles orientadores",
+        "origin": "local",
+        "url": "https://colodontcba.org.ar/wp-content/uploads/ARANCELES-GENERALES-21.pdf"
       },
       "CO": {
         "value": 5720000,
@@ -4199,11 +4242,12 @@
         "origin": "converted"
       },
       "IT": {
-        "value": 1300,
-        "date": "2026-08",
-        "note": "Precio de referencia de España (1300 €). Edítalo.",
-        "source": "Referencia de producto (convertido)",
-        "origin": "converted"
+        "value": 2520,
+        "date": "2026-10",
+        "note": "Implante (1.080 €) + pilar (360 €) + corona cerámica (1.080 €). No incluye injerto de hueso ni elevación de seno.",
+        "source": "Commissione Albo Odontoiatri · nomenclátor provincial de precios",
+        "origin": "local",
+        "url": "https://www.ordinemedicifc.it/wp-content/uploads/2016/10/Nomenclatore-tariffario-prestazioni-odontoiatriche.pdf"
       }
     },
     "visible": true
@@ -4969,86 +5013,86 @@
     "category": "vida",
     "prices": {
       "ES": {
-        "value": 74068,
+        "value": 74063,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (74.068 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (74.063 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "GB": {
-        "value": 62743,
+        "value": 62661,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (62.743 £).",
+        "note": "Cotización de mercado de 1 Bitcoin (62.661 £).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "US": {
-        "value": 82978,
+        "value": 82973,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (82.978 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (82.973 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "MX": {
-        "value": 1527966,
+        "value": 1527875,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (1.527.966 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (1.527.875 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "AR": {
-        "value": 125946935,
+        "value": 125939404,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (125.946.935 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (125.939.404 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CO": {
-        "value": 325899200,
+        "value": 325877200,
         "date": "2026-10",
-        "note": "Precio convertido desde España (74068 €). Edítalo.",
+        "note": "Precio convertido desde España (74063 €). Edítalo.",
         "source": "CoinGecko API (mercado) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 81067068,
+        "value": 81062221,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (81.067.068 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (81.062.221 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CH": {
-        "value": 68844,
+        "value": 68840,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (68.844 Fr.).",
+        "note": "Cotización de mercado de 1 Bitcoin (68.840 Fr.).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "PT": {
-        "value": 74068,
+        "value": 74063,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (74.068 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (74.063 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "FR": {
-        "value": 74068,
+        "value": 74063,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (74.068 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (74.063 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "DE": {
-        "value": 74068,
+        "value": 74063,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (74.068 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (74.063 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "IT": {
-        "value": 74068,
+        "value": 74063,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (74.068 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (74.063 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       }
@@ -5820,86 +5864,86 @@
     "category": "vida",
     "prices": {
       "ES": {
-        "value": 2236,
+        "value": 2235,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2236 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2235 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "GB": {
-        "value": 1894,
+        "value": 1891,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (1894 £).",
+        "note": "Cotización de mercado de 1 Ethereum (1891 £).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "US": {
-        "value": 2505,
+        "value": 2504,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2505 $).",
+        "note": "Cotización de mercado de 1 Ethereum (2504 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "MX": {
-        "value": 46135,
+        "value": 46113,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (46.135 $).",
+        "note": "Cotización de mercado de 1 Ethereum (46.113 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "AR": {
-        "value": 3802807,
+        "value": 3801024,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (3.802.807 $).",
+        "note": "Cotización de mercado de 1 Ethereum (3.801.024 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CO": {
-        "value": 9838400,
+        "value": 9834000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (2236 €). Edítalo.",
+        "note": "Precio convertido desde España (2235 €). Edítalo.",
         "source": "CoinGecko API (mercado) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 2447717,
+        "value": 2446569,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2.447.717 $).",
+        "note": "Cotización de mercado de 1 Ethereum (2.446.569 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CH": {
-        "value": 2079,
+        "value": 2078,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2079 Fr.).",
+        "note": "Cotización de mercado de 1 Ethereum (2078 Fr.).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "PT": {
-        "value": 2236,
+        "value": 2235,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2236 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2235 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "FR": {
-        "value": 2236,
+        "value": 2235,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2236 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2235 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "DE": {
-        "value": 2236,
+        "value": 2235,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2236 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2235 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "IT": {
-        "value": 2236,
+        "value": 2235,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2236 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2235 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       }
@@ -6531,25 +6575,28 @@
         "origin": "local"
       },
       "GB": {
-        "value": 805.25,
+        "value": 1400,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "Tarifas Medias de Climatización Residencial (convertido)",
-        "origin": "converted"
+        "note": "Split de una habitación (2,5-3,5 kW) totalmente instalado, con certificación de gases fluorados. Rango habitual 1.400-2.200 £.",
+        "source": "Micro-Climate (instalador, guía de precios reales)",
+        "origin": "local",
+        "url": "https://micro-climate.co.uk/air-conditioning-installation-uk-cost-guide"
       },
       "US": {
-        "value": 1064.57,
+        "value": 1399,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "Tarifas Medias de Climatización Residencial (convertido)",
-        "origin": "converted"
+        "note": "Minisplit de 12.000 BTU instalado: equipo, instalación, vacío, conexión eléctrica y puesta en marcha.",
+        "source": "HVAC-IT · paquete instalado",
+        "origin": "local",
+        "url": "https://hvac-it.com/mini-split-packages"
       },
       "MX": {
-        "value": 19375.25,
+        "value": 5290,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "Tarifas Medias de Climatización Residencial (convertido)",
-        "origin": "converted"
+        "note": "Minisplit Midea de 1 tonelada con instalación básica incluida.",
+        "source": "Climastock Outlet (Monterrey)",
+        "origin": "local",
+        "url": "https://climastockoutlet.com/products/minisplit-midea-care-1-ton-110v-frio-y-calor"
       },
       "AR": {
         "value": 1092500,
@@ -6566,46 +6613,52 @@
         "origin": "converted"
       },
       "CL": {
-        "value": 969000,
+        "value": 438939,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "Tarifas Medias de Climatización Residencial (convertido)",
-        "origin": "converted"
+        "note": "Split inverter Hisense de 12.000 BTU con instalación incluida.",
+        "source": "Clima Air Chile · oferta con instalación",
+        "origin": "local",
+        "url": "https://climaair.cl/producto/aire-acondicionado-split-inverter-hisense-12000-btu-incluye-instalacion"
       },
       "CH": {
-        "value": 884.74,
+        "value": 3500,
         "date": "2026-10",
-        "note": "Precio convertido desde España (950 €). Edítalo.",
-        "source": "Tarifas Medias de Climatización Residencial (convertido)",
-        "origin": "converted"
+        "note": "Equipo de pared con montaje, puesta en marcha y material. Rango habitual 3.500-5.500 CHF según tubería y accesos.",
+        "source": "Kibernetik Suiza",
+        "origin": "local",
+        "url": "https://support.kibernetik.ch/hc/de/articles/30399348252445-Was-kostet-eine-Klimaanlage-inklusive-Installation"
       },
       "PT": {
-        "value": 950,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (950 €). Edítalo.",
-        "source": "Tarifas Medias de Climatización Residencial (convertido)",
-        "origin": "converted"
+        "value": 587.99,
+        "date": "2026-10",
+        "note": "Equipo split de 9.000 BTU (328 €) + instalación por empresa certificada (259,99 €).",
+        "source": "Maisclima + Radio Popular (equipo e instalación)",
+        "origin": "local",
+        "url": "https://www.maisclima.pt/produto/ar-condicionado-artom-mono-split-9000-btu-wifi/"
       },
       "FR": {
-        "value": 885.51,
-        "date": "2026-09",
-        "note": "Precio mediano de Google Shopping (FR).",
-        "source": "Google Shopping (vía SerpApi)",
-        "origin": "local"
+        "value": 2217,
+        "date": "2026-10",
+        "note": "Daikin Perfera 3,3 kW entregado e instalado: unidad interior y exterior, 5 m de cobre, soporte, conexión eléctrica y mano de obra.",
+        "source": "Eau-Go.fr · precio cerrado con instalación",
+        "origin": "local",
+        "url": "https://www.eau-go.fr/climatisation-reversible-daikin-33-kw-mono-split-perfera-bluevolution-781.html"
       },
       "DE": {
-        "value": 936.77,
-        "date": "2026-09",
-        "note": "Precio mediano de Google Shopping (DE).",
-        "source": "Google Shopping (vía SerpApi)",
-        "origin": "local"
+        "value": 2899.99,
+        "date": "2026-10",
+        "note": "Equipo de 3,5 kW con montaje completo y puesta en marcha, precio cerrado.",
+        "source": "Klimaanlagen-Heizungen.de · precio cerrado con montaje",
+        "origin": "local",
+        "url": "https://www.klimaanlagen-heizungen.de/kaisai-ice-3-5-klimaanlage-inkl-montage-zum-festpreis"
       },
       "IT": {
-        "value": 950,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (950 €). Edítalo.",
-        "source": "Tarifas Medias de Climatización Residencial (convertido)",
-        "origin": "converted"
+        "value": 1839,
+        "date": "2026-10",
+        "note": "Daikin Perfera 12.000 BTU con instalación «llave en mano». Varía según la zona.",
+        "source": "GM-Termoidraulica · oferta con instalación",
+        "origin": "local",
+        "url": "https://www.gm-termoidraulica.it/offerta-tutto-incluso/climatizzatori-con-installazione/climatizzatore-monosplit-daikin-perfera-all-seasons-da-12000-btu-wifi-ftxm35a-a-r32-con-installazione.html"
       }
     },
     "visible": true
@@ -6724,11 +6777,12 @@
         "origin": "converted"
       },
       "US": {
-        "value": 67.24,
+        "value": 167,
         "date": "2026-10",
-        "note": "Precio convertido desde España (60 €). Edítalo.",
-        "source": "Consejo General de la Psicología (convertido)",
-        "origin": "converted"
+        "note": "Psicoterapia individual de 60 minutos (código 90837), tarifa nacional de Medicare. El pago privado suele ir de 140 a 200 $.",
+        "source": "CMS · tarifa oficial de Medicare 2026",
+        "origin": "local",
+        "url": "https://www.cms.gov/medicare/payment/fee-schedules/physician"
       },
       "MX": {
         "value": 1223.7,
@@ -6738,11 +6792,12 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 69000,
+        "value": 30000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (60 €). Edítalo.",
-        "source": "Consejo General de la Psicología (convertido)",
-        "origin": "converted"
+        "note": "Psicoterapia individual, 50 min: arancel MÍNIMO colegiado en vigor desde abril de 2026.",
+        "source": "Colegio de Psicólogos de Córdoba · aranceles mínimos",
+        "origin": "local",
+        "url": "https://cppc.org.ar/wp-content/uploads/2026/04/004-26-Aranceles-Profesionales-Minimos-1-1.pdf"
       },
       "CO": {
         "value": 264000,
@@ -6752,18 +6807,20 @@
         "origin": "converted"
       },
       "CL": {
-        "value": 61200,
+        "value": 20610,
         "date": "2026-10",
-        "note": "Precio convertido desde España (60 €). Edítalo.",
-        "source": "Consejo General de la Psicología (convertido)",
-        "origin": "converted"
+        "note": "Consulta de psicólogo clínico, sesión de 45 minutos, arancel público de libre elección (nivel 3).",
+        "source": "FONASA · arancel de libre elección",
+        "origin": "local",
+        "url": "https://adjuntos.fonasa.gob.cl/sites/fonasa/prestadores/modalidad-libre-eleccion"
       },
       "CH": {
-        "value": 55.88,
+        "value": 154.8,
         "date": "2026-10",
-        "note": "Precio convertido desde España (60 €). Edítalo.",
-        "source": "Consejo General de la Psicología (convertido)",
-        "origin": "converted"
+        "note": "Sesión de psicoterapia de unos 60 minutos (2,58 CHF por minuto), tarifa oficial del cantón de Friburgo.",
+        "source": "Cantón de Friburgo · tarifa oficial de psicoterapia",
+        "origin": "local",
+        "url": "https://bdlf.fr.ch/data/842.1.19/fr"
       },
       "PT": {
         "value": 60,
@@ -6773,25 +6830,28 @@
         "origin": "converted"
       },
       "FR": {
-        "value": 60,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (60 €). Edítalo.",
-        "source": "Consejo General de la Psicología (convertido)",
-        "origin": "converted"
+        "value": 50,
+        "date": "2026-10",
+        "note": "Sesión del dispositivo público «Mon soutien psy» (~45-60 min), tarifa convenida única. Un psicólogo no convenido cobra 50-100 €.",
+        "source": "Assurance Maladie (ameli.fr)",
+        "origin": "local",
+        "url": "https://www.ameli.fr/assure/remboursements/rembourse/remboursement-seance-psychologue-mon-soutien-psy"
       },
       "DE": {
-        "value": 60,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (60 €). Edítalo.",
-        "source": "Consejo General de la Psicología (convertido)",
-        "origin": "converted"
+        "value": 100.55,
+        "date": "2026-10",
+        "note": "Psicoterapia conductual individual de 50 minutos como mínimo, baremo oficial GOÄ 2,3 (la tarifa aplicable habitual).",
+        "source": "Bundespsychotherapeutenkammer · baremo GOÄ",
+        "origin": "local",
+        "url": "https://api.bptk.de/uploads/GOP_Infotabelle_Stand_2020_6ca43d9d82.pdf"
       },
       "IT": {
-        "value": 60,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (60 €). Edítalo.",
-        "source": "Consejo General de la Psicología (convertido)",
-        "origin": "converted"
+        "value": 115,
+        "date": "2026-10",
+        "note": "Consulta de apoyo psicológico individual, 50-60 min: máximo orientativo del tarifario del Colegio de Psicólogos.",
+        "source": "Consiglio Nazionale Ordine degli Psicologi · tarifario",
+        "origin": "local",
+        "url": "https://www.psy.it/lo_psicologo/nomenclatore.html"
       }
     },
     "visible": true
@@ -6817,11 +6877,12 @@
         "origin": "converted"
       },
       "US": {
-        "value": 3810.04,
+        "value": 6372,
         "date": "2026-10",
-        "note": "Precio convertido desde España (3400 €). Edítalo.",
-        "source": "Consejo General de Dentistas de España (convertido)",
-        "origin": "converted"
+        "note": "Tratamiento ortodóncico completo de adulto (18-24 meses), media nacional de lo que cobra un dentista general sin seguro.",
+        "source": "ADA Health Policy Institute · encuesta de honorarios 2024",
+        "origin": "local",
+        "url": "https://plaindentalcost.com/rankings/most-expensive-procedures/"
       },
       "MX": {
         "value": 69343,
@@ -6880,11 +6941,12 @@
         "origin": "converted"
       },
       "IT": {
-        "value": 3400,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (3400 €). Edítalo.",
-        "source": "Consejo General de Dentistas de España (convertido)",
-        "origin": "converted"
+        "value": 2500,
+        "date": "2026-10",
+        "note": "Tratamiento con alineadores, 2.500 € POR AÑO según el nomenclátor colegial (el total depende de la duración, habitualmente 1-2 años). Estudio del caso y retención aparte.",
+        "source": "Commissione Albo Odontoiatri · nomenclátor provincial de precios",
+        "origin": "local",
+        "url": "https://www.ordinemedicifc.it/wp-content/uploads/2016/10/Nomenclatore-tariffario-prestazioni-odontoiatriche.pdf"
       }
     },
     "visible": true
@@ -6903,53 +6965,60 @@
         "origin": "local"
       },
       "GB": {
-        "value": 178,
+        "value": 80,
         "date": "2026-10",
-        "note": "Precio convertido desde España (210 €). Edítalo.",
-        "source": "FEDAO (Federación Española de Óptica) (convertido)",
-        "origin": "converted"
+        "note": "Gafas completas con antirreflejo y antirrayado, gama de entrada.",
+        "source": "Asda Opticians · precios expuestos",
+        "origin": "local",
+        "url": "https://opticians.asda.com/glasses"
       },
       "US": {
-        "value": 235.33,
+        "value": 95,
         "date": "2026-10",
-        "note": "Precio convertido desde España (210 €). Edítalo.",
-        "source": "FEDAO (Federación Española de Óptica) (convertido)",
-        "origin": "converted"
+        "note": "Montura + cristales monofocales con antirreflejo, antirrayado y filtro UV, precio de entrada.",
+        "source": "Warby Parker · precios expuestos",
+        "origin": "local",
+        "url": "https://www.warbyparker.com/homepage-glasses"
       },
       "MX": {
-        "value": 4282.95,
+        "value": 300,
         "date": "2026-10",
-        "note": "Precio convertido desde España (210 €). Edítalo.",
-        "source": "FEDAO (Federación Española de Óptica) (convertido)",
-        "origin": "converted"
+        "note": "Armazón + micas graduadas + antirreflejo, precio de entrada (varía con la graduación).",
+        "source": "Lentica (óptica de Ciudad de México)",
+        "origin": "local",
+        "url": "https://lentica.mx/"
       },
       "AR": {
-        "value": 241500,
+        "value": 72490,
         "date": "2026-10",
-        "note": "Precio convertido desde España (210 €). Edítalo.",
-        "source": "FEDAO (Federación Española de Óptica) (convertido)",
-        "origin": "converted"
+        "note": "Armazón de receta + cristales orgánicos con antirreflejo, precio final con impuestos.",
+        "source": "Óptica Infinito Argentina",
+        "origin": "local",
+        "url": "https://opticainfinito.com.ar/productos/armazon-de-receta-cristales-antirreflejo-stock-1sdfs/"
       },
       "CO": {
-        "value": 924000,
+        "value": 440000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (210 €). Edítalo.",
-        "source": "FEDAO (Federación Española de Óptica) (convertido)",
-        "origin": "converted"
+        "note": "Montura + cristales monofocales con la fórmula + antirreflejo + estuche.",
+        "source": "OKIO Colombia · tarifa pública",
+        "origin": "local",
+        "url": "https://co.okio.la/"
       },
       "CL": {
-        "value": 214200,
+        "value": 30000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (210 €). Edítalo.",
-        "source": "FEDAO (Federación Española de Óptica) (convertido)",
-        "origin": "converted"
+        "note": "Marco + cristales monofocales con antirreflejo, capa dura y filtro UV, precio de entrada.",
+        "source": "Optisalud Chile · esquema de precios",
+        "origin": "local",
+        "url": "https://optisalud.cl/pages/precios-lentes-opticos-optica-online-optisalud"
       },
       "CH": {
-        "value": 195.57,
+        "value": 179,
         "date": "2026-10",
-        "note": "Precio convertido desde España (210 €). Edítalo.",
-        "source": "FEDAO (Federación Española de Óptica) (convertido)",
-        "origin": "converted"
+        "note": "Montura + cristales orgánicos monofocales, ambos con antirreflejo. Precio completo.",
+        "source": "Lengacher Optik Suiza",
+        "origin": "local",
+        "url": "https://www.lengacheroptik.ch/Brillenfassungen/"
       },
       "PT": {
         "value": 210,
@@ -6959,11 +7028,12 @@
         "origin": "converted"
       },
       "FR": {
-        "value": 210,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (210 €). Edítalo.",
-        "source": "FEDAO (Federación Española de Óptica) (convertido)",
-        "origin": "converted"
+        "value": 39,
+        "date": "2026-10",
+        "note": "Montura + cristales monofocales con antirreflejo y antirrayado, todo incluido.",
+        "source": "Direct Optic Francia · tarifa pública",
+        "origin": "local",
+        "url": "https://www.direct-optic.fr/"
       },
       "DE": {
         "value": 210,
@@ -6973,11 +7043,12 @@
         "origin": "converted"
       },
       "IT": {
-        "value": 210,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (210 €). Edítalo.",
-        "source": "FEDAO (Federación Española de Óptica) (convertido)",
-        "origin": "converted"
+        "value": 49,
+        "date": "2026-10",
+        "note": "Gafas completas: montura + lentes monofocales, precio de entrada.",
+        "source": "GrandVision Italia · precios expuestos",
+        "origin": "local",
+        "url": "https://www.grandvision.it/occhiali-da-vista/categorie"
       }
     },
     "visible": true
