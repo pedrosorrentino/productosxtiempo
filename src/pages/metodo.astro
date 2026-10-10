@@ -13,6 +13,7 @@ import {
 } from '../lib/format.ts';
 
 import { generateMethodArticleSchema, generateBreadcrumbSchema } from '../lib/seo.ts';
+import countries from '../data/countries.json';
 
 const title = `Método de Cálculo · ${brand.name}`;
 const description =
@@ -29,9 +30,10 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 const jsonLd = [articleSchema, breadcrumbSchema];
 
 // Todas las cifras de ejemplo de esta página se DERIVAN del motor (SPEC §9:
-// el copy se regenera con calc, nunca se hardcodea contra él). Referencia de
-// España del SPEC: neto 1.800 €, 40 h/semana, 1.633 h reales, jubilación 67.
-const NETO_ES = 1800;
+// el copy se regenera con calc, nunca se hardcodea contra él). La referencia
+// de España se lee del propio catálogo: si cambia el dato, cambia la página.
+const paisES = countries.find((c) => c.code === "ES");
+const NETO_ES = paisES?.medianNetMonthly ?? 1561;
 const HORAS_ES = 40;
 const HORAS_REALES_ES = 1633;
 const JUBILACION_ES = 67;
@@ -204,10 +206,64 @@ const wage160 = formatHourlyWage(hora160, '€');
           </tbody>
         </table>
       </div>
+      <h3 class="mt-8 font-signage uppercase text-xl md:text-2xl leading-tight">
+        De dónde sale el sueldo de cada país
+      </h3>
+      <p class="mt-3 leading-relaxed opacity-90">
+        No todos los países publican la misma cifra. Unos dan directamente la
+        <strong>mediana neta</strong>; otros solo publican la <strong>mediana
+        bruta</strong>, y entonces la pasamos a neto con el tipo medio neto que
+        calcula la OCDE para ese país (soltero sin hijos, 100 % del salario
+        medio). Cuando no existe ninguna de las dos, lo decimos en vez de
+        rellenar el hueco con un número inventado.
+      </p>
+      <div class="md:overflow-x-auto mt-5 md:border md:border-base-300">
+        <table class="board-table w-full text-left font-body text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+              <th class="p-3.5">País</th>
+              <th class="p-3.5">Sueldo de referencia</th>
+              <th class="p-3.5">Cómo se ha obtenido</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300">
+            {countries.map((c) => (
+              <tr class="bg-base-200/50">
+                <td class="p-3.5 font-semibold text-base-content" data-label="País">{c.name}</td>
+                <td class="p-3.5 opacity-90" data-label="Sueldo">
+                  {c.medianNetMonthly
+                    ? `${c.medianNetMonthly.toLocaleString("es-ES")} ${c.currencySymbol}/mes`
+                    : "Sin mediana publicada"}
+                </td>
+                <td class="p-3.5 opacity-90" data-label="Método">
+                  {c.salaryDataKind === "publicado" && (
+                    <>
+                      Mediana neta publicada por {c.salarySourceLabel}.{" "}
+                      {c.salariesSourceUrl && <a class="text-primary hover:underline" href={c.salariesSourceUrl} target="_blank" rel="noopener">Ver la fuente</a>}
+                    </>
+                  )}
+                  {c.salaryDataKind === "estimado" && (
+                    <>
+                      Mediana bruta oficial ({c.salarySourceLabel}) pasada a neto con el tipo medio neto de la OCDE.{" "}
+                      {c.salariesSourceUrl && <a class="text-primary hover:underline" href={c.salariesSourceUrl} target="_blank" rel="noopener">Ver la fuente</a>}
+                    </>
+                  )}
+                  {c.salaryDataKind === "orientativo" && (
+                    <>
+                      Sin mediana oficial publicada en la moneda del país: es una referencia de la web, editable.{" "}
+                      {c.salariesSourceUrl && <a class="text-primary hover:underline" href={c.salariesSourceUrl} target="_blank" rel="noopener">Organismo de estadística</a>}
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <p class="mt-4 leading-relaxed opacity-90">
-        El sueldo de cada país es una referencia orientativa de esta web, con
-        fecha y editable. Tu nómina manda: ponla en «Mis datos» y todo se
-        recalcula al instante.
+        Tu nómina manda sobre cualquier referencia: ponla en «Mis datos» y todo
+        se recalcula al instante con tu cifra real, sin que salga de tu
+        dispositivo.
       </p>
     </section>
 
@@ -422,8 +478,8 @@ const wage160 = formatHourlyWage(hora160, '€');
           <tbody class="divide-y divide-base-300 font-board-mono">
             <tr class="bg-base-200/50">
               <td class="p-3 font-semibold text-base-content" data-label="Área">Sueldo Mediano Nacional</td>
-              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://www.ine.es/" target="_blank" rel="noopener">INE (España)</a> · <a class="text-primary hover:underline" href="https://ec.europa.eu/eurostat" target="_blank" rel="noopener">Eurostat</a> · <a class="text-primary hover:underline" href="https://www.inegi.org.mx/" target="_blank" rel="noopener">INEGI</a> · <a class="text-primary hover:underline" href="https://www.dane.gov.co/" target="_blank" rel="noopener">DANE</a> · <a class="text-primary hover:underline" href="https://www.indec.gob.ar/" target="_blank" rel="noopener">INDEC</a></td>
-              <td class="p-3 text-xs opacity-90" data-label="Métrica">Percentil 50 de la distribución salarial neta</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://www.ine.es/" target="_blank" rel="noopener">INE</a> (España y Portugal) · <a class="text-primary hover:underline" href="https://www.insee.fr/" target="_blank" rel="noopener">INSEE</a> · <a class="text-primary hover:underline" href="https://www.inps.it/" target="_blank" rel="noopener">INPS</a> · <a class="text-primary hover:underline" href="https://www.destatis.de/" target="_blank" rel="noopener">Destatis</a> · <a class="text-primary hover:underline" href="https://www.ons.gov.uk/" target="_blank" rel="noopener">ONS</a> · <a class="text-primary hover:underline" href="https://www.bls.gov/" target="_blank" rel="noopener">BLS</a> · <a class="text-primary hover:underline" href="https://www.ine.gob.cl/" target="_blank" rel="noopener">INE Chile</a> · <a class="text-primary hover:underline" href="https://www.bfs.admin.ch/" target="_blank" rel="noopener">OFS</a> · <a class="text-primary hover:underline" href="https://www.inegi.org.mx/" target="_blank" rel="noopener">INEGI</a> · <a class="text-primary hover:underline" href="https://www.indec.gob.ar/" target="_blank" rel="noopener">INDEC</a> · <a class="text-primary hover:underline" href="https://www.dane.gov.co/" target="_blank" rel="noopener">DANE</a> · <a class="text-primary hover:underline" href="https://sdmx.oecd.org/" target="_blank" rel="noopener">OCDE (Taxing Wages)</a></td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Mediana neta publicada, o mediana bruta oficial pasada a neto con el tipo medio de la OCDE. Detalle país por país, arriba.</td>
               <td class="p-3 text-primary text-xs" data-label="Acceso">Datos abiertos</td>
             </tr>
             <tr class="bg-base-200/50">

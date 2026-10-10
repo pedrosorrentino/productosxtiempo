@@ -352,7 +352,7 @@ export default function CountryHeroCenter({
                     }`}
                     onClick={() => onSalaryChange(presetMed)}
                   >
-                    Mediana oficial ({presetMed} {currencySymbol})
+                    Mediana de referencia ({presetMed} {currencySymbol})
                   </button>
                   <button
                     type="button"

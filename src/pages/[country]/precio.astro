@@ -46,7 +46,7 @@ const webAppSchema = generateWebApplicationSchema({
 const faqs = [
   {
     question: `¿Cómo convierto cualquier precio a horas de trabajo en ${country.name}?`,
-    answer: `Introduce el importe en ${country.currencySymbol} en el formulario superior. Si no introduces tu sueldo, el sistema utiliza el salario neto mediano oficial de ${country.name} (${country.medianNetMonthly ? country.medianNetMonthly.toLocaleString('es-ES') + ' ' + country.currencySymbol + '/mes' : 'referencia'}). Si prefieres tu cálculo exacto, añade tu nómina neta mensual.`,
+    answer: `Introduce el importe en ${country.currencySymbol} en el formulario superior. Si no introduces tu sueldo, el sistema utiliza el sueldo mediano neto de referencia de ${country.name} (${country.salarySourceLabel}) (${country.medianNetMonthly ? country.medianNetMonthly.toLocaleString('es-ES') + ' ' + country.currencySymbol + '/mes' : 'referencia'}). Si prefieres tu cálculo exacto, añade tu nómina neta mensual.`,
   },
   {
     question: `¿Se guardan en algún servidor las cifras que introduzco?`,
@@ -65,7 +65,7 @@ const pageTitle = pickTitle(
   ],
   ` · ${brand.name}`,
 );
-const pageDescription = `Calcula cuántas horas y jornadas de trabajo te cuesta cualquier compra o gasto en ${country.name} (${country.currencySymbol}) según el salario mediano oficial o tu propia nómina.`;
+const pageDescription = `Calcula cuántas horas y jornadas de trabajo te cuesta cualquier compra o gasto en ${country.name} (${country.currencySymbol}) según el sueldo mediano de referencia o tu propia nómina.`;
 ---
 
 <BaseLayout
@@ -112,6 +112,7 @@ const pageDescription = `Calcula cuántas horas y jornadas de trabajo te cuesta 
         countrySlug={country.slug}
         currencySymbol={country.currencySymbol}
         medianNetMonthly={country.medianNetMonthly}
+        salarySourceLabel={country.salarySourceLabel}
         minWageMonthly={country.minWageMonthly}
         legalWeeklyHours={country.legalWeeklyHours}
         realAnnualHours={country.realAnnualHours}

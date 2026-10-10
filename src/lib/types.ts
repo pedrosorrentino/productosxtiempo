@@ -18,6 +18,12 @@ export type Country = {
   retirementAge: number;
   salariesUpdatedAt: string;
   salariesSource: string;
+  /** Etiqueta corta de la fuente del sueldo, para citarla en el copy. */
+  salarySourceLabel?: string;
+  /** Enlace a la página oficial donde se publica el dato. */
+  salariesSourceUrl?: string;
+  /** publicado = mediana neta oficial; estimado = bruto oficial pasado a neto; orientativo = referencia de la web. */
+  salaryDataKind?: string;
   hoursUpdatedAt: string;
   hoursSource: string;
   informalityNote: string | null;

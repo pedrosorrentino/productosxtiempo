@@ -75,8 +75,9 @@ const inflationRate = country.inflationRate ?? countryMacro.inflationRate ?? nul
 const minWageMonthly = country.minWageMonthly ?? countryMacro.minWageMonthly ?? null;
 
 const products: Product[] = productsData as Product[];
-const hasLocalPrice = (product: Product, code: string): boolean =>
-  product.prices[code] !== undefined;
+// hasLocalPrice viene de lib/selectors.ts (precio con origen «local»). Antes
+// había aquí una copia local que solo miraba si existía precio, así que los
+// hubs listaban también los convertidos.
 const priceOf = (product: Product, code: string) => product.prices[code];
 
 /** Cotizaciones precalculadas en build time para SSR/SEO */
@@ -183,7 +184,7 @@ const rentPctSalary = country.medianNetMonthly ? Math.round((rentPrice / country
 const faqs = [
   {
     question: `¿Cuál es el salario mediano neto por hora en ${country.name}?`,
-    answer: `En ${country.name}, el salario neto mediano de referencia oficial es de ${country.medianNetMonthly?.toLocaleString("es-ES")} ${country.currencySymbol}/mes. Considerando una jornada laboral legal de ${country.legalWeeklyHours} horas semanales (fórmula de 52 semanas repartidas en 12 meses), una hora de trabajo neto equivale aproximadamente a ${countryWageText ?? "10 " + country.currencySymbol + "/hora"}, según fuentes oficiales (${country.salariesSource}).`,
+    answer: `En ${country.name}, el sueldo mediano neto de referencia es de ${country.medianNetMonthly?.toLocaleString("es-ES")} ${country.currencySymbol}/mes. Considerando una jornada laboral legal de ${country.legalWeeklyHours} horas semanales (fórmula de 52 semanas repartidas en 12 meses), una hora de trabajo neto equivale aproximadamente a ${countryWageText ?? "10 " + country.currencySymbol + "/hora"}, según ${country.salarySourceLabel} (${country.salariesSource}).`,
   },
   {
     question: `¿Cuántas horas de trabajo cuesta el alquiler mensual en ${country.name}?`,
@@ -382,6 +383,11 @@ const pageDescription = hasSalary
         <p class="text-xs font-board-mono opacity-75">
           Fórmula: sueldo de referencia ÷ ({country.legalWeeklyHours} h × 52 ÷ 12). Fuente: {country.salariesSource}. Dato de {country.salariesUpdatedAt}.
         </p>
+        <p class="text-sm font-sans pt-1">
+          <a class="text-primary hover:underline font-semibold" href={`/${country.slug}/dia-de-trabajo/`}>
+            Ver el desglose: cuánto vale una hora, un día y una semana de trabajo en {country.name} →
+          </a>
+        </p>
       </section>
     )}
 
@@ -422,7 +428,7 @@ const pageDescription = hasSalary
       </h2>
 
       <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">
-        En <strong>{country.name}</strong>, el salario mediano neto oficial de referencia se sitúa en <strong>{country.medianNetMonthly?.toLocaleString("es-ES")} {country.currencySymbol} al mes</strong>. Bajo una semana laboral estándar de <strong>{country.legalWeeklyHours} horas</strong>, una hora de trabajo real se retribuye a una tasa de <strong>{countryWageText ?? "10 " + country.currencySymbol + "/hora"}</strong>, de acuerdo con datos analizados de fuentes oficiales ({country.salariesSource}).
+        En <strong>{country.name}</strong>, el sueldo mediano neto de referencia se sitúa en <strong>{country.medianNetMonthly?.toLocaleString("es-ES")} {country.currencySymbol} al mes</strong>. Bajo una semana laboral estándar de <strong>{country.legalWeeklyHours} horas</strong>, una hora de trabajo real se retribuye a una tasa de <strong>{countryWageText ?? "10 " + country.currencySymbol + "/hora"}</strong>, a partir de {country.salarySourceLabel} ({country.salariesSource}).
       </p>
 
       <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">

@@ -93,7 +93,7 @@ export function generateStorytellingCopy(options: StorytellingOptions): string {
 
     case "challenge":
       story = isWp
-        ? `📊 ${bold("Reto para abrir los ojos:")} ¿Cuántos días o meses de tu trabajo te cuesta realmente ${bold(productName)}?\n\nLa cifra oficial en ${countryName} es de ${bold(effortPhrase)} con el sueldo mediano.\n\nIntroduce tu nómina neta en esta herramienta y dime en las respuestas si te parece razonable o una locura. Yo me he quedado helado 👇`
+        ? `📊 ${bold("Reto para abrir los ojos:")} ¿Cuántos días o meses de tu trabajo te cuesta realmente ${bold(productName)}?\n\nLa cifra en ${countryName} es de ${bold(effortPhrase)} con el sueldo mediano.\n\nIntroduce tu nómina neta en esta herramienta y dime en las respuestas si te parece razonable o una locura. Yo me he quedado helado 👇`
         : `📊 Reto para abrir los ojos: ¿Cuántos días o meses de tu trabajo te cuesta realmente ${productName}?\n\nLa cifra oficial en ${countryName} asusta: ${effortPhrase} dedicados íntegramente a este gasto.\n\nPon tu nómina neta en esta herramienta y dime si te parece justo o una barbaridad. Yo me he quedado helado 👇`;
       break;
   }

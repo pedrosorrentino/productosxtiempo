@@ -534,7 +534,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   </span>
                 ) : (
                   <span class="text-xs font-board-mono text-warning font-medium">
-                    Sin salario mediano oficial
+                    Sin mediana publicada: usa el SMI
                   </span>
                 )}
               </div>

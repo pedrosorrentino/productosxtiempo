@@ -143,6 +143,8 @@ export interface ResultViewProps {
   countrySlug: string;
   currencySymbol: string;
   medianNetMonthly: number | null;
+  /** Etiqueta de la fuente del sueldo (p. ej. «INE · EAES 2024»). */
+  salarySourceLabel?: string | null;
   minWageMonthly?: number | null;
   legalWeeklyHours: number;
   realAnnualHours: number | null;
@@ -188,6 +190,7 @@ export default function ResultView({
   countrySlug,
   currencySymbol,
   medianNetMonthly,
+  salarySourceLabel = null,
   minWageMonthly = null,
   legalWeeklyHours,
   realAnnualHours,
@@ -206,32 +209,30 @@ export default function ResultView({
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedPresetLabel, setSelectedPresetLabel] = useState<string | null>(null);
 
-  /** Presets oficiales enriquecidos por sector de actividad económica y edad */
+  /** Presets de nómina enriquecidos por sector de actividad económica y edad */
   const richPresets = useMemo(() => {
-    const med = medianNetMonthly ?? 1800;
+    const med = medianNetMonthly ?? minWageMonthly ?? 1800;
+    // La fuente se declara con el nombre real del organismo de cada país: antes
+    // ponía «INE / Percentil 50» en todos, incluidos Chile o México.
+    const fuenteMediana = salarySourceLabel ?? "Referencia de la web";
+    const medianaPreset = medianNetMonthly
+      ? [
+          {
+            id: "mediana",
+            label: "Mediana de referencia",
+            shortLabel: "Mediana",
+            monthlyNet: medianNetMonthly,
+            source: fuenteMediana,
+            icon: "🟢",
+          },
+        ]
+      : [];
     const countrySectors = (sectorsData as Record<string, any[]>)[countryCode];
     if (countrySectors && countrySectors.length > 0) {
-      return [
-        {
-          id: "mediana",
-          label: "Mediana Oficial",
-          shortLabel: "Mediana",
-          monthlyNet: med,
-          source: "INE / Percentil 50",
-          icon: "🟢",
-        },
-        ...countrySectors,
-      ];
+      return [...medianaPreset, ...countrySectors];
     }
     return [
-      {
-        id: "mediana",
-        label: "Mediana Nacional",
-        shortLabel: "Mediana",
-        monthlyNet: med,
-        source: "Estadística oficial percentil 50",
-        icon: "🟢",
-      },
+      ...medianaPreset,
       ...(minWageMonthly
         ? [
             {
@@ -269,7 +270,7 @@ export default function ResultView({
         icon: "💻",
       },
     ];
-  }, [countryCode, medianNetMonthly, minWageMonthly]);
+  }, [countryCode, medianNetMonthly, minWageMonthly, salarySourceLabel]);
 
   /** Límites mínimo y máximo para el slider continuo de nómina */
   const sliderMin = useMemo(() => {
@@ -1335,7 +1336,7 @@ export default function ResultView({
 
         <div class="mt-3">
           <p class="text-base leading-relaxed text-base-content/95">
-            En <strong>{countryName}</strong>, adquirir un <strong>{displayName ?? result.unnamedThing}</strong> con un precio de mercado de <strong>{formatAmount(effectivePrice ?? catalogPrice ?? 0)} {currencySymbol}</strong> requiere un esfuerzo laboral de <strong>{hero.value} {hero.unit}</strong> de trabajo íntegro (equivalente a <strong>{formatHours(computed.hours)} horas</strong> o <strong>{formatWorkdays(computed.workdays8h)} jornadas de 8 horas</strong>). Este cálculo se fundamenta en el salario neto mediano oficial de <strong>{medianNetMonthly ?? 1800} {currencySymbol}/mes</strong> y la semana legal de <strong>{legalWeeklyHours} horas</strong>, absorbiendo aproximadamente el <strong>{formatPercent(computed.pctRealYear ?? 0)}% del año laboral real</strong> de un empleado medio.
+            En <strong>{countryName}</strong>, adquirir un <strong>{displayName ?? result.unnamedThing}</strong> con un precio de mercado de <strong>{formatAmount(effectivePrice ?? catalogPrice ?? 0)} {currencySymbol}</strong> requiere un esfuerzo laboral de <strong>{hero.value} {hero.unit}</strong> de trabajo íntegro (equivalente a <strong>{formatHours(computed.hours)} horas</strong> o <strong>{formatWorkdays(computed.workdays8h)} jornadas de 8 horas</strong>). Este cálculo se fundamenta en el sueldo mediano neto de referencia de <strong>{medianNetMonthly ?? 1800} {currencySymbol}/mes</strong>{salarySourceLabel ? <> ({salarySourceLabel})</> : null} y la semana legal de <strong>{legalWeeklyHours} horas</strong>, absorbiendo aproximadamente el <strong>{formatPercent(computed.pctRealYear ?? 0)}% del año laboral real</strong> de un empleado medio.
           </p>
 
           <div class="mt-4 pt-3 border-t border-base-300/80 flex flex-wrap items-center justify-between gap-2 text-xs font-board-mono opacity-80">

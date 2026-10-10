@@ -34,6 +34,7 @@ export const GET: APIRoute = async ({ site }) => {
   for (const country of countries) {
     urls.push({ loc: `${baseUrl}/${country.slug}/`, lastmod: today, changefreq: 'weekly', priority: '0.9' });
     urls.push({ loc: `${baseUrl}/${country.slug}/precio/`, lastmod: '2026-09-01', changefreq: 'monthly', priority: '0.7' });
+    urls.push({ loc: `${baseUrl}/${country.slug}/dia-de-trabajo/`, lastmod: today, changefreq: 'monthly', priority: '0.8' });
 
     // 3. Hubs de Categoría por País
     for (const cat of CATEGORIES) {

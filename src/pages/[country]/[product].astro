@@ -241,6 +241,7 @@ const otherCountriesForProduct = allCountries
       countrySlug={country.slug}
       currencySymbol={country.currencySymbol}
       medianNetMonthly={country.medianNetMonthly}
+      salarySourceLabel={country.salarySourceLabel}
       minWageMonthly={country.minWageMonthly}
       legalWeeklyHours={country.legalWeeklyHours}
       realAnnualHours={country.realAnnualHours}
@@ -296,6 +297,7 @@ const otherCountriesForProduct = allCountries
           <span class="opacity-80">Fuente del precio: {price.source}{price.date ? ` · ${price.date}` : ""}</span>
         )}
         <a href={`/${country.slug}/`} class="text-primary hover:underline">Poder adquisitivo en {country.name} &rarr;</a>
+        <a href={`/${country.slug}/dia-de-trabajo/`} class="text-primary hover:underline">Cuánto vale un día de trabajo en {country.name} &rarr;</a>
         <a href={`/${country.slug}/precio/`} class="text-primary hover:underline">Calcular otro precio &rarr;</a>
         <a href="/metodo/" class="text-primary hover:underline">Método de cálculo &rarr;</a>
       </div>
