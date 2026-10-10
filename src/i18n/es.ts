@@ -472,7 +472,7 @@ export const board = {
  */
 export const og = {
   home: {
-    title: "Precio en Tiempo | ¿Cuánto tiempo de tu vida cuesta lo que compras?",
+    title: "Precio en Tiempo | Qué cuesta en horas de trabajo lo que compras",
     description:
       "Convierte cualquier precio en horas y jornadas de trabajo real. Elige un producto o pon tu sueldo y descubre cuánta vida te cuesta antes de comprarlo. 100% privado.",
   },

@@ -8,7 +8,7 @@ import {
   formatHumanDuration,
   formatHourlyWage,
 } from "../../lib/format.ts";
-import { getCountry, getProductPrice } from "../../lib/selectors.ts";
+import { getCountry, getProductPrice, hasLocalPrice } from "../../lib/selectors.ts";
 import { loadUserState, saveUserState } from "../../lib/storage.ts";
 import { parseUserStateFromQuery } from "../../lib/urls.ts";
 import type { Country, Product } from "../../lib/types.ts";
@@ -214,6 +214,9 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
   const rows = useMemo<Row[]>(() => {
     if (!netMonthly || netMonthly <= 0 || weeklyHours < 1) return [];
     return products.flatMap((product) => {
+      // Solo lo que tiene precio TOMADO EN EL PAÍS: la pizarra no enseña
+      // conversiones desde España haciéndolas pasar por precio local.
+      if (!hasLocalPrice(product, country.code)) return [];
       const price = getProductPrice(product, country.code);
       if (!price) return [];
       try {
@@ -230,7 +233,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
           {
             product,
             price: price.value,
-            converted: product.prices[country.code] == null,
+            converted: false,
             priceDate: price.date,
             hours: r.hours,
             workdays: r.workdays8h,

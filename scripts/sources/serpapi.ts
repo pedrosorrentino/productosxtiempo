@@ -237,7 +237,13 @@ export const serpApiProvider: CatalogSourceProvider = {
         const rounded = cfg.decimals ? Math.round(scaled * 100) / 100 : Math.round(scaled);
         const current = currentValues[cacheKey];
         const ratio = current && current > 0 ? rounded / current : 1;
-        if (ratio < 0.25 || ratio > 4) {
+        // Banda de plausibilidad frente al valor vigente. Estaba en 0,25×–4× y
+        // dejaba pasar cosas como un «iPhone» suizo a 501 CHF o una consola
+        // colombiana a 82 €: el resultado de Google Shopping coincide con la
+        // consulta pero no siempre con el mismo artículo o la misma unidad.
+        // Entre 0,5× y 1,8× cabe la diferencia real de mercado (Suiza cara,
+        // importación en LatAm) sin colar un modelo distinto.
+        if (ratio < 0.5 || ratio > 1.8) {
           // Implausible frente al valor vigente (pack, unidad distinta, accesorio).
           cache.prices[cacheKey] = { value: rounded, date, fetchedAt: today, rejected: true };
           discarded++;

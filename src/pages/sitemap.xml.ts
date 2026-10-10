@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 import countriesData from '../data/countries.json';
 import productsData from '../data/products.json';
 import type { Country, Product } from '../lib/types.ts';
-import { getProductPrice } from '../lib/selectors.ts';
+import { getProductPrice, hasLocalPrice } from '../lib/selectors.ts';
 
 const CATEGORIES: Product['category'][] = [
   'transporte',
@@ -47,11 +47,13 @@ export const GET: APIRoute = async ({ site }) => {
   }
 
   // 4. Fichas de Producto Programáticas
+  // Solo entran al mapa las fichas con precio TOMADO EN EL PAÍS. Las que
+  // enseñarían la conversión desde España se quedan fuera del índice (noindex)
+  // y por tanto no se anuncian aquí.
   for (const country of countries) {
-    // CO y AR no publican mediano neto, pero sí un SMI de referencia: sus
-    // fichas de producto se indexan y entran al sitemap.
     for (const product of products) {
       if (!product.visible) continue;
+      if (!hasLocalPrice(product, country.code)) continue;
       const price = getProductPrice(product, country.code);
       if (!price) continue;
 

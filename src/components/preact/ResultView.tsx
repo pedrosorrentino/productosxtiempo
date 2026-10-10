@@ -18,7 +18,7 @@ import {
 import anchorsData from "../../data/anchors.json";
 import countriesData from "../../data/countries.json";
 import sectorsData from "../../data/sectors.json";
-import { buildShareUrl, parseUserStateFromQuery } from "../../lib/urls.ts";
+import { buildShareUrl, parseUserStateFromQuery, userStateParams } from "../../lib/urls.ts";
 import { loadUserState, saveUserState } from "../../lib/storage.ts";
 import type { Product, UserState } from "../../lib/types.ts";
 import {
@@ -289,9 +289,7 @@ export default function ResultView({
   // URL directa al mismo producto en B (misma página, otra moneda). El
   // override que viaja en la URL (?precio=) no se toca: es el share (§12).
   useEffect(() => {
-    const fromQuery = parseUserStateFromQuery(
-      new URLSearchParams(location.search),
-    );
+    const fromQuery = parseUserStateFromQuery(userStateParams(location.search, location.hash));
     const saved = loadUserState() ?? {};
     const overrideApplies =
       (saved.productId ?? null) === (productId ?? null) &&

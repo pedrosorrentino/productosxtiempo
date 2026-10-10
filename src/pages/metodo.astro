@@ -171,6 +171,36 @@ const wage160 = formatHourlyWage(hora160, '€');
               <td class="p-3.5 opacity-90" data-label="Es">El sueldo de la persona del medio</td>
               <td class="p-3.5 opacity-90" data-label="Por qué">La media la infla la cola alta</td>
             </tr>
+            <tr class="bg-base-200/50">
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Precio de los productos por país</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://www.numbeo.com/cost-of-living/" target="_blank" rel="noopener">Numbeo · coste de la vida</a> · <a class="text-primary hover:underline" href="https://shopping.google.com/" target="_blank" rel="noopener">Google Shopping</a> · <a class="text-primary hover:underline" href="https://www.apple.com/" target="_blank" rel="noopener">Apple Store</a> · <a class="text-primary hover:underline" href="https://store.steampowered.com/" target="_blank" rel="noopener">Steam</a></td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Cesta, transporte, suministros, ocio y vivienda; móviles y ordenadores; videojuegos</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">Precio local por país</td>
+            </tr>
+            <tr class="bg-base-200/50">
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Carburantes en la Unión Europea</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en" target="_blank" rel="noopener">Boletín Petrolero semanal</a> · <a class="text-primary hover:underline" href="https://geoportalgasolineras.es/" target="_blank" rel="noopener">MITECO</a></td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Gasolina 95 y gasóleo A, con impuestos, por país</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">Oficial · semanal</td>
+            </tr>
+            <tr class="bg-base-200/50">
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Gas natural doméstico</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://ec.europa.eu/eurostat/databrowser/view/nrg_pc_202/" target="_blank" rel="noopener">Eurostat (nrg_pc_202)</a></td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Precio oficial del kWh de gas para hogares, con impuestos, por país</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">Oficial</td>
+            </tr>
+            <tr class="bg-base-200/50">
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Criptomonedas</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a></td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Cotización de Bitcoin y Ethereum convertida a la divisa de cada país</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">Mercado</td>
+            </tr>
+            <tr class="bg-base-200/50">
+              <td class="p-3 font-semibold text-base-content" data-label="Área">Hamburguesa Big Mac</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://www.economist.com/big-mac-index" target="_blank" rel="noopener">The Economist · Big Mac Index</a></td>
+              <td class="p-3 text-xs opacity-90" data-label="Métrica">Índice de referencia internacional de poder adquisitivo</td>
+              <td class="p-3 text-primary text-xs" data-label="Acceso">Publicado</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -392,55 +422,55 @@ const wage160 = formatHourlyWage(hora160, '€');
           <tbody class="divide-y divide-base-300 font-board-mono">
             <tr class="bg-base-200/50">
               <td class="p-3 font-semibold text-base-content" data-label="Área">Sueldo Mediano Nacional</td>
-              <td class="p-3 font-sans" data-label="Fuente">INE (España) · Eurostat · INEGI · DANE · INDEC</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://www.ine.es/" target="_blank" rel="noopener">INE (España)</a> · <a class="text-primary hover:underline" href="https://ec.europa.eu/eurostat" target="_blank" rel="noopener">Eurostat</a> · <a class="text-primary hover:underline" href="https://www.inegi.org.mx/" target="_blank" rel="noopener">INEGI</a> · <a class="text-primary hover:underline" href="https://www.dane.gov.co/" target="_blank" rel="noopener">DANE</a> · <a class="text-primary hover:underline" href="https://www.indec.gob.ar/" target="_blank" rel="noopener">INDEC</a></td>
               <td class="p-3 text-xs opacity-90" data-label="Métrica">Percentil 50 de la distribución salarial neta</td>
               <td class="p-3 text-primary text-xs" data-label="Acceso">Datos abiertos</td>
             </tr>
             <tr class="bg-base-200/50">
               <td class="p-3 font-semibold text-base-content" data-label="Área">Salarios Mínimos (SMI)</td>
-              <td class="p-3 font-sans" data-label="Fuente">Eurostat (`earn_mw_cur`) · BOE · Ministerios de Trabajo</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://ec.europa.eu/eurostat/databrowser/view/earn_mw_cur/" target="_blank" rel="noopener">Eurostat (earn_mw_cur)</a> · <a class="text-primary hover:underline" href="https://www.boe.es/" target="_blank" rel="noopener">BOE</a></td>
               <td class="p-3 text-xs opacity-90" data-label="Métrica">Salario Mínimo Legal mensual prorrateado</td>
               <td class="p-3 text-primary text-xs" data-label="Acceso">API REST Abierta</td>
             </tr>
             <tr class="bg-base-200/50">
               <td class="p-3 font-semibold text-base-content" data-label="Área">Poder Adquisitivo (PPA)</td>
-              <td class="p-3 font-sans" data-label="Fuente">Banco Mundial (World Bank Open Data)</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://data.worldbank.org/" target="_blank" rel="noopener">Banco Mundial (World Bank Open Data)</a></td>
               <td class="p-3 text-xs opacity-90" data-label="Métrica">Paridad de Poder Adquisitivo (`PA.NUS.PPP`)</td>
               <td class="p-3 text-primary text-xs" data-label="Acceso">API Abierta</td>
             </tr>
             <tr class="bg-base-200/50">
               <td class="p-3 font-semibold text-base-content" data-label="Área">Sectores y Edades</td>
-              <td class="p-3 font-sans" data-label="Fuente">INE · Encuesta Anual de Estructura Salarial</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177025" target="_blank" rel="noopener">INE · Encuesta Anual de Estructura Salarial</a></td>
               <td class="p-3 text-xs opacity-90" data-label="Métrica">Salario medio neto: TIC, Hostelería, Sanidad, &lt;25 años</td>
               <td class="p-3 text-primary text-xs" data-label="Acceso">Microdatos oficiales</td>
             </tr>
             <tr class="bg-base-200/50">
               <td class="p-3 font-semibold text-base-content" data-label="Área">Jornada Laboral Real</td>
-              <td class="p-3 font-sans" data-label="Fuente">OCDE (Organización para la Cooperación y el Desarrollo Económicos)</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://data-explorer.oecd.org/" target="_blank" rel="noopener">OCDE (Organización para la Cooperación y el Desarrollo Económicos)</a></td>
               <td class="p-3 text-xs opacity-90" data-label="Métrica">Horas trabajadas efectivas al año (descontando festivos/bajas)</td>
               <td class="p-3 text-primary text-xs" data-label="Acceso">Estadísticas OCDE</td>
             </tr>
             <tr class="bg-base-200/50">
               <td class="p-3 font-semibold text-base-content" data-label="Área">Carburantes Oficiales</td>
-              <td class="p-3 font-sans" data-label="Fuente">MITECO (Ministerio para la Transición Ecológica de España)</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://geoportalgasolineras.es/" target="_blank" rel="noopener">MITECO (Ministerio para la Transición Ecológica de España)</a></td>
               <td class="p-3 text-xs opacity-90" data-label="Métrica">Gasolina 95 E5 y Gasóleo A de &gt;11.000 estaciones de servicio</td>
               <td class="p-3 text-primary text-xs" data-label="Acceso">API Oficial REST</td>
             </tr>
             <tr class="bg-base-200/50">
               <td class="p-3 font-semibold text-base-content" data-label="Área">Suministro Eléctrico</td>
-              <td class="p-3 font-sans" data-label="Fuente">Eurostat (`nrg_pc_204`) · Red Eléctrica de España (REE)</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://ec.europa.eu/eurostat/databrowser/view/nrg_pc_204/" target="_blank" rel="noopener">Eurostat (nrg_pc_204)</a> · <a class="text-primary hover:underline" href="https://www.ree.es/" target="_blank" rel="noopener">Red Eléctrica de España (REE)</a></td>
               <td class="p-3 text-xs opacity-90" data-label="Métrica">Precio medio €/kWh y factura doméstica tipo (250 kWh/mes)</td>
               <td class="p-3 text-primary text-xs" data-label="Acceso">API Oficial</td>
             </tr>
             <tr class="bg-base-200/50">
               <td class="p-3 font-semibold text-base-content" data-label="Área">Cesta de Supermercado</td>
-              <td class="p-3 font-sans" data-label="Fuente">Open Food Facts Prices / Base de Datos Abierta</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://prices.openfoodfacts.org/" target="_blank" rel="noopener">Open Food Facts Prices</a></td>
               <td class="p-3 text-xs opacity-90" data-label="Métrica">Aceite de oliva, leche, huevos y básicos de la compra</td>
               <td class="p-3 text-primary text-xs" data-label="Acceso">Colaborativa / Open</td>
             </tr>
             <tr class="bg-base-200/50">
               <td class="p-3 font-semibold text-base-content" data-label="Área">Tipos de Cambio</td>
-              <td class="p-3 font-sans" data-label="Fuente">Banco Central Europeo (BCE) vía Frankfurter API</td>
+              <td class="p-3 font-sans" data-label="Fuente"><a class="text-primary hover:underline" href="https://www.ecb.europa.eu/" target="_blank" rel="noopener">Banco Central Europeo (BCE)</a> vía <a class="text-primary hover:underline" href="https://frankfurter.dev/" target="_blank" rel="noopener">Frankfurter API</a></td>
               <td class="p-3 text-xs opacity-90" data-label="Métrica">Cotizaciones oficiales cruzadas EUR/USD/GBP/CHF...</td>
               <td class="p-3 text-primary text-xs" data-label="Acceso">API en Vivo</td>
             </tr>

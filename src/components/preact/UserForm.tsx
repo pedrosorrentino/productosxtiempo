@@ -6,7 +6,7 @@ import {
 } from "../../lib/calc.ts";
 import { formatHourlyWage } from "../../lib/format.ts";
 import { loadUserState, saveUserState } from "../../lib/storage.ts";
-import { buildShareUrl, parseUserStateFromQuery } from "../../lib/urls.ts";
+import { buildShareUrl, parseUserStateFromQuery, userStateParams } from "../../lib/urls.ts";
 import { sameCurrency } from "../../lib/currencies.ts";
 import { hourValue, userForm } from "../../i18n/es.ts";
 import type { UserState } from "../../lib/types.ts";
@@ -88,9 +88,7 @@ export default function UserForm({
   // con el que ResultView calcula por su cuenta.
   useEffect(() => {
     const saved = loadUserState() ?? {};
-    const fromQuery = parseUserStateFromQuery(
-      new URLSearchParams(location.search),
-    );
+    const fromQuery = parseUserStateFromQuery(userStateParams(location.search, location.hash));
     const currencyMatches = !saved.countryCode || sameCurrency(saved.countryCode, countryCode);
     const net = fromQuery.netMonthly ?? (currencyMatches ? saved.netMonthly : null);
     const savings = fromQuery.monthlySavings ?? (currencyMatches ? saved.monthlySavings : null);

@@ -64,6 +64,26 @@ export function getProductPrice(
   return esPrice;
 }
 
+/**
+ * ¿Hay precio propio del país (no una conversión desde España)?
+ *
+ * Solo las fichas con precio local se ofrecen a Google: una página que dice
+ * «precio de X en Suiza» y enseña el precio español convertido no responde a lo
+ * que promete su título. Las demás siguen existiendo para la calculadora, pero
+ * con `noindex` y fuera del mapa del sitio.
+ */
+export function hasLocalPrice(product: Product, countryCode: string): boolean {
+  return product.prices[countryCode]?.origin === 'local';
+}
+
+/** Productos con precio propio del país. */
+export function productsWithLocalPrice(
+  products: Product[],
+  countryCode: string,
+): Product[] {
+  return products.filter((p) => p.visible && hasLocalPrice(p, countryCode));
+}
+
 export type ReferenceSalary = {
   monthly: number;
   kind: "median" | "min";

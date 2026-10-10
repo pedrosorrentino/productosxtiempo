@@ -4,9 +4,9 @@
       "id": "smi",
       "label": "Salario Mínimo (SMI)",
       "shortLabel": "SMI Oficial",
-      "monthlyNet": 1323,
-      "source": "BOE / Ministerio de Trabajo (1.134 € en 14 pagas)",
-      "description": "Salario mínimo interprofesional legal regulado por el Estado.",
+      "monthlyNet": 1425,
+      "source": "BOE · Real Decreto 126/2026 (1.221 €/mes en 14 pagas)",
+      "description": "Salario mínimo interprofesional 2026, prorrateado en 12 pagas.",
       "icon": "⚖️"
     },
     {

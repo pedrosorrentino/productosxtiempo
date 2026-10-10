@@ -73,6 +73,28 @@ export function buildShareUrl(
 }
 
 /**
+ * Params del estado del usuario juntando los del `?query` y los del `#hash`.
+ *
+ * El hash existe por una razón concreta: los enlaces internos que llevan un
+ * precio («analizar este precio», el formulario rápido) creaban URLs con
+ * parámetros (`/estados-unidos/precio/?precio=150`) que Google acabó indexando
+ * como páginas distintas —llegó a elegir esa variante como canónica— y que
+ * llenaban el índice de duplicados. Un fragmento no se envía al servidor ni
+ * cuenta como URL distinta. Los `?query` se siguen leyendo para no romper los
+ * enlaces ya compartidos.
+ */
+export function userStateParams(search: string, hash: string): URLSearchParams {
+  const params = new URLSearchParams(search);
+  const fragment = hash.startsWith("#") ? hash.slice(1) : hash;
+  if (fragment !== "") {
+    for (const [clave, valor] of new URLSearchParams(fragment)) {
+      if (!params.has(clave)) params.set(clave, valor);
+    }
+  }
+  return params;
+}
+
+/**
  * Lee el estado de usuario desde los query params. Valida y sanea: solo
  * acepta números finitos positivos (horas 1–80, edad entera 16–80) y strings
  * no vacíos; los params ausentes o inválidos se omiten. Sin params → objeto

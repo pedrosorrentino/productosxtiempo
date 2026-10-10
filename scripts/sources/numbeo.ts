@@ -84,6 +84,26 @@ const MAPPINGS: Mapping[] = [
   { match: '1 Bedroom Apartment in City Centre', productId: 'alquiler-piso', factor: 1 },
   { match: 'Monthly Public Transport Pass', productId: 'abono-transporte', factor: 1 },
   { match: 'Price per Square Meter to Buy Apartment in City Centre', productId: 'casa-media', factor: 100, note: 'vivienda tipo de 100 m²' },
+  { match: 'Price per Square Meter to Buy Apartment in City Centre', productId: 'entrada-piso', factor: 20, note: 'entrada del 20% de una vivienda de 100 m²' },
+];
+
+/**
+ * Cesta de la compra semanal: no es un dato suelto de Numbeo, es la suma de una
+ * cesta definida con los precios locales de cada país (cantidades declaradas).
+ * Antes era un «precio orientativo» escrito a mano para España y una conversión
+ * para el resto: ahora sale de los mismos precios locales que el resto de fichas.
+ */
+const CESTA_SEMANAL: Array<{ match: string; cantidad: number; nota: string }> = [
+  { match: 'Milk (Regular, 1 Liter)', cantidad: 6, nota: '6 L de leche' },
+  { match: 'Fresh White Bread (500 g Loaf)', cantidad: 4, nota: '2 kg de pan' },
+  { match: 'White Rice (1 kg)', cantidad: 1, nota: '1 kg de arroz' },
+  { match: 'Eggs (12, Large Size)', cantidad: 1, nota: '12 huevos' },
+  { match: 'Chicken Fillets (1 kg)', cantidad: 1, nota: '1 kg de pollo' },
+  { match: 'Local Cheese (1 kg)', cantidad: 0.5, nota: 'medio kilo de queso' },
+  { match: 'Apples (1 kg)', cantidad: 1, nota: '1 kg de manzanas' },
+  { match: 'Bananas (1 kg)', cantidad: 1, nota: '1 kg de plátanos' },
+  { match: 'Tomatoes (1 kg)', cantidad: 1, nota: '1 kg de tomates' },
+  { match: 'Potatoes (1 kg)', cantidad: 1, nota: '1 kg de patatas' },
 ];
 
 function decodeEntities(text: string): string {
@@ -197,6 +217,32 @@ export const numbeoProvider: CatalogSourceProvider = {
           value,
           date,
           note: `Precio medio de mercado en ${country.numbeo}${suffix}.`,
+          source: 'Numbeo (coste de la vida, colaborativo)',
+          origin: 'local',
+          visible: true,
+        });
+      }
+
+      // Cesta de la compra semanal: suma de la cesta definida con precios locales.
+      let total = 0;
+      let encontrados = 0;
+      const detalle: string[] = [];
+      for (const linea of CESTA_SEMANAL) {
+        const item = items.find((i) =>
+          i.label.toLowerCase().includes(linea.match.toLowerCase()),
+        );
+        if (!item) continue;
+        total += item.value * linea.cantidad;
+        encontrados++;
+        detalle.push(linea.nota);
+      }
+      if (encontrados === CESTA_SEMANAL.length) {
+        updates.push({
+          productId: 'cesta-semanal',
+          countryCode: country.code,
+          value: roundFor(currency, total),
+          date,
+          note: `Cesta de la semana calculada con ${encontrados} precios locales de ${country.numbeo} (${detalle.join(', ')}).`,
           source: 'Numbeo (coste de la vida, colaborativo)',
           origin: 'local',
           visible: true,

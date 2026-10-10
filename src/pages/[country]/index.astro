@@ -11,7 +11,8 @@ import countriesData from '../../data/countries.json';
 import productsData from '../../data/products.json';
 import anchorsData from '../../data/anchors.json';
 import macroData from '../../data/macro.json';
-import { referenceSalary } from '../../lib/selectors.ts';
+import { referenceSalary, hasLocalPrice } from '../../lib/selectors.ts';
+import { pickTitle } from '../../lib/titleWidth.ts';
 import { generateHreflangs, generateBreadcrumbSchema, generateFAQSchema } from '../../lib/seo.ts';
 
 export function getStaticPaths() {
@@ -139,7 +140,10 @@ const categoryOrder: Product['category'][] = ['transporte', 'tecnologia', 'vivie
 const catalog = categoryOrder
   .map((category) => ({
     category,
-    products: products.filter((p) => p.visible && p.category === category),
+    // Solo lo que tiene precio TOMADO EN EL PAÍS: el hub no enseña conversiones.
+    products: products.filter(
+      (p) => p.visible && p.category === category && hasLocalPrice(p, country.code),
+    ),
   }))
   .filter((group) => group.products.length > 0);
 
@@ -210,10 +214,19 @@ const faqs = [
 const faqSchema = generateFAQSchema(faqs);
 const combinedJsonLd = [breadcrumbSchema, faqSchema];
 
-// Meta SEO
-const pageTitle = hasSalary
-  ? `${country.name}: sueldo por hora ${countryWageText} y cuánto vale un día de trabajo · ${brand.name}`
-  : `${country.name}: cuánto vale una hora y un día de trabajo (SMI ${refWageText} ${country.currencySymbol}/mes) · ${brand.name}`;
+// Meta SEO — título ajustado al ancho que Google muestra (~600 px)
+const pageTitle = pickTitle(
+  [
+    hasSalary
+      ? `${country.name}: sueldo por hora ${countryWageText} y cuánto vale un día de trabajo`
+      : `${country.name}: cuánto vale una hora y un día de trabajo`,
+    hasSalary
+      ? `${country.name}: sueldo por hora y día de trabajo`
+      : `${country.name}: cuánto vale un día de trabajo`,
+    `${country.name}: cuánto vale un día de trabajo`,
+  ],
+  ` · ${brand.name}`,
+);
 
 const pageDescription = hasSalary
   ? `En ${country.name}, una hora de trabajo vale ${countryWageText} y un día de 8 h ${refDailyText}. Sale del sueldo mediano neto (${country.medianNetMonthly?.toLocaleString("es-ES")} ${country.currencySymbol}/mes). Mira cuántas horas cuestan tu alquiler, la tecnología y el día a día.`

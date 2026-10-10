@@ -6,7 +6,8 @@ import { brand, categories as categoryLabels } from '../../../i18n/es.ts';
 import type { Country, Product } from '../../../lib/types.ts';
 import countriesData from '../../../data/countries.json';
 import productsData from '../../../data/products.json';
-import { getProductPrice } from '../../../lib/selectors.ts';
+import { getProductPrice, hasLocalPrice } from '../../../lib/selectors.ts';
+import { pickTitle } from '../../../lib/titleWidth.ts';
 import {
   generateHreflangs,
   generateCategorySchema,
@@ -26,8 +27,10 @@ export function getStaticPaths() {
 
   for (const country of countriesData as Country[]) {
     for (const category of categoriesList) {
+      // Solo los productos con precio TOMADO EN EL PAÍS: si el hub enseña la
+      // conversión desde España, el propio hub miente al lector y a Google.
       const catProducts = (productsData as Product[]).filter(
-        (p) => p.visible && p.category === category
+        (p) => p.visible && p.category === category && hasLocalPrice(p, country.code)
       );
       if (catProducts.length === 0) continue;
 
@@ -135,13 +138,20 @@ const faqSchema = generateFAQSchema(faqs);
 
 const combinedJsonLd = [categorySchema, breadcrumbSchema, faqSchema];
 
-// Meta SEO
-const pageTitle = hasMedianSalary
-  ? `${categoryName} en ${country.name}: coste en horas y jornadas de trabajo · ${brand.name}`
-  : `${categoryName} en ${country.name}: esfuerzo laboral comparado · ${brand.name}`;
+// Meta SEO — título ajustado al ancho que Google muestra (~600 px)
+const pageTitle = pickTitle(
+  [
+    hasMedianSalary
+      ? `${categoryName} en ${country.name}: coste en horas y jornadas de trabajo`
+      : `${categoryName} en ${country.name}: esfuerzo laboral comparado`,
+    `${categoryName} en ${country.name}: cuántas horas de trabajo cuesta`,
+    `${categoryName} en ${country.name}`,
+  ],
+  ` · ${brand.name}`,
+);
 
 const pageDescription = hasMedianSalary
-  ? `Descubre cuántas horas y jornadas de trabajo cuesta comprar artículos de ${categoryName.toLowerCase()} en ${country.name} con el sueldo mediano (${country.medianNetMonthly?.toLocaleString('es-ES')} ${country.currencySymbol}/mes). Consulta la tabla comparativa completa.`
+  ? `Cuántas horas y jornadas de trabajo cuesta comprar artículos de ${categoryName.toLowerCase()} en ${country.name} con el sueldo mediano (${country.medianNetMonthly?.toLocaleString('es-ES')} ${country.currencySymbol}/mes). Tabla comparativa con precios locales verificados.`
   : `Comparativa de precios y esfuerzo laboral en horas de trabajo para ${categoryName.toLowerCase()} en ${country.name}. Introduce tu nómina y calcula tu cifra real.`;
 
 const allCategories: Product['category'][] = [
