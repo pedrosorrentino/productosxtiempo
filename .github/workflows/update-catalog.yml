@@ -35,6 +35,13 @@ jobs:
       - name: Ejecutar pipeline de sincronización
         run: pnpm sync-catalog
 
+      - name: Revisar precios sospechosos antes de publicar
+        # Google Shopping devuelve a veces otro artículo o otra unidad (un
+        # «iPhone» suizo a 501 CHF). Este paso compara los precios que trae esa
+        # fuente con el precio español convertido y devuelve a «convertido» los
+        # que se salen de la banda, para que no lleguen a publicarse.
+        run: python3 scripts/revisar-precios-sospechosos.py --aplicar
+
       - name: Verificar tests unitarios
         run: pnpm test
 
@@ -43,9 +50,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          if [ -n "$(git status --porcelain src/data/products.json)" ]; then
+          if [ -n "$(git status --porcelain src/data/products.json scripts/data/)" ]; then
             echo "Cambios detectados en el catálogo. Guardando commit..."
-            git add src/data/products.json
+            git add src/data/products.json scripts/data/
             # SIN [skip ci]: esa etiqueta NO salta solo este workflow (que únicamente
             # corre por horario o a mano), pero Cloudflare Pages la interpreta como
             # "no construyas" y deja el despliegue en cola para siempre. Fue la causa
