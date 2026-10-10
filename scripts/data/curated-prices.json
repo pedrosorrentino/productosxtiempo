@@ -7,6 +7,295 @@
     "conversion automatica. El proveedor 'curated-manual' (scripts/sources/curated-prices.ts)",
     "lee este archivo en cada 'pnpm sync-catalog'."
   ],
-  "updated": "2026-09",
-  "prices": []
+  "updated": "2026-10",
+  "prices": [
+    {
+      "productId": "spotify-anual",
+      "countryCode": "ES",
+      "value": 143.88,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/es/premium/",
+      "note": "Premium Individual, 11.99 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "spotify-anual",
+      "countryCode": "PT",
+      "value": 107.88,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/pt-pt/premium/",
+      "note": "Premium Individual, 8.99 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "spotify-anual",
+      "countryCode": "FR",
+      "value": 145.68,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/fr/premium/",
+      "note": "Premium Individual, 12.14 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "spotify-anual",
+      "countryCode": "DE",
+      "value": 155.88,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/de/premium/",
+      "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "spotify-anual",
+      "countryCode": "IT",
+      "value": 143.88,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/it/premium/",
+      "note": "Premium Individual, 11.99 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "spotify-anual",
+      "countryCode": "GB",
+      "value": 155.88,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/uk/premium/",
+      "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "spotify-anual",
+      "countryCode": "US",
+      "value": 155.88,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/us/premium/",
+      "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "spotify-anual",
+      "countryCode": "MX",
+      "value": 1668,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/mx/premium/",
+      "note": "Premium Individual, 139 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "spotify-anual",
+      "countryCode": "AR",
+      "value": 53988,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/ar/premium/",
+      "note": "Premium Individual, 4499 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "spotify-anual",
+      "countryCode": "CO",
+      "value": 222000,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/co-es/premium/",
+      "note": "Premium Individual, 18500 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "spotify-anual",
+      "countryCode": "CL",
+      "value": 59400,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/cl/premium/",
+      "note": "Premium Individual, 4950 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "spotify-anual",
+      "countryCode": "CH",
+      "value": 191.4,
+      "date": "2026-10",
+      "source": "Spotify (tarifa oficial)",
+      "url": "https://www.spotify.com/ch-de/premium/",
+      "note": "Premium Individual, 15.95 al mes (12 meses). Precio con impuestos cuando el país los incluye."
+    },
+    {
+      "productId": "amazon-prime",
+      "countryCode": "ES",
+      "value": 49.9,
+      "date": "2026-10",
+      "source": "Amazon (tarifa oficial)",
+      "url": "https://www.amazon.es/amazonprime",
+      "note": "Cuota anual de Amazon Prime."
+    },
+    {
+      "productId": "amazon-prime",
+      "countryCode": "PT",
+      "value": 49.9,
+      "date": "2026-10",
+      "source": "Amazon (tarifa oficial)",
+      "url": "https://www.amazon.es/amazonprime",
+      "note": "Cuota anual de Amazon Prime. Portugal compra en la tienda española: comparte tarifa."
+    },
+    {
+      "productId": "amazon-prime",
+      "countryCode": "FR",
+      "value": 69.9,
+      "date": "2026-10",
+      "source": "Amazon (tarifa oficial)",
+      "url": "https://www.amazon.fr/amazonprime",
+      "note": "Cuota anual de Amazon Prime."
+    },
+    {
+      "productId": "amazon-prime",
+      "countryCode": "DE",
+      "value": 89.9,
+      "date": "2026-10",
+      "source": "Amazon (tarifa oficial)",
+      "url": "https://www.amazon.de/amazonprime",
+      "note": "Cuota anual de Amazon Prime."
+    },
+    {
+      "productId": "amazon-prime",
+      "countryCode": "IT",
+      "value": 49.9,
+      "date": "2026-10",
+      "source": "Amazon (tarifa oficial)",
+      "url": "https://www.amazon.it/amazonprime",
+      "note": "Cuota anual de Amazon Prime."
+    },
+    {
+      "productId": "amazon-prime",
+      "countryCode": "GB",
+      "value": 95.0,
+      "date": "2026-10",
+      "source": "Amazon (tarifa oficial)",
+      "url": "https://www.amazon.co.uk/amazonprime",
+      "note": "Cuota anual de Amazon Prime."
+    },
+    {
+      "productId": "amazon-prime",
+      "countryCode": "US",
+      "value": 139.0,
+      "date": "2026-10",
+      "source": "Amazon (tarifa oficial)",
+      "url": "https://www.amazon.com/amazonprime",
+      "note": "Cuota anual de Amazon Prime."
+    },
+    {
+      "productId": "amazon-prime",
+      "countryCode": "MX",
+      "value": 945,
+      "date": "2026-10",
+      "source": "Amazon (tarifa oficial)",
+      "url": "https://www.amazon.com.mx/amazonprime",
+      "note": "Cuota anual de Amazon Prime."
+    },
+    {
+      "productId": "amazon-prime",
+      "countryCode": "CO",
+      "value": 165600,
+      "date": "2026-10",
+      "source": "Amazon (tarifa oficial)",
+      "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=TldMyMTyZMjXonyvI9",
+      "note": "Cuota anual de Amazon Prime."
+    },
+    {
+      "productId": "chatgpt-plus",
+      "countryCode": "ES",
+      "value": 275.88,
+      "date": "2026-10",
+      "source": "OpenAI / App Store (tarifa oficial)",
+      "url": "https://apps.apple.com/es/app/chatgpt/id6448311069",
+      "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país."
+    },
+    {
+      "productId": "chatgpt-plus",
+      "countryCode": "PT",
+      "value": 275.88,
+      "date": "2026-10",
+      "source": "OpenAI / App Store (tarifa oficial)",
+      "url": "https://apps.apple.com/pt/app/chatgpt/id6448311069",
+      "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país."
+    },
+    {
+      "productId": "chatgpt-plus",
+      "countryCode": "FR",
+      "value": 275.88,
+      "date": "2026-10",
+      "source": "OpenAI / App Store (tarifa oficial)",
+      "url": "https://apps.apple.com/fr/app/chatgpt/id6448311069",
+      "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país."
+    },
+    {
+      "productId": "chatgpt-plus",
+      "countryCode": "DE",
+      "value": 275.88,
+      "date": "2026-10",
+      "source": "OpenAI / App Store (tarifa oficial)",
+      "url": "https://apps.apple.com/de/app/chatgpt/id6448311069",
+      "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país."
+    },
+    {
+      "productId": "chatgpt-plus",
+      "countryCode": "IT",
+      "value": 275.88,
+      "date": "2026-10",
+      "source": "OpenAI / App Store (tarifa oficial)",
+      "url": "https://apps.apple.com/it/app/chatgpt/id6448311069",
+      "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país."
+    },
+    {
+      "productId": "chatgpt-plus",
+      "countryCode": "GB",
+      "value": 239.88,
+      "date": "2026-10",
+      "source": "OpenAI / App Store (tarifa oficial)",
+      "url": "https://apps.apple.com/gb/app/chatgpt/id6448311069",
+      "note": "ChatGPT Plus, 19.99 al mes (12 meses). Tarifa de la App Store oficial en ese país."
+    },
+    {
+      "productId": "chatgpt-plus",
+      "countryCode": "US",
+      "value": 240.0,
+      "date": "2026-10",
+      "source": "OpenAI / App Store (tarifa oficial)",
+      "url": "https://chatgpt.com/pricing/",
+      "note": "ChatGPT Plus, 20.0 al mes (12 meses). Tarifa de la App Store oficial en ese país."
+    },
+    {
+      "productId": "chatgpt-plus",
+      "countryCode": "MX",
+      "value": 4788,
+      "date": "2026-10",
+      "source": "OpenAI / App Store (tarifa oficial)",
+      "url": "https://apps.apple.com/mx/app/chatgpt/id6448311069",
+      "note": "ChatGPT Plus, 399 al mes (12 meses). Tarifa de la App Store oficial en ese país."
+    },
+    {
+      "productId": "chatgpt-plus",
+      "countryCode": "CO",
+      "value": 1198800,
+      "date": "2026-10",
+      "source": "OpenAI / App Store (tarifa oficial)",
+      "url": "https://apps.apple.com/co/app/chatgpt/id6448311069",
+      "note": "ChatGPT Plus, 99900 al mes (12 meses). Tarifa de la App Store oficial en ese país."
+    },
+    {
+      "productId": "chatgpt-plus",
+      "countryCode": "CL",
+      "value": 239880,
+      "date": "2026-10",
+      "source": "OpenAI / App Store (tarifa oficial)",
+      "url": "https://apps.apple.com/cl/app/chatgpt/id6448311069",
+      "note": "ChatGPT Plus, 19990 al mes (12 meses). Tarifa de la App Store oficial en ese país."
+    },
+    {
+      "productId": "chatgpt-plus",
+      "countryCode": "CH",
+      "value": 240.0,
+      "date": "2026-10",
+      "source": "OpenAI / App Store (tarifa oficial)",
+      "url": "https://apps.apple.com/ch/app/chatgpt/id6448311069",
+      "note": "ChatGPT Plus, 20.0 al mes (12 meses). Tarifa de la App Store oficial en ese país."
+    }
+  ]
 }

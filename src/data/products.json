@@ -1422,7 +1422,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 10686,
+        "value": 10577,
         "date": "2026-10",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -1515,7 +1515,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 1299,
+        "value": 1459,
         "date": "2026-10",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -1657,7 +1657,7 @@
         "origin": "converted"
       },
       "DE": {
-        "value": 350.0,
+        "value": 350,
         "date": "2026-08",
         "note": "Precio convertido desde España (350 €). Edítalo.",
         "source": "Referencia de producto (convertido)",
@@ -2001,7 +2001,7 @@
         "origin": "converted"
       },
       "CO": {
-        "value": 2131800.0,
+        "value": 2131800,
         "date": "2026-09",
         "note": "Precio convertido desde España (484.5 €). Edítalo.",
         "source": "Google Shopping (vía SerpApi) (convertido)",
@@ -2652,7 +2652,7 @@
         "origin": "converted"
       },
       "CO": {
-        "value": 1022956.0,
+        "value": 1022956,
         "date": "2026-09",
         "note": "Precio convertido desde España (232.49 €). Edítalo.",
         "source": "Google Shopping (vía SerpApi) (convertido)",
@@ -2745,7 +2745,7 @@
         "origin": "converted"
       },
       "CO": {
-        "value": 4009500.0,
+        "value": 4009500,
         "date": "2026-09",
         "note": "Precio convertido desde España (911.25 €). Edítalo.",
         "source": "Google Shopping (vía SerpApi) (convertido)",
@@ -4565,7 +4565,7 @@
       "ES": {
         "value": 85.01,
         "date": "2026-10",
-        "note": "Depósito medio de 45 L de Gasóleo A (1.89 €/L). Datos oficiales de 11.297 estaciones.",
+        "note": "Depósito medio de 45 L de Gasóleo A (1.89 €/L). Datos oficiales de 11.298 estaciones.",
         "source": "MITECO (Gobierno de España)",
         "origin": "local"
       },
@@ -4942,9 +4942,9 @@
         "origin": "local"
       },
       "GB": {
-        "value": 62519,
+        "value": 62597,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (62.519 £).",
+        "note": "Cotización de mercado de 1 Bitcoin (62.597 £).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -4956,16 +4956,16 @@
         "origin": "local"
       },
       "MX": {
-        "value": 1524397,
+        "value": 1524396,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (1.524.397 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (1.524.396 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "AR": {
-        "value": 125652705,
+        "value": 125652627,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (125.652.705 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (125.652.627 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -4977,9 +4977,9 @@
         "origin": "converted"
       },
       "CL": {
-        "value": 80877684,
+        "value": 80877634,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (80.877.684 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (80.877.634 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -5588,7 +5588,7 @@
       "ES": {
         "value": 87.48,
         "date": "2026-10",
-        "note": "Depósito medio de 45 L de Gasolina 98 E5 (1.94 €/L). Datos oficiales de 5502 estaciones.",
+        "note": "Depósito medio de 45 L de Gasolina 98 E5 (1.94 €/L). Datos oficiales de 5503 estaciones.",
         "source": "MITECO (Gobierno de España)",
         "origin": "local"
       },
@@ -5779,9 +5779,9 @@
         "origin": "local"
       },
       "GB": {
-        "value": 1883,
+        "value": 1886,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (1883 £).",
+        "note": "Cotización de mercado de 1 Ethereum (1886 £).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -5793,16 +5793,16 @@
         "origin": "local"
       },
       "MX": {
-        "value": 45925,
+        "value": 45926,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (45.925 $).",
+        "note": "Cotización de mercado de 1 Ethereum (45.926 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "AR": {
-        "value": 3785511,
+        "value": 3785591,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (3.785.511 $).",
+        "note": "Cotización de mercado de 1 Ethereum (3.785.591 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -5814,9 +5814,9 @@
         "origin": "converted"
       },
       "CL": {
-        "value": 2436584,
+        "value": 2436635,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2.436.584 $).",
+        "note": "Cotización de mercado de 1 Ethereum (2.436.635 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -5865,88 +5865,88 @@
     "category": "tecnologia",
     "prices": {
       "ES": {
-        "value": 240,
+        "value": 275.88,
         "date": "2026-10",
-        "note": "Suscripción anual a ChatGPT Plus (tarifa oficial de 20 $/mes + impuestos).",
-        "source": "OpenAI (Tarifa Oficial)",
+        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/es/app/chatgpt/id6448311069",
+        "source": "OpenAI / App Store (tarifa oficial)",
         "origin": "local"
       },
       "GB": {
-        "value": 203.43,
+        "value": 239.88,
         "date": "2026-10",
-        "note": "Precio convertido desde España (240 €). Edítalo.",
-        "source": "OpenAI (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "ChatGPT Plus, 19.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/gb/app/chatgpt/id6448311069",
+        "source": "OpenAI / App Store (tarifa oficial)",
+        "origin": "local"
       },
       "US": {
-        "value": 268.94,
+        "value": 240,
         "date": "2026-10",
-        "note": "Precio convertido desde España (240 €). Edítalo.",
-        "source": "OpenAI (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "ChatGPT Plus, 20.0 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://chatgpt.com/pricing/",
+        "source": "OpenAI / App Store (tarifa oficial)",
+        "origin": "local"
       },
       "MX": {
-        "value": 4894.8,
+        "value": 4788,
         "date": "2026-10",
-        "note": "Precio convertido desde España (240 €). Edítalo.",
-        "source": "OpenAI (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "ChatGPT Plus, 399 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/mx/app/chatgpt/id6448311069",
+        "source": "OpenAI / App Store (tarifa oficial)",
+        "origin": "local"
       },
       "AR": {
-        "value": 276000,
+        "value": 317262,
         "date": "2026-10",
-        "note": "Precio convertido desde España (240 €). Edítalo.",
-        "source": "OpenAI (Tarifa Oficial) (convertido)",
+        "note": "Precio convertido desde España (275.88 €). Edítalo.",
+        "source": "OpenAI / App Store (tarifa oficial) (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 1056000,
+        "value": 1198800,
         "date": "2026-10",
-        "note": "Precio convertido desde España (240 €). Edítalo.",
-        "source": "OpenAI (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "ChatGPT Plus, 99900 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/co/app/chatgpt/id6448311069",
+        "source": "OpenAI / App Store (tarifa oficial)",
+        "origin": "local"
       },
       "CL": {
-        "value": 244800,
+        "value": 239880,
         "date": "2026-10",
-        "note": "Precio convertido desde España (240 €). Edítalo.",
-        "source": "OpenAI (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "ChatGPT Plus, 19990 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/cl/app/chatgpt/id6448311069",
+        "source": "OpenAI / App Store (tarifa oficial)",
+        "origin": "local"
       },
       "CH": {
-        "value": 223.51,
+        "value": 240,
         "date": "2026-10",
-        "note": "Precio convertido desde España (240 €). Edítalo.",
-        "source": "OpenAI (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "ChatGPT Plus, 20.0 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/ch/app/chatgpt/id6448311069",
+        "source": "OpenAI / App Store (tarifa oficial)",
+        "origin": "local"
       },
       "PT": {
-        "value": 240,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (240 €). Edítalo.",
-        "source": "OpenAI (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "value": 275.88,
+        "date": "2026-10",
+        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/pt/app/chatgpt/id6448311069",
+        "source": "OpenAI / App Store (tarifa oficial)",
+        "origin": "local"
       },
       "FR": {
-        "value": 240,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (240 €). Edítalo.",
-        "source": "OpenAI (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "value": 275.88,
+        "date": "2026-10",
+        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/fr/app/chatgpt/id6448311069",
+        "source": "OpenAI / App Store (tarifa oficial)",
+        "origin": "local"
       },
       "DE": {
-        "value": 240,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (240 €). Edítalo.",
-        "source": "OpenAI (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "value": 275.88,
+        "date": "2026-10",
+        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/de/app/chatgpt/id6448311069",
+        "source": "OpenAI / App Store (tarifa oficial)",
+        "origin": "local"
       },
       "IT": {
-        "value": 240,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (240 €). Edítalo.",
-        "source": "OpenAI (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "value": 275.88,
+        "date": "2026-10",
+        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/it/app/chatgpt/id6448311069",
+        "source": "OpenAI / App Store (tarifa oficial)",
+        "origin": "local"
       }
     },
     "visible": true
@@ -5958,88 +5958,88 @@
     "category": "tecnologia",
     "prices": {
       "ES": {
-        "value": 131.88,
+        "value": 143.88,
         "date": "2026-10",
-        "note": "Plan individual de Spotify Premium (10,99 €/mes prorrateado en 12 meses).",
-        "source": "Spotify (Tarifa Oficial)",
+        "note": "Premium Individual, 11.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/es/premium/",
+        "source": "Spotify (tarifa oficial)",
         "origin": "local"
       },
       "GB": {
-        "value": 111.79,
+        "value": 155.88,
         "date": "2026-10",
-        "note": "Precio convertido desde España (131.88 €). Edítalo.",
-        "source": "Spotify (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/uk/premium/",
+        "source": "Spotify (tarifa oficial)",
+        "origin": "local"
       },
       "US": {
-        "value": 147.78,
+        "value": 155.88,
         "date": "2026-10",
-        "note": "Precio convertido desde España (131.88 €). Edítalo.",
-        "source": "Spotify (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/us/premium/",
+        "source": "Spotify (tarifa oficial)",
+        "origin": "local"
       },
       "MX": {
-        "value": 2689.69,
+        "value": 1668,
         "date": "2026-10",
-        "note": "Precio convertido desde España (131.88 €). Edítalo.",
-        "source": "Spotify (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "Premium Individual, 139 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/mx/premium/",
+        "source": "Spotify (tarifa oficial)",
+        "origin": "local"
       },
       "AR": {
-        "value": 151662,
+        "value": 53988,
         "date": "2026-10",
-        "note": "Precio convertido desde España (131.88 €). Edítalo.",
-        "source": "Spotify (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "Premium Individual, 4499 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/ar/premium/",
+        "source": "Spotify (tarifa oficial)",
+        "origin": "local"
       },
       "CO": {
-        "value": 580272,
+        "value": 222000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (131.88 €). Edítalo.",
-        "source": "Spotify (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "Premium Individual, 18500 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/co-es/premium/",
+        "source": "Spotify (tarifa oficial)",
+        "origin": "local"
       },
       "CL": {
-        "value": 134518,
+        "value": 59400,
         "date": "2026-10",
-        "note": "Precio convertido desde España (131.88 €). Edítalo.",
-        "source": "Spotify (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "Premium Individual, 4950 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/cl/premium/",
+        "source": "Spotify (tarifa oficial)",
+        "origin": "local"
       },
       "CH": {
-        "value": 122.82,
+        "value": 191.4,
         "date": "2026-10",
-        "note": "Precio convertido desde España (131.88 €). Edítalo.",
-        "source": "Spotify (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "Premium Individual, 15.95 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/ch-de/premium/",
+        "source": "Spotify (tarifa oficial)",
+        "origin": "local"
       },
       "PT": {
-        "value": 131.88,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (131.88 €). Edítalo.",
-        "source": "Spotify (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "value": 107.88,
+        "date": "2026-10",
+        "note": "Premium Individual, 8.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/pt-pt/premium/",
+        "source": "Spotify (tarifa oficial)",
+        "origin": "local"
       },
       "FR": {
-        "value": 131.88,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (131.88 €). Edítalo.",
-        "source": "Spotify (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "value": 145.68,
+        "date": "2026-10",
+        "note": "Premium Individual, 12.14 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/fr/premium/",
+        "source": "Spotify (tarifa oficial)",
+        "origin": "local"
       },
       "DE": {
-        "value": 131.88,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (131.88 €). Edítalo.",
-        "source": "Spotify (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "value": 155.88,
+        "date": "2026-10",
+        "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/de/premium/",
+        "source": "Spotify (tarifa oficial)",
+        "origin": "local"
       },
       "IT": {
-        "value": 131.88,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (131.88 €). Edítalo.",
-        "source": "Spotify (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "value": 143.88,
+        "date": "2026-10",
+        "note": "Premium Individual, 11.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/it/premium/",
+        "source": "Spotify (tarifa oficial)",
+        "origin": "local"
       }
     },
     "visible": true
@@ -6053,86 +6053,86 @@
       "ES": {
         "value": 49.9,
         "date": "2026-10",
-        "note": "Cuota anual del servicio de suscripción y envíos Amazon Prime España.",
-        "source": "Amazon (Tarifa Oficial)",
+        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.es/amazonprime",
+        "source": "Amazon (tarifa oficial)",
         "origin": "local"
       },
       "GB": {
-        "value": 42.3,
+        "value": 95,
         "date": "2026-10",
-        "note": "Precio convertido desde España (49.9 €). Edítalo.",
-        "source": "Amazon (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.co.uk/amazonprime",
+        "source": "Amazon (tarifa oficial)",
+        "origin": "local"
       },
       "US": {
-        "value": 55.92,
+        "value": 139,
         "date": "2026-10",
-        "note": "Precio convertido desde España (49.9 €). Edítalo.",
-        "source": "Amazon (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.com/amazonprime",
+        "source": "Amazon (tarifa oficial)",
+        "origin": "local"
       },
       "MX": {
-        "value": 1017.71,
+        "value": 945,
         "date": "2026-10",
-        "note": "Precio convertido desde España (49.9 €). Edítalo.",
-        "source": "Amazon (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.com.mx/amazonprime",
+        "source": "Amazon (tarifa oficial)",
+        "origin": "local"
       },
       "AR": {
         "value": 57385,
         "date": "2026-10",
         "note": "Precio convertido desde España (49.9 €). Edítalo.",
-        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "source": "Amazon (tarifa oficial) (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 219560,
+        "value": 165600,
         "date": "2026-10",
-        "note": "Precio convertido desde España (49.9 €). Edítalo.",
-        "source": "Amazon (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.com/gp/help/customer/display.html?nodeId=TldMyMTyZMjXonyvI9",
+        "source": "Amazon (tarifa oficial)",
+        "origin": "local"
       },
       "CL": {
         "value": 50898,
         "date": "2026-10",
         "note": "Precio convertido desde España (49.9 €). Edítalo.",
-        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "source": "Amazon (tarifa oficial) (convertido)",
         "origin": "converted"
       },
       "CH": {
         "value": 46.47,
         "date": "2026-10",
         "note": "Precio convertido desde España (49.9 €). Edítalo.",
-        "source": "Amazon (Tarifa Oficial) (convertido)",
+        "source": "Amazon (tarifa oficial) (convertido)",
         "origin": "converted"
       },
       "PT": {
         "value": 49.9,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (49.9 €). Edítalo.",
-        "source": "Amazon (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "date": "2026-10",
+        "note": "Cuota anual de Amazon Prime. Portugal compra en la tienda española: comparte tarifa. Fuente: https://www.amazon.es/amazonprime",
+        "source": "Amazon (tarifa oficial)",
+        "origin": "local"
       },
       "FR": {
-        "value": 49.9,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (49.9 €). Edítalo.",
-        "source": "Amazon (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "value": 69.9,
+        "date": "2026-10",
+        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.fr/amazonprime",
+        "source": "Amazon (tarifa oficial)",
+        "origin": "local"
       },
       "DE": {
-        "value": 49.9,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (49.9 €). Edítalo.",
-        "source": "Amazon (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "value": 89.9,
+        "date": "2026-10",
+        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.de/amazonprime",
+        "source": "Amazon (tarifa oficial)",
+        "origin": "local"
       },
       "IT": {
         "value": 49.9,
-        "date": "2026-09",
-        "note": "Precio de referencia de España (49.9 €). Edítalo.",
-        "source": "Amazon (Tarifa Oficial) (convertido)",
-        "origin": "converted"
+        "date": "2026-10",
+        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.it/amazonprime",
+        "source": "Amazon (tarifa oficial)",
+        "origin": "local"
       }
     },
     "visible": true
@@ -6400,7 +6400,7 @@
         "origin": "converted"
       },
       "DE": {
-        "value": 4600.0,
+        "value": 4600,
         "date": "2026-10",
         "note": "Precio convertido desde España (4600 €). Edítalo.",
         "source": "IDAE / Unión Española Fotovoltaica (convertido)",
