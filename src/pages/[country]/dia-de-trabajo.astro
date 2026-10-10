@@ -51,7 +51,10 @@ const porDiaNatural = mensual / 30;                    // un día de sueldo, mes
 const porSemana = mensual / WEEKS_PER_MONTH;
 
 const simbolo = country.currencySymbol;
-const miles = (v: number) => Math.round(v).toLocaleString('es-ES');
+// Entero con separador de miles forzado: el CLDR de es-ES no agrupa las cifras
+// de cuatro dígitos, y «28.208 $» se lee mucho mejor que «28208 $».
+const miles = (v: number) =>
+  new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0, useGrouping: 'always' }).format(v);
 
 function coste(product: Product) {
   const precio = product.prices[country.code];

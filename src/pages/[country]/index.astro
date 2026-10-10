@@ -184,7 +184,7 @@ const rentPctSalary = country.medianNetMonthly ? Math.round((rentPrice / country
 const faqs = [
   {
     question: `¿Cuál es el salario mediano neto por hora en ${country.name}?`,
-    answer: `En ${country.name}, el sueldo mediano neto de referencia es de ${country.medianNetMonthly?.toLocaleString("es-ES")} ${country.currencySymbol}/mes. Considerando una jornada laboral legal de ${country.legalWeeklyHours} horas semanales (fórmula de 52 semanas repartidas en 12 meses), una hora de trabajo neto equivale aproximadamente a ${countryWageText ?? "10 " + country.currencySymbol + "/hora"}, según ${country.salarySourceLabel} (${country.salariesSource}).`,
+    answer: `En ${country.name}, el sueldo mediano neto de referencia es de ${formatIntegerThousands(country.medianNetMonthly ?? 0)} ${country.currencySymbol}/mes. Considerando una jornada laboral legal de ${country.legalWeeklyHours} horas semanales (fórmula de 52 semanas repartidas en 12 meses), una hora de trabajo neto equivale aproximadamente a ${countryWageText ?? "10 " + country.currencySymbol + "/hora"}, según ${country.salarySourceLabel} (${country.salariesSource}).`,
   },
   {
     question: `¿Cuántas horas de trabajo cuesta el alquiler mensual en ${country.name}?`,
@@ -230,7 +230,7 @@ const pageTitle = pickTitle(
 );
 
 const pageDescription = hasSalary
-  ? `En ${country.name}, una hora de trabajo vale ${countryWageText} y un día de 8 h ${refDailyText}. Sale del sueldo mediano neto (${country.medianNetMonthly?.toLocaleString("es-ES")} ${country.currencySymbol}/mes). Mira cuántas horas cuestan tu alquiler, la tecnología y el día a día.`
+  ? `En ${country.name}, una hora de trabajo vale ${countryWageText} y un día de 8 h ${refDailyText}. Sale del sueldo mediano neto (${formatIntegerThousands(country.medianNetMonthly ?? 0)} ${country.currencySymbol}/mes). Mira cuántas horas cuestan tu alquiler, la tecnología y el día a día.`
   : `En ${country.name} no hay mediano neto publicado: con el SMI de referencia (${refWageText} ${country.currencySymbol}/mes) la hora sale a ${refHourlyText} y el día de 8 h a ${refDailyText}. Calcula cuánto de tu tiempo cuesta cualquier compra.`;
 ---
 
@@ -428,7 +428,7 @@ const pageDescription = hasSalary
       </h2>
 
       <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">
-        En <strong>{country.name}</strong>, el sueldo mediano neto de referencia se sitúa en <strong>{country.medianNetMonthly?.toLocaleString("es-ES")} {country.currencySymbol} al mes</strong>. Bajo una semana laboral estándar de <strong>{country.legalWeeklyHours} horas</strong>, una hora de trabajo real se retribuye a una tasa de <strong>{countryWageText ?? "10 " + country.currencySymbol + "/hora"}</strong>, a partir de {country.salarySourceLabel} ({country.salariesSource}).
+        En <strong>{country.name}</strong>, el sueldo mediano neto de referencia se sitúa en <strong>{formatIntegerThousands(country.medianNetMonthly ?? 0)} {country.currencySymbol} al mes</strong>. Bajo una semana laboral estándar de <strong>{country.legalWeeklyHours} horas</strong>, una hora de trabajo real se retribuye a una tasa de <strong>{countryWageText ?? "10 " + country.currencySymbol + "/hora"}</strong>, a partir de {country.salarySourceLabel} ({country.salariesSource}).
       </p>
 
       <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">

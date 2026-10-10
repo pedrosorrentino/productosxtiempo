@@ -204,6 +204,10 @@ export default function ResultView({
   catalogPriceDate = null,
   catalogPriceSource = null,
 }: ResultViewProps) {
+  /** Entero con separador de miles forzado: 1561 -> "1.561". */
+  const miles = (v: number) =>
+    new Intl.NumberFormat("es-ES", { maximumFractionDigits: 0, useGrouping: "always" }).format(v);
+
   const [state, setState] = useState<Partial<UserState>>({});
   const [mounted, setMounted] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -995,7 +999,7 @@ export default function ResultView({
                 <span class="font-board-mono text-sm text-base-content/80">
                   {state.netMonthly
                     ? `Tu sueldo: ${state.netMonthly} ${currencySymbol}/mes (${formatHourlyWage(computed.hourlyWage, currencySymbol)}/h)`
-                    : `${countryName}: ${medianNetMonthly ?? 1800} ${currencySymbol}/mes (${formatHourlyWage(computed.hourlyWage, currencySymbol)}/h)`}
+                    : `${countryName}: ${miles(medianNetMonthly ?? 1800)} ${currencySymbol}/mes (${formatHourlyWage(computed.hourlyWage, currencySymbol)}/h)`}
                 </span>
               </div>
               <h3 class="font-signage uppercase text-xl sm:text-2xl mt-2 text-base-content">
@@ -1062,7 +1066,7 @@ export default function ResultView({
                 <span>Desliza para simular en tiempo real:</span>
               </span>
               <span class="font-bold text-primary bg-base-200 px-2.5 py-0.5 rounded border border-base-300">
-                {state.netMonthly ?? medianNetMonthly ?? 1800} {currencySymbol}/mes
+                {miles(state.netMonthly ?? medianNetMonthly ?? 1800)} {currencySymbol}/mes
               </span>
             </div>
 
@@ -1336,7 +1340,7 @@ export default function ResultView({
 
         <div class="mt-3">
           <p class="text-base leading-relaxed text-base-content/95">
-            En <strong>{countryName}</strong>, adquirir un <strong>{displayName ?? result.unnamedThing}</strong> con un precio de mercado de <strong>{formatAmount(effectivePrice ?? catalogPrice ?? 0)} {currencySymbol}</strong> requiere un esfuerzo laboral de <strong>{hero.value} {hero.unit}</strong> de trabajo íntegro (equivalente a <strong>{formatHours(computed.hours)} horas</strong> o <strong>{formatWorkdays(computed.workdays8h)} jornadas de 8 horas</strong>). Este cálculo se fundamenta en el sueldo mediano neto de referencia de <strong>{medianNetMonthly ?? 1800} {currencySymbol}/mes</strong>{salarySourceLabel ? <> ({salarySourceLabel})</> : null} y la semana legal de <strong>{legalWeeklyHours} horas</strong>, absorbiendo aproximadamente el <strong>{formatPercent(computed.pctRealYear ?? 0)}% del año laboral real</strong> de un empleado medio.
+            En <strong>{countryName}</strong>, adquirir un <strong>{displayName ?? result.unnamedThing}</strong> con un precio de mercado de <strong>{formatAmount(effectivePrice ?? catalogPrice ?? 0)} {currencySymbol}</strong> requiere un esfuerzo laboral de <strong>{hero.value} {hero.unit}</strong> de trabajo íntegro (equivalente a <strong>{formatHours(computed.hours)} horas</strong> o <strong>{formatWorkdays(computed.workdays8h)} jornadas de 8 horas</strong>). Este cálculo se fundamenta en el sueldo mediano neto de referencia de <strong>{miles(medianNetMonthly ?? 1800)} {currencySymbol}/mes</strong>{salarySourceLabel ? <> ({salarySourceLabel})</> : null} y la semana legal de <strong>{legalWeeklyHours} horas</strong>, absorbiendo aproximadamente el <strong>{formatPercent(computed.pctRealYear ?? 0)}% del año laboral real</strong> de un empleado medio.
           </p>
 
           <div class="mt-4 pt-3 border-t border-base-300/80 flex flex-wrap items-center justify-between gap-2 text-xs font-board-mono opacity-80">

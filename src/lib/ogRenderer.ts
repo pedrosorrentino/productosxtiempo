@@ -190,7 +190,9 @@ export function generateProductPoster(product: Product, country: Country): Sator
             textTransform: "uppercase",
             letterSpacing: 1,
           },
-          `Sueldo mediano: ${new Intl.NumberFormat("es-ES").format(country.medianNetMonthly ?? 0)} ${country.currencySymbol}/mes`,
+          country.medianNetMonthly
+            ? `Sueldo mediano: ${new Intl.NumberFormat("es-ES", { useGrouping: "always" }).format(country.medianNetMonthly)} ${country.currencySymbol}/mes`
+            : `Salario mínimo: ${new Intl.NumberFormat("es-ES", { useGrouping: "always" }).format(country.minWageMonthly ?? 0)} ${country.currencySymbol}/mes`,
         ),
       ]),
 

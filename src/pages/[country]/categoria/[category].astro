@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { calc } from '../../../lib/calc.ts';
-import { formatHours, formatWorkdays } from '../../../lib/format.ts';
+import { formatHours, formatWorkdays, formatIntegerThousands } from '../../../lib/format.ts';
 import { brand, categories as categoryLabels } from '../../../i18n/es.ts';
 import type { Country, Product } from '../../../lib/types.ts';
 import countriesData from '../../../data/countries.json';
@@ -151,7 +151,7 @@ const pageTitle = pickTitle(
 );
 
 const pageDescription = hasMedianSalary
-  ? `Cuántas horas y jornadas de trabajo cuesta comprar artículos de ${categoryName.toLowerCase()} en ${country.name} con el sueldo mediano (${country.medianNetMonthly?.toLocaleString('es-ES')} ${country.currencySymbol}/mes). Tabla comparativa con precios locales verificados.`
+  ? `Cuántas horas y jornadas de trabajo cuesta comprar artículos de ${categoryName.toLowerCase()} en ${country.name} con el sueldo mediano (${formatIntegerThousands(country.medianNetMonthly ?? 0)} ${country.currencySymbol}/mes). Tabla comparativa con precios locales verificados.`
   : `Comparativa de precios y esfuerzo laboral en horas de trabajo para ${categoryName.toLowerCase()} en ${country.name}. Introduce tu nómina y calcula tu cifra real.`;
 
 const allCategories: Product['category'][] = [
