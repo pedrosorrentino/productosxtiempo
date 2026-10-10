@@ -2105,6 +2105,843 @@
       "source": "ETH Zúrich · tasas oficiales",
       "url": "https://ethz.ch/students/en/studies/financial/tuition-fees.html",
       "note": "Máster de un año (2 semestres) a 730 CHF por semestre en la ETH Zúrich. Los extracomunitarios sin permiso pagan 4.380 CHF."
+    },
+    {
+      "productId": "criar-hijo",
+      "countryCode": "IT",
+      "value": 175642.72,
+      "date": "2026-10",
+      "source": "Federconsumatori · observatorio nacional del coste de criar un hijo",
+      "url": "https://federconsumatori.it/famiglia-mantenere-un-figlio-da-0-a-18-anni-ha-un-costo-medio-di-175-64272-euro",
+      "note": "Coste total de 0 a 18 años en una familia de renta media, según el Observatorio de Federconsumatori."
+    },
+    {
+      "productId": "criar-hijo",
+      "countryCode": "GB",
+      "value": 251018.0,
+      "date": "2026-10",
+      "source": "Child Poverty Action Group · «The Cost of a Child in 2025»",
+      "url": "https://cpag.org.uk/news/cost-child-2025",
+      "note": "Coste total hasta los 18 años en familia de pareja, con vivienda, guardería e impuesto municipal incluidos (sin ellos: 167.679 £)."
+    },
+    {
+      "productId": "criar-hijo",
+      "countryCode": "US",
+      "value": 233610.0,
+      "date": "2026-10",
+      "source": "USDA · «Expenditures on Children by Families»",
+      "url": "https://fns.usda.gov/cnpp/expenditures-children-families",
+      "note": "Coste total desde el nacimiento hasta los 17 años para una pareja de renta media con dos hijos. Dato de 2015: el USDA dejó de actualizar esta estadística en 2017."
+    },
+    {
+      "productId": "seguro-coche-anual",
+      "countryCode": "GB",
+      "value": 612.0,
+      "date": "2026-10",
+      "source": "ABI · seguimiento de primas de automóvil",
+      "url": "https://www.abi.org.uk/news/news-articles/2024/112/motor-premiums-fall-for-the-second-consecutive-quarter/",
+      "note": "Prima media a todo riesgo, precio realmente pagado (3T 2024)."
+    },
+    {
+      "productId": "seguro-coche-anual",
+      "countryCode": "FR",
+      "value": 448.0,
+      "date": "2026-10",
+      "source": "France Assureurs · el seguro de automóvil de los particulares",
+      "url": "https://www.franceassureurs.fr/wp-content/uploads/lassurance-automobile-des-particuliers-en-2023.pdf",
+      "note": "Prima media de un turismo, cobertura múltiple, sin impuestos."
+    },
+    {
+      "productId": "seguro-coche-anual",
+      "countryCode": "DE",
+      "value": 645.0,
+      "date": "2026-10",
+      "source": "GDV · asociación alemana de aseguradoras",
+      "url": "https://www.gdv.de/gdv/statistik/mobilitaet/entwicklung-der-durchschnittlichen-jahrespraemie-in-der-kfz-versicherung-157118",
+      "note": "Prima media anual a todo riesgo: responsabilidad civil (276 €) + todo riesgo (369 €)."
+    },
+    {
+      "productId": "seguro-coche-anual",
+      "countryCode": "IT",
+      "value": 416.0,
+      "date": "2026-10",
+      "source": "IVASS · supervisor de seguros italiano",
+      "url": "https://www.ivass.it/pubblicazioni-e-statistiche/statistiche/comunicazioni-statistiche/2024/n_9_2024/Report_IPER_finale.pdf",
+      "note": "Prima media de la RESPONSABILIDAD CIVIL obligatoria (Italia no publica una media de todo riesgo)."
+    },
+    {
+      "productId": "seguro-coche-anual",
+      "countryCode": "US",
+      "value": 1127.0,
+      "date": "2026-10",
+      "source": "NAIC, citado por el Insurance Information Institute",
+      "url": "https://www.iii.org/article/auto-insurance",
+      "note": "Gasto medio anual por vehículo asegurado (responsabilidad, colisión y todo riesgo), 2022."
+    },
+    {
+      "productId": "seguro-coche-anual",
+      "countryCode": "PT",
+      "value": 233.0,
+      "date": "2026-10",
+      "source": "ASF · supervisor de seguros portugués",
+      "url": "https://www.asf.com.pt/documents/42559/1536373/Autom%C3%B3vel.pdf",
+      "note": "Prima media por vehículo asegurado: primas emitidas entre número de vehículos, 2022."
+    },
+    {
+      "productId": "seguro-salud",
+      "countryCode": "DE",
+      "value": 6708.0,
+      "date": "2026-10",
+      "source": "PKV-Verband · asociación del seguro privado de enfermedad",
+      "url": "https://www.pkv.de/wissen/beitraege/pkv-beitraege-im-alter/",
+      "note": "Prima media anual de un seguro de salud privado individual (559 €/mes), 2024."
+    },
+    {
+      "productId": "seguro-salud",
+      "countryCode": "CH",
+      "value": 5583.6,
+      "date": "2026-10",
+      "source": "Oficina Federal de Salud Pública · primas 2026",
+      "url": "https://www.bag.admin.ch/de/newnsb/d2okh_kUK_OFhmMDfpyiy",
+      "note": "Prima media anual del seguro básico obligatorio para adultos (465,30 CHF/mes), 2026."
+    },
+    {
+      "productId": "seguro-salud",
+      "countryCode": "IT",
+      "value": 191.0,
+      "date": "2026-10",
+      "source": "IVASS · boletín estadístico de salud",
+      "url": "https://www.ivass.it/pubblicazioni-e-statistiche/statistiche/bollettino-statistico/2025/n-02-2025/Bollettino_salute_2023.pdf",
+      "note": "Prima media anual del ramo de enfermedad, 2023. Es baja porque el sistema público cubre casi todo."
+    },
+    {
+      "productId": "seguro-salud",
+      "countryCode": "FR",
+      "value": 708.0,
+      "date": "2026-10",
+      "source": "DREES · Ministerio de Sanidad francés",
+      "url": "https://www.drees.solidarites-sante.gouv.fr/sites/default/files/2024-07/CS24%20-%20Fiche%2011%20-%20Les%20primes%20d%E2%80%99assurance%20des%20contrats.pdf",
+      "note": "Prima media de un contrato individual de complementaria sanitaria para un asegurado de 40 años (59 €/mes), 2021."
+    },
+    {
+      "productId": "seguro-salud",
+      "countryCode": "PT",
+      "value": 418.0,
+      "date": "2026-10",
+      "source": "ASF / Observatorio de los Seguros de Salud",
+      "url": "https://portalsegurossaude.pt/indicadores-do-mercado-de-seguros-de-saude-2024/",
+      "note": "Prima media anual por persona asegurada en seguros de salud privados, 2024."
+    },
+    {
+      "productId": "moto-125",
+      "countryCode": "PT",
+      "value": 5595.0,
+      "date": "2026-10",
+      "source": "Yamaha Motor · web oficial del país",
+      "url": "https://www.yamaha-motor.eu/pt/pt/pt/motorcycles/hyper-naked/pdp/mt-125",
+      "note": "Yamaha MT-125, precio oficial del fabricante."
+    },
+    {
+      "productId": "moto-125",
+      "countryCode": "FR",
+      "value": 5799.0,
+      "date": "2026-10",
+      "source": "Yamaha Motor · web oficial del país",
+      "url": "https://www.yamaha-motor.eu/fr/fr/fr/motorcycles/hyper-naked/pdp/mt-125",
+      "note": "Yamaha MT-125, precio oficial del fabricante."
+    },
+    {
+      "productId": "moto-125",
+      "countryCode": "DE",
+      "value": 5849.0,
+      "date": "2026-10",
+      "source": "Yamaha Motor · web oficial del país",
+      "url": "https://www.yamaha-motor.eu/de/de/de/motorcycles/hyper-naked/pdp/mt-125",
+      "note": "Yamaha MT-125, precio oficial del fabricante."
+    },
+    {
+      "productId": "moto-125",
+      "countryCode": "IT",
+      "value": 5499.0,
+      "date": "2026-10",
+      "source": "Yamaha Motor · web oficial del país",
+      "url": "https://www.yamaha-motor.eu/it/it/it/motorcycles/hyper-naked/pdp/mt-125",
+      "note": "Yamaha MT-125, precio oficial del fabricante."
+    },
+    {
+      "productId": "moto-125",
+      "countryCode": "GB",
+      "value": 5301.0,
+      "date": "2026-10",
+      "source": "Yamaha Motor · web oficial del país",
+      "url": "https://www.yamaha-motor.eu/gb/en/en/motorcycles/hyper-naked/pdp/mt-125",
+      "note": "Yamaha MT-125, precio oficial del fabricante."
+    },
+    {
+      "productId": "moto-125",
+      "countryCode": "CH",
+      "value": 4790.0,
+      "date": "2026-10",
+      "source": "Yamaha Motor · web oficial del país",
+      "url": "https://www.yamaha-motor.eu/ch/de/de/motorcycles/hyper-naked/pdp/mt-125",
+      "note": "Yamaha MT-125, precio oficial del fabricante."
+    },
+    {
+      "productId": "moto-125",
+      "countryCode": "MX",
+      "value": 38999.0,
+      "date": "2026-10",
+      "source": "Yamaha Motor de México",
+      "url": "https://www.yamaha-motor.com.mx/motos/trabajo/ybr125c-express-2026",
+      "note": "Yamaha YBR125C Express, precio oficial."
+    },
+    {
+      "productId": "moto-125",
+      "countryCode": "CL",
+      "value": 2090000.0,
+      "date": "2026-10",
+      "source": "Honda Motos Chile",
+      "url": "https://motos.honda.cl/modelos/cb125-hornet",
+      "note": "Honda CB125 Hornet, precio oficial."
+    },
+    {
+      "productId": "moto-125",
+      "countryCode": "US",
+      "value": 3899.0,
+      "date": "2026-10",
+      "source": "Concesionario oficial Honda (EE. UU.)",
+      "url": "https://www.hbhonda.com/Motorcycles-Honda-Grom-2026-Huntington-Beach-CA-d122b54d-e8e6-4195-811e-b29e0041a545",
+      "note": "Honda Grom 2026, precio de concesionario oficial."
+    },
+    {
+      "productId": "bici-urbana",
+      "countryCode": "PT",
+      "value": 299.0,
+      "date": "2026-10",
+      "source": "Decathlon · tienda oficial del país",
+      "url": "https://www.decathlon.pt/p/bicicleta-de-cidade-classic-520-quadro-baixo-azul-escuro/145734/c43m8750185",
+      "note": "Decathlon Elops 520, bicicleta urbana de gama media."
+    },
+    {
+      "productId": "bici-urbana",
+      "countryCode": "FR",
+      "value": 348.99,
+      "date": "2026-10",
+      "source": "Decathlon · tienda oficial del país",
+      "url": "https://www.decathlon.fr/p/velo-de-ville-cadre-bas-520-vert-amande/145734/c43m8750185",
+      "note": "Decathlon Elops 520, bicicleta urbana de gama media."
+    },
+    {
+      "productId": "bici-urbana",
+      "countryCode": "DE",
+      "value": 359.99,
+      "date": "2026-10",
+      "source": "Decathlon · tienda oficial del país",
+      "url": "https://www.decathlon.de/p/city-bike-28-zoll-elops-520-lf-dunkelblau/145734/c43m8750185",
+      "note": "Decathlon Elops 520, bicicleta urbana de gama media."
+    },
+    {
+      "productId": "bici-urbana",
+      "countryCode": "IT",
+      "value": 349.99,
+      "date": "2026-10",
+      "source": "Decathlon · tienda oficial del país",
+      "url": "https://www.decathlon.it/p/bici-citta-classic-520-telaio-basso-blu/145734/c43m8750185",
+      "note": "Decathlon Elops 520, bicicleta urbana de gama media."
+    },
+    {
+      "productId": "bici-urbana",
+      "countryCode": "CH",
+      "value": 349.0,
+      "date": "2026-10",
+      "source": "Decathlon · tienda oficial del país",
+      "url": "https://www.decathlon.ch/de/p/city-velo-520-dunkelblau/145734/c43m8750185",
+      "note": "Decathlon Elops 520, bicicleta urbana de gama media."
+    },
+    {
+      "productId": "bici-urbana",
+      "countryCode": "GB",
+      "value": 299.99,
+      "date": "2026-10",
+      "source": "Decathlon · tienda oficial del país",
+      "url": "https://decathlon.co.uk/p/fully-equipped-6-speed-low-frame-city-bike-light-blue/_/R-p-145734",
+      "note": "Decathlon Elops 520, bicicleta urbana equipada de 6 velocidades."
+    },
+    {
+      "productId": "placas-solares",
+      "countryCode": "IT",
+      "value": 7020.0,
+      "date": "2026-10",
+      "source": "Enel · oferta con precio cerrado",
+      "url": "https://enel.it/en-us/fotovoltaico/pannelli/fotovoltaico-4kw",
+      "note": "Enel Sun, instalación de 4 kW llave en mano con impuestos incluidos."
+    },
+    {
+      "productId": "placas-solares",
+      "countryCode": "GB",
+      "value": 4999.0,
+      "date": "2026-10",
+      "source": "AMP Renewables (instalador)",
+      "url": "https://amprenewables.co.uk/solar",
+      "note": "Sistema de 4 kW totalmente instalado."
+    },
+    {
+      "productId": "placas-solares",
+      "countryCode": "CO",
+      "value": 17500000.0,
+      "date": "2026-10",
+      "source": "Nodo Solar (instalador)",
+      "url": "https://www.nodosolar.co/en/pricing",
+      "note": "Sistema residencial de 3 a 5 kW, precio de referencia del instalador."
+    },
+    {
+      "productId": "placas-solares",
+      "countryCode": "CL",
+      "value": 3999990.0,
+      "date": "2026-10",
+      "source": "Natura Energy (instalador)",
+      "url": "https://www.naturaenergy.cl/product/kit-energia-solar-on-grid-de-4kw-incl-instalacion-y-tramite-sec",
+      "note": "Kit solar conectado a red de 4 kW, con instalación y trámite incluidos."
+    },
+    {
+      "productId": "boda",
+      "countryCode": "IT",
+      "value": 48018.0,
+      "date": "2026-10",
+      "source": "Federconsumatori · observatorio nacional",
+      "url": "https://federconsumatori.it/matrimoni-2026-pronunciare-il-fatidico-si-puo-costare-fino-a-118-07200-e-11-rispetto-al-2025",
+      "note": "Boda tradicional con 100 invitados: banquete, local y música. Estimación de 2026 (el rango va de 48.018 a 118.072 €)."
+    },
+    {
+      "productId": "viaje-7-dias",
+      "countryCode": "PT",
+      "value": 840.7,
+      "date": "2026-10",
+      "source": "INE Portugal · estadísticas de turismo 2024",
+      "url": "https://www.ine.pt/ngt_server/attachfileu.jsp?att_display=n&att_download=y&look_parentBoui=736373015",
+      "note": "7 noches al precio medio de habitación del país (120,10 € por noche). Solo alojamiento."
+    },
+    {
+      "productId": "viaje-7-dias",
+      "countryCode": "FR",
+      "value": 760.0,
+      "date": "2026-10",
+      "source": "Atout France (datos del Banco de Francia)",
+      "url": "https://www.atout-france.fr/fr/actualites/bilan-touristique-de-lannee-2025-avec-102-millions-de-visiteurs-la-france-pays-le-plus",
+      "note": "Gasto medio de un turista internacional por estancia completa (7,3 noches de media). Alojamiento, comidas y gastos en destino."
+    },
+    {
+      "productId": "viaje-7-dias",
+      "countryCode": "DE",
+      "value": 766.5,
+      "date": "2026-10",
+      "source": "Agencia Federal de Medio Ambiente (sobre la encuesta de viajes)",
+      "url": "https://www.umweltbundesamt.de/system/files/medien/384/bilder/dateien/8_tab_ausgaben-person-tag-nach-nhi_2025-04-08.pdf",
+      "note": "7 días × 109,50 € de gasto diario en viajes vacacionales. Alojamiento, comidas y transporte."
+    },
+    {
+      "productId": "viaje-7-dias",
+      "countryCode": "IT",
+      "value": 988.4,
+      "date": "2026-10",
+      "source": "Banco de Italia · encuesta de turismo internacional",
+      "url": "https://www.bancaditalia.it/pubblicazioni/indagine-turismo-internazionale/2025-indagine-turismo-internazionale/index.html",
+      "note": "7 días × 141,20 € de gasto diario de un visitante extranjero en Italia."
+    },
+    {
+      "productId": "viaje-7-dias",
+      "countryCode": "GB",
+      "value": 777.0,
+      "date": "2026-10",
+      "source": "VisitBritain / ONS · encuesta de pasajeros internacionales",
+      "url": "https://visitbritain.org/media/5010/download",
+      "note": "7 noches × 111 £ de gasto por noche de un visitante internacional (estancia media de 6,9 noches)."
+    },
+    {
+      "productId": "viaje-7-dias",
+      "countryCode": "US",
+      "value": 721.0,
+      "date": "2026-10",
+      "source": "Administración de Comercio Internacional (NTTO)",
+      "url": "https://trade.gov/feature-article/survey-international-air-travelers-results-2024",
+      "note": "7 noches × 103 $ de gasto diario de un visitante internacional. Alojamiento, comidas y gastos en destino."
+    },
+    {
+      "productId": "viaje-7-dias",
+      "countryCode": "CH",
+      "value": 1155.0,
+      "date": "2026-10",
+      "source": "Oficina Federal de Estadística · estadística de turismo",
+      "url": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/33367835/master",
+      "note": "7 días × 165 CHF de gasto diario en viajes privados al extranjero con pernoctación."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "ES",
+      "value": 179.88,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 14.99 al mes × 12 = 179.88 al año, con impuestos."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "PT",
+      "value": 155.88,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 12.99 al mes × 12 = 155.88 al año, con impuestos."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "FR",
+      "value": 179.88,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 14.99 al mes × 12 = 179.88 al año, con impuestos."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "DE",
+      "value": 191.88,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 15.99 al mes × 12 = 191.88 al año, con impuestos."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "IT",
+      "value": 167.88,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 13.99 al mes × 12 = 167.88 al año, con impuestos."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "GB",
+      "value": 167.88,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 13.99 al mes × 12 = 167.88 al año, con impuestos."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "US",
+      "value": 239.88,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 19.99 al mes × 12 = 239.88 al año, sin impuestos (se añaden al cobrar)."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "MX",
+      "value": 3228.0,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 269 al mes × 12 = 3228 al año, con impuestos."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "AR",
+      "value": 179988.0,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 14999 al mes × 12 = 179988 al año, sin impuestos (se añaden al cobrar)."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "CO",
+      "value": 394800.0,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 32900 al mes × 12 = 394800 al año, sin impuestos (se añaden al cobrar)."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "CL",
+      "value": 119880.0,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 9990 al mes × 12 = 119880 al año, sin impuestos (se añaden al cobrar)."
+    },
+    {
+      "productId": "netflix-anual",
+      "countryCode": "CH",
+      "value": 274.8,
+      "date": "2026-10",
+      "source": "Netflix · centro de ayuda, planes y precios",
+      "url": "https://help.netflix.com/es/node/24926",
+      "note": "Plan Estándar sin anuncios: 22.9 al mes × 12 = 274.8 al año, con impuestos."
+    },
+    {
+      "productId": "portatil",
+      "countryCode": "GB",
+      "value": 1299.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/uk/shop/buy-mac/macbook-air",
+      "note": "MacBook Air de 13 pulgadas, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "portatil",
+      "countryCode": "IT",
+      "value": 1449.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/it/shop/buy-mac/macbook-air",
+      "note": "MacBook Air de 13 pulgadas, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "portatil",
+      "countryCode": "FR",
+      "value": 1399.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/fr/shop/buy-mac/macbook-air",
+      "note": "MacBook Air de 13 pulgadas, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "portatil",
+      "countryCode": "DE",
+      "value": 1399.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/de/shop/buy-mac/macbook-air",
+      "note": "MacBook Air de 13 pulgadas, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "portatil",
+      "countryCode": "PT",
+      "value": 1449.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/pt/shop/buy-mac/macbook-air",
+      "note": "MacBook Air de 13 pulgadas, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "portatil",
+      "countryCode": "CH",
+      "value": 1249.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/ch-de/shop/buy-mac/macbook-air",
+      "note": "MacBook Air de 13 pulgadas, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "portatil",
+      "countryCode": "AR",
+      "value": 2999999.0,
+      "date": "2026-10",
+      "source": "Samsung Argentina · tienda oficial",
+      "url": "https://www.samsung.com/ar/computers/all-computers",
+      "note": "Samsung Galaxy Book4 de 15,6 pulgadas (Core 5, 16 GB). Apple no vende en Argentina."
+    },
+    {
+      "productId": "auriculares",
+      "countryCode": "GB",
+      "value": 119.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/uk/shop/goto/buy_airpods/airpods_5",
+      "note": "AirPods 5. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "auriculares",
+      "countryCode": "IT",
+      "value": 149.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/it/shop/goto/buy_airpods/airpods_5",
+      "note": "AirPods 5. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "auriculares",
+      "countryCode": "FR",
+      "value": 149.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/fr/shop/goto/buy_airpods/airpods_5",
+      "note": "AirPods 5. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "auriculares",
+      "countryCode": "DE",
+      "value": 149.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/de/shop/goto/buy_airpods/airpods_5",
+      "note": "AirPods 5. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "auriculares",
+      "countryCode": "PT",
+      "value": 149.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/pt/shop/goto/buy_airpods/airpods_5",
+      "note": "AirPods 5. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "auriculares",
+      "countryCode": "CH",
+      "value": 119.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/ch-de/shop/goto/buy_airpods/airpods_5",
+      "note": "AirPods 5. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "auriculares",
+      "countryCode": "AR",
+      "value": 365999.0,
+      "date": "2026-10",
+      "source": "Samsung Argentina · tienda oficial",
+      "url": "https://www.samsung.com/ar/audio-sound/galaxy-buds/galaxy-buds3-fe-black-sm-r420nzkaaro/",
+      "note": "Samsung Galaxy Buds3 FE."
+    },
+    {
+      "productId": "smartwatch",
+      "countryCode": "GB",
+      "value": 219.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/uk/shop/goto/buy_watch/apple_watch_se",
+      "note": "Apple Watch SE 3 (GPS). Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "smartwatch",
+      "countryCode": "IT",
+      "value": 279.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/it/shop/goto/buy_watch/apple_watch_se",
+      "note": "Apple Watch SE 3 (GPS). Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "smartwatch",
+      "countryCode": "FR",
+      "value": 269.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/fr/shop/goto/buy_watch/apple_watch_se",
+      "note": "Apple Watch SE 3 (GPS). Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "smartwatch",
+      "countryCode": "DE",
+      "value": 269.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/de/shop/goto/buy_watch/apple_watch_se",
+      "note": "Apple Watch SE 3 (GPS). Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "smartwatch",
+      "countryCode": "PT",
+      "value": 279.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/pt/shop/goto/buy_watch/apple_watch_se",
+      "note": "Apple Watch SE 3 (GPS). Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "smartwatch",
+      "countryCode": "CH",
+      "value": 229.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/ch-de/shop/goto/buy_watch/apple_watch_se",
+      "note": "Apple Watch SE 3 (GPS). Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "smartwatch",
+      "countryCode": "AR",
+      "value": 349999.0,
+      "date": "2026-10",
+      "source": "Samsung Argentina · tienda oficial",
+      "url": "https://www.samsung.com/ar/watches/galaxy-watch/galaxy-watch7-40mm-green-bluetooth-sm-l300nzgaaro/",
+      "note": "Samsung Galaxy Watch7 de 40 mm."
+    },
+    {
+      "productId": "movil-gama-media",
+      "countryCode": "GB",
+      "value": 699.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/uk/shop/goto/buy_iphone/iphone_17e",
+      "note": "iPhone 17e, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "movil-gama-media",
+      "countryCode": "IT",
+      "value": 879.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/it/shop/goto/buy_iphone/iphone_17e",
+      "note": "iPhone 17e, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "movil-gama-media",
+      "countryCode": "FR",
+      "value": 869.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/fr/shop/goto/buy_iphone/iphone_17e",
+      "note": "iPhone 17e, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "movil-gama-media",
+      "countryCode": "DE",
+      "value": 849.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/de/shop/goto/buy_iphone/iphone_17e",
+      "note": "iPhone 17e, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "movil-gama-media",
+      "countryCode": "PT",
+      "value": 889.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/pt/shop/goto/buy_iphone/iphone_17e",
+      "note": "iPhone 17e, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "movil-gama-media",
+      "countryCode": "CH",
+      "value": 699.0,
+      "date": "2026-10",
+      "source": "Apple · tienda oficial del país",
+      "url": "https://www.apple.com/ch-de/shop/goto/buy_iphone/iphone_17e",
+      "note": "iPhone 17e, modelo base. Precio oficial del fabricante, con impuestos."
+    },
+    {
+      "productId": "movil-gama-media",
+      "countryCode": "AR",
+      "value": 1199999.0,
+      "date": "2026-10",
+      "source": "Samsung Argentina · tienda oficial",
+      "url": "https://www.samsung.com/ar/smartphones/galaxy-a/galaxy-a56-5g-awesome-olive-256gb-sm-a566ezgfaro/",
+      "note": "Samsung Galaxy A56 5G de 256 GB."
+    },
+    {
+      "productId": "televisor",
+      "countryCode": "GB",
+      "value": 359.0,
+      "date": "2026-10",
+      "source": "Samsung · tienda oficial del país",
+      "url": "https://www.samsung.com/uk/tvs/uhd-4k-tv/u8000h-55-inch-crystal-uhd-4k-smart-tv-ue55u8000hkxxu",
+      "note": "Crystal UHD U8000H de 55\", 4K, precio oficial con impuestos."
+    },
+    {
+      "productId": "televisor",
+      "countryCode": "IT",
+      "value": 429.0,
+      "date": "2026-10",
+      "source": "Samsung · tienda oficial del país",
+      "url": "https://www.samsung.com/it/tvs/uhd-4k-tv/u8000h-55-inch-crystal-uhd-4k-smart-tv-ue55u8000huxzt/",
+      "note": "Crystal UHD U8000H de 55\", 4K, precio oficial con impuestos."
+    },
+    {
+      "productId": "televisor",
+      "countryCode": "FR",
+      "value": 499.0,
+      "date": "2026-10",
+      "source": "Samsung · tienda oficial del país",
+      "url": "https://www.samsung.com/fr/tvs/uhd-4k-tv/u8000h-55-inch-crystal-uhd-4k-smart-tv-tu55u8005huxxc/",
+      "note": "Crystal UHD U8005H de 55\", 4K, precio oficial con impuestos."
+    },
+    {
+      "productId": "televisor",
+      "countryCode": "DE",
+      "value": 429.0,
+      "date": "2026-10",
+      "source": "Samsung · tienda oficial del país",
+      "url": "https://www.samsung.com/de/tvs/uhd-4k-tv/u7099f-55-inch-crystal-uhd-4k-smart-tv-gu55u7099fuxzg/",
+      "note": "Crystal UHD U7099F de 55\", 4K, precio oficial con impuestos."
+    },
+    {
+      "productId": "televisor",
+      "countryCode": "PT",
+      "value": 399.99,
+      "date": "2026-10",
+      "source": "Samsung · tienda oficial del país",
+      "url": "https://www.samsung.com/pt/tvs/uhd-4k-tv/u8000h-55-inch-crystal-uhd-4k-smart-tv-tu55u8005huxxc",
+      "note": "Crystal UHD U8000H de 55\", 4K, precio oficial con impuestos."
+    },
+    {
+      "productId": "televisor",
+      "countryCode": "CH",
+      "value": 699.0,
+      "date": "2026-10",
+      "source": "Samsung · tienda oficial del país",
+      "url": "https://www.samsung.com/ch/tvs/uhd-4k-tv/u8000h-55-inch-crystal-uhd-4k-smart-tv-ue55u8090huxxn/",
+      "note": "Crystal UHD U8090H de 55\", 4K, precio oficial con impuestos."
+    },
+    {
+      "productId": "televisor",
+      "countryCode": "AR",
+      "value": 1039999.0,
+      "date": "2026-10",
+      "source": "Samsung Argentina · tienda oficial",
+      "url": "https://www.samsung.com/ar/tvs/uhd-4k-tv/u8000f-55-inch-crystal-uhd-4k-smart-tv-un55u8000fgczb",
+      "note": "Samsung Crystal UHD U8000F de 55\", 4K, con impuestos nacionales incluidos."
+    },
+    {
+      "productId": "consola",
+      "countryCode": "GB",
+      "value": 569.99,
+      "date": "2026-10",
+      "source": "PlayStation · web oficial del país",
+      "url": "https://www.playstation.com/en-gb/ps5/1-tb-disc/",
+      "note": "PlayStation 5 con lector de discos, 1 TB. Precio oficial con impuestos."
+    },
+    {
+      "productId": "consola",
+      "countryCode": "IT",
+      "value": 649.99,
+      "date": "2026-10",
+      "source": "PlayStation · web oficial del país",
+      "url": "https://www.playstation.com/it-it/ps5/1-tb-disc/",
+      "note": "PlayStation 5 con lector de discos, 1 TB. Precio oficial con impuestos."
+    },
+    {
+      "productId": "consola",
+      "countryCode": "FR",
+      "value": 649.99,
+      "date": "2026-10",
+      "source": "PlayStation · web oficial del país",
+      "url": "https://www.playstation.com/fr-fr/ps5/1-tb-disc/",
+      "note": "PlayStation 5 con lector de discos, 1 TB. Precio oficial con impuestos."
+    },
+    {
+      "productId": "consola",
+      "countryCode": "DE",
+      "value": 649.99,
+      "date": "2026-10",
+      "source": "PlayStation · web oficial del país",
+      "url": "https://www.playstation.com/de-de/ps5/1-tb-disc/",
+      "note": "PlayStation 5 con lector de discos, 1 TB. Precio oficial con impuestos."
+    },
+    {
+      "productId": "consola",
+      "countryCode": "PT",
+      "value": 649.99,
+      "date": "2026-10",
+      "source": "PlayStation · web oficial del país",
+      "url": "https://www.playstation.com/pt-pt/ps5/1-tb-disc/",
+      "note": "PlayStation 5 con lector de discos, 1 TB. Precio oficial con impuestos."
     }
   ]
 }
