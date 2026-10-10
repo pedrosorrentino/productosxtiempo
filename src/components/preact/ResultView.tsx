@@ -174,6 +174,8 @@ export interface ResultViewProps {
    * permitido y documentado por Task 7 (badge de caducidad del precio).
    */
   catalogPriceDate?: string | null;
+  /** Verdadero solo si el precio trae enlace a su fuente real. */
+  catalogPriceVerified?: boolean;
   /** Fuente oficial del precio de catálogo. */
   catalogPriceSource?: string | null;
 }
@@ -203,6 +205,7 @@ export default function ResultView({
   priceConverted = false,
   catalogPriceDate = null,
   catalogPriceSource = null,
+  catalogPriceVerified = false,
 }: ResultViewProps) {
   /** Entero con separador de miles forzado: 1561 -> "1.561". */
   const miles = (v: number) =>
@@ -1351,7 +1354,10 @@ export default function ResultView({
             </div>
             {catalogPriceSource && (
               <span class="text-primary font-medium">
-                Fuente oficial: {catalogPriceSource} {catalogPriceDate ? `· ${catalogPriceDate}` : ""}
+                {catalogPriceVerified
+                  ? `Fuente: ${catalogPriceSource}`
+                  : `Precio de referencia, sin fuente publicada: ${catalogPriceSource}`}{" "}
+                {catalogPriceDate ? `· ${catalogPriceDate}` : ""}
               </span>
             )}
           </div>

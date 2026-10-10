@@ -47,6 +47,8 @@ export type ProductPrice = {
   note: string;
   source: string;
   origin: "local" | "converted";
+  /** Página exacta donde se puede comprobar este precio concreto. */
+  url?: string;
 };
 
 export type Product = {

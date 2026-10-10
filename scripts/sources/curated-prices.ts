@@ -41,9 +41,9 @@ export const curatedPricesProvider: CatalogSourceProvider = {
         countryCode: e.countryCode,
         value: e.value,
         date: e.date ?? today,
-        note: [e.note, e.url ? `Fuente: ${e.url}` : null].filter(Boolean).join(' ') ||
-          'Precio verificado manualmente.',
+        note: e.note || 'Precio verificado manualmente.',
         source: e.source,
+        url: e.url,
         origin: 'local' as const,
         visible: true,
       }));

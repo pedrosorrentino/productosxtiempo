@@ -413,11 +413,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 559314,
+        "value": 563880,
         "date": "2026-10",
-        "note": "Precio convertido desde España (486.36 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "12 mensualidades (46.990 $/mes, plan sin fidelidad de Smart Fit).",
+        "source": "Smart Fit Argentina (tarifa oficial de la cadena)",
+        "origin": "local",
+        "url": "https://www.smartfit.com.ar/planes"
       },
       "CO": {
         "value": 1365032,
@@ -506,11 +507,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 771,
+        "value": 2625,
         "date": "2026-10",
-        "note": "Precio convertido desde España (0.67 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "Barra de unos 250 g (paquete de 550 g de pan blanco a 5.250 $, mitad del precio).",
+        "source": "Carrefour Argentina (precio de góndola)",
+        "origin": "local",
+        "url": "https://www.carrefour.com.ar/pan-blanco-bimbo-550-g-720323/p"
       },
       "CO": {
         "value": 3550,
@@ -692,11 +694,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 9775,
+        "value": 15000,
         "date": "2026-10",
-        "note": "Precio convertido desde España (8.5 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "Entrada general 2D.",
+        "source": "Cinemacenter (tarifa oficial)",
+        "origin": "local",
+        "url": "https://www.cinemacenter.com.ar/precios/"
       },
       "CO": {
         "value": 20000,
@@ -971,11 +974,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 91839,
+        "value": 74999,
         "date": "2026-10",
-        "note": "Precio convertido desde España (79.86 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "Par de zapatillas de running de gama media.",
+        "source": "Sportline Argentina (precio de tienda)",
+        "origin": "local",
+        "url": "https://www.sportline.com.ar/running-pro-017020hc518n125/p"
       },
       "CO": {
         "value": 436900,
@@ -1064,11 +1068,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 18159,
+        "value": 59160,
         "date": "2026-10",
-        "note": "Precio convertido desde España (15.79 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "Abono mensual de un plan móvil con datos (Movistar, 8 GB). Precio de lista del comparador oficial.",
+        "source": "ENACOM · comparador oficial de precios de comunicaciones",
+        "origin": "local",
+        "url": "https://indicadores.enacom.gob.ar/Precios/Comparador/comunicaciones-moviles"
       },
       "CO": {
         "value": 43248,
@@ -1329,7 +1334,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 15629,
+        "value": 15749,
         "date": "2026-10",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -1515,7 +1520,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 1459,
+        "value": 1389,
         "date": "2026-10",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -1608,7 +1613,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 7099,
+        "value": 6999,
         "date": "2026-10",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -1980,7 +1985,7 @@
         "origin": "converted"
       },
       "MX": {
-        "value": 42499,
+        "value": 39999,
         "date": "2026-10",
         "note": "Precio mediano de tienda en Liverpool México (MXN).",
         "source": "Liverpool México (precio de tienda)",
@@ -2087,11 +2092,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 32833,
+        "value": 75199,
         "date": "2026-10",
-        "note": "Precio convertido desde España (28.55 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "Abono mensual de internet fijo (Movistar Fibra 300 MB). Precio de lista del comparador oficial.",
+        "source": "ENACOM · comparador oficial de precios de internet fijo",
+        "origin": "local",
+        "url": "https://indicadores.enacom.gob.ar/Precios/Comparador/internet"
       },
       "CO": {
         "value": 93066,
@@ -3110,11 +3116,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 1032298,
+        "value": 764485,
         "date": "2026-10",
-        "note": "Precio convertido desde España (897.65 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "Alquiler mensual de un departamento de 1 dormitorio en la Ciudad de Buenos Aires, precio de publicación (2.º trimestre de 2026). Es la capital, no la media del país.",
+        "source": "IDECBA · Instituto de Estadística y Censos de la Ciudad de Buenos Aires",
+        "origin": "local",
+        "url": "https://www.estadisticaciudad.gob.ar/eyc/wp-content/uploads/2026/08/ir_2026_2049.pdf"
       },
       "CO": {
         "value": 2259857,
@@ -4498,11 +4505,12 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 10063,
+        "value": 18471,
         "date": "2026-10",
-        "note": "Precio convertido desde España (8.75 €). Edítalo.",
-        "source": "Índice de Supermercados / Open Food Facts (convertido)",
-        "origin": "converted"
+        "note": "1 litro de aceite de oliva virgen.",
+        "source": "Carrefour Argentina (precio de góndola)",
+        "origin": "local",
+        "url": "https://www.carrefour.com.ar/aceite-de-oliva-carrefour-classic-virgen-1-l/p"
       },
       "CO": {
         "value": 38500,
@@ -4563,58 +4571,58 @@
     "category": "transporte",
     "prices": {
       "ES": {
-        "value": 85.01,
+        "value": 84.96,
         "date": "2026-10",
-        "note": "Depósito medio de 45 L de Gasóleo A (1.89 €/L). Datos oficiales de 11.298 estaciones.",
+        "note": "Depósito medio de 45 L de Gasóleo A (1.89 €/L). Datos oficiales de 11.299 estaciones.",
         "source": "MITECO (Gobierno de España)",
         "origin": "local"
       },
       "GB": {
-        "value": 72.06,
+        "value": 72.01,
         "date": "2026-10",
-        "note": "Precio convertido desde España (85.01 €). Edítalo.",
+        "note": "Precio convertido desde España (84.96 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "US": {
-        "value": 95.26,
+        "value": 95.21,
         "date": "2026-10",
-        "note": "Precio convertido desde España (85.01 €). Edítalo.",
+        "note": "Precio convertido desde España (84.96 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "MX": {
-        "value": 1733.78,
+        "value": 1732.76,
         "date": "2026-10",
-        "note": "Precio convertido desde España (85.01 €). Edítalo.",
+        "note": "Precio convertido desde España (84.96 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "AR": {
-        "value": 97762,
+        "value": 97704,
         "date": "2026-10",
-        "note": "Precio convertido desde España (85.01 €). Edítalo.",
+        "note": "Precio convertido desde España (84.96 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 374044,
+        "value": 373824,
         "date": "2026-10",
-        "note": "Precio convertido desde España (85.01 €). Edítalo.",
+        "note": "Precio convertido desde España (84.96 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 86710,
+        "value": 86659,
         "date": "2026-10",
-        "note": "Precio convertido desde España (85.01 €). Edítalo.",
+        "note": "Precio convertido desde España (84.96 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CH": {
-        "value": 79.17,
+        "value": 79.12,
         "date": "2026-10",
-        "note": "Precio convertido desde España (85.01 €). Edítalo.",
+        "note": "Precio convertido desde España (84.96 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
@@ -4684,11 +4692,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 14628,
+        "value": 36720,
         "date": "2026-10",
-        "note": "Precio convertido desde España (12.72 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "12 litros al mes (1 L de leche entera a 3.060 $ en Carrefour Argentina, octubre 2026).",
+        "source": "Carrefour Argentina (precio de góndola)",
+        "origin": "local",
+        "url": "https://www.carrefour.com.ar/leche-la-serenisima-uat-entera-clasica-3-pet-1-lt-653792/p"
       },
       "CO": {
         "value": 58111,
@@ -4777,11 +4786,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 3473,
+        "value": 5121,
         "date": "2026-10",
-        "note": "Precio convertido desde España (3.02 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "Docena de huevos.",
+        "source": "Carrefour Argentina (precio de góndola)",
+        "origin": "local",
+        "url": "https://www.carrefour.com.ar/huevos-blanco-el-mercado-plastico-12-uni-291306/p"
       },
       "CO": {
         "value": 9468,
@@ -4849,18 +4859,20 @@
         "origin": "local"
       },
       "GB": {
-        "value": 55.65,
+        "value": 71.51,
         "date": "2026-10",
-        "note": "Precio convertido desde España (65.65 €). Edítalo.",
-        "source": "Eurostat nrg_pc_204 (electricidad doméstica, con impuestos) (convertido)",
-        "origin": "converted"
+        "note": "Hogar tipo Ofgem (2.500 kWh/año), tarifa del tope de precio oct-dic 2026, con IVA. Divide la factura dual en electricidad.",
+        "source": "Ofgem · tope de precio de la energía",
+        "origin": "local",
+        "url": "https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-october-and-31-december-2026"
       },
       "US": {
-        "value": 73.57,
+        "value": 144,
         "date": "2026-10",
-        "note": "Precio convertido desde España (65.65 €). Edítalo.",
-        "source": "Eurostat nrg_pc_204 (electricidad doméstica, con impuestos) (convertido)",
-        "origin": "converted"
+        "note": "Factura media residencial nacional (865 kWh/mes), 2024. Sin impuestos locales.",
+        "source": "EIA · Administración de Información Energética de EE. UU.",
+        "origin": "local",
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=65244"
       },
       "MX": {
         "value": 1338.93,
@@ -4891,11 +4903,12 @@
         "origin": "converted"
       },
       "CH": {
-        "value": 61.14,
+        "value": 103.9,
         "date": "2026-10",
-        "note": "Precio convertido desde España (65.65 €). Edítalo.",
-        "source": "Eurostat nrg_pc_204 (electricidad doméstica, con impuestos) (convertido)",
-        "origin": "converted"
+        "note": "Tarifa media nacional 2026 (27,7 céntimos/kWh) por un consumo de 4.500 kWh al año, perfil de hogar tipo H4.",
+        "source": "ElCom · Comisión Federal de Electricidad (Suiza)",
+        "origin": "local",
+        "url": "https://www.elcom.admin.ch/de/newnsb/1miE201yRzoA"
       },
       "PT": {
         "value": 59.18,
@@ -4935,9 +4948,9 @@
     "category": "vida",
     "prices": {
       "ES": {
-        "value": 73895,
+        "value": 73988,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.895 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (73.988 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -4949,72 +4962,72 @@
         "origin": "local"
       },
       "US": {
-        "value": 82784,
+        "value": 82888,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (82.784 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (82.888 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "MX": {
-        "value": 1524396,
+        "value": 1526314,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (1.524.396 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (1.526.314 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "AR": {
-        "value": 125652627,
+        "value": 125810739,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (125.652.627 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (125.810.739 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CO": {
-        "value": 325138000,
+        "value": 325547200,
         "date": "2026-10",
-        "note": "Precio convertido desde España (73895 €). Edítalo.",
+        "note": "Precio convertido desde España (73988 €). Edítalo.",
         "source": "CoinGecko API (mercado) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 80877634,
+        "value": 80979405,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (80.877.634 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (80.979.405 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CH": {
-        "value": 68683,
+        "value": 68769,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (68.683 Fr.).",
+        "note": "Cotización de mercado de 1 Bitcoin (68.769 Fr.).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "PT": {
-        "value": 73895,
+        "value": 73988,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.895 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (73.988 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "FR": {
-        "value": 73895,
+        "value": 73988,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.895 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (73.988 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "DE": {
-        "value": 73895,
+        "value": 73988,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.895 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (73.988 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "IT": {
-        "value": 73895,
+        "value": 73988,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.895 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (73.988 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       }
@@ -5149,11 +5162,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 1679,
+        "value": 1950,
         "date": "2026-10",
-        "note": "Precio convertido desde España (1.46 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "1 kg de arroz largo fino.",
+        "source": "Carrefour Argentina (precio de góndola)",
+        "origin": "local",
+        "url": "https://www.carrefour.com.ar/arroz-largo-fino-molinos-ala-1-kg/p"
       },
       "CO": {
         "value": 5225,
@@ -5242,11 +5256,12 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 1380,
+        "value": 3498,
         "date": "2026-10",
-        "note": "Precio convertido desde España (1.2 €). Edítalo.",
-        "source": "Mercadona (API en Vivo) (convertido)",
-        "origin": "converted"
+        "note": "1 kg de pasta seca (paquete de 500 g de fideos a 1.749 $, el doble).",
+        "source": "Carrefour Argentina (precio de góndola)",
+        "origin": "local",
+        "url": "https://www.carrefour.com.ar/fideos-spaghetti-n7-lucchetti-500-g-729396/p"
       },
       "CO": {
         "value": 5280,
@@ -5335,11 +5350,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 5244,
+        "value": 10038,
         "date": "2026-10",
-        "note": "Precio convertido desde España (4.56 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "Pack de 6 latas de 473 ml (Quilmes).",
+        "source": "Carrefour Argentina (precio de góndola)",
+        "origin": "local",
+        "url": "https://www.carrefour.com.ar/cerveza-blanca-quilmes-bajo-cero-en-lata-473-ml-767995/p"
       },
       "CO": {
         "value": 18560,
@@ -5428,11 +5444,12 @@
         "origin": "converted"
       },
       "AR": {
-        "value": 5175,
+        "value": 14578,
         "date": "2026-10",
-        "note": "Precio convertido desde España (4.5 €). Edítalo.",
-        "source": "Mercadona (API en Vivo) (convertido)",
-        "origin": "converted"
+        "note": "500 g de café molido (paquete de 250 g a 7.289 $, el doble).",
+        "source": "Carrefour Argentina (precio de góndola)",
+        "origin": "local",
+        "url": "https://www.carrefour.com.ar/cafe-molido-clasico-la-virginia-bolsa-x-250-g-681613/p"
       },
       "CO": {
         "value": 19800,
@@ -5521,11 +5538,12 @@
         "origin": "local"
       },
       "AR": {
-        "value": 8614,
+        "value": 9300,
         "date": "2026-10",
-        "note": "Precio convertido desde España (7.49 €). Edítalo.",
-        "source": "Numbeo (coste de la vida, colaborativo) (convertido)",
-        "origin": "converted"
+        "note": "1 kg de pechuga de pollo fresca.",
+        "source": "Carrefour Argentina (precio de góndola)",
+        "origin": "local",
+        "url": "https://www.carrefour.com.ar/pechugas-de-pollo-x-kg-704567/p"
       },
       "CO": {
         "value": 27634,
@@ -5586,58 +5604,58 @@
     "category": "transporte",
     "prices": {
       "ES": {
-        "value": 87.48,
+        "value": 87.44,
         "date": "2026-10",
         "note": "Depósito medio de 45 L de Gasolina 98 E5 (1.94 €/L). Datos oficiales de 5503 estaciones.",
         "source": "MITECO (Gobierno de España)",
         "origin": "local"
       },
       "GB": {
-        "value": 74.15,
+        "value": 74.12,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.48 €). Edítalo.",
+        "note": "Precio convertido desde España (87.44 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "US": {
-        "value": 98.03,
+        "value": 97.99,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.48 €). Edítalo.",
+        "note": "Precio convertido desde España (87.44 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "MX": {
-        "value": 1784.15,
+        "value": 1783.34,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.48 €). Edítalo.",
+        "note": "Precio convertido desde España (87.44 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "AR": {
-        "value": 100602,
+        "value": 100556,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.48 €). Edítalo.",
+        "note": "Precio convertido desde España (87.44 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CO": {
-        "value": 384912,
+        "value": 384736,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.48 €). Edítalo.",
+        "note": "Precio convertido desde España (87.44 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 89230,
+        "value": 89189,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.48 €). Edítalo.",
+        "note": "Precio convertido desde España (87.44 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
       "CH": {
-        "value": 81.47,
+        "value": 81.43,
         "date": "2026-10",
-        "note": "Precio convertido desde España (87.48 €). Edítalo.",
+        "note": "Precio convertido desde España (87.44 €). Edítalo.",
         "source": "MITECO (Gobierno de España) (convertido)",
         "origin": "converted"
       },
@@ -5686,18 +5704,20 @@
         "origin": "local"
       },
       "GB": {
-        "value": 72.37,
+        "value": 72.12,
         "date": "2026-10",
-        "note": "Precio convertido desde España (85.38 €). Edítalo.",
-        "source": "Eurostat nrg_pc_202 (gas natural doméstico, con impuestos) (convertido)",
-        "origin": "converted"
+        "note": "Hogar tipo Ofgem (9.500 kWh/año), tarifa del tope de precio oct-dic 2026, con IVA. Parte de gas de la factura dual.",
+        "source": "Ofgem · tope de precio de la energía",
+        "origin": "local",
+        "url": "https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-october-and-31-december-2026"
       },
       "US": {
-        "value": 95.68,
+        "value": 71.9,
         "date": "2026-10",
-        "note": "Precio convertido desde España (85.38 €). Edítalo.",
-        "source": "Eurostat nrg_pc_202 (gas natural doméstico, con impuestos) (convertido)",
-        "origin": "converted"
+        "note": "Calculado con datos oficiales: entregas residenciales 2024 ÷ nº de clientes residenciales × precio medio (≈1.500 kWh/mes). Es un cálculo, no una cifra publicada como tal.",
+        "source": "EIA · datos de consumo y precio del gas residencial",
+        "origin": "local",
+        "url": "https://www.eia.gov/dnav/ng/ng_cons_num_dcu_nus_a.htm"
       },
       "MX": {
         "value": 1741.33,
@@ -5728,11 +5748,12 @@
         "origin": "converted"
       },
       "CH": {
-        "value": 79.51,
+        "value": 214.2,
         "date": "2026-10",
-        "note": "Precio convertido desde España (85.38 €). Edítalo.",
-        "source": "Eurostat nrg_pc_202 (gas natural doméstico, con impuestos) (convertido)",
-        "origin": "converted"
+        "note": "20.000 kWh al año (casa unifamiliar con calefacción). Precio de Zúrich, no media nacional: Suiza no publica una factura media del país.",
+        "source": "Vigilancia de Precios (DFE) · portal federal de precios del gas",
+        "origin": "local",
+        "url": "https://gaspreise.preisueberwacher.ch/web/index.asp"
       },
       "PT": {
         "value": 78.5,
@@ -5772,86 +5793,86 @@
     "category": "vida",
     "prices": {
       "ES": {
-        "value": 2226,
+        "value": 2237,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2226 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2237 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "GB": {
-        "value": 1886,
+        "value": 1893,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (1886 £).",
+        "note": "Cotización de mercado de 1 Ethereum (1893 £).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "US": {
-        "value": 2494,
+        "value": 2506,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2494 $).",
+        "note": "Cotización de mercado de 1 Ethereum (2506 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "MX": {
-        "value": 45926,
+        "value": 46147,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (45.926 $).",
+        "note": "Cotización de mercado de 1 Ethereum (46.147 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "AR": {
-        "value": 3785591,
+        "value": 3803830,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (3.785.591 $).",
+        "note": "Cotización de mercado de 1 Ethereum (3.803.830 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CO": {
-        "value": 9794400,
+        "value": 9842800,
         "date": "2026-10",
-        "note": "Precio convertido desde España (2226 €). Edítalo.",
+        "note": "Precio convertido desde España (2237 €). Edítalo.",
         "source": "CoinGecko API (mercado) (convertido)",
         "origin": "converted"
       },
       "CL": {
-        "value": 2436635,
+        "value": 2448375,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2.436.635 $).",
+        "note": "Cotización de mercado de 1 Ethereum (2.448.375 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CH": {
-        "value": 2069,
+        "value": 2079,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2069 Fr.).",
+        "note": "Cotización de mercado de 1 Ethereum (2079 Fr.).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "PT": {
-        "value": 2226,
+        "value": 2237,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2226 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2237 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "FR": {
-        "value": 2226,
+        "value": 2237,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2226 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2237 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "DE": {
-        "value": 2226,
+        "value": 2237,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2226 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2237 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "IT": {
-        "value": 2226,
+        "value": 2237,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2226 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2237 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       }
@@ -5867,30 +5888,34 @@
       "ES": {
         "value": 275.88,
         "date": "2026-10",
-        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/es/app/chatgpt/id6448311069",
+        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país.",
         "source": "OpenAI / App Store (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://apps.apple.com/es/app/chatgpt/id6448311069"
       },
       "GB": {
         "value": 239.88,
         "date": "2026-10",
-        "note": "ChatGPT Plus, 19.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/gb/app/chatgpt/id6448311069",
+        "note": "ChatGPT Plus, 19.99 al mes (12 meses). Tarifa de la App Store oficial en ese país.",
         "source": "OpenAI / App Store (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://apps.apple.com/gb/app/chatgpt/id6448311069"
       },
       "US": {
         "value": 240,
         "date": "2026-10",
-        "note": "ChatGPT Plus, 20.0 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://chatgpt.com/pricing/",
+        "note": "ChatGPT Plus, 20.0 al mes (12 meses). Tarifa de la App Store oficial en ese país.",
         "source": "OpenAI / App Store (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://chatgpt.com/pricing/"
       },
       "MX": {
         "value": 4788,
         "date": "2026-10",
-        "note": "ChatGPT Plus, 399 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/mx/app/chatgpt/id6448311069",
+        "note": "ChatGPT Plus, 399 al mes (12 meses). Tarifa de la App Store oficial en ese país.",
         "source": "OpenAI / App Store (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://apps.apple.com/mx/app/chatgpt/id6448311069"
       },
       "AR": {
         "value": 317262,
@@ -5902,51 +5927,58 @@
       "CO": {
         "value": 1198800,
         "date": "2026-10",
-        "note": "ChatGPT Plus, 99900 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/co/app/chatgpt/id6448311069",
+        "note": "ChatGPT Plus, 99900 al mes (12 meses). Tarifa de la App Store oficial en ese país.",
         "source": "OpenAI / App Store (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://apps.apple.com/co/app/chatgpt/id6448311069"
       },
       "CL": {
         "value": 239880,
         "date": "2026-10",
-        "note": "ChatGPT Plus, 19990 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/cl/app/chatgpt/id6448311069",
+        "note": "ChatGPT Plus, 19990 al mes (12 meses). Tarifa de la App Store oficial en ese país.",
         "source": "OpenAI / App Store (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://apps.apple.com/cl/app/chatgpt/id6448311069"
       },
       "CH": {
         "value": 240,
         "date": "2026-10",
-        "note": "ChatGPT Plus, 20.0 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/ch/app/chatgpt/id6448311069",
+        "note": "ChatGPT Plus, 20.0 al mes (12 meses). Tarifa de la App Store oficial en ese país.",
         "source": "OpenAI / App Store (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://apps.apple.com/ch/app/chatgpt/id6448311069"
       },
       "PT": {
         "value": 275.88,
         "date": "2026-10",
-        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/pt/app/chatgpt/id6448311069",
+        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país.",
         "source": "OpenAI / App Store (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://apps.apple.com/pt/app/chatgpt/id6448311069"
       },
       "FR": {
         "value": 275.88,
         "date": "2026-10",
-        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/fr/app/chatgpt/id6448311069",
+        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país.",
         "source": "OpenAI / App Store (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://apps.apple.com/fr/app/chatgpt/id6448311069"
       },
       "DE": {
         "value": 275.88,
         "date": "2026-10",
-        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/de/app/chatgpt/id6448311069",
+        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país.",
         "source": "OpenAI / App Store (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://apps.apple.com/de/app/chatgpt/id6448311069"
       },
       "IT": {
         "value": 275.88,
         "date": "2026-10",
-        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país. Fuente: https://apps.apple.com/it/app/chatgpt/id6448311069",
+        "note": "ChatGPT Plus, 22.99 al mes (12 meses). Tarifa de la App Store oficial en ese país.",
         "source": "OpenAI / App Store (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://apps.apple.com/it/app/chatgpt/id6448311069"
       }
     },
     "visible": true
@@ -5960,86 +5992,98 @@
       "ES": {
         "value": 143.88,
         "date": "2026-10",
-        "note": "Premium Individual, 11.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/es/premium/",
+        "note": "Premium Individual, 11.99 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/es/premium/"
       },
       "GB": {
         "value": 155.88,
         "date": "2026-10",
-        "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/uk/premium/",
+        "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/uk/premium/"
       },
       "US": {
         "value": 155.88,
         "date": "2026-10",
-        "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/us/premium/",
+        "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/us/premium/"
       },
       "MX": {
         "value": 1668,
         "date": "2026-10",
-        "note": "Premium Individual, 139 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/mx/premium/",
+        "note": "Premium Individual, 139 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/mx/premium/"
       },
       "AR": {
         "value": 53988,
         "date": "2026-10",
-        "note": "Premium Individual, 4499 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/ar/premium/",
+        "note": "Premium Individual, 4499 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/ar/premium/"
       },
       "CO": {
         "value": 222000,
         "date": "2026-10",
-        "note": "Premium Individual, 18500 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/co-es/premium/",
+        "note": "Premium Individual, 18500 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/co-es/premium/"
       },
       "CL": {
         "value": 59400,
         "date": "2026-10",
-        "note": "Premium Individual, 4950 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/cl/premium/",
+        "note": "Premium Individual, 4950 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/cl/premium/"
       },
       "CH": {
         "value": 191.4,
         "date": "2026-10",
-        "note": "Premium Individual, 15.95 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/ch-de/premium/",
+        "note": "Premium Individual, 15.95 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/ch-de/premium/"
       },
       "PT": {
         "value": 107.88,
         "date": "2026-10",
-        "note": "Premium Individual, 8.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/pt-pt/premium/",
+        "note": "Premium Individual, 8.99 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/pt-pt/premium/"
       },
       "FR": {
         "value": 145.68,
         "date": "2026-10",
-        "note": "Premium Individual, 12.14 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/fr/premium/",
+        "note": "Premium Individual, 12.14 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/fr/premium/"
       },
       "DE": {
         "value": 155.88,
         "date": "2026-10",
-        "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/de/premium/",
+        "note": "Premium Individual, 12.99 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/de/premium/"
       },
       "IT": {
         "value": 143.88,
         "date": "2026-10",
-        "note": "Premium Individual, 11.99 al mes (12 meses). Precio con impuestos cuando el país los incluye. Fuente: https://www.spotify.com/it/premium/",
+        "note": "Premium Individual, 11.99 al mes (12 meses). Precio con impuestos cuando el país los incluye.",
         "source": "Spotify (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.spotify.com/it/premium/"
       }
     },
     "visible": true
@@ -6053,30 +6097,34 @@
       "ES": {
         "value": 49.9,
         "date": "2026-10",
-        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.es/amazonprime",
+        "note": "Cuota anual de Amazon Prime.",
         "source": "Amazon (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.amazon.es/amazonprime"
       },
       "GB": {
         "value": 95,
         "date": "2026-10",
-        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.co.uk/amazonprime",
+        "note": "Cuota anual de Amazon Prime.",
         "source": "Amazon (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.amazon.co.uk/amazonprime"
       },
       "US": {
         "value": 139,
         "date": "2026-10",
-        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.com/amazonprime",
+        "note": "Cuota anual de Amazon Prime.",
         "source": "Amazon (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.amazon.com/amazonprime"
       },
       "MX": {
         "value": 945,
         "date": "2026-10",
-        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.com.mx/amazonprime",
+        "note": "Cuota anual de Amazon Prime.",
         "source": "Amazon (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.amazon.com.mx/amazonprime"
       },
       "AR": {
         "value": 57385,
@@ -6088,9 +6136,10 @@
       "CO": {
         "value": 165600,
         "date": "2026-10",
-        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.com/gp/help/customer/display.html?nodeId=TldMyMTyZMjXonyvI9",
+        "note": "Cuota anual de Amazon Prime.",
         "source": "Amazon (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=TldMyMTyZMjXonyvI9"
       },
       "CL": {
         "value": 50898,
@@ -6109,30 +6158,34 @@
       "PT": {
         "value": 49.9,
         "date": "2026-10",
-        "note": "Cuota anual de Amazon Prime. Portugal compra en la tienda española: comparte tarifa. Fuente: https://www.amazon.es/amazonprime",
+        "note": "Cuota anual de Amazon Prime. Portugal compra en la tienda española: comparte tarifa.",
         "source": "Amazon (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.amazon.es/amazonprime"
       },
       "FR": {
         "value": 69.9,
         "date": "2026-10",
-        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.fr/amazonprime",
+        "note": "Cuota anual de Amazon Prime.",
         "source": "Amazon (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.amazon.fr/amazonprime"
       },
       "DE": {
         "value": 89.9,
         "date": "2026-10",
-        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.de/amazonprime",
+        "note": "Cuota anual de Amazon Prime.",
         "source": "Amazon (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.amazon.de/amazonprime"
       },
       "IT": {
         "value": 49.9,
         "date": "2026-10",
-        "note": "Cuota anual de Amazon Prime. Fuente: https://www.amazon.it/amazonprime",
+        "note": "Cuota anual de Amazon Prime.",
         "source": "Amazon (tarifa oficial)",
-        "origin": "local"
+        "origin": "local",
+        "url": "https://www.amazon.it/amazonprime"
       }
     },
     "visible": true

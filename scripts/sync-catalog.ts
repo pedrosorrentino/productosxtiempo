@@ -119,6 +119,7 @@ async function main() {
       note: update.note,
       source: update.source,
       origin: update.origin,
+      ...(update.url ? { url: update.url } : {}),
     };
     updatedProductsCount++;
   }

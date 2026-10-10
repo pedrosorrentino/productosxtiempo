@@ -58,7 +58,14 @@ const hasReference = ref != null;
 // Precio propio del país: `origin: "local"` es un dato tomado en ese país;
 // cualquier otra cosa es la conversión desde España y no vale como precio local.
 const hasLocal = hasLocalPrice(product, country.code);
-const fuentePrecio = hasLocal ? sourceLink(price.source) : null;
+// La fuente se enlaza al dato concreto cuando el precio trae su propia
+// dirección (lo normal en el catálogo curado: Tesla, Toyota, un BOE…). Si no,
+// se cae al mapa general de fuentes.
+const fuentePrecio = hasLocal
+  ? price.url
+    ? { nombre: price.source, url: price.url }
+    : sourceLink(price.source)
+  : null;
 
 // Cálculo estático (build time) con el sueldo de referencia declarado:
 // mediano neto cuando existe; SMI etiquetado cuando la ficha no lo publica.
@@ -254,6 +261,7 @@ const otherCountriesForProduct = allCountries
       priceConverted={priceConverted}
       catalogPriceDate={price.date}
       catalogPriceSource={price.source}
+      catalogPriceVerified={!!fuentePrecio}
     />
 
     {/* BLOQUE CITABLE: precio local + esfuerzo laboral en el HTML servido

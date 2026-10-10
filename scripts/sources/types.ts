@@ -19,6 +19,8 @@ export interface NormalizedPriceUpdate {
   note: string;
   /** Nombre de la fuente oficial (ej: "MITECO (Gobierno de España)") */
   source: string;
+  /** Dirección exacta donde se puede comprobar el precio (opcional). */
+  url?: string;
   /** Origen del dato */
   origin: 'local';
   /** Si debe mostrarse en la pizarra */

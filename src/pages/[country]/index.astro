@@ -323,7 +323,7 @@ const pageDescription = hasSalary
         <div class="board-cell p-3.5 space-y-1">
           <span class="opacity-70 text-xs block uppercase">Sueldo Mediano Neto</span>
           <strong class="text-base sm:text-xl font-bold text-primary block">
-            {country.medianNetMonthly ? `${country.medianNetMonthly} ${country.currencySymbol}/mes` : 'No disponible'}
+            {country.medianNetMonthly ? `${formatIntegerThousands(country.medianNetMonthly)} ${country.currencySymbol}/mes` : 'No disponible'}
           </strong>
           <span class="text-[11px] opacity-60 block">Percentil 50 representativo</span>
         </div>
@@ -331,7 +331,7 @@ const pageDescription = hasSalary
         <div class="board-cell p-3.5 space-y-1">
           <span class="opacity-70 text-xs block uppercase">Salario Mínimo Legal (SMI)</span>
           <strong class="text-base sm:text-xl font-bold block">
-            {minWageMonthly ? `${minWageMonthly} ${country.currencySymbol}/mes` : 'Convenio sectorial'}
+            {minWageMonthly ? `${formatIntegerThousands(minWageMonthly)} ${country.currencySymbol}/mes` : 'Convenio sectorial'}
           </strong>
           <span class="text-[11px] opacity-60 block">
             {minWageMonthly && country.medianNetMonthly
@@ -524,7 +524,7 @@ const pageDescription = hasSalary
                     {otherC.name}
                   </span>
                   <span class="block font-board-mono text-xs text-primary font-semibold mt-1">
-                    {otherWageFormatted ?? `${otherC.medianNetMonthly} ${otherC.currencySymbol}`}
+                    {otherWageFormatted ?? `${formatIntegerThousands(otherC.medianNetMonthly ?? 0)} ${otherC.currencySymbol}`}
                   </span>
                 </div>
                 <div class="mt-3 pt-2 border-t border-base-content/10 flex items-center justify-between text-xs font-board-mono opacity-80 font-semibold">
