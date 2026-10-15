@@ -45,9 +45,15 @@ export function titleWidth(text: string): number {
 }
 
 /**
- * Elige el primer titular que quepa en el presupuesto, del más largo al más
- * corto. Si ninguno cabe con el sufijo de marca, se prueba sin él; si aun así
- * no cabe, se recorta por palabra.
+ * Elige el titular MÁS informativo que quepa en el presupuesto.
+ *
+ * El titular se prueba con el sufijo de marca y sin él, y gana el candidato que
+ * esté antes en la lista de prioridad. Es decir: si el titular con el precio no
+ * cabe junto al nombre del sitio pero sí sin él, se queda el precio y se cae el
+ * sufijo — Google añade el nombre del sitio por su cuenta, y lo que tiene que
+ * caber es el dato. Antes ganaba siempre el sufijo, y 166 fichas de producto
+ * salían a los resultados como «Toyota Corolla en Colombia · Precio en tiempo»,
+ * sin el precio: justo el gancho que hace que alguien pinche.
  *
  * `heads` va en orden de prioridad (el primero es el más informativo).
  */
@@ -59,13 +65,28 @@ export function pickTitle(
   const limpios = heads.map((h) => h.trim()).filter((h) => h !== "");
   if (limpios.length === 0) return suffix.trim();
 
-  for (const head of limpios) {
-    const conSufijo = suffix ? `${head}${suffix}` : head;
-    if (titleWidth(conSufijo) <= maxPx) return conSufijo;
+  let conSufijo = -1;
+  if (suffix) {
+    for (let i = 0; i < limpios.length; i++) {
+      if (titleWidth(`${limpios[i]}${suffix}`) <= maxPx) {
+        conSufijo = i;
+        break;
+      }
+    }
   }
-  for (const head of limpios) {
-    if (titleWidth(head) <= maxPx) return head;
+  let sinSufijo = -1;
+  for (let i = 0; i < limpios.length; i++) {
+    if (titleWidth(limpios[i]) <= maxPx) {
+      sinSufijo = i;
+      break;
+    }
   }
+
+  if (sinSufijo >= 0 && (conSufijo < 0 || sinSufijo < conSufijo)) {
+    return limpios[sinSufijo];
+  }
+  if (conSufijo >= 0) return `${limpios[conSufijo]}${suffix}`;
+  if (sinSufijo >= 0) return limpios[sinSufijo];
 
   // Ni el más corto cabe: se recorta por palabras.
   const base = limpios[limpios.length - 1];
