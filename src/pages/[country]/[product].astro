@@ -101,7 +101,7 @@ if (ref) {
 
 // 1. Título y Meta-description SEO optimizados con el patrón de búsqueda
 // ("precio / cuánto cuesta [producto] en [país]") y el país obligatorio.
-const nfPrice = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 2 });
+const nfPrice = new Intl.NumberFormat("es-ES", { useGrouping: "always", maximumFractionDigits: 2 });
 const priceText = `${nfPrice.format(price.value)} ${country.currencySymbol}`;
 const effortText = quote?.effort ?? (calculatedStats
   ? formatHumanDuration(
@@ -306,6 +306,7 @@ const otherCountriesForProduct = allCountries
         )}
         <a href={`/${country.slug}/`} class="text-primary hover:underline">Poder adquisitivo en {country.name} &rarr;</a>
         <a href={`/${country.slug}/dia-de-trabajo/`} class="text-primary hover:underline">Cuánto vale un día de trabajo en {country.name} &rarr;</a>
+        <a href={`/${country.slug}/sueldo-por-hora/`} class="text-primary hover:underline">Cuánto se gana por hora en {country.name} &rarr;</a>
         <a href={`/${country.slug}/precio/`} class="text-primary hover:underline">Calcular otro precio &rarr;</a>
         <a href="/metodo/" class="text-primary hover:underline">Método de cálculo &rarr;</a>
       </div>
@@ -323,7 +324,7 @@ const otherCountriesForProduct = allCountries
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {siblingProducts.map((sibling) => {
             const formattedPrice = sibling.price
-              ? new Intl.NumberFormat("es-ES", { maximumFractionDigits: 2 }).format(sibling.price.value)
+              ? new Intl.NumberFormat("es-ES", { useGrouping: "always", maximumFractionDigits: 2 }).format(sibling.price.value)
               : null;
             return (
               <a

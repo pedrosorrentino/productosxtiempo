@@ -43,7 +43,7 @@ export interface HreflangLink {
  */
 export function generateHreflangs(
   countries: Country[],
-  currentPathType: "product" | "country" | "precio" | "category" | "dia-de-trabajo",
+  currentPathType: "product" | "country" | "precio" | "category" | "dia-de-trabajo" | "sueldo-por-hora",
   identifier?: string, // productId o categorySlug
   siteUrl: string = "https://precioentiempo.com"
 ): HreflangLink[] {
@@ -63,6 +63,8 @@ export function generateHreflangs(
       path = `/${c.slug}/categoria/${identifier}`;
     } else if (currentPathType === "dia-de-trabajo") {
       path = `/${c.slug}/dia-de-trabajo`;
+    } else if (currentPathType === "sueldo-por-hora") {
+      path = `/${c.slug}/sueldo-por-hora`;
     }
     links.push({
       hreflang: localeInfo.hreflang,
@@ -80,6 +82,8 @@ export function generateHreflangs(
     defaultPath = `/espana/categoria/${identifier}/`;
   } else if (currentPathType === "dia-de-trabajo") {
     defaultPath = `/espana/dia-de-trabajo/`;
+  } else if (currentPathType === "sueldo-por-hora") {
+    defaultPath = `/espana/sueldo-por-hora/`;
   }
 
   links.push({
@@ -244,7 +248,7 @@ export function generateProductSchema(input: {
     "@context": "https://schema.org",
     "@type": "Product",
     name: input.product.name,
-    description: `Precio y coste laboral en horas de trabajo de ${input.product.name} en ${input.country.name} (${input.price.value} ${input.country.currency}).`,
+    description: `Precio y coste laboral en horas de trabajo de ${input.product.name} en ${input.country.name} (${new Intl.NumberFormat("es-ES", { maximumFractionDigits: 2, useGrouping: "always" }).format(input.price.value)} ${input.country.currency}).`,
     image: [input.imageUrl],
     sku: `${input.product.id}-${input.country.code.toLowerCase()}`,
     url: input.canonicalUrl,

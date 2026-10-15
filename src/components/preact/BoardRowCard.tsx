@@ -3,7 +3,7 @@ import { formatPercent } from "../../lib/format.ts";
 import { board, result } from "../../i18n/es.ts";
 import type { Product } from "../../lib/types.ts";
 
-export const nfPrice = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 2 });
+export const nfPrice = new Intl.NumberFormat("es-ES", { useGrouping: "always", maximumFractionDigits: 2 });
 
 /** Esmalte de cada categoría (iconos de color del tablero). */
 export const CATEGORY_COLOR: Record<Product["category"], string> = {

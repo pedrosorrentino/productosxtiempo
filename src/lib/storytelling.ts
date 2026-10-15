@@ -33,10 +33,10 @@ export function formatEffortPhrase(
   months: number,
   years: number,
 ): string {
-  const nf = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 1 });
+  const nf = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 1, useGrouping: "always" });
   if (metricFocus === "hours") {
     const h = Math.round(hours);
-    return `${new Intl.NumberFormat("es-ES").format(h)} horas de trabajo real`;
+    return `${new Intl.NumberFormat("es-ES", { useGrouping: "always" }).format(h)} horas de trabajo real`;
   }
   if (metricFocus === "months") {
     if (years >= 1) {
@@ -45,7 +45,7 @@ export function formatEffortPhrase(
     return `${nf.format(months)} meses enteros de salario mediano`;
   }
   const d = nf.format(workdays8h);
-  return `${d} jornadas de 8 horas (${new Intl.NumberFormat("es-ES").format(Math.round(hours))} horas de trabajo)`;
+  return `${d} jornadas de 8 horas (${new Intl.NumberFormat("es-ES", { useGrouping: "always" }).format(Math.round(hours))} horas de trabajo)`;
 }
 
 /** Generador puro de textos de Storytelling Viral de Alto Impacto */
@@ -66,7 +66,7 @@ export function generateStorytellingCopy(options: StorytellingOptions): string {
   } = options;
 
   const effortPhrase = formatEffortPhrase(metricFocus, hours, workdays8h, months, years);
-  const priceStr = price != null ? ` (${new Intl.NumberFormat("es-ES").format(price)} ${currencySymbol})` : "";
+  const priceStr = price != null ? ` (${new Intl.NumberFormat("es-ES", { useGrouping: "always" }).format(price)} ${currencySymbol})` : "";
   const isWp = selectedNetwork === "whatsapp";
   const bold = (txt: string) => (isWp ? `*${txt}*` : txt);
 

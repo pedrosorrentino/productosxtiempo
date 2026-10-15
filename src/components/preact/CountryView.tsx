@@ -376,7 +376,7 @@ export default function CountryView({
             <div class="flex items-center gap-2 font-board-mono text-sm">
               <span class="opacity-75">Una compra de</span>
               <span class="font-bold text-base-content">
-                {quickCalculation.price.toLocaleString("es-ES")} {country.currencySymbol}
+                {quickCalculation.price.toLocaleString("es-ES", { useGrouping: "always" })} {country.currencySymbol}
               </span>
               <span class="opacity-75">te cuesta exactamente:</span>
             </div>

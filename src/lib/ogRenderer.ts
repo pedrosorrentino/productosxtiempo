@@ -129,7 +129,7 @@ const header = (badge = "CÁLCULO DE ESFUERZO LABORAL"): SatoriNode =>
  */
 export function generateProductPoster(product: Product, country: Country): SatoriNode {
   const price = getProductPrice(product, country.code);
-  const formattedPrice = price != null ? `${new Intl.NumberFormat("es-ES").format(price.value)} ${country.currencySymbol}` : null;
+  const formattedPrice = price != null ? `${new Intl.NumberFormat("es-ES", { useGrouping: "always" }).format(price.value)} ${country.currencySymbol}` : null;
   const isLocal = price != null && (product.prices[country.code] != null && product.prices[country.code]?.origin !== "converted");
 
   let calcResult = null;
@@ -341,7 +341,7 @@ export function generateCountryPoster(country: Country): SatoriNode {
     ? (country.medianNetMonthly * 12) / country.realAnnualHours
     : null;
   const wageFormatted = wage != null ? `${wage.toFixed(2).replace(".", ",")} ${country.currencySymbol}/h` : "—";
-  const salaryFormatted = country.medianNetMonthly != null ? `${new Intl.NumberFormat("es-ES").format(country.medianNetMonthly)} ${country.currencySymbol}/mes` : "—";
+  const salaryFormatted = country.medianNetMonthly != null ? `${new Intl.NumberFormat("es-ES", { useGrouping: "always" }).format(country.medianNetMonthly)} ${country.currencySymbol}/mes` : "—";
 
   return root([
     header(`RADIOGRAFÍA ECONÓMICA · ${country.name.toUpperCase()}`),

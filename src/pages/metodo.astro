@@ -40,8 +40,8 @@ const JUBILACION_ES = 67;
 const PRECIO_TESLA = 33365;
 const AHORRO_ES = 300;
 
-const nf0 = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 });
-const nf1 = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 1 });
+const nf0 = new Intl.NumberFormat('es-ES', { useGrouping: "always", maximumFractionDigits: 0 });
+const nf1 = new Intl.NumberFormat('es-ES', { useGrouping: "always", maximumFractionDigits: 1 });
 
 // Convención 52/12 frente a la abandonada 160 h/mes.
 const horasMes = HORAS_ES * WEEKS_PER_MONTH; // ≈ 173,3
@@ -232,7 +232,7 @@ const wage160 = formatHourlyWage(hora160, '€');
                 <td class="p-3.5 font-semibold text-base-content" data-label="País">{c.name}</td>
                 <td class="p-3.5 opacity-90" data-label="Sueldo">
                   {c.medianNetMonthly
-                    ? `${c.medianNetMonthly.toLocaleString("es-ES")} ${c.currencySymbol}/mes`
+                    ? `${c.medianNetMonthly.toLocaleString("es-ES", { useGrouping: "always" })} ${c.currencySymbol}/mes`
                     : "Sin mediana publicada"}
                 </td>
                 <td class="p-3.5 opacity-90" data-label="Método">

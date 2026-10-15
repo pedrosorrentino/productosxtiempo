@@ -46,7 +46,7 @@ const webAppSchema = generateWebApplicationSchema({
 const faqs = [
   {
     question: `¿Cómo convierto cualquier precio a horas de trabajo en ${country.name}?`,
-    answer: `Introduce el importe en ${country.currencySymbol} en el formulario superior. Si no introduces tu sueldo, el sistema utiliza el sueldo mediano neto de referencia de ${country.name} (${country.salarySourceLabel}) (${country.medianNetMonthly ? country.medianNetMonthly.toLocaleString('es-ES') + ' ' + country.currencySymbol + '/mes' : 'referencia'}). Si prefieres tu cálculo exacto, añade tu nómina neta mensual.`,
+    answer: `Introduce el importe en ${country.currencySymbol} en el formulario superior. Si no introduces tu sueldo, el sistema utiliza el sueldo mediano neto de referencia de ${country.name} (${country.salarySourceLabel}) (${country.medianNetMonthly ? country.medianNetMonthly.toLocaleString('es-ES', { useGrouping: 'always' }) + ' ' + country.currencySymbol + '/mes' : 'referencia'}). Si prefieres tu cálculo exacto, añade tu nómina neta mensual.`,
   },
   {
     question: `¿Se guardan en algún servidor las cifras que introduzco?`,

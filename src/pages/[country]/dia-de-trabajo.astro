@@ -10,7 +10,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { pickTitle } from '../../lib/titleWidth.ts';
 import { WEEKS_PER_MONTH, STANDARD_DAY_HOURS, calcHourlyWage } from '../../lib/calc.ts';
-import { formatHourlyWage, formatIntegerThousands, formatHours, formatWorkdays } from '../../lib/format.ts';
+import { formatHourlyWage, formatIntegerThousands, formatWorkdays } from '../../lib/format.ts';
 import { referenceSalary } from '../../lib/selectors.ts';
 import type { Country, Product } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
@@ -271,6 +271,7 @@ const pageDescription = `En ${country.name}, una hora de trabajo vale ${miles(po
     <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-3">
       <h2 class="font-signage uppercase text-2xl sm:text-3xl">Sigue desde aquí</h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-sans text-sm">
+        <li><a class="text-primary hover:underline" href={`/${country.slug}/sueldo-por-hora/`}>Cuánto se gana por hora en {country.name}</a></li>
         <li><a class="text-primary hover:underline" href={`/${country.slug}/`}>Todo lo que cuesta en horas de trabajo en {country.name}</a></li>
         <li><a class="text-primary hover:underline" href={`/${country.slug}/precio/`}>Calculadora: cuántas horas cuesta lo que quieras comprar</a></li>
         <li><a class="text-primary hover:underline" href="/metodo/">Cómo calculamos el sueldo y las horas</a></li>

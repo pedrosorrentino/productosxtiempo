@@ -122,11 +122,11 @@ export default function CompareStrip({
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const priceText = new Intl.NumberFormat("es-ES", {
+  const priceText = new Intl.NumberFormat("es-ES", { useGrouping: "always",
     maximumFractionDigits: 2,
   }).format(price);
 
-  const nfSalary = new Intl.NumberFormat("es-ES", {
+  const nfSalary = new Intl.NumberFormat("es-ES", { useGrouping: "always",
     maximumFractionDigits: 0,
   });
 
@@ -395,7 +395,7 @@ export default function CompareStrip({
               {availableCountries.length > 0 ? (
                 availableCountries.map((c) => {
                   const convertedVal = convertCurrency(price, current.currency, c.currency);
-                  const convertedFormatted = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 2 }).format(convertedVal);
+                  const convertedFormatted = new Intl.NumberFormat("es-ES", { useGrouping: "always", maximumFractionDigits: 2 }).format(convertedVal);
                   return (
                     <button
                       type="button"

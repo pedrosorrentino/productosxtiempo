@@ -119,6 +119,7 @@ export default function CountryHeroCenter({
   const formattedWage = displayWage.toLocaleString("es-ES", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
+    useGrouping: "always",
   });
 
   // Presets de salario
@@ -263,7 +264,7 @@ export default function CountryHeroCenter({
             {/* Subtexto aclaratorio */}
             <p class="mt-2 text-xs font-board-mono opacity-70 max-w-xs">
               {isCustomSalary
-                ? `Calculado para ${activeSalary.toLocaleString("es-ES")} ${currencySymbol}/mes y ${activeHours} h/sem.`
+                ? `Calculado para ${activeSalary.toLocaleString("es-ES", { useGrouping: "always" })} ${currencySymbol}/mes y ${activeHours} h/sem.`
                 : countryPage.dataDisclaimer}
             </p>
           </div>
@@ -276,13 +277,13 @@ export default function CountryHeroCenter({
               <div class="board-cell p-3">
                 <span class="font-board-mono text-xs uppercase opacity-80 block">1 Jornada (8h)</span>
                 <span class="font-board-mono text-lg font-bold tabular-nums text-primary block mt-0.5">
-                  {(hourlyWage * 8).toLocaleString("es-ES", { maximumFractionDigits: 0 })} {currencySymbol}
+                  {(hourlyWage * 8).toLocaleString("es-ES", { maximumFractionDigits: 0, useGrouping: "always" })} {currencySymbol}
                 </span>
               </div>
               <div class="board-cell p-3">
                 <span class="font-board-mono text-xs uppercase opacity-80 block">1 Mes neto</span>
                 <span class="font-board-mono text-lg font-bold tabular-nums block mt-0.5">
-                  {activeSalary.toLocaleString("es-ES")} {currencySymbol}
+                  {activeSalary.toLocaleString("es-ES", { useGrouping: "always" })} {currencySymbol}
                 </span>
               </div>
               <div class="board-cell p-3">
@@ -341,7 +342,7 @@ export default function CountryHeroCenter({
                     }`}
                     onClick={() => onSalaryChange(presetLow)}
                   >
-                    Inicial (~{presetLow} {currencySymbol})
+                    Inicial (~{formatIntegerThousands(presetLow)} {currencySymbol})
                   </button>
                   <button
                     type="button"
@@ -352,7 +353,7 @@ export default function CountryHeroCenter({
                     }`}
                     onClick={() => onSalaryChange(presetMed)}
                   >
-                    Mediana de referencia ({presetMed} {currencySymbol})
+                    Mediana de referencia ({formatIntegerThousands(presetMed)} {currencySymbol})
                   </button>
                   <button
                     type="button"
@@ -363,7 +364,7 @@ export default function CountryHeroCenter({
                     }`}
                     onClick={() => onSalaryChange(presetHigh)}
                   >
-                    Cualificado (~{presetHigh} {currencySymbol})
+                    Cualificado (~{formatIntegerThousands(presetHigh)} {currencySymbol})
                   </button>
                 </div>
 
@@ -411,13 +412,13 @@ export default function CountryHeroCenter({
                 Semanas Laborables
               </span>
               <span class="font-signage text-5xl sm:text-6xl font-black tabular-nums tracking-tight text-warning mt-1 block">
-                {remainingWorkWeeks.toLocaleString("es-ES")}
+                {remainingWorkWeeks.toLocaleString("es-ES", { useGrouping: "always" })}
               </span>
               <span class="font-board-mono text-xs opacity-80 mt-1 block max-w-[11rem]">
                 semanas de trabajo hasta tu jubilación oficial ({retirementAge} años)
               </span>
               <span class="mt-2 text-xs font-board-mono px-2 py-0.5 rounded bg-warning/20 text-warning font-semibold border border-warning/30">
-                ~{totalLifetimeHoursWorked.toLocaleString("es-ES")} h de vida
+                ~{totalLifetimeHoursWorked.toLocaleString("es-ES", { useGrouping: "always" })} h de vida
               </span>
             </div>
 
@@ -573,7 +574,7 @@ export default function CountryHeroCenter({
                 <div class="flex items-center justify-between">
                   <span class="text-xl" aria-hidden="true">{bm.icon}</span>
                   <span class="font-board-mono text-xs opacity-75 font-semibold">
-                    {bm.price.toLocaleString("es-ES")} {currencySymbol}
+                    {bm.price.toLocaleString("es-ES", { useGrouping: "always" })} {currencySymbol}
                   </span>
                 </div>
                 <span class="font-bold text-xs text-base-content block mt-2 truncate">

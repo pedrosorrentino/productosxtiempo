@@ -127,7 +127,7 @@ const categorySchema = generateCategorySchema({
 const faqs = [
   {
     question: `¿Cuánto tiempo de trabajo cuesta de media la categoría de ${categoryName.toLowerCase()} en ${country.name}?`,
-    answer: `En ${country.name}, con un salario neto mediano de ${country.medianNetMonthly ? country.medianNetMonthly.toLocaleString('es-ES') + ' ' + country.currencySymbol + '/mes' : 'referencia'}, los gastos de ${categoryName.toLowerCase()} abarcan desde pequeñas compras de consumo hasta desembolsos equivalentes a meses o jornadas completas de esfuerzo laboral.`,
+    answer: `En ${country.name}, con un salario neto mediano de ${country.medianNetMonthly ? country.medianNetMonthly.toLocaleString('es-ES', { useGrouping: 'always' }) + ' ' + country.currencySymbol + '/mes' : 'referencia'}, los gastos de ${categoryName.toLowerCase()} abarcan desde pequeñas compras de consumo hasta desembolsos equivalentes a meses o jornadas completas de esfuerzo laboral.`,
   },
   {
     question: `¿Cómo se calcula el esfuerzo laboral para artículos de ${categoryName.toLowerCase()}?`,
@@ -212,7 +212,7 @@ const allCategories: Product['category'][] = [
           </span>
           {country.medianNetMonthly && (
             <span class="px-3 py-1 rounded-md font-board-mono text-xs font-bold bg-primary/10 text-primary border border-primary/20 uppercase tracking-wider">
-              {country.medianNetMonthly.toLocaleString('es-ES')} {country.currencySymbol}/mes
+              {country.medianNetMonthly.toLocaleString('es-ES', { useGrouping: 'always' })} {country.currencySymbol}/mes
             </span>
           )}
         </div>
@@ -259,7 +259,7 @@ const allCategories: Product['category'][] = [
             <span class="min-w-0">
               <span class="block font-semibold text-base text-base-content truncate">{item.name}</span>
               <span class="block font-board-mono text-xs opacity-80 mt-0.5">
-                {item.price ? `${item.price.value.toLocaleString('es-ES')} ${country.currencySymbol}` : 'N/D'}
+                {item.price ? `${item.price.value.toLocaleString('es-ES', { useGrouping: 'always' })} ${country.currencySymbol}` : 'N/D'}
               </span>
             </span>
             <span class="text-right shrink-0">
@@ -294,7 +294,7 @@ const allCategories: Product['category'][] = [
                   </a>
                 </td>
                 <td class="py-3 px-4 text-right font-board-mono text-base-content/90 font-medium">
-                  {item.price ? `${item.price.value.toLocaleString('es-ES')} ${country.currencySymbol}` : 'N/D'}
+                  {item.price ? `${item.price.value.toLocaleString('es-ES', { useGrouping: 'always' })} ${country.currencySymbol}` : 'N/D'}
                 </td>
                 <td class="py-3 px-4 text-right font-board-mono text-primary font-bold">
                   {item.hours != null ? `${formatHours(item.hours)} h` : '—'}
@@ -326,7 +326,7 @@ const allCategories: Product['category'][] = [
         Poder adquisitivo aplicado a {categoryName.toLowerCase()} en {country.name}
       </h2>
       <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">
-        En <strong>{country.name}</strong>, adquirir artículos y servicios pertenecientes al sector de <strong>{categoryName.toLowerCase()}</strong> demanda un rango de esfuerzo laboral que refleja la capacidad adquisitiva real del salario mediano ({country.medianNetMonthly ? country.medianNetMonthly.toLocaleString('es-ES') + ' ' + country.currencySymbol + '/mes' : 'referencia'}). La conversión a tiempo de trabajo neutraliza los incrementos nominales por inflación y permite calibrar qué fracción de tu vida productiva comprometes con cada adquisición.
+        En <strong>{country.name}</strong>, adquirir artículos y servicios pertenecientes al sector de <strong>{categoryName.toLowerCase()}</strong> demanda un rango de esfuerzo laboral que refleja la capacidad adquisitiva real del salario mediano ({country.medianNetMonthly ? country.medianNetMonthly.toLocaleString('es-ES', { useGrouping: 'always' }) + ' ' + country.currencySymbol + '/mes' : 'referencia'}). La conversión a tiempo de trabajo neutraliza los incrementos nominales por inflación y permite calibrar qué fracción de tu vida productiva comprometes con cada adquisición.
       </p>
     </section>
 

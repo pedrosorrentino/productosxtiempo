@@ -32,6 +32,9 @@ export type OgQuote = {
 
 const nfPrice = new Intl.NumberFormat("es-ES", {
   maximumFractionDigits: 2,
+  // El CLDR de es-ES no agrupa los números de 4 cifras: sin esto, el título de
+  // la ficha salía "precio 1009 €" junto a otros como "13.500 €".
+  useGrouping: "always",
 });
 
 /** Precio de referencia formateado ("33.365 €"): local o fallback ES convertido.

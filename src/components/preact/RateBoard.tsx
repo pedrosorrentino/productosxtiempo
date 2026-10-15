@@ -7,6 +7,7 @@ import {
   formatWorkdays,
   formatHumanDuration,
   formatHourlyWage,
+  formatIntegerThousands,
 } from "../../lib/format.ts";
 import { getCountry, getProductPrice, hasLocalPrice } from "../../lib/selectors.ts";
 import { loadUserState, saveUserState } from "../../lib/storage.ts";
@@ -528,7 +529,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                   <span class="text-xs font-board-mono text-base-content/65">
                     Mediana nacional:{" "}
                     <strong class="text-base-content/90 font-medium">
-                      {country.medianNetMonthly} {country.currencySymbol}/mes
+                      {formatIntegerThousands(country.medianNetMonthly)} {country.currencySymbol}/mes
                     </strong>{" "}
                     ({country.legalWeeklyHours} h/sem)
                   </span>
@@ -835,7 +836,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                     class="btn btn-xs btn-ghost border border-base-300 text-base-content/70 hover:text-warning hover:border-warning font-board-mono"
                     title="Restablecer a la mediana nacional de referencia"
                   >
-                    ↺ Mediana ({country.medianNetMonthly} {country.currencySymbol})
+                    ↺ Mediana ({formatIntegerThousands(country.medianNetMonthly ?? 0)} {country.currencySymbol})
                   </button>
                 </div>
               ) : (
@@ -912,7 +913,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
                         : "bg-base-200 hover:bg-base-300 text-base-content/85 border border-base-content/10"
                     }`}
                   >
-                    {preset} {country.currencySymbol}
+                    {formatIntegerThousands(preset)} {country.currencySymbol}
                   </button>
                 ))}
               </div>
@@ -1004,7 +1005,7 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
               <div class="p-3 rounded-lg bg-warning/10 border border-warning/25 flex items-center justify-between font-board-mono text-xs sm:text-sm">
                 <span class="opacity-80">Semanas laborales restantes:</span>
                 <strong class="text-warning font-bold text-sm sm:text-base tabular-nums">
-                  ~{Math.round(Math.max(0, country.retirementAge - (userAge ?? 30)) * 52).toLocaleString("es-ES")} semanas
+                  ~{Math.round(Math.max(0, country.retirementAge - (userAge ?? 30)) * 52).toLocaleString("es-ES", { useGrouping: "always" })} semanas
                 </strong>
               </div>
 

@@ -57,7 +57,7 @@ const hasSalary = countryWageText != null;
 // búsquedas "cuánto vale una hora / un día de trabajo en [país]".
 const refSalary = referenceSalary(country);
 const refWage = refSalary?.monthly ?? null;
-const refWageText = refWage != null ? refWage.toLocaleString("es-ES") : null;
+const refWageText = refWage != null ? refWage.toLocaleString("es-ES", { useGrouping: "always" }) : null;
 const refIsSmi = refSalary?.kind === "min";
 const refHourlyWage = refWage != null ? calcHourlyWage(refWage, country.legalWeeklyHours) : null;
 const nfGroup1 = new Intl.NumberFormat("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1, useGrouping: "always" });
@@ -66,7 +66,7 @@ const refHourlyText = refHourlyWage != null
   ? `${(refHourlyWage < 20 ? nfGroup2 : nfGroup1).format(refHourlyWage)} ${country.currencySymbol}`
   : null;
 const refDailyWage = refHourlyWage != null ? refHourlyWage * 8 : null;
-const nfMoney0 = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 0 });
+const nfMoney0 = new Intl.NumberFormat("es-ES", { useGrouping: "always", maximumFractionDigits: 0 });
 const refDailyText = refDailyWage != null ? `${nfMoney0.format(refDailyWage)} ${country.currencySymbol}` : null;
 
 const countryMacro = (macroData as Record<string, any>)[country.code] || {};
@@ -188,7 +188,7 @@ const faqs = [
   },
   {
     question: `¿Cuántas horas de trabajo cuesta el alquiler mensual en ${country.name}?`,
-    answer: `Un alquiler medio de referencia en ${country.name} (${rentPrice.toLocaleString("es-ES")} ${country.currencySymbol}) exige aproximadamente ${rentHours} horas de trabajo real (${Math.round(rentHours / 8)} jornadas laborales completas de 8 horas), absorbiendo en torno al ${rentPctSalary}% del sueldo neto mensual mediano.`,
+    answer: `Un alquiler medio de referencia en ${country.name} (${rentPrice.toLocaleString("es-ES", { useGrouping: "always" })} ${country.currencySymbol}) exige aproximadamente ${rentHours} horas de trabajo real (${Math.round(rentHours / 8)} jornadas laborales completas de 8 horas), absorbiendo en torno al ${rentPctSalary}% del sueldo neto mensual mediano.`,
   },
   {
     question: `¿Cuántas horas anuales se trabajan realmente en ${country.name} según la OCDE?`,
@@ -201,14 +201,14 @@ const faqs = [
   {
     question: `¿Cuánto vale una hora de trabajo en ${country.name}?`,
     answer: refIsSmi
-      ? `La ficha de ${country.name} no publica un sueldo mediano neto. Como referencia, el SMI declarado (${refWage?.toLocaleString("es-ES")} ${country.currencySymbol}/mes) equivale a ${refHourlyText} por hora con una jornada de ${country.legalWeeklyHours} h semanales. Es una referencia sobre el SMI, no el sueldo mediano: con tu neto real la hora baja.`
-      : `Con el sueldo mediano neto de referencia (${refWage?.toLocaleString("es-ES")} ${country.currencySymbol}/mes) y una jornada de ${country.legalWeeklyHours} h semanales, una hora de trabajo vale aproximadamente ${refHourlyText}. Es orientativo: tu hora real sale de tu propia nómina.`,
+      ? `La ficha de ${country.name} no publica un sueldo mediano neto. Como referencia, el SMI declarado (${refWage?.toLocaleString("es-ES", { useGrouping: "always" })} ${country.currencySymbol}/mes) equivale a ${refHourlyText} por hora con una jornada de ${country.legalWeeklyHours} h semanales. Es una referencia sobre el SMI, no el sueldo mediano: con tu neto real la hora baja.`
+      : `Con el sueldo mediano neto de referencia (${refWage?.toLocaleString("es-ES", { useGrouping: "always" })} ${country.currencySymbol}/mes) y una jornada de ${country.legalWeeklyHours} h semanales, una hora de trabajo vale aproximadamente ${refHourlyText}. Es orientativo: tu hora real sale de tu propia nómina.`,
   },
   {
     question: `¿Cuánto vale un día de trabajo en ${country.name}?`,
     answer: refIsSmi
       ? `Un día de trabajo (jornada de 8 horas) equivale a unos ${refDailyText} en ${country.name}, según el SMI declarado. Es una referencia bruta, no el sueldo mediano neto.`
-      : `Un día de trabajo de 8 horas vale aproximadamente ${refDailyText} en ${country.name}, calculado con el sueldo mediano neto de referencia (${refWage?.toLocaleString("es-ES")} ${country.currencySymbol}/mes).`,
+      : `Un día de trabajo de 8 horas vale aproximadamente ${refDailyText} en ${country.name}, calculado con el sueldo mediano neto de referencia (${refWage?.toLocaleString("es-ES", { useGrouping: "always" })} ${country.currencySymbol}/mes).`,
   },
 ];
 
@@ -383,9 +383,12 @@ const pageDescription = hasSalary
         <p class="text-xs font-board-mono opacity-75">
           Fórmula: sueldo de referencia ÷ ({country.legalWeeklyHours} h × 52 ÷ 12). Fuente: {country.salariesSource}. Dato de {country.salariesUpdatedAt}.
         </p>
-        <p class="text-sm font-sans pt-1">
+        <p class="text-sm font-sans pt-1 space-y-1">
           <a class="text-primary hover:underline font-semibold" href={`/${country.slug}/dia-de-trabajo/`}>
             Ver el desglose: cuánto vale una hora, un día y una semana de trabajo en {country.name} →
+          </a>
+          <a class="block text-primary hover:underline font-semibold" href={`/${country.slug}/sueldo-por-hora/`}>
+            Sueldo por hora en {country.name}, país por sector y mínimo legal →
           </a>
         </p>
       </section>
@@ -432,7 +435,7 @@ const pageDescription = hasSalary
       </p>
 
       <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">
-        Esta métrica temporal revela que pagar un mes de alquiler medio ({rentPrice.toLocaleString("es-ES")} {country.currencySymbol}) absorbe aproximadamente <strong>{rentHours} horas de trabajo íntegro</strong> ({Math.round(rentHours / 8)} jornadas completas), mientras que bienes de consumo diario como un menú del día ({countryAnchors.menu ?? 14} {country.currencySymbol}) demandan en torno a <strong>{countryWage ? formatHours((countryAnchors.menu ?? 14) / countryWage) : "1,2"} horas</strong> de esfuerzo laboral neto.
+        Esta métrica temporal revela que pagar un mes de alquiler medio ({rentPrice.toLocaleString("es-ES", { useGrouping: "always" })} {country.currencySymbol}) absorbe aproximadamente <strong>{rentHours} horas de trabajo íntegro</strong> ({Math.round(rentHours / 8)} jornadas completas), mientras que bienes de consumo diario como un menú del día ({formatIntegerThousands(countryAnchors.menu ?? 14)} {country.currencySymbol}) demandan en torno a <strong>{countryWage ? formatHours((countryAnchors.menu ?? 14) / countryWage) : "1,2"} horas</strong> de esfuerzo laboral neto.
       </p>
 
       <!-- Retícula resumen de magnitud -->

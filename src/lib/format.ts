@@ -5,6 +5,11 @@
  * Formato numérico: `Intl.NumberFormat('es-ES')` (coma decimal, punto de
  * millar). Los strings con moneda reciben el símbolo como parámetro (símbolo
  * del país, p. ej. "€" o "$").
+ *
+ * `useGrouping: "always"`: el CLDR de es-ES NO agrupa los números de 4 cifras
+ * (1.561 sí, 1561 no), así que un sueldo de 1.561 € se imprimía "1561 €" al
+ * lado de otro de 12.000 "12.000 €". Se fuerza el agrupado en todos los
+ * formateadores para que la misma cifra se lea igual en toda la web.
  */
 import { WEEKS_PER_MONTH } from "./calc.ts";
 
@@ -12,6 +17,7 @@ const esES = (minDecimals: number, maxDecimals: number): Intl.NumberFormat =>
   new Intl.NumberFormat("es-ES", {
     minimumFractionDigits: minDecimals,
     maximumFractionDigits: maxDecimals,
+    useGrouping: "always",
   });
 
 const nf0 = esES(0, 0);

@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks";
+import { formatIntegerThousands } from "../../lib/format.ts";
 
 export interface SavingsSimulatorProps {
   productPrice: number;
@@ -89,7 +90,7 @@ export default function SavingsSimulator({
                   : "bg-base-200 hover:bg-base-300 text-base-content border border-base-300"
               }`}
             >
-              {pct}% ({Math.round(netMonthly * (pct / 100))} {currencySymbol}/mes)
+              {pct}% ({formatIntegerThousands(Math.round(netMonthly * (pct / 100)))} {currencySymbol}/mes)
             </button>
           ))}
         </div>
@@ -107,8 +108,8 @@ export default function SavingsSimulator({
             </strong>
           </div>
           <p class="text-xs sm:text-sm font-board-mono opacity-85 leading-relaxed">
-            Apartando <strong>{monthlySavingsAmount} {currencySymbol} al mes</strong> ({selectedPct}% de tu sueldo),
-            acumulas los <strong>{productPrice} {currencySymbol}</strong> en {roundedMonths} meses al contado.
+            Apartando <strong>{formatIntegerThousands(monthlySavingsAmount)} {currencySymbol} al mes</strong> ({selectedPct}% de tu sueldo),
+            acumulas los <strong>{formatIntegerThousands(productPrice)} {currencySymbol}</strong> en {roundedMonths} meses al contado.
           </p>
         </div>
 

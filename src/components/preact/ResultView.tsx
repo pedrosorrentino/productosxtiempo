@@ -13,6 +13,7 @@ import {
   formatWeeks,
   formatWorkdays,
   formatYears,
+  formatIntegerThousands,
   heroUnit,
 } from "../../lib/format.ts";
 import anchorsData from "../../data/anchors.json";
@@ -79,8 +80,8 @@ const MAX_AGE = 80;
 /** Corte de compra minúscula del SPEC §6: años de sueldo entero < 0.05. */
 const MIN_YEARS_FOR_AGE_LINE = 0.05;
 
-const nfCount1 = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 1 });
-const nfCount0 = new Intl.NumberFormat("es-ES", { maximumFractionDigits: 0 });
+const nfCount1 = new Intl.NumberFormat("es-ES", { useGrouping: "always", maximumFractionDigits: 1 });
+const nfCount0 = new Intl.NumberFormat("es-ES", { useGrouping: "always", maximumFractionDigits: 0 });
 
 /** Recuento de anclas: entero si ≥ 10, 1 decimal si < 10 (criterio SPEC §8). */
 const formatAnchorCount = (n: number): string =>
@@ -88,7 +89,7 @@ const formatAnchorCount = (n: number): string =>
 
 /** Importe económico ("Si apartas 300 € al mes"): es-ES, máx. 2 decimales. */
 const formatAmount = (n: number): string =>
-  new Intl.NumberFormat("es-ES", { maximumFractionDigits: 2 }).format(n);
+  new Intl.NumberFormat("es-ES", { useGrouping: "always", maximumFractionDigits: 2 }).format(n);
 
 type Hero = { value: string; unit: string; next: string | null };
 
@@ -1028,7 +1029,7 @@ export default function ResultView({
                   class="btn btn-sm btn-ghost border border-base-300 text-base-content/70 hover:text-warning hover:border-warning font-board-mono text-sm uppercase cursor-pointer"
                   title="Restablecer a la mediana nacional"
                 >
-                  ↺ Mediana ({medianNetMonthly} {currencySymbol})
+                  ↺ Mediana ({formatIntegerThousands(medianNetMonthly ?? 0)} {currencySymbol})
                 </button>
               )}
             </div>
@@ -1051,11 +1052,11 @@ export default function ResultView({
                       ? "bg-primary text-neutral-900 font-bold shadow-sm"
                       : "bg-base-100 hover:bg-base-200 border border-base-300 hover:border-primary/60 text-base-content/90"
                   }`}
-                  title={`${preset.label} (${preset.monthlyNet} ${currencySymbol}/mes) · ${preset.source}`}
+                  title={`${preset.label} (${formatIntegerThousands(preset.monthlyNet)} ${currencySymbol}/mes) · ${preset.source}`}
                 >
                   <span>{preset.icon}</span>
                   <span>{preset.shortLabel}</span>
-                  <span class="opacity-70 font-normal">({preset.monthlyNet} {currencySymbol})</span>
+                  <span class="opacity-70 font-normal">({formatIntegerThousands(preset.monthlyNet)} {currencySymbol})</span>
                 </button>
               ))}
             </div>
@@ -1090,9 +1091,9 @@ export default function ResultView({
             />
 
             <div class="flex justify-between text-xs font-board-mono opacity-75">
-              <span>{sliderMin} {currencySymbol}</span>
-              <span>Mediana: {medianNetMonthly} {currencySymbol}</span>
-              <span>{sliderMax} {currencySymbol}</span>
+              <span>{formatIntegerThousands(sliderMin)} {currencySymbol}</span>
+              <span>Mediana: {formatIntegerThousands(medianNetMonthly ?? 0)} {currencySymbol}</span>
+              <span>{formatIntegerThousands(sliderMax)} {currencySymbol}</span>
             </div>
           </div>
 
@@ -1121,7 +1122,7 @@ export default function ResultView({
                 </span>
                 <span class="font-board-mono text-sm text-base-content/80">
                   {lifeImpact?.yearsLeft != null
-                    ? `Te quedan ~${lifeImpact.yearsLeft} años (${lifeImpact.weeksLeft?.toLocaleString()} semanas) hasta los ${retirementAge}`
+                    ? `Te quedan ~${lifeImpact.yearsLeft} años (${lifeImpact.weeksLeft?.toLocaleString("es-ES", { useGrouping: "always" })} semanas) hasta los ${retirementAge}`
                     : `Jubilación de referencia: ${retirementAge} años`}
                 </span>
               </div>

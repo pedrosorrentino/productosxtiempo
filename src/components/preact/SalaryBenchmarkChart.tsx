@@ -1,6 +1,6 @@
 import { useMemo } from "preact/hooks";
 import { calcHourlyWage } from "../../lib/calc.ts";
-import { formatHours, formatHourlyWage } from "../../lib/format.ts";
+import { formatHours, formatHourlyWage, formatIntegerThousands } from "../../lib/format.ts";
 
 export interface SalaryBenchmarkChartProps {
   productPrice: number;
@@ -142,7 +142,7 @@ export default function SalaryBenchmarkChart({
                   ? "bg-primary/10 border-primary/60 shadow-sm"
                   : "bg-base-200/40 border-base-300/80 hover:bg-base-200 hover:border-base-content/30"
               }`}
-              title={`Clic para simular con ${tier.salary} ${currencySymbol}/mes`}
+              title={`Clic para simular con ${formatIntegerThousands(tier.salary)} ${currencySymbol}/mes`}
             >
               <div class="flex items-center justify-between gap-2 flex-wrap text-xs font-board-mono mb-1.5">
                 <div class="min-w-0">
@@ -160,11 +160,11 @@ export default function SalaryBenchmarkChart({
                       </span>
                     )}
                     <span class="opacity-70 text-xs hidden sm:inline">
-                      · {tier.salary} {currencySymbol}/mes ({formatHourlyWage(tier.hourlyWage, currencySymbol)}/h)
+                      · {formatIntegerThousands(tier.salary)} {currencySymbol}/mes ({formatHourlyWage(tier.hourlyWage, currencySymbol)}/h)
                     </span>
                   </div>
                   <div class="opacity-75 text-xs sm:hidden font-board-mono mt-0.5">
-                    {tier.salary} {currencySymbol}/mes ({formatHourlyWage(tier.hourlyWage, currencySymbol)}/h)
+                    {formatIntegerThousands(tier.salary)} {currencySymbol}/mes ({formatHourlyWage(tier.hourlyWage, currencySymbol)}/h)
                   </div>
                 </div>
 

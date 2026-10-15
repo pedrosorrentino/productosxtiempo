@@ -1,0 +1,367 @@
+---
+/**
+ * ¿Cuánto se gana por hora en <país>?
+ *
+ * Segunda pata de la familia «cuánto vale tu tiempo», separada del día a
+ * propósito: quien busca «sueldo por hora en México» o «cuánto pagan por hora
+ * en Alemania» pregunta por lo que se GANA en una hora, no por lo que cuesta
+ * una jornada. Eran 127 consultas y ~465 impresiones en 90 días aterrizando en
+ * la portada del país, que no responde esa pregunta con su título.
+ *
+ * La cifra va en el título, en la descripción y en el primer párrafo, como en
+ * la página del día de trabajo, y detrás va lo que esa página no da: la hora
+ * del mínimo legal frente a la mediana, la hora por sector (donde hay datos),
+ * qué se compra con una hora de trabajo y cómo queda la hora de este país
+ * frente a los otros once.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pickTitle } from '../../lib/titleWidth.ts';
+import { WEEKS_PER_MONTH, STANDARD_DAY_HOURS, calcHourlyWage } from '../../lib/calc.ts';
+import { formatHourlyWage, formatHours } from '../../lib/format.ts';
+import { referenceSalary } from '../../lib/selectors.ts';
+import type { Country, Product, SalaryPreset } from '../../lib/types.ts';
+import countriesData from '../../data/countries.json';
+import productsData from '../../data/products.json';
+import sectorsData from '../../data/sectors.json';
+import {
+  generateHreflangs,
+  generateBreadcrumbSchema,
+  generateFAQSchema,
+} from '../../lib/seo.ts';
+
+export function getStaticPaths() {
+  return countriesData.map((country) => ({
+    params: { country: country.slug },
+    props: { country },
+  }));
+}
+
+interface Props {
+  country: Country;
+}
+
+const { country } = Astro.props as Props;
+const allCountries = countriesData as Country[];
+const products = productsData as Product[];
+const sectores = ((sectorsData as Record<string, SalaryPreset[]>)[country.code] ?? []);
+
+const siteUrl = Astro.site?.href ?? 'https://precioentiempo.com';
+const cleanSite = siteUrl.replace(/\/$/, '');
+const canonicalUrl = `${cleanSite}/${country.slug}/sueldo-por-hora/`;
+const hreflangs = generateHreflangs(allCountries, 'sueldo-por-hora', undefined, siteUrl);
+
+const ref = referenceSalary(country);
+const mensual = ref?.monthly ?? 0;
+const simbolo = country.currencySymbol;
+const porHora = ref ? calcHourlyWage(ref.monthly, country.legalWeeklyHours) : 0;
+const porJornada = porHora * STANDARD_DAY_HOURS;
+const porSemana = mensual / WEEKS_PER_MONTH;
+const minHora = country.minWageMonthly != null && country.minWageMonthly > 0
+  ? calcHourlyWage(country.minWageMonthly, country.legalWeeklyHours)
+  : null;
+/** Cuánto se queda por debajo el mínimo legal frente a la hora mediana. */
+const brechaMinimo = minHora != null && porHora > 0 ? Math.round((1 - minHora / porHora) * 100) : null;
+
+const miles = (v: number) =>
+  new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0, useGrouping: 'always' }).format(v);
+
+/** Productos con precio tomado en el país, medidos en horas de trabajo. */
+const conPrecioLocal = products
+  .filter((p) => p.visible)
+  .map((product) => {
+    const precio = product.prices[country.code];
+    if (!precio || precio.origin !== 'local' || porHora <= 0) return null;
+    const horas = precio.value / porHora;
+    return { product, precio: precio.value, horas };
+  })
+  .filter((x): x is NonNullable<typeof x> => x !== null);
+
+/** Lo que sí entra en una hora de trabajo (o cerca). */
+const cabeEnUnaHora = conPrecioLocal
+  .filter((x) => x.horas <= 1.25)
+  .sort((a, b) => b.horas - a.horas)
+  .slice(0, 6);
+const masCaros = conPrecioLocal
+  .filter((x) => x.horas > 1.25)
+  .sort((a, b) => a.horas - b.horas)
+  .slice(0, 4);
+const loQueVes = cabeEnUnaHora.length > 0 ? cabeEnUnaHora : masCaros;
+
+/** Tabla comparativa: la hora de cada país, calculada dentro de cada país. */
+const ranking = allCountries
+  .map((c) => {
+    const r = referenceSalary(c);
+    return r ? { c, hora: calcHourlyWage(r.monthly, c.legalWeeklyHours) } : null;
+  })
+  .filter((x): x is NonNullable<typeof x> => x !== null)
+  .sort((a, b) => b.hora - a.hora);
+
+/** Lectura de la fuente del sueldo: cada país declara de qué clase es su dato. */
+const comoEsElDato: Record<string, string> = {
+  publicado: `${country.salarySourceLabel} publica la mediana neta tal cual, así que la hora sale de dividir un dato publicado entre las horas del mes.`,
+  estimado: `El organismo publica el sueldo mediano bruto y el neto se estima con el tipo medio neto de la OCDE, que es lo que se ingresa de verdad después de impuestos y cotizaciones.`,
+  orientativo: `Es una referencia editable por el usuario, no un dato publicado por un organismo: en ${country.name} no existe una mediana neta oficial comparable.`,
+};
+const notaDato = comoEsElDato[country.salaryDataKind ?? ''] ?? '';
+
+const faqs = [
+  {
+    question: `¿Cuánto se gana por hora en ${country.name}?`,
+    answer: `${formatHourlyWage(porHora, simbolo)} netos por hora con el sueldo de referencia de ${country.name} (${miles(mensual)} ${simbolo}/mes, ${ref?.label ?? 'referencia'}). Es el sueldo mensual dividido entre las horas que tiene el mes: ${country.legalWeeklyHours} h por semana × 52 semanas ÷ 12 meses = ${Math.round(country.legalWeeklyHours * WEEKS_PER_MONTH)} horas al mes, o sea ${miles(mensual)} ÷ ${Math.round(country.legalWeeklyHours * WEEKS_PER_MONTH)}.`,
+  },
+  {
+    question: `¿Cuál es el salario mínimo por hora en ${country.name}?`,
+    answer: minHora != null
+      ? `${formatHourlyWage(minHora, simbolo)} por hora con el mínimo de referencia (${miles(country.minWageMonthly ?? 0)} ${simbolo}/mes) y la misma jornada de ${country.legalWeeklyHours} h semanales${brechaMinimo != null ? `: un ${brechaMinimo}% por debajo de la hora mediana` : ''}. El sueldo mínimo es un suelo legal, no lo que gana la mayoría.`
+      : `${country.name} no tiene un salario mínimo legal único: los mínimos los fijan los convenios colectivos de cada sector, así que no hay una cifra única que citar. Lo que sí se puede calcular es la hora mediana, que es la de arriba.`,
+  },
+  {
+    question: `¿El sueldo por hora es bruto o neto?`,
+    answer: `Neto: es lo que llega a la cuenta después de impuestos y cotizaciones, que es con lo que se paga la compra. ${country.salariesSource} Fuente: ${country.salarySourceLabel}.`,
+  },
+  {
+    question: `¿Por qué la misma nómina da una hora distinta en cada país?`,
+    answer: `Porque la hora es la nómina dividida entre las horas del mes, y las jornadas legales no coinciden: ${country.name} trabaja ${country.legalWeeklyHours} horas semanales${country.legalWeeklyHours !== 40 ? ', frente a las 40 h de la mayoría de los países que comparamos' : ''}. Con la misma nómina mensual, una jornada más corta da una hora más alta, y una jornada más larga la abarata.`,
+  },
+];
+const faqSchema = generateFAQSchema(faqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Inicio', url: `${cleanSite}/` },
+  { name: country.name, url: `${cleanSite}/${country.slug}/` },
+  { name: 'Sueldo por hora', url: canonicalUrl },
+]);
+
+// Sin sufijo de marca: lo que tiene que caber en el título es la cifra.
+const pageTitle = pickTitle([
+  `Sueldo por hora en ${country.name}: ${formatHourlyWage(porHora, simbolo)}`,
+  `Cuánto se gana por hora en ${country.name}`,
+]);
+const pageDescription = `En ${country.name} una hora de trabajo se paga a ${formatHourlyWage(porHora, simbolo)} de media${minHora != null ? ` y el mínimo legal a ${formatHourlyWage(minHora, simbolo)}/hora` : ''}. De dónde sale la cifra y qué se compra con una hora.`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  currentCountrySlug={country.slug}
+  currentCountryCode={country.code}
+  ogImage={`/og/${country.slug}.png`}
+  hreflangs={hreflangs}
+  jsonLd={[breadcrumbSchema, faqSchema]}
+>
+  <div class="max-w-5xl mx-auto px-4 py-8 space-y-8">
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-primary transition-colors">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href={`/${country.slug}/`} class="hover:text-primary transition-colors">{country.name}</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-primary font-bold" aria-current="page">Sueldo por hora</li>
+      </ol>
+    </nav>
+
+    <header class="board-plate p-6 sm:p-8 border border-base-300 shadow-md">
+      <p class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-semibold flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+        <span>Respuesta corta · {country.name}</span>
+      </p>
+      <h1 class="font-signage uppercase text-3xl sm:text-5xl md:text-6xl leading-tight mt-2 tracking-tight">
+        ¿Cuánto se gana por hora en {country.name}?
+      </h1>
+      <p class="mt-4 text-base sm:text-lg font-sans leading-relaxed">
+        Una hora de trabajo se paga a <strong class="text-primary">{formatHourlyWage(porHora, simbolo)}</strong>
+        netos con el sueldo de referencia de {country.name} (<strong>{miles(mensual)} {simbolo}/mes</strong>,
+        {ref?.label ?? 'referencia'}). La jornada legal allí es de {country.legalWeeklyHours} horas semanales,
+        así que un mes tiene {Math.round(country.legalWeeklyHours * WEEKS_PER_MONTH)} horas de trabajo.
+      </p>
+    </header>
+
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="board-cell p-4">
+        <span class="font-board-mono text-[11px] uppercase tracking-wider opacity-70 block">Una hora</span>
+        <strong class="font-signage text-2xl sm:text-3xl text-primary block mt-1">{formatHourlyWage(porHora, simbolo)}</strong>
+      </div>
+      <div class="board-cell p-4">
+        <span class="font-board-mono text-[11px] uppercase tracking-wider opacity-70 block">Mínimo legal / hora</span>
+        <strong class="font-signage text-2xl sm:text-3xl text-primary block mt-1">
+          {minHora != null ? formatHourlyWage(minHora, simbolo) : 'Sin mínimo único'}
+        </strong>
+      </div>
+      <div class="board-cell p-4">
+        <span class="font-board-mono text-[11px] uppercase tracking-wider opacity-70 block">Una jornada (8 h)</span>
+        <strong class="font-signage text-2xl sm:text-3xl text-primary block mt-1">{miles(porJornada)} {simbolo}</strong>
+      </div>
+      <div class="board-cell p-4">
+        <span class="font-board-mono text-[11px] uppercase tracking-wider opacity-70 block">Una semana</span>
+        <strong class="font-signage text-2xl sm:text-3xl text-primary block mt-1">{miles(porSemana)} {simbolo}</strong>
+      </div>
+    </section>
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">De dónde sale la hora</h2>
+      <ul class="space-y-2 font-sans text-sm sm:text-base leading-relaxed">
+        <li>
+          <strong>Sueldo de referencia:</strong> {miles(mensual)} {simbolo}/mes ({ref?.label ?? 'referencia'}).
+          Fuente: <a class="text-primary hover:underline" href={country.salariesSourceUrl} target="_blank" rel="noopener">{country.salarySourceLabel}</a>.
+        </li>
+        <li>
+          <strong>Horas del mes:</strong> {country.legalWeeklyHours} h × 52 semanas ÷ 12 meses = <strong>{Math.round(country.legalWeeklyHours * WEEKS_PER_MONTH)} horas</strong>.
+        </li>
+        <li>
+          <strong>La hora:</strong> {miles(mensual)} ÷ {Math.round(country.legalWeeklyHours * WEEKS_PER_MONTH)} = <strong>{formatHourlyWage(porHora, simbolo)}</strong>.
+        </li>
+        {minHora != null && (
+          <li>
+            <strong>El mínimo legal por hora:</strong> {miles(country.minWageMonthly ?? 0)} {simbolo}/mes ÷ {Math.round(country.legalWeeklyHours * WEEKS_PER_MONTH)} = <strong>{formatHourlyWage(minHora, simbolo)}</strong>
+            {brechaMinimo != null && `, un ${brechaMinimo}% por debajo de la hora mediana`}.
+          </li>
+        )}
+      </ul>
+      {notaDato && <p class="font-sans text-sm opacity-80 leading-relaxed">{notaDato}</p>}
+      {country.informalityNote && (
+        <p class="font-sans text-sm opacity-80 leading-relaxed">{country.informalityNote}</p>
+      )}
+      <p class="font-sans text-sm opacity-80 leading-relaxed">
+        El método completo, país por país y con sus fuentes, está en
+        <a class="text-primary hover:underline" href="/metodo/">la página de método</a>. Si tu nómina no es la
+        de referencia, la <a class="text-primary hover:underline" href={`/${country.slug}/precio/`}>calculadora de {country.name}</a>
+        recalcula tu hora real sin salir de tu dispositivo.
+      </p>
+    </section>
+
+    {sectores.length > 0 && (
+      <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4">
+        <h2 class="font-signage uppercase text-2xl sm:text-3xl">Cuánto se gana por hora según el sector en {country.name}</h2>
+        <p class="font-sans text-sm opacity-85">
+          La mediana es una sola cifra para todo el país; por sector la hora cambia bastante. Estas son las
+          referencias que usa la calculadora cuando eliges un perfil.
+        </p>
+        <div class="md:overflow-x-auto md:border md:border-base-300">
+          <table class="board-table w-full text-left font-body text-sm">
+            <thead>
+              <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+                <th class="p-3.5">Perfil</th>
+                <th class="p-3.5">Neto al mes</th>
+                <th class="p-3.5">Por hora</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-base-300">
+              {sectores.map((s) => (
+                <tr class="bg-base-200/50">
+                  <td class="p-3.5 font-semibold text-base-content" data-label="Perfil">
+                    {s.label}
+                    <span class="block font-board-mono text-[11px] opacity-70 mt-0.5">{s.source}</span>
+                  </td>
+                  <td class="p-3.5 opacity-90" data-label="Neto al mes">{miles(s.monthlyNet)} {simbolo}</td>
+                  <td class="p-3.5 text-primary font-semibold" data-label="Por hora">
+                    {formatHourlyWage(calcHourlyWage(s.monthlyNet, country.legalWeeklyHours), simbolo)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    {loQueVes.length > 0 && (
+      <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4">
+        <h2 class="font-signage uppercase text-2xl sm:text-3xl">Qué se compra con una hora de trabajo en {country.name}</h2>
+        <p class="font-sans text-sm opacity-85">
+          {cabeEnUnaHora.length > 0
+            ? 'Precios tomados en el país, medidos en horas de trabajo con el sueldo de referencia.'
+            : 'Con el sueldo de referencia, ni el artículo más barato del catálogo entra en una sola hora: esto es lo más cerca que queda.'}
+        </p>
+        <div class="md:overflow-x-auto md:border md:border-base-300">
+          <table class="board-table w-full text-left font-body text-sm">
+            <thead>
+              <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+                <th class="p-3.5">Producto</th>
+                <th class="p-3.5">Precio</th>
+                <th class="p-3.5">Horas de trabajo</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-base-300">
+              {loQueVes.map(({ product, precio, horas }) => (
+                <tr class="bg-base-200/50">
+                  <td class="p-3.5 font-semibold text-base-content" data-label="Producto">
+                    <a class="hover:text-primary transition-colors" href={`/${country.slug}/${product.id}/`}>{product.shortName}</a>
+                  </td>
+                  <td class="p-3.5 opacity-90" data-label="Precio">{miles(precio)} {simbolo}</td>
+                  <td class="p-3.5 text-primary font-semibold" data-label="Horas">
+                    {horas < 1
+                      ? `${formatHours(horas * 60)} min`
+                      : `${horas < 10 ? horas.toFixed(1).replace('.', ',') : formatHours(horas)} h`}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">La hora de trabajo en los doce países del sitio</h2>
+      <p class="font-sans text-sm opacity-85">
+        Así sale la hora de trabajo en cada país con su propio sueldo de referencia y su propia jornada legal.
+        Cada cifra está en la divisa de su país y calculada dentro de él: <strong>no se convierten monedas</strong>,
+        porque 100 $ en México no compran lo mismo que 100 CHF en Suiza. Lo que sí se puede comparar entre países
+        es cuántas horas de trabajo cuesta allí cada cosa, y eso lo da la tabla de precios de cada ficha.
+      </p>
+      <div class="md:overflow-x-auto md:border md:border-base-300">
+        <table class="board-table w-full text-left font-body text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+              <th class="p-3.5">País</th>
+              <th class="p-3.5">Sueldo de referencia</th>
+              <th class="p-3.5">Jornada</th>
+              <th class="p-3.5">Por hora</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300">
+            {ranking.map(({ c, hora }) => {
+              const r = referenceSalary(c);
+              return (
+                <tr class={c.code === country.code ? 'bg-primary/10' : 'bg-base-200/50'}>
+                  <td class="p-3.5 font-semibold text-base-content" data-label="País">
+                    <a class="hover:text-primary transition-colors" href={`/${c.slug}/sueldo-por-hora/`}>{c.name}</a>
+                  </td>
+                  <td class="p-3.5 opacity-90" data-label="Sueldo">{miles(r?.monthly ?? 0)} {c.currencySymbol}/mes</td>
+                  <td class="p-3.5 opacity-90" data-label="Jornada">{c.legalWeeklyHours} h/sem</td>
+                  <td class="p-3.5 text-primary font-semibold" data-label="Por hora">{formatHourlyWage(hora, c.currencySymbol)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p class="font-sans text-xs opacity-70 leading-relaxed">
+        La cifra por hora se calcula dentro de cada país y en su propia divisa: no se convierten monedas, porque
+        un sueldo convertido no dice cuánto cuesta allí la vida. Los precios de cada país están tomados en el país.
+      </p>
+    </section>
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4" aria-label="Preguntas Frecuentes">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">Preguntas frecuentes</h2>
+      <div class="space-y-4 pt-2">
+        {faqs.map((faq) => (
+          <div class="border-b border-base-300 pb-3">
+            <h3 class="font-bold text-base text-base-content">{faq.question}</h3>
+            <p class="text-sm opacity-80 mt-1 leading-relaxed font-sans">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-3">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">Sigue desde aquí</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-sans text-sm">
+        <li><a class="text-primary hover:underline" href={`/${country.slug}/dia-de-trabajo/`}>Cuánto vale un día de trabajo en {country.name}</a></li>
+        <li><a class="text-primary hover:underline" href={`/${country.slug}/`}>Todo lo que cuesta en horas de trabajo en {country.name}</a></li>
+        <li><a class="text-primary hover:underline" href={`/${country.slug}/precio/`}>Calculadora: cuántas horas cuesta lo que quieras comprar</a></li>
+        <li><a class="text-primary hover:underline" href="/metodo/">Cómo calculamos el sueldo y las horas</a></li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>

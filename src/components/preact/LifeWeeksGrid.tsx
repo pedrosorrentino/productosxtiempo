@@ -53,7 +53,7 @@ export default function LifeWeeksGrid({
             Matriz de Semanas de Vida Consciente
           </h3>
           <p class="font-board-mono text-sm opacity-85 mt-1">
-            A tus {userAge} años has vivido {livedWeeks.toLocaleString()} semanas. Te quedan ~{yearsLeft} años ({totalRemainingWeeks.toLocaleString()} semanas) de trabajo hasta los {retirementAge}.
+            A tus {userAge} años has vivido {livedWeeks.toLocaleString("es-ES", { useGrouping: "always" })} semanas. Te quedan ~{yearsLeft} años ({totalRemainingWeeks.toLocaleString("es-ES", { useGrouping: "always" })} semanas) de trabajo hasta tu jubilación.
           </p>
         </div>
 
