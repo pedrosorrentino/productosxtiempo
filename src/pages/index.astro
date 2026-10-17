@@ -34,4 +34,35 @@ const jsonLd = [...webSiteSchemas, webAppSchema];
   jsonLd={jsonLd}
 >
   <RateBoard client:load countries={countries} products={products} heroProductId="tesla-model-3" />
+
+  {/* Bloque de navegación en HTML servido (fuera del componente interactivo).
+      Existe por dos razones: le sirve a quien llega buscando «cuánto vale un
+      día/hora de trabajo en tal país» y es la única forma de que Googlebot
+      llegue a esas 24 páginas desde la portada, que es una de las pocas que
+      rastrea. Antes solo se enlazaban desde cada hub de país y desde las
+      fichas, y ninguna de esas páginas las veía Google. */}
+  <section class="max-w-5xl mx-auto px-4 pb-10 space-y-4">
+    <h2 class="font-signage uppercase text-xl sm:text-2xl">Cuánto vale tu tiempo en cada país</h2>
+    <p class="font-sans text-sm opacity-85 leading-relaxed">
+      El sueldo de referencia de cada país, medido en lo que de verdad importa: cuánto vale una hora
+      de trabajo, cuánto vale una jornada completa y qué se compra con ellas. Cada cifra, con su
+      fuente y su año, y el cálculo a la vista.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+      {countries.map((c) => (
+        <div class="board-cell p-3">
+          <span class="block font-bold text-sm text-base-content">{c.name}</span>
+          <span class="block font-board-mono text-xs mt-1">
+            <a class="text-primary hover:underline" href={`/${c.slug}/sueldo-por-hora/`}>Sueldo por hora</a>
+            {" · "}
+            <a class="text-primary hover:underline" href={`/${c.slug}/dia-de-trabajo/`}>Día de trabajo</a>
+          </span>
+        </div>
+      ))}
+    </div>
+    <p class="font-sans text-sm opacity-85">
+      <a class="text-primary hover:underline font-semibold" href="/metodo/">Cómo se calcula y de dónde sale
+      cada sueldo →</a>
+    </p>
+  </section>
 </BaseLayout>

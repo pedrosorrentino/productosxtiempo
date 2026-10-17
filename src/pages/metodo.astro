@@ -229,7 +229,15 @@ const wage160 = formatHourlyWage(hora160, '€');
           <tbody class="divide-y divide-base-300">
             {countries.map((c) => (
               <tr class="bg-base-200/50">
-                <td class="p-3.5 font-semibold text-base-content" data-label="País">{c.name}</td>
+                <td class="p-3.5 font-semibold text-base-content" data-label="País">
+                  {c.name}
+                  {" "}
+                  <span class="block font-board-mono text-[11px] font-normal opacity-75 mt-0.5">
+                    <a class="text-primary hover:underline" href={`/${c.slug}/dia-de-trabajo/`}>día de trabajo</a>
+                    {" · "}
+                    <a class="text-primary hover:underline" href={`/${c.slug}/sueldo-por-hora/`}>sueldo por hora</a>
+                  </span>
+                </td>
                 <td class="p-3.5 opacity-90" data-label="Sueldo">
                   {c.medianNetMonthly
                     ? `${c.medianNetMonthly.toLocaleString("es-ES", { useGrouping: "always" })} ${c.currencySymbol}/mes`
