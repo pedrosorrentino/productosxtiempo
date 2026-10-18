@@ -1,0 +1,262 @@
+---
+/**
+ * /datos/ — los datos del proyecto, en abierto.
+ *
+ * Existe por dos razones. La primera es de fondo: un sitio que vive de datos
+ * tiene que poder comprobarse, y hasta ahora las cifras solo se veían dentro de
+ * las páginas. La segunda es de estrategia: un conjunto de datos con licencia y
+ * con su fuente por fila es lo que hace que otros te citen, y este dominio no
+ * tiene un solo enlace entrante.
+ *
+ * Los ficheros se generan del mismo sitio donde se ven los números
+ * (src/lib/datasets.ts), así que lo que se descarga y lo que se ve no pueden
+ * discrepar.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pickTitle } from '../../lib/titleWidth.ts';
+import { formatHourlyWage, formatIntegerThousands } from '../../lib/format.ts';
+import { LICENCIA, filasHorasDeTrabajo, filasPrecios, filasSueldos } from '../../lib/datasets.ts';
+
+const sueldos = filasSueldos();
+const precios = filasPrecios();
+const horas = filasHorasDeTrabajo();
+
+const siteUrl = (Astro.site?.href ?? 'https://precioentiempo.com').replace(/\/$/, '');
+const hoy = new Date().toISOString().slice(0, 10);
+
+const ficheros = [
+  {
+    nombre: 'sueldos.csv',
+    url: '/datos/sueldos.csv',
+    filas: sueldos.length,
+    que: 'Un sueldo de referencia por país, con su organismo, su año y lo que vale una hora con él.',
+  },
+  {
+    nombre: 'horas-de-trabajo.csv',
+    url: '/datos/horas-de-trabajo.csv',
+    filas: horas.length,
+    que: 'El dato del proyecto: cada precio tomado en su país convertido a horas, jornadas y meses de trabajo.',
+  },
+  {
+    nombre: 'precios.csv',
+    url: '/datos/precios.csv',
+    filas: precios.length,
+    que: 'Todo el catálogo de precios, con el país donde se tomó, la fecha y de dónde sale. El campo «origen» dice si es del país o una conversión.',
+  },
+  {
+    nombre: 'sueldos.json',
+    url: '/datos/sueldos.json',
+    filas: sueldos.length,
+    que: 'Lo mismo que sueldos.csv, en JSON y con las unidades declaradas dentro.',
+  },
+];
+
+const ordenadasPorHoras = [...horas]
+  .filter((f) => typeof f.horas_de_trabajo === 'number' && (f.horas_de_trabajo as number) >= 1)
+  .sort((a, b) => (a.horas_de_trabajo as number) - (b.horas_de_trabajo as number))
+  .slice(0, 12);
+
+const datasetSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Sueldos de referencia y precios medidos en horas de trabajo',
+  description:
+    'Sueldo neto de referencia de 12 países con su organismo y su año, y más de un millar de precios tomados en cada país convertidos a horas, jornadas y meses de trabajo.',
+  url: `${siteUrl}/datos/`,
+  license: LICENCIA.url,
+  creator: { '@type': 'Organization', name: 'Precio en Tiempo', url: `${siteUrl}/` },
+  temporalCoverage: `2026/${hoy}`,
+  isAccessibleForFree: true,
+  keywords: ['sueldo mediano', 'horas de trabajo', 'poder adquisitivo', 'precios por país', 'coste de vida'],
+  distribution: [
+    {
+      '@type': 'DataDownload',
+      name: 'Sueldos de referencia por país (CSV)',
+      encodingFormat: 'text/csv',
+      contentUrl: `${siteUrl}/datos/sueldos.csv`,
+    },
+    {
+      '@type': 'DataDownload',
+      name: 'Precios por país medidos en horas de trabajo (CSV)',
+      encodingFormat: 'text/csv',
+      contentUrl: `${siteUrl}/datos/horas-de-trabajo.csv`,
+    },
+    {
+      '@type': 'DataDownload',
+      name: 'Catálogo completo de precios (CSV)',
+      encodingFormat: 'text/csv',
+      contentUrl: `${siteUrl}/datos/precios.csv`,
+    },
+    {
+      '@type': 'DataDownload',
+      name: 'Sueldos de referencia por país (JSON)',
+      encodingFormat: 'application/json',
+      contentUrl: `${siteUrl}/datos/sueldos.json`,
+    },
+  ],
+};
+
+const pageTitle = pickTitle([
+  'Datos en abierto: sueldos y precios en horas de trabajo',
+  'Datos en abierto',
+]);
+const pageDescription =
+  'Los datos del sitio para descargar: el sueldo de referencia de 12 países con su fuente y su año, y los precios de cada país convertidos a horas de trabajo. Licencia CC BY 4.0.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  jsonLd={[datasetSchema]}
+>
+  <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-6">
+    <div class="board-plate p-6 md:p-8">
+      <p class="font-board-mono text-xs uppercase tracking-[0.14em] opacity-90 text-primary">
+        Datos en abierto · reutilizables
+      </p>
+      <h1 class="font-signage uppercase text-3xl md:text-5xl leading-tight mt-2">
+        Los datos de este proyecto, para descargar
+      </h1>
+      <p class="mt-4 text-base md:text-lg opacity-90 leading-relaxed max-w-2xl">
+        Todo lo que hay detrás de las cifras que se ven en el sitio: el sueldo de
+        referencia de cada país con el organismo que lo publica y el año del dato, y los
+        precios de cada país convertidos a <strong>horas de trabajo</strong>. Sin registro,
+        sin correo y sin trampa: los mismos números que sirven las páginas.
+      </p>
+      <p class="mt-3 font-board-mono text-xs opacity-75">
+        Actualizado {hoy} · Licencia {LICENCIA.nombre} · {precios.length} filas de precio y {sueldos.length} países
+      </p>
+    </div>
+
+    <section class="board-plate p-6 md:p-8 space-y-4">
+      <h2 class="font-signage uppercase text-2xl">Qué puedes descargar</h2>
+      <ul class="space-y-3">
+        {ficheros.map((f) => (
+          <li class="border-b border-base-300 pb-3 last:border-0">
+            <a
+              class="font-board-mono text-sm font-bold text-primary hover:underline"
+              href={f.url}
+              download
+            >
+              {f.nombre}
+            </a>
+            <span class="font-board-mono text-xs opacity-70"> · {f.filas} filas</span>
+            <p class="font-sans text-sm opacity-85 mt-1 leading-relaxed">{f.que}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="font-sans text-sm opacity-85 leading-relaxed">
+        Todos los ficheros van en <strong>UTF-8</strong> con separador por comas y la primera fila
+        de cabeceras. Las horas de trabajo solo se calculan con el sueldo de referencia del país y su
+        jornada legal: no hay sueldos inventados ni conversiones de moneda disfrazadas de dato local.
+        El método completo está en <a class="text-primary hover:underline" href="/metodo/">la página de método</a>.
+      </p>
+    </section>
+
+    <section class="board-plate p-6 md:p-8 space-y-4">
+      <h2 class="font-signage uppercase text-2xl">Vista previa: sueldos y hora de referencia</h2>
+      <p class="font-sans text-sm opacity-85">
+        Cada país con su propio sueldo, su propia jornada legal y su propia divisa: aquí no se
+        convierten monedas.
+      </p>
+      <div class="md:overflow-x-auto md:border md:border-base-300">
+        <table class="board-table w-full text-left font-body text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+              <th class="p-3">País</th>
+              <th class="p-3">Sueldo de referencia</th>
+              <th class="p-3">Jornada</th>
+              <th class="p-3">Hora neta</th>
+              <th class="p-3">Dato</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300">
+            {sueldos.map((s) => (
+              <tr class="bg-base-200/50">
+                <td class="p-3 font-semibold" data-label="País">{s.pais}</td>
+                <td class="p-3 opacity-90" data-label="Sueldo">
+                  {s.sueldo_mediano_neto_mensual !== ''
+                    ? `${formatIntegerThousands(s.sueldo_mediano_neto_mensual as number)} ${s.moneda}/mes`
+                    : `SMI ${formatIntegerThousands(s.sueldo_minimo_mensual as number)} ${s.moneda}/mes`}
+                </td>
+                <td class="p-3 opacity-90" data-label="Jornada">{s.jornada_semanal_horas} h/sem</td>
+                <td class="p-3 text-primary font-semibold" data-label="Hora neta">
+                  {s.valor_hora_neta !== '' ? formatHourlyWage(s.valor_hora_neta as number, s.simbolo) : '—'}
+                </td>
+                <td class="p-3 font-board-mono text-xs opacity-80" data-label="Dato">
+                  {s.tipo_de_dato}
+                  <span class="block">{s.etiqueta_fuente}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="font-sans text-xs opacity-70">
+        «publicado» = mediana neta que publica el organismo · «estimado» = mediana bruta oficial pasada
+        a neto con el tipo medio de la OCDE · «orientativo» = referencia editable, porque el país no
+        publica una mediana neta comparable.
+      </p>
+    </section>
+
+    <section class="board-plate p-6 md:p-8 space-y-4">
+      <h2 class="font-signage uppercase text-2xl">Vista previa: qué cuesta en horas de trabajo</h2>
+      <p class="font-sans text-sm opacity-85">
+        Doce filas del fichero de horas de trabajo, de menor a mayor esfuerzo. Cada una lleva su
+        precio, su país y el sueldo con el que se ha calculado.
+      </p>
+      <div class="md:overflow-x-auto md:border md:border-base-300">
+        <table class="board-table w-full text-left font-body text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+              <th class="p-3">Producto</th>
+              <th class="p-3">País</th>
+              <th class="p-3">Precio</th>
+              <th class="p-3">Horas de trabajo</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300">
+            {ordenadasPorHoras.map((f) => (
+              <tr class="bg-base-200/50">
+                <td class="p-3 font-semibold" data-label="Producto">
+                  <a class="hover:text-primary transition-colors" href={`/${f.pais_slug}/${f.producto_id}/`}>
+                    {f.producto}
+                  </a>
+                </td>
+                <td class="p-3 opacity-90" data-label="País">{f.pais}</td>
+                <td class="p-3 opacity-90" data-label="Precio">
+                  {formatIntegerThousands(f.precio as number)} {f.moneda}
+                </td>
+                <td class="p-3 text-primary font-semibold" data-label="Horas">
+                  {typeof f.horas_de_trabajo === 'number' ? f.horas_de_trabajo.toFixed(1).replace('.', ',') : '—'} h
+                  <span class="block font-board-mono text-xs opacity-75">
+                    {typeof f.jornadas_de_8h === 'number' ? f.jornadas_de_8h.toFixed(1).replace('.', ',') : '—'} jornadas
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="board-plate p-6 md:p-8 space-y-3">
+      <h2 class="font-signage uppercase text-2xl">Licencia y cómo citarlos</h2>
+      <p class="font-sans text-sm opacity-90 leading-relaxed">
+        Los datos se publican bajo <a class="text-primary hover:underline" href={LICENCIA.url} target="_blank" rel="noopener">{LICENCIA.nombre}</a>:
+        puedes usarlos, también comercialmente, citando la fuente y enlazando a este sitio. Cada fila lleva
+        además su propia fuente —el organismo del sueldo y la del precio—, que es la que conviene citar
+        cuando el dato concreto importa.
+      </p>
+      <p class="font-board-mono text-xs opacity-85 bg-base-200/60 border border-base-300 rounded p-3 leading-relaxed">
+        {LICENCIA.cita}
+      </p>
+      <p class="font-sans text-sm opacity-85 leading-relaxed">
+        Nota de transparencia: los sueldos de referencia son netos mensuales y su clase está declarada en
+        la columna <span class="font-board-mono">tipo_de_dato</span>; donde el país no publica una mediana
+        neta se dice, en vez de rellenarlo. Los precios llevan su fecha: en productos con mucha variación
+        conviene comprobar la de hoy antes de publicar una cifra.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
