@@ -72,7 +72,10 @@ describe("Schema.org generation (Google Search Central compliance)", () => {
     expect(schema.offers.priceCurrency).toBe("EUR");
     expect(schema.offers.url).toBe("https://precioentiempo.com/espana/tesla-model-3/");
     // La fecha visible del precio (YYYY-MM) se normaliza a ISO para validFrom.
-    expect(schema.offers.validFrom).toBe("2026-08-01");
+    // Se comprueba contra la fecha del propio dato, no contra una escrita a
+    // mano: antes estaba fijada a "2026-08-01" y el test se puso rojo al
+    // corregir el precio del Tesla con el configurador oficial.
+    expect(schema.offers.validFrom).toBe(`${price.date}-01`);
 
     // 7. Sin datos de comercio inventados que la página no muestre.
     expect(schema.offers.availability).toBeUndefined();

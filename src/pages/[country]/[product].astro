@@ -116,6 +116,9 @@ const effortText = quote?.effort ?? (calculatedStats
 // no por caracteres, así que se prueba del titular más informativo al más corto
 // y se queda el primero que cabe. Antes se componía siempre igual y el 91% de
 // las páginas salían cortadas en los resultados.
+/** Productos con página propia que cruza países (el mismo bien en todos). */
+const PAGINAS_TRANSVERSALES = new Set(["tesla-model-3"]);
+
 const titulares: string[] = [];
 if (hasLocal) {
   if (ref && effortText) {
@@ -307,6 +310,9 @@ const otherCountriesForProduct = allCountries
         <a href={`/${country.slug}/`} class="text-primary hover:underline">Poder adquisitivo en {country.name} &rarr;</a>
         <a href={`/${country.slug}/dia-de-trabajo/`} class="text-primary hover:underline">Cuánto vale un día de trabajo en {country.name} &rarr;</a>
         <a href={`/${country.slug}/sueldo-por-hora/`} class="text-primary hover:underline">Cuánto se gana por hora en {country.name} &rarr;</a>
+        {PAGINAS_TRANSVERSALES.has(product.id) && (
+          <a href={`/${product.id}/`} class="text-primary hover:underline">El mismo {product.shortName}, país por país &rarr;</a>
+        )}
         <a href={`/${country.slug}/precio/`} class="text-primary hover:underline">Calcular otro precio &rarr;</a>
         <a href="/metodo/" class="text-primary hover:underline">Método de cálculo &rarr;</a>
       </div>

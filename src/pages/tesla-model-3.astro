@@ -1,0 +1,227 @@
+---
+/**
+ * /tesla-model-3/ — el mismo coche, país por país.
+ *
+ * Motivo medido: «tesla model 3 precio» es la consulta con más apariciones del
+ * sitio (262 en 28 días) y Google la responde con la ficha de Argentina, que no
+ * tiene precio del país y dice «precio local pendiente»: nadie pincha un
+ * resultado que anuncia que no tiene el dato. Las búsquedas genéricas merecen
+ * una página que responda la pregunta de verdad, y esta es: qué cuesta el
+ * Model 3 en cada país donde hay precio oficial, medido en horas de trabajo.
+ *
+ * Solo entran países con precio de origen «local». Donde no lo hay, se dice por
+ * qué —Tesla no vende oficialmente en Argentina y en México el sitio no tiene
+ * una cifra oficial comprobable— y no se convierte el precio de otro país.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pickTitle } from '../lib/titleWidth.ts';
+import { calcHourlyWage } from '../lib/calc.ts';
+import { formatHours, formatIntegerThousands, formatMonths } from '../lib/format.ts';
+import { referenceSalary } from '../lib/selectors.ts';
+import type { Country, Product } from '../lib/types.ts';
+import countriesData from '../data/countries.json';
+import productsData from '../data/products.json';
+import { generateBreadcrumbSchema, generateFAQSchema } from '../lib/seo.ts';
+
+const PRODUCTO = 'tesla-model-3';
+const countries = countriesData as Country[];
+const producto = (productsData as Product[]).find((p) => p.id === PRODUCTO)!;
+
+const filas = countries
+  .map((c) => {
+    const precio = producto.prices[c.code];
+    if (!precio || precio.origin !== 'local') return null;
+    const ref = referenceSalary(c);
+    if (!ref) return null;
+    const hora = calcHourlyWage(ref.monthly, c.legalWeeklyHours);
+    const horas = precio.value / hora;
+    return {
+      country: c,
+      precio,
+      ref,
+      horas,
+      meses: precio.value / ref.monthly,
+    };
+  })
+  .filter((x): x is NonNullable<typeof x> => x !== null)
+  .sort((a, b) => a.horas - b.horas);
+
+const sinPrecio = countries.filter((c) => {
+  const p = producto.prices[c.code];
+  return !p || p.origin !== 'local';
+});
+
+const masBarato = filas[0];
+const masCaro = filas[filas.length - 1];
+// Ojo: NO se ordena por precio. Las cifras están en divisas distintas y 36.990
+// euros no se comparan con 36.990 pesos ni con 29.900.000 pesos chilenos: lo
+// único comparable entre países es el trabajo, que es lo que mide la tabla.
+
+const siteUrl = (Astro.site?.href ?? 'https://precioentiempo.com').replace(/\/$/, '');
+const canonicalUrl = `${siteUrl}/${PRODUCTO}/`;
+const nombresSinPrecio = sinPrecio.map((c) => c.name).join(' y ');
+
+const faqs = [
+  {
+    question: '¿Cuánto cuesta un Tesla Model 3?',
+    answer: `Depende del país, y no solo por los impuestos: medido en horas de trabajo, va de las ${formatHours(masBarato.horas)} horas que cuesta en ${masBarato.country.name} a las ${formatHours(masCaro.horas)} de ${masCaro.country.name}, con el sueldo de referencia de cada uno. Los precios están cada uno en la divisa de su país y no se convierten entre sí: lo comparable es el trabajo.`,
+  },
+  {
+    question: '¿Por qué cambia tanto según el país?',
+    answer:
+      'Por dos cosas a la vez: el precio oficial del coche no es el mismo en todos los países, y el sueldo tampoco. Convertir el precio de un país a la moneda de otro dice poco, porque el mismo dinero no compra lo mismo en cada sitio; por eso la tabla compara horas y no monedas.',
+  },
+  {
+    question: `¿Y en ${nombresSinPrecio}?`,
+    answer: `No hay precio en la tabla porque no hay una cifra oficial que se pueda sostener: Tesla no vende oficialmente en Argentina y para México el sitio no tiene un precio de configurador comprobable, así que se queda sin cifra en vez de poner la conversión desde otro país, que sería inventar. Cuando se pueda comprobar, entrará con su fuente.`,
+  },
+  {
+    question: '¿De dónde salen los precios?',
+    answer:
+      'Del configurador oficial de Tesla en cada país, con la versión de acceso y el precio del vehículo sin impuesto de matriculación ni ayudas. Cada fila de la tabla enlaza su fuente, y los mismos datos se pueden descargar en la página de datos del proyecto.',
+  },
+];
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Inicio', url: `${siteUrl}/` },
+  { name: 'Tesla Model 3, país por país', url: canonicalUrl },
+]);
+const faqSchema = generateFAQSchema(faqs);
+
+const pageTitle = pickTitle([
+  `Tesla Model 3: de ${formatHours(masBarato.horas)} a ${formatHours(masCaro.horas)} horas de trabajo según el país`,
+  'Cuánto cuesta un Tesla Model 3 en cada país',
+  'Tesla Model 3, país por país',
+]);
+const pageDescription = `El mismo Tesla Model 3 cuesta ${formatHours(masBarato.horas)} horas de trabajo en ${masBarato.country.name} y ${formatHours(masCaro.horas)} en ${masCaro.country.name}. Precio oficial de cada configurador, convertido a horas con el sueldo de cada país.`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[breadcrumbSchema, faqSchema]}>
+  <div class="max-w-5xl mx-auto px-4 py-8 space-y-8">
+    <header class="board-plate p-6 sm:p-8 border border-base-300 shadow-md">
+      <p class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-semibold flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+        <span>Mismo coche · {filas.length} países</span>
+      </p>
+      <h1 class="font-signage uppercase text-3xl sm:text-5xl leading-tight mt-2 tracking-tight">
+        ¿Cuánto cuesta un Tesla Model 3?
+      </h1>
+      <p class="mt-4 text-base sm:text-lg font-sans leading-relaxed">
+        El mismo coche cuesta <strong class="text-primary">{formatHours(masBarato.horas)} horas de trabajo</strong> en
+        {masBarato.country.name} y <strong class="text-primary">{formatHours(masCaro.horas)} horas</strong> en
+        {masCaro.country.name}. El precio del vehículo es el del configurador oficial de cada país; la diferencia
+        la pone, sobre todo, lo que se cobra por hora en cada sitio.
+      </p>
+      <p class="mt-3 font-sans text-sm opacity-85 leading-relaxed">
+        La otra lectura útil es el tiempo: en {masBarato.country.name} el coche cuesta
+        {formatMonths(masBarato.meses)} de sueldo íntegro, y en {masCaro.country.name},
+        {formatMonths(masCaro.meses)}. Los precios de la tabla están cada uno en su divisa y no se
+        convierten: un precio convertido diría poco, porque el mismo dinero no compra lo mismo en cada país.
+      </p>
+    </header>
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">El Model 3, país por país</h2>
+      <p class="font-sans text-sm opacity-85">
+        De menos a más horas de trabajo. Cada país con su precio, su configurador y su sueldo: aquí no se
+        convierten monedas, se comparan horas.
+      </p>
+      <div class="md:overflow-x-auto md:border md:border-base-300">
+        <table class="board-table w-full text-left font-body text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+              <th class="p-3">País</th>
+              <th class="p-3">Precio oficial</th>
+              <th class="p-3">Fuente</th>
+              <th class="p-3">Sueldo de referencia</th>
+              <th class="p-3">Horas de trabajo</th>
+              <th class="p-3">Meses de sueldo</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300">
+            {filas.map((f) => (
+              <tr class="bg-base-200/50">
+                <td class="p-3 font-semibold text-base-content" data-label="País">
+                  <a class="hover:text-primary transition-colors" href={`/${f.country.slug}/${PRODUCTO}/`}>{f.country.name}</a>
+                </td>
+                <td class="p-3 opacity-90" data-label="Precio oficial">
+                  {formatIntegerThousands(f.precio.value)} {f.country.currencySymbol}
+                  <span class="block font-board-mono text-[11px] opacity-70">{f.precio.date}</span>
+                </td>
+                <td class="p-3 opacity-90" data-label="Fuente">
+                  {f.precio.url ? (
+                    <a class="text-primary hover:underline" href={f.precio.url} target="_blank" rel="noopener nofollow">Configurador oficial</a>
+                  ) : (
+                    <span class="font-board-mono text-xs opacity-80">{f.precio.source}</span>
+                  )}
+                </td>
+                <td class="p-3 opacity-90" data-label="Sueldo">
+                  {formatIntegerThousands(f.ref.monthly)} {f.country.currencySymbol}/mes
+                  <span class="block font-board-mono text-[11px] opacity-70">{f.ref.kind === 'min' ? 'mínimo' : 'mediano neto'}</span>
+                </td>
+                <td class="p-3 text-primary font-semibold" data-label="Horas">{formatHours(f.horas)} h</td>
+                <td class="p-3 opacity-90" data-label="Meses">{formatMonths(f.meses)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="font-sans text-xs opacity-70 leading-relaxed">
+        Precio del vehículo según el configurador oficial (versión de acceso), sin impuesto de matriculación ni
+        ayudas: con impuestos, el precio de compra sube. Las horas se calculan con el sueldo de referencia y la
+        jornada legal de cada país; donde el sueldo es el mínimo ({filas.filter((f) => f.ref.kind === 'min').map((f) => f.country.name).join(', ') || 'ninguno'}), se dice.
+      </p>
+      {sinPrecio.length > 0 && (
+        <p class="font-sans text-sm opacity-85 leading-relaxed border-l-2 border-warning pl-3">
+          <strong>Se quedan fuera {nombresSinPrecio}.</strong> No es un olvido: Tesla no vende oficialmente en Argentina, y
+          para México no hay una cifra oficial comprobable desde aquí. Se quedan fuera antes que poner el precio
+          de otro país convertido, que diría algo falso: que allí cuesta eso.
+        </p>
+      )}
+    </section>
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">Qué cambia la respuesta</h2>
+      <ul class="space-y-3 font-sans text-sm sm:text-base leading-relaxed">
+        <li>
+          <strong>El precio oficial del configurador:</strong> cada país lo pone en su divisa y no se
+          convierten entre sí. En la tabla está el de cada uno con su fecha y su enlace.
+        </li>
+        <li>
+          <strong>La jornada legal:</strong> no se trabaja lo mismo en todas partes. {filas.filter((f) => f.country.legalWeeklyHours !== 40).map((f) => `${f.country.name} trabaja ${f.country.legalWeeklyHours} h semanales`).join(', ') || 'Los diez países de la tabla trabajan 40 h semanales'}.
+        </li>
+        <li>
+          <strong>El sueldo con el que se mide:</strong> la mediana neta donde se publica, y el mínimo donde no.
+          Cambiar de referencia cambia la cifra, y por eso está dicha en cada fila.
+        </li>
+      </ul>
+      <p class="font-sans text-sm opacity-85 leading-relaxed">
+        Si quieres el cálculo con tu propia nómina, en cada página de país está la
+        <a class="text-primary hover:underline" href="/espana/precio/">calculadora</a>: se ajusta a tu sueldo y a tu
+        jornada, sin salir de tu dispositivo.
+      </p>
+    </section>
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4" aria-label="Preguntas Frecuentes">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">Preguntas frecuentes</h2>
+      <div class="space-y-4 pt-2">
+        {faqs.map((faq) => (
+          <div class="border-b border-base-300 pb-3">
+            <h3 class="font-bold text-base text-base-content">{faq.question}</h3>
+            <p class="text-sm opacity-80 mt-1 leading-relaxed font-sans">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-3">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">Sigue desde aquí</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-sans text-sm">
+        <li><a class="text-primary hover:underline" href="/espana/tesla-model-3/">Tesla Model 3 en España, con la calculadora</a></li>
+        <li><a class="text-primary hover:underline" href="/vivir-un-mes/">Cuántas horas de trabajo cuesta vivir un mes en cada país</a></li>
+        <li><a class="text-primary hover:underline" href="/datos/">Descargar los datos de precios y horas de trabajo (CSV)</a></li>
+        <li><a class="text-primary hover:underline" href="/">Todos los productos y países</a></li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>

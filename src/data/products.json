@@ -2600,11 +2600,12 @@
     "category": "transporte",
     "prices": {
       "ES": {
-        "value": 33365,
-        "date": "2026-08",
-        "note": "Precio de referencia de acceso en oferta reciente. Edítalo.",
-        "source": "Referencia de producto",
-        "origin": "local"
+        "value": 36990,
+        "date": "2026-10",
+        "note": "Model 3 Tracción trasera (versión de acceso) según el configurador oficial. Precio del vehículo, sin impuesto de matriculación ni ayudas.",
+        "source": "Tesla · configurador oficial (Model 3, 2026)",
+        "origin": "local",
+        "url": "https://www.tesla.com/es_ES/model3/design"
       },
       "GB": {
         "value": 37990,
