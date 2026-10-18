@@ -25,6 +25,7 @@ export const GET: APIRoute = async ({ site }) => {
   urls.push({ loc: `${baseUrl}/`, lastmod: today, changefreq: 'daily', priority: '1.0' });
   urls.push({ loc: `${baseUrl}/metodo/`, lastmod: '2026-08-01', changefreq: 'monthly', priority: '0.8' });
   urls.push({ loc: `${baseUrl}/datos/`, lastmod: today, changefreq: 'weekly', priority: '0.8' });
+  urls.push({ loc: `${baseUrl}/vivir-un-mes/`, lastmod: today, changefreq: 'monthly', priority: '0.8' });
   urls.push({ loc: `${baseUrl}/sobre-el-proyecto/`, lastmod: '2026-09-01', changefreq: 'monthly', priority: '0.7' });
   urls.push({ loc: `${baseUrl}/contacto/`, lastmod: '2026-09-01', changefreq: 'monthly', priority: '0.6' });
   urls.push({ loc: `${baseUrl}/aviso-legal/`, lastmod: '2026-09-01', changefreq: 'yearly', priority: '0.4' });

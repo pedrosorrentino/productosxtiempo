@@ -1,0 +1,274 @@
+---
+/**
+ * /vivir-un-mes/ — cuántas horas de trabajo cuesta vivir un mes en cada país.
+ *
+ * Es la página-narrativa del proyecto: junta los cinco gastos que sostiene
+ * cualquier casa (alquiler, compra semanal, luz y gas, internet y abono de
+ * transporte) y los mide en horas de trabajo, país por país. La comparación
+ * entre países solo tiene sentido en horas, no en dinero: por eso no se
+ * convierten monedas en ningún punto.
+ *
+ * Reglas: solo entran precios TOMADOS EN EL PAÍS (origin «local»). Si a un país
+ * le falta un componente, se calcula con lo que hay y se dice cuál falta, en la
+ * tabla y en el texto — nunca se rellena con la conversión de otro país.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pickTitle } from '../lib/titleWidth.ts';
+import { calcHourlyWage, WEEKS_PER_MONTH } from '../lib/calc.ts';
+import { formatHours, formatIntegerThousands, formatMonths, formatPercent } from '../lib/format.ts';
+import { referenceSalary } from '../lib/selectors.ts';
+import type { Country, Product } from '../lib/types.ts';
+import countriesData from '../data/countries.json';
+import productsData from '../data/products.json';
+import { generateBreadcrumbSchema, generateFAQSchema } from '../lib/seo.ts';
+
+const countries = countriesData as Country[];
+const products = productsData as Product[];
+
+/** Los cinco gastos del mes, en el orden en que se leen. */
+const COMPONENTES = [
+  { id: 'alquiler-piso', etiqueta: 'Alquiler', factor: 1 },
+  { id: 'cesta-semanal', etiqueta: 'Compra semanal', factor: WEEKS_PER_MONTH },
+  { id: 'luz-gas-mes', etiqueta: 'Luz y gas', factor: 1 },
+  { id: 'fibra-mes', etiqueta: 'Internet', factor: 1 },
+  { id: 'abono-transporte', etiqueta: 'Abono de transporte', factor: 1 },
+];
+
+const buscarProducto = (id: string) => products.find((p) => p.id === id && p.visible);
+
+const filas = countries
+  .map((c) => {
+    const ref = referenceSalary(c);
+    if (!ref) return null;
+    const hora = calcHourlyWage(ref.monthly, c.legalWeeklyHours);
+    const items: Array<{ etiqueta: string; importe: number }> = [];
+    const faltan: string[] = [];
+    for (const comp of COMPONENTES) {
+      const p = buscarProducto(comp.id);
+      const precio = p?.prices[c.code];
+      if (!p || !precio || precio.origin !== 'local') {
+        faltan.push(comp.etiqueta);
+        continue;
+      }
+      items.push({ etiqueta: comp.etiqueta, importe: precio.value * comp.factor });
+    }
+    if (items.length < 3) return null;
+    const total = items.reduce((s, i) => s + i.importe, 0);
+    const horas = total / hora;
+    const parteDelSueldo = total / ref.monthly;
+    const masPesado = [...items].sort((a, b) => b.importe - a.importe)[0];
+    return {
+      country: c,
+      ref,
+      items,
+      faltan,
+      total,
+      horas,
+      parteDelSueldo,
+      masPesado,
+      completa: faltan.length === 0,
+      /** Un piso entero cuesta más que el sueldo de referencia del país. */
+      noAlcanza: parteDelSueldo > 1,
+      /** El sueldo del país es una referencia editable, no un dato publicado. */
+      sueldoOrientativo: c.salaryDataKind === 'orientativo',
+    };
+  })
+  .filter((x): x is NonNullable<typeof x> => x !== null)
+  .sort((a, b) => a.horas - b.horas);
+
+const masBarato = filas[0];
+const masCaro = filas[filas.length - 1];
+const conTodosLosDatos = filas.filter((f) => f.completa);
+const noAlcanza = filas.filter((f) => f.noAlcanza);
+const sueldoOrientativo = filas.filter((f) => f.sueldoOrientativo);
+const conSalarioMinimo = filas.filter((f) => f.ref.kind === 'min');
+const nombres = (xs: typeof filas) => xs.map((f) => f.country.name).join(', ');
+
+const faqs = [
+  {
+    question: '¿Qué entra en ese «mes»?',
+    answer: `Los cinco gastos que sostiene una casa: alquiler de un piso, la compra semanal (contada como ${WEEKS_PER_MONTH.toFixed(2).replace('.', ',')} semanas al mes), luz y gas, internet y el abono de transporte. No entra ropa, ni ocio, ni imprevistos, ni el coche: es un mes básico, no un mes cualquiera.`,
+  },
+  {
+    question: '¿Por qué lo medís en horas y no en euros o pesos?',
+    answer:
+      'Porque el dinero no se puede comparar entre países sin saber cuánto cuesta allí la vida, y las horas sí: cada país usa su propio sueldo y su propia jornada legal, así que la cifra dice cuánto tiempo de trabajo hace falta, no cuántos billetes. Aquí no se convierte ninguna moneda.',
+  },
+  {
+    question: '¿Cuál es el país donde vivir un mes cuesta menos horas de trabajo?',
+    answer: masBarato && masCaro
+      ? `${masBarato.country.name}, con ${formatHours(masBarato.horas)} horas de trabajo al mes, frente a las ${formatHours(masCaro.horas)} de ${masCaro.country.name}. La diferencia no está en los precios: está en lo que se cobra por hora en cada sitio.`
+      : 'Depende del país: la tabla de la página lo pone país por país, con el sueldo de cada uno.',
+  },
+  {
+    question: '¿Cómo puede costar un mes más que un sueldo entero?',
+    answer: `Porque el alquiler que se mide es un piso entero de uno o dos dormitorios, y en varios países eso ya se come el sueldo mediano: ${filas.filter((f) => f.noAlcanza).map((f) => f.country.name).join(', ')}. No significa que la gente gaste eso, sino que comparte piso, vive más lejos del centro o alquila una habitación. Cada ficha de país lleva el precio de la habitación en piso compartido con su fuente.`,
+  },
+  {
+    question: '¿Por qué en algunos países falta algún gasto?',
+    answer: `Porque solo entran precios tomados en el país, con su fuente. Donde no hay un precio verificado de algún componente, se calcula con los demás y se dice cuál falta${filas.filter((f) => !f.completa).length ? `: ${filas.filter((f) => !f.completa).map((f) => `${f.country.name} (${f.faltan.join(', ').toLowerCase()})`).join('; ')}` : ''}. Convertir el precio de otro país no es una opción: sería inventar.`,
+  },
+];
+
+const siteUrl = (Astro.site?.href ?? 'https://precioentiempo.com').replace(/\/$/, '');
+const canonicalUrl = `${siteUrl}/vivir-un-mes/`;
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Inicio', url: `${siteUrl}/` },
+  { name: 'Vivir un mes en horas de trabajo', url: canonicalUrl },
+]);
+const faqSchema = generateFAQSchema(faqs);
+
+// El número de países NO se escribe a mano: es el que de verdad se ha podido
+// calcular con precios tomados en el país (Argentina se queda fuera: su compra,
+// su luz y su transporte son conversiones desde España, no precios de allí).
+const cuantos = filas.length;
+const pageTitle = pickTitle([
+  `Vivir un mes en ${cuantos} países: de ${formatHours(masBarato?.horas ?? 0)} a ${formatHours(masCaro?.horas ?? 0)} horas de trabajo`,
+  `Cuántas horas de trabajo cuesta vivir un mes en ${cuantos} países`,
+  'Cuántas horas de trabajo cuesta vivir un mes',
+]);
+const pageDescription = `Vivir un mes (alquiler, compra, luz y gas, internet y transporte) cuesta ${masBarato ? formatHours(masBarato.horas) : ''} horas de trabajo en ${masBarato?.country.name ?? ''} y ${masCaro ? formatHours(masCaro.horas) : ''} en ${masCaro?.country.name ?? ''}. Los ${cuantos} países con precios tomados en el país, con el sueldo y la jornada de cada uno.`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[breadcrumbSchema, faqSchema]}>
+  <div class="max-w-5xl mx-auto px-4 py-8 space-y-8">
+    <header class="board-plate p-6 sm:p-8 border border-base-300 shadow-md">
+      <p class="font-board-mono text-xs uppercase tracking-[0.14em] text-primary font-semibold flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+        <span>Comparativa · {cuantos} países</span>
+      </p>
+      <h1 class="font-signage uppercase text-3xl sm:text-5xl leading-tight mt-2 tracking-tight">
+        ¿Cuántas horas de trabajo cuesta vivir un mes en cada país?
+      </h1>
+      <p class="mt-4 text-base sm:text-lg font-sans leading-relaxed">
+        El alquiler, la compra, la luz y el gas, internet y el abono de transporte, medidos en
+        tiempo de trabajo con el sueldo de cada país. Vivir un mes cuesta
+        {masBarato && <> <strong class="text-primary">{formatHours(masBarato.horas)} horas</strong> en {masBarato.country.name}</>}
+        {masCaro && <> y <strong class="text-primary">{formatHours(masCaro.horas)} horas</strong> en {masCaro.country.name}{masCaro.ref.kind === 'min' ? ' (sobre el salario mínimo, porque no publican mediana)' : ''}</>}.
+        Y ninguna de las dos cifras se puede comparar en dinero: cada país está calculado con su
+        propio sueldo, su propia jornada legal y sus propios precios.
+      </p>
+    </header>
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">El mes básico, país por país</h2>
+      <p class="font-sans text-sm opacity-85">
+        De menos a más horas de trabajo. Las columnas de gastos van en la divisa de cada país; la
+        columna que se compara es la de horas, y la última dice qué parte del sueldo mensual se come ese mes.
+      </p>
+      <div class="md:overflow-x-auto md:border md:border-base-300">
+        <table class="board-table w-full text-left font-body text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+              <th class="p-3">País</th>
+              <th class="p-3">Alquiler</th>
+              <th class="p-3">Compra</th>
+              <th class="p-3">Luz y gas + internet + transporte</th>
+              <th class="p-3">Total del mes</th>
+              <th class="p-3">Horas de trabajo</th>
+              <th class="p-3">Del sueldo</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300">
+            {filas.map((f) => {
+              const alquiler = f.items.find((i) => i.etiqueta === 'Alquiler')?.importe ?? 0;
+              const compra = f.items.find((i) => i.etiqueta === 'Compra semanal')?.importe ?? 0;
+              const resto = f.total - alquiler - compra;
+              return (
+                <tr class={f.completa ? 'bg-base-200/50' : 'bg-base-200/30'}>
+                  <td class="p-3 font-semibold text-base-content" data-label="País">
+                    <a class="hover:text-primary transition-colors" href={`/${f.country.slug}/`}>{f.country.name}</a>
+                    {!f.completa && (
+                      <span class="block font-board-mono text-[11px] opacity-70 font-normal">
+                        sin {f.faltan.join(', ').toLowerCase()}
+                      </span>
+                    )}
+                  </td>
+                  <td class="p-3 opacity-90" data-label="Alquiler">{formatIntegerThousands(alquiler)} {f.country.currencySymbol}</td>
+                  <td class="p-3 opacity-90" data-label="Compra">{formatIntegerThousands(compra)} {f.country.currencySymbol}</td>
+                  <td class="p-3 opacity-90" data-label="Suministros">{formatIntegerThousands(resto)} {f.country.currencySymbol}</td>
+                  <td class="p-3 opacity-90" data-label="Total">{formatIntegerThousands(f.total)} {f.country.currencySymbol}</td>
+                  <td class="p-3 text-primary font-semibold" data-label="Horas">
+                    {formatHours(f.horas)} h
+                    <span class="block font-board-mono text-xs opacity-75">{formatMonths(f.horas / (f.country.legalWeeklyHours * WEEKS_PER_MONTH))} meses de trabajo</span>
+                  </td>
+                  <td class="p-3 font-semibold" data-label="Del sueldo">
+                    {formatPercent(f.parteDelSueldo * 100)}%
+                    {f.sueldoOrientativo && <span class="block font-board-mono text-[10px] opacity-70 font-normal">sueldo orientativo</span>}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      {noAlcanza.length > 0 && (
+        <div class="font-sans text-sm leading-relaxed space-y-2 border-l-2 border-warning pl-3">
+          <p>
+            <strong>Ojo con las filas de más del 100%.</strong> Ese porcentaje no dice que nadie pueda
+            vivir allí: dice que <strong>un piso entero de alquiler se come el sueldo mediano completo</strong>,
+            y por eso se comparte piso. Pasa en {nombres(noAlcanza)}. El precio de una habitación en piso
+            compartido, con su fuente, está en la ficha de cada país.
+          </p>
+          {sueldoOrientativo.length > 0 && (
+            <p>
+              Y en {nombres(sueldoOrientativo)} hay que mirar además la letra pequeña: su sueldo es una
+              referencia editable, no una mediana publicada por un organismo, porque allí no existe una
+              cifra oficial comparable. El <a class="text-primary hover:underline" href="/metodo/">método</a>
+              lo explica caso por caso.
+            </p>
+          )}
+        </div>
+      )}
+      <p class="font-sans text-xs opacity-70 leading-relaxed">
+        El porcentaje se calcula sobre el sueldo de referencia de cada país
+        {conSalarioMinimo.length > 0 && <> (en {nombres(conSalarioMinimo)} sobre el salario mínimo, porque no publican mediana)</>}.
+        Los precios son los mismos que se pueden descargar en <a class="text-primary hover:underline" href="/datos/">la página de datos</a>,
+        con su fecha y su fuente.
+      </p>
+    </section>
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">Qué dice cada país</h2>
+      <ul class="space-y-3 font-sans text-sm sm:text-base leading-relaxed">
+        {filas.map((f) => (
+          <li class="border-b border-base-300 pb-3 last:border-0">
+            <strong>{f.country.name}:</strong> {formatHours(f.horas)} horas de trabajo al mes
+            ({formatPercent(f.parteDelSueldo * 100)}% de un sueldo de {formatIntegerThousands(f.ref.monthly)} {f.country.currencySymbol}),
+            y lo que más pesa es {f.masPesado.etiqueta.toLowerCase()}
+            {f.country.slug && <> (<a class="text-primary hover:underline" href={`/${f.country.slug}/dia-de-trabajo/`}>ver el día de trabajo</a>)</>}.
+            {f.faltan.length > 0 && <> Va sin {f.faltan.join(', ').toLowerCase()}, porque no hay un precio verificado de ese gasto en el país.</>}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-4" aria-label="Preguntas Frecuentes">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">Preguntas frecuentes</h2>
+      <div class="space-y-4 pt-2">
+        {faqs.map((faq) => (
+          <div class="border-b border-base-300 pb-3">
+            <h3 class="font-bold text-base text-base-content">{faq.question}</h3>
+            <p class="text-sm opacity-80 mt-1 leading-relaxed font-sans">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="board-plate p-6 sm:p-8 border border-base-300 space-y-3">
+      <h2 class="font-signage uppercase text-2xl sm:text-3xl">Sigue desde aquí</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-sans text-sm">
+        <li><a class="text-primary hover:underline" href="/datos/">Descargar los datos de esta comparativa (CSV y JSON)</a></li>
+        <li><a class="text-primary hover:underline" href="/metodo/">Cómo se calcula el sueldo de referencia de cada país</a></li>
+        <li><a class="text-primary hover:underline" href="/espana/dia-de-trabajo/">Cuánto vale un día de trabajo (país por país)</a></li>
+        <li><a class="text-primary hover:underline" href="/">Precio en Tiempo: todos los países y productos</a></li>
+      </ul>
+      <p class="font-sans text-xs opacity-70 leading-relaxed">
+        Comparativa elaborada con precios tomados en cada país ({conTodosLosDatos.length} de {cuantos} con
+        todos los componentes). Se puede reutilizar citando la fuente: los datos están en abierto con
+        licencia CC BY 4.0.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
