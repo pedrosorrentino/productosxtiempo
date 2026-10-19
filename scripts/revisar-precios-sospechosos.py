@@ -12,7 +12,7 @@ en la caché para que el próximo sync no los vuelva a aplicar).
 Uso:  python3 scripts/revisar-precios-sospechosos.py [--aplicar]
 Sin --aplicar solo informa.
 """
-import json, sys, urllib.request, argparse
+import json, sys, urllib.request, argparse, subprocess
 from pathlib import Path
 
 # La raíz del repo se deduce del propio fichero, NUNCA se escribe a mano:
@@ -91,6 +91,50 @@ for p in products:
                 "source": (es.get("source") or "Referencia de producto") + " (convertido)",
                 "origin": "converted",
             }
+# ---------------------------------------------------------------------------
+# Guarda 2: cambios bruscos respecto a lo ÚLTIMO PUBLICADO.
+#
+# La banda de arriba compara cada precio local con el español convertido, así
+# que es ciega a un desplazamiento uniforme: si el sync baja el precio español
+# y todos los demás a la vez, los ratios cuadran y ningún país sale sospechoso.
+# Pasó de verdad el 19-oct con «videojuego AAA»: el scraper devolvió un juego de
+# 17,99 € en los doce países (-70%) y la banda dio el cambio por bueno. Aquí se
+# compara con el precio que ya estaba publicado y, si el salto es grande, se
+# revierte: un AAA a 17,99 € no es una oferta, es otro juego.
+UMBRAL_CAMBIO = 0.40
+bruscos = []
+try:
+    crudo = subprocess.run(["git", "-C", str(REPO), "show", "HEAD:src/data/products.json"],
+                           capture_output=True, text=True, check=True).stdout
+    previos = {x["id"]: x["prices"] for x in json.loads(crudo)}
+except Exception as e:  # sin git o sin commit previo: se omite la guarda
+    previos = {}
+    print(f"aviso: no se pudo leer la versión publicada ({e}); se omite la guarda de cambios bruscos")
+
+for p in products:
+    antes = previos.get(p["id"], {})
+    for code, d in list(p["prices"].items()):
+        valor = d.get("value")
+        anterior = (antes.get(code) or {}).get("value")
+        if not valor or not anterior:
+            continue
+        ratio = valor / anterior
+        if ratio < 1 - UMBRAL_CAMBIO or ratio > 1 + UMBRAL_CAMBIO:
+            bruscos.append((code, p["id"], anterior, valor, round(ratio, 2), d.get("source", "")))
+
+print(f"cambios de más del {UMBRAL_CAMBIO:.0%} respecto a lo publicado: {len(bruscos)}")
+for code, pid, antes_v, ahora_v, ratio, fuente in sorted(bruscos):
+    print(f"   {code} {pid:<22} {antes_v:>12} -> {ahora_v:>12}  ratio {ratio}  ({fuente[:34]})")
+
+for p in products:
+    antes = previos.get(p["id"], {})
+    for code, pid, *_ in [(c, i, a, v, r, f) for c, i, a, v, r, f in bruscos if i == p["id"]]:
+        if code in antes:
+            p["prices"][code] = dict(antes[code])
+
+if bruscos:
+    print(f"   -> {len(bruscos)} precios devueltos a como estaban publicados")
+
 json.dump(products, open(REPO / "src/data/products.json", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
 # 2. Marcar la caché para que el próximo sync no los reaplique

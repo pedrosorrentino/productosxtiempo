@@ -4530,86 +4530,86 @@
     "category": "tecnologia",
     "prices": {
       "ES": {
-        "value": 17.99,
+        "value": 59.99,
         "date": "2026-10",
-        "note": "Precio oficial en Steam (17,99€).",
+        "note": "Precio oficial en Steam (59,99€).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
       "GB": {
-        "value": 14.99,
+        "value": 49.99,
         "date": "2026-10",
-        "note": "Precio oficial en Steam (£14.99).",
+        "note": "Precio oficial en Steam (£49.99).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
       "US": {
-        "value": 17.99,
+        "value": 59.99,
         "date": "2026-10",
-        "note": "Precio oficial en Steam ($17.99).",
+        "note": "Precio oficial en Steam ($59.99).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
       "MX": {
-        "value": 299.7,
+        "value": 999,
         "date": "2026-10",
-        "note": "Precio oficial en Steam (Mex$ 299.70).",
+        "note": "Precio oficial en Steam (Mex$ 999.00).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
       "AR": {
-        "value": 13.49,
+        "value": 44.99,
         "date": "2026-10",
-        "note": "Precio oficial en Steam ($13.49 USD).",
+        "note": "Precio oficial en Steam ($44.99 USD).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
       "CO": {
-        "value": 59700,
+        "value": 199000,
         "date": "2026-10",
-        "note": "Precio oficial en Steam (COL$ 59.700).",
+        "note": "Precio oficial en Steam (COL$ 199.000).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
       "CL": {
-        "value": 11999,
+        "value": 39999,
         "date": "2026-10",
-        "note": "Precio oficial en Steam (CLP$ 11.999).",
+        "note": "Precio oficial en Steam (CLP$ 39.999).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
       "CH": {
-        "value": 16.79,
+        "value": 55.99,
         "date": "2026-10",
-        "note": "Precio oficial en Steam (CHF 16.79).",
+        "note": "Precio oficial en Steam (CHF 55.99).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
       "PT": {
-        "value": 17.99,
+        "value": 59.99,
         "date": "2026-10",
-        "note": "Precio oficial en Steam (17,99€).",
+        "note": "Precio oficial en Steam (59,99€).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
       "FR": {
-        "value": 17.99,
+        "value": 59.99,
         "date": "2026-10",
-        "note": "Precio oficial en Steam (17,99€).",
+        "note": "Precio oficial en Steam (59,99€).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
       "DE": {
-        "value": 17.99,
+        "value": 59.99,
         "date": "2026-10",
-        "note": "Precio oficial en Steam (17,99€).",
+        "note": "Precio oficial en Steam (59,99€).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
       "IT": {
-        "value": 17.99,
+        "value": 59.99,
         "date": "2026-10",
-        "note": "Precio oficial en Steam (17,99€).",
+        "note": "Precio oficial en Steam (59,99€).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       }
