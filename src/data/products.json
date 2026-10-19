@@ -1488,7 +1488,7 @@
         "origin": "local"
       },
       "CL": {
-        "value": 294990,
+        "value": 284990,
         "date": "2026-10",
         "note": "Precio mediano de tienda en Falabella Chile (CLP).",
         "source": "Falabella Chile (precio de tienda)",
@@ -5098,86 +5098,86 @@
     "category": "vida",
     "prices": {
       "ES": {
-        "value": 73104,
+        "value": 73120,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.104 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (73.120 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "GB": {
-        "value": 61609,
+        "value": 61605,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (61.609 £).",
+        "note": "Cotización de mercado de 1 Bitcoin (61.605 £).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "US": {
-        "value": 81964,
+        "value": 81972,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (81.964 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (81.972 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "MX": {
-        "value": 1510690,
+        "value": 1510302,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (1.510.690 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (1.510.302 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "AR": {
-        "value": 124945980,
+        "value": 124944694,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (124.945.980 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (124.944.694 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CO": {
-        "value": 260092125,
+        "value": 260101250,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (260.092.125 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (260.101.250 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CL": {
-        "value": 80386988,
+        "value": 80394885,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (80.386.988 $).",
+        "note": "Cotización de mercado de 1 Bitcoin (80.394.885 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CH": {
-        "value": 67768,
+        "value": 67744,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (67.768 Fr.).",
+        "note": "Cotización de mercado de 1 Bitcoin (67.744 Fr.).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "PT": {
-        "value": 73104,
+        "value": 73120,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.104 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (73.120 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "FR": {
-        "value": 73104,
+        "value": 73120,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.104 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (73.120 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "DE": {
-        "value": 73104,
+        "value": 73120,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.104 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (73.120 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "IT": {
-        "value": 73104,
+        "value": 73120,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Bitcoin (73.104 €).",
+        "note": "Cotización de mercado de 1 Bitcoin (73.120 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       }
@@ -5949,9 +5949,9 @@
     "category": "vida",
     "prices": {
       "ES": {
-        "value": 2140,
+        "value": 2141,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2140 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2141 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -5963,9 +5963,9 @@
         "origin": "local"
       },
       "US": {
-        "value": 2399,
+        "value": 2400,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2399 $).",
+        "note": "Cotización de mercado de 1 Ethereum (2400 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -5977,23 +5977,23 @@
         "origin": "local"
       },
       "AR": {
-        "value": 3657697,
+        "value": 3658616,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (3.657.697 $).",
+        "note": "Cotización de mercado de 1 Ethereum (3.658.616 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CO": {
-        "value": 7613997,
+        "value": 7616254,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (7.613.997 $).",
+        "note": "Cotización de mercado de 1 Ethereum (7.616.254 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "CL": {
-        "value": 2353267,
+        "value": 2354114,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2.353.267 $).",
+        "note": "Cotización de mercado de 1 Ethereum (2.354.114 $).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
@@ -6005,30 +6005,30 @@
         "origin": "local"
       },
       "PT": {
-        "value": 2140,
+        "value": 2141,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2140 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2141 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "FR": {
-        "value": 2140,
+        "value": 2141,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2140 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2141 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "DE": {
-        "value": 2140,
+        "value": 2141,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2140 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2141 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       },
       "IT": {
-        "value": 2140,
+        "value": 2141,
         "date": "2026-10",
-        "note": "Cotización de mercado de 1 Ethereum (2140 €).",
+        "note": "Cotización de mercado de 1 Ethereum (2141 €).",
         "source": "CoinGecko API (mercado)",
         "origin": "local"
       }
