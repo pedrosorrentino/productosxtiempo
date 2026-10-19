@@ -9,13 +9,17 @@ de esa fuente con el precio español convertido a la divisa del país y, cuando
 se salen de la banda, se devuelven a «convertido» (y se marcan como rechazados
 en la caché para que el próximo sync no los vuelva a aplicar).
 
-Uso:  python3 revisar_serpapi.py [--aplicar]
+Uso:  python3 scripts/revisar-precios-sospechosos.py [--aplicar]
 Sin --aplicar solo informa.
 """
 import json, sys, urllib.request, argparse
 from pathlib import Path
 
-REPO = Path("/home/coder/proyectos/precioentiempo/repo")
+# La raíz del repo se deduce del propio fichero, NUNCA se escribe a mano:
+# con una ruta absoluta el script funcionaba en el portátil y reventaba en
+# GitHub Actions, cuyo checkout vive en /home/runner/work/<repo>/<repo>. Ese
+# fue el fallo que dejó la sincronización de catálogo en rojo dos semanas.
+REPO = Path(__file__).resolve().parent.parent
 MIN, MAX = 0.6, 1.8
 
 ap = argparse.ArgumentParser()
