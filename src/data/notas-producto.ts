@@ -184,6 +184,46 @@ export const NOTAS_PRODUCTO: Record<string, string[]> = {
     "PVP del SUV compacto de precio ajustado con el acabado Comfort. La marca, de origen británico y hoy en manos chinas, ha entrado en Europa compitiendo por precio antes que por imagen, y eso se nota en la cifra.",
     "No incluye matriculación, seguro ni mantenimiento. La red de servicio es más pequeña que la de las marcas tradicionales, algo que importa más a los tres o cuatro años que el día de la compra.",
   ],
+  "ortodoncia-invisible": [
+    "Tratamiento correctivo completo con alineadores transparentes, de unos 18 meses de duración media. Incluye el estudio inicial, los alineadores, las revisiones y la retención final; no incluye la ortodoncia infantil ni los casos que requieren cirugía.",
+    "El precio varía mucho más que el de una funda de móvil: entre clínicas de la misma ciudad puede haber el doble, y casi nunca por la marca de los alineadores. Las clínicas con escáner propio y seguimiento cercano cobran más y ahorran visitas; las low-cost abaratan la entrada y cobran aparte las revisiones.",
+  ],
+  "amazon-prime": [
+    "Cuota anual de la suscripción, no mensual: el precio mensual existe y sale más caro al año. Incluye envíos rápidos, vídeo y música, y su utilidad depende de cuánto se compre en Amazon más que del precio en sí.",
+    "La cuota sube con frecuencia y de forma distinta en cada país, así que la cifra de esta ficha caduca antes que la de un producto físico. Si se compara entre países, conviene mirar también qué incluye: el catálogo de vídeo cambia y las condiciones de envío, más.",
+  ],
+  "factura-luz-mes": [
+    "Factura doméstica de 250 kWh al mes al precio oficial del kilovatio hora, con impuestos incluidos. No es un recibo real: es un consumo tipo, para que las cifras de distintos países se puedan comparar entre sí.",
+    "La factura real depende del consumo, de la tarifa contratada y de la potencia, y en muchos países casi la mitad de lo que se paga no es energía sino peajes y cargos fijos. Por eso dos hogares con el mismo consumo pueden pagar muy distinto.",
+  ],
+  "factura-gas-mes": [
+    "Factura doméstica de 625 kWh de gas al mes, para cocina, agua caliente y calefacción de un piso medio. Igual que la luz, es un consumo tipo y no un recibo real: sirve para comparar, no para adivinar lo que pagarás en enero.",
+    "En los países donde la calefacción es de gas, esta factura se concentra en invierno y en verano baja a casi nada. El coste del gas depende menos de la producción que del transporte y de los impuestos de cada país.",
+  ],
+  "gafas-graduadas": [
+    "Montura graduada con cristales orgánicos antirreflejantes de gama media, montaje incluido. No incluye cristales progresivos, tratamientos especiales ni la revisión optométrica, que en algunos países se cobra aparte.",
+    "Es el producto donde la diferencia entre comprar en óptica y comprar por internet es mayor: el mismo tipo de cristal puede costar la mitad. Lo que se paga de más en la óptica es la graduación presencial y el ajuste de la montura, no el cristal.",
+  ],
+  "implante-dental": [
+    "Precio orientativo de un implante unitario con corona, que es la parte visible del tratamiento. No incluye el injerto de hueso ni la elevación de seno, que en muchos casos son necesarios y pueden añadir más que el propio implante.",
+    "La horquilla entre clínicas es enorme y no siempre por la calidad de la pieza: influye el cirujano, la ciudad y si el tratamiento se hace en varias sedes. Pedir dos presupuestos no es desconfianza, es la norma en este sector.",
+  ],
+  "sesion-psicologo": [
+    "Una sesión individual de 50 a 60 minutos con un psicólogo sanitario privado, sin seguro de por medio. No incluye la primera entrevista, que muchas consultas cobran aparte, ni el tratamiento completo: una terapia media son entre ocho y veinte sesiones.",
+    "El precio depende de la ciudad y de la experiencia del profesional más que de la corriente terapéutica. En algunos países la sanidad pública cubre parte de la terapia con lista de espera, y eso cambia por completo el coste real de tratarse.",
+  ],
+  "seguro-salud": [
+    "Póliza individual completa, sin copago en las consultas, para un adulto de entre 30 y 40 años. El precio que se paga de verdad depende de la edad, de las enfermedades previas y de si se contrata con o sin dental.",
+    "La prima sube con los años y con el uso: quien contrata joven y sano paga menos, y quien espera a tener un problema puede encontrar exclusiones. Es el producto del catálogo donde el precio anunciado y el precio final más se separan.",
+  ],
+  "guarderia-mes": [
+    "Cuota mensual de una guardería privada para un niño de 0 a 3 años, con jornada completa y comedor según el centro. No incluye matrícula, material ni las horas extra, que suelen cobrarse aparte.",
+    "En muchos países existen plazas públicas o ayudas por hijo que reducen el coste a una fracción, y esa es la diferencia real entre países: no el precio de la privada, sino cuántas familias consiguen plaza pública. La cifra de esta ficha es la privada, sin ayudas.",
+  ],
+  "master": [
+    "Precio orientativo de un máster universitario de un año, en una universidad pública o privada según el país. No incluye tasas administrativas, material ni el coste de vivir durante el curso, que para quien se muda pesa más que la matrícula.",
+    "La horquilla es enorme: un máster oficial en una universidad pública europea puede costar menos que un trimestre de una privada. El precio no mide la calidad del programa, pero sí cuánto tarda en recuperarse la inversión con el sueldo del país.",
+  ],
 };
 
 /** Devuelve la nota del producto, o null si no tiene (no se rellena con relleno). */
