@@ -224,6 +224,54 @@ export const NOTAS_PRODUCTO: Record<string, string[]> = {
     "Precio orientativo de un máster universitario de un año, en una universidad pública o privada según el país. No incluye tasas administrativas, material ni el coste de vivir durante el curso, que para quien se muda pesa más que la matrícula.",
     "La horquilla es enorme: un máster oficial en una universidad pública europea puede costar menos que un trimestre de una privada. El precio no mide la calidad del programa, pero sí cuánto tarda en recuperarse la inversión con el sueldo del país.",
   ],
+  "linea-movil": [
+    "Cuota mensual de una línea de móvil con datos, en una tarifa de contrato de precio medio. No incluye el teléfono: si el terminal va financiado, la cuota sube y el aparato acaba costando más que comprado al contado.",
+    "Los precios de las operadoras cambian cada pocos meses y las tarifas baratas suelen llevar permanencia o subidas anuales por contrato. Comparar entre países con la misma cantidad de datos es difícil: casi ninguna operadora vende lo mismo en dos mercados.",
+  ],
+  "fibra-mes": [
+    "Cuota mensual de fibra óptica en el domicilio, con una velocidad de gama media y sin televisión ni móvil incluidos. Los paquetes que se anuncian más baratos suelen ser la suma de tres servicios, y ahí el precio por separado no existe.",
+    "El precio depende de si la zona tiene competencia real de operadores: donde solo llega una, la cuota es más alta. Es uno de los servicios donde la diferencia entre países refleja menos el coste de la tecnología y más la estructura del mercado.",
+  ],
+  "zapatillas-deportivas": [
+    "Un par de zapatillas de correr o de uso diario de una marca deportiva conocida, sin ediciones limitadas. El precio de esta categoría es el que más se mueve con las rebajas: el mismo modelo puede costar el doble en temporada alta que en enero.",
+    "La diferencia entre países depende más de los aranceles y de la logística que del poder adquisitivo. Por eso comparar su precio en horas es útil: el mismo par cuesta en Alemania lo que en México puede ser una semana de sueldo.",
+  ],
+  "cana": [
+    "Una caña de cerveza servida en barra, de tamaño estándar. Es el producto donde el precio es casi todo margen del local: la cerveza en sí cuesta céntimos, y lo que se paga es el sitio, el servicio y el alquiler del bar.",
+    "Por eso varía tanto entre ciudades del mismo país, y por eso su precio en horas dice más del sector hostelero de cada lugar que del coste de la cerveza. En los países con impuesto específico al alcohol, una parte de la caña es impuesto.",
+  ],
+  "deposito-gasolina": [
+    "Llenar un depósito de 50 litros de gasolina de 95. No es un consumo mensual: es una compra puntual, y la cifra cambia cada semana con el precio del combustible.",
+    "El carburante es de los pocos productos del catálogo con precio casi idéntico en todas las gasolineras de un país, porque se mueve en bloque. Lo que cambia es el impuesto: en Europa puede ser más de la mitad de lo que se paga en el surtidor.",
+  ],
+  "entrada-piso": [
+    "El 20% del precio de una vivienda de 100 m², que es la entrada habitual en una hipoteca. No incluye impuestos, notaría, registro ni comisión de agencia: sumados, suelen añadir entre un 10% y un 15% más.",
+    "Es la cifra que explica por qué mucha gente con sueldo para pagar la hipoteca no puede comprar: el obstáculo no es la cuota mensual, es juntar la entrada. En horas de trabajo, suele ser el producto más caro del catálogo después de la vivienda completa.",
+  ],
+  "casa-media": [
+    "Una vivienda tipo de 100 m² en la zona donde se concentra la oferta, no la media nacional. En los países con grandes diferencias regionales, la cifra se parece más al precio de la capital que al del resto.",
+    "No incluye impuestos de compraventa, reforma ni mobiliario. Comparar el precio de la vivienda en horas de trabajo es el cálculo que mejor resume el esfuerzo de una vida: en algunos países son cuatro años de sueldo íntegro, en otros, más de veinte.",
+  ],
+  "itv-turismo": [
+    "Tarifa oficial de la inspección técnica periódica de un turismo, la que se pasa cada uno o dos años según el país. No incluye la revisión previa en el taller ni las reparaciones que la inspección pueda exigir.",
+    "Es un precio fijado por la administración o por concesionarios regulados, así que apenas varía dentro del país. La diferencia entre países refleja la política de cada uno sobre el control del parque automovilístico, no el coste real del servicio.",
+  ],
+  "grado-universitario": [
+    "Los cuatro años de un grado en una universidad pública, a precio de matrícula oficial por curso. No incluye el coste de vivir durante esos años, que para quien se muda es varias veces la matrícula.",
+    "Aquí la diferencia entre países es enorme y no tiene que ver con la calidad: en algunos, la universidad pública cuesta unos cientos de euros al año; en otros, varios miles. En horas de trabajo, un grado puede ser medio año de sueldo o cuatro.",
+  ],
+  "aire-acondicionado": [
+    "Un equipo split de 3.000 frigorías con la instalación incluida, para una habitación o un salón pequeño. No incluye el mantenimiento ni la limpieza de filtros, que conviene hacer cada temporada.",
+    "El precio depende más de la instalación que del aparato: perforar la pared, la distancia a la unidad exterior y el gas refrigerante pueden costar tanto como el equipo. En países donde su uso es estacional, la mano de obra se encarece en verano.",
+  ],
+  "ethereum": [
+    "Una unidad de ether, la criptomoneda de la red Ethereum. Igual que el bitcoin, no tiene precio de tarifa: cotiza sin interrupción y la cifra de esta ficha es la del día indicado, con la comisión de compra aparte.",
+    "No es un bien que se compre en una tienda: se adquiere en un intercambio, y su precio cambia a cada minuto. La comparación con el sueldo de cada país mide cuánto tiempo de trabajo costaba ese día, no cuánto cuesta siempre.",
+  ],
+  "viaje-7-dias": [
+    "Una semana de vacaciones para una persona: vuelo, alojamiento y una estimación de gastos diarios. Es un paquete orientativo, no una reserva real, y el precio depende de la temporada más que del destino.",
+    "Lo que se compara aquí es cuánto trabajo cuesta una semana fuera, no lo que cuesta vivir una semana en casa. En los países con sueldos bajos, un viaje a Europa puede equivaler a meses de sueldo; en los altos, a unos días.",
+  ],
 };
 
 /** Devuelve la nota del producto, o null si no tiene (no se rellena con relleno). */
