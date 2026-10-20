@@ -64,6 +64,46 @@ export const NOTAS_PRODUCTO: Record<string, string[]> = {
     "Doce meses de cuota en una cadena de gimnasios de precio medio, con acceso a sala y clases colectivas, sin entrenador personal ni servicios adicionales. Las cuotas bajas suelen llevar permanencia: el precio anual ya la incluye.",
     "El coste real depende de cuánto se use, y ahí la cifra no ayuda: es el mismo para quien va cuatro veces por semana que para quien deja de ir en febrero. Lo que mide esta página es el desembolso, no el aprovechamiento.",
   ],
+  "toyota-corolla": [
+    "La cifra es un precio medio de mercado del híbrido de 140 CV, no el PVP oficial de un acabado concreto. El Corolla se vende con varias carrocerías y niveles de equipamiento, y entre el de acceso y el tope hay una diferencia que puede superar el 40%.",
+    "No incluye impuesto de matriculación, seguro ni mantenimiento. Lo que sí cambia frente a un coche de combustión es el gasto corriente: el híbrido consume menos en ciudad, y eso pesa más cuanto más se conduce.",
+  ],
+  "seat-ibiza": [
+    "Utilitario fabricado en España y uno de los modelos más vendidos de su segmento. La cifra corresponde a un precio de mercado del acabado de acceso con motor de gasolina, no al PVP de tarifa: los descuentos de campaña y el stock mueven esa cantidad varios miles de euros arriba o abajo.",
+    "Sin matriculación, seguro ni revisiones. En este segmento el equipamiento opcional puede añadir más de lo que sugiere el precio de partida, así que conviene comparar acabados, no solo modelos.",
+  ],
+  "volkswagen-golf": [
+    "El compacto de referencia del mercado europeo, con motores y acabados que van del utilitario básico a versiones deportivas. La cifra es un precio medio de mercado, y precisamente por esa variedad conviene leerla como puerta de entrada, no como el precio del coche que uno acaba comprando.",
+    "No incluye matriculación, seguro ni mantenimiento. El Golf mantiene mejor valor de reventa que la media del segmento, algo que no aparece en el precio de compra pero sí en el coste de tenerlo.",
+  ],
+  "movil-gama-media": [
+    "Un teléfono de gama media, en la franja donde se vende la mayoría de los móviles: pantalla grande, buena batería y cámara suficiente, sin las funciones de la gama alta. La cifra es el precio de tarifa en tienda, sin plan de operador ni pago a plazos.",
+    "La diferencia con la gama alta se nota sobre todo a los dos o tres años, cuando llegan las actualizaciones del sistema: los modelos baratos dejan de recibirlas antes. Esa fecha conviene mirarla al comprar, no al año de tenerlo.",
+  ],
+  "portatil": [
+    "Portátil de uso general, de 14 o 15 pulgadas, para estudiar, trabajar con documentos y navegar. No es un equipo para jugar ni para editar vídeo: ahí el precio se multiplica por dos o por tres. La cifra es la mediana de lo que ofrecen las tiendas del país.",
+    "No incluye software de pago ni garantía extendida. En este rango, la memoria y el disco son lo que más cambia el rendimiento real, más que el procesador: dos equipos con el mismo precio pueden llevarse años de diferencia en uso diario.",
+  ],
+  "televisor": [
+    "Televisor de 55 pulgadas de gama media, el tamaño más vendido en Europa. La cifra es la mediana de las tiendas del país, así que mezcla tecnologías distintas: pantallas LED básicas y modelos con mejor contraste y brillo.",
+    "La diferencia de precio entre dos televisiones del mismo tamaño está casi toda en el panel y en el sistema de iluminación, no en las pulgadas. En un salón con mucha luz, el modelo barato se ve peor que en una habitación a oscuras.",
+  ],
+  "spotify-anual": [
+    "Doce meses del plan Premium Individual a la tarifa vigente cada mes, con impuestos incluidos según el país. El plan familiar y el dúo cuestan más, y el plan gratuito no entra en esta cifra porque no se paga.",
+    "Spotify ha subido el precio varias veces en los últimos años y lo ha hecho país por país, así que esta cifra caduca antes que la de un producto físico. Si se contrata desde la aplicación del móvil, la tienda añade su comisión al importe.",
+  ],
+  "chatgpt-plus": [
+    "Doce meses de la suscripción de pago, a la tarifa mensual vigente en cada país y con los impuestos correspondientes. Es el plan individual; los planes de equipo y de empresa se facturan aparte y con otro precio.",
+    "Si la suscripción se contrata desde la aplicación del móvil, la tienda del sistema añade su comisión, y el mismo plan cuesta más que contratado en la web. Conviene revisar dónde se hizo la compra antes de comparar precios entre países.",
+  ],
+  "luz-gas-mes": [
+    "Factura media mensual de electricidad y gas de un hogar, no el precio del kilovatio hora. Depende de tres cosas que cambian mucho de un país a otro: el consumo, la tarifa contratada y los impuestos que cada gobierno aplica a la energía.",
+    "En países con calefacción de gas, la factura se dispara en invierno y baja en verano; en los que calientan con electricidad, pasa lo contrario. Por eso la cifra anual es más comparable que la de un mes suelto.",
+  ],
+  "abono-transporte": [
+    "Abono mensual de transporte público en la principal ciudad del país, válido para metro y autobús. No incluye cercanías ni tren regional salvo que se indique, y muchas ciudades tienen tarifas reducidas para jóvenes, estudiantes o familias numerosas.",
+    "Es uno de los productos donde más influye la política local: hay ciudades que lo subvencionan casi por completo y otras donde cuesta como una cena. Comparar el precio sin mirar qué cubre el abono lleva a conclusiones falsas.",
+  ],
 };
 
 /** Devuelve la nota del producto, o null si no tiene (no se rellena con relleno). */
