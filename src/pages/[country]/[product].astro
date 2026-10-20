@@ -217,6 +217,55 @@ const categoryLabel = categories[product.category]?.toLowerCase() ?? product.cat
 const otherCountriesForProduct = allCountries
   .filter((c) => c.code !== country.code && c.medianNetMonthly != null)
   .slice(0, 6);
+
+// Contexto único por ficha: este precio frente a los demás países que tienen
+// precio TOMADO EN EL PAÍS (nunca convertido). La posición, la mediana y el
+// porcentaje salen distintos en cada una de las ~800 fichas, así que la página
+// deja de ser la misma plantilla con otra cifra.
+const comparables = allCountries
+  .map((c) => {
+    const propio = product.prices[c.code] as ProductPrice | undefined;
+    if (!propio || propio.origin !== "local" || !propio.value) return null;
+    const salario = referenceSalary(c);
+    if (!salario) return null;
+    try {
+      const r = calc({
+        price: propio.value,
+        netMonthly: salario.monthly,
+        weeklyHours: c.legalWeeklyHours,
+        realAnnualHours: c.realAnnualHours,
+        monthlySavings: null,
+        age: null,
+        retirementAge: c.retirementAge,
+      });
+      return { code: c.code, name: c.name, hours: r.hours };
+    } catch {
+      return null;
+    }
+  })
+  .filter((x): x is { code: string; name: string; hours: number } => x !== null)
+  .sort((a, b) => a.hours - b.hours);
+
+const posicion = comparables.findIndex((x) => x.code === country.code) + 1;
+const horasComparables = comparables.find((x) => x.code === country.code)?.hours ?? null;
+const medianaComparables = comparables.length
+  ? comparables.length % 2
+    ? comparables[(comparables.length - 1) / 2].hours
+    : (comparables[comparables.length / 2 - 1].hours + comparables[comparables.length / 2].hours) / 2
+  : null;
+const diferenciaMediana =
+  horasComparables != null && medianaComparables
+    ? Math.round((horasComparables / medianaComparables - 1) * 100)
+    : null;
+const masBaratoDe = comparables[0] ?? null;
+const masCaroDe = comparables[comparables.length - 1] ?? null;
+// Cuántas horas de sueldo mínimo legal cuesta: en días casi todo sale «0»,
+// porque un producto barato no llega ni a una jornada del suelo salarial.
+const horasDeMinimo =
+  horasComparables != null && country.minWageMonthly && ref
+    ? horasComparables * (ref.monthly / country.minWageMonthly)
+    : null;
+const hayContexto = posicion > 0 && comparables.length >= 4 && horasComparables != null;
 ---
 
 <BaseLayout
@@ -317,6 +366,52 @@ const otherCountriesForProduct = allCountries
         <a href="/metodo/" class="text-primary hover:underline">Método de cálculo &rarr;</a>
       </div>
     </section>
+
+    {/* Contexto comparado: cifras distintas en cada ficha, calculadas del propio
+        catálogo. Ataca el problema de fondo de las 800 fichas: que entre países
+        solo cambiaba el número. */}
+    {hayContexto && (
+      <section class="mt-14 board-plate p-6" aria-label={`${product.shortName} comparado entre países`}>
+        <h2 class="font-signage uppercase text-2xl md:text-3xl">
+          {product.shortName} en {country.name} frente al resto
+        </h2>
+        <ul class="mt-4 space-y-3 font-sans text-sm sm:text-base leading-relaxed">
+          <li>
+            Con el sueldo de {country.name}, {product.shortName} cuesta{" "}
+            <strong>{formatHours(horasComparables as number)} h</strong>. Es la{" "}
+            <strong>posición {posicion} de {comparables.length}</strong> países con precio propio para este producto
+            {diferenciaMediana != null && (
+              <>
+                , {" "}
+                {diferenciaMediana === 0
+                  ? "justo en la mediana"
+                  : diferenciaMediana > 0
+                    ? `${diferenciaMediana}% por encima de la mediana`
+                    : `${Math.abs(diferenciaMediana)}% por debajo de la mediana`}
+                {" "}({formatHours(Math.round(medianaComparables as number))} h)
+              </>
+            )}.
+          </li>
+          {masBaratoDe && masCaroDe && (
+            <li>
+              Donde menos esfuerzo cuesta es en <strong>{masBaratoDe.name}</strong> ({formatHours(masBaratoDe.hours)} h) y
+              donde más en <strong>{masCaroDe.name}</strong> ({formatHours(masCaroDe.hours)} h).
+            </li>
+          )}
+          {horasDeMinimo != null && country.minWageMonthly && (
+            <li>
+              Cobrando el mínimo legal de {country.name} ({formatIntegerThousands(country.minWageMonthly)}{" "}
+              {country.currencySymbol}/mes) son <strong>{String(Math.round(horasDeMinimo * 10) / 10).replace(".", ",")} horas</strong>{" "}
+              de sueldo íntegro, sin gastar en nada más.
+            </li>
+          )}
+        </ul>
+        <p class="mt-4 font-sans text-xs opacity-70 leading-relaxed">
+          Solo se comparan precios tomados en cada país, nunca conversiones: lo comparable entre países es el trabajo,
+          no el dinero.
+        </p>
+      </section>
+    )}
 
     {/* Enlazado Interno Programático: Categoría en este país */}
     {siblingProducts.length > 0 && (
