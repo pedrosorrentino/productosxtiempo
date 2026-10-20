@@ -265,7 +265,9 @@ const horasDeMinimo =
   horasComparables != null && country.minWageMonthly && ref
     ? horasComparables * (ref.monthly / country.minWageMonthly)
     : null;
+const nota = notaProducto(product.id);
 const hayContexto = posicion > 0 && comparables.length >= 4 && horasComparables != null;
+import { notaProducto } from "../../data/notas-producto";
 ---
 
 <BaseLayout
@@ -366,6 +368,20 @@ const hayContexto = posicion > 0 && comparables.length >= 4 && horasComparables 
         <a href="/metodo/" class="text-primary hover:underline">Método de cálculo &rarr;</a>
       </div>
     </section>
+
+    {/* Prosa propia del producto: lo que se está midiendo y qué queda fuera.
+        Solo aparece si el producto tiene nota escrita; no se rellena con texto
+        genérico, porque el problema que resuelve es precisamente el relleno. */}
+    {nota && (
+      <section class="mt-14 board-plate p-6" aria-label={`Cómo se lee el precio de ${product.shortName}`}>
+        <h2 class="font-signage uppercase text-2xl md:text-3xl">
+          Sobre el precio de {product.shortName}
+        </h2>
+        {nota.map((parrafo) => (
+          <p class="mt-4 font-sans text-sm sm:text-base leading-relaxed opacity-90">{parrafo}</p>
+        ))}
+      </section>
+    )}
 
     {/* Contexto comparado: cifras distintas en cada ficha, calculadas del propio
         catálogo. Ataca el problema de fondo de las 800 fichas: que entre países
