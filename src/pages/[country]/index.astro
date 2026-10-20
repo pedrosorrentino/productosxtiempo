@@ -5,7 +5,7 @@ import CountryView from '../../components/preact/CountryView.tsx';
 import { calc, calcHourlyWage } from '../../lib/calc.ts';
 import { formatHourlyWage, formatHours, formatIntegerThousands, formatMinutes, formatWorkdays } from '../../lib/format.ts';
 import { isFreshDate } from '../../lib/freshness.ts';
-import { board, brand, countryPage, noSalary } from '../../i18n/es.ts';
+import { board, brand, categories as categoryLabels, countryPage, noSalary } from '../../i18n/es.ts';
 import type { Country, Product } from '../../lib/types.ts';
 import countriesData from '../../data/countries.json';
 import productsData from '../../data/products.json';
@@ -60,6 +60,25 @@ const refWage = refSalary?.monthly ?? null;
 const refWageText = refWage != null ? refWage.toLocaleString("es-ES", { useGrouping: "always" }) : null;
 const refIsSmi = refSalary?.kind === "min";
 const refHourlyWage = refWage != null ? calcHourlyWage(refWage, country.legalWeeklyHours) : null;
+
+// Índice completo de fichas del país, agrupado por categoría.
+//
+// La portada de país enlazaba a 33 fichas de 90: las demás solo se alcanzaban por
+// la página de categoría o por «productos hermanos». Con un rastreo de ~5 URLs
+// por semana, una ficha sin enlace desde una página rastreada no se descubre
+// nunca. Este bloque le da a cada ficha con precio local al menos un enlace
+// entrante desde la portada del país, que es la que Google visita.
+const todasLasFichas = (productsData as Product[])
+  .filter((p) => p.visible !== false && hasLocalPrice(p, country.code))
+  .map((p) => ({ id: p.id, nombre: p.shortName, categoria: p.category }))
+  .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+
+const fichasPorCategoria = Object.entries(
+  todasLasFichas.reduce<Record<string, typeof todasLasFichas>>((acc, ficha) => {
+    (acc[ficha.categoria] ??= []).push(ficha);
+    return acc;
+  }, {}),
+).sort((a, b) => b[1].length - a[1].length);
 const nfGroup1 = new Intl.NumberFormat("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1, useGrouping: "always" });
 const nfGroup2 = new Intl.NumberFormat("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: "always" });
 const refHourlyText = refHourlyWage != null
@@ -541,4 +560,35 @@ const pageDescription = hasSalary
       </section>
     )}
   </div>
+
+    {/* Índice completo de fichas: enlazado interno para que ninguna quede a dos
+        clics de una página que Google no visita. */}
+    {fichasPorCategoria.length > 0 && (
+      <section class="mt-14 border-t border-base-300 pt-8" aria-label={`Todas las fichas de ${country.name}`}>
+        <h2 class="font-signage uppercase text-xl md:text-2xl">
+          Todos los precios de {country.name}, en horas
+        </h2>
+        <p class="mt-2 font-sans text-sm opacity-80">
+          {todasLasFichas.length} fichas con precio tomado en {country.name}, ordenadas por categoría.
+        </p>
+        <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {fichasPorCategoria.map(([categoria, fichas]) => (
+            <div>
+              <h3 class="font-board-mono text-xs uppercase tracking-wider opacity-70">
+                {categoryLabels[categoria as Product['category']] ?? categoria} ({fichas.length})
+              </h3>
+              <ul class="mt-2 flex flex-wrap gap-x-3 gap-y-1 font-sans text-sm">
+                {fichas.map((f) => (
+                  <li>
+                    <a class="text-primary hover:underline inline-flex items-center min-h-6" href={`/${country.slug}/${f.id}/`}>
+                      {f.nombre}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 </BaseLayout>
