@@ -182,8 +182,17 @@ const combinedJsonLd = [productSchema, breadcrumbSchema];
 
 // 5. Enlazado Interno Automático:
 // A) Productos hermanos de la misma categoría en este país
+// Solo se enlazan fichas que se indexan: un enlace a una página noindex gasta
+// rastreo y no reparte nada. Medido: 2.219 enlaces internos apuntaban a páginas
+// que Google no puede indexar.
 const siblingProducts = allProducts
-  .filter((p) => p.visible && p.id !== product.id && p.category === product.category)
+  .filter(
+    (p) =>
+      p.visible &&
+      p.id !== product.id &&
+      p.category === product.category &&
+      hasLocalPrice(p, country.code),
+  )
   .slice(0, 4)
   .map((sibling) => {
     const sibPrice = getProductPrice(sibling, country.code);
@@ -215,7 +224,7 @@ const categoryLabel = categories[product.category]?.toLowerCase() ?? product.cat
 
 // B) El mismo producto en otros países clave
 const otherCountriesForProduct = allCountries
-  .filter((c) => c.code !== country.code && c.medianNetMonthly != null)
+  .filter((c) => c.code !== country.code && c.medianNetMonthly != null && hasLocalPrice(product, c.code))
   .slice(0, 6);
 
 // Contexto único por ficha: este precio frente a los demás países que tienen
