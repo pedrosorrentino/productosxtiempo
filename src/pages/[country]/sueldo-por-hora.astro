@@ -214,6 +214,11 @@ const pageDescription = `En ${country.name} una hora de trabajo se paga a ${form
           <li>
             <strong>El mínimo legal por hora:</strong> {miles(country.minWageMonthly ?? 0)} {simbolo}/mes ÷ {Math.round(country.legalWeeklyHours * WEEKS_PER_MONTH)} = <strong>{formatHourlyWage(minHora, simbolo)}</strong>
             {brechaMinimo != null && `, un ${brechaMinimo}% por debajo de la hora mediana`}.
+            {(country as any).minWageSourceUrl && (
+              <span class="block text-xs opacity-70">
+                Fuente del mínimo: <a class="underline" href={(country as any).minWageSourceUrl} rel="nofollow noopener" target="_blank">{(country as any).minWageSourceLabel}</a>
+              </span>
+            )}
           </li>
         )}
       </ul>

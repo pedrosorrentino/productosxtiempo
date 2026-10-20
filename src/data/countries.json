@@ -21,7 +21,8 @@
     "inflationRate": 3.4,
     "salarySourceLabel": "INE · EAES 2024",
     "salariesSourceUrl": "https://ine.es/dyngs/Prensa/en/EAES2024.htm",
-    "salaryDataKind": "estimado"
+    "salaryDataKind": "estimado",
+    "minWageYear": 2024
   },
   {
     "code": "PT",
@@ -34,7 +35,7 @@
     "realAnnualHours": 1650,
     "medianNetMonthly": 980,
     "meanNetMonthly": null,
-    "minWageMonthly": 820,
+    "minWageMonthly": 920,
     "retirementAge": 67,
     "salariesUpdatedAt": "2024",
     "salariesSource": "INE (Inquérito ao Emprego): mediana do salário líquido mensal dos trabalhadores por conta de outrem, 980 €.",
@@ -45,7 +46,10 @@
     "inflationRate": 2.8,
     "salarySourceLabel": "INE · Inquérito ao Emprego 2024",
     "salariesSourceUrl": "https://www.ine.pt/xportal/xmain?xpgid=ine_main&xpid=INE",
-    "salaryDataKind": "publicado"
+    "salaryDataKind": "publicado",
+    "minWageYear": 2026,
+    "minWageSourceLabel": "DGERT · Decreto-Lei 139/2025",
+    "minWageSourceUrl": "https://www.dgert.gov.pt/retribuicao-minima-mensal-garantida-para-2026"
   },
   {
     "code": "FR",
@@ -69,7 +73,8 @@
     "inflationRate": 2.5,
     "salarySourceLabel": "INSEE 2024",
     "salariesSourceUrl": "https://www.insee.fr/fr/statistiques/8657156",
-    "salaryDataKind": "publicado"
+    "salaryDataKind": "publicado",
+    "minWageYear": 2024
   },
   {
     "code": "DE",
@@ -93,7 +98,8 @@
     "inflationRate": 2.4,
     "salarySourceLabel": "Destatis 2025",
     "salariesSourceUrl": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/04/PD26_113_621.html",
-    "salaryDataKind": "estimado"
+    "salaryDataKind": "estimado",
+    "minWageYear": 2025
   },
   {
     "code": "IT",
@@ -117,7 +123,8 @@
     "inflationRate": 1.2,
     "salarySourceLabel": "INPS 2024",
     "salariesSourceUrl": "https://www.inps.it/content/dam/inps-site/pdf/allegatinews/2026/DOCUMENTO_UNICO_ANALISI_RETRIBUZIONI.pdf",
-    "salaryDataKind": "publicado"
+    "salaryDataKind": "publicado",
+    "minWageYear": 2024
   },
   {
     "code": "GB",
@@ -141,7 +148,8 @@
     "inflationRate": 2.6,
     "salarySourceLabel": "ONS · ASHE 2025",
     "salariesSourceUrl": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/bulletins/annualsurveyofhoursandearnings/2025",
-    "salaryDataKind": "estimado"
+    "salaryDataKind": "estimado",
+    "minWageYear": 2025
   },
   {
     "code": "US",
@@ -165,7 +173,8 @@
     "inflationRate": 2.9,
     "salarySourceLabel": "BLS 2026",
     "salariesSourceUrl": "https://www.bls.gov/news.release/wkyeng.htm",
-    "salaryDataKind": "estimado"
+    "salaryDataKind": "estimado",
+    "minWageYear": 2026
   },
   {
     "code": "MX",
@@ -178,7 +187,7 @@
     "realAnnualHours": 2225,
     "medianNetMonthly": 9000,
     "meanNetMonthly": null,
-    "minWageMonthly": 7468,
+    "minWageMonthly": 9582.47,
     "retirementAge": 65,
     "salariesUpdatedAt": "2026",
     "salariesSource": "El INEGI publica la mediana del ingreso de los ocupados en términos reales, no en pesos corrientes, y no hay por tanto una mediana salarial oficial comparable. Se mantiene la referencia orientativa del producto y el usuario puede poner su nómina.",
@@ -189,7 +198,10 @@
     "inflationRate": 4.8,
     "salarySourceLabel": "referencia del producto",
     "salariesSourceUrl": "https://www.inegi.org.mx/programas/enoe/15ymas/",
-    "salaryDataKind": "orientativo"
+    "salaryDataKind": "orientativo",
+    "minWageYear": 2026,
+    "minWageSourceLabel": "DOF · CONASAMI 2026",
+    "minWageSourceUrl": "https://dof.gob.mx/nota_detalle_popup.php?codigo=5775534"
   },
   {
     "code": "AR",
@@ -202,7 +214,7 @@
     "realAnnualHours": null,
     "medianNetMonthly": 800000,
     "meanNetMonthly": null,
-    "minWageMonthly": 260000,
+    "minWageMonthly": 391200,
     "retirementAge": 65,
     "salariesUpdatedAt": "2025",
     "salariesSource": "INDEC, Evolución de la distribución del ingreso (EPH, 4.º trimestre de 2025): ingreso mediano de la ocupación principal, 800.000 $/mes.",
@@ -213,7 +225,10 @@
     "inflationRate": 115,
     "salarySourceLabel": "INDEC · EPH 4T 2025",
     "salariesSourceUrl": "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-31-58",
-    "salaryDataKind": "publicado"
+    "salaryDataKind": "publicado",
+    "minWageYear": 2026,
+    "minWageSourceLabel": "Consejo del Salario · SMVM (oct-2026)",
+    "minWageSourceUrl": "https://www.argentina.gob.ar/trabajo/consejodelsalario"
   },
   {
     "code": "CO",
@@ -226,7 +241,7 @@
     "realAnnualHours": null,
     "medianNetMonthly": null,
     "meanNetMonthly": null,
-    "minWageMonthly": 1300000,
+    "minWageMonthly": 1750905,
     "retirementAge": 62,
     "salariesUpdatedAt": "2026",
     "salariesSource": "El DANE no publica un ingreso laboral mediano: su indicador oficial es el promedio. Se usa el salario mínimo oficial como referencia.",
@@ -237,7 +252,10 @@
     "inflationRate": 6.8,
     "salarySourceLabel": "el DANE no publica mediana",
     "salariesSourceUrl": "https://www.dane.gov.co/index.php/estadisticas-por-tema/mercado-laboral/empleo-y-desempleo",
-    "salaryDataKind": "orientativo"
+    "salaryDataKind": "orientativo",
+    "minWageYear": 2026,
+    "minWageSourceLabel": "MinTrabajo · Decreto 159 de 2026",
+    "minWageSourceUrl": "https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_0159_2026.htm"
   },
   {
     "code": "CL",
@@ -250,7 +268,7 @@
     "realAnnualHours": 1960,
     "medianNetMonthly": 611162,
     "meanNetMonthly": null,
-    "minWageMonthly": 500000,
+    "minWageMonthly": 553553,
     "retirementAge": 65,
     "salariesUpdatedAt": "2024",
     "salariesSource": "INE de Chile, Encuesta Suplementaria de Ingresos 2024: ingreso mediano neto mensual de la ocupación principal, 611.162 $ (bruto menos descuentos legales de previsión y salud).",
@@ -261,7 +279,10 @@
     "inflationRate": 4.1,
     "salarySourceLabel": "INE Chile · ESI 2024",
     "salariesSourceUrl": "https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/publicaciones-y-anuarios/s%C3%ADntesis-de-resultados/2024/esi2024.pdf",
-    "salaryDataKind": "publicado"
+    "salaryDataKind": "publicado",
+    "minWageYear": 2026,
+    "minWageSourceLabel": "DT · Ley 21.830 (may-2026)",
+    "minWageSourceUrl": "https://www.dt.gob.cl/portal/1626/w3-article-60141.html"
   },
   {
     "code": "CH",
@@ -285,6 +306,7 @@
     "inflationRate": 1.4,
     "salarySourceLabel": "OFS 2024",
     "salariesSourceUrl": "https://www.bfs.admin.ch/bfs/fr/home/statistiques/travail-remuneration/salaires-revenus-cout-travail/structure-salaires.html",
-    "salaryDataKind": "estimado"
+    "salaryDataKind": "estimado",
+    "minWageYear": 2024
   }
 ]
