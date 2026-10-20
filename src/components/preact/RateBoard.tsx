@@ -128,26 +128,61 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
   const [boardPulse, setBoardPulse] = useState<number>(0);
   const [viewMode, setViewMode] = useState<"work" | "life">("work");
   const [TimeStreamComponent, setTimeStreamComponent] = useState<any>(null);
+  /** El dispositivo pide ahorro de datos o menos movimiento: no se carga el 3D. */
+  const [sin3D, setSin3D] = useState(false);
 
-  // Carga diferida de Three.js / TimeStream3D para proteger Core Web Vitals (TBT e INP)
+  // Carga diferida de Three.js / TimeStream3D.
+  //
+  // Antes se pedía en cuanto la isla montaba (requestIdleCallback con 1,5 s de
+  // tope), así que cada visita a la portada o a un país se traía 524 KB de
+  // JavaScript (108 KB comprimidos) para una animación decorativa. Ahora se pide
+  // en el primer gesto del usuario (toque, rueda o tecla) o a los 3 s, lo que
+  // llegue antes — y no se pide si el dispositivo pide ahorro de datos o menos
+  // movimiento, que es justo cuando más molesta.
   useEffect(() => {
     let active = true;
-    const load3D = () => {
+    let pedido = false;
+
+    const cargar3D = () => {
+      if (!active || pedido) return;
+      pedido = true;
       import("./TimeStream3D.tsx")
         .then((m) => {
           if (active) setTimeStreamComponent(() => m.default);
         })
-        .catch(() => {});
+        .catch(() => {
+          if (active) setSin3D(true);
+        });
     };
 
-    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-      (window as any).requestIdleCallback(load3D, { timeout: 1500 });
-    } else {
-      setTimeout(load3D, 200);
+    if (typeof window === "undefined") return;
+
+    const conexion = (navigator as any).connection;
+    const sinDatos = Boolean(conexion && conexion.saveData);
+    const menosMovimiento = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    if (sinDatos || menosMovimiento) {
+      setSin3D(true);
+      return;
     }
+
+    const eventos: Array<keyof WindowEventMap> = ["pointerdown", "scroll", "keydown"];
+    const alInteractuar = () => {
+      limpiar();
+      cargar3D();
+    };
+    const limpiar = () => {
+      eventos.forEach((e) => window.removeEventListener(e, alInteractuar));
+      clearTimeout(temporizador);
+    };
+    eventos.forEach((e) => window.addEventListener(e, alInteractuar, { passive: true, once: false }));
+    const temporizador = setTimeout(() => {
+      limpiar();
+      cargar3D();
+    }, 3000);
 
     return () => {
       active = false;
+      limpiar();
     };
   }, []);
 
@@ -665,7 +700,12 @@ export default function RateBoard({ countries, products, heroProductId }: RateBo
 
             {/* Lienzo Cinemático 3D de Partículas sincronizado (Carga diferida) */}
             <div class="w-full rounded-xl overflow-hidden border border-base-300/90 bg-base-100/80 shadow-xl min-h-[140px] flex items-center justify-center">
-              {TimeStreamComponent ? (
+              {sin3D ? (
+                <div class="py-10 px-4 text-center font-board-mono text-xs opacity-60 tracking-wider">
+                  <span class="block text-2xl mb-1" aria-hidden="true">⏳</span>
+                  <span>Simulación 3D desactivada: tu dispositivo pide ahorro de datos o menos movimiento.</span>
+                </div>
+              ) : TimeStreamComponent ? (
                 <TimeStreamComponent
                   workdays={hero.workdays}
                   hours={hero.hours}

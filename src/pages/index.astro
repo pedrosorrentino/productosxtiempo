@@ -52,10 +52,10 @@ const jsonLd = [...webSiteSchemas, webAppSchema];
       {countries.map((c) => (
         <div class="board-cell p-3">
           <span class="block font-bold text-sm text-base-content">{c.name}</span>
-          <span class="block font-board-mono text-xs mt-1">
-            <a class="text-primary hover:underline" href={`/${c.slug}/sueldo-por-hora/`}>Sueldo por hora</a>
-            {" · "}
-            <a class="text-primary hover:underline" href={`/${c.slug}/dia-de-trabajo/`}>Día de trabajo</a>
+          <span class="flex flex-wrap items-center gap-x-1 mt-1 font-board-mono text-xs">
+            <a class="inline-flex items-center min-h-11 px-1 text-primary hover:underline" href={`/${c.slug}/sueldo-por-hora/`}>Sueldo por hora</a>
+            <span class="opacity-40" aria-hidden="true">·</span>
+            <a class="inline-flex items-center min-h-11 px-1 text-primary hover:underline" href={`/${c.slug}/dia-de-trabajo/`}>Día de trabajo</a>
           </span>
         </div>
       ))}
