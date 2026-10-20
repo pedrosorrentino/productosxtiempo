@@ -144,6 +144,46 @@ export const NOTAS_PRODUCTO: Record<string, string[]> = {
     "Corte de hombre en una barbería de ciudad, sin tinte ni tratamiento. El corte de mujer suele costar más y no entra en esta cifra, así que comparar este precio entre países no dice nada sobre lo que cuesta mantenerse el pelo en general.",
     "Es un servicio con poco margen de sustitución: no se puede comprar por internet ni traer de otro país. Su precio refleja casi directamente lo que cuesta una hora de trabajo en el sector servicios de ese lugar.",
   ],
+  "dacia-sandero": [
+    "El coche nuevo más barato que se vende en Europa, y la cifra es orientativa: no sale de un configurador concreto sino del precio de partida con el acabado básico y el motor de gasolina de acceso. Con aire acondicionado, pantalla o cambio automático sube varios miles.",
+    "Lo que abarata el Sandero es renunciar a lo que no se ve: acabados sencillos, menos aislamiento y una lista corta de asistentes. A cambio, mantiene la garantía y la mecánica del grupo al que pertenece. Quien compara solo precio no ve esa parte.",
+  ],
+  "kia-sportage": [
+    "PVP de partida del SUV familiar más vendido de Kia en España, con el acabado básico y el motor de gasolina 1.6 turbo. Los acabados intermedios y el híbrido suben el precio varios miles, y ahí está la mayoría de las ventas reales.",
+    "No incluye matriculación, seguro ni mantenimiento. En este segmento el descuento de concesionario y las campañas de fin de trimestre mueven más el precio final que la diferencia entre marcas parecidas.",
+  ],
+  "hyundai-tucson": [
+    "PVP de partida del SUV familiar que lidera matriculaciones en España, con el acabado de acceso. El mismo modelo con motor híbrido, techo o asientos de cuero cuesta bastante más: la cifra es la puerta de entrada, no lo que se paga de media.",
+    "No incluye matriculación, seguro ni revisiones. El Tucson se fabrica en Europa y comparte piezas con otros modelos del grupo, algo que se nota en el precio de los recambios más que en el de compra.",
+  ],
+  "toyota-c-hr": [
+    "PVP oficial del SUV coupé híbrido con el acabado de acceso. La versión híbrida de 140 CV es la única que se vende en España, así que aquí no hay opción de gasolina barata: el precio de partida ya incluye la mecánica híbrida.",
+    "No incluye matriculación, seguro ni mantenimiento. Toyota mantiene una garantía larga si se pasa por el servicio oficial, una ventaja que no aparece en la cifra de compra pero sí en el coste de los años siguientes.",
+  ],
+  "peugeot-208": [
+    "PVP oficial del utilitario más vendido en Europa, con el acabado Active y el motor de gasolina de 100 CV. Las versiones automáticas, las deportivas y las eléctricas del mismo coche cuestan bastante más.",
+    "No incluye matriculación, seguro ni mantenimiento. En este segmento conviene mirar el precio del seguro antes que el de compra: entre dos utilitarios parecidos puede haber más diferencia en la póliza que en la etiqueta.",
+  ],
+  "renault-clio": [
+    "PVP oficial del utilitario superventas europeo, con el acabado Evolution y el motor de 90 CV. Es el Clio de gasolina; el híbrido y el deportivo se venden con otra tarifa y otro público.",
+    "No incluye matriculación, seguro ni mantenimiento. Es uno de los modelos con más unidades en el mercado de segunda mano, lo que abarata el coche usado pero también reduce lo que se recupera al vender el nuevo.",
+  ],
+  "toyota-yaris-cross": [
+    "PVP del crossover urbano híbrido más vendido en España, con el acabado Active Plus. Combina la plataforma del Yaris con una carrocería más alta y algo más de espacio, y ese cambio de formato es casi todo lo que separa su precio del utilitario.",
+    "No incluye matriculación, seguro ni mantenimiento. Al ser híbrido, gasta menos en ciudad que en carretera: el ahorro depende tanto de dónde se conduzca como de cuánto se conduzca.",
+  ],
+  "tesla-model-y": [
+    "PVP oficial de la versión de acceso, tracción trasera, sin extras ni ayudas públicas a la compra. Es el coche eléctrico más vendido del mundo, y esa escala es la que le permite tener un precio parecido al de un SUV de combustión equivalente.",
+    "No incluye la instalación del cargador en casa, que puede añadir un desembolso importante, ni el seguro, que en un eléctrico suele ser más caro por el coste de reparación. Lo que se ahorra es combustible y mantenimiento, no la compra.",
+  ],
+  "nissan-versa": [
+    "PVP de referencia del sedán subcompacto más vendido en México y Latinoamérica, con el acabado Sense. La cifra viene del mercado mexicano, donde este modelo se fabrica y se vende a gran escala.",
+    "No incluye seguro ni placas. En los países donde el sedán compite con el SUV pequeño, el Versa se elige por precio y por maletero; en otros, directamente no se vende, y por eso no aparece en todas las fichas.",
+  ],
+  "mg-zs": [
+    "PVP del SUV compacto de precio ajustado con el acabado Comfort. La marca, de origen británico y hoy en manos chinas, ha entrado en Europa compitiendo por precio antes que por imagen, y eso se nota en la cifra.",
+    "No incluye matriculación, seguro ni mantenimiento. La red de servicio es más pequeña que la de las marcas tradicionales, algo que importa más a los tres o cuatro años que el día de la compra.",
+  ],
 };
 
 /** Devuelve la nota del producto, o null si no tiene (no se rellena con relleno). */

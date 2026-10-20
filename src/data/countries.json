@@ -270,7 +270,7 @@
     "meanNetMonthly": 962945,
     "minWageMonthly": 553553,
     "retirementAge": 65,
-    "salariesUpdatedAt": 2025,
+    "salariesUpdatedAt": "2025",
     "salariesSource": "INE de Chile, Encuesta Suplementaria de Ingresos 2024: ingreso mediano neto mensual de la ocupación principal, 611.162 $ (bruto menos descuentos legales de previsión y salud).",
     "hoursUpdatedAt": "2024",
     "hoursSource": "Orden de magnitud OCDE horas anuales reales.",
