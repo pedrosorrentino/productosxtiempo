@@ -79,6 +79,48 @@ print(f"precios de Google Shopping fuera de la banda {MIN}–{MAX}: {len(sospech
 for code, pid, v, esp, ratio in sorted(sospechosos):
     print(f"   {code} {pid:<22} {v:>12} (esperado ~{esp:>10})  ratio {ratio}")
 
+# ---------------------------------------------------------------------------
+# Guarda 3 (solo avisa, no toca nada): precios locales imposibles en HORAS.
+#
+# Comparar precios entre países en su moneda no dice nada; en horas de trabajo,
+# sí. Si un país se sale x3 de la mediana de los demás para el mismo producto, o
+# el dato es de otra cosa (un casco en vez de una moto) o mide algo distinto (las
+# tasas del examen en vez del carnet completo). No se corrige solo: se avisa
+# para que alguien lo mire.
+def avisar_horas_fuera_de_rango(products, countries):
+    salarios = {c["code"]: c for c in countries}
+    avisos = []
+    for p in products:
+        horas = {}
+        for code, pr in p["prices"].items():
+            if pr.get("origin") != "local" or not pr.get("value"):
+                continue
+            pais = salarios.get(code)
+            if not pais:
+                continue
+            sueldo = pais.get("medianNetMonthly") or pais.get("minWageMonthly")
+            if not sueldo:
+                continue
+            horas_mes = pais.get("legalWeeklyHours", 40) * 52 / 12
+            horas[code] = pr["value"] / (sueldo / horas_mes)
+        if len(horas) < 5:
+            continue
+        ordenados = sorted(horas.values())
+        mediana = ordenados[len(ordenados) // 2]
+        if not mediana:
+            continue
+        for code, h in horas.items():
+            ratio = h / mediana
+            if ratio > 3 or ratio < 1 / 3:
+                avisos.append((p["id"], code, round(h, 1), round(mediana, 1), round(ratio, 2)))
+    return sorted(avisos, key=lambda x: x[4])
+
+
+avisos_horas = avisar_horas_fuera_de_rango(products, json.load(open(REPO / "src/data/countries.json", encoding="utf-8")))
+print(f"precios locales a mas de x3 de la mediana del producto (en horas): {len(avisos_horas)}")
+for pid, code, h, med, ratio in avisos_horas[:15]:
+    print(f"   {code} {pid:<20} {h:>9} h  (mediana {med} h, x{ratio})")
+
 if not a.aplicar:
     print("\n(sin --aplicar no se toca nada)")
     raise SystemExit(0)

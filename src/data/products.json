@@ -2796,11 +2796,11 @@
     "category": "transporte",
     "prices": {
       "ES": {
-        "value": 911.25,
-        "date": "2026-09",
-        "note": "Precio mediano de Google Shopping (ES).",
-        "source": "Google Shopping (vía SerpApi)",
-        "origin": "local"
+        "value": 5499,
+        "origin": "local",
+        "date": "2026-10",
+        "source": "Yamaha Motor España · web oficial (MT-125 2026)",
+        "note": "PVP oficial de la Yamaha MT-125 2026 (desde), sin matriculación ni seguro."
       },
       "GB": {
         "value": 5301,
@@ -2833,20 +2833,6 @@
         "source": "Yamaha Motor · web oficial del país",
         "origin": "local",
         "url": "https://www.yamaha-motor.eu/ch/de/de/motorcycles/hyper-naked/pdp/mt-125"
-      },
-      "AR": {
-        "value": 1047938,
-        "date": "2026-09",
-        "note": "Precio convertido desde España (911,25 €).",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
-        "origin": "converted"
-      },
-      "CO": {
-        "value": 4009500,
-        "date": "2026-09",
-        "note": "Precio convertido desde España (911,25 €).",
-        "source": "Google Shopping (vía SerpApi) (convertido)",
-        "origin": "converted"
       },
       "CL": {
         "value": 2090000,
@@ -4554,13 +4540,6 @@
         "value": 999,
         "date": "2026-10",
         "note": "Precio oficial en Steam (Mex$ 999.00).",
-        "source": "Steam (tienda oficial)",
-        "origin": "local"
-      },
-      "AR": {
-        "value": 44.99,
-        "date": "2026-10",
-        "note": "Precio oficial en Steam ($44.99 USD).",
         "source": "Steam (tienda oficial)",
         "origin": "local"
       },
