@@ -6334,97 +6334,23 @@
       "ES": {
         "value": 950,
         "date": "2026-10",
-        "note": "Coste medio de obtención del permiso B (matrícula, clases prácticas y tasas DGT).",
+        "note": "Coste completo de obtener el permiso B: matrícula de autoescuela, clases prácticas y tasas. No incluye repetir el examen.",
         "source": "DGT / Estudio de precios FACUA",
         "origin": "local"
       },
-      "GB": {
-        "value": 85,
-        "date": "2026-10",
-        "note": "Tasas del DVSA: teórico 23 £ + práctico 62 £ en día laborable. No incluye autoescuela.",
-        "source": "DVSA · gov.uk, tasas oficiales",
-        "origin": "local",
-        "url": "https://www.gov.uk/driving-test-cost"
-      },
-      "US": {
-        "value": 46,
-        "date": "2026-10",
-        "note": "Estado de California: tasa de la licencia de conducir de coche, que cubre los dos exámenes. Varía por estado.",
-        "source": "California DMV · tasas oficiales",
-        "origin": "local",
-        "url": "https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/licensing-fees/"
-      },
-      "MX": {
-        "value": 1142,
-        "date": "2026-10",
-        "note": "Ciudad de México: expedición de la licencia tipo A para automovilista. Varía por estado.",
-        "source": "SEMOVI Ciudad de México · tarifas oficiales",
-        "origin": "local",
-        "url": "https://www.cdmx.gob.mx/public/InformacionTramite.xhtml?idTramite=2500"
-      },
-      "AR": {
-        "value": 42230,
-        "date": "2026-10",
-        "note": "Ciudad de Buenos Aires: arancel de otorgamiento o renovación. No incluye curso ni exámenes.",
-        "source": "Gobierno de la Ciudad de Buenos Aires · aranceles",
-        "origin": "local",
-        "url": "https://buenosaires.gob.ar/gcaba_historico/gobierno/licencias-de-conducir/aranceles"
-      },
-      "CO": {
-        "value": 329900,
-        "date": "2026-10",
-        "note": "Bogotá: expedición de la licencia de automóvil. No incluye curso ni exámenes médicos.",
-        "source": "Secretaría de Movilidad de Bogotá · tarifas oficiales",
-        "origin": "local",
-        "url": "https://bogota.gov.co/mi-ciudad/movilidad/tarifas-de-tramites-de-transito-y-transporte-en-bogota-para-2026"
-      },
-      "CL": {
-        "value": 45000,
-        "date": "2026-10",
-        "note": "Derechos municipales de la licencia no profesional clase B (40.000-49.000 $ según municipio).",
-        "source": "ChileAtiende · derechos municipales",
-        "origin": "local",
-        "url": "https://www.chileatiende.gob.cl/fichas/24065-licencia-de-conducir-no-profesional-clase-b"
-      },
-      "CH": {
-        "value": 170,
-        "date": "2026-10",
-        "note": "Cantón de Vaud: tasas de examen del carnet B (teórico 40 + práctico 130 CHF). Varía por cantón.",
-        "source": "Cantón de Vaud · tasas oficiales",
-        "origin": "local",
-        "url": "https://www.vd.ch/mobilite/automobile-et-navigation/frais-des-prestations-du-san/permis-de-conduire"
-      },
-      "PT": {
-        "value": 45,
-        "date": "2026-10",
-        "note": "Tasas de examen de la categoría B: teórico 15 € + práctico 30 €. No incluye autoescuela.",
-        "source": "IMT Portugal · tasas oficiales",
-        "origin": "local",
-        "url": "https://www.imt-ip.pt/condutores/informacoes-gerais/automoveis-ligeiros/"
-      },
       "FR": {
-        "value": 30,
-        "date": "2026-10",
-        "note": "Tasa estatal del examen teórico del permiso B. El práctico no tiene tasa (se paga a la autoescuela).",
-        "source": "Service-Public.fr · tasas oficiales",
+        "value": 1800,
         "origin": "local",
-        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33694"
+        "date": "2026-10",
+        "source": "Coste medio de autoescuela (Francia, 2026)",
+        "note": "Coste completo de obtener el permiso B: matrícula de autoescuela, clases prácticas y tasas. No incluye repetir el examen."
       },
       "DE": {
-        "value": 154.82,
-        "date": "2026-10",
-        "note": "Tasas de examen del carnet B: teórico 24,99 € + práctico 129,83 €. No incluye autoescuela ni expedición.",
-        "source": "TÜV · tasas oficiales (GebOSt)",
+        "value": 3400,
         "origin": "local",
-        "url": "https://www.tuev-hessen.de/324/gebuehren-entgelte-und-auslagen-fuer-fahrerlaubnispruefungen/"
-      },
-      "IT": {
-        "value": 58.4,
         "date": "2026-10",
-        "note": "Tasas de la Motorizzazione del examen de patente B (teórico + práctico). No incluye autoescuela.",
-        "source": "Motorizzazione Civile · tasas oficiales",
-        "origin": "local",
-        "url": "https://www.ilportaledellautomobilista.it/gms/dettaglionormativa.downloadallegato_1:download/159269/CONSEGUIMENTI.pdf"
+        "source": "RUV · guía de costes del permiso B (2026)",
+        "note": "Coste completo de obtener el permiso B: matrícula de autoescuela, clases prácticas y tasas. No incluye repetir el examen."
       }
     },
     "visible": true
