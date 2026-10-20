@@ -358,7 +358,7 @@ import { notaProducto } from "../../data/notas-producto";
         ) : (
           <span class="opacity-80">Fuente del precio: {price.source}{price.date ? ` · ${price.date}` : ""}</span>
         )}
-        <a href={`/${country.slug}/`} class="text-primary hover:underline">Poder adquisitivo en {country.name} &rarr;</a>
+        <a href={`/${country.slug}/`} class="text-primary hover:underline inline-flex items-center min-h-6">Poder adquisitivo en {country.name} &rarr;</a>
         <a href={`/${country.slug}/dia-de-trabajo/`} class="text-primary hover:underline">Cuánto vale un día de trabajo en {country.name} &rarr;</a>
         <a href={`/${country.slug}/sueldo-por-hora/`} class="text-primary hover:underline">Cuánto se gana por hora en {country.name} &rarr;</a>
         {PAGINAS_TRANSVERSALES.has(product.id) && (
