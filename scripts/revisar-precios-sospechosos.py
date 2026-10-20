@@ -20,6 +20,14 @@ from pathlib import Path
 # GitHub Actions, cuyo checkout vive en /home/runner/work/<repo>/<repo>. Ese
 # fue el fallo que dejó la sincronización de catálogo en rojo dos semanas.
 REPO = Path(__file__).resolve().parent.parent
+
+
+def formato_es(valor: float) -> str:
+    """Cifra con separador de millar y coma decimal, como en toda la web."""
+    texto = f"{valor:,.2f}"
+    if texto.endswith(".00"):
+        texto = texto[:-3]
+    return texto.replace(",", "\u00a0").replace(".", ",").replace("\u00a0", ".")
 MIN, MAX = 0.6, 1.8
 
 ap = argparse.ArgumentParser()
@@ -87,7 +95,7 @@ for p in products:
             p["prices"][code] = {
                 "value": valor,
                 "date": es.get("date"),
-                "note": f"Precio convertido desde España ({es['value']} €). Edítalo.",
+                "note": f"Precio convertido desde España ({formato_es(es['value'])} €).",
                 "source": (es.get("source") or "Referencia de producto") + " (convertido)",
                 "origin": "converted",
             }

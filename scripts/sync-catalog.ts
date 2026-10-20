@@ -3,6 +3,8 @@ import type { Product } from '../src/lib/types.ts';
 import { CATALOG_PROVIDERS } from './sources/index.ts';
 import type { NormalizedPriceUpdate } from './sources/types.ts';
 
+const nfNota = new Intl.NumberFormat("es-ES", { useGrouping: "always", maximumFractionDigits: 2 });
+
 const PRODUCTS_PATH = 'src/data/products.json';
 const COUNTRIES_PATH = 'src/data/countries.json';
 const DATA_DIR = 'scripts/data';
@@ -150,7 +152,7 @@ async function main() {
       product.prices[country.code] = {
         value: convertedValue,
         date: esPrice.date || dateStr,
-        note: `Precio convertido desde España (${esPrice.value} €). Edítalo.`,
+        note: `Precio convertido desde España (${nfNota.format(esPrice.value)} €).`,
         source: esPrice.source ? `${esPrice.source} (convertido)` : 'Referencia de producto (convertido)',
         origin: 'converted',
       };
@@ -167,7 +169,7 @@ async function main() {
       product.prices[country.code] = {
         value: esPrice.value,
         date: esPrice.date || dateStr,
-        note: `Precio de referencia de España (${esPrice.value} €). Edítalo.`,
+        note: `Precio de referencia de España (${nfNota.format(esPrice.value)} €).`,
         source: esPrice.source ? `${esPrice.source} (convertido)` : 'Referencia de producto (convertido)',
         origin: 'converted',
       };

@@ -1,5 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
+const nfNota = new Intl.NumberFormat("es-ES", { useGrouping: "always", maximumFractionDigits: 2 });
+
 const PRODUCTS_PATH = "src/data/products.json";
 const COUNTRIES_PATH = "src/data/countries.json";
 const FRANKFURTER_URL = "https://api.frankfurter.app/latest";
@@ -72,7 +74,7 @@ async function main() {
       product.prices[country.code] = {
         value: convertedValue,
         date,
-        note: `Precio convertido desde España (${esPrice.value} €). Edítalo.`,
+        note: `Precio convertido desde España (${nfNota.format(esPrice.value)} €).`,
         source: "Referencia de producto (convertido)",
         origin: "converted",
       };
@@ -89,7 +91,7 @@ async function main() {
       product.prices[country.code] = {
         value: esPrice.value,
         date: esPrice.date,
-        note: `Precio de referencia de España (${esPrice.value} €). Edítalo.`,
+        note: `Precio de referencia de España (${nfNota.format(esPrice.value)} €).`,
         source: "Referencia de producto (convertido)",
         origin: "converted",
       };

@@ -56,7 +56,10 @@ export function getProductPrice(
         ...esPrice,
         value: convertCurrency(esPrice.value, "EUR", targetCurrency),
         origin: "converted",
-        note: `Precio convertido desde España (${esPrice.value} €). Edítalo.`,
+        // Antes decía «(…). Edítalo.»: una instrucción para el editor que
+        // acababa publicada en el CSV de /datos/. Sin ella, la nota dice lo que
+        // es y con la cifra en formato español.
+        note: `Precio convertido desde España (${new Intl.NumberFormat("es-ES", { useGrouping: "always", maximumFractionDigits: 2 }).format(esPrice.value)} €).`,
       };
     }
     return esPrice;
