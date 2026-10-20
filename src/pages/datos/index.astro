@@ -56,6 +56,18 @@ const ordenadasPorHoras = [...horas]
   .sort((a, b) => (a.horas_de_trabajo as number) - (b.horas_de_trabajo as number))
   .slice(0, 12);
 
+// La cita en BibTeX se escribe aquí y se interpola: dentro de la plantilla, las
+// llaves de BibTeX las interpreta Astro como expresiones.
+const bibtex = [
+  '@misc{precioentiempo2026,',
+  '  title        = {Sueldos de referencia y precios medidos en horas de trabajo},',
+  '  author       = {{Precio en Tiempo}},',
+  '  year         = {2026},',
+  '  howpublished = {\\url{https://precioentiempo.com/datos/}},',
+  '  note         = {Datos abiertos bajo licencia CC BY 4.0}',
+  '}',
+].join("\n");
+
 const datasetSchema = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
@@ -66,6 +78,9 @@ const datasetSchema = {
   license: LICENCIA.url,
   creator: { '@type': 'Organization', name: 'Precio en Tiempo', url: `${siteUrl}/` },
   temporalCoverage: `2026/${hoy}`,
+  spatialCoverage: sueldos.map((fila) => ({ '@type': 'Place', name: fila.pais })),
+  dateModified: hoy,
+  version: '2026-10',
   isAccessibleForFree: true,
   keywords: ['sueldo mediano', 'horas de trabajo', 'poder adquisitivo', 'precios por país', 'coste de vida'],
   distribution: [
@@ -256,6 +271,12 @@ const pageDescription =
       <p class="font-board-mono text-xs opacity-85 bg-base-200/60 border border-base-300 rounded p-3 leading-relaxed">
         {LICENCIA.cita}
       </p>
+      <div class="pt-1">
+        <p class="font-sans text-sm opacity-90">
+          Si lo citas en un trabajo académico, en <span class="font-board-mono">BibTeX</span>:
+        </p>
+        <pre class="mt-2 overflow-x-auto font-board-mono text-xs bg-base-200/60 border border-base-300 rounded p-3 leading-relaxed">{bibtex}</pre>
+      </div>
       <p class="font-sans text-sm opacity-85 leading-relaxed">
         Nota de transparencia: los sueldos de referencia son netos mensuales y su clase está declarada en
         la columna <span class="font-board-mono">tipo_de_dato</span>; donde el país no publica una mediana
