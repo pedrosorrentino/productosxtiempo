@@ -73,6 +73,59 @@ const todasLasFichas = (productsData as Product[])
   .map((p) => ({ id: p.id, nombre: p.shortName, categoria: p.category }))
   .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
 
+// Tabla de referencia: diez productos que cubren las cinco categorías, con su
+// precio en el país y las horas de trabajo que cuestan. Va en el HTML servido
+// (no en la isla) para que Google tenga la relación precio-horas como datos, no
+// solo como prosa, y para que la página pueda salir como respuesta directa.
+const PRODUCTOS_CLAVE = [
+  "cesta-semanal",
+  "alquiler-piso",
+  "habitacion-alquiler",
+  "menu-del-dia",
+  "cafe",
+  "abono-transporte",
+  "luz-gas-mes",
+  "fibra-mes",
+  "iphone",
+  "gimnasio-anual",
+];
+
+// Cifras pequeñas con decimal: un café de 2,13 € no puede salir como «2 €», y
+// 0,25 h no puede salir como «0 h».
+const cifraCorta = (n: number) =>
+  n < 10
+    ? n.toLocaleString("es-ES", { useGrouping: "always", maximumFractionDigits: 2 })
+    : formatIntegerThousands(n);
+const horasCortas = (h: number) =>
+  h < 10 ? (Math.round(h * 10) / 10).toLocaleString("es-ES") : formatHours(h);
+
+const tablaClave = PRODUCTOS_CLAVE.map((id) => {
+  const producto = (productsData as Product[]).find((p) => p.id === id);
+  if (!producto || !refSalary) return null;
+  const precio = producto.prices[country.code];
+  if (!precio || precio.origin !== "local" || !precio.value) return null;
+  try {
+    const r = calc({
+      price: precio.value,
+      netMonthly: refSalary.monthly,
+      weeklyHours: country.legalWeeklyHours,
+      realAnnualHours: country.realAnnualHours,
+      monthlySavings: null,
+      age: null,
+      retirementAge: country.retirementAge,
+    });
+    return {
+      id,
+      nombre: producto.shortName,
+      precio: precio.value,
+      horas: r.hours,
+      porcentaje: Math.round((r.hours / ((country.legalWeeklyHours * 52) / 12)) * 100),
+    };
+  } catch {
+    return null;
+  }
+}).filter((x): x is { id: string; nombre: string; precio: number; horas: number; porcentaje: number } => x !== null);
+
 const fichasPorCategoria = Object.entries(
   todasLasFichas.reduce<Record<string, typeof todasLasFichas>>((acc, ficha) => {
     (acc[ficha.categoria] ??= []).push(ficha);
@@ -456,6 +509,40 @@ const pageDescription = hasSalary
       <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">
         Esta métrica temporal revela que pagar un mes de alquiler medio ({rentPrice.toLocaleString("es-ES", { useGrouping: "always" })} {country.currencySymbol}) absorbe aproximadamente <strong>{rentHours} horas de trabajo íntegro</strong> ({Math.round(rentHours / 8)} jornadas completas), mientras que bienes de consumo diario como un menú del día ({formatIntegerThousands(countryAnchors.menu ?? 14)} {country.currencySymbol}) demandan en torno a <strong>{countryWage ? formatHours((countryAnchors.menu ?? 14) / countryWage) : "1,2"} horas</strong> de esfuerzo laboral neto.
       </p>
+
+      {tablaClave.length >= 5 && (
+        <div class="mt-6 overflow-x-auto">
+          <table class="board-table w-full text-left font-body text-sm">
+            <caption class="sr-only">
+              Precio en {country.name} y horas de trabajo que cuesta cada producto, con el sueldo mediano del país
+            </caption>
+            <thead>
+              <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+                <th class="p-3">Producto</th>
+                <th class="p-3 text-right">Precio</th>
+                <th class="p-3 text-right">Horas de trabajo</th>
+                <th class="p-3 text-right">Del mes</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-base-300">
+              {tablaClave.map((f) => (
+                <tr>
+                  <td class="p-3">
+                    <a class="text-primary hover:underline" href={`/${country.slug}/${f.id}/`}>{f.nombre}</a>
+                  </td>
+                  <td class="p-3 text-right font-board-mono">{cifraCorta(f.precio)} {country.currencySymbol}</td>
+                  <td class="p-3 text-right font-board-mono font-bold">{horasCortas(f.horas)} h</td>
+                  <td class="p-3 text-right font-board-mono opacity-80">{f.porcentaje === 0 ? "<1" : f.porcentaje}%</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="mt-2 font-sans text-xs opacity-70">
+            Precios tomados en {country.name}, no conversiones. Las horas se calculan con el sueldo mediano neto
+            ({formatIntegerThousands(refSalary?.monthly ?? 0)} {country.currencySymbol}/mes) y la jornada legal de {country.legalWeeklyHours} h.
+          </p>
+        </div>
+      )}
 
       <!-- Retícula resumen de magnitud -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
