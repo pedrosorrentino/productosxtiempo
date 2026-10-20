@@ -104,6 +104,46 @@ export const NOTAS_PRODUCTO: Record<string, string[]> = {
     "Abono mensual de transporte público en la principal ciudad del país, válido para metro y autobús. No incluye cercanías ni tren regional salvo que se indique, y muchas ciudades tienen tarifas reducidas para jóvenes, estudiantes o familias numerosas.",
     "Es uno de los productos donde más influye la política local: hay ciudades que lo subvencionan casi por completo y otras donde cuesta como una cena. Comparar el precio sin mirar qué cubre el abono lleva a conclusiones falsas.",
   ],
+  "cafe": [
+    "Un café solo servido en la barra, no una cápsula ni un paquete de supermercado. Es el producto donde más pesa el sitio: el mismo café cuesta el doble en el centro de una capital que en un pueblo, y la diferencia entre países mezcla precio y tamaño de la taza.",
+    "Con una cifra tan pequeña, las horas de trabajo salen con decimales y cuesta hacerse idea. Sirve más mirar cuántos cafés al día caben en una hora de sueldo que el precio aislado: ahí se ve el poder de compra de verdad.",
+  ],
+  "menu-del-dia": [
+    "Primero, segundo, pan, bebida y postre o café, servido al mediodía en un restaurante de barrio. No es la carta ni el menú de noche: es la fórmula que los restaurantes usan para llenar el local a una hora concreta.",
+    "Varía mucho entre ciudades y entre semana y fin de semana, y en zonas de oficinas suele ser más barato que en el centro turístico. Comparado con cocinar en casa, el menú incluye el trabajo de quien lo prepara y sirve, algo que no aparece en la cifra.",
+  ],
+  "barra-de-pan": [
+    "Barra de unos 250 gramos, estimada a partir del precio de la hogaza de medio kilo. El pan artesano de masa madre y el de horno de supermercado no cuestan lo mismo, y esta cifra es la media de tienda, no la del obrador de barrio.",
+    "Es el producto del catálogo con el precio más pequeño y el que más ha subido en los últimos años en relación con su coste. Por eso las horas que salen son casi simbólicas: lo que mide bien es su evolución, no su importe.",
+  ],
+  "leche-mes": [
+    "Doce litros al mes, aproximadamente un litro al día. Es leche entera de supermercado; la semidesnatada y la desnatada cuestan prácticamente lo mismo, y la diferencia real está entre marca blanca y marca comercial.",
+    "Al ser un consumo mensual y no una compra suelta, la cifra se compara bien entre países: doce litros son los mismos en todos, aunque el envase, la marca y el formato cambien.",
+  ],
+  "huevos-docena": [
+    "Docena de huevos camperos de tamaño mediano. El tipo importa: los de jaula cuestan entre la mitad y dos tercios de lo que cuesta esta docena, y los ecológicos, más. Comparar precios entre países sin mirar el tipo de huevo lleva a conclusiones falsas.",
+    "El huevo es uno de los alimentos con mejor relación entre proteína y precio, y por eso aparece tanto en las cestas de la compra ajustadas. Su precio se mueve con los piensos y con los brotes de gripe aviar, no con la demanda de los hogares.",
+  ],
+  "arroz-kilo": [
+    "Un kilo de arroz redondo, el de uso diario para guisos y paellas sencillas. El bomba, el basmati o el de denominación de origen cuestan varias veces más, así que esta cifra es la del arroz corriente de tienda.",
+    "Es un alimento con precio estable y existencias abundantes: cuando sube, suele ser por el coste del transporte o por restricciones a la exportación en los países productores, más que por falta de arroz.",
+  ],
+  "pechuga-pollo-kilo": [
+    "Un kilo de pechuga fileteada, la parte más cara del pollo. El pollo entero cuesta bastante menos por kilo y aprovecha más, pero exige tiempo de preparación: la diferencia de precio es, en parte, la diferencia entre comprar tiempo o comprarlo hecho.",
+    "Su precio depende de las ofertas de la semana y de si es marca blanca o de marca. Entre países cambia menos que la carne de vacuno, porque el pollo se produce en casi todos y no cruza tantas fronteras.",
+  ],
+  "cerveza-pack": [
+    "Pack de seis latas de 33 centilitros, calculado desde el precio de la botella de medio litro. Es cerveza de supermercado, no de bar: la misma cantidad servida en una terraza cuesta varias veces más, y ese sobreprecio es el que se paga por el sitio y el servicio.",
+    "En los países donde el alcohol lleva impuesto específico, buena parte de la cifra no es la cerveza: es el impuesto. Por eso comparar el precio de una caja entre países mide también la política fiscal de cada uno.",
+  ],
+  "entrada-cine": [
+    "Entrada de sesión estándar en una sala comercial, sin descuentos. El día del espectador, las tarifas de estudiante o de jubilado y los bonos reducen el precio; las salas premium, con butacas grandes o proyección especial, lo suben.",
+    "El cine es uno de los productos donde el precio sube por encima de la inflación desde hace años, mientras baja el número de espectadores. Lo que se paga no es solo la película: es la sala, el aire acondicionado y el personal.",
+  ],
+  "corte-pelo": [
+    "Corte de hombre en una barbería de ciudad, sin tinte ni tratamiento. El corte de mujer suele costar más y no entra en esta cifra, así que comparar este precio entre países no dice nada sobre lo que cuesta mantenerse el pelo en general.",
+    "Es un servicio con poco margen de sustitución: no se puede comprar por internet ni traer de otro país. Su precio refleja casi directamente lo que cuesta una hora de trabajo en el sector servicios de ese lugar.",
+  ],
 };
 
 /** Devuelve la nota del producto, o null si no tiene (no se rellena con relleno). */
