@@ -73,6 +73,12 @@ const cuestaMeses = conPrecioLocal
   .sort((a, b) => a.dias - b.dias)
   .slice(0, 6);
 
+// El mínimo legal, para responder a «cuánto vale un día de trabajo con el salario
+// mínimo», que es de las variantes que más se escriben en el autocompletado.
+const minMensual = country.minWageMonthly ?? null;
+const minHora = minMensual ? calcHourlyWage(minMensual, country.legalWeeklyHours) : null;
+const minJornada = minHora != null ? minHora * STANDARD_DAY_HOURS : null;
+
 const faqs = [
   {
     question: `¿Cuánto vale un día de trabajo en ${country.name}?`,
@@ -86,6 +92,18 @@ const faqs = [
     question: `¿De dónde sale el sueldo que usáis para ${country.name}?`,
     answer: `${country.salariesSource} Si prefieres usar el tuyo, la calculadora de ${country.name} recalcula todas las cifras con tu nómina, sin que salga de tu dispositivo.`,
   },
+  {
+    question: `¿Cuánto cuesta un día de trabajo en ${country.name}?`,
+    answer: `Lo mismo que vale: ${miles(porJornada)} ${simbolo} la jornada de 8 horas y ${formatHourlyWage(porHora, simbolo)} la hora. En español se pregunta de las dos formas —«cuánto cuesta» y «cuánto vale»—, pero la cuenta es la misma: sueldo mensual de referencia entre las horas que tiene el mes (${Math.round(country.legalWeeklyHours * WEEKS_PER_MONTH)}).`,
+  },
+  ...(minHora != null && minJornada != null && minMensual
+    ? [
+        {
+          question: `¿Cuánto vale un día de trabajo con el salario mínimo en ${country.name}?`,
+          answer: `Con el mínimo legal de ${country.name} (${miles(minMensual)} ${simbolo}/mes${country.minWageSourceLabel ? `, ${country.minWageSourceLabel}` : ''}) la hora sale a ${formatHourlyWage(minHora, simbolo)} y la jornada de 8 horas a ${miles(minJornada)} ${simbolo}. Es un suelo legal, no lo que gana la mayoría: con el sueldo mediano, el día vale ${miles(porJornada)} ${simbolo}.`,
+        },
+      ]
+    : []),
   {
     question: `¿Y un día natural de sueldo, sin contar la jornada?`,
     answer: `Un treintavo del sueldo mensual: ${miles(porDiaNatural)} ${simbolo}. Es la cuenta que se usa para descontar un día no trabajado; la de la jornada de 8 h (${miles(porJornada)} ${simbolo}) es la que mide cuánto trabajo cuesta algo.`,

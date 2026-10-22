@@ -15,6 +15,10 @@ export type Country = {
   medianNetMonthly: number | null;
   meanNetMonthly: number | null;
   minWageMonthly: number | null;
+  /** Año del mínimo legal y de dónde sale (se muestran junto a la cifra). */
+  minWageYear?: number;
+  minWageSourceLabel?: string;
+  minWageSourceUrl?: string;
   retirementAge: number;
   salariesUpdatedAt: string;
   salariesSource: string;

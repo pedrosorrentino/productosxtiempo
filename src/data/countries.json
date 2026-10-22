@@ -22,7 +22,9 @@
     "salarySourceLabel": "INE · EAES 2024",
     "salariesSourceUrl": "https://ine.es/dyngs/Prensa/en/EAES2024.htm",
     "salaryDataKind": "estimado",
-    "minWageYear": 2024
+    "minWageYear": 2026,
+    "minWageSourceLabel": "BOE · RD 126/2026",
+    "minWageSourceUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2026-3815"
   },
   {
     "code": "PT",
