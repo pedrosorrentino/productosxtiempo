@@ -15,6 +15,7 @@ import {
   generateHreflangs,
   generateProductSchema,
   generateBreadcrumbSchema,
+  generateFAQSchema,
 } from '../../lib/seo.ts';
 
 const allCountries = countriesData as Country[];
@@ -189,7 +190,30 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   { name: product.shortName, url: canonicalUrl },
 ]);
 
-const combinedJsonLd = [productSchema, breadcrumbSchema];
+// Preguntas frecuentes de la ficha, con la forma exacta en la que se busca
+// («cuántas horas hay que trabajar para comprar X»). Solo se generan si hay
+// precio local: sin dato no hay respuesta que dar.
+const faqsProducto =
+  hasLocal && calculatedStats
+    ? [
+        {
+          question: `¿Cuántas horas hay que trabajar para comprar ${product.shortName} en ${country.name}?`,
+          answer: `${formatHours(Math.round(calculatedStats.hours * 10) / 10)} horas con el sueldo mediano neto de ${country.name} (${formatIntegerThousands(ref?.monthly ?? 0)} ${country.currencySymbol}/mes), es decir ${formatWorkdays(calculatedStats.workdays8h)} jornadas de 8 horas. Con tu nómina real cambia: la calculadora de arriba lo recalcula sin enviar nada.`,
+        },
+        {
+          question: `¿Cuánto cuesta ${product.shortName} en ${country.name}?`,
+          answer: `${priceText}${price.date ? `, precio de ${price.date}` : ''}${price.source ? ` (${price.source})` : ''}. ${price.note ?? ''}`.trim(),
+        },
+        {
+          question: `¿De dónde sale el sueldo con el que se calcula?`,
+          answer: `${country.salariesSource ?? ''} El dato es el sueldo mediano neto de referencia (${formatIntegerThousands(ref?.monthly ?? 0)} ${country.currencySymbol}/mes) y la jornada legal de ${country.legalWeeklyHours} h semanales; el método completo está en /metodo/.`,
+        },
+      ]
+    : [];
+
+const faqSchemaProducto = faqsProducto.length ? generateFAQSchema(faqsProducto) : null;
+
+const combinedJsonLd = [productSchema, breadcrumbSchema, ...(faqSchemaProducto ? [faqSchemaProducto] : [])];
 
 // 5. Enlazado Interno Automático:
 // A) Productos hermanos de la misma categoría en este país
@@ -446,6 +470,18 @@ import { notaProducto } from "../../data/notas-producto";
           Solo se comparan precios tomados en cada país, nunca conversiones: lo comparable entre países es el trabajo,
           no el dinero.
         </p>
+      </section>
+    )}
+
+    {faqsProducto.length > 0 && (
+      <section class="mt-14 space-y-4" aria-label={`Preguntas frecuentes sobre ${product.shortName} en ${country.name}`}>
+        <h2 class="font-signage uppercase text-2xl md:text-3xl">Preguntas frecuentes</h2>
+        {faqsProducto.map((f) => (
+          <details class="bg-base-200/60 rounded-lg border border-base-300 p-4">
+            <summary class="font-signage uppercase text-lg cursor-pointer">{f.question}</summary>
+            <p class="mt-2 font-sans text-sm leading-relaxed opacity-90">{f.answer}</p>
+          </details>
+        ))}
       </section>
     )}
 

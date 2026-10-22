@@ -51,6 +51,7 @@ const mesesDeMinimo = fila && minMensual ? fila.total / minMensual : null;
 const titulares = fila
   ? [
       `Cuánto se necesita para vivir en ${country.name}: ${miles(fila.total)} ${simbolo} y ${formatHours(Math.round(fila.horas))} horas`,
+      `Vivir en ${country.name}: ${miles(fila.total)} ${simbolo} y ${formatHours(Math.round(fila.horas))} horas`,
       `Cuánto se necesita para vivir en ${country.name}`,
     ]
   : [`Cuánto se necesita para vivir en ${country.name}`];
