@@ -21,60 +21,12 @@ import type { Country, Product } from '../lib/types.ts';
 import countriesData from '../data/countries.json';
 import productsData from '../data/products.json';
 import { generateBreadcrumbSchema, generateFAQSchema } from '../lib/seo.ts';
+import { costeDeVida } from '../lib/coste-vida.ts';
 
 const countries = countriesData as Country[];
 const products = productsData as Product[];
 
-/** Los cinco gastos del mes, en el orden en que se leen. */
-const COMPONENTES = [
-  { id: 'alquiler-piso', etiqueta: 'Alquiler', factor: 1 },
-  { id: 'cesta-semanal', etiqueta: 'Compra semanal', factor: WEEKS_PER_MONTH },
-  { id: 'luz-gas-mes', etiqueta: 'Luz y gas', factor: 1 },
-  { id: 'fibra-mes', etiqueta: 'Internet', factor: 1 },
-  { id: 'abono-transporte', etiqueta: 'Abono de transporte', factor: 1 },
-];
-
-const buscarProducto = (id: string) => products.find((p) => p.id === id && p.visible);
-
-const filas = countries
-  .map((c) => {
-    const ref = referenceSalary(c);
-    if (!ref) return null;
-    const hora = calcHourlyWage(ref.monthly, c.legalWeeklyHours);
-    const items: Array<{ etiqueta: string; importe: number }> = [];
-    const faltan: string[] = [];
-    for (const comp of COMPONENTES) {
-      const p = buscarProducto(comp.id);
-      const precio = p?.prices[c.code];
-      if (!p || !precio || precio.origin !== 'local') {
-        faltan.push(comp.etiqueta);
-        continue;
-      }
-      items.push({ etiqueta: comp.etiqueta, importe: precio.value * comp.factor });
-    }
-    if (items.length < 3) return null;
-    const total = items.reduce((s, i) => s + i.importe, 0);
-    const horas = total / hora;
-    const parteDelSueldo = total / ref.monthly;
-    const masPesado = [...items].sort((a, b) => b.importe - a.importe)[0];
-    return {
-      country: c,
-      ref,
-      items,
-      faltan,
-      total,
-      horas,
-      parteDelSueldo,
-      masPesado,
-      completa: faltan.length === 0,
-      /** Un piso entero cuesta más que el sueldo de referencia del país. */
-      noAlcanza: parteDelSueldo > 1,
-      /** El sueldo del país es una referencia editable, no un dato publicado. */
-      sueldoOrientativo: c.salaryDataKind === 'orientativo',
-    };
-  })
-  .filter((x): x is NonNullable<typeof x> => x !== null)
-  .sort((a, b) => a.horas - b.horas);
+const filas = costeDeVida(countries, products);
 
 const masBarato = filas[0];
 const masCaro = filas[filas.length - 1];
@@ -179,6 +131,7 @@ const pageDescription = `Vivir un mes (alquiler, compra, luz y gas, internet y t
                 <tr class={f.completa ? 'bg-base-200/50' : 'bg-base-200/30'}>
                   <td class="p-3 font-semibold text-base-content" data-label="País">
                     <a class="hover:text-primary transition-colors" href={`/${f.country.slug}/`}>{f.country.name}</a>
+                    <a class="ml-1 text-xs text-primary hover:underline" href={`/vivir-en/${f.country.slug}/`}>detalle</a>
                     {!f.completa && (
                       <span class="block font-board-mono text-[11px] opacity-70 font-normal">
                         sin {f.faltan.join(', ').toLowerCase()}

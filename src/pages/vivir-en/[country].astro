@@ -1,0 +1,220 @@
+---
+/**
+ * /vivir-en/<país>/ — cuánto se necesita para vivir en un país, en horas.
+ *
+ * Nace de una consulta que el autocompletado devuelve para medio mundo:
+ * «cuánto se necesita para vivir en X». Es la versión por país de
+ * `/vivir-un-mes/`, con el mismo cálculo (src/lib/coste-vida.ts) para que las
+ * dos páginas no puedan dar cifras distintas.
+ *
+ * Solo se usan precios tomados en el país. Si falta un componente, se dice.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pickTitle } from '../../lib/titleWidth.ts';
+import { formatHours, formatIntegerThousands, formatPercent } from '../../lib/format.ts';
+import { costeDeVida } from '../../lib/coste-vida.ts';
+import type { Country, Product } from '../../lib/types.ts';
+import countriesData from '../../data/countries.json';
+import productsData from '../../data/products.json';
+import { generateBreadcrumbSchema, generateFAQSchema, generateHreflangs } from '../../lib/seo.ts';
+
+export function getStaticPaths() {
+  return (countriesData as Country[]).map((country) => ({
+    params: { country: country.slug },
+    props: { country },
+  }));
+}
+
+interface Props {
+  country: Country;
+}
+
+const { country } = Astro.props as Props;
+const countries = countriesData as Country[];
+const products = productsData as Product[];
+const siteUrl = Astro.site?.href ?? 'https://precioentiempo.com';
+const cleanSite = siteUrl.replace(/\/$/, '');
+const canonicalUrl = `${cleanSite}/vivir-en/${country.slug}/`;
+
+const todas = costeDeVida(countries, products);
+const fila = todas.find((f) => f.country.code === country.code) ?? null;
+const posicion = fila ? todas.findIndex((f) => f.country.code === country.code) + 1 : 0;
+const masBarato = todas[0] ?? null;
+const masCaro = todas[todas.length - 1] ?? null;
+
+const simbolo = country.currencySymbol;
+const miles = (n: number) => formatIntegerThousands(Math.round(n));
+
+const minMensual = country.minWageMonthly ?? null;
+const mesesDeMinimo = fila && minMensual ? fila.total / minMensual : null;
+
+const titulares = fila
+  ? [
+      `Cuánto se necesita para vivir en ${country.name}: ${miles(fila.total)} ${simbolo} y ${formatHours(Math.round(fila.horas))} horas`,
+      `Cuánto se necesita para vivir en ${country.name}`,
+    ]
+  : [`Cuánto se necesita para vivir en ${country.name}`];
+
+const pageTitle = pickTitle(titulares, ' · Precio en tiempo');
+const pageDescription = fila
+  ? `Vivir un mes en ${country.name} cuesta ${miles(fila.total)} ${simbolo}: ${formatHours(Math.round(fila.horas))} horas de trabajo, el ${formatPercent(fila.parteDelSueldo * 100)} del sueldo mediano. Alquiler, compra, luz, internet y transporte, con precios tomados allí.`
+  : `Qué cuesta mantener una casa un mes en ${country.name}, medido en horas de trabajo y con precios tomados en el país.`;
+
+const hreflangs = generateHreflangs(countries, 'country', undefined, siteUrl);
+
+const faqs = fila
+  ? [
+      {
+        question: `¿Cuánto cuesta vivir un mes en ${country.name}?`,
+        answer: `${miles(fila.total)} ${simbolo} al mes para una persona con estos cinco gastos: ${fila.items.map((i) => `${i.etiqueta.toLowerCase()} (${miles(i.importe)} ${simbolo})`).join(', ')}. Con el sueldo mediano de ${country.name} (${miles(fila.ref.monthly)} ${simbolo}/mes) son ${formatHours(Math.round(fila.horas))} de trabajo, el ${formatPercent(fila.parteDelSueldo * 100)} del sueldo.`,
+      },
+      ...(minMensual && mesesDeMinimo
+        ? [
+            {
+              question: `¿Se puede vivir en ${country.name} con el salario mínimo?`,
+              answer: `La cesta sale a ${miles(fila.total)} ${simbolo} y el mínimo legal es ${miles(minMensual)} ${simbolo}/mes: ${mesesDeMinimo < 1 ? 'alcanza y sobran ' + miles(minMensual - fila.total) + ' ' + simbolo : 'no llega, hacen falta ' + mesesDeMinimo.toFixed(2).replace('.', ',') + ' sueldos mínimos'}. ${fila.noAlcanza ? 'Con el sueldo mediano tampoco cubre el 100%: es la razón por la que se comparte piso.' : 'Con el sueldo mediano sí cubre el mes completo.'}`,
+            },
+          ]
+        : []),
+      {
+        question: `¿Qué es lo que más pesa en ${country.name}?`,
+        answer: `${fila.masPesado.etiqueta}: ${miles(fila.masPesado.importe)} ${simbolo}, el ${formatPercent((fila.masPesado.importe / fila.total) * 100)} del total del mes.`,
+      },
+      {
+        question: '¿Estos precios son conversiones de otro país?',
+        answer:
+          'No. Solo se usan precios tomados en el país, con su tienda o su fuente. Cuando un país no tiene precio propio de algún componente, aquí se dice cuál falta en lugar de rellenarlo con una conversión: convertir no es medir.',
+      },
+    ]
+  : [];
+
+const jsonLd = [
+  generateBreadcrumbSchema([
+    { name: 'Inicio', url: `${cleanSite}/` },
+    { name: 'Vivir un mes', url: `${cleanSite}/vivir-un-mes/` },
+    { name: country.name, url: canonicalUrl },
+  ]),
+  ...(faqs.length ? [generateFAQSchema(faqs)] : []),
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  currentCountrySlug={country.slug}
+  currentCountryCode={country.code}
+  hreflangs={hreflangs}
+  jsonLd={jsonLd}
+>
+  <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-8">
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <a href="/" class="hover:text-primary">Inicio</a> /
+      <a href="/vivir-un-mes/" class="hover:text-primary">Vivir un mes</a> /
+      {country.name}
+    </nav>
+
+    <header class="space-y-3">
+      <h1 class="font-signage uppercase text-3xl md:text-5xl leading-tight">
+        Cuánto se necesita para vivir en {country.name}
+      </h1>
+      {fila ? (
+        <p class="font-sans text-base sm:text-lg opacity-90 leading-relaxed">
+          Mantener una casa un mes —alquiler, compra semanal, luz y gas, internet y abono de
+          transporte— cuesta <strong>{miles(fila.total)} {simbolo}</strong>. Con el sueldo mediano de
+          {' '}{country.name} ({miles(fila.ref.monthly)} {simbolo}/mes) son{' '}
+          <strong>{formatHours(Math.round(fila.horas))} de trabajo</strong>, el{' '}
+          {formatPercent(fila.parteDelSueldo * 100)} del sueldo.
+        </p>
+      ) : (
+        <p class="font-sans text-base opacity-90">
+          Todavía no hay precios suficientes tomados en {country.name} para calcular este mes sin
+          inventar nada.
+        </p>
+      )}
+    </header>
+
+    {fila && (
+      <>
+        <section class="board-plate p-6" aria-label={`Desglose del mes en ${country.name}`}>
+          <h2 class="font-signage uppercase text-2xl mb-4">En qué se va el mes</h2>
+          <div class="overflow-x-auto">
+            <table class="board-table w-full text-left font-body text-sm">
+              <thead>
+                <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+                  <th class="p-3">Gasto</th>
+                  <th class="p-3 text-right">Al mes</th>
+                  <th class="p-3 text-right">Horas de trabajo</th>
+                  <th class="p-3 text-right">Del total</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-base-300">
+                {fila.items.map((i) => (
+                  <tr>
+                    <td class="p-3">{i.etiqueta}</td>
+                    <td class="p-3 text-right font-board-mono">{miles(i.importe)} {simbolo}</td>
+                    <td class="p-3 text-right font-board-mono">{formatHours(Math.round(i.importe / fila.hora))} h</td>
+                    <td class="p-3 text-right font-board-mono opacity-80">{formatPercent((i.importe / fila.total) * 100)}</td>
+                  </tr>
+                ))}
+                <tr class="font-bold">
+                  <td class="p-3">Total</td>
+                  <td class="p-3 text-right font-board-mono">{miles(fila.total)} {simbolo}</td>
+                  <td class="p-3 text-right font-board-mono text-primary">{formatHours(Math.round(fila.horas))} h</td>
+                  <td class="p-3 text-right font-board-mono">100%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {fila.faltan.length > 0 && (
+            <p class="mt-3 font-sans text-sm opacity-80">
+              Faltan datos tomados en {country.name} de: {fila.faltan.join(', ')}. El total no los incluye,
+              así que el mes real es algo más caro.
+            </p>
+          )}
+          <p class="mt-3 font-sans text-xs opacity-70">
+            Solo precios tomados en {country.name}, no conversiones. Horas calculadas con el sueldo
+            mediano neto ({miles(fila.ref.monthly)} {simbolo}/mes) y la jornada legal de
+            {' '}{country.legalWeeklyHours} h.
+          </p>
+        </section>
+
+        {posicion > 0 && masBarato && masCaro && (
+          <section class="board-plate p-6" aria-label="Comparación entre países">
+            <h2 class="font-signage uppercase text-2xl mb-3">Cómo queda frente a otros países</h2>
+            <p class="font-sans text-sm sm:text-base leading-relaxed opacity-90">
+              {country.name} es el <strong>país {posicion} de {todas.length}</strong> en horas de trabajo
+              para vivir un mes. Donde menos cuesta es en <strong>{masBarato.country.name}</strong>
+              {' '}({formatHours(Math.round(masBarato.horas))}) y donde más en{' '}
+              <strong>{masCaro.country.name}</strong> ({formatHours(Math.round(masCaro.horas))}).
+            </p>
+            <p class="mt-3 font-sans text-sm">
+              <a class="text-primary hover:underline" href="/vivir-un-mes/">Ver los {todas.length} países en una tabla →</a>
+            </p>
+          </section>
+        )}
+
+        {faqs.length > 0 && (
+          <section class="space-y-4">
+            <h2 class="font-signage uppercase text-2xl md:text-3xl">Preguntas frecuentes</h2>
+            {faqs.map((f) => (
+              <details class="bg-base-200/60 rounded-lg border border-base-300 p-4">
+                <summary class="font-signage uppercase text-lg cursor-pointer">{f.question}</summary>
+                <p class="mt-2 font-sans text-sm leading-relaxed opacity-90">{f.answer}</p>
+              </details>
+            ))}
+          </section>
+        )}
+
+        <section class="board-plate p-6 space-y-3">
+          <h2 class="font-signage uppercase text-2xl">Sigue por ahí</h2>
+          <div class="flex flex-wrap gap-x-4 gap-y-2 font-sans text-sm">
+            <a class="text-primary hover:underline" href={`/${country.slug}/`}>Poder adquisitivo en {country.name} →</a>
+            <a class="text-primary hover:underline" href={`/${country.slug}/sueldo-por-hora/`}>Sueldo por hora en {country.name} →</a>
+            <a class="text-primary hover:underline" href={`/${country.slug}/dia-de-trabajo/`}>Un día de trabajo en {country.name} →</a>
+            <a class="text-primary hover:underline" href="/calculadora-sueldo-por-hora/">Calculadora de sueldo por hora →</a>
+          </div>
+        </section>
+      </>
+    )}
+  </div>
+</BaseLayout>

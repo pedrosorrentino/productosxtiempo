@@ -27,6 +27,9 @@ export const GET: APIRoute = async ({ site }) => {
   urls.push({ loc: `${baseUrl}/datos/`, lastmod: today, changefreq: 'weekly', priority: '0.8' });
   urls.push({ loc: `${baseUrl}/calculadora-sueldo-por-hora/`, lastmod: today, changefreq: 'monthly', priority: '0.9' });
   urls.push({ loc: `${baseUrl}/vivir-un-mes/`, lastmod: today, changefreq: 'monthly', priority: '0.8' });
+  for (const c of countries) {
+    urls.push({ loc: `${baseUrl}/vivir-en/${c.slug}/`, lastmod: today, changefreq: 'monthly', priority: '0.7' });
+  }
   urls.push({ loc: `${baseUrl}/tesla-model-3/`, lastmod: today, changefreq: 'monthly', priority: '0.8' });
   urls.push({ loc: `${baseUrl}/sobre-el-proyecto/`, lastmod: '2026-09-01', changefreq: 'monthly', priority: '0.7' });
   urls.push({ loc: `${baseUrl}/contacto/`, lastmod: '2026-09-01', changefreq: 'monthly', priority: '0.6' });

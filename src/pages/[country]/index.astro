@@ -520,6 +520,9 @@ const pageDescription = hasSalary
       <h2 class="font-signage uppercase text-2xl sm:text-3xl text-base-content">
         Poder adquisitivo y coste de la vida en {country.name} en horas de trabajo
       </h2>
+      <p class="font-sans text-sm">
+        <a class="text-primary hover:underline" href={`/vivir-en/${country.slug}/`}>Cuánto se necesita para vivir en {country.name} →</a>
+      </p>
 
       <p class="text-sm sm:text-base leading-relaxed opacity-90 font-sans">
         En <strong>{country.name}</strong>, el sueldo mediano neto de referencia se sitúa en <strong>{formatIntegerThousands(country.medianNetMonthly ?? 0)} {country.currencySymbol} al mes</strong>. Bajo una semana laboral estándar de <strong>{country.legalWeeklyHours} horas</strong>, una hora de trabajo real se retribuye a una tasa de <strong>{countryWageText ?? "10 " + country.currencySymbol + "/hora"}</strong>, a partir de {country.salarySourceLabel} ({country.salariesSource}).
