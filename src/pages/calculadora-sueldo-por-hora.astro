@@ -1,0 +1,294 @@
+---
+/**
+ * /calculadora-sueldo-por-hora/ — convertir una nómina en sueldo por hora.
+ *
+ * Existe por una razón de demanda: el autocompletado devuelve «calculadora de
+ * sueldo por hora» con país en seis variantes («… chile», «… méxico», «…
+ * ecuador»), y el sitio tenía la calculadora de precio a horas pero ninguna
+ * página que convirtiera una NÓMINA en euros por hora.
+ *
+ * El cálculo es 100% cliente: los datos no salen del navegador y la página
+ * funciona sin enviar nada a ningún servidor.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pickTitle } from '../lib/titleWidth.ts';
+import { formatHourlyWage, formatIntegerThousands } from '../lib/format.ts';
+import { calcHourlyWage } from '../lib/calc.ts';
+import {
+  generateBreadcrumbSchema,
+  generateFAQSchema,
+  generateWebApplicationSchema,
+} from '../lib/seo.ts';
+import type { Country } from '../lib/types.ts';
+import countriesData from '../data/countries.json';
+
+const siteUrl = Astro.site?.href ?? 'https://precioentiempo.com';
+const cleanSite = siteUrl.replace(/\/$/, '');
+const canonicalUrl = `${cleanSite}/calculadora-sueldo-por-hora/`;
+
+const titulares = [
+  'Calculadora de sueldo por hora: de tu nómina a lo que ganas cada hora',
+  'Calculadora de sueldo por hora',
+];
+const pageTitle = pickTitle(titulares, ' · Precio en tiempo');
+const pageDescription =
+  'Convierte tu sueldo mensual en sueldo por hora, por día y por año. Con pagas extras, jornada semanal y neto o bruto. El cálculo se hace en tu navegador: no se envía nada.';
+
+// Tabla de referencia: la hora mediana de cada país, con el mismo cálculo que el
+// resto del sitio (sueldo mensual de referencia ÷ horas del mes).
+const paises = (countriesData as Country[])
+  .filter((c) => c.medianNetMonthly != null && c.medianNetMonthly > 0)
+  .map((c) => ({
+    nombre: c.name,
+    slug: c.slug,
+    simbolo: c.currencySymbol,
+    mensual: c.medianNetMonthly as number,
+    horas: c.legalWeeklyHours,
+    hora: calcHourlyWage(c.medianNetMonthly as number, c.legalWeeklyHours),
+    fuente: c.salarySourceLabel ?? '',
+  }))
+  .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+
+const faqs = [
+  {
+    question: '¿Cómo se calcula el sueldo por hora?',
+    answer:
+      'Sueldo mensual ÷ horas que tiene el mes. Con una jornada de 40 horas semanales, el mes tiene 173 horas (40 × 52 semanas ÷ 12 meses), así que un sueldo de 1.500 € netos sale a 8,67 €/hora. Si cobras en 14 pagas, primero se suman las dos extras al año y se dividen entre 12 antes de hacer la cuenta.',
+  },
+  {
+    question: '¿El sueldo por hora es bruto o neto?',
+    answer:
+      'Depende de la cifra de la que salgas. Si partes de lo que ingresas en cuenta, el resultado es neto; si partes del salario bruto anual, es bruto. La diferencia entre uno y otro puede ser de un 20-25% por las cotizaciones y el IRPF, así que conviene no mezclarlos al comparar.',
+  },
+  {
+    question: '¿Y si tengo pagas extraordinarias?',
+    answer:
+      'Se suman al año y se reparten entre los doce meses. Un sueldo de 1.400 € en 14 pagas son 19.600 € al año, es decir 1.633 € al mes de media; con una jornada de 40 horas, 9,44 €/hora. Contar solo la paga normal infravalora lo que ganas por hora.',
+  },
+  {
+    question: '¿Se descuentan las vacaciones y los festivos?',
+    answer:
+      'No, esta calculadora usa las horas de reloj de la jornada legal. Si quieres las horas realmente trabajadas al año (descontando vacaciones, festivos y bajas), cada portada de país muestra las dos cifras: en España, 1.733 horas de jornada frente a unas 1.633 efectivas.',
+  },
+  {
+    question: '¿Se guarda mi sueldo en algún sitio?',
+    answer:
+      'No. La cuenta se hace en tu navegador con JavaScript y no se envía ningún dato al servidor: la web no tiene analítica de terceros ni cookies de seguimiento.',
+  },
+];
+
+const jsonLd = [
+  generateWebApplicationSchema({
+    name: 'Calculadora de sueldo por hora',
+    description:
+      'Convierte un sueldo mensual en sueldo por hora, día y año, teniendo en cuenta pagas extras y jornada semanal. Cálculo en el navegador.',
+    url: canonicalUrl,
+    applicationCategory: 'FinanceApplication',
+  }),
+  generateFAQSchema(faqs),
+  generateBreadcrumbSchema([
+    { name: 'Inicio', url: `${cleanSite}/` },
+    { name: 'Calculadora de sueldo por hora', url: canonicalUrl },
+  ]),
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-8">
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <a href="/" class="hover:text-primary">Inicio</a> / Calculadora de sueldo por hora
+    </nav>
+
+    <header class="space-y-3">
+      <h1 class="font-signage uppercase text-3xl md:text-5xl leading-tight">
+        Calculadora de sueldo por hora
+      </h1>
+      <p class="font-sans text-base sm:text-lg opacity-90 leading-relaxed">
+        Pon lo que cobras y las horas que trabajas: te dice cuánto ganas por hora, por día y al año.
+        Si cobras pagas extras, márcalo, porque cambian la cuenta. <strong>No se envía nada</strong>:
+        el cálculo se hace en tu navegador.
+      </p>
+    </header>
+
+    <section class="board-plate p-6 sm:p-8" aria-label="Calculadora">
+      <div class="grid gap-4 sm:grid-cols-3">
+        <label class="block">
+          <span class="font-board-mono text-xs uppercase tracking-wider opacity-80">Sueldo mensual</span>
+          <input
+            id="sueldo"
+            type="number"
+            inputmode="decimal"
+            min="0"
+            step="10"
+            value="1500"
+            class="mt-1 w-full rounded border border-base-300 bg-base-100 px-3 py-2 font-board-mono text-lg"
+          />
+        </label>
+        <label class="block">
+          <span class="font-board-mono text-xs uppercase tracking-wider opacity-80">Pagas al año</span>
+          <select
+            id="pagas"
+            class="mt-1 w-full rounded border border-base-300 bg-base-100 px-3 py-2 font-board-mono text-lg"
+          >
+            <option value="12">12 pagas</option>
+            <option value="14" selected>14 pagas</option>
+          </select>
+        </label>
+        <label class="block">
+          <span class="font-board-mono text-xs uppercase tracking-wider opacity-80">Horas por semana</span>
+          <input
+            id="horas"
+            type="number"
+            inputmode="numeric"
+            min="1"
+            max="80"
+            step="1"
+            value="40"
+            class="mt-1 w-full rounded border border-base-300 bg-base-100 px-3 py-2 font-board-mono text-lg"
+          />
+        </label>
+      </div>
+
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="board-cell p-3">
+          <span class="font-board-mono text-xs uppercase opacity-80 block">Por hora</span>
+          <span id="r-hora" class="font-board-mono text-2xl font-bold text-primary block mt-1">—</span>
+        </div>
+        <div class="board-cell p-3">
+          <span class="font-board-mono text-xs uppercase opacity-80 block">Por día (8 h)</span>
+          <span id="r-dia" class="font-board-mono text-2xl font-bold block mt-1">—</span>
+        </div>
+        <div class="board-cell p-3">
+          <span class="font-board-mono text-xs uppercase opacity-80 block">Al mes (media)</span>
+          <span id="r-mes" class="font-board-mono text-2xl font-bold block mt-1">—</span>
+        </div>
+        <div class="board-cell p-3">
+          <span class="font-board-mono text-xs uppercase opacity-80 block">Al año</span>
+          <span id="r-anio" class="font-board-mono text-2xl font-bold block mt-1">—</span>
+        </div>
+      </div>
+
+      <p id="explicacion" class="mt-4 font-sans text-sm opacity-85 leading-relaxed">
+        Con 1.500 € en 14 pagas y 40 horas semanales, el mes tiene 173 horas.
+      </p>
+      <p class="mt-3 font-board-mono text-xs opacity-60">
+        Cálculo local: tu sueldo no sale de este navegador.
+      </p>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="font-signage uppercase text-2xl md:text-3xl">Cómo se calcula, paso a paso</h2>
+      <ol class="font-sans text-sm sm:text-base leading-relaxed opacity-90 list-decimal pl-5 space-y-2">
+        <li>
+          <strong>Del mes al año.</strong> Si cobras 12 pagas, multiplica el sueldo por 12; si cobras 14,
+          por 14. Ese es el total anual.
+        </li>
+        <li>
+          <strong>Del año al mes medio.</strong> Divide el total anual entre 12. Con 14 pagas sale un poco
+          más alto que la nómina normal, que es lo correcto: estás repartiendo las extras.
+        </li>
+        <li>
+          <strong>Las horas del mes.</strong> Multiplica las horas semanales por 52 y divide entre 12.
+          40 h/semana son 173 h/mes; 35 h, 152; 44 h, 191.
+        </li>
+        <li>
+          <strong>La hora.</strong> Sueldo mensual medio ÷ horas del mes. Y de ahí, el día de 8 horas y el año.
+        </li>
+      </ol>
+      <p class="font-sans text-sm opacity-80">
+        Es la misma cuenta que usa el resto del sitio para decir cuántas horas de trabajo cuesta cada cosa:
+        <a class="text-primary hover:underline" href="/metodo/">método y fuentes</a>.
+      </p>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="font-signage uppercase text-2xl md:text-3xl">La hora mediana en cada país</h2>
+      <p class="font-sans text-sm opacity-85">
+        Para comparar: lo que gana por hora el trabajador mediano de cada país, con su jornada legal y su
+        sueldo de referencia. El detalle y la fuente de cada uno, en su portada.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="board-table w-full text-left font-body text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+              <th class="p-3">País</th>
+              <th class="p-3 text-right">Sueldo mediano</th>
+              <th class="p-3 text-right">Jornada</th>
+              <th class="p-3 text-right">Por hora</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300">
+            {paises.map((p) => (
+              <tr>
+                <td class="p-3">
+                  <a class="text-primary hover:underline" href={`/${p.slug}/`}>{p.nombre}</a>
+                </td>
+                <td class="p-3 text-right font-board-mono">{formatIntegerThousands(p.mensual)} {p.simbolo}</td>
+                <td class="p-3 text-right font-board-mono opacity-80">{p.horas} h</td>
+                <td class="p-3 text-right font-board-mono font-bold">{formatHourlyWage(p.hora, p.simbolo)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="font-signage uppercase text-2xl md:text-3xl">Preguntas frecuentes</h2>
+      {faqs.map((f) => (
+        <details class="bg-base-200/60 rounded-lg border border-base-300 p-4">
+          <summary class="font-signage uppercase text-lg cursor-pointer">{f.question}</summary>
+          <p class="mt-2 font-sans text-sm leading-relaxed opacity-90">{f.answer}</p>
+        </details>
+      ))}
+    </section>
+
+    <section class="board-plate p-6 space-y-3">
+      <h2 class="font-signage uppercase text-2xl">Y ahora, ¿cuánto te cuesta lo que compras?</h2>
+      <p class="font-sans text-sm opacity-90 leading-relaxed">
+        Con tu hora ya calculada, el resto es dividir: cada ficha del catálogo te dice cuántas horas de tu
+        trabajo cuesta un producto con el sueldo mediano de tu país, y la calculadora de cada país lo hace
+        con tu nómina exacta.
+      </p>
+      <div class="flex flex-wrap gap-3 font-sans text-sm">
+        <a class="text-primary hover:underline" href="/espana/precio/">Calcular con mi nómina →</a>
+        <a class="text-primary hover:underline" href="/vivir-un-mes/">Vivir un mes en 12 países →</a>
+        <a class="text-primary hover:underline" href="/datos/">Descargar los datos →</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Cálculo en el navegador, sin dependencias: mismos ids que el HTML de arriba.
+    const sueldo = document.getElementById('sueldo') as HTMLInputElement | null;
+    const pagas = document.getElementById('pagas') as HTMLSelectElement | null;
+    const horas = document.getElementById('horas') as HTMLInputElement | null;
+    const rHora = document.getElementById('r-hora');
+    const rDia = document.getElementById('r-dia');
+    const rMes = document.getElementById('r-mes');
+    const rAnio = document.getElementById('r-anio');
+    const expl = document.getElementById('explicacion');
+
+    const eur = (n: number, dec = 2): string =>
+      n.toLocaleString('es-ES', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + ' €';
+
+    function calcular() {
+      if (!sueldo || !pagas || !horas || !rHora || !rDia || !rMes || !rAnio || !expl) return;
+      const mensual = Number(sueldo.value) || 0;
+      const nPagas = Number(pagas.value) || 12;
+      const semanales = Number(horas.value) || 40;
+      const anual = mensual * nPagas;
+      const mesMedio = anual / 12;
+      const horasMes = (semanales * 52) / 12;
+      const hora = horasMes > 0 ? mesMedio / horasMes : 0;
+      rHora.textContent = eur(hora);
+      rDia.textContent = eur(hora * 8);
+      rMes.textContent = eur(mesMedio, 0);
+      rAnio.textContent = eur(anual, 0);
+      expl.textContent = `Con ${eur(mensual, 0)} en ${nPagas} pagas y ${semanales} horas semanales: ${Math.round(horasMes)} horas al mes y ${eur(hora)} por hora.`;
+    }
+
+    [sueldo, pagas, horas].forEach((el) => el && el.addEventListener('input', calcular));
+    calcular();
+  </script>
+</BaseLayout>
