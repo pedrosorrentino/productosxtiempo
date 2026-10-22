@@ -253,7 +253,26 @@ const rentHours = countryWage && countryWage > 0 ? Math.round(rentPrice / countr
 const rentPctSalary = country.medianNetMonthly ? Math.round((rentPrice / country.medianNetMonthly) * 100) : 50;
 
 // Preguntas Frecuentes estructuradas para SEO & GEO
+// Dos preguntas que se escriben mucho en el autocompletado («cuántas horas se
+// trabaja al mes en X», «cuál es el salario mínimo en X») y que la portada no
+// respondía con esas palabras, aunque el dato ya estuviera dentro.
+const horasAlMes = Math.round((country.legalWeeklyHours * 52) / 12);
+const minMensual = country.minWageMonthly ?? null;
+const minHora = minMensual ? calcHourlyWage(minMensual, country.legalWeeklyHours) : null;
+
 const faqs = [
+  {
+    question: `¿Cuántas horas se trabaja al mes en ${country.name}?`,
+    answer: `Con la jornada legal de ${country.legalWeeklyHours} horas semanales, un mes tiene ${horasAlMes} horas de trabajo (${country.legalWeeklyHours} × 52 semanas ÷ 12 meses). Si se descuentan vacaciones y festivos, el año trabajado baja a ${country.realAnnualHours ? formatIntegerThousands(country.realAnnualHours) + ' horas' : 'unas 1.650 horas'}, es decir, unas ${country.realAnnualHours ? Math.round(country.realAnnualHours / 12) : 138} al mes. Las horas «de reloj» son más que las efectivas.`,
+  },
+  ...(minMensual && minHora
+    ? [
+        {
+          question: `¿Cuál es el salario mínimo en ${country.name}?`,
+          answer: `${formatIntegerThousands(minMensual)} ${country.currencySymbol}/mes${country.minWageSourceLabel ? `, según ${country.minWageSourceLabel}` : ''}. Con la jornada legal de ${country.legalWeeklyHours} h, el mínimo sale a ${formatHourlyWage(minHora, country.currencySymbol)} por hora${countryWageText ? `, frente a los ${countryWageText} de la hora mediana` : ''}. Es un suelo legal, no lo que gana la mayoría.`,
+        },
+      ]
+    : []),
   {
     question: `¿Cuál es el salario mediano neto por hora en ${country.name}?`,
     answer: `En ${country.name}, el sueldo mediano neto de referencia es de ${formatIntegerThousands(country.medianNetMonthly ?? 0)} ${country.currencySymbol}/mes. Considerando una jornada laboral legal de ${country.legalWeeklyHours} horas semanales (fórmula de 52 semanas repartidas en 12 meses), una hora de trabajo neto equivale aproximadamente a ${countryWageText ?? "10 " + country.currencySymbol + "/hora"}, según ${country.salarySourceLabel} (${country.salariesSource}).`,
