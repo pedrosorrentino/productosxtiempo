@@ -8414,5 +8414,98 @@
       }
     },
     "visible": true
+  },
+  {
+    "id": "gta-6",
+    "name": "Grand Theft Auto VI",
+    "shortName": "GTA VI",
+    "category": "tecnologia",
+    "prices": {
+      "ES": {
+        "value": 79.99,
+        "date": "2026-10",
+        "note": "Edición estándar, precio de reserva (79,99 €). El lanzamiento es el 19 de noviembre de 2026.",
+        "source": "Rockstar · precio oficial en la eurozona",
+        "origin": "local"
+      },
+      "PT": {
+        "value": 79.99,
+        "date": "2026-10",
+        "note": "Edición estándar, precio de reserva (79,99 €).",
+        "source": "Rockstar · precio oficial en la eurozona",
+        "origin": "local"
+      },
+      "FR": {
+        "value": 79.99,
+        "date": "2026-10",
+        "note": "Edición estándar, precio de reserva (79,99 €).",
+        "source": "Rockstar · precio oficial en la eurozona",
+        "origin": "local"
+      },
+      "DE": {
+        "value": 79.99,
+        "date": "2026-10",
+        "note": "Edición estándar, precio de reserva (79,99 €).",
+        "source": "Rockstar · precio oficial en la eurozona",
+        "origin": "local"
+      },
+      "IT": {
+        "value": 79.99,
+        "date": "2026-10",
+        "note": "Edición estándar, precio de reserva (79,99 €).",
+        "source": "Rockstar · precio oficial en la eurozona",
+        "origin": "local"
+      },
+      "CH": {
+        "value": 79.9,
+        "date": "2026-10",
+        "note": "Edición estándar, precio de reserva (CHF 79,90).",
+        "source": "Rockstar · precio oficial en Suiza",
+        "origin": "local"
+      },
+      "GB": {
+        "value": 70.0,
+        "date": "2026-10",
+        "note": "Edición estándar, precio de reserva (£70).",
+        "source": "Rockstar · precio oficial en Reino Unido",
+        "origin": "local"
+      },
+      "US": {
+        "value": 79.99,
+        "date": "2026-10",
+        "note": "Edición estándar, precio de reserva ($79.99).",
+        "source": "Rockstar · precio oficial en Estados Unidos",
+        "origin": "local"
+      },
+      "MX": {
+        "value": 1499,
+        "date": "2026-10",
+        "note": "Edición estándar en pesos mexicanos. En la tienda digital de PlayStation México se cobra en dólares; este es el precio en tienda local.",
+        "source": "Rockstar · precio de reserva en México",
+        "origin": "local"
+      },
+      "CO": {
+        "value": 339900,
+        "date": "2026-10",
+        "note": "Edición estándar en pesos colombianos. La tienda digital de PlayStation cobra en dólares; este es el precio en tienda local.",
+        "source": "Rockstar · precio de reserva en Colombia",
+        "origin": "local"
+      },
+      "CL": {
+        "value": 74990,
+        "date": "2026-10",
+        "note": "Edición estándar en pesos chilenos. La tienda digital de PlayStation cobra en dólares; este es el precio en tienda local.",
+        "source": "Rockstar · precio de reserva en Chile",
+        "origin": "local"
+      },
+      "AR": {
+        "value": 113299,
+        "date": "2026-10",
+        "note": "Edición estándar en pesos argentinos. La tienda digital de PlayStation cobra en dólares; este es el precio en tienda local.",
+        "source": "Rockstar · precio de reserva en Argentina",
+        "origin": "local"
+      }
+    },
+    "visible": true
   }
 ]

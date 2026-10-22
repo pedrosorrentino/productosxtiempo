@@ -119,9 +119,20 @@ const effortText = quote?.effort ?? (calculatedStats
 /** Productos con página propia que cruza países (el mismo bien en todos). */
 const PAGINAS_TRANSVERSALES = new Set(["tesla-model-3"]);
 
+// Cuando el producto cuesta entre una hora y veinte, el titular con la cifra en
+// horas responde mejor a «cuántas horas hay que trabajar para comprar X» que la
+// fórmula humana («un día y pico»), que es la que se usa por encima de ese umbral.
+const horasExplicitas =
+  calculatedStats && calculatedStats.hours >= 1 && calculatedStats.hours <= 20
+    ? `${calculatedStats.hours.toLocaleString("es-ES", { maximumFractionDigits: 1 })} horas`
+    : null;
+
 const titulares: string[] = [];
 if (hasLocal) {
   if (ref && effortText) {
+    if (horasExplicitas) {
+      titulares.push(`${product.shortName} en ${country.name}: ${horasExplicitas} de trabajo (${priceText})`);
+    }
     titulares.push(`${product.shortName} en ${country.name}: precio ${priceText} y ${effortText} de trabajo`);
   }
   titulares.push(`${product.shortName} en ${country.name}: precio ${priceText}`);

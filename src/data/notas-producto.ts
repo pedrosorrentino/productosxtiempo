@@ -272,6 +272,10 @@ export const NOTAS_PRODUCTO: Record<string, string[]> = {
     "Una semana de vacaciones para una persona: vuelo, alojamiento y una estimación de gastos diarios. Es un paquete orientativo, no una reserva real, y el precio depende de la temporada más que del destino.",
     "Lo que se compara aquí es cuánto trabajo cuesta una semana fuera, no lo que cuesta vivir una semana en casa. En los países con sueldos bajos, un viaje a Europa puede equivaler a meses de sueldo; en los altos, a unos días.",
   ],
+  "gta-6": [
+    "Edición estándar del juego, a precio de reserva. Sale el 19 de noviembre de 2026 y es el primer GTA de la saga en más de una década, así que el precio de lanzamiento se ha fijado más alto que el de la generación anterior: 79,99 € en la eurozona, 70 £ en Reino Unido y 79,99 $ en Estados Unidos.",
+    "La edición Ultimate cuesta 20 € más y añade contenido digital, no el juego completo: si lo que se quiere es jugar, la estándar basta. Y como todo lanzamiento, bajará de precio con el tiempo; esta cifra es la del día de la reserva.",
+  ],
 };
 
 /** Devuelve la nota del producto, o null si no tiene (no se rellena con relleno). */
