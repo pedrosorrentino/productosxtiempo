@@ -671,15 +671,18 @@ const pageDescription = hasSalary
   </div>
 
     {/* Índice completo de fichas: enlazado interno para que ninguna quede a dos
-        clics de una página que Google no visita. */}
+        clics de una página que Google no visita. Va plegado porque en móvil
+        añadía 2.500 px de scroll; los enlaces siguen en el HTML. */}
     {fichasPorCategoria.length > 0 && (
-      <section class="mt-14 border-t border-base-300 pt-8" aria-label={`Todas las fichas de ${country.name}`}>
-        <h2 class="font-signage uppercase text-xl md:text-2xl">
-          Todos los precios de {country.name}, en horas
-        </h2>
-        <p class="mt-2 font-sans text-sm opacity-80">
-          {todasLasFichas.length} fichas con precio tomado en {country.name}, ordenadas por categoría.
-        </p>
+      <details class="mt-14 border-t border-base-300 pt-8" aria-label={`Todas las fichas de ${country.name}`}>
+        <summary class="cursor-pointer select-none">
+          <span class="font-signage uppercase text-xl md:text-2xl">
+            Todos los precios de {country.name}, en horas
+          </span>
+          <span class="block mt-2 font-sans text-sm opacity-80">
+            {todasLasFichas.length} fichas con precio tomado en {country.name}, ordenadas por categoría. Toca para verlas.
+          </span>
+        </summary>
         <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {fichasPorCategoria.map(([categoria, fichas]) => (
             <div>
@@ -698,6 +701,6 @@ const pageDescription = hasSalary
             </div>
           ))}
         </div>
-      </section>
+      </details>
     )}
 </BaseLayout>
