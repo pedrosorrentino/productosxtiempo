@@ -1,0 +1,207 @@
+---
+/**
+ * /fuentes/ — de dónde sale cada cifra del sitio, país por país.
+ *
+ * Es la página que separa un sitio de datos de un agregador: cada sueldo con su
+ * organismo y su enlace, cada mínimo con su norma, y qué se hace con los precios
+ * y qué no. Sirve para que cualquiera pueda comprobar una cifra sin creerse la
+ * web, y para que un evaluador vea que hay método detrás.
+ *
+ * Todo sale de src/data/countries.json: si una fuente cambia allí, cambia aquí.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pickTitle } from '../lib/titleWidth.ts';
+import { formatIntegerThousands } from '../lib/format.ts';
+import type { Country } from '../lib/types.ts';
+import countriesData from '../data/countries.json';
+import { generateBreadcrumbSchema, generateFAQSchema } from '../lib/seo.ts';
+
+const countries = countriesData as Country[];
+const siteUrl = Astro.site?.href ?? 'https://precioentiempo.com';
+const cleanSite = siteUrl.replace(/\/$/, '');
+
+const pageTitle = pickTitle(
+  ['Fuentes y método: de dónde sale cada cifra de Precio en tiempo', 'Fuentes y método'],
+  ' · Precio en tiempo',
+);
+const pageDescription =
+  'Cada sueldo con su organismo oficial, cada salario mínimo con su norma y cada precio con su fecha y su tienda. La lista completa, país por país, para poder comprobar cualquier cifra del sitio.';
+
+const filas = countries.map((c) => ({
+  nombre: c.name,
+  slug: c.slug,
+  sueldo: c.medianNetMonthly,
+  simbolo: c.currencySymbol,
+  organismo: c.salarySourceLabel ?? '—',
+  urlSueldo: c.salariesSourceUrl ?? null,
+  anio: c.salariesUpdatedAt,
+  clase: c.salaryDataKind,
+  minimo: c.minWageMonthly,
+  normaMinimo: c.minWageSourceLabel ?? null,
+  urlMinimo: c.minWageSourceUrl ?? null,
+}));
+
+const conMinimo = filas.filter((f) => f.urlMinimo).length;
+const conSueldoUrl = filas.filter((f) => f.urlSueldo).length;
+
+const faqs = [
+  {
+    question: '¿Los precios se convierten de un país a otro?',
+    answer:
+      'No. Un precio solo entra si está tomado en ese país, con su tienda o su web oficial, y se marca como «local». Cuando no hay precio propio se dice, y la página queda fuera del índice antes que rellenarla con una conversión. Convertir no es medir.',
+  },
+  {
+    question: '¿Cada cuánto se actualizan los datos?',
+    answer:
+      'Los precios se revisan cada semana con una sincronización automática que compara con la medición anterior y descarta los cambios imposibles. Los sueldos y los mínimos se actualizan cuando el organismo del país publica el dato del año siguiente, y esa fecha se ve en esta misma tabla.',
+  },
+  {
+    question: '¿Por qué algunos países tienen sueldo «estimado» u «orientativo»?',
+    answer:
+      'Porque no todos los institutos publican una mediana neta. Donde solo hay media bruta, se convierte a neto con el tipo medio y se marca como estimado; donde no hay mediana publicada con esa forma, se usa una referencia editable y se dice. Nunca se presenta una estimación como si fuera un dato oficial.',
+  },
+  {
+    question: '¿Puedo citar o reutilizar los datos?',
+    answer:
+      'Sí, con licencia CC BY 4.0 y citando la fuente. Los ficheros completos, con la fuente y la fecha en cada fila, están en /datos/ y en el repositorio de GitHub enlazado desde allí.',
+  },
+];
+
+const jsonLd = [
+  generateBreadcrumbSchema([
+    { name: 'Inicio', url: `${cleanSite}/` },
+    { name: 'Fuentes y método', url: `${cleanSite}/fuentes/` },
+  ]),
+  generateFAQSchema(faqs),
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={jsonLd}>
+  <div class="max-w-5xl mx-auto px-4 py-8 md:py-12 space-y-8">
+    <nav class="text-xs font-board-mono uppercase tracking-wider opacity-80" aria-label="Migas de pan">
+      <a href="/" class="hover:text-primary">Inicio</a> / Fuentes y método
+    </nav>
+
+    <header class="space-y-3">
+      <h1 class="font-signage uppercase text-3xl md:text-5xl leading-tight">Fuentes y método</h1>
+      <p class="font-sans text-base sm:text-lg opacity-90 leading-relaxed">
+        Aquí está de dónde sale cada cifra: el organismo que publica el sueldo, la norma que fija el
+        mínimo y cómo se toma cada precio. {conSueldoUrl} de los {countries.length} sueldos y {conMinimo}
+        {' '}de los mínimos llevan enlace directo a la publicación oficial; cuando no lo llevan, se dice
+        en la propia tabla.
+      </p>
+      <p class="font-sans text-sm opacity-85">
+        Si una cifra no te cuadra, compruébala aquí antes de creerte la web. Y si encuentras un error,
+        <a class="text-primary hover:underline" href="/contacto/">escríbenos</a>: se corrige y queda la fecha.
+      </p>
+    </header>
+
+    <section class="space-y-3">
+      <h2 class="font-signage uppercase text-2xl md:text-3xl">El sueldo y el mínimo, país por país</h2>
+      <div class="overflow-x-auto">
+        <table class="board-table w-full text-left font-body text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-100 font-board-mono text-xs uppercase tracking-[0.1em] text-primary">
+              <th class="p-3">País</th>
+              <th class="p-3 text-right">Sueldo mediano</th>
+              <th class="p-3">Organismo y año</th>
+              <th class="p-3">Clase de dato</th>
+              <th class="p-3 text-right">Mínimo legal</th>
+              <th class="p-3">Norma</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300">
+            {filas.map((f) => (
+              <tr>
+                <td class="p-3">
+                  <a class="text-primary hover:underline" href={`/${f.slug}/`}>{f.nombre}</a>
+                </td>
+                <td class="p-3 text-right font-board-mono">
+                  {f.sueldo ? `${formatIntegerThousands(f.sueldo)} ${f.simbolo}` : '—'}
+                </td>
+                <td class="p-3 font-sans text-xs">
+                  {f.urlSueldo ? (
+                    <a class="text-primary hover:underline" href={f.urlSueldo} target="_blank" rel="noopener">
+                      {f.organismo}
+                    </a>
+                  ) : (
+                    f.organismo
+                  )}
+                  <span class="opacity-70"> · {f.anio}</span>
+                </td>
+                <td class="p-3 font-sans text-xs opacity-85">{f.clase}</td>
+                <td class="p-3 text-right font-board-mono">
+                  {f.minimo ? `${formatIntegerThousands(f.minimo)} ${f.simbolo}` : '—'}
+                </td>
+                <td class="p-3 font-sans text-xs">
+                  {f.urlMinimo ? (
+                    <a class="text-primary hover:underline" href={f.urlMinimo} target="_blank" rel="noopener">
+                      {f.normaMinimo}
+                    </a>
+                  ) : (
+                    f.normaMinimo ?? <span class="opacity-60">sin norma enlazada</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="font-sans text-xs opacity-70">
+        «Publicado» significa mediana neta del organismo. «Estimado», media bruta oficial convertida a
+        neto con el tipo medio. «Orientativo», referencia editable cuando el país no publica la mediana
+        con esa forma.
+      </p>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="font-signage uppercase text-2xl md:text-3xl">Los precios</h2>
+      <ul class="font-sans text-sm sm:text-base leading-relaxed opacity-90 list-disc pl-5 space-y-2">
+        <li>
+          Cada precio se toma en la tienda o la web oficial del país, con su fecha, y se guarda con su
+          fuente. Los que se ven en la ficha son los del día que indica la nota.
+        </li>
+        <li>
+          Un producto con precio solo en algunos países aparece únicamente en esos países: el resto de
+          fichas se quedan fuera del índice con «precio local pendiente» antes que mostrar una
+          conversión disfrazada de precio local.
+        </li>
+        <li>
+          La sincronización semanal revisa cada cambio: si un precio se mueve más de un 40% respecto al
+          publicado, se revierte y se revisa a mano. Es lo que impide que un buscador de compras cambie
+          una moto por un casco sin que nadie lo note.
+        </li>
+      </ul>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="font-signage uppercase text-2xl md:text-3xl">Cómo se calcula la hora</h2>
+      <p class="font-sans text-sm sm:text-base leading-relaxed opacity-90">
+        Sueldo mensual de referencia ÷ horas del mes, con la jornada legal de cada país: 40 h semanales
+        son 173 horas al mes (40 × 52 ÷ 12); 35 h, 152; 44 h, 191. El detalle de la fórmula y de sus
+        límites está en <a class="text-primary hover:underline" href="/metodo/">el método</a>, y puedes
+        hacer la cuenta con tu propia nómina en la
+        {' '}<a class="text-primary hover:underline" href="/calculadora-sueldo-por-hora/">calculadora de sueldo por hora</a>.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="font-signage uppercase text-2xl md:text-3xl">Preguntas frecuentes</h2>
+      {faqs.map((f) => (
+        <details class="bg-base-200/60 rounded-lg border border-base-300 p-4">
+          <summary class="font-signage uppercase text-lg cursor-pointer">{f.question}</summary>
+          <p class="mt-2 font-sans text-sm leading-relaxed opacity-90">{f.answer}</p>
+        </details>
+      ))}
+    </section>
+
+    <section class="board-plate p-6 space-y-3">
+      <h2 class="font-signage uppercase text-2xl">Comprobarlo tú mismo</h2>
+      <div class="flex flex-wrap gap-x-4 gap-y-2 font-sans text-sm">
+        <a class="text-primary hover:underline" href="/datos/">Descargar los datos (CSV/JSON) →</a>
+        <a class="text-primary hover:underline" href="/metodo/">El método completo →</a>
+        <a class="text-primary hover:underline" href="/sobre-el-proyecto/">Quién está detrás →</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
