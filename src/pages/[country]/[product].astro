@@ -405,6 +405,8 @@ import { notaProducto } from "../../data/notas-producto";
         <a href={`/${country.slug}/`} class="text-primary hover:underline inline-flex items-center min-h-6">Poder adquisitivo en {country.name} &rarr;</a>
         <a href={`/${country.slug}/dia-de-trabajo/`} class="text-primary hover:underline">Cuánto vale un día de trabajo en {country.name} &rarr;</a>
         <a href={`/${country.slug}/sueldo-por-hora/`} class="text-primary hover:underline">Cuánto se gana por hora en {country.name} &rarr;</a>
+        <a href={`/vivir-en/${country.slug}/`} class="text-primary hover:underline">Cuánto se necesita para vivir en {country.name} &rarr;</a>
+        <a href="/calculadora-sueldo-por-hora/" class="text-primary hover:underline">Calculadora de sueldo por hora &rarr;</a>
         {PAGINAS_TRANSVERSALES.has(product.id) && (
           <a href={`/${product.id}/`} class="text-primary hover:underline">El mismo {product.shortName}, país por país &rarr;</a>
         )}
