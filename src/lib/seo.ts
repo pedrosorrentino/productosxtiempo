@@ -43,7 +43,7 @@ export interface HreflangLink {
  */
 export function generateHreflangs(
   countries: Country[],
-  currentPathType: "product" | "country" | "precio" | "category" | "dia-de-trabajo" | "sueldo-por-hora",
+  currentPathType: "product" | "country" | "precio" | "category" | "dia-de-trabajo" | "sueldo-por-hora" | "vivir-en",
   identifier?: string, // productId o categorySlug
   siteUrl: string = "https://precioentiempo.com"
 ): HreflangLink[] {
@@ -65,6 +65,8 @@ export function generateHreflangs(
       path = `/${c.slug}/dia-de-trabajo`;
     } else if (currentPathType === "sueldo-por-hora") {
       path = `/${c.slug}/sueldo-por-hora`;
+    } else if (currentPathType === "vivir-en") {
+      path = `/vivir-en/${c.slug}`;
     }
     links.push({
       hreflang: localeInfo.hreflang,
@@ -84,6 +86,8 @@ export function generateHreflangs(
     defaultPath = `/espana/dia-de-trabajo/`;
   } else if (currentPathType === "sueldo-por-hora") {
     defaultPath = `/espana/sueldo-por-hora/`;
+  } else if (currentPathType === "vivir-en") {
+    defaultPath = `/vivir-en/espana/`;
   }
 
   links.push({

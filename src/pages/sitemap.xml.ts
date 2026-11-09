@@ -4,6 +4,7 @@ import countriesData from '../data/countries.json';
 import productsData from '../data/products.json';
 import type { Country, Product } from '../lib/types.ts';
 import { getProductPrice, hasLocalPrice } from '../lib/selectors.ts';
+import { costeDeVida } from '../lib/coste-vida.ts';
 
 const CATEGORIES: Product['category'][] = [
   'transporte',
@@ -28,7 +29,12 @@ export const GET: APIRoute = async ({ site }) => {
   urls.push({ loc: `${baseUrl}/datos/`, lastmod: today, changefreq: 'weekly', priority: '0.8' });
   urls.push({ loc: `${baseUrl}/calculadora-sueldo-por-hora/`, lastmod: today, changefreq: 'monthly', priority: '0.9' });
   urls.push({ loc: `${baseUrl}/vivir-un-mes/`, lastmod: today, changefreq: 'monthly', priority: '0.8' });
+  // /vivir-en/<país>/ solo se anuncia si hay cesta de gastos calculable con precios
+  // tomados allí. Sin datos suficientes la página sale noindex (Argentina), así que
+  // anunciarla sería una señal contradictoria.
+  const conCoste = new Set(costeDeVida(countries, products).map((f) => f.country.code));
   for (const c of countries) {
+    if (!conCoste.has(c.code)) continue;
     urls.push({ loc: `${baseUrl}/vivir-en/${c.slug}/`, lastmod: today, changefreq: 'monthly', priority: '0.7' });
   }
   urls.push({ loc: `${baseUrl}/tesla-model-3/`, lastmod: today, changefreq: 'monthly', priority: '0.8' });

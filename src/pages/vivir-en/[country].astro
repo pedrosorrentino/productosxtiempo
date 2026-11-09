@@ -61,7 +61,10 @@ const pageDescription = fila
   ? `Vivir un mes en ${country.name} cuesta ${miles(fila.total)} ${simbolo}: ${formatHours(Math.round(fila.horas))} horas de trabajo, el ${formatPercent(fila.parteDelSueldo * 100)} del sueldo mediano. Alquiler, compra, luz, internet y transporte, con precios tomados allí.`
   : `Qué cuesta mantener una casa un mes en ${country.name}, medido en horas de trabajo y con precios tomados en el país.`;
 
-const hreflangs = generateHreflangs(countries, 'country', undefined, siteUrl);
+// Con hreflang a las OTRAS páginas /vivir-en/<país>/ (no a los hubs de país) y solo
+// entre los países con cesta calculable: los que no la tienen salen del índice.
+const conCoste = todas.map((f) => f.country);
+const hreflangs = generateHreflangs(conCoste, 'vivir-en', undefined, siteUrl);
 
 const faqs = fila
   ? [
@@ -102,6 +105,7 @@ const jsonLd = [
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
+  noindex={!fila}
   currentCountrySlug={country.slug}
   currentCountryCode={country.code}
   hreflangs={hreflangs}
