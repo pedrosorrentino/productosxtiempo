@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-10",
+  "date": "2026-11-09",
   "countries": {
     "ES": [
       {
@@ -32,7 +32,7 @@
       },
       {
         "label": "Bottled Water (0.33 Liter)",
-        "value": 1.63
+        "value": 1.62
       },
       {
         "label": "Milk (Regular, 1 Liter)",
@@ -44,7 +44,7 @@
       },
       {
         "label": "White Rice (1 kg)",
-        "value": 1.46
+        "value": 1.47
       },
       {
         "label": "Eggs (12, Large Size)",
@@ -52,43 +52,43 @@
       },
       {
         "label": "Local Cheese (1 kg)",
-        "value": 12.63
+        "value": 12.67
       },
       {
         "label": "Chicken Fillets (1 kg)",
-        "value": 7.49
+        "value": 7.53
       },
       {
         "label": "Beef Round or Equivalent Back Leg Red Meat (1 kg)",
-        "value": 14.52
+        "value": 14.65
       },
       {
         "label": "Apples (1 kg)",
-        "value": 2.23
-      },
-      {
-        "label": "Bananas (1 kg)",
-        "value": 1.79
-      },
-      {
-        "label": "Oranges (1 kg)",
-        "value": 1.87
-      },
-      {
-        "label": "Tomatoes (1 kg)",
         "value": 2.25
       },
       {
+        "label": "Bananas (1 kg)",
+        "value": 1.8
+      },
+      {
+        "label": "Oranges (1 kg)",
+        "value": 1.86
+      },
+      {
+        "label": "Tomatoes (1 kg)",
+        "value": 2.26
+      },
+      {
         "label": "Potatoes (1 kg)",
-        "value": 1.62
+        "value": 1.63
       },
       {
         "label": "Onions (1 kg)",
-        "value": 1.76
+        "value": 1.77
       },
       {
         "label": "Lettuce (1 Head)",
-        "value": 1.19
+        "value": 1.2
       },
       {
         "label": "Bottled Water (1.5 Liter)",
@@ -100,7 +100,7 @@
       },
       {
         "label": "Domestic Beer (0.5 Liter Bottle)",
-        "value": 1.14
+        "value": 1.13
       },
       {
         "label": "Imported Beer (0.33 Liter Bottle)",
@@ -116,19 +116,19 @@
       },
       {
         "label": "Monthly Public Transport Pass (Regular Price)",
-        "value": 30
+        "value": 29.05
       },
       {
         "label": "Taxi Start (Standard Tariff)",
-        "value": 3.99
+        "value": 3.52
       },
       {
         "label": "Taxi 1 km (Standard Tariff)",
-        "value": 1.3
+        "value": 1.2
       },
       {
         "label": "Taxi 1 Hour Waiting (Standard Tariff)",
-        "value": 22
+        "value": 23.91
       },
       {
         "label": "Gasoline (1 Liter)",
@@ -140,87 +140,107 @@
       },
       {
         "label": "Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car)",
-        "value": 26197.46
+        "value": 27420.39
       },
       {
         "label": "Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",
-        "value": 133.32
+        "value": 132.4
       },
       {
         "label": "Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",
-        "value": 15.79
+        "value": 15.7
       },
       {
         "label": "Broadband Internet (Unlimited Data, 60 Mbps or Higher)",
-        "value": 28.55
+        "value": 28.49
       },
       {
         "label": "Monthly Fitness Club Membership",
-        "value": 40.53
+        "value": 39.87
       },
       {
         "label": "Tennis Court Rental (1 Hour, Weekend)",
-        "value": 13.55
+        "value": 13.6
+      },
+      {
+        "label": "Swimming Pool (Indoor, Adult Admission, Single Visit)",
+        "value": 5.05
       },
       {
         "label": "Cinema Ticket (International Release)",
         "value": 8.5
       },
       {
+        "label": "Netflix Premium or Equivalent (4K Video Streaming, Ad-Free, Monthly)",
+        "value": 21.99
+      },
+      {
         "label": "Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",
-        "value": 481.17
+        "value": 499.61
       },
       {
         "label": "International Primary School, Annual Tuition per Child",
-        "value": 9411.08
+        "value": 12073.98
       },
       {
         "label": "Jeans (Levi's 501 or Similar)",
-        "value": 76.06
+        "value": 76.54
       },
       {
         "label": "Summer Dress in a Chain Store (e.g. Zara or H&M)",
-        "value": 32.79
+        "value": 32.88
       },
       {
         "label": "Nike Running Shoes (Mid-Range)",
-        "value": 79.86
+        "value": 80.36
       },
       {
         "label": "Men's Leather Business Shoes",
-        "value": 94.41
+        "value": 95.45
+      },
+      {
+        "label": "Men's Haircut (Standard Barbershop)",
+        "value": 16
+      },
+      {
+        "label": "Women's Haircut (Wash and Basic Cut)",
+        "value": 27
+      },
+      {
+        "label": "Household Cleaning Service (Per Hour)",
+        "value": 12
       },
       {
         "label": "1 Bedroom Apartment in City Centre",
-        "value": 897.65
+        "value": 933.22
       },
       {
         "label": "1 Bedroom Apartment Outside of City Centre",
-        "value": 707.87
+        "value": 730.36
       },
       {
         "label": "3 Bedroom Apartment in City Centre",
-        "value": 1409.55
+        "value": 1448.77
       },
       {
         "label": "3 Bedroom Apartment Outside of City Centre",
-        "value": 1076.14
+        "value": 1097.14
       },
       {
         "label": "Price per Square Meter to Buy Apartment in City Centre",
-        "value": 3648.2
+        "value": 3756.86
       },
       {
         "label": "Price per Square Meter to Buy Apartment Outside of Centre",
-        "value": 2301.11
+        "value": 2408.5
       },
       {
         "label": "Average Monthly Net Salary (After Tax)",
-        "value": 1750.6
+        "value": 1793.72
       },
       {
         "label": "Annual Mortgage Interest Rate (20-Year Fixed, in %)",
-        "value": 3.29
+        "value": 3.3
       }
     ],
     "PT": [
@@ -246,15 +266,15 @@
       },
       {
         "label": "Cappuccino (Regular Size)",
-        "value": 1.88
+        "value": 1.9
       },
       {
         "label": "Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",
-        "value": 1.75
+        "value": 1.74
       },
       {
         "label": "Bottled Water (0.33 Liter)",
-        "value": 1.21
+        "value": 1.22
       },
       {
         "label": "Milk (Regular, 1 Liter)",
@@ -262,31 +282,31 @@
       },
       {
         "label": "Fresh White Bread (500 g Loaf)",
-        "value": 1.43
+        "value": 1.44
       },
       {
         "label": "White Rice (1 kg)",
-        "value": 1.42
+        "value": 1.41
       },
       {
         "label": "Eggs (12, Large Size)",
-        "value": 3.05
+        "value": 3.06
       },
       {
         "label": "Local Cheese (1 kg)",
-        "value": 10.26
+        "value": 10.28
       },
       {
         "label": "Chicken Fillets (1 kg)",
-        "value": 6.71
+        "value": 6.72
       },
       {
         "label": "Beef Round or Equivalent Back Leg Red Meat (1 kg)",
-        "value": 13.26
+        "value": 13.33
       },
       {
         "label": "Apples (1 kg)",
-        "value": 1.97
+        "value": 1.98
       },
       {
         "label": "Bananas (1 kg)",
@@ -298,23 +318,23 @@
       },
       {
         "label": "Tomatoes (1 kg)",
-        "value": 2.18
+        "value": 2.2
       },
       {
         "label": "Potatoes (1 kg)",
-        "value": 1.5
+        "value": 1.51
       },
       {
         "label": "Onions (1 kg)",
-        "value": 1.73
+        "value": 1.72
       },
       {
         "label": "Lettuce (1 Head)",
-        "value": 1.31
+        "value": 1.32
       },
       {
         "label": "Bottled Water (1.5 Liter)",
-        "value": 0.7
+        "value": 0.69
       },
       {
         "label": "Bottle of Wine (Mid-Range)",
@@ -326,7 +346,7 @@
       },
       {
         "label": "Imported Beer (0.33 Liter Bottle)",
-        "value": 2.01
+        "value": 2.02
       },
       {
         "label": "Cigarettes (Pack of 20, Marlboro)",
@@ -346,15 +366,15 @@
       },
       {
         "label": "Taxi 1 km (Standard Tariff)",
-        "value": 0.96
+        "value": 0.7
       },
       {
         "label": "Taxi 1 Hour Waiting (Standard Tariff)",
-        "value": 15
+        "value": 22.2
       },
       {
         "label": "Gasoline (1 Liter)",
-        "value": 1.88
+        "value": 1.9
       },
       {
         "label": "Volkswagen Golf 1.5 (or Equivalent New Compact Car)",
@@ -362,87 +382,107 @@
       },
       {
         "label": "Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car)",
-        "value": 34036.29
+        "value": 33859.57
       },
       {
         "label": "Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",
-        "value": 121.02
+        "value": 120.17
       },
       {
         "label": "Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",
-        "value": 17.87
+        "value": 17.73
       },
       {
         "label": "Broadband Internet (Unlimited Data, 60 Mbps or Higher)",
-        "value": 35.86
+        "value": 35.48
       },
       {
         "label": "Monthly Fitness Club Membership",
-        "value": 37.58
+        "value": 38.07
       },
       {
         "label": "Tennis Court Rental (1 Hour, Weekend)",
-        "value": 14.07
+        "value": 15.14
+      },
+      {
+        "label": "Swimming Pool (Indoor, Adult Admission, Single Visit)",
+        "value": 2.63
       },
       {
         "label": "Cinema Ticket (International Release)",
         "value": 8
       },
       {
+        "label": "Netflix Premium or Equivalent (4K Video Streaming, Ad-Free, Monthly)",
+        "value": 17.99
+      },
+      {
         "label": "Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",
-        "value": 443.13
+        "value": 440.17
       },
       {
         "label": "International Primary School, Annual Tuition per Child",
-        "value": 10240.64
+        "value": 12861.06
       },
       {
         "label": "Jeans (Levi's 501 or Similar)",
-        "value": 78.16
+        "value": 78.33
       },
       {
         "label": "Summer Dress in a Chain Store (e.g. Zara or H&M)",
-        "value": 35.25
+        "value": 35.2
       },
       {
         "label": "Nike Running Shoes (Mid-Range)",
-        "value": 79.38
+        "value": 79.51
       },
       {
         "label": "Men's Leather Business Shoes",
-        "value": 89.49
+        "value": 89.81
+      },
+      {
+        "label": "Men's Haircut (Standard Barbershop)",
+        "value": 15
+      },
+      {
+        "label": "Women's Haircut (Wash and Basic Cut)",
+        "value": 30
+      },
+      {
+        "label": "Household Cleaning Service (Per Hour)",
+        "value": 10
       },
       {
         "label": "1 Bedroom Apartment in City Centre",
-        "value": 915.26
+        "value": 950.66
       },
       {
         "label": "1 Bedroom Apartment Outside of City Centre",
-        "value": 721.59
+        "value": 745.69
       },
       {
         "label": "3 Bedroom Apartment in City Centre",
-        "value": 1558.58
+        "value": 1614.68
       },
       {
         "label": "3 Bedroom Apartment Outside of City Centre",
-        "value": 1167.5
+        "value": 1203.66
       },
       {
         "label": "Price per Square Meter to Buy Apartment in City Centre",
-        "value": 3537.15
+        "value": 3673.73
       },
       {
         "label": "Price per Square Meter to Buy Apartment Outside of Centre",
-        "value": 2497.35
+        "value": 2603.52
       },
       {
         "label": "Average Monthly Net Salary (After Tax)",
-        "value": 1166.75
+        "value": 1256.12
       },
       {
         "label": "Annual Mortgage Interest Rate (20-Year Fixed, in %)",
-        "value": 3.74
+        "value": 3.72
       }
     ],
     "FR": [
@@ -468,15 +508,15 @@
       },
       {
         "label": "Cappuccino (Regular Size)",
-        "value": 3.44
+        "value": 3.49
       },
       {
         "label": "Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",
-        "value": 2.98
+        "value": 2.97
       },
       {
         "label": "Bottled Water (0.33 Liter)",
-        "value": 1.9
+        "value": 1.88
       },
       {
         "label": "Milk (Regular, 1 Liter)",
@@ -484,43 +524,43 @@
       },
       {
         "label": "Fresh White Bread (500 g Loaf)",
-        "value": 1.78
+        "value": 1.79
       },
       {
         "label": "White Rice (1 kg)",
-        "value": 2.33
+        "value": 2.34
       },
       {
         "label": "Eggs (12, Large Size)",
-        "value": 3.81
+        "value": 3.83
       },
       {
         "label": "Local Cheese (1 kg)",
-        "value": 17.53
+        "value": 17.69
       },
       {
         "label": "Chicken Fillets (1 kg)",
-        "value": 12.18
+        "value": 12.15
       },
       {
         "label": "Beef Round or Equivalent Back Leg Red Meat (1 kg)",
-        "value": 19.27
+        "value": 19.51
       },
       {
         "label": "Apples (1 kg)",
-        "value": 2.78
+        "value": 2.8
       },
       {
         "label": "Bananas (1 kg)",
-        "value": 2.09
+        "value": 2.08
       },
       {
         "label": "Oranges (1 kg)",
-        "value": 2.65
+        "value": 2.66
       },
       {
         "label": "Tomatoes (1 kg)",
-        "value": 3.23
+        "value": 3.24
       },
       {
         "label": "Potatoes (1 kg)",
@@ -528,7 +568,7 @@
       },
       {
         "label": "Onions (1 kg)",
-        "value": 2.17
+        "value": 2.18
       },
       {
         "label": "Lettuce (1 Head)",
@@ -544,11 +584,11 @@
       },
       {
         "label": "Domestic Beer (0.5 Liter Bottle)",
-        "value": 2.43
+        "value": 2.37
       },
       {
         "label": "Imported Beer (0.33 Liter Bottle)",
-        "value": 2.82
+        "value": 2.81
       },
       {
         "label": "Cigarettes (Pack of 20, Marlboro)",
@@ -560,107 +600,127 @@
       },
       {
         "label": "Monthly Public Transport Pass (Regular Price)",
-        "value": 50
+        "value": 55
       },
       {
         "label": "Taxi Start (Standard Tariff)",
-        "value": 4.44
+        "value": 3.1
       },
       {
         "label": "Taxi 1 km (Standard Tariff)",
-        "value": 1.9
+        "value": 1.3
       },
       {
         "label": "Taxi 1 Hour Waiting (Standard Tariff)",
-        "value": 33.7
+        "value": 35.2
       },
       {
         "label": "Gasoline (1 Liter)",
-        "value": 1.9
+        "value": 1.92
       },
       {
         "label": "Volkswagen Golf 1.5 (or Equivalent New Compact Car)",
-        "value": 30900
+        "value": 31000
       },
       {
         "label": "Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car)",
-        "value": 31396.82
+        "value": 33353.91
       },
       {
         "label": "Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",
-        "value": 193.17
+        "value": 194.41
       },
       {
         "label": "Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",
-        "value": 17.91
+        "value": 17.72
       },
       {
         "label": "Broadband Internet (Unlimited Data, 60 Mbps or Higher)",
-        "value": 30.28
+        "value": 30.32
       },
       {
         "label": "Monthly Fitness Club Membership",
-        "value": 32.34
+        "value": 36.05
       },
       {
         "label": "Tennis Court Rental (1 Hour, Weekend)",
-        "value": 18.38
+        "value": 18.87
+      },
+      {
+        "label": "Swimming Pool (Indoor, Adult Admission, Single Visit)",
+        "value": 4
       },
       {
         "label": "Cinema Ticket (International Release)",
         "value": 12
       },
       {
+        "label": "Netflix Premium or Equivalent (4K Video Streaming, Ad-Free, Monthly)",
+        "value": 21.99
+      },
+      {
         "label": "Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",
-        "value": 786.07
+        "value": 798.82
       },
       {
         "label": "International Primary School, Annual Tuition per Child",
-        "value": 10908.47
+        "value": 14568.85
       },
       {
         "label": "Jeans (Levi's 501 or Similar)",
-        "value": 90.9
+        "value": 90.72
       },
       {
         "label": "Summer Dress in a Chain Store (e.g. Zara or H&M)",
-        "value": 40.71
+        "value": 40.98
       },
       {
         "label": "Nike Running Shoes (Mid-Range)",
-        "value": 94.7
+        "value": 94.99
       },
       {
         "label": "Men's Leather Business Shoes",
-        "value": 122.07
+        "value": 122.45
+      },
+      {
+        "label": "Men's Haircut (Standard Barbershop)",
+        "value": 22
+      },
+      {
+        "label": "Women's Haircut (Wash and Basic Cut)",
+        "value": 46
+      },
+      {
+        "label": "Household Cleaning Service (Per Hour)",
+        "value": 16
       },
       {
         "label": "1 Bedroom Apartment in City Centre",
-        "value": 778.38
+        "value": 804.8
       },
       {
         "label": "1 Bedroom Apartment Outside of City Centre",
-        "value": 614.4
+        "value": 636.62
       },
       {
         "label": "3 Bedroom Apartment in City Centre",
-        "value": 1355.38
+        "value": 1441.12
       },
       {
         "label": "3 Bedroom Apartment Outside of City Centre",
-        "value": 1086.62
+        "value": 1142.81
       },
       {
         "label": "Price per Square Meter to Buy Apartment in City Centre",
-        "value": 4815.2
+        "value": 4912.92
       },
       {
         "label": "Price per Square Meter to Buy Apartment Outside of Centre",
-        "value": 3232.11
+        "value": 3294.01
       },
       {
         "label": "Average Monthly Net Salary (After Tax)",
-        "value": 2444.43
+        "value": 2611.82
       },
       {
         "label": "Annual Mortgage Interest Rate (20-Year Fixed, in %)",
@@ -690,15 +750,15 @@
       },
       {
         "label": "Cappuccino (Regular Size)",
-        "value": 3.61
+        "value": 3.62
       },
       {
         "label": "Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",
-        "value": 3.1
+        "value": 3.09
       },
       {
         "label": "Bottled Water (0.33 Liter)",
-        "value": 2.67
+        "value": 2.66
       },
       {
         "label": "Milk (Regular, 1 Liter)",
@@ -710,7 +770,7 @@
       },
       {
         "label": "White Rice (1 kg)",
-        "value": 3.09
+        "value": 3.08
       },
       {
         "label": "Eggs (12, Large Size)",
@@ -718,23 +778,23 @@
       },
       {
         "label": "Local Cheese (1 kg)",
-        "value": 12.97
+        "value": 12.99
       },
       {
         "label": "Chicken Fillets (1 kg)",
-        "value": 10.44
+        "value": 10.45
       },
       {
         "label": "Beef Round or Equivalent Back Leg Red Meat (1 kg)",
-        "value": 18.52
+        "value": 18.54
       },
       {
         "label": "Apples (1 kg)",
-        "value": 2.87
+        "value": 2.86
       },
       {
         "label": "Bananas (1 kg)",
-        "value": 1.81
+        "value": 1.8
       },
       {
         "label": "Oranges (1 kg)",
@@ -742,15 +802,15 @@
       },
       {
         "label": "Tomatoes (1 kg)",
-        "value": 3.8
+        "value": 3.81
       },
       {
         "label": "Potatoes (1 kg)",
-        "value": 1.32
+        "value": 1.33
       },
       {
         "label": "Onions (1 kg)",
-        "value": 1.3
+        "value": 1.31
       },
       {
         "label": "Lettuce (1 Head)",
@@ -758,15 +818,15 @@
       },
       {
         "label": "Bottled Water (1.5 Liter)",
-        "value": 0.94
+        "value": 0.93
       },
       {
         "label": "Bottle of Wine (Mid-Range)",
-        "value": 5.5
+        "value": 5.94
       },
       {
         "label": "Domestic Beer (0.5 Liter Bottle)",
-        "value": 0.99
+        "value": 1
       },
       {
         "label": "Imported Beer (0.33 Liter Bottle)",
@@ -794,11 +854,11 @@
       },
       {
         "label": "Taxi 1 Hour Waiting (Standard Tariff)",
-        "value": 35
+        "value": 36
       },
       {
         "label": "Gasoline (1 Liter)",
-        "value": 1.93
+        "value": 1.95
       },
       {
         "label": "Volkswagen Golf 1.5 (or Equivalent New Compact Car)",
@@ -806,83 +866,103 @@
       },
       {
         "label": "Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car)",
-        "value": 34182.2
+        "value": 34401.58
       },
       {
         "label": "Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",
-        "value": 304.34
+        "value": 305.09
       },
       {
         "label": "Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",
-        "value": 22.33
+        "value": 22.24
       },
       {
         "label": "Broadband Internet (Unlimited Data, 60 Mbps or Higher)",
-        "value": 42.85
+        "value": 42.86
       },
       {
         "label": "Monthly Fitness Club Membership",
-        "value": 36.2
+        "value": 41.65
       },
       {
         "label": "Tennis Court Rental (1 Hour, Weekend)",
-        "value": 24.79
+        "value": 24.68
+      },
+      {
+        "label": "Swimming Pool (Indoor, Adult Admission, Single Visit)",
+        "value": 5
       },
       {
         "label": "Cinema Ticket (International Release)",
         "value": 13
       },
       {
+        "label": "Netflix Premium or Equivalent (4K Video Streaming, Ad-Free, Monthly)",
+        "value": 21.99
+      },
+      {
         "label": "Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",
-        "value": 511.03
+        "value": 547.58
       },
       {
         "label": "International Primary School, Annual Tuition per Child",
-        "value": 15558.94
+        "value": 18233.16
       },
       {
         "label": "Jeans (Levi's 501 or Similar)",
-        "value": 80.4
+        "value": 80.74
       },
       {
         "label": "Summer Dress in a Chain Store (e.g. Zara or H&M)",
-        "value": 38.42
+        "value": 38.65
       },
       {
         "label": "Nike Running Shoes (Mid-Range)",
-        "value": 89.41
+        "value": 89.69
       },
       {
         "label": "Men's Leather Business Shoes",
-        "value": 115.05
+        "value": 115.53
+      },
+      {
+        "label": "Men's Haircut (Standard Barbershop)",
+        "value": 30
+      },
+      {
+        "label": "Women's Haircut (Wash and Basic Cut)",
+        "value": 49
+      },
+      {
+        "label": "Household Cleaning Service (Per Hour)",
+        "value": 17
       },
       {
         "label": "1 Bedroom Apartment in City Centre",
-        "value": 812.5
+        "value": 822.19
       },
       {
         "label": "1 Bedroom Apartment Outside of City Centre",
-        "value": 628.09
+        "value": 638.2
       },
       {
         "label": "3 Bedroom Apartment in City Centre",
-        "value": 1492.06
+        "value": 1511.94
       },
       {
         "label": "3 Bedroom Apartment Outside of City Centre",
-        "value": 1153.92
+        "value": 1173.14
       },
       {
         "label": "Price per Square Meter to Buy Apartment in City Centre",
-        "value": 5422.49
+        "value": 5279.02
       },
       {
         "label": "Price per Square Meter to Buy Apartment Outside of Centre",
-        "value": 3564.02
+        "value": 3508.63
       },
       {
         "label": "Average Monthly Net Salary (After Tax)",
-        "value": 2939.56
+        "value": 2939.01
       },
       {
         "label": "Annual Mortgage Interest Rate (20-Year Fixed, in %)",
@@ -912,11 +992,11 @@
       },
       {
         "label": "Cappuccino (Regular Size)",
-        "value": 1.77
+        "value": 1.78
       },
       {
         "label": "Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",
-        "value": 2.7
+        "value": 2.73
       },
       {
         "label": "Bottled Water (0.33 Liter)",
@@ -928,7 +1008,7 @@
       },
       {
         "label": "Fresh White Bread (500 g Loaf)",
-        "value": 2.11
+        "value": 2.12
       },
       {
         "label": "White Rice (1 kg)",
@@ -940,15 +1020,15 @@
       },
       {
         "label": "Local Cheese (1 kg)",
-        "value": 15.39
+        "value": 15.48
       },
       {
         "label": "Chicken Fillets (1 kg)",
-        "value": 11.15
+        "value": 11.19
       },
       {
         "label": "Beef Round or Equivalent Back Leg Red Meat (1 kg)",
-        "value": 18.12
+        "value": 18.23
       },
       {
         "label": "Apples (1 kg)",
@@ -956,7 +1036,7 @@
       },
       {
         "label": "Bananas (1 kg)",
-        "value": 1.9
+        "value": 1.91
       },
       {
         "label": "Oranges (1 kg)",
@@ -964,23 +1044,23 @@
       },
       {
         "label": "Tomatoes (1 kg)",
-        "value": 2.89
+        "value": 2.91
       },
       {
         "label": "Potatoes (1 kg)",
-        "value": 1.75
+        "value": 1.77
       },
       {
         "label": "Onions (1 kg)",
-        "value": 1.68
+        "value": 1.67
       },
       {
         "label": "Lettuce (1 Head)",
-        "value": 1.37
+        "value": 1.38
       },
       {
         "label": "Bottled Water (1.5 Liter)",
-        "value": 0.47
+        "value": 0.48
       },
       {
         "label": "Bottle of Wine (Mid-Range)",
@@ -988,7 +1068,7 @@
       },
       {
         "label": "Domestic Beer (0.5 Liter Bottle)",
-        "value": 1.57
+        "value": 1.58
       },
       {
         "label": "Imported Beer (0.33 Liter Bottle)",
@@ -1004,7 +1084,7 @@
       },
       {
         "label": "Monthly Public Transport Pass (Regular Price)",
-        "value": 38.7
+        "value": 39
       },
       {
         "label": "Taxi Start (Standard Tariff)",
@@ -1020,19 +1100,19 @@
       },
       {
         "label": "Gasoline (1 Liter)",
-        "value": 1.84
+        "value": 1.85
       },
       {
         "label": "Volkswagen Golf 1.5 (or Equivalent New Compact Car)",
-        "value": 32434
+        "value": 32000
       },
       {
         "label": "Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car)",
-        "value": 31555.72
+        "value": 32885.77
       },
       {
         "label": "Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",
-        "value": 202.32
+        "value": 202.83
       },
       {
         "label": "Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",
@@ -1044,71 +1124,91 @@
       },
       {
         "label": "Monthly Fitness Club Membership",
-        "value": 47.81
+        "value": 48.6
       },
       {
         "label": "Tennis Court Rental (1 Hour, Weekend)",
-        "value": 21.43
+        "value": 21.4
+      },
+      {
+        "label": "Swimming Pool (Indoor, Adult Admission, Single Visit)",
+        "value": 7.7
       },
       {
         "label": "Cinema Ticket (International Release)",
         "value": 9.5
       },
       {
+        "label": "Netflix Premium or Equivalent (4K Video Streaming, Ad-Free, Monthly)",
+        "value": 19.99
+      },
+      {
         "label": "Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",
-        "value": 494.18
+        "value": 504.07
       },
       {
         "label": "International Primary School, Annual Tuition per Child",
-        "value": 10364.75
+        "value": 15784.15
       },
       {
         "label": "Jeans (Levi's 501 or Similar)",
-        "value": 80.4
+        "value": 81
       },
       {
         "label": "Summer Dress in a Chain Store (e.g. Zara or H&M)",
-        "value": 34.82
+        "value": 35.13
       },
       {
         "label": "Nike Running Shoes (Mid-Range)",
-        "value": 91.13
+        "value": 91.65
       },
       {
         "label": "Men's Leather Business Shoes",
-        "value": 117.31
+        "value": 117.48
+      },
+      {
+        "label": "Men's Haircut (Standard Barbershop)",
+        "value": 23
+      },
+      {
+        "label": "Women's Haircut (Wash and Basic Cut)",
+        "value": 42
+      },
+      {
+        "label": "Household Cleaning Service (Per Hour)",
+        "value": 10.5
       },
       {
         "label": "1 Bedroom Apartment in City Centre",
-        "value": 721.27
+        "value": 728.72
       },
       {
         "label": "1 Bedroom Apartment Outside of City Centre",
-        "value": 565.71
+        "value": 570.28
       },
       {
         "label": "3 Bedroom Apartment in City Centre",
-        "value": 1264.7
+        "value": 1255.58
       },
       {
         "label": "3 Bedroom Apartment Outside of City Centre",
-        "value": 935.05
+        "value": 934.79
       },
       {
         "label": "Price per Square Meter to Buy Apartment in City Centre",
-        "value": 3249.6
+        "value": 3287.49
       },
       {
         "label": "Price per Square Meter to Buy Apartment Outside of Centre",
-        "value": 2025.37
+        "value": 2066.59
       },
       {
         "label": "Average Monthly Net Salary (After Tax)",
-        "value": 1688.15
+        "value": 1744.65
       },
       {
         "label": "Annual Mortgage Interest Rate (20-Year Fixed, in %)",
-        "value": 3.56
+        "value": 3.55
       }
     ],
     "GB": [
